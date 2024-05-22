@@ -1,4 +1,4 @@
-package eu.kanade.tachiyomi.data.coil
+package eu.kanade.tachiyomi.data.image.coil
 
 import coil3.Extras
 import coil3.getExtra
