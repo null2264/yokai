@@ -256,9 +256,7 @@ dependencies {
     implementation(libs.injekt.core)
 
     // Image library
-    implementation(libs.coil)
-    implementation(libs.coil.gif)
-    implementation(libs.coil.svg)
+    implementation(libs.bundles.coil)
 
     // Logging
     implementation(libs.timber)
