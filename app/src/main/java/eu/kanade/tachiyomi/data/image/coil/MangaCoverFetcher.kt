@@ -1,16 +1,16 @@
 package eu.kanade.tachiyomi.data.image.coil
 
 import android.webkit.MimeTypeMap
-import coil.ImageLoader
-import coil.decode.DataSource
-import coil.decode.ImageSource
-import coil.disk.DiskCache
-import coil.fetch.FetchResult
-import coil.fetch.Fetcher
-import coil.fetch.SourceResult
-import coil.network.HttpException
-import coil.request.Options
-import coil.request.Parameters
+import coil3.Extras
+import coil3.ImageLoader
+import coil3.decode.DataSource
+import coil3.decode.ImageSource
+import coil3.disk.DiskCache
+import coil3.fetch.FetchResult
+import coil3.fetch.Fetcher
+import coil3.fetch.SourceFetchResult
+import coil3.getOrDefault
+import coil3.request.Options
 import eu.kanade.tachiyomi.data.cache.CoverCache
 import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.network.await
@@ -26,17 +26,16 @@ import okhttp3.Call
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.internal.closeQuietly
+import okio.FileSystem
 import okio.Path.Companion.toOkioPath
 import okio.Source
 import okio.buffer
 import okio.sink
-import okio.source
 import timber.log.Timber
-import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import java.io.File
 import java.net.HttpURLConnection
-import java.util.Date
+import java.util.*
 
 class MangaCoverFetcher(
     private val manga: Manga,
@@ -71,7 +70,7 @@ class MangaCoverFetcher(
         val networkRead = options.networkCachePolicy.readEnabled
         val onlyCache = !networkRead && diskRead
         val shouldFetchRemotely = networkRead && !diskRead && !onlyCache
-        val useCustomCover = options.parameters.value(useCustomCover) ?: true
+        val useCustomCover = options.extras.getOrDefault(USE_CUSTOM_COVER_KEY)
         // Use custom cover if exists
         if (!shouldFetchRemotely) {
             val customCoverFile by lazy { coverCache.getCustomCoverFile(manga) }
@@ -101,7 +100,7 @@ class MangaCoverFetcher(
 
                 // Read from snapshot
                 setRatioAndColorsInScope(manga)
-                return SourceResult(
+                return SourceFetchResult(
                     source = snapshot.toImageSource(),
                     mimeType = "image/*",
                     dataSource = DataSource.DISK,
@@ -122,7 +121,7 @@ class MangaCoverFetcher(
                 // Read from disk cache
                 snapshot = writeToDiskCache(snapshot, response)
                 if (snapshot != null) {
-                    return SourceResult(
+                    return SourceFetchResult(
                         source = snapshot.toImageSource(),
                         mimeType = "image/*",
                         dataSource = DataSource.NETWORK,
@@ -130,8 +129,8 @@ class MangaCoverFetcher(
                 }
 
                 // Read from response if cache is unused or unusable
-                return SourceResult(
-                    source = ImageSource(source = responseBody.source(), context = options.context),
+                return SourceFetchResult(
+                    source = ImageSource(source = responseBody.source(), fileSystem = FileSystem.SYSTEM),
                     mimeType = "image/*",
                     dataSource = if (response.cacheResponse != null) DataSource.DISK else DataSource.NETWORK,
                 )
@@ -149,18 +148,20 @@ class MangaCoverFetcher(
         val client = sourceLazy.value?.client ?: callFactoryLazy.value
         val response = client.newCall(newRequest()).await()
         if (!response.isSuccessful && response.code != HttpURLConnection.HTTP_NOT_MODIFIED) {
-            response.body?.closeQuietly()
-            throw HttpException(response)
+            response.body.closeQuietly()
+            throw Exception(response.message)  // FIXME: Should probably use something else other than generic Exception
         }
         return response
     }
 
     private fun newRequest(): Request {
-        val request = Request.Builder()
-            .url(url)
-            .headers(sourceLazy.value?.headers ?: options.headers)
-            // Support attaching custom data to the network request.
-            .tag(Parameters::class.java, options.parameters)
+        val request = Request.Builder().apply {
+            url(url)
+
+            val sourceHeaders = sourceLazy.value?.headers
+            if (sourceHeaders != null)
+                headers(sourceHeaders)
+        }
 
         val diskRead = options.diskCachePolicy.readEnabled
         val networkRead = options.networkCachePolicy.readEnabled
@@ -227,7 +228,11 @@ class MangaCoverFetcher(
     }
 
     private fun readFromDiskCache(): DiskCache.Snapshot? {
-        return if (options.diskCachePolicy.readEnabled) diskCacheLazy.value[diskCacheKey!!] else null
+        return if (options.diskCachePolicy.readEnabled) {
+            diskCacheLazy.value.openSnapshot(diskCacheKey!!)
+        } else {
+            null
+        }
     }
 
     private fun writeToDiskCache(
@@ -239,15 +244,15 @@ class MangaCoverFetcher(
             return null
         }
         val editor = if (snapshot != null) {
-            snapshot.closeAndEdit()
+            snapshot.closeAndOpenEditor()
         } else {
-            diskCacheLazy.value.edit(diskCacheKey!!)
+            diskCacheLazy.value.openEditor(diskCacheKey!!)
         } ?: return null
         try {
             diskCacheLazy.value.fileSystem.write(editor.data) {
-                response.body!!.source().readAll(this)
+                response.body.source().readAll(this)
             }
-            return editor.commitAndGet()
+            return editor.commitAndOpenSnapshot()
         } catch (e: Exception) {
             try {
                 editor.abort()
@@ -258,7 +263,12 @@ class MangaCoverFetcher(
     }
 
     private fun DiskCache.Snapshot.toImageSource(): ImageSource {
-        return ImageSource(file = data, diskCacheKey = diskCacheKey, closeable = this)
+        return ImageSource(
+            file = data,
+            fileSystem = FileSystem.SYSTEM,
+            diskCacheKey = diskCacheKey,
+            closeable = this,
+        )
     }
 
     private fun setRatioAndColorsInScope(manga: Manga, ogFile: File? = null, force: Boolean = false) {
@@ -283,8 +293,12 @@ class MangaCoverFetcher(
     }
 
     private fun fileLoader(file: File): FetchResult {
-        return SourceResult(
-            source = ImageSource(file = file.toOkioPath(), diskCacheKey = diskCacheKey),
+        return SourceFetchResult(
+            source = ImageSource(
+                file = file.toOkioPath(),
+                fileSystem = FileSystem.SYSTEM,
+                diskCacheKey = diskCacheKey,
+            ),
             mimeType = "image/*",
             dataSource = DataSource.DISK,
         )
@@ -318,7 +332,7 @@ class MangaCoverFetcher(
     }
 
     companion object {
-        const val useCustomCover = "use_custom_cover"
+        val USE_CUSTOM_COVER_KEY = Extras.Key(true)
 
         private val CACHE_CONTROL_FORCE_NETWORK_NO_CACHE = CacheControl.Builder().noCache().noStore().build()
         private val CACHE_CONTROL_NO_NETWORK_NO_CACHE = CacheControl.Builder().noCache().onlyIfCached().build()

@@ -2,41 +2,38 @@ package eu.kanade.tachiyomi.data.image.coil
 
 import android.app.ActivityManager
 import android.content.Context
-import android.os.Build
 import androidx.core.content.getSystemService
-import coil.Coil
-import coil.ImageLoader
-import coil.decode.GifDecoder
-import coil.decode.ImageDecoderDecoder
-import coil.disk.DiskCache
-import coil.memory.MemoryCache
+import coil3.ImageLoader
+import coil3.disk.DiskCache
+import coil3.disk.directory
+import coil3.memory.MemoryCache
+import coil3.network.okhttp.OkHttpNetworkFetcherFactory
+import coil3.request.allowHardware
+import coil3.request.allowRgb565
+import coil3.request.crossfade
 import eu.kanade.tachiyomi.network.NetworkHelper
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 
-class CoilSetup(context: Context) {
-    init {
-        val imageLoader = ImageLoader.Builder(context).apply {
-            val callFactoryInit = { Injekt.get<NetworkHelper>().client }
-            val diskCacheInit = { CoilDiskCache.get(context) }
-            components {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    add(ImageDecoderDecoder.Factory())
-                } else {
-                    add(GifDecoder.Factory())
+class CoilSetup {
+    companion object {
+        fun setup(context: Context): ImageLoader {
+            return ImageLoader.Builder(context).apply {
+                val callFactoryLazy = lazy { Injekt.get<NetworkHelper>().client }
+                val diskCacheLazy = lazy { CoilDiskCache.get(context) }
+                components {
+                    add(OkHttpNetworkFetcherFactory(callFactoryLazy::value))
+                    add(TachiyomiImageDecoder.Factory())
+                    add(MangaCoverFetcher.Factory(callFactoryLazy, diskCacheLazy))
+                    add(MangaCoverKeyer())
                 }
-                add(TachiyomiImageDecoder.Factory())
-                add(MangaCoverFetcher.Factory(lazy(callFactoryInit), lazy(diskCacheInit)))
-                add(MangaCoverKeyer())
-            }
-            callFactory(callFactoryInit)
-            diskCache(diskCacheInit)
-            memoryCache { MemoryCache.Builder(context).maxSizePercent(0.40).build() }
-            crossfade(true)
-            allowRgb565(context.getSystemService<ActivityManager>()!!.isLowRamDevice)
-            allowHardware(true)
-        }.build()
-        Coil.setImageLoader(imageLoader)
+                diskCache(diskCacheLazy::value)
+                memoryCache { MemoryCache.Builder().maxSizePercent(context, 0.40).build() }
+                crossfade(true)
+                allowRgb565(context.getSystemService<ActivityManager>()!!.isLowRamDevice)
+                allowHardware(true)
+            }.build()
+        }
     }
 }
 

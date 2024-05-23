@@ -3,15 +3,16 @@ package eu.kanade.tachiyomi.ui.source.browse
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import coil.Coil
-import coil.dispose
-import coil.request.ImageRequest
+import coil3.dispose
+import coil3.imageLoader
+import coil3.request.ImageRequest
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.IFlexible
 import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.data.image.coil.CoverViewTarget
 import eu.kanade.tachiyomi.data.image.coil.MangaCoverFetcher
 import eu.kanade.tachiyomi.databinding.MangaListItemBinding
+import eu.kanade.tachiyomi.util.system.setExtras
 import eu.kanade.tachiyomi.util.view.setCards
 
 /**
@@ -56,9 +57,9 @@ class BrowseSourceListHolder(
             manga.id ?: return
             val request = ImageRequest.Builder(view.context).data(manga)
                 .target(CoverViewTarget(binding.coverThumbnail))
-                .setParameter(MangaCoverFetcher.useCustomCover, false)
+                .setExtras(MangaCoverFetcher.USE_CUSTOM_COVER_KEY, false)
                 .build()
-            Coil.imageLoader(view.context).enqueue(request)
+            view.context.imageLoader.enqueue(request)
 
             binding.coverThumbnail.alpha = if (manga.favorite) 0.34f else 1.0f
         }

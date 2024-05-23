@@ -2,7 +2,7 @@ package eu.kanade.tachiyomi.ui.migration
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import coil.dispose
+import coil3.dispose
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.IFlexible
 import eu.kanade.tachiyomi.data.image.coil.loadManga

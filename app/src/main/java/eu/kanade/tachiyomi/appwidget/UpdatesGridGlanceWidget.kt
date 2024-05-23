@@ -16,13 +16,14 @@ import androidx.glance.appwidget.provideContent
 import androidx.glance.appwidget.updateAll
 import androidx.glance.background
 import androidx.glance.layout.fillMaxSize
-import coil.executeBlocking
-import coil.imageLoader
-import coil.request.CachePolicy
-import coil.request.ImageRequest
-import coil.size.Precision
-import coil.size.Scale
-import coil.transform.RoundedCornersTransformation
+import coil3.executeBlocking
+import coil3.imageLoader
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
+import coil3.request.transformations
+import coil3.size.Precision
+import coil3.size.Scale
+import coil3.transform.RoundedCornersTransformation
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.appwidget.components.CoverHeight
 import eu.kanade.tachiyomi.appwidget.components.CoverWidth
@@ -109,7 +110,7 @@ class UpdatesGridGlanceWidget : GlanceAppWidget() {
                         }
                     }
                     .build()
-                Pair(updatesView.id!!, app.imageLoader.executeBlocking(request).drawable?.toBitmap())
+                Pair(updatesView.id!!, app.imageLoader.executeBlocking(request).image?.asDrawable(app.resources)?.toBitmap())
             }
     }
 

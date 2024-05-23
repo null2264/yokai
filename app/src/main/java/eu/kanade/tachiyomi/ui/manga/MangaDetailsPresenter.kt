@@ -4,12 +4,11 @@ import android.app.Application
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Environment
-import coil.Coil
-import coil.imageLoader
-import coil.memory.MemoryCache
-import coil.request.CachePolicy
-import coil.request.ImageRequest
-import coil.request.SuccessResult
+import coil3.imageLoader
+import coil3.memory.MemoryCache
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
+import coil3.request.SuccessResult
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.cache.CoverCache
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
@@ -379,7 +378,7 @@ class MangaDetailsPresenter(
                             .diskCachePolicy(CachePolicy.WRITE_ONLY)
                             .build()
 
-                    if (Coil.imageLoader(preferences.context).execute(request) is SuccessResult) {
+                    if (preferences.context.imageLoader.execute(request) is SuccessResult) {
                         preferences.context.imageLoader.memoryCache?.remove(MemoryCache.Key(manga.key()))
                         withContext(Dispatchers.Main) {
                             view?.setPaletteColor()

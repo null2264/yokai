@@ -20,6 +20,9 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.multidex.MultiDex
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
 import dev.yokai.domain.AppState
 import eu.kanade.tachiyomi.appwidget.TachiyomiWidgetManager
 import eu.kanade.tachiyomi.data.image.coil.CoilSetup
@@ -44,7 +47,7 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.injectLazy
 import java.security.Security
 
-open class App : Application(), DefaultLifecycleObserver {
+open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.Factory {
 
     val preferences: PreferencesHelper by injectLazy()
 
@@ -71,7 +74,6 @@ open class App : Application(), DefaultLifecycleObserver {
         Injekt.importModule(PreferenceModule(this))
         Injekt.importModule(AppModule(this))
 
-        CoilSetup(this)
         setupNotificationChannels()
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
@@ -170,6 +172,10 @@ open class App : Application(), DefaultLifecycleObserver {
                 registered = false
             }
         }
+    }
+
+    override fun newImageLoader(context: PlatformContext): ImageLoader {
+        return CoilSetup.setup(context)
     }
 }
 

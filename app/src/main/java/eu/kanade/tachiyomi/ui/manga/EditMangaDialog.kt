@@ -13,8 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.children
 import androidx.core.view.isVisible
-import coil.load
-import coil.request.Parameters
+import coil3.load
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import eu.kanade.tachiyomi.R
@@ -215,10 +214,9 @@ class EditMangaDialog : DialogController {
         binding.resetCover.setOnClickListener {
             binding.mangaCover.load(
                 manga,
-                builder = {
-                    parameters(Parameters.Builder().set(MangaCoverFetcher.useCustomCover, false).build())
-                },
-            )
+            ) {
+                extras[MangaCoverFetcher.USE_CUSTOM_COVER_KEY] = false
+            }
             customCoverUri = null
             willResetCover = true
         }

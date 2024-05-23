@@ -1,15 +1,15 @@
 package eu.kanade.tachiyomi.data.image.coil
 
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.palette.graphics.Palette
-import coil.ImageLoader
-import coil.imageLoader
-import coil.memory.MemoryCache
-import coil.request.Disposable
-import coil.request.ImageRequest
-import coil.target.ImageViewTarget
+import coil3.Image
+import coil3.ImageLoader
+import coil3.imageLoader
+import coil3.memory.MemoryCache
+import coil3.request.Disposable
+import coil3.request.ImageRequest
+import coil3.target.ImageViewTarget
 import eu.kanade.tachiyomi.data.cache.CoverCache
 import eu.kanade.tachiyomi.data.database.models.Manga
 import eu.kanade.tachiyomi.util.system.launchIO
@@ -22,7 +22,7 @@ class LibraryMangaImageTarget(
 
     private val coverCache: CoverCache by injectLazy()
 
-    override fun onError(error: Drawable?) {
+    override fun onError(error: Image?) {
         super.onError(error)
         if (manga.favorite) {
             launchIO {

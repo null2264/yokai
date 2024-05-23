@@ -2,8 +2,9 @@ package eu.kanade.tachiyomi.ui.manga.track
 
 import android.view.View
 import androidx.core.view.isVisible
-import coil.dispose
-import coil.load
+import coil3.dispose
+import coil3.load
+import coil3.request.allowHardware
 import com.google.android.material.shape.CornerFamily
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.items.AbstractItem

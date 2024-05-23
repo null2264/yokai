@@ -93,18 +93,20 @@ object ImageUtil {
     }
 
     fun isAnimatedAndSupported(stream: InputStream): Boolean {
-        try {
+        return try {
             val type = getImageType(stream) ?: return false
-            return when (type.format) {
+            // https://coil-kt.github.io/coil/getting_started/#supported-image-formats
+            when (type.format) {
                 Format.Gif -> true
-                // Coil supports animated WebP on Android 9.0+
-                // https://coil-kt.github.io/coil/getting_started/#supported-image-formats
+                // Animated WebP on Android 9+
                 Format.Webp -> type.isAnimated && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                // Animated Heif on Android 11+
+                Format.Heif -> type.isAnimated && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
                 else -> false
             }
         } catch (_: Exception) {
+            false
         }
-        return false
     }
 
     enum class ImageType(val mime: String, val extension: String) {

@@ -16,9 +16,9 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkQuery
 import androidx.work.WorkerParameters
-import coil.Coil
-import coil.request.CachePolicy
-import coil.request.ImageRequest
+import coil3.imageLoader
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.cache.CoverCache
 import eu.kanade.tachiyomi.data.database.DatabaseHelper
@@ -261,21 +261,19 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
                             val thumbnailUrl = manga.thumbnail_url
                             manga.copyFrom(networkManga)
                             manga.initialized = true
-                            if (thumbnailUrl != manga.thumbnail_url) {
-                                coverCache.deleteFromCache(thumbnailUrl)
-                                // load new covers in background
-                                val request =
+                            val request: ImageRequest =
+                                if (thumbnailUrl != manga.thumbnail_url) {
+                                    coverCache.deleteFromCache(thumbnailUrl)
+                                    // load new covers in background
                                     ImageRequest.Builder(context).data(manga)
                                         .memoryCachePolicy(CachePolicy.DISABLED).build()
-                                Coil.imageLoader(context).execute(request)
-                            } else {
-                                val request =
+                                } else {
                                     ImageRequest.Builder(context).data(manga)
                                         .memoryCachePolicy(CachePolicy.DISABLED)
                                         .diskCachePolicy(CachePolicy.WRITE_ONLY)
                                         .build()
-                                Coil.imageLoader(context).execute(request)
-                            }
+                                }
+                            context.imageLoader.execute(request)
                             db.insertManga(manga).executeAsBlocking()
                         }
                     }

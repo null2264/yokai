@@ -13,10 +13,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import coil.Coil
-import coil.request.CachePolicy
-import coil.request.ImageRequest
-import coil.transform.CircleCropTransformation
+import coil3.imageLoader
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
+import coil3.request.transformations
+import coil3.transform.CircleCropTransformation
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Chapter
 import eu.kanade.tachiyomi.data.database.models.LibraryManga
@@ -191,11 +192,11 @@ class LibraryUpdateNotifier(private val context: Context) {
                                         .transformations(CircleCropTransformation())
                                         .size(width = ICON_SIZE, height = ICON_SIZE).build()
 
-                                    Coil.imageLoader(context)
-                                        .execute(request).drawable?.let { drawable ->
+                                    context.imageLoader
+                                        .execute(request).image?.asDrawable(context.resources)?.let { drawable ->
                                             setLargeIcon((drawable as? BitmapDrawable)?.bitmap)
                                         }
-                                } catch (e: Exception) {
+                                } catch (_: Exception) {
                                 }
                                 setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_SUMMARY)
                                 setContentTitle(manga.title)

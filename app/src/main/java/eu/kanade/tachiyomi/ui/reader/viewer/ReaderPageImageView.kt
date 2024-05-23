@@ -31,13 +31,14 @@ import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView.SCALE_TYPE_CENTER_INSIDE
 import com.github.chrisbanes.photoview.PhotoView
 import dev.yokai.domain.ui.settings.ReaderPreferences.CutoutBehaviour
-import eu.kanade.tachiyomi.data.coil.cropBorders
-import eu.kanade.tachiyomi.data.coil.customDecoder
+import eu.kanade.tachiyomi.data.image.coil.cropBorders
+import eu.kanade.tachiyomi.data.image.coil.customDecoder
 import eu.kanade.tachiyomi.ui.reader.viewer.pager.PagerConfig
 import eu.kanade.tachiyomi.ui.reader.viewer.webtoon.WebtoonSubsamplingImageView
 import eu.kanade.tachiyomi.util.system.DeviceUtil
 import eu.kanade.tachiyomi.util.system.GLUtil
 import eu.kanade.tachiyomi.util.system.animatorDurationScale
+import okio.BufferedSource
 import java.io.InputStream
 import java.nio.ByteBuffer
 
@@ -182,7 +183,7 @@ open class ReaderPageImageView @JvmOverloads constructor(
     }
 
     private fun setNonAnimatedImage(
-        image: Any,
+        data: Any,
         config: Config,
     ) = (pageView as? SubsamplingScaleImageView)?.apply {
         setDoubleTapZoomDuration(config.zoomDuration.getSystemScaledDuration())
@@ -248,9 +249,9 @@ open class ReaderPageImageView @JvmOverloads constructor(
                 .build()
             context.imageLoader.enqueue(request)
         } else {
-            when (image) {
-                is BitmapDrawable -> setImage(ImageSource.bitmap(image.bitmap))
-                is BufferedSource -> setImage(ImageSource.inputStream(image.inputStream()))
+            when (data) {
+                is BitmapDrawable -> setImage(ImageSource.bitmap(data.bitmap))
+                is BufferedSource -> setImage(ImageSource.inputStream(data.inputStream()))
                 else -> throw IllegalArgumentException("Not implemented for class ${data::class.simpleName}")
             }
             isVisible = true
@@ -315,8 +316,9 @@ open class ReaderPageImageView @JvmOverloads constructor(
             .diskCachePolicy(CachePolicy.DISABLED)
             .target(
                 onSuccess = { result ->
-                    setImageDrawable(result)
-                    (result as? Animatable)?.start()
+                    val drawable = result.asDrawable(context.resources)
+                    setImageDrawable(drawable)
+                    (drawable as? Animatable)?.start()
                     isVisible = true
                     this@ReaderPageImageView.onImageLoaded()
                 },

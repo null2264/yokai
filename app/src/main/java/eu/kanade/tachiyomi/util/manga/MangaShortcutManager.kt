@@ -7,8 +7,8 @@ import android.content.pm.ShortcutManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Icon
-import coil.Coil
-import coil.request.ImageRequest
+import coil3.imageLoader
+import coil3.request.ImageRequest
 import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.appwidget.TachiyomiWidgetManager
 import eu.kanade.tachiyomi.data.cache.CoverCache
@@ -72,8 +72,8 @@ class MangaShortcutManager(
                         is Manga -> {
                             val request = ImageRequest.Builder(context).data(item).build()
                             val bitmap = (
-                                Coil.imageLoader(context)
-                                    .execute(request).drawable as? BitmapDrawable
+                                context.imageLoader
+                                    .execute(request).image?.asDrawable(context.resources) as? BitmapDrawable
                                 )?.bitmap
 
                             ShortcutInfo.Builder(
