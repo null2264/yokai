@@ -681,9 +681,10 @@ class MangaHeaderHolder(
                 diskCachePolicy(CachePolicy.READ_ONLY)
                 target(
                     onSuccess = {
-                        val bitmap = (it as? BitmapDrawable)?.bitmap
+                        val actualDrawable = it.asDrawable(itemView.resources)
+                        val bitmap = (actualDrawable as? BitmapDrawable)?.bitmap
                         if (bitmap == null) {
-                            binding.backdrop.setImageDrawable(it)
+                            binding.backdrop.setImageDrawable(actualDrawable)
                             return@target
                         }
                         val yOffset = (bitmap.height / 2 * 0.33).toInt()
