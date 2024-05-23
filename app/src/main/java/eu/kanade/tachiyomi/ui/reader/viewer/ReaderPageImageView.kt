@@ -100,13 +100,13 @@ open class ReaderPageImageView @JvmOverloads constructor(
         }
     }
 
-    fun setImage(inputStream: InputStream, isAnimated: Boolean, config: Config) {
+    fun setImage(source: BufferedSource, isAnimated: Boolean, config: Config) {
         if (isAnimated) {
             prepareAnimatedImageView()
-            setAnimatedImage(inputStream, config)
+            setAnimatedImage(source, config)
         } else {
             prepareNonAnimatedImageView()
-            setNonAnimatedImage(inputStream, config)
+            setNonAnimatedImage(source, config)
         }
     }
 
@@ -298,18 +298,13 @@ open class ReaderPageImageView @JvmOverloads constructor(
     }
 
     private fun setAnimatedImage(
-        image: Any,
+        data: Any,
         config: Config,
     ) = (pageView as? AppCompatImageView)?.apply {
         if (this is PhotoView) {
             setZoomTransitionDuration(config.zoomDuration.getSystemScaledDuration())
         }
 
-        val data = when (image) {
-            is Drawable -> image
-            is InputStream -> ByteBuffer.wrap(image.readBytes())
-            else -> throw IllegalArgumentException("Not implemented for class ${image::class.simpleName}")
-        }
         val request = ImageRequest.Builder(context)
             .data(data)
             .memoryCachePolicy(CachePolicy.DISABLED)

@@ -29,6 +29,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
 import kotlinx.coroutines.suspendCancellableCoroutine
+import okio.Buffer
+import okio.BufferedSource
 import timber.log.Timber
 import java.io.BufferedInputStream
 import java.io.InputStream
@@ -232,13 +234,11 @@ class WebtoonPageHolder(
 
         val streamFn = page?.stream ?: return
 
-        val (openStream, isAnimated) = try {
+        val (source, isAnimated) = try {
             withIOContext {
-                val stream = streamFn().buffered(16)
-                val openStream = process(stream)
-
-                val isAnimated = ImageUtil.isAnimatedAndSupported(stream)
-                Pair(openStream, isAnimated)
+                val source = streamFn().use { process(Buffer().readFrom(it)) }
+                val isAnimated = ImageUtil.isAnimatedAndSupported(source)
+                Pair(source, isAnimated)
             }
         } catch (e: Exception) {
             Timber.e(e)
@@ -247,7 +247,7 @@ class WebtoonPageHolder(
         }
         withUIContext {
             frame.setImage(
-                openStream,
+                source,
                 isAnimated,
                 ReaderPageImageView.Config(
                     zoomDuration = viewer.config.doubleTapAnimDuration,
@@ -258,23 +258,19 @@ class WebtoonPageHolder(
                 ),
             )
         }
-        // Suspend the coroutine to close the input stream only when the WebtoonPageHolder is recycled
-        suspendCancellableCoroutine<Nothing> { continuation ->
-            continuation.invokeOnCancellation { openStream.close() }
-        }
     }
 
-    private fun process(imageStream: BufferedInputStream): InputStream {
+    private fun process(imageSource: BufferedSource): BufferedSource {
         if (!viewer.config.splitPages) {
-            return imageStream
+            return imageSource
         }
 
-        val isDoublePage = ImageUtil.isWideImage(imageStream)
+        val isDoublePage = ImageUtil.isWideImage(imageSource)
         if (!isDoublePage) {
-            return imageStream
+            return imageSource
         }
 
-        return ImageUtil.splitAndStackBitmap(imageStream, viewer.config.invertDoublePages, viewer.hasMargins)
+        return ImageUtil.splitAndStackBitmap(imageSource, viewer.config.invertDoublePages, viewer.hasMargins)
     }
 
     /**

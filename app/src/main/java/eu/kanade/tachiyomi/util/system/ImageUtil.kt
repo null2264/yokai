@@ -25,12 +25,11 @@ import androidx.core.graphics.red
 import androidx.core.graphics.scale
 import com.hippo.unifile.UniFile
 import eu.kanade.tachiyomi.R
+import okio.Buffer
+import okio.BufferedSource
 import tachiyomi.decoder.Format
 import tachiyomi.decoder.ImageDecoder
 import timber.log.Timber
-import java.io.BufferedInputStream
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -92,9 +91,9 @@ object ImageUtil {
             ?: "jpg"
     }
 
-    fun isAnimatedAndSupported(stream: InputStream): Boolean {
+    fun isAnimatedAndSupported(source: BufferedSource): Boolean {
         return try {
-            val type = getImageType(stream) ?: return false
+            val type = getImageType(source.peek().inputStream()) ?: return false
             // https://coil-kt.github.io/coil/getting_started/#supported-image-formats
             when (type.format) {
                 Format.Gif -> true
@@ -335,7 +334,7 @@ object ImageUtil {
         imageBitmap: Bitmap,
         secondHalf: Boolean,
         progressCallback: ((Int) -> Unit)? = null,
-    ): ByteArrayInputStream {
+    ): BufferedSource {
         val height = imageBitmap.height
         val width = imageBitmap.width
         val result = Bitmap.createBitmap(width / 2, height, Bitmap.Config.ARGB_8888)
@@ -343,10 +342,11 @@ object ImageUtil {
         progressCallback?.invoke(98)
         canvas.drawBitmap(imageBitmap, Rect(if (!secondHalf) 0 else width / 2, 0, if (secondHalf) width else width / 2, height), result.rect, null)
         progressCallback?.invoke(99)
-        val output = ByteArrayOutputStream()
-        result.compress(Bitmap.CompressFormat.JPEG, 100, output)
+
+        val output = Buffer()
+        result.compress(Bitmap.CompressFormat.JPEG, 100, output.outputStream())
         progressCallback?.invoke(100)
-        return ByteArrayInputStream(output.toByteArray())
+        return output
     }
 
     /**
@@ -354,20 +354,19 @@ object ImageUtil {
      *
      * @return true if the width is greater than the height
      */
-    fun isWideImage(imageStream: BufferedInputStream): Boolean {
-        val options = extractImageOptions(imageStream)
-        imageStream.reset()
+    fun isWideImage(imageSource: BufferedSource): Boolean {
+        val options = extractImageOptions(imageSource)
+        //imageStream.reset()
         return options.outWidth > options.outHeight
     }
 
     fun splitAndStackBitmap(
-        imageStream: InputStream,
+        imageSource: BufferedSource,
         rightSideOnTop: Boolean,
         hasMargins: Boolean,
         progressCallback: ((Int) -> Unit)? = null,
-    ): ByteArrayInputStream {
-        val imageBytes = imageStream.readBytes()
-        val imageBitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+    ): BufferedSource {
+        val imageBitmap = BitmapFactory.decodeStream(imageSource.peek().inputStream())
 
         val height = imageBitmap.height
         val width = imageBitmap.width
@@ -411,10 +410,10 @@ object ImageUtil {
             null,
         )
         progressCallback?.invoke(99)
-        val output = ByteArrayOutputStream()
-        result.compress(Bitmap.CompressFormat.JPEG, 100, output)
+        val output = Buffer()
+        result.compress(Bitmap.CompressFormat.JPEG, 100, output.outputStream())
         progressCallback?.invoke(100)
-        return ByteArrayInputStream(output.toByteArray())
+        return output
     }
 
     fun mergeBitmaps(
@@ -425,7 +424,7 @@ object ImageUtil {
         hingeGap: Int = 0,
         context: Context? = null,
         progressCallback: ((Int) -> Unit)? = null,
-    ): ByteArrayInputStream {
+    ): BufferedSource {
         var imageBitmap = iBitmap
         var imageBitmap2 = iBitmap2
         var height = imageBitmap.height
@@ -473,10 +472,10 @@ object ImageUtil {
         canvas.drawBitmap(imageBitmap2, imageBitmap2.rect, bottomPart, null)
         progressCallback?.invoke(99)
 
-        val output = ByteArrayOutputStream()
-        result.compress(Bitmap.CompressFormat.JPEG, 100, output)
+        val output = Buffer()
+        result.compress(Bitmap.CompressFormat.JPEG, 100, output.outputStream())
         progressCallback?.invoke(100)
-        return ByteArrayInputStream(output.toByteArray())
+        return output
     }
 
     fun padSingleImage(
@@ -487,7 +486,7 @@ object ImageUtil {
         hingeGap: Int,
         context: Context,
         progressCallback: ((Int) -> Unit)? = null,
-    ): ByteArrayInputStream {
+    ): BufferedSource {
         val height = imageBitmap.height
         val width = imageBitmap.width
         val isFullPageSpread = height < width
@@ -523,10 +522,10 @@ object ImageUtil {
             canvas.drawBitmap(imageBitmap, imageBitmap.rect, upperPart, null)
         }
         progressCallback?.invoke(99)
-        val output = ByteArrayOutputStream()
-        result.compress(Bitmap.CompressFormat.JPEG, 100, output)
+        val output = Buffer()
+        result.compress(Bitmap.CompressFormat.JPEG, 100, output.outputStream())
         progressCallback?.invoke(100)
-        return ByteArrayInputStream(output.toByteArray())
+        return output
     }
 
     /**
@@ -534,16 +533,19 @@ object ImageUtil {
      *
      * @return true if the height:width ratio is greater than 3.
      */
-    private fun isTallImage(imageStream: InputStream): Boolean {
-        val options = extractImageOptions(imageStream, false)
+    private fun isTallImage(source: BufferedSource): Boolean {
+        val options = extractImageOptions(source)
         return (options.outHeight / options.outWidth) > 3
     }
+
+    fun UniFile.openBufferedSource(): BufferedSource =
+        this.openInputStream().use { Buffer().readFrom(it) }
 
     /**
      * Splits tall images to improve performance of reader
      */
     fun splitTallImage(imageFile: UniFile, imageFilePath: String): Boolean {
-        if (isAnimatedAndSupported(imageFile.openInputStream()) || !isTallImage(imageFile.openInputStream())) {
+        if (isAnimatedAndSupported(imageFile.openBufferedSource()) || !isTallImage(imageFile.openBufferedSource())) {
             return true
         }
 
@@ -559,7 +561,7 @@ object ImageUtil {
             return false
         }
 
-        val options = extractImageOptions(imageFile.openInputStream(), resetAfterExtraction = false).apply {
+        val options = extractImageOptions(imageFile.openBufferedSource()).apply {
             inJustDecodeBounds = false
         }
         val splitDataList = options.splitData
@@ -773,16 +775,9 @@ object ImageUtil {
     /**
      * Used to check an image's dimensions without loading it in the memory.
      */
-    private fun extractImageOptions(
-        imageStream: InputStream,
-        resetAfterExtraction: Boolean = true,
-    ): BitmapFactory.Options {
-        imageStream.mark(imageStream.available() + 1)
-
-        val imageBytes = imageStream.readBytes()
+    private fun extractImageOptions(source: BufferedSource): BitmapFactory.Options {
         val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-        BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size, options)
-        if (resetAfterExtraction) imageStream.reset()
+        BitmapFactory.decodeStream(source.peek().inputStream(), null, options)
         return options
     }
 

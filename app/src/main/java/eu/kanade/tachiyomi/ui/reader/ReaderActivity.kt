@@ -2021,7 +2021,9 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
                         input.copyTo(output)
                     }
                 }
-                SubsamplingScaleImageView.setDisplayProfile(outputStream.toByteArray())
+                val data = outputStream.toByteArray()
+                SubsamplingScaleImageView.setDisplayProfile(data)
+                TachiyomiImageDecoder.displayProfile = data
             }
         }
 

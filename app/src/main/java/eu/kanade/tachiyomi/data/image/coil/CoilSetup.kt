@@ -11,6 +11,7 @@ import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.allowHardware
 import coil3.request.allowRgb565
 import coil3.request.crossfade
+import coil3.util.DebugLogger
 import eu.kanade.tachiyomi.network.NetworkHelper
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
@@ -26,12 +27,14 @@ class CoilSetup {
                     add(TachiyomiImageDecoder.Factory())
                     add(MangaCoverFetcher.Factory(callFactoryLazy, diskCacheLazy))
                     add(MangaCoverKeyer())
+                    add(BufferedSourceFetcher.Factory())
                 }
                 diskCache(diskCacheLazy::value)
                 memoryCache { MemoryCache.Builder().maxSizePercent(context, 0.40).build() }
                 crossfade(true)
                 allowRgb565(context.getSystemService<ActivityManager>()!!.isLowRamDevice)
                 allowHardware(true)
+                logger(DebugLogger())
             }.build()
         }
     }

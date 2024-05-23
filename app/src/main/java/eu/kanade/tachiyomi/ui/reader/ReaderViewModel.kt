@@ -43,6 +43,7 @@ import eu.kanade.tachiyomi.util.chapter.syncChaptersWithSource
 import eu.kanade.tachiyomi.util.chapter.updateTrackChapterRead
 import eu.kanade.tachiyomi.util.isLocal
 import eu.kanade.tachiyomi.util.storage.DiskUtil
+import eu.kanade.tachiyomi.util.storage.saveTo
 import eu.kanade.tachiyomi.util.system.ImageUtil
 import eu.kanade.tachiyomi.util.system.executeOnIO
 import eu.kanade.tachiyomi.util.system.launchIO
@@ -794,7 +795,7 @@ class ReaderViewModel(
         val destFile = File(directory, filename)
         stream.use { input ->
             destFile.outputStream().use { output ->
-                input.copyTo(output)
+                input.saveTo(output)
             }
         }
         stream.close()

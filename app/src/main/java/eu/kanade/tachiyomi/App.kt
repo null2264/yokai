@@ -175,7 +175,7 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
     }
 
     override fun newImageLoader(context: PlatformContext): ImageLoader {
-        return CoilSetup.setup(context)
+        return CoilSetup.setup(this@App)
     }
 }
 

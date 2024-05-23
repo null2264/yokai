@@ -47,6 +47,28 @@ class TachiyomiImageDecoder(private val resources: ImageSource, private val opti
 
         check(bitmap != null) { "Failed to decode image." }
 
+        // FIXME: Remove this once Coil handle max texture size
+        // REF: https://github.com/coil-kt/coil/issues/2211
+        if (maxOf(bitmap.width, bitmap.height) > GLUtil.maxTextureSize) {
+            val widthRatio = bitmap.width / 4096f
+            val heightRatio = bitmap.height / 4096f
+
+            val targetWidth: Float
+            val targetHeight: Float
+
+            if (widthRatio >= heightRatio) {
+                targetWidth = 4096f
+                targetHeight = (targetWidth / bitmap.width) * bitmap.height
+            } else {
+                targetHeight = 4096f
+                targetWidth = (targetHeight / bitmap.height) * bitmap.width
+            }
+
+            val scaledBitmap = Bitmap.createScaledBitmap(bitmap, targetWidth.toInt(), targetHeight.toInt(), false)
+            bitmap.recycle()
+            bitmap = scaledBitmap
+        }
+
         if (
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
             options.bitmapConfig == Bitmap.Config.HARDWARE &&
