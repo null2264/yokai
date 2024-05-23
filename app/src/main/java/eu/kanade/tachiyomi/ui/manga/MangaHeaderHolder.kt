@@ -26,6 +26,7 @@ import androidx.core.widget.TextViewCompat
 import androidx.transition.TransitionSet
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import coil3.request.CachePolicy
+import coil3.request.error
 import coil3.request.placeholder
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
