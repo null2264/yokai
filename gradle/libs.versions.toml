@@ -6,6 +6,7 @@ fast_adapter = "5.6.0"
 nucleus = "3.0.0"
 okhttp = "5.0.0-alpha.11"
 shizuku = "12.1.0"
+sqldelight = "2.0.2"
 junit = "5.8.2"
 
 [libraries]
@@ -65,7 +66,14 @@ rxrelay = { module = "com.jakewharton.rxrelay:rxrelay", version = "1.2.0" }
 rxjava = { module = "io.reactivex:rxjava", version = "1.3.8" }
 rxandroid = { module = "io.reactivex:rxandroid", version = "1.2.1" }
 slice = { module = "com.github.mthli:Slice", version = "v1.2" }
+
 sqlite-android = { module = "com.github.requery:sqlite-android", version = "3.39.2" }
+
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-android-paging = { module = "app.cash.sqldelight:androidx-paging3-extensions", version.ref = "sqldelight" }
+sqldelight-gradle = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqldelight" }
+
 subsamplingscaleimageview = { module = "com.github.null2264:subsampling-scale-image-view", version = "338caedb5f" }
 shizuku-api = { module = "dev.rikka.shizuku:api", version.ref = "shizuku" }
 shizuku-provider = { module = "dev.rikka.shizuku:provider", version.ref = "shizuku" }
@@ -82,6 +90,7 @@ gradle-versions = { id = "com.github.ben-manes.versions", version = "0.42.0" }
 
 [bundles]
 archive = [ "common-compress", "junrar" ]
+db = [ "sqldelight-android-driver", "sqldelight-android-paging", "sqldelight-coroutines" ]
 coil = [ "coil3", "coil3-svg", "coil3-gif", "coil3-okhttp" ]
 test = [ "junit-api", "mockk" ]
 test-android = [ "junit-android" ]

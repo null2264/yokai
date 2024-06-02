@@ -14,6 +14,7 @@ buildscript {
         classpath(libs.oss.licenses.plugin)
         classpath(kotlinx.serialization.gradle)
         classpath(libs.firebase.crashlytics.gradle)
+        classpath(libs.sqldelight.gradle)
     }
     repositories {
         gradlePluginPortal()

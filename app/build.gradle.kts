@@ -7,6 +7,7 @@ plugins {
     kotlin("plugin.serialization")
     id("kotlin-parcelize")
     id("com.google.android.gms.oss-licenses-plugin")
+    id("app.cash.sqldelight")
     id("com.google.gms.google-services") apply false
     id("com.google.firebase.crashlytics") apply false
 }
