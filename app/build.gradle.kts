@@ -219,7 +219,9 @@ dependencies {
     implementation(libs.play.services.gcm)
 
     // Database
+    implementation(libs.bundles.db)
     implementation(libs.sqlite.android)
+    implementation(libs.bundles.sqlite)
     //noinspection UseTomlInstead
     implementation("com.github.inorichi.storio:storio-common:8be19de@aar")
     //noinspection UseTomlInstead

@@ -50,34 +50,6 @@ object MangaTable {
 
     const val COL_UPDATE_STRATEGY = "update_strategy"
 
-    val createTableQuery: String
-        get() =
-            """CREATE TABLE $TABLE(
-            $COL_ID INTEGER NOT NULL PRIMARY KEY,
-            $COL_SOURCE INTEGER NOT NULL,
-            $COL_URL TEXT NOT NULL,
-            $COL_ARTIST TEXT,
-            $COL_AUTHOR TEXT,
-            $COL_DESCRIPTION TEXT,
-            $COL_GENRE TEXT,
-            $COL_TITLE TEXT NOT NULL,
-            $COL_STATUS INTEGER NOT NULL,
-            $COL_THUMBNAIL_URL TEXT,
-            $COL_FAVORITE INTEGER NOT NULL,
-            $COL_LAST_UPDATE LONG,
-            $COL_INITIALIZED BOOLEAN NOT NULL,
-            $COL_VIEWER INTEGER NOT NULL,
-            $COL_HIDE_TITLE INTEGER NOT NULL,
-            $COL_CHAPTER_FLAGS INTEGER NOT NULL,
-            $COL_DATE_ADDED LONG,
-            $COL_FILTERED_SCANLATORS TEXT,
-            $COL_UPDATE_STRATEGY INTEGER NOT NULL DEFAULT 0
-
-            )"""
-
-    val createUrlIndexQuery: String
-        get() = "CREATE INDEX ${TABLE}_${COL_URL}_index ON $TABLE($COL_URL)"
-
     val createLibraryIndexQuery: String
         get() = "CREATE INDEX library_${COL_FAVORITE}_index ON $TABLE($COL_FAVORITE) " +
             "WHERE $COL_FAVORITE = 1"
