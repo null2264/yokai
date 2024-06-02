@@ -143,6 +143,16 @@ android {
         jvmTarget = "17"
     }
     namespace = "eu.kanade.tachiyomi"
+
+    sqldelight {
+        databases {
+            create("Database") {
+                packageName.set("tachiyomi.data")
+                dialect(libs.sqldelight.dialects.sql)
+                schemaOutputDirectory.set(project.file("./src/main/sqldelight"))
+            }
+        }
+    }
 }
 
 dependencies {
