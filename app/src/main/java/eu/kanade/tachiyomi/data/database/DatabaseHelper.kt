@@ -31,7 +31,7 @@ import io.requery.android.database.sqlite.RequerySQLiteOpenHelperFactory
  */
 open class DatabaseHelper(
     context: Context,
-    callback: DbOpenCallback,
+    openHelper: SupportSQLiteOpenHelper,
 ) :
     MangaQueries,
     ChapterQueries,
@@ -41,13 +41,8 @@ open class DatabaseHelper(
     HistoryQueries,
     SearchMetadataQueries {
 
-    private val configuration = SupportSQLiteOpenHelper.Configuration.builder(context)
-        .name(DbOpenCallback.DATABASE_NAME)
-        .callback(callback)
-        .build()
-
     override val db = DefaultStorIOSQLite.builder()
-        .sqliteOpenHelper(RequerySQLiteOpenHelperFactory().create(configuration))
+        .sqliteOpenHelper(openHelper)
         .addTypeMapping(Manga::class.java, MangaTypeMapping())
         .addTypeMapping(Chapter::class.java, ChapterTypeMapping())
         .addTypeMapping(Track::class.java, TrackTypeMapping())

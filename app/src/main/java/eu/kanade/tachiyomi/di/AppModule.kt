@@ -3,6 +3,7 @@ package eu.kanade.tachiyomi.di
 import android.app.Application
 import android.os.Build
 import androidx.core.content.ContextCompat
+import androidx.sqlite.db.SupportSQLiteOpenHelper
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
@@ -43,14 +44,29 @@ class AppModule(val app: Application) : InjektModule {
     override fun InjektRegistrar.registerInjectables() {
         addSingleton(app)
 
-        addSingletonFactory { DbOpenCallback() }
+        addSingletonFactory<SupportSQLiteOpenHelper> {
+            val configuration = SupportSQLiteOpenHelper.Configuration.builder(app)
+                .callback(DbOpenCallback())
+                .name(DbOpenCallback.DATABASE_NAME)
+                .noBackupDirectory(false)
+                .build()
+
+            if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                // Support database inspector in Android Studio
+                FrameworkSQLiteOpenHelperFactory().create(configuration)
+            } else {
+                RequerySQLiteOpenHelperFactory().create(configuration)
+            }
+        }
 
         addSingletonFactory<SqlDriver> {
+            AndroidSqliteDriver(openHelper = get())
+            /*
             AndroidSqliteDriver(
                 schema = Database.Schema,
                 context = app,
                 name = "tachiyomi.db",
-                factory = if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                factory = if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     // Support database inspector in Android Studio
                     FrameworkSQLiteOpenHelperFactory()
                 } else {
@@ -58,6 +74,7 @@ class AppModule(val app: Application) : InjektModule {
                 },
                 callback = get<DbOpenCallback>(),
             )
+             */
         }
         addSingletonFactory {
             Database(

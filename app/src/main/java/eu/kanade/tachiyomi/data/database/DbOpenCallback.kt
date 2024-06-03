@@ -3,6 +3,7 @@ package eu.kanade.tachiyomi.data.database
 import androidx.sqlite.db.SupportSQLiteDatabase
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import tachiyomi.data.Database
+import timber.log.Timber
 
 class DbOpenCallback : AndroidSqliteDriver.Callback(Database.Schema) {
 
@@ -24,6 +25,22 @@ class DbOpenCallback : AndroidSqliteDriver.Callback(Database.Schema) {
         val cursor = db.query("PRAGMA $pragma")
         cursor.moveToFirst()
         cursor.close()
+    }
+
+    override fun onCreate(db: SupportSQLiteDatabase) {
+        Timber.d("Creating new database...")
+        Database.Schema.create(AndroidSqliteDriver(database = db, cacheSize = 1))
+    }
+
+    override fun onUpgrade(db: SupportSQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        if (oldVersion < newVersion) {
+            Timber.d("Upgrading database from $oldVersion to $newVersion")
+            Database.Schema.migrate(
+                driver = AndroidSqliteDriver(database = db, cacheSize = 1),
+                oldVersion = oldVersion.toLong(),
+                newVersion = newVersion.toLong(),
+            )
+        }
     }
 
     override fun onConfigure(db: SupportSQLiteDatabase) {
