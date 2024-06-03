@@ -29,17 +29,13 @@ class DbOpenCallback : AndroidSqliteDriver.Callback(Database.Schema) {
 
     override fun onCreate(db: SupportSQLiteDatabase) {
         Timber.d("Creating new database...")
-        Database.Schema.create(AndroidSqliteDriver(database = db, cacheSize = 1))
+        super.onCreate(db)
     }
 
     override fun onUpgrade(db: SupportSQLiteDatabase, oldVersion: Int, newVersion: Int) {
         if (oldVersion < newVersion) {
             Timber.d("Upgrading database from $oldVersion to $newVersion")
-            Database.Schema.migrate(
-                driver = AndroidSqliteDriver(database = db, cacheSize = 1),
-                oldVersion = oldVersion.toLong(),
-                newVersion = newVersion.toLong(),
-            )
+            super.onUpgrade(db, oldVersion, newVersion)
         }
     }
 
