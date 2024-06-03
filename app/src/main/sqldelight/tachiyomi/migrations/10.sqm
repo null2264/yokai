@@ -1,0 +1,1 @@
+ALTER TABLE chapters ADD COLUMN pages_left INTEGER DEFAULT 0;

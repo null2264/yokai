@@ -1,0 +1,1 @@
+ALTER TABLE mangas ADD COLUMN filtered_scanlators TEXT;

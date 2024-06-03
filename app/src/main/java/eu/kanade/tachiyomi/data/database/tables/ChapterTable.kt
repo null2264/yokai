@@ -30,19 +30,4 @@ object ChapterTable {
 
     const val COL_SOURCE_ORDER = "source_order"
 
-    val createUnreadChaptersIndexQuery: String
-        get() = "CREATE INDEX ${TABLE}_unread_by_manga_index ON $TABLE($COL_MANGA_ID, $COL_READ) " +
-            "WHERE $COL_READ = 0"
-
-    val sourceOrderUpdateQuery: String
-        get() = "ALTER TABLE chapters ADD COLUMN source_order INTEGER DEFAULT 0"
-
-    val bookmarkUpdateQuery: String
-        get() = "ALTER TABLE $TABLE ADD COLUMN $COL_BOOKMARK BOOLEAN DEFAULT FALSE"
-
-    val addScanlator: String
-        get() = "ALTER TABLE $TABLE ADD COLUMN $COL_SCANLATOR TEXT DEFAULT NULL"
-
-    val pagesLeftQuery: String
-        get() = "ALTER TABLE $TABLE ADD COLUMN $COL_PAGES_LEFT INTEGER DEFAULT 0"
 }

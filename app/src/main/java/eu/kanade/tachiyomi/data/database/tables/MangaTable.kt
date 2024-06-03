@@ -50,19 +50,4 @@ object MangaTable {
 
     const val COL_UPDATE_STRATEGY = "update_strategy"
 
-    val createLibraryIndexQuery: String
-        get() = "CREATE INDEX library_${COL_FAVORITE}_index ON $TABLE($COL_FAVORITE) " +
-            "WHERE $COL_FAVORITE = 1"
-
-    val addHideTitle: String
-        get() = "ALTER TABLE $TABLE ADD COLUMN $COL_HIDE_TITLE INTEGER DEFAULT 0"
-
-    val addDateAddedCol: String
-        get() = "ALTER TABLE $TABLE ADD COLUMN $COL_DATE_ADDED LONG DEFAULT 0"
-
-    val addFilteredScanlators: String
-        get() = "ALTER TABLE $TABLE ADD COLUMN $COL_FILTERED_SCANLATORS TEXT"
-
-    val addUpdateStrategy: String
-        get() = "ALTER TABLE $TABLE ADD COLUMN $COL_UPDATE_STRATEGY INTEGER NOT NULL DEFAULT 0"
 }
