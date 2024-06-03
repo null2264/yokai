@@ -51,12 +51,15 @@ class AppModule(val app: Application) : InjektModule {
                 .noBackupDirectory(false)
                 .build()
 
+            /*
             if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // Support database inspector in Android Studio
                 FrameworkSQLiteOpenHelperFactory().create(configuration)
             } else {
                 RequerySQLiteOpenHelperFactory().create(configuration)
             }
+             */
+            RequerySQLiteOpenHelperFactory().create(configuration)
         }
 
         addSingletonFactory<SqlDriver> {
