@@ -75,6 +75,7 @@ import dev.yokai.presentation.onboarding.OnboardingController
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.Migrations
 import eu.kanade.tachiyomi.R
+import eu.kanade.tachiyomi.data.database.DatabaseHelper
 import eu.kanade.tachiyomi.data.download.DownloadJob
 import eu.kanade.tachiyomi.data.download.DownloadManager
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
@@ -99,6 +100,7 @@ import eu.kanade.tachiyomi.ui.manga.MangaDetailsController
 import eu.kanade.tachiyomi.ui.more.AboutController
 import eu.kanade.tachiyomi.ui.more.OverflowDialog
 import eu.kanade.tachiyomi.ui.more.stats.StatsController
+import eu.kanade.tachiyomi.ui.reader.ReaderActivity
 import eu.kanade.tachiyomi.ui.recents.RecentsController
 import eu.kanade.tachiyomi.ui.recents.RecentsViewType
 import eu.kanade.tachiyomi.ui.security.SecureActivityDelegate
@@ -106,10 +108,12 @@ import eu.kanade.tachiyomi.ui.setting.SettingsLegacyController
 import eu.kanade.tachiyomi.ui.setting.controllers.SettingsMainController
 import eu.kanade.tachiyomi.ui.source.BrowseController
 import eu.kanade.tachiyomi.ui.source.browse.BrowseSourceController
+import eu.kanade.tachiyomi.ui.source.globalsearch.GlobalSearchController
 import eu.kanade.tachiyomi.util.manga.MangaCoverMetadata
 import eu.kanade.tachiyomi.util.manga.MangaShortcutManager
 import eu.kanade.tachiyomi.util.system.contextCompatDrawable
 import eu.kanade.tachiyomi.util.system.dpToPx
+import eu.kanade.tachiyomi.util.system.executeOnIO
 import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.hasSideNavBar
 import eu.kanade.tachiyomi.util.system.ignoredSystemInsets
@@ -167,6 +171,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
     private val downloadManager: DownloadManager by injectLazy()
     private val mangaShortcutManager: MangaShortcutManager by injectLazy()
     private val extensionManager: ExtensionManager by injectLazy()
+    private val db: DatabaseHelper by injectLazy()
     private val hideBottomNav
         get() = router.backstackSize > 1 && router.backstack[1].controller !is DialogController
     private val hideAppBar
@@ -390,16 +395,28 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
             }
             true
         }
-        for (id in listOf(R.id.nav_recents, R.id.nav_browse)) {
-            nav.getItemView(id)?.setOnLongClickListener {
-                nav.selectedItemId = id
-                nav.post {
-                    val controller =
-                        router.backstack.firstOrNull()?.controller as? BottomSheetController
-                    controller?.showSheet()
-                }
-                true
+        nav.getItemView(R.id.nav_recents)?.setOnLongClickListener {
+            lifecycleScope.launchUI {
+                val lastReadChapter =
+                    db.getHistoryUngrouped("", 0, true).executeOnIO().maxByOrNull { it.history.last_read }
+                lastReadChapter ?: return@launchUI
+
+                val manga = lastReadChapter.manga
+                val activity = this@MainActivity
+                val chapter = lastReadChapter.chapter
+                activity.apply { startActivity(ReaderActivity.newIntent(activity, manga, chapter)) }
             }
+            if (nav.selectedItemId != R.id.nav_recents) {
+                nav.selectedItemId = R.id.nav_recents
+            }
+            true
+        }
+        nav.getItemView(R.id.nav_browse)?.setOnLongClickListener {
+            if (nav.selectedItemId != R.id.nav_browse) {
+                nav.selectedItemId = R.id.nav_browse
+            }
+            router.pushController(GlobalSearchController().withFadeTransaction())
+            true
         }
 
         val container: ViewGroup = binding.controllerContainer

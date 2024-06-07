@@ -163,6 +163,10 @@ open class GlobalSearchController(
         activityBinding?.searchToolbar?.searchItem?.expandActionView()
         activityBinding?.searchToolbar?.searchView?.setQuery(presenter.query, false)
 
+        if (presenter.query.isBlank()) {
+            activityBinding?.searchToolbar?.searchView?.requestFocus()
+        }
+
         setOnQueryTextChangeListener(activityBinding?.searchToolbar?.searchView, onlyOnSubmit = true, hideKbOnSubmit = true) {
             presenter.search(it ?: "")
             setTitle() // Update toolbar title
@@ -177,7 +181,9 @@ open class GlobalSearchController(
             val searchItem = activityBinding?.searchToolbar?.searchItem ?: return
             searchItem.expandActionView()
             searchView.setQuery(presenter.query, false)
-            searchView.clearFocus()
+            if (presenter.query.isNotBlank()) {
+                searchView.clearFocus()
+            }
         }
         if (type == ControllerChangeType.POP_ENTER && lastPosition > -1) {
             val holder = binding.recycler.findViewHolderForAdapterPosition(lastPosition) as? GlobalSearchHolder
