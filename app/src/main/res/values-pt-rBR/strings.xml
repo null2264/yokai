@@ -972,6 +972,7 @@
     <string name="pref_inverted_colors">Invertido</string>
     <string name="empty_backup_error">Nenhuma entrada na biblioteca para fazer backup</string>
     <string name="move_series_to_top">Mover série para o topo</string>
+    <string name="move_series_to_bottom">Mover série para o fundo</string>
     <string name="ascending">Crescente</string>
     <string name="date">Data</string>
     <string name="descending">Decrescente</string>

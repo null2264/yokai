@@ -356,6 +356,14 @@ class DownloadBottomSheet @JvmOverloads constructor(
                         ?: Pair(listOf<Download>(), listOf<Download>())
                     presenter.reorder(selectedSeries + otherSeries)
                 }
+                R.id.move_to_bottom_series -> {
+                    val (selectedSeries, otherSeries) = adapter?.currentItems
+                        ?.filterIsInstance<DownloadItem>()
+                        ?.map(DownloadItem::download)
+                        ?.partition { item.download.manga.id == it.manga.id }
+                        ?: Pair(listOf<Download>(), listOf<Download>())
+                    presenter.reorder(otherSeries + selectedSeries)
+                }
                 R.id.cancel_series -> {
                     val allDownloadsForSeries = adapter?.currentItems
                         ?.filterIsInstance<DownloadItem>()
