@@ -115,4 +115,8 @@ class GlobalSearchHolder(view: View, val adapter: GlobalSearchAdapter) :
         binding.sourceCard.isVisible = true
         binding.noResults.isVisible = false
     }
+
+    fun setChaptersCount(manga: Manga) {
+        getHolder(manga)?.setChaptersCount(manga)
+    }
 }

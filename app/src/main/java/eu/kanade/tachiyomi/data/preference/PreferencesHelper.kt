@@ -439,4 +439,6 @@ class PreferencesHelper(val context: Context, val preferenceStore: PreferenceSto
     fun coverColors() = preferenceStore.getStringSet(Keys.coverColors, emptySet())
 
     fun useStaggeredGrid() = preferenceStore.getBoolean("use_staggered_grid", false)
+
+    fun fetchMangaChapters() = preferenceStore.getBoolean(Keys.fetchMangaChapters, false)
 }

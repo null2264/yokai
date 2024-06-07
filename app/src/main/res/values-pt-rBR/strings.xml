@@ -460,6 +460,8 @@
     <string name="pref_global_search">Pesquisa global</string>
     <string name="check_for_extension_updates">Verifique se há atualizações de extensão</string>
     <string name="only_search_pinned_when">Pesquisar apenas fontes fixadas</string>
+    <string name="fetch_manga_chapters">Mostrar quantidade de capítulos na busca</string>
+    <string name="fetch_manga_chapters_summary">Automaticamente puxa os detalhes e capítulos e salva na database\nAviso: essa opção pode afetar a performance e aumentar o uso de dados</string>
     <string name="match_pinned_sources">Corresponder às fontes fixadas</string>
     <string name="match_enabled_sources">Corresponder às fontes ativadas</string>
     <string name="only_enable_pinned_for_migration">Ative apenas suas fontes fixadas

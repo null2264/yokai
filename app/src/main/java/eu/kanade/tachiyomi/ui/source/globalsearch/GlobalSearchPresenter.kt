@@ -12,16 +12,19 @@ import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.ui.base.presenter.BaseCoroutinePresenter
+import eu.kanade.tachiyomi.util.chapter.syncChaptersWithSource
 import eu.kanade.tachiyomi.util.system.launchIO
 import eu.kanade.tachiyomi.util.system.launchUI
 import eu.kanade.tachiyomi.util.system.withUIContext
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
+import timber.log.Timber
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
@@ -226,11 +229,15 @@ open class GlobalSearchPresenter(
         fetchImageJob?.cancel()
         fetchImageJob = fetchImageFlow.onEach { (mangaList, source) ->
             mangaList
-                .filter { it.thumbnail_url == null && !it.initialized }
+                .filter { (it.thumbnail_url == null && !it.initialized) || preferences.fetchMangaChapters().get() }
                 .forEach {
                     presenterScope.launchIO {
                         try {
                             val manga = getMangaDetails(it, source)
+                            if (preferences.fetchMangaChapters().get()) {
+                                // to let the database transaction for newly added manga chapters complete before adding the chapters count badge
+                                delay(1250)
+                            }
                             withUIContext {
                                 view?.onMangaInitialized(source as CatalogueSource, manga)
                             }
@@ -255,6 +262,9 @@ open class GlobalSearchPresenter(
         manga.copyFrom(networkManga)
         manga.initialized = true
         db.insertManga(manga).executeAsBlocking()
+        if (preferences.fetchMangaChapters().get()) {
+            fetchChaptersFromSource(manga, source)
+        }
         return manga
     }
 
@@ -279,5 +289,16 @@ open class GlobalSearchPresenter(
             localManga.title = sManga.title
         }
         return localManga
+    }
+
+    private suspend fun fetchChaptersFromSource(manga: Manga, source: Source) {
+        try {
+            val chapters = source.getChapterList(manga)
+            syncChaptersWithSource(db, chapters, manga, source)
+        } catch (e: Exception) {
+            if (!e.message.isNullOrBlank() && !e.message!!.contains("No chapters found")) {
+                Timber.e(e)
+            }
+        }
     }
 }

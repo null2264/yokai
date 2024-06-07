@@ -31,6 +31,14 @@
             tools:ignore="ContentDescription"
             tools:src="@mipmap/ic_launcher" />
 
+        <include
+            layout="@layout/unread_download_badge"
+            android:id="@+id/unread_download_badge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <ProgressBar
             android:id="@+id/progress"
             style="?android:attr/progressBarStyleSmall"
@@ -86,5 +94,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card"
         tools:text="Sample name" />
+
+    <LinearLayout
+        android:id="@+id/text_layout"
+        android:layout_width="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/subtitle"
+            style="?textAppearanceBodySmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/library_comfortable_subtitle_selector"
+            android:layout_marginTop="-1dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            tools:text="Sample artist" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

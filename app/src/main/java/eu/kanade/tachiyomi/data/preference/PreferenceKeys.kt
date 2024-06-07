@@ -235,4 +235,6 @@ object PreferenceKeys {
     const val hideChapterTitles = "hide_chapter_titles"
 
     const val chaptersDescAsDefault = "chapters_desc_as_default"
+
+    const val fetchMangaChapters = "fetch_manga_chapters"
 }
