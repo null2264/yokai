@@ -29,4 +29,9 @@
         android:title="@string/open_in_browser"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_web_clear_cookies"
+        android:title="@string/clear_cookies"
+        app:showAsAction="never" />
+
 </menu>

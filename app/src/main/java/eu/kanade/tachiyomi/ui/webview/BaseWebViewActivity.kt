@@ -134,6 +134,9 @@ open class BaseWebViewActivity : BaseActivity<WebviewActivityBinding>() {
                 override fun onReceivedTitle(view: WebView?, title: String?) {
                     super.onReceivedTitle(view, title)
                     this@BaseWebViewActivity.title = title
+                    binding.toolbarTitle.text = title
+                    binding.toolbarSubtitle.text = view?.url
+                    binding.toolbarSubtitle.isSelected = true
                 }
             }
             val marginB = binding.webview.marginBottom

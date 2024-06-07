@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/web_view_layout"
     android:layout_width="match_parent"
@@ -10,11 +9,11 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:orientation="vertical"
         android:id="@+id/web_linear_layout"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -23,9 +22,39 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorSurface"
             android:theme="?attr/actionBarTheme"
-            app:titleTextColor="?actionBarTintColor"
+            app:titleTextColor="?attr/actionBarTintColor"
             app:navigationIcon="@drawable/ic_close_24dp"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/actionBarTintColor"
+                    android:textSize="20sp"
+                    android:singleLine="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/toolbar_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textColor="?attr/actionBarTintColor"
+                    android:layout_below="@+id/toolbar_title"
+                    android:layout_alignStart="@+id/toolbar_title" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -36,18 +65,17 @@
 
         <WebView
             android:id="@+id/webview"
-            android:nestedScrollingEnabled="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true">
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:progressTint="?attr/colorSecondary"
                 android:progressBackgroundTint="?attr/colorSurface"
-                />
+                android:progressTint="?attr/colorSecondary" />
         </WebView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

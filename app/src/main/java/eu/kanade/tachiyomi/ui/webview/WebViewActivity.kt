@@ -12,6 +12,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.core.graphics.ColorUtils
 import eu.kanade.tachiyomi.R
+import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.util.system.WebViewClientCompat
@@ -19,6 +20,7 @@ import eu.kanade.tachiyomi.util.system.extensionIntentForText
 import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.openInBrowser
 import eu.kanade.tachiyomi.util.system.toast
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import timber.log.Timber
 import uy.kohesive.injekt.injectLazy
 
@@ -26,6 +28,8 @@ open class WebViewActivity : BaseWebViewActivity() {
 
     private val sourceManager by injectLazy<SourceManager>()
     private var bundle: Bundle? = null
+
+    private val network: NetworkHelper by injectLazy()
 
     private var backPressedCallback: OnBackPressedCallback? = null
     private val backCallback = {
@@ -166,8 +170,15 @@ open class WebViewActivity : BaseWebViewActivity() {
             R.id.action_web_share -> shareWebpage()
             R.id.action_web_browser -> openInBrowser()
             R.id.action_open_in_app -> openUrlInApp()
+            R.id.action_web_clear_cookies -> clearCookies()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun clearCookies() {
+        val url = binding.webview.url ?: return
+        val cleared = network.cookieJar.remove(url.toHttpUrl())
+        toast("Cleared $cleared cookies for: $url")
     }
 
     private fun openUrlInApp() {

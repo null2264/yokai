@@ -37,6 +37,8 @@ fun WebView.setDefaultSettings() {
         databaseEnabled = true
         useWideViewPort = true
         loadWithOverviewMode = true
+        builtInZoomControls = true
+        displayZoomControls = false
         cacheMode = WebSettings.LOAD_DEFAULT
     }
 }
