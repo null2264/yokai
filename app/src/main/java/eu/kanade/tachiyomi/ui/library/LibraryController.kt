@@ -2172,4 +2172,8 @@ open class LibraryController(
             destroyActionModeIfNeeded()
         }
     }
+
+    fun updateDownloadStatus(isRunning: Boolean) {
+        (activity as? MainActivity)?.downloadStatusChanged(isRunning)
+    }
 }

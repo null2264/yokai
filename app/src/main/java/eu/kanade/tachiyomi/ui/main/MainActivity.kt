@@ -1486,11 +1486,13 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
         }
     }
 
-    private fun downloadStatusChanged(downloading: Boolean) {
+    fun downloadStatusChanged(downloading: Boolean) {
         lifecycleScope.launchUI {
             val hasQueue = downloading || downloadManager.hasQueue()
             if (hasQueue) {
-                nav.getOrCreateBadge(R.id.nav_recents)
+                val badge = nav.getOrCreateBadge(R.id.nav_recents)
+                badge.number = downloadManager.queue.size
+                if (downloading) badge.backgroundColor = -870219 else badge.backgroundColor = Color.GRAY
                 showDLQueueTutorial()
             } else {
                 nav.removeBadge(R.id.nav_recents)

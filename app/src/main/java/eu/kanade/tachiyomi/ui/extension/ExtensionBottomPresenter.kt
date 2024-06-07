@@ -2,6 +2,9 @@ package eu.kanade.tachiyomi.ui.extension
 
 import android.content.pm.PackageInstaller
 import eu.kanade.tachiyomi.R
+import eu.kanade.tachiyomi.data.download.DownloadManager
+import eu.kanade.tachiyomi.data.download.model.Download
+import eu.kanade.tachiyomi.data.download.model.DownloadQueue
 import eu.kanade.tachiyomi.extension.ExtensionInstallerJob
 import eu.kanade.tachiyomi.extension.ExtensionManager
 import eu.kanade.tachiyomi.extension.model.Extension
@@ -10,12 +13,15 @@ import eu.kanade.tachiyomi.extension.model.InstalledExtensionsOrder
 import eu.kanade.tachiyomi.extension.util.ExtensionLoader
 import eu.kanade.tachiyomi.ui.migration.BaseMigrationPresenter
 import eu.kanade.tachiyomi.util.system.LocaleHelper
+import eu.kanade.tachiyomi.util.system.launchUI
 import eu.kanade.tachiyomi.util.system.withUIContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.api.get
 
 typealias ExtensionTuple =
     Triple<List<Extension.Installed>, List<Extension.Untrusted>, List<Extension.Available>>
@@ -24,9 +30,11 @@ typealias ExtensionIntallInfo = Pair<InstallStep, PackageInstaller.SessionInfo?>
 /**
  * Presenter of [ExtensionBottomSheet].
  */
-class ExtensionBottomPresenter : BaseMigrationPresenter<ExtensionBottomSheet>() {
+class ExtensionBottomPresenter : BaseMigrationPresenter<ExtensionBottomSheet>(), DownloadQueue.DownloadListener {
 
     private var extensions = emptyList<ExtensionItem>()
+
+    val downloadManager: DownloadManager = Injekt.get()
 
     private var currentDownloads = hashMapOf<String, ExtensionIntallInfo>()
 
@@ -34,6 +42,7 @@ class ExtensionBottomPresenter : BaseMigrationPresenter<ExtensionBottomSheet>() 
 
     override fun onCreate() {
         super.onCreate()
+        downloadManager.addListener(this)
         presenterScope.launch {
             val extensionJob = async {
                 extensionManager.findAvailableExtensions()
@@ -277,6 +286,13 @@ class ExtensionBottomPresenter : BaseMigrationPresenter<ExtensionBottomSheet>() 
     fun trustExtension(pkgName: String, versionCode: Long, signatureHash: String) {
         presenterScope.launch {
             extensionManager.trust(pkgName, versionCode, signatureHash)
+        }
+    }
+
+    override fun updateDownload(download: Download) = updateDownloads()
+    override fun updateDownloads() {
+        presenterScope.launchUI {
+            view?.updateDownloadStatus(!downloadManager.isPaused())
         }
     }
 }
