@@ -32,6 +32,7 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.preference.PreferenceValues
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.databinding.BrowseControllerBinding
+import eu.kanade.tachiyomi.extension.ExtensionManager
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.LocalSource
 import eu.kanade.tachiyomi.source.Source
@@ -85,6 +86,7 @@ class BrowseController :
     FlexibleAdapter.OnItemClickListener,
     SourceAdapter.SourceListener,
     RootSearchInterface,
+    FlexibleAdapter.OnItemLongClickListener,
     FloatingSearchInterface,
     BottomSheetController {
 
@@ -94,6 +96,8 @@ class BrowseController :
      * Application preferences.
      */
     private val preferences: PreferencesHelper by injectLazy()
+
+    private val extensionManager: ExtensionManager by injectLazy()
 
     /**
      * Adapter containing sources.
@@ -739,5 +743,11 @@ class BrowseController :
 
     companion object {
         const val HELP_URL = "https://tachiyomi.org/docs/guides/source-migration"
+    }
+
+    override fun onItemLongClick(position: Int) {
+        val item = adapter?.getItem(position) as? SourceItem ?: return
+        val extension = extensionManager.installedExtensionsFlow.value.find { it.sources.any { source -> source.id == item.source.id } } ?: return
+        extensionManager.uninstallExtension(extension.pkgName)
     }
 }
