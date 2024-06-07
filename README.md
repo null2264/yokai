@@ -4,6 +4,9 @@
     <img src="./.github/readme-images/app-icon.png" alt="Yokai logo" height="200px" width="200px" />
 </a>
 
+> [!NOTE]
+> All new features are get from [![TachiyomiS97](https://github.com/Saud-97/TachiyomiS97) so all credits for them goes to [![Saud-97](https://github.com/Saud-97)]]
+
 # Yōkai
 
 </div>
