@@ -10,9 +10,10 @@ import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.ui.reader.settings.OrientationType
 import eu.kanade.tachiyomi.ui.reader.settings.ReadingModeType
 import eu.kanade.tachiyomi.util.manga.MangaCoverMetadata
+import eu.kanade.tachiyomi.util.system.toBoolean
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
-import java.util.Locale
+import java.util.*
 
 interface Manga : SManga {
 
@@ -33,6 +34,10 @@ interface Manga : SManga {
     var hide_title: Boolean
 
     var filtered_scanlators: String?
+
+    var version: Int
+
+    var isSyncing: Boolean
 
     fun isBlank() = id == Long.MIN_VALUE
     fun isHidden() = status == -1
@@ -359,7 +364,9 @@ interface Manga : SManga {
             chapterFlags: Long,
             dateAdded: Long?,
             filteredScanlators: String?,
-            updateStrategy: Long
+            updateStrategy: Long,
+            version: Long,
+            isSyncing: Long,
         ): Manga = create(source).apply {
             this.id = id
             this.url = url
@@ -370,15 +377,17 @@ interface Manga : SManga {
             this.title = title
             this.status = status.toInt()
             this.thumbnail_url = thumbnailUrl
-            this.favorite = favorite > 0
+            this.favorite = favorite.toBoolean()
             this.last_update = lastUpdate ?: 0L
             this.initialized = initialized
             this.viewer_flags = viewerFlags.toInt()
             this.chapter_flags = chapterFlags.toInt()
-            this.hide_title = hideTitle > 0
+            this.hide_title = hideTitle.toBoolean()
             this.date_added = dateAdded ?: 0L
             this.filtered_scanlators = filteredScanlators
             this.update_strategy = updateStrategy.toInt().let(updateStrategyAdapter::decode)
+            this.version = version.toInt()
+            this.isSyncing = isSyncing.toBoolean()
         }
     }
 }

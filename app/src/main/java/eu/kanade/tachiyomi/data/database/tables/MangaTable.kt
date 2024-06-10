@@ -42,4 +42,7 @@ object MangaTable {
 
     const val COL_UPDATE_STRATEGY = "update_strategy"
 
+    const val COL_VERSION = "version"
+
+    const val COL_IS_SYNCING = "is_syncing"
 }

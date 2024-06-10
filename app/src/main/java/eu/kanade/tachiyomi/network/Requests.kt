@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName", "unused")
+
 package eu.kanade.tachiyomi.network
 
 import okhttp3.CacheControl
@@ -7,7 +9,7 @@ import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.Request
 import okhttp3.RequestBody
-import java.util.concurrent.TimeUnit.MINUTES
+import java.util.concurrent.TimeUnit.*
 
 private val DEFAULT_CACHE_CONTROL = CacheControl.Builder().maxAge(10, MINUTES).build()
 private val DEFAULT_HEADERS = Headers.Builder().build()
@@ -59,6 +61,20 @@ fun PUT(
     return Request.Builder()
         .url(url)
         .put(body)
+        .headers(headers)
+        .cacheControl(cache)
+        .build()
+}
+
+fun PATCH(
+    url: String,
+    headers: Headers = DEFAULT_HEADERS,
+    body: RequestBody = DEFAULT_BODY,
+    cache: CacheControl = DEFAULT_CACHE_CONTROL,
+): Request {
+    return Request.Builder()
+        .url(url)
+        .patch(body)
         .headers(headers)
         .cacheControl(cache)
         .build()

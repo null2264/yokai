@@ -22,6 +22,7 @@ import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_GENRE
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_HIDE_TITLE
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_ID
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_INITIALIZED
+import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_IS_SYNCING
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_LAST_UPDATE
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_SOURCE
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_STATUS
@@ -29,9 +30,11 @@ import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_THUMBNAIL_URL
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_TITLE
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_UPDATE_STRATEGY
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_URL
+import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_VERSION
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.COL_VIEWER
 import eu.kanade.tachiyomi.data.database.tables.MangaTable.TABLE
 import eu.kanade.tachiyomi.data.database.updateStrategyAdapter
+import eu.kanade.tachiyomi.util.system.toBoolean
 
 class MangaTypeMapping : SQLiteTypeMapping<Manga>(
     MangaPutResolver(),
@@ -71,6 +74,8 @@ class MangaPutResolver : DefaultPutResolver<Manga>() {
         put(COL_DATE_ADDED, obj.date_added)
         put(COL_FILTERED_SCANLATORS, obj.filtered_scanlators)
         put(COL_UPDATE_STRATEGY, obj.update_strategy.let(updateStrategyAdapter::encode))
+        put(COL_VERSION, obj.version)
+        put(COL_IS_SYNCING, obj.isSyncing)
     }
 }
 
@@ -86,17 +91,19 @@ interface BaseMangaGetResolver {
         title = cursor.getString(cursor.getColumnIndex(COL_TITLE))
         status = cursor.getInt(cursor.getColumnIndex(COL_STATUS))
         thumbnail_url = cursor.getString(cursor.getColumnIndex(COL_THUMBNAIL_URL))
-        favorite = cursor.getInt(cursor.getColumnIndex(COL_FAVORITE)) == 1
+        favorite = cursor.getInt(cursor.getColumnIndex(COL_FAVORITE)).toBoolean()
         last_update = cursor.getLong(cursor.getColumnIndex(COL_LAST_UPDATE))
-        initialized = cursor.getInt(cursor.getColumnIndex(COL_INITIALIZED)) == 1
+        initialized = cursor.getInt(cursor.getColumnIndex(COL_INITIALIZED)).toBoolean()
         viewer_flags = cursor.getInt(cursor.getColumnIndex(COL_VIEWER))
         chapter_flags = cursor.getInt(cursor.getColumnIndex(COL_CHAPTER_FLAGS))
-        hide_title = cursor.getInt(cursor.getColumnIndex(COL_HIDE_TITLE)) == 1
+        hide_title = cursor.getInt(cursor.getColumnIndex(COL_HIDE_TITLE)).toBoolean()
         date_added = cursor.getLong(cursor.getColumnIndex(COL_DATE_ADDED))
         filtered_scanlators = cursor.getString(cursor.getColumnIndex(COL_FILTERED_SCANLATORS))
         update_strategy = cursor.getInt(cursor.getColumnIndex(COL_UPDATE_STRATEGY)).let(
             updateStrategyAdapter::decode,
         )
+        version = cursor.getInt(cursor.getColumnIndex(COL_VERSION))
+        isSyncing = cursor.getInt(cursor.getColumnIndex(COL_IS_SYNCING)).toBoolean()
     }
 }
 
