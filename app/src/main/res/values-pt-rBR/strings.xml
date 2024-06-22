@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="onboarding_heading">Bem Vindo(a)!</string>
+    <string name="onboarding_description">Vamos definir algumas coisas primeiro. Você sempre pode fazer alterações nas configurações depois também.</string>
+    <string name="onboarding_finish">Começar</string>
+    <string name="onboarding_storage_info">Escolha uma pasta onde o %1$s irá armazenar os downloads de capítulos, backups e mais.\n\nUma pasta dedicada é recomendada.\n\nPasta selecionada: %2$s</string>
+    <string name="onboarding_storage_action_select">Selecionar uma pasta</string>
+    <string name="onboarding_storage_help_info">Atualizando de uma versão anteriro e não tem certeza do que selecionar? Consulte o guia de armazenamento para mais informações.</string>
+    <string name="onboarding_storage_help_action">Guia de armazenamento</string>
+    <string name="onboarding_permission_type_required">Obrigatório</string>
+    <string name="onboarding_permission_type_optional">Opcional, mas recomendado</string>
+    <string name="onboarding_permission_install_apps">Permissão de instalação de aplicativos</string>
+    <string name="onboarding_permission_install_apps_description">Para instalar extensões e atualizações.</string>
+    <string name="onboarding_permission_notifications">Permissão de notificação</string>
+    <string name="onboarding_permission_notifications_description">Seja notificado para atualizações de biblioteca e mais.</string>
+    <string name="onboarding_permission_ignore_battery_opts">Uso de bateria em plano de fundo</string>
+    <string name="onboarding_permission_ignore_battery_opts_description">Evite interrupções para tarefas longas como atualizações da biblioteca, downloads e restauração de backups.</string>
+    <string name="onboarding_permission_action_grant">Conceder</string>
+
+    <string name="no_location_set">Local de armazenamento não definido</string>
+    <string name="invalid_location">Local inválido: %s</string>
+    <string name="invalid_location_generic">Local inválido</string>
+
     <!--Models-->
     <!-- Manga Type -->
     <string name="manga">Mangás</string>
@@ -191,6 +213,9 @@
     <string name="trust">Confiar</string>
     <string name="untrusted">Não confiável</string>
     <string name="uninstall">Desinstalar</string>
+    <string name="ext_installer_private">Privado</string>
+    <string name="ext_installer_packageinstaller">Padrão</string>
+    <string name="ext_installer_legacy">Legado</string>
     <string name="untrusted_extension">Extensão não confiável</string>
     <string name="obsolete_extension_message">Esta extensão não está mais disponível.</string>
     <string name="version_">Versão: %1$s</string>
@@ -404,6 +429,13 @@
     <string name="check_for_updates">Procurar por atualizações</string>
     <string name="secure_screen">Tela segura</string>
     <string name="security">Segurança</string>
+
+    <!-- Storage -->
+    <string name="data_and_storage">Dados e armazenamento</string>
+    <string name="storage_location">Local de armazenamento</string>
+    <string name="storage_usage">Uso de armazenamento</string>
+    <string name="available_disk_space_info">Disponível: %1$s / Total: %2$s</string>
+
     <!-- Backup -->
     <string name="backup">Backup</string>
     <string name="create_backup">Criar backup</string>
@@ -469,6 +501,20 @@
     <string name="use_last_saved_migration_preferences">Usar as últimas preferências de pré-migração 
     salvas e fontes para migrar em massa</string>
     <string name="you_can_migrate_in_library">Você também pode migrar selecionando o mangá na sua biblioteca</string>
+    
+    <!-- Extension repos -->
+    <string name="source_repos">Repositórios de extensões</string>
+    <string name="label_add_repo">Adicionar novo Repositório</string>
+    <string name="action_add_repo">Adicionar</string>
+    <string name="invalid_repo_url">URL de Repositório inválida</string>
+    <string name="repo_already_exists">Repositório já existente!</string>
+    <string name="information_empty_repos">Você aidna não tem repositórios definidos.</string>
+    <string name="confirm_delete_repo_title">Apagar repositório?</string>
+    <string name="confirm_delete_repo">Você tem certeza que deseja apagar o repositório \"%s\"?</string>
+    <string name="action_replace_repo">Substituir</string>
+    <string name="action_replace_repo_title">Assinatura já existente</string>
+    <string name="action_replace_repo_message">O repositório %1$s tem a mesma assinatura que %2$s.\nSe isso é esperado, %2$s será substituído, caso contrário entre em contato com o dono do repositório.</string>
+
     <!-- About section -->
     <string name="version">Versão</string>
     <string name="build_time">Data de compilação</string>
@@ -1136,4 +1182,29 @@
     <string name="apply">Aplicar</string>
     <string name="pref_debug_info">Informações de depuração</string>
     <string name="label_background_activity">Atividade em segundo plano</string>
+        <string name="action_revoke_all_extensions">Revogar todas as extensões confiáveis</string>
+    <string name="backup_private_pref">Incluir configurações sensíveis (por exemplo, tokens de login de rastreadores)</string>
+    <string name="file_picker_uri_permission_unsupported">Falha ao adquirir acesso persistente à pasta. O aplicativo pode se comportar de forma inesperada.</string>
+    <string name="internal_error">Erro interno: %s</string>
+    <string name="last_auto_backup_info">Último backup automático: %s</string>
+    <string name="create_folders_by_manga_title">Cria pastas de acordo com o título do mangá</string>
+    <string name="save_pages_separately">Salvar páginas em pastas separadas</string>
+    <string name="confirm_revoke_all_extensions">Revogar todas as extensões confiáveis?</string>
+    <string name="pref_legacy_cutout_info">Em dispositivos mais antigos que o Android 9, não há como modificar a configuração do recorte, exceto configurando manualmente nas configurações do sistema</string>
+    <string name="untrusted_extension_message">Extensões maliciosas podem ler qualquer credencial de login armazenada ou executar código arbitrário. Ao confiar nesta extensão, você aceita esses riscos.</string>
+    <string name="browse_long_tap">Comportamento do toque longo em 'Navegar'</string>
+    <string name="crash_screen_title">Ocorreu um erro inesperado</string>
+    <string name="download_with_id_details">Pode corrigir problemas com conflitos de capítulos baixados quando eles têm o mesmo nome</string>
+    <string name="pref_display_profile">Perfil de exibição personalizado</string>
+    <string name="recents_long_tap_default">Mostrar fila de downloads</string>
+    <string name="crash_screen_description">%s encontrou um erro inesperado. Sugerimos que você tire uma captura de tela desta mensagem, faça o dump dos logs de falha e compartilhe em um problema no GitHub.</string>
+    <string name="pref_legacy_cutout">Abrir configurações de recorte legado</string>
+    <string name="recents_long_tap_last_read">Abrir o último capítulo lido</string>
+    <string name="recents_long_tap">Comportamento do toque longo em 'Recentes'</string>
+    <string name="pref_cutout_short">Mostrar conteúdo na área de recorte</string>
+    <string name="share_cover">Compartilhar capa</string>
+    <string name="open_in_browser_fail">Não foi possível abrir a URL</string>
+    <string name="crop_borders_long_strip">Cortar bordas (tira longa)</string>
+    <string name="download_with_id">Auto-anexar ID</string>
+    <string name="action_open_repo">Abrir repositório de origem</string>
 </resources>
