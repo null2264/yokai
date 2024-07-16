@@ -196,25 +196,24 @@ interface Manga : SManga {
     fun defaultReaderType(): Int {
         val sourceName = Injekt.get<SourceManager>().getOrStub(source).name
         val currentTags = genre?.split(",")?.map { it.trim().lowercase(Locale.US) } ?: emptyList()
-        return if (currentTags.any
-            { tag ->
-                isManhwaTag(tag) || tag.contains("webtoon")
+        return if (currentTags.any {
+                tag -> isManhwaTag(tag) || tag.contains("webtoon")
             } || (
                 isWebtoonSource(sourceName) &&
-                    currentTags.none { tag -> isManhuaTag(tag) } &&
-                    currentTags.none { tag -> isComicTag(tag) }
-                )
+                currentTags.none { tag -> isManhuaTag(tag) } &&
+                currentTags.none { tag -> isComicTag(tag) }
+            )
         ) {
             ReadingModeType.LONG_STRIP.flagValue
-        } else if (currentTags.any
-            { tag ->
-                tag == "chinese" || tag == "manhua" ||
-                    tag.startsWith("english") || tag == "comic"
+        } else if (currentTags.any {
+                tag -> tag == "chinese" || tag == "manhua" || tag == "comic"
             } || (
-                isComicSource(sourceName) && !sourceName.contains("tapas", true) &&
-                    currentTags.none { tag -> isMangaTag(tag) }
-                ) ||
-            (sourceName.contains("manhua", true) && currentTags.none { tag -> isMangaTag(tag) })
+                isComicSource(sourceName) &&
+                !sourceName.contains("tapas", true) &&
+                currentTags.none { tag -> isMangaTag(tag) }
+            ) || (
+                sourceName.contains("manhua", true) && currentTags.none { tag -> isMangaTag(tag) }
+            )
         ) {
             ReadingModeType.LEFT_TO_RIGHT.flagValue
         } else {
@@ -247,7 +246,7 @@ interface Manga : SManga {
     }
 
     fun isComicTag(tag: String): Boolean {
-        return tag in listOf("comic", "комикс", "en", "gb") || tag.startsWith("english")
+        return tag in listOf("comic", "комикс", "en", "gb")
     }
 
     fun isWebtoonTag(tag: String): Boolean {
