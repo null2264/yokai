@@ -50,12 +50,6 @@ data class BackupOptions(
                 setter = { options, enabled -> options.copy(libraryEntries = enabled) },
             ),
             Entry(
-                label = MR.strings.categories,
-                getter = BackupOptions::categories,
-                setter = { options, enabled -> options.copy(categories = enabled) },
-                enabled = { it.libraryEntries },
-            ),
-            Entry(
                 label = MR.strings.chapters,
                 getter = BackupOptions::chapters,
                 setter = { options, enabled -> options.copy(chapters = enabled) },
@@ -84,6 +78,11 @@ data class BackupOptions(
                 getter = BackupOptions::readManga,
                 setter = { options, enabled -> options.copy(readManga = enabled) },
                 enabled = { it.libraryEntries },
+            ),
+            Entry(
+                label = MR.strings.categories,
+                getter = BackupOptions::categories,
+                setter = { options, enabled -> options.copy(categories = enabled) },
             ),
             Entry(
                 label = MR.strings.app_settings,
