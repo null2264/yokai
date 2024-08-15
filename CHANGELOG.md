@@ -11,3 +11,4 @@
 -->
 ## Other
 - Update gradle to v8.10
+- Update dependency co.touchlab:kermit to v2.0.4
