@@ -146,7 +146,7 @@ jobs:
           echo "STAGE=${stage}" >> $GITHUB_OUTPUT
 
       - name: Sign APK
-        uses: null2264/actions/android-signer@102c5b82a95381eeb420bb2d62639d1ff2a3eb1c
+        uses: null2264/actions/android-signer@a4d662095a2f2af1ed24f1228eb6e55b0f9f1f29
         if: env.VERSION_TAG != ''
         with:
           releaseDir: app/build/outputs/apk/standard/${{ steps.version_stage.outputs.STAGE }}
