@@ -11,7 +11,7 @@ shizuku = "12.1.0"
 sqlite = "2.4.0"
 sqldelight = "2.0.2"
 junit = "5.8.2"
-kermit = "2.0.3"
+kermit = "2.0.4"
 voyager = "1.1.0-beta02"
 
 [libraries]
