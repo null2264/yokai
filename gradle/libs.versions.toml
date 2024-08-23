@@ -1,5 +1,5 @@
 [versions]
-aboutlibraries = "11.2.2"
+aboutlibraries = "11.2.3"
 chucker = "3.5.2"
 flexible-adapter = "c8013533"
 fast_adapter = "5.6.0"
