@@ -3,7 +3,7 @@ aboutlibraries = "11.2.3"
 chucker = "3.5.2"
 flexible-adapter = "c8013533"
 fast_adapter = "5.6.0"
-moko = "0.24.1"
+moko = "0.24.2"
 okhttp = "5.0.0-alpha.14"
 shizuku = "12.1.0"
 # FIXME: Uncomment once SQLDelight support KMP AndroidX SQLiteDriver
