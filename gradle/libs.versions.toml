@@ -57,7 +57,7 @@ material = { module = "com.google.android.material:material", version = "1.12.0"
 markwon = { module = "io.noties.markwon:core", version = "4.6.2" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version = "v3.1.0" }
 java-nat-sort = { module = "com.github.gpanther:java-nat-sort", version = "natural-comparator-1.1" }
-jsoup = { module = "org.jsoup:jsoup", version = "1.17.1" }
+jsoup = { module = "org.jsoup:jsoup", version = "1.18.1" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 junit-android = { module = "androidx.test.ext:junit", version = "1.1.5" }
