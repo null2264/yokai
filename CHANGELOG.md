@@ -51,6 +51,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency org.jsoup:jsoup to v1.18.1
 - Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.9.0
 - Update serialization to v1.7.3
+- Update dependency gradle to v8.10.2
 
 ## [v1.8.5.7]
 
