@@ -61,7 +61,7 @@ jsoup = { module = "org.jsoup:jsoup", version = "1.18.1" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 junit-android = { module = "androidx.test.ext:junit", version = "1.2.1" }
-mockk = { module = "io.mockk:mockk", version = "1.13.11" }
+mockk = { module = "io.mockk:mockk", version = "1.13.12" }
 
 moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko" }
 moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko" }
