@@ -55,10 +55,15 @@ import java.util.concurrent.*
 import kotlin.math.roundToInt
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -94,6 +99,11 @@ class LibraryPresenter(
     private val getChapter: GetChapter by injectLazy()
     private val updateChapter: UpdateChapter by injectLazy()
     private val updateManga: UpdateManga by injectLazy()
+
+    private val _fetchLibrary: Channel<Unit> = Channel(Channel.UNLIMITED)
+    val fetchLibrary = _fetchLibrary.receiveAsFlow()
+        .onStart { emit(Unit) }
+        .shareIn(presenterScope, SharingStarted.Lazily, 1)
 
     private val context = preferences.context
     private val viewContext
@@ -192,7 +202,7 @@ class LibraryPresenter(
         }
         */
 
-        getLibrary()
+        subscribeLibrary()
 
         if (!preferences.showLibrarySearchSuggestions().isSet()) {
             DelayedLibrarySuggestionsJob.setupTask(context, true)
@@ -227,57 +237,41 @@ class LibraryPresenter(
                 categories = lastCategories ?: getCategories.await().toMutableList()
             }
 
-            getLibraryFlow().collectLatest { data ->
+            combine(
+                getLibraryFlow(),
+                fetchLibrary,
+            ) { data, _ ->
                 categories = data.categories
                 allCategories = data.allCategories
 
-                val library = data.items
-                val hiddenItems = library.filter { it.manga.isHidden() }.mapNotNull { it.manga.items }.flatten()
-
-                setDownloadCount(library)
-                setUnreadBadge(library)
-                setSourceLanguage(library)
-                setDownloadCount(hiddenItems)
-                setUnreadBadge(hiddenItems)
-                setSourceLanguage(hiddenItems)
-
-                allLibraryItems = library
-                hiddenLibraryItems = hiddenItems
-                val mangaMap = library
-                    .applyFilters()
-                    .applySort()
-                val freshStart = libraryItems.isEmpty()
-                sectionLibrary(mangaMap, freshStart)
+                data.items
             }
+                .collectLatest { library ->
+                    val hiddenItems = library.filter { it.manga.isHidden() }.mapNotNull { it.manga.items }.flatten()
+
+                    setDownloadCount(library)
+                    setUnreadBadge(library)
+                    setSourceLanguage(library)
+                    setDownloadCount(hiddenItems)
+                    setUnreadBadge(hiddenItems)
+                    setSourceLanguage(hiddenItems)
+
+                    allLibraryItems = library
+                    hiddenLibraryItems = hiddenItems
+                    val mangaMap = library
+                        .applyFilters()
+                        .applySort()
+                    val freshStart = libraryItems.isEmpty()
+                    sectionLibrary(mangaMap, freshStart)
+                }
         }
     }
 
+    // FIXME: Remove this, it's useless
     /** Get favorited manga for library and sort and filter it */
     fun getLibrary() {
         presenterScope.launch {
-            if (categories.isEmpty()) {
-                val dbCategories = getCategories.await()
-                if ((dbCategories + Category.createDefault(context)).distinctBy { it.order }.size != dbCategories.size + 1) {
-                    reorderCategories(dbCategories)
-                }
-                categories = lastCategories ?: getCategories.await().toMutableList()
-            }
-
-            val (library, _) = withIOContext { getLibraryFromDB() }
-            val hiddenItems = library.filter { it.manga.isHidden() }.mapNotNull { it.manga.items }.flatten()
-            setDownloadCount(library)
-            setUnreadBadge(library)
-            setSourceLanguage(library)
-            setDownloadCount(hiddenItems)
-            setUnreadBadge(hiddenItems)
-            setSourceLanguage(hiddenItems)
-            allLibraryItems = library
-            hiddenLibraryItems = hiddenItems
-            val mangaMap = library
-                .applyFilters()
-                .applySort()
-            val freshStart = libraryItems.isEmpty()
-            sectionLibrary(mangaMap, freshStart)
+            _fetchLibrary.send(Unit)
         }
     }
 
@@ -802,14 +796,6 @@ class LibraryPresenter(
         return this
     }
 
-    // FIXME: Seems like it's impossible to redirect current implementation to getLibraryFlow(), simply because of how
-    // J2K implements the library UI, both "Show all categories" (not to be confused with "Ungrouped") and
-    // "Show one category at a time" share the same data, which explains why J2K use blankItem instead of checking if
-    // list is empty to show the user if the category is empty or not. Understandable tbh, since it's pretty painful to
-    // maintain these two option on pre-Compose.
-    // ;
-    // Seems like I'll need to completely convert the UI to Compose first.
-
     /**
      * Library's flow.
      *
@@ -821,9 +807,9 @@ class LibraryPresenter(
             getLibraryManga.subscribe(),
             getPreferencesFlow(),
             preferences.removeArticles().changes(),
-        ) { allCategories, libraryMangaList, prefs, removeArticles ->
-            val groupType = prefs.groupType
-            val libraryIsGrouped = groupType != UNGROUPED
+            fetchLibrary,
+        ) { allCategories, libraryMangaList, prefs, removeArticles, _ ->
+            groupType = prefs.groupType
 
             val data = if (groupType <= BY_DEFAULT || !libraryIsGrouped) {
                 getLibraryItems(
@@ -1279,11 +1265,7 @@ class LibraryPresenter(
     }
 
     /** Called when Library Service updates a manga, update the item as well */
-    fun updateManga() {
-        presenterScope.launch {
-            getLibrary()
-        }
-    }
+    fun updateManga() = getLibrary()
 
     /** Undo the removal of the manga once in library */
     fun reAddMangas(mangas: List<Manga>) {
