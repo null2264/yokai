@@ -58,7 +58,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency gradle to v8.10.2
 - Update dependency androidx.webkit:webkit to v1.12.0
 - Update dependency io.mockk:mockk to v1.13.13
-- Update shizuku to v12.2.0
+- Update shizuku to v13.1.5
 - Bump comple sdk to 35
 - Update kotlin monorepo to v2.0.21
 - Update dependency androidx.work:work-runtime-ktx to v2.10.0
