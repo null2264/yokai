@@ -35,7 +35,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 ### Other
 - Simplify network helper code
 - Even more SQLDelight migration effort
-- Update dependency com.android.tools:desugar_jdk_libs to v2.1.2
+- Update dependency com.android.tools:desugar_jdk_libs to v2.1.3
 - Update moko to v0.24.2
 - Refactor trackers to use DTOs (@MajorTanya)
 - Replace Injekt with Koin
