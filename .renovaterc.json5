@@ -1,31 +1,35 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "labels": ["dependencies"],
-  "packageRules": [
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+  ],
+  labels: [
+    'dependencies',
+  ],
+  packageRules: [
     {
-      "groupName": "Compose BOM (Alpha)",
-      "matchPackageNames": [
-        "dev.chrisbanes.compose:compose-bom"
+      groupName: 'Compose BOM (Alpha)',
+      matchPackageNames: [
+        'dev.chrisbanes.compose:compose-bom',
       ],
-      "ignoreUnstable": false
+      ignoreUnstable: false,
     },
     {
-      "matchPackageNames": [
-        "com.github.arkon.FlexibleAdapter:flexible-adapter-ui",
-        "com.github.arkon.FlexibleAdapter:flexible-adapter",
-        "com.github.CarlosEsco:ViewTooltip",
-        "com.github.null2264:subsampling-scale-image-view",
-        "com.github.null2264:injekt-koin",
-        "com.github.tachiyomiorg:image-decoder",
-        "com.github.tachiyomiorg:unifile",
-        "com.github.tachiyomiorg:conductor-support-preference"
+      matchPackageNames: [
+        'com.github.arkon.FlexibleAdapter:flexible-adapter-ui',
+        'com.github.arkon.FlexibleAdapter:flexible-adapter',
+        'com.github.CarlosEsco:ViewTooltip',
+        'com.github.null2264:subsampling-scale-image-view',
+        'com.github.null2264:injekt-koin',
+        'com.github.tachiyomiorg:image-decoder',
+        'com.github.tachiyomiorg:unifile',
+        'com.github.tachiyomiorg:conductor-support-preference',
       ],
-      "enabled": false
-    }
+      enabled: false,
+    },
   ],
-  "dependencyDashboardApproval": true,
-  "semanticCommits": true,
-  "commitMessageLowerCase": "never",
-  "forkProcessing": "enabled"
+  dependencyDashboardApproval: true,
+  semanticCommits: 'enabled',
+  commitMessageLowerCase: 'never',
+  forkProcessing: 'enabled',
 }
