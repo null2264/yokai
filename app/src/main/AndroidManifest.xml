@@ -257,4 +257,7 @@
 
     </application>
 
+    <uses-sdk tools:overrideLibrary="rikka.shizuku.api"
+        tools:ignore="ManifestOrder" />
+
 </manifest>
