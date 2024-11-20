@@ -71,6 +71,8 @@ class ShizukuInstaller(private val context: Context, val finishedQueue: (Shizuku
 
     var ready = false
 
+    private val newProcess: Method
+
     init {
         Shizuku.addBinderDeadListener(shizukuDeadListener)
         require(Shizuku.pingBinder() && (context.isPackageInstalled(shizukuPkgName) || Sui.isSui())) {
@@ -210,7 +212,6 @@ class ShizukuInstaller(private val context: Context, val finishedQueue: (Shizuku
         waitingInstall.set(null)
     }
 
-    private val newProcess: Method
     private fun exec(command: String, stdin: InputStream? = null): ShellResult {
         val process = newProcess.invoke(null, arrayOf("sh", "-c", command), null, null) as ShizukuRemoteProcess
         if (stdin != null) {
