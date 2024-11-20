@@ -27,7 +27,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import nl.adaptivity.xmlutil.AndroidXmlReader
+import nl.adaptivity.xmlutil.core.AndroidXmlReader
 import nl.adaptivity.xmlutil.serialization.XML
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
