@@ -35,7 +35,7 @@ directionalviewpager = { module = "com.github.tachiyomiorg:DirectionalViewPager"
 disklrucache = { module = "com.jakewharton:disklrucache", version = "2.0.2" }
 fastadapter-extensions-binding = { module = "com.mikepenz:fastadapter-extensions-binding", version.ref = "fast_adapter" }
 fastadapter = { module = "com.mikepenz:fastadapter", version.ref = "fast_adapter" }
-firebase = { module = "com.google.firebase:firebase-bom", version = "33.4.0" }
+firebase = { module = "com.google.firebase:firebase-bom", version = "33.6.0" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version = "3.0.0" }
