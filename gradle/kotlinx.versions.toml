@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.0.21"
 serialization = "1.7.3"
-xml_serialization = "0.86.3"
+xml_serialization = "0.90.3"
 
 [libraries]
 coroutines-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bom", version = "1.9.0" }
