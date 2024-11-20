@@ -27,6 +27,7 @@ import rikka.sui.Sui
 import uy.kohesive.injekt.injectLazy
 import java.io.BufferedReader
 import java.io.InputStream
+import java.lang.reflect.Method
 import java.util.*
 import java.util.concurrent.atomic.AtomicReference
 
