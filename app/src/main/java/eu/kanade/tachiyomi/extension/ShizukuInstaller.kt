@@ -22,6 +22,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import rikka.shizuku.Shizuku
+import rikka.shizuku.ShizukuRemoteProcess
 import rikka.sui.Sui
 import uy.kohesive.injekt.injectLazy
 import java.io.BufferedReader
@@ -82,6 +83,9 @@ class ShizukuInstaller(private val context: Context, val finishedQueue: (Shizuku
             Shizuku.requestPermission(SHIZUKU_PERMISSION_REQUEST_CODE)
             false
         }
+        newProcess = Shizuku::class.java
+            .getDeclaredMethod("newProcess", Array<out String>::class.java, Array<out String>::class.java, String::class.java)
+        newProcess.isAccessible = true
     }
 
     @Suppress("BlockingMethodInNonBlockingContext")
@@ -205,9 +209,9 @@ class ShizukuInstaller(private val context: Context, val finishedQueue: (Shizuku
         waitingInstall.set(null)
     }
 
+    private val newProcess: Method
     private fun exec(command: String, stdin: InputStream? = null): ShellResult {
-        @Suppress("DEPRECATION")
-        val process = Shizuku.newProcess(arrayOf("sh", "-c", command), null, null)
+        val process = newProcess.invoke(null, arrayOf("sh", "-c", command), null, null) as ShizukuRemoteProcess
         if (stdin != null) {
             process.outputStream.use { stdin.copyTo(it) }
         }
