@@ -1,7 +1,7 @@
 [versions]
 activity = "1.9.3"
 agp = "8.6.1"
-lifecycle = "2.8.6"
+lifecycle = "2.8.7"
 
 [libraries]
 activity = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
