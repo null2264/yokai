@@ -13,7 +13,6 @@ import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.R
 import yokai.i18n.MR
 import yokai.util.lang.getString
-import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.data.updater.AppDownloadInstallJob
 import eu.kanade.tachiyomi.ui.setting.SettingsLegacyController
 import eu.kanade.tachiyomi.ui.setting.ThemePreference
@@ -31,6 +30,7 @@ import eu.kanade.tachiyomi.ui.setting.switchPreference
 import eu.kanade.tachiyomi.ui.setting.titleMRes as titleRes
 import eu.kanade.tachiyomi.util.lang.addBetaTag
 import eu.kanade.tachiyomi.util.lang.compareToCaseInsensitiveNaturalOrder
+import eu.kanade.tachiyomi.util.system.LocaleHelper
 import eu.kanade.tachiyomi.util.system.systemLangContext
 import yokai.domain.base.BasePreferences
 import java.util.*
@@ -159,7 +159,7 @@ class SettingsGeneralController : SettingsLegacyController() {
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 listPreference(activity) {
-                    key = "language"
+                    bindTo(preferences.appLanguage())
                     isPersistent = false
                     title = context.getString(MR.strings.language).let {
                         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
@@ -169,50 +169,35 @@ class SettingsGeneralController : SettingsLegacyController() {
                         }
                     }
                     dialogTitleRes = MR.strings.language
-                    val locales = mutableListOf<String>()
-                    val availLocales = Locale.getAvailableLocales()
-                    resources?.getXml(R.xml.locales_config).use { parser ->
-                        parser ?: return@use
-                        while (parser.next() != XmlResourceParser.END_DOCUMENT) {
-                            if (parser.eventType == XmlResourceParser.START_TAG && parser.name == "locale") {
-                                val locale = parser.getAttributeValue(
-                                    "http://schemas.android.com/apk/res/android",
-                                    "name",
-                                ) ?: continue
-                                if (availLocales.contains(Locale.forLanguageTag(locale))) {
-                                    locales.add(locale)
+
+                    val langs = mutableListOf<Language>()
+                    val parser = context.resources.getXml(R.xml.locales_config)
+                    var eventType = parser.eventType
+                    while (eventType != XmlResourceParser.END_DOCUMENT) {
+                        if (eventType == XmlResourceParser.START_TAG && parser.name == "locale") {
+                            for (i in 0..<parser.attributeCount) {
+                                if (parser.getAttributeName(i) == "name") {
+                                    val langTag = parser.getAttributeValue(i)
+                                    val displayName = LocaleHelper.getLocalizedDisplayName(langTag)
+                                    if (displayName.isNotEmpty()) {
+                                        langs.add(Language(langTag, displayName, LocaleHelper.getDisplayName(langTag)))
+                                    }
                                 }
                             }
                         }
+                        eventType = parser.next()
                     }
-                    val localesMap = locales.associateBy { Locale.forLanguageTag(it) }
-                        .toSortedMap { locale1, locale2 ->
-                            val l1 = locale1.getDisplayName(locale1)
-                                .replaceFirstChar { it.uppercase(locale1) }
-                            val l2 = locale2.getDisplayName(locale2)
-                                .replaceFirstChar { it.uppercase(locale2) }
-                            l1.compareToCaseInsensitiveNaturalOrder(l2)
-                        }
-                    val localArray = localesMap.keys.filterNotNull().toTypedArray()
-                    val localeList = LocaleListCompat.create(*localArray)
-                    val sysDef = context.systemLangContext.getString(MR.strings.system_default)
-                    entries = listOf(sysDef) + localesMap.keys.map { locale ->
-                        locale.getDisplayName(locale).replaceFirstChar { it.uppercase(locale) }
-                    }
-                    entryValues = listOf("") + localesMap.values
+
+                    langs.sortBy { it.localizedDisplayName }
+                    langs.add(0, Language("", context.systemLangContext.getString(MR.strings.system_default), null))
+
+                    entries = langs.map { it.localizedDisplayName }
+                    entryValues = langs.map { it.tag }
                     defaultValue = ""
-                    val locale = AppCompatDelegate.getApplicationLocales()
-                        .getFirstMatch(locales.toTypedArray())
+
+                    val locale = AppCompatDelegate.getApplicationLocales().get(0)?.toLanguageTag()
                     if (locale != null) {
-                        tempValue = localArray.indexOf(
-                            if (locales.contains(locale.toLanguageTag())) {
-                                locale
-                            } else {
-                                localeList.getFirstMatch(arrayOf(locale.toLanguageTag()))
-                            },
-                        ) + 1
-                        tempEntry =
-                            locale.getDisplayName(locale).replaceFirstChar { it.uppercase(locale) }
+                        langs.find { it.tag == locale }?.let { tempValue = langs.indexOf(it) + 1 }
                     }
 
                     onChange {
@@ -277,4 +262,10 @@ class SettingsGeneralController : SettingsLegacyController() {
         themePreference?.lastScrollPostionLight = lastThemeXLight
         themePreference?.lastScrollPostionDark = lastThemeXDark
     }
+
+    data class Language(
+        val tag: String,
+        val localizedDisplayName: String,
+        val displayName: String?,
+    )
 }

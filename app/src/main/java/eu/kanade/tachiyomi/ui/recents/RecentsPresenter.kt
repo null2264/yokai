@@ -18,6 +18,7 @@ import eu.kanade.tachiyomi.ui.base.presenter.BaseCoroutinePresenter
 import eu.kanade.tachiyomi.util.chapter.ChapterFilter
 import eu.kanade.tachiyomi.util.chapter.ChapterSort
 import eu.kanade.tachiyomi.util.system.launchIO
+import eu.kanade.tachiyomi.util.system.launchNonCancellableIO
 import eu.kanade.tachiyomi.util.system.launchUI
 import eu.kanade.tachiyomi.util.system.toast
 import eu.kanade.tachiyomi.util.system.withUIContext
@@ -39,8 +40,11 @@ import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
+import yokai.data.DatabaseHandler
 import yokai.domain.chapter.interactor.GetChapter
 import yokai.domain.chapter.interactor.UpdateChapter
+import yokai.domain.history.interactor.GetHistory
+import yokai.domain.history.interactor.UpsertHistory
 import yokai.domain.recents.RecentsPreferences
 import yokai.domain.recents.interactor.GetRecents
 import yokai.domain.ui.UiPreferences
@@ -54,9 +58,13 @@ class RecentsPresenter(
     val db: DatabaseHelper = Injekt.get(),
     private val chapterFilter: ChapterFilter = Injekt.get(),
 ) : BaseCoroutinePresenter<RecentsController>(), DownloadQueue.DownloadListener {
+    private val handler: DatabaseHandler by injectLazy()
+
     private val getChapter: GetChapter by injectLazy()
     private val getRecents: GetRecents by injectLazy()
     private val updateChapter: UpdateChapter by injectLazy()
+    private val getHistory: GetHistory by injectLazy()
+    private val upsertHistory: UpsertHistory by injectLazy()
 
     private var recentsJob: Job? = null
     var recentItems = listOf<RecentMangaItem>()
@@ -635,7 +643,7 @@ class RecentsPresenter(
         lastRead: Int? = null,
         pagesLeft: Int? = null,
     ) {
-        presenterScope.launch(Dispatchers.IO) {
+        presenterScope.launchNonCancellableIO {
             chapter.apply {
                 this.read = read
                 if (!read) {
@@ -654,10 +662,12 @@ class RecentsPresenter(
      * @param history history belonging to chapter
      */
     fun removeFromHistory(history: History) {
-        history.last_read = 0L
-        history.time_read = 0L
-        db.upsertHistoryLastRead(history).executeAsBlocking()
-        getRecents()
+        presenterScope.launchNonCancellableIO {
+            history.last_read = 0L
+            history.time_read = 0L
+            upsertHistory.await(history)
+            getRecents()
+        }
     }
 
     /**
@@ -665,13 +675,16 @@ class RecentsPresenter(
      * @param mangaId id of manga
      */
     fun removeAllFromHistory(mangaId: Long) {
-        val history = db.getHistoryByMangaId(mangaId).executeAsBlocking()
-        history.forEach {
-            it.last_read = 0L
-            it.time_read = 0L
+        presenterScope.launchNonCancellableIO {
+            val histories = getHistory.awaitAllByMangaId(mangaId).map {
+                it.apply {
+                    last_read = 0L
+                    time_read = 0L
+                }
+            }
+            upsertHistory.awaitBulk(histories)
+            getRecents()
         }
-        db.upsertHistoryLastRead(history).executeAsBlocking()
-        getRecents()
     }
 
     fun requestNext() {
@@ -682,8 +695,8 @@ class RecentsPresenter(
     }
 
     fun deleteAllHistory() {
-        presenterScope.launchIO {
-            db.deleteHistory().executeAsBlocking()
+        presenterScope.launchNonCancellableIO {
+            handler.await { historyQueries.deleteAll() }
             withUIContext {
                 view?.activity?.toast(MR.strings.clear_history_completed)
                 getRecents()

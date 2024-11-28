@@ -32,6 +32,8 @@ import android.view.WindowInsets
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.annotation.Dimension
 import androidx.annotation.FloatRange
 import androidx.annotation.IdRes
@@ -39,6 +41,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.widget.PopupMenu
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionContext
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.animation.addListener
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
@@ -64,7 +72,6 @@ import com.github.florent37.viewtooltip.ViewTooltip
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.math.MathUtils
 import com.google.android.material.navigation.NavigationBarItemView
 import com.google.android.material.navigation.NavigationBarMenuView
@@ -74,9 +81,6 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.snackbar.Snackbar
 import dev.icerock.moko.resources.StringResource
 import eu.kanade.tachiyomi.R
-import yokai.i18n.MR
-import yokai.util.lang.getString
-import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.util.lang.tintText
 import eu.kanade.tachiyomi.util.system.ThemeUtil
 import eu.kanade.tachiyomi.util.system.dpToPx
@@ -90,6 +94,24 @@ import eu.kanade.tachiyomi.widget.StaggeredGridLayoutManagerAccurateOffset
 import kotlin.math.max
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import yokai.presentation.theme.YokaiTheme
+import yokai.util.lang.getString
+
+inline fun ComponentActivity.setComposeContent(
+    parent: CompositionContext? = null,
+    crossinline content: @Composable () -> Unit,
+) {
+    setContent(parent) {
+        YokaiTheme {
+            CompositionLocalProvider(
+                LocalTextStyle provides MaterialTheme.typography.bodySmall,
+                LocalContentColor provides MaterialTheme.colorScheme.onBackground,
+            ) {
+                content()
+            }
+        }
+    }
+}
 
 /**
  * Returns coordinates of view.

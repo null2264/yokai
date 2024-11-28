@@ -9,6 +9,39 @@ CREATE TABLE history(
 
 CREATE INDEX history_history_chapter_id_index ON history(history_chapter_id);
 
+upsert:
+INSERT INTO history(history_chapter_id, history_last_read, history_time_read)
+VALUES(:historyChapterId, :historyLastRead, :historyTimeRead)
+ON CONFLICT(history_chapter_id)
+DO UPDATE
+SET
+    history_last_read = :historyLastRead,
+    history_time_read = :historyTimeRead
+WHERE history_chapter_id = history_chapter_id;
+
+selectLastInsertedRowId:
+SELECT last_insert_rowid();
+
+deleteAll:
+DELETE FROM history;
+
+deleteAllUnread:
+DELETE FROM history WHERE history_last_read = 0;
+
+getByMangaId:
+SELECT history.*
+FROM history
+JOIN chapters
+ON history.history_chapter_id = chapters._id
+WHERE chapters.manga_id = :mangaId AND history.history_chapter_id = chapters._id;
+
+getByChapterUrl:
+SELECT history.*
+FROM history
+JOIN chapters
+ON history.history_chapter_id = chapters._id
+WHERE chapters.url = :chapterUrl AND history.history_chapter_id = chapters._id;
+
 getRecentsUngrouped:
 SELECT
     M.*,

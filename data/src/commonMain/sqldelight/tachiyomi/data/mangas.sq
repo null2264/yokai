@@ -43,7 +43,7 @@ WHERE _id = :mangaId;
 findDuplicateFavorite:
 SELECT *
 FROM mangas
-WHERE favorite = 1 AND lower(title) = :title AND source = :source;
+WHERE favorite = 1 AND lower(title) = :title AND source != :source;
 
 findFavorites:
 SELECT *

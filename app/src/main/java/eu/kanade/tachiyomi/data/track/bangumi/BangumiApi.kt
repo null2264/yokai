@@ -118,7 +118,7 @@ class BangumiApi(
                     .let {
                         if (it.code == 400) return@let null
 
-                        track.status = it.status?.id!!.toInt()
+                        track.status = it.status?.id?.toInt() ?: Bangumi.DEFAULT_STATUS
                         track.last_chapter_read = it.epStatus!!.toFloat()
                         track.score = it.rating!!.toFloat()
                         track

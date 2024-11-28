@@ -42,5 +42,35 @@ interface Track : Serializable {
         fun create(serviceId: Long): Track = TrackImpl().apply {
             sync_id = serviceId
         }
+
+        fun mapper(
+            id: Long,
+            mangaId: Long,
+            syncId: Long,
+            remoteId: Long,
+            libraryId: Long?,
+            title: String,
+            lastChapterRead: Double,
+            totalChapters: Long,
+            status: Long,
+            score: Double,
+            remoteUrl: String,
+            startDate: Long,
+            finishDate: Long,
+        ) = TrackImpl().apply {
+            this.id = id
+            this.manga_id = mangaId
+            this.sync_id = syncId
+            this.media_id = remoteId
+            this.library_id = libraryId
+            this.title = title
+            this.last_chapter_read = lastChapterRead.toFloat()
+            this.total_chapters = totalChapters
+            this.score = score.toFloat()
+            this.status = status.toInt()
+            this.started_reading_date = startDate
+            this.finished_reading_date = finishDate
+            this.tracking_url = remoteUrl
+        }
     }
 }

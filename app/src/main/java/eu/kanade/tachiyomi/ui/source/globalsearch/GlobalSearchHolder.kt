@@ -57,7 +57,7 @@ class GlobalSearchHolder(view: View, val adapter: GlobalSearchAdapter) :
         // Set Title with country code if available.
         binding.title.text = titlePrefix + source.name + langSuffix
         binding.subtitle.isVisible = source !is LocalSource
-        binding.subtitle.text = LocaleHelper.getDisplayName(source.lang)
+        binding.subtitle.text = LocaleHelper.getLocalizedDisplayName(source.lang)
 
         when {
             results == null -> {

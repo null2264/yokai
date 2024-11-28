@@ -18,7 +18,6 @@ voyager = "1.1.0-beta02"
 [libraries]
 aboutlibraries = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
 
-accompanist-webview = { module = "com.google.accompanist:accompanist-webview", version = "0.30.1" }
 chucker-library-no-op = { module = "com.github.ChuckerTeam.Chucker:library-no-op", version.ref = "chucker" }
 chucker-library = { module = "com.github.ChuckerTeam.Chucker:library", version.ref = "chucker" }
 coil3-bom = { module = "io.coil-kt.coil3:coil-bom", version = "3.0.3" }
@@ -99,6 +98,7 @@ viewtooltip = { module = "com.github.CarlosEsco:ViewTooltip", version = "f79a895
 
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
 
 [plugins]
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries" }
@@ -120,4 +120,4 @@ sqlite = [ "sqlite-ktx" ]
 test = [ "junit-api", "kotest-assertions", "mockk" ]
 test-android = [ "junit-android" ]
 test-runtime = [ "junit-engine" ]
-voyager = ["voyager-navigator", "voyager-transitions"]
+voyager = ["voyager-navigator", "voyager-transitions", "voyager-screenmodel"]

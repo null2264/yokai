@@ -9,6 +9,9 @@ class CategoryRepositoryImpl(private val handler: DatabaseHandler) : CategoryRep
     override suspend fun getAll(): List<Category> =
         handler.awaitList { categoriesQueries.findAll(Category::mapper) }
 
+    override suspend fun getAllByMangaId(mangaId: Long): List<Category> =
+        handler.awaitList { categoriesQueries.findAllByMangaId(mangaId, Category::mapper) }
+
     override fun getAllAsFlow(): Flow<List<Category>> =
         handler.subscribeToList { categoriesQueries.findAll(Category::mapper) }
 }

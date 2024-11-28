@@ -5,19 +5,23 @@ import eu.kanade.tachiyomi.data.backup.models.BackupChapter
 import eu.kanade.tachiyomi.data.backup.models.BackupHistory
 import eu.kanade.tachiyomi.data.backup.models.BackupManga
 import eu.kanade.tachiyomi.data.backup.models.BackupTracking
-import eu.kanade.tachiyomi.data.database.DatabaseHelper
 import eu.kanade.tachiyomi.data.library.CustomMangaManager
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import yokai.data.DatabaseHandler
+import yokai.domain.category.interactor.GetCategories
 import yokai.domain.chapter.interactor.GetChapter
+import yokai.domain.history.interactor.GetHistory
+import yokai.domain.track.interactor.GetTrack
 
 class MangaBackupCreator(
-    private val db: DatabaseHelper = Injekt.get(),
     private val customMangaManager: CustomMangaManager = Injekt.get(),
     private val handler: DatabaseHandler = Injekt.get(),
+    private val getCategories: GetCategories = Injekt.get(),
     private val getChapter: GetChapter = Injekt.get(),
+    private val getHistory: GetHistory = Injekt.get(),
+    private val getTrack: GetTrack = Injekt.get(),
 ) {
     suspend operator fun invoke(mangas: List<Manga>, options: BackupOptions): List<BackupManga> {
         return mangas.map {
@@ -55,7 +59,7 @@ class MangaBackupCreator(
         // Check if user wants category information in backup
         if (options.categories) {
             // Backup categories for this manga
-            val categoriesForManga = db.getCategoriesForManga(manga).executeAsBlocking()
+            val categoriesForManga = getCategories.awaitByMangaId(manga.id!!)
             if (categoriesForManga.isNotEmpty()) {
                 mangaObject.categories = categoriesForManga.mapNotNull { it.order }
             }
@@ -63,7 +67,7 @@ class MangaBackupCreator(
 
         // Check if user wants track information in backup
         if (options.tracking) {
-            val tracks = db.getTracks(manga).executeAsBlocking()
+            val tracks = getTrack.awaitAllByMangaId(manga.id!!)
             if (tracks.isNotEmpty()) {
                 mangaObject.tracking = tracks.map { BackupTracking.copyFrom(it) }
             }
@@ -71,7 +75,7 @@ class MangaBackupCreator(
 
         // Check if user wants history information in backup
         if (options.history) {
-            val historyForManga = db.getHistoryByMangaId(manga.id!!).executeAsBlocking()
+            val historyForManga = getHistory.awaitAllByMangaId(manga.id!!)
             if (historyForManga.isNotEmpty()) {
                 val history = historyForManga.mapNotNull { history ->
                     val url = getChapter.awaitById(history.chapter_id)?.url

@@ -4,6 +4,9 @@
     <string name="app_short_name" translatable="false">Yōkai</string>
     <string name="app_normalized_name" translatable="false">Yokai</string>
 
+    <string name="action_menu_overflow_description">More options</string>
+    <string name="action_bar_up_description">Navigate up</string>
+
     <string name="all_files_permission_required">File permissions required</string>
     <string name="external_storage_permission_notice">TachiyomiJ2K requires access to all files in Android 11 to download chapters, create automatic backups, and read local series. \n\nOn the next screen, enable \"Allow access to manage all files.\"</string>
     <string name="external_storage_download_notice">TachiyomiJ2K requires access to all files to download chapters. Tap here, then enable \"Allow access to manage all files.\"</string>
@@ -807,6 +810,7 @@
     <string name="pref_verbose_logging">Verbose logging</string>
     <string name="pref_verbose_logging_summary">Print verbose logs to system log (may reduces app performance)</string>
     <string name="pref_reader_debug_mode">Debug mode</string>
+    <string name="pref_external_local_source">Scan external storages for entries</string>
     <string name="network">Network</string>
     <string name="doh">DNS over HTTPS</string>
     <string name="user_agent_string">Default user agent string</string>
@@ -1036,9 +1040,14 @@
 
     <!-- Webview -->
     <string name="failed_to_bypass_cloudflare">Failed to bypass Cloudflare</string>
+    <string name="information_cloudflare_help">Tap here for help with Cloudflare</string>
     <string name="please_update_webview">Please update the WebView app for better compatibility</string>
+    <string name="information_webview_required">WebView is required for the app to function</string>
     <!-- Do not translate "WebView" -->
     <string name="webview_is_required">WebView is required for Tachiyomi</string>
+    <string name="action_webview_back">Back</string>
+    <string name="action_webview_forward">Forward</string>
+    <string name="action_webview_refresh">Refresh</string>
 
     <!-- App widget -->
     <string name="appwidget_updates_description">See your recently updated library entries</string>

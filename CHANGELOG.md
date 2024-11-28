@@ -17,6 +17,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Added category hopper long-press action to open random series from **any** category
 - Added option to enable reader debug mode
 - Added option to adjust reader's hardware bitmap threshold (@AntsyLich)
+- Added option to scan local entries from `/storage/(sdcard|emulated/0)/Android/data/<yokai>/files/local`
 
 ### Changes
 - Enable 'Split Tall Images' by default (@Smol-Ame)
@@ -24,6 +25,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Tell user to restart the app when User-Agent is changed (@NGB-Was-Taken)
 - Re-enable fetching licensed manga (@Animeboynz)
 - Bangumi search now shows the score and summary of a search result (@MajorTanya)
+- Logs are now written to a file for easier debugging
 
 ### Fixes
 - Fixed only few DoH provider is actually being used (Cloudflare, Google, AdGuard, and Quad9)
@@ -32,7 +34,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Handle some uncaught crashes
 - Fixed crashes due to GestureDetector's firstEvent is sometimes null on some devices
 - Fixed download failed due to invalid XML 1.0 character
-- Fixed issues with shizuku in a multi user setup (@Redjard)
+- Fixed issues with shizuku in a multi-user setup (@Redjard)
+- Fixed some regional/variant languages is not listed in app language option
 
 ### Other
 - Simplify network helper code
@@ -48,16 +51,16 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency com.google.firebase:firebase-bom to v33.6.0
 - Update dependency com.squareup.okio:okio to v3.9.1
 - Update activity to v1.9.3
-- Update lifecycle to v2.8.6
+- Update lifecycle to v2.8.7
 - Update dependency me.zhanghai.android.libarchive:library to v1.1.4
 - Update agp to v8.7.2
-- Update junit5 monorepo to v5.11.2
+- Update junit5 monorepo to v5.11.3
 - Update dependency androidx.test.ext:junit to v1.2.1
 - Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.3.8
 - Update dependency org.jsoup:jsoup to v1.18.1
 - Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.9.0
 - Update serialization to v1.7.3
-- Update dependency gradle to v8.10.2
+- Update dependency gradle to v8.11.1
 - Update dependency androidx.webkit:webkit to v1.12.0
 - Update dependency io.mockk:mockk to v1.13.13
 - Update shizuku to v13.1.5
@@ -69,6 +72,20 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency androidx.core:core-ktx to v1.15.0
 - Update dependency io.coil-kt.coil3:coil-bom to v3.0.3
 - Update xml.serialization to v0.90.3
+- Update dependency co.touchlab:kermit to v2.0.5
+- Replace WebView to use Compose (@arkon)
+  - Fixed Keyboard is covering web page inputs
+- Increased `tryToSetForeground` delay to fix potential crashes
+
+## [1.8.5.12]
+
+### Fixed
+- Fixed scanlator data sometimes disappear
+
+## [1.8.5.11]
+
+### Fixed
+- Fixed crashes caused by Bangumi invalid status
 
 ## [1.8.5.10]
 

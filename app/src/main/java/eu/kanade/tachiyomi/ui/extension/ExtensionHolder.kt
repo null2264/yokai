@@ -88,7 +88,7 @@ class ExtensionHolder(view: View, val adapter: ExtensionAdapter) :
                 append(extension.name + " ")
                 color(binding.extTitle.context.getResourceColor(AR.attr.textColorSecondary)) {
                     scale(0.75f) {
-                        append(LocaleHelper.getDisplayName(extension.lang))
+                        append(LocaleHelper.getLocalizedDisplayName(extension.lang))
                     }
                 }
             }
@@ -97,7 +97,7 @@ class ExtensionHolder(view: View, val adapter: ExtensionAdapter) :
         }
 
         binding.version.text = infoText.joinToString(" • ")
-        binding.lang.text = LocaleHelper.getDisplayName(extension.lang)
+        binding.lang.text = LocaleHelper.getLocalizedDisplayName(extension.lang)
         binding.warning.text = when {
             extension.isNsfw -> itemView.context.getString(MR.strings.nsfw_short)
             else -> ""

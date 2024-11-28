@@ -14,12 +14,14 @@ import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.ui.base.presenter.BaseCoroutinePresenter
 import eu.kanade.tachiyomi.ui.more.stats.StatsHelper.getReadDuration
 import kotlinx.coroutines.runBlocking
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import yokai.domain.manga.interactor.GetLibraryManga
+import yokai.domain.track.interactor.GetTrack
 import yokai.i18n.MR
 import yokai.util.lang.getString
 
@@ -32,8 +34,9 @@ class StatsPresenter(
     private val trackManager: TrackManager = Injekt.get(),
     private val downloadManager: DownloadManager = Injekt.get(),
     private val sourceManager: SourceManager = Injekt.get(),
-) {
+): BaseCoroutinePresenter<StatsController>() {
     private val getLibraryManga: GetLibraryManga by injectLazy()
+    private val getTrack: GetTrack by injectLazy()
 
     private val libraryMangas = getLibrary()
     val mangaDistinct = libraryMangas.distinct()
@@ -43,7 +46,7 @@ class StatsPresenter(
     }
 
     fun getTracks(manga: Manga): MutableList<Track> {
-        return db.getTracks(manga).executeAsBlocking()
+        return runBlocking { getTrack.awaitAllByMangaId(manga.id) }.toMutableList()
     }
 
     fun getLoggedTrackers(): List<TrackService> {

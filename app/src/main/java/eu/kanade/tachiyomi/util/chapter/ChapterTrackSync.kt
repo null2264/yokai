@@ -19,6 +19,7 @@ import kotlinx.coroutines.delay
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import yokai.domain.chapter.interactor.UpdateChapter
+import yokai.domain.track.interactor.GetTrack
 
 /**
  * Helper method for syncing a remote track with the local chapters, and back
@@ -98,9 +99,10 @@ suspend fun updateTrackChapterRead(
     mangaId: Long?,
     newChapterRead: Float,
     retryWhenOnline: Boolean = false,
+    getTrack: GetTrack = Injekt.get()
 ): List<Pair<TrackService, String?>> {
     val trackManager = Injekt.get<TrackManager>()
-    val trackList = db.getTracks(mangaId).executeAsBlocking()
+    val trackList = getTrack.awaitAllByMangaId(mangaId)
     val failures = mutableListOf<Pair<TrackService, String?>>()
     trackList.map { track ->
         val service = trackManager.getService(track.sync_id)

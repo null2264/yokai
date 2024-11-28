@@ -10,3 +10,8 @@ findAll:
 SELECT *
 FROM categories
 ORDER BY sort;
+
+findAllByMangaId:
+SELECT categories.* FROM categories
+JOIN mangas_categories ON categories._id = mangas_categories.category_id
+WHERE mangas_categories.manga_id = :mangaId;

@@ -57,6 +57,7 @@ import eu.kanade.tachiyomi.ui.setting.preference
 import eu.kanade.tachiyomi.ui.setting.preferenceCategory
 import eu.kanade.tachiyomi.ui.setting.switchPreference
 import eu.kanade.tachiyomi.util.CrashLogUtil
+import eu.kanade.tachiyomi.util.lang.addBetaTag
 import eu.kanade.tachiyomi.util.system.GLUtil
 import eu.kanade.tachiyomi.util.system.disableItems
 import eu.kanade.tachiyomi.util.system.isPackageInstalled
@@ -88,6 +89,7 @@ import uy.kohesive.injekt.injectLazy
 import yokai.domain.base.BasePreferences.ExtensionInstaller
 import yokai.domain.extension.interactor.TrustExtension
 import yokai.domain.manga.interactor.GetManga
+import yokai.domain.source.SourcePreferences
 import yokai.domain.ui.settings.ReaderPreferences
 import yokai.i18n.MR
 import yokai.util.lang.getString
@@ -100,6 +102,7 @@ class SettingsAdvancedController : SettingsLegacyController() {
     private val network: NetworkHelper by injectLazy()
     private val networkPreferences: NetworkPreferences by injectLazy()
     private val readerPreferences: ReaderPreferences by injectLazy()
+    private val sourcePreferences: SourcePreferences by injectLazy()
 
     private val db: DatabaseHelper by injectLazy()
 
@@ -437,6 +440,15 @@ class SettingsAdvancedController : SettingsLegacyController() {
             switchPreference {
                 bindTo(readerPreferences.debugMode())
                 titleRes = MR.strings.pref_reader_debug_mode
+            }
+        }
+
+        preferenceCategory {
+            titleRes = MR.strings.local_source
+
+            switchPreference {
+                bindTo(sourcePreferences.externalLocalSource())
+                title = context.getString(MR.strings.pref_external_local_source).addBetaTag(context)
             }
         }
 

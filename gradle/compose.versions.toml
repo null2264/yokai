@@ -10,6 +10,7 @@ material-motion = { module = "io.github.fornewid:material-motion-compose-core", 
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 icons = { module = "androidx.compose.material:material-icons-extended" }
+webview = { module = "io.github.kevinnzou:compose-webview", version = "0.33.3" }
 
 [bundles]
 compose = [ "animation", "foundation", "material3", "material-motion", "ui-tooling-preview", "icons" ]

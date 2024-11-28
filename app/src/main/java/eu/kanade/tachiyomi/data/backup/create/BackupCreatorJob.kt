@@ -29,7 +29,6 @@ import eu.kanade.tachiyomi.util.system.workManager
 import java.util.concurrent.TimeUnit
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
-import uy.kohesive.injekt.injectLazy
 import yokai.domain.backup.BackupPreferences
 import yokai.domain.storage.StorageManager
 
@@ -37,7 +36,6 @@ class BackupCreatorJob(private val context: Context, workerParams: WorkerParamet
     CoroutineWorker(context, workerParams) {
 
     private val notifier = BackupNotifier(context.localeContext)
-    private val storageManager: StorageManager by injectLazy()
 
     override suspend fun doWork(): Result {
         val isAutoBackup = inputData.getBoolean(IS_AUTO_BACKUP_KEY, true)
@@ -49,14 +47,6 @@ class BackupCreatorJob(private val context: Context, workerParams: WorkerParamet
             ?: return Result.failure()
 
         tryToSetForeground()
-        /*
-        if (isAutoBackup) {
-            notifier.showBackupProgress()  // Remove when tryToSetForeground is "fixed"
-        } else {
-            // FIXME: tryToSetForeground keep causing auto backup to fail
-            tryToSetForeground()
-        }
-        */
 
         val options = inputData.getBooleanArray(BACKUP_FLAGS_KEY)?.let { BackupOptions.fromBooleanArray(it) }
             ?: BackupOptions()
@@ -74,8 +64,10 @@ class BackupCreatorJob(private val context: Context, workerParams: WorkerParamet
         }
     }
 
-    private fun getAutomaticBackupLocation(): Uri? =
-        storageManager.getAutomaticBackupsDirectory()?.uri
+    private fun getAutomaticBackupLocation(): Uri? {
+        val storageManager = Injekt.get<StorageManager>()
+        return storageManager.getAutomaticBackupsDirectory()?.uri
+    }
 
     override suspend fun getForegroundInfo(): ForegroundInfo {
         return ForegroundInfo(

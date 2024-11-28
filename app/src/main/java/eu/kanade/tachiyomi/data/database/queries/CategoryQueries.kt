@@ -34,6 +34,4 @@ interface CategoryQueries : DbProvider {
     fun insertCategories(categories: List<Category>) = db.put().objects(categories).prepare()
 
     fun deleteCategory(category: Category) = db.delete().`object`(category).prepare()
-
-    fun deleteCategories(categories: List<Category>) = db.delete().objects(categories).prepare()
 }

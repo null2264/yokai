@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.source
 
+import android.app.Application
 import android.content.Context
 import androidx.core.net.toFile
 import co.touchlab.kermit.Logger
@@ -10,10 +11,10 @@ import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.util.lang.compareToCaseInsensitiveNaturalOrder
+import eu.kanade.tachiyomi.util.storage.DiskUtil
 import eu.kanade.tachiyomi.util.storage.EpubFile
 import eu.kanade.tachiyomi.util.storage.fillMetadata
 import eu.kanade.tachiyomi.util.system.ImageUtil
-import eu.kanade.tachiyomi.util.system.e
 import eu.kanade.tachiyomi.util.system.extension
 import eu.kanade.tachiyomi.util.system.nameWithoutExtension
 import eu.kanade.tachiyomi.util.system.withIOContext
@@ -21,7 +22,7 @@ import eu.kanade.tachiyomi.util.system.writeText
 import java.io.FileInputStream
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
-import java.util.concurrent.*
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.serialization.Serializable
@@ -38,6 +39,7 @@ import yokai.core.metadata.ComicInfo
 import yokai.core.metadata.copyFromComicInfo
 import yokai.core.metadata.toComicInfo
 import yokai.domain.chapter.services.ChapterRecognition
+import yokai.domain.source.SourcePreferences
 import yokai.domain.storage.StorageManager
 import yokai.i18n.MR
 import yokai.util.lang.getString
@@ -57,9 +59,13 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
             }
         }
 
-        fun getMangaLang(manga: SManga): String {
+        fun getMangaLang(manga: SManga, context: Context = Injekt.get<Application>()): String {
             return langMap.getOrPut(manga.url) {
-                val localDetails = getBaseDirectory()?.findFile(manga.url)?.listFiles().orEmpty()
+                val dir = getBaseDirectories(context).asSequence()
+                    .mapNotNull { it?.findFile(manga.url)?.listFiles() }
+                    .firstOrNull()
+
+                val localDetails = dir.orEmpty()
                     .filter { !it.isDirectory }
                     .firstOrNull { it.name == COMIC_INFO_FILE }
 
@@ -71,15 +77,19 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
             }
         }
 
-        fun invalidateCover(manga: SManga) {
-            val dir = getBaseDirectory()?.findFile(manga.url) ?: return
+        fun invalidateCover(manga: SManga, context: Context = Injekt.get<Application>()) {
+            val dir = getBaseDirectories(context).asSequence()
+                .mapNotNull { it?.findFile(manga.url) }
+                .firstOrNull() ?: return
             val cover = getCoverFile(dir) ?: return
 
             manga.thumbnail_url = cover.uri.toString()
         }
 
-        fun updateCover(manga: SManga, input: InputStream): UniFile? {
-            val dir = getBaseDirectory()?.findFile(manga.url)
+        fun updateCover(manga: SManga, input: InputStream, context: Context = Injekt.get<Application>()): UniFile? {
+            val dir = getBaseDirectories(context).asSequence()
+                .mapNotNull { it?.findFile(manga.url) }
+                .firstOrNull()
             if (dir == null) {
                 input.close()
                 return null
@@ -117,8 +127,18 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
         }
 
         private fun getBaseDirectory(): UniFile? {
-            val storageManager: StorageManager by injectLazy()
+            val storageManager: StorageManager = Injekt.get()
             return storageManager.getLocalSourceDirectory()
+        }
+
+        private fun getBaseDirectories(context: Context): List<UniFile?> {
+            val sourcePreferences: SourcePreferences = Injekt.get()
+            val base = listOf(getBaseDirectory())
+            if (!sourcePreferences.externalLocalSource().get()) return base
+
+            return base + DiskUtil.getExternalStorages(context, false).map {
+                UniFile.fromFile(it)?.createDirectory(StorageManager.LOCAL_SOURCE_PATH)
+            }
         }
     }
 
@@ -145,7 +165,9 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
             0L
         }
 
-        var mangaDirs = getBaseDirectory()?.listFiles().orEmpty()
+        var mangaDirs = getBaseDirectories(context).asSequence()
+            .mapNotNull { it?.listFiles()?.toList() }
+            .flatten()
             .filter { it.isDirectory && !it.name.orEmpty().startsWith('.') }
             .distinctBy { it.name }
             .filter {
@@ -188,19 +210,21 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
                     }
                 }
             }
-        }.awaitAll()
+        }.toList().awaitAll()
 
-        MangasPage(mangas.toList(), false)
+        MangasPage(mangas, false)
     }
 
     override suspend fun getLatestUpdates(page: Int) = getSearchManga(page, "", latestFilters)
 
     override suspend fun getMangaDetails(manga: SManga): SManga = withIOContext {
         // Making sure that we have the latest cover file path, in case user use different file format
-        invalidateCover(manga)
+        invalidateCover(manga, context)
 
         try {
-            val localMangaDir = getBaseDirectory()?.findFile(manga.url) ?: throw Exception("${manga.url} is not a valid directory")
+            val localMangaDir = getBaseDirectories(context).asSequence()
+                .mapNotNull { it?.findFile(manga.url) }
+                .firstOrNull() ?: throw Exception("${manga.url} is not a valid directory")
             val localMangaFiles = localMangaDir.listFiles().orEmpty().filter { !it.isDirectory }
             val comicInfoFile = localMangaFiles.firstOrNull { it.name.orEmpty() == COMIC_INFO_FILE }
             val legacyJsonFile = localMangaFiles.firstOrNull { it.extension.orEmpty().equals("json", true) }
@@ -249,7 +273,9 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
     }
 
     fun updateMangaInfo(manga: SManga, lang: String?) {
-        val directory = getBaseDirectory()?.findFile(manga.url) ?: return
+        val directory = getBaseDirectories(context).asSequence()
+            .mapNotNull { it?.findFile(manga.url) }
+            .firstOrNull() ?: return
         if (!directory.exists()) return
 
         lang?.let { langMap[manga.url] = it }
@@ -274,8 +300,7 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
 
             other as MangaJson
 
-            if (title != other.title) return false
-            return true
+            return title == other.title
         }
 
         override fun hashCode(): Int {
@@ -284,7 +309,12 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
     }
 
     override suspend fun getChapterList(manga: SManga): List<SChapter> = withIOContext {
-        val chapters = getBaseDirectory()?.findFile(manga.url)?.listFiles().orEmpty()
+        val dir = getBaseDirectories(context).asSequence()
+            .mapNotNull { it?.findFile(manga.url)?.listFiles() }
+            .firstOrNull()
+            .orEmpty()
+
+        val chapters = dir
             .filter { it.isDirectory || isSupportedArchive(it.extension.orEmpty()) || it.extension.equals("epub", true) }
             .map { chapterFile ->
                 SChapter.create().apply {
@@ -331,12 +361,10 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
     }
 
     fun getFormat(chapter: SChapter): Format {
-        val dir = getBaseDirectory()
-
         val (mangaDirName, chapterName) = chapter.url.split('/', limit = 2)
-        val chapFile = dir
-            ?.findFile(mangaDirName)
-            ?.findFile(chapterName)
+        val chapFile = getBaseDirectories(context).asSequence()
+            .mapNotNull { it?.findFile(mangaDirName)?.findFile(chapterName) }
+            .firstOrNull()
         if (chapFile == null || !chapFile.exists())
             throw Exception(context.getString(MR.strings.chapter_not_found))
 
@@ -360,7 +388,7 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
                         ?.sortedWith { f1, f2 -> f1.name.orEmpty().compareToCaseInsensitiveNaturalOrder(f2.name.orEmpty()) }
                         ?.find { !it.isDirectory && ImageUtil.isImage(it.name) { FileInputStream(it.uri.toFile()) } }
 
-                    entry?.let { updateCover(manga, it.openInputStream()) }
+                    entry?.let { updateCover(manga, it.openInputStream(), context) }
                 }
                 is Format.Archive -> {
                     format.file.archiveReader(context).use { reader ->
@@ -370,14 +398,14 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
                                 .find { it.isFile && ImageUtil.isImage(it.name) { reader.getInputStream(it.name)!! } }
                         }
 
-                        entry?.let { updateCover(manga, reader.getInputStream(it.name)!!) }
+                        entry?.let { updateCover(manga, reader.getInputStream(it.name)!!, context) }
                     }
                 }
                 is Format.Epub -> {
                     EpubFile(format.file.archiveReader(context)).use { epub ->
                         val entry = epub.getImagesFromPages().firstOrNull()
 
-                        entry?.let { updateCover(manga, epub.getInputStream(it)!!) }
+                        entry?.let { updateCover(manga, epub.getInputStream(it)!!, context) }
                     }
                 }
             }

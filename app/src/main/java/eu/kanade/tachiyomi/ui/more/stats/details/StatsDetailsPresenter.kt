@@ -39,6 +39,7 @@ import yokai.util.lang.getString
 import java.util.*
 import java.util.concurrent.*
 import kotlin.math.roundToInt
+import yokai.domain.track.interactor.GetTrack
 
 class StatsDetailsPresenter(
     private val db: DatabaseHelper = Injekt.get(),
@@ -47,6 +48,7 @@ class StatsDetailsPresenter(
     private val sourceManager: SourceManager = Injekt.get(),
 ) : BaseCoroutinePresenter<StatsDetailsController>() {
     private val getLibraryManga: GetLibraryManga by injectLazy()
+    private val getTrack: GetTrack by injectLazy()
 
     private val context
         get() = view?.view?.context ?: prefs.context
@@ -493,7 +495,7 @@ class StatsDetailsPresenter(
         } else {
             sourceManager.get(source)?.lang
         } ?: return context.getString(MR.strings.unknown)
-        return LocaleHelper.getDisplayName(code)
+        return LocaleHelper.getLocalizedDisplayName(code)
     }
 
     /**
@@ -557,7 +559,7 @@ class StatsDetailsPresenter(
     }
 
     fun getTracks(manga: Manga): MutableList<Track> {
-        return db.getTracks(manga).executeAsBlocking()
+        return runBlocking { getTrack.awaitAllByMangaId(manga.id) }.toMutableList()
     }
 
     fun getLibrary(): MutableList<LibraryManga> {

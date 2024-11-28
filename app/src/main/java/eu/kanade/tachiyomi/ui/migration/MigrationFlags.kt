@@ -7,7 +7,9 @@ import eu.kanade.tachiyomi.data.database.DatabaseHelper
 import eu.kanade.tachiyomi.data.library.CustomMangaManager
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.util.system.toInt
+import kotlinx.coroutines.runBlocking
 import uy.kohesive.injekt.injectLazy
+import yokai.domain.track.interactor.GetTrack
 import yokai.i18n.MR
 import yokai.util.lang.getString
 
@@ -21,6 +23,7 @@ object MigrationFlags {
     private val coverCache: CoverCache by injectLazy()
     private val db: DatabaseHelper by injectLazy()
     private val customMangaManager: CustomMangaManager by injectLazy()
+    private val getTrack: GetTrack by injectLazy()
 
     val titles get() = arrayOf(MR.strings.chapters, MR.strings.categories, MR.strings.tracking, MR.strings.custom_manga_info)
     val flags get() = arrayOf(CHAPTERS, CATEGORIES, TRACK, CUSTOM_MANGA_INFO)
@@ -61,7 +64,7 @@ object MigrationFlags {
     fun flags(manga: Manga?): Array<Int> {
         val flags = arrayOf(CHAPTERS, CATEGORIES).toMutableList()
         if (manga != null) {
-            if (db.getTracks(manga).executeAsBlocking().isNotEmpty()) {
+            if (runBlocking { getTrack.awaitAllByMangaId(manga.id) }.isNotEmpty()) {
                 flags.add(TRACK)
             }
 

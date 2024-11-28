@@ -42,9 +42,12 @@ import eu.kanade.tachiyomi.util.view.withFadeTransaction
 import eu.kanade.tachiyomi.widget.TriStateCheckBox
 import java.util.Date
 import java.util.Locale
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import yokai.domain.chapter.interactor.GetChapter
+import yokai.domain.manga.interactor.GetManga
 import yokai.i18n.MR
 import yokai.util.lang.getString
 import android.R as AR
@@ -144,20 +147,16 @@ fun Manga.addOrRemoveToFavorites(
     onMangaAdded: (Pair<Long, Boolean>?) -> Unit,
     onMangaMoved: () -> Unit,
     onMangaDeleted: () -> Unit,
+    getManga: GetManga = Injekt.get()
 ): Snackbar? {
     if (!favorite) {
         if (checkForDupes) {
-            // TODO
-            /*
-            val duplicateManga = runBlocking(Dispatchers.IO) { handler.awaitOne {
-                mangasQueries.findDuplicateFavorite(
+            val duplicateManga = runBlocking(Dispatchers.IO) {
+                getManga.awaitDuplicateFavorite(
                     this@addOrRemoveToFavorites.title,
                     this@addOrRemoveToFavorites.source,
-                    Manga::mapper,
                 )
-            } }
-             */
-            val duplicateManga = db.getDuplicateLibraryManga(this).executeAsBlocking()
+            }
             if (duplicateManga != null) {
                 showAddDuplicateDialog(
                     this,

@@ -85,6 +85,7 @@ import yokai.domain.chapter.interactor.GetChapter
 import yokai.domain.manga.interactor.GetLibraryManga
 import yokai.domain.manga.interactor.UpdateManga
 import yokai.domain.manga.models.cover
+import yokai.domain.track.interactor.GetTrack
 import yokai.i18n.MR
 import yokai.util.lang.getString
 
@@ -103,6 +104,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private val mangaShortcutManager: MangaShortcutManager = Injekt.get()
     private val getLibraryManga: GetLibraryManga = Injekt.get()
     private val updateManga: UpdateManga = Injekt.get()
+    private val getTrack: GetTrack = Injekt.get()
 
     private var extraDeferredJobs = mutableListOf<Deferred<Any>>()
 
@@ -302,7 +304,6 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
      * Method that updates the metadata of the connected tracking services. It's called in a
      * background thread, so it's safe to do heavy operations or network calls here.
      */
-
     private suspend fun updateTrackings(mangaToUpdate: List<LibraryManga>) {
         // Initialize the variables holding the progress of the updates.
         var count = 0
@@ -312,7 +313,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
         mangaToUpdate.forEach { manga ->
             notifier.showProgressNotification(manga, count++, mangaToUpdate.size)
 
-            val tracks = db.getTracks(manga).executeAsBlocking()
+            val tracks = getTrack.awaitAllByMangaId(manga.id!!)
 
             tracks.forEach { track ->
                 val service = trackManager.getService(track.sync_id)

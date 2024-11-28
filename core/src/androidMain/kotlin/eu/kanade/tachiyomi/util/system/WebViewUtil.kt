@@ -7,6 +7,8 @@ import android.webkit.CookieManager
 import android.webkit.WebSettings
 import android.webkit.WebView
 import co.touchlab.kermit.Logger
+import kotlin.coroutines.resume
+import kotlinx.coroutines.suspendCancellableCoroutine
 
 object WebViewUtil {
     const val MINIMUM_WEBVIEW_VERSION = 114
@@ -64,4 +66,8 @@ private fun WebView.getDefaultUserAgentString(): String {
     settings.userAgentString = originalUA
 
     return defaultUserAgentString
+}
+
+suspend fun WebView.getHtml(): String = suspendCancellableCoroutine {
+    evaluateJavascript("document.documentElement.outerHTML") { html -> it.resume(html) }
 }

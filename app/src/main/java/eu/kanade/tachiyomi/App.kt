@@ -33,6 +33,7 @@ import coil3.request.crossfade
 import coil3.util.DebugLogger
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
+import com.hippo.unifile.UniFile
 import eu.kanade.tachiyomi.appwidget.TachiyomiWidgetManager
 import eu.kanade.tachiyomi.core.preference.Preference
 import eu.kanade.tachiyomi.core.preference.PreferenceStore
@@ -56,6 +57,7 @@ import eu.kanade.tachiyomi.util.system.ImageUtil
 import eu.kanade.tachiyomi.util.system.launchIO
 import eu.kanade.tachiyomi.util.system.localeContext
 import eu.kanade.tachiyomi.util.system.notification
+import eu.kanade.tachiyomi.util.system.setToDefault
 import java.security.Security
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
@@ -66,12 +68,14 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import yokai.core.CrashlyticsLogWriter
+import yokai.core.RollingUniFileLogWriter
 import yokai.core.di.appModule
 import yokai.core.di.domainModule
 import yokai.core.di.preferenceModule
 import yokai.core.migration.Migrator
 import yokai.core.migration.migrations.migrations
 import yokai.domain.base.BasePreferences
+import yokai.domain.storage.StorageManager
 import yokai.i18n.MR
 import yokai.util.lang.getString
 
@@ -80,14 +84,13 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
     val preferences: PreferencesHelper by injectLazy()
     val basePreferences: BasePreferences by injectLazy()
     val networkPreferences: NetworkPreferences by injectLazy()
+    private val storageManager: StorageManager by injectLazy()
 
     private val disableIncognitoReceiver = DisableIncognitoReceiver()
 
     @SuppressLint("LaunchActivityFromNotification")
     override fun onCreate() {
         super<Application>.onCreate()
-
-        if (!BuildConfig.DEBUG) Logger.addLogWriter(CrashlyticsLogWriter())
 
         // TLS 1.3 support for Android 10 and below
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
@@ -107,6 +110,8 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
 
         val scope = ProcessLifecycleOwner.get().lifecycleScope
+
+        Logger.setToDefault(buildLogWritersToAdd(storageManager.getLogsDirectory()))
 
         basePreferences.crashReport().changes()
             .onEach {
@@ -274,6 +279,14 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
         }
             .build()
     }
+}
+
+fun buildLogWritersToAdd(
+    logPath: UniFile?,
+) = buildList {
+    if (!BuildConfig.DEBUG) add(CrashlyticsLogWriter())
+
+    if (logPath != null) add(RollingUniFileLogWriter(logPath))
 }
 
 private const val ACTION_DISABLE_INCOGNITO_MODE = "tachi.action.DISABLE_INCOGNITO_MODE"

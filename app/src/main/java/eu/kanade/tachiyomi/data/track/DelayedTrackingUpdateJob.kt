@@ -18,9 +18,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
+import uy.kohesive.injekt.injectLazy
+import yokai.domain.manga.interactor.GetManga
+import yokai.domain.track.interactor.GetTrack
 
 class DelayedTrackingUpdateJob(context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
+
+    private val getManga: GetManga by injectLazy()
+    private val getTrack: GetTrack by injectLazy()
 
     override suspend fun doWork(): Result {
         val preferences = Injekt.get<PreferencesHelper>()
@@ -40,8 +46,8 @@ class DelayedTrackingUpdateJob(context: Context, workerParams: WorkerParameters)
         withContext(Dispatchers.IO) {
             trackings.forEach {
                 val mangaId = it.key
-                val manga = db.getManga(mangaId).executeAsBlocking() ?: return@withContext
-                val trackList = db.getTracks(manga).executeAsBlocking()
+                val manga = getManga.awaitById(mangaId) ?: return@withContext
+                val trackList = getTrack.awaitAllByMangaId(manga.id)
                 it.value.map { tC ->
                     val trackChapter = tC.second
                     val service = trackManager.getService(trackChapter.first)

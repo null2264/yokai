@@ -1,6 +1,5 @@
 package eu.kanade.tachiyomi.data.database.queries
 
-import com.pushtorefresh.storio.sqlite.queries.DeleteQuery
 import com.pushtorefresh.storio.sqlite.queries.RawQuery
 import eu.kanade.tachiyomi.data.database.DbProvider
 import eu.kanade.tachiyomi.data.database.inTransactionReturn
@@ -92,32 +91,12 @@ interface HistoryQueries : DbProvider {
         return cursor.getLong(0)
     }
 
-    fun getHistoryByChapterUrl(chapterUrl: String) = db.get()
-        .`object`(History::class.java)
-        .withQuery(
-            RawQuery.builder()
-                .query(getHistoryByChapterUrl())
-                .args(chapterUrl)
-                .observesTables(HistoryTable.TABLE)
-                .build(),
-        )
-        .prepare()
-
-    /**
-     * Updates the history last read.
-     * Inserts history object if not yet in database
-     * @param history history object
-     */
-    fun upsertHistoryLastRead(history: History) = db.put()
-        .`object`(history)
-        .withPutResolver(HistoryUpsertResolver())
-        .prepare()
-
     /**
      * Updates the history last read.
      * Inserts history object if not yet in database
      * @param historyList history object list
      */
+    // FIXME: Migrate to SQLDelight, on halt: in StorIO transaction
     fun upsertHistoryLastRead(historyList: List<History>) = db.inTransactionReturn {
         db.put()
             .objects(historyList)
@@ -125,21 +104,4 @@ interface HistoryQueries : DbProvider {
             .prepare()
     }
 
-    fun deleteHistory() = db.delete()
-        .byQuery(
-            DeleteQuery.builder()
-                .table(HistoryTable.TABLE)
-                .build(),
-        )
-        .prepare()
-
-    fun deleteHistoryNoLastRead() = db.delete()
-        .byQuery(
-            DeleteQuery.builder()
-                .table(HistoryTable.TABLE)
-                .where("${HistoryTable.COL_LAST_READ} = ?")
-                .whereArgs(0)
-                .build(),
-        )
-        .prepare()
 }

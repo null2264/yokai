@@ -131,7 +131,7 @@ jobs:
           path: app/build/outputs/mapping/standard*
 
       - name: Publish test report
-        uses: mikepenz/action-junit-report@v4
+        uses: mikepenz/action-junit-report@v5
         if: success() || failure()
         with:
           include_passed: true

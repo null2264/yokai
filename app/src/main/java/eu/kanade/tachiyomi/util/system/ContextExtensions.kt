@@ -410,7 +410,7 @@ fun setLocaleByAppCompat() {
 suspend fun CoroutineWorker.tryToSetForeground() {
     try {
         setForeground(getForegroundInfo())
-        delay(500)
+        delay(1000)
     } catch (e: IllegalStateException) {
         Logger.e(e) { "Not allowed to set foreground job" }
     }

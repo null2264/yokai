@@ -10,15 +10,14 @@ import eu.kanade.tachiyomi.domain.manga.models.Manga
 
 interface TrackQueries : DbProvider {
 
-    fun getTracks(manga: Manga) = getTracks(manga.id)
-
-    fun getTracks(mangaId: Long?) = db.get()
+    // FIXME: Migrate to SQLDelight, on halt: in StorIO transaction
+    fun getTracks(manga: Manga) = db.get()
         .listOfObjects(Track::class.java)
         .withQuery(
             Query.builder()
                 .table(TrackTable.TABLE)
                 .where("${TrackTable.COL_MANGA_ID} = ?")
-                .whereArgs(mangaId)
+                .whereArgs(manga.id)
                 .build(),
         )
         .prepare()

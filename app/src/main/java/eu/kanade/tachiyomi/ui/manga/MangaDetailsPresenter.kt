@@ -94,6 +94,7 @@ import yokai.domain.manga.interactor.UpdateManga
 import yokai.domain.manga.models.MangaUpdate
 import yokai.domain.manga.models.cover
 import yokai.domain.storage.StorageManager
+import yokai.domain.track.interactor.GetTrack
 import yokai.i18n.MR
 import yokai.util.lang.getString
 
@@ -112,6 +113,7 @@ class MangaDetailsPresenter(
     private val getManga: GetManga by injectLazy()
     private val updateChapter: UpdateChapter by injectLazy()
     private val updateManga: UpdateManga by injectLazy()
+    private val getTrack: GetTrack by injectLazy()
 
     private val networkPreferences: NetworkPreferences by injectLazy()
 
@@ -176,7 +178,9 @@ class MangaDetailsPresenter(
 
         downloadManager.addListener(this)
 
-        tracks = db.getTracks(manga).executeAsBlocking()
+        runBlocking {
+            tracks = getTrack.awaitAllByMangaId(manga.id!!)
+        }
     }
 
     /**
@@ -1008,7 +1012,7 @@ class MangaDetailsPresenter(
     }
 
     suspend fun fetchTracks() {
-        tracks = withContext(Dispatchers.IO) { db.getTracks(manga).executeAsBlocking() }
+        tracks = withContext(Dispatchers.IO) { getTrack.awaitAllByMangaId(manga.id!!) }
         setTrackItems()
         withContext(Dispatchers.Main) { view?.refreshTracking(trackList) }
     }

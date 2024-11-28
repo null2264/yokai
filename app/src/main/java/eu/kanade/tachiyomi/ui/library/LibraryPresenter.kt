@@ -73,6 +73,7 @@ import yokai.domain.manga.interactor.GetLibraryManga
 import yokai.domain.manga.interactor.GetManga
 import yokai.domain.manga.interactor.UpdateManga
 import yokai.domain.manga.models.MangaUpdate
+import yokai.domain.track.interactor.GetTrack
 import yokai.i18n.MR
 import yokai.util.isLewd
 import yokai.util.lang.getString
@@ -94,6 +95,7 @@ class LibraryPresenter(
     private val getChapter: GetChapter by injectLazy()
     private val updateChapter: UpdateChapter by injectLazy()
     private val updateManga: UpdateManga by injectLazy()
+    private val getTrack: GetTrack by injectLazy()
 
     private val context = preferences.context
     private val viewContext
@@ -423,7 +425,7 @@ class LibraryPresenter(
         return filteredItems
     }
 
-    private fun matchesFilters(
+    private suspend fun matchesFilters(
         item: LibraryItem,
         filterPrefs: ItemPreferences,
         filterTrackers: String,
@@ -475,7 +477,7 @@ class LibraryPresenter(
         return true
     }
 
-    private fun matchesCustomFilters(
+    private suspend fun matchesCustomFilters(
         item: LibraryItem,
         customFilters: FilteredLibraryController,
         filterTrackers: String,
@@ -498,7 +500,7 @@ class LibraryPresenter(
         }
         val trackingScore = customFilters.filterTrackingScore
         if (trackingScore > 0 || trackingScore == -1) {
-            val tracks = db.getTracks(item.manga).executeAsBlocking()
+            val tracks = getTrack.awaitAllByMangaId(item.manga.id!!)
 
             val hasTrack = loggedServices.any { service ->
                 tracks.any { it.sync_id == service.id }
@@ -556,14 +558,14 @@ class LibraryPresenter(
         return service?.get10PointScore(this.score)
     }
 
-    private fun matchesFilterTracking(
+    private suspend fun matchesFilterTracking(
         item: LibraryItem,
         filterTracked: Int,
         filterTrackers: String,
     ): Boolean {
         // Filter for tracked (or per tracked service)
         if (filterTracked != STATE_IGNORE) {
-            val tracks = db.getTracks(item.manga).executeAsBlocking()
+            val tracks = getTrack.awaitAllByMangaId(item.manga.id!!)
 
             val hasTrack = loggedServices.any { service ->
                 tracks.any { it.sync_id == service.id }
@@ -992,7 +994,7 @@ class LibraryPresenter(
         )
     }
 
-    private fun getDynamicLibraryItems(
+    private suspend fun getDynamicLibraryItems(
         libraryManga: List<LibraryManga>,
         sortingMode: Int,
         isAscending: Boolean,
@@ -1031,7 +1033,7 @@ class LibraryPresenter(
                     }
                 }
                 BY_TRACK_STATUS -> {
-                    val tracks = db.getTracks(manga).executeAsBlocking()
+                    val tracks = getTrack.awaitAllByMangaId(manga.id!!)
                     val track = tracks.find { track ->
                         loggedServices.any { it.id == track?.sync_id }
                     }

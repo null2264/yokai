@@ -31,7 +31,7 @@ fun runCommand(command: String): String {
     return String(byteOut.toByteArray()).trim()
 }
 
-val _versionName = "1.8.5.10"
+val _versionName = "1.8.5.12"
 val betaCount by lazy {
     val betaTags = runCommand("git tag -l --sort=refname v${_versionName}-b*")
 
@@ -168,7 +168,7 @@ dependencies {
     implementation(compose.bundles.compose)
     debugImplementation(compose.ui.tooling)
     implementation(libs.compose.theme.adapter3)
-    implementation(libs.accompanist.webview)
+    implementation(compose.webview)
 
     implementation(libs.flexbox)
 
