@@ -50,7 +50,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update activity to v1.9.3
 - Update lifecycle to v2.8.6
 - Update dependency me.zhanghai.android.libarchive:library to v1.1.4
-- Update agp to v8.6.1
+- Update agp to v8.7.2
 - Update junit5 monorepo to v5.11.2
 - Update dependency androidx.test.ext:junit to v1.2.1
 - Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.3.8
