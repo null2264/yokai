@@ -54,13 +54,10 @@ import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -105,10 +102,7 @@ class LibraryPresenter(
     private val getTrack: GetTrack by injectLazy()
     private val getHistory: GetHistory by injectLazy()
 
-    private val _fetchLibrary: Channel<Unit> = Channel(Channel.UNLIMITED)
-    val fetchLibrary = _fetchLibrary.receiveAsFlow()
-        .onStart { emit(Unit) }
-        .shareIn(presenterScope, SharingStarted.Lazily, 1)
+    private val forceUpdateEvent: Channel<Unit> = Channel(Channel.UNLIMITED)
 
     private val context = preferences.context
     private val viewContext
@@ -131,6 +125,8 @@ class LibraryPresenter(
     private var allCategories: List<Category> = emptyList()
 
     /** List of all manga to update the */
+    // TODO: Store sectioned before flattening it out for "show all categories"
+    private var currentLibrary: Map<Category, List<LibraryItem>> = mapOf()
     var libraryItems: List<LibraryItem> = emptyList()
     private var sectionedLibraryItems: MutableMap<Int, List<LibraryItem>> = mutableMapOf()
     var currentCategory = -1
@@ -199,6 +195,7 @@ class LibraryPresenter(
         }
 
         subscribeLibrary()
+        updateLibrary()
 
         if (!preferences.showLibrarySearchSuggestions().isSet()) {
             DelayedLibrarySuggestionsJob.setupTask(context, true)
@@ -233,40 +230,28 @@ class LibraryPresenter(
                 categories = lastCategories ?: getCategories.await().toMutableList()
             }
 
-            combine(
-                getLibraryFlow(),
-                fetchLibrary,
-            ) { data, _ ->
+            getLibraryFlow().collectLatest { data ->
                 categories = data.categories
                 allCategories = data.allCategories
 
-                data.items
+                val library = data.items
+                val hiddenItems = library.filter { it.manga.isHidden() }.mapNotNull { it.manga.items }.flatten()
+
+                setDownloadCount(library)
+                setUnreadBadge(library)
+                setSourceLanguage(library)
+                setDownloadCount(hiddenItems)
+                setUnreadBadge(hiddenItems)
+                setSourceLanguage(hiddenItems)
+
+                allLibraryItems = library
+                hiddenLibraryItems = hiddenItems
+                val mangaMap = library
+                    .applyFilters()
+                    .applySort()
+                val freshStart = libraryItems.isEmpty()
+                sectionLibrary(mangaMap, freshStart)
             }
-                .collectLatest { library ->
-                    val hiddenItems = library.filter { it.manga.isHidden() }.mapNotNull { it.manga.items }.flatten()
-
-                    setDownloadCount(library)
-                    setUnreadBadge(library)
-                    setSourceLanguage(library)
-                    setDownloadCount(hiddenItems)
-                    setUnreadBadge(hiddenItems)
-                    setSourceLanguage(hiddenItems)
-
-                    allLibraryItems = library
-                    hiddenLibraryItems = hiddenItems
-                    val mangaMap = library
-                        .applyFilters()
-                        .applySort()
-                    val freshStart = libraryItems.isEmpty()
-                    sectionLibrary(mangaMap, freshStart)
-                }
-        }
-    }
-
-    /** Get favorited manga for library and sort and filter it */
-    fun getLibrary() {
-        presenterScope.launch {
-            _fetchLibrary.send(Unit)
         }
     }
 
@@ -323,8 +308,7 @@ class LibraryPresenter(
 
     private suspend fun sectionLibrary(items: List<LibraryItem>, freshStart: Boolean = false) {
         libraryItems = items
-        val showAll = showAllCategories || !libraryIsGrouped ||
-            categories.size <= 1
+        val showAll = showAllCategories || !libraryIsGrouped || categories.size <= 1
         sectionedLibraryItems = items.groupBy { it.header.category.id ?: 0 }.toMutableMap()
         if (!showAll && currentCategory == -1) {
             currentCategory = categories.find {
@@ -760,6 +744,9 @@ class LibraryPresenter(
         
         preferences.librarySortingMode().changes(),
         preferences.librarySortingAscending().changes(),
+
+        preferences.collapsedCategories().changes(),
+        preferences.collapsedDynamicCategories().changes(),
     ) {
        ItemPreferences(
            filterDownloaded = it[0] as Int,
@@ -773,6 +760,8 @@ class LibraryPresenter(
            showAllCategories = it[8] as Boolean,
            sortingMode = it[9] as Int,
            sortAscending = it[10] as Boolean,
+           collapsedCategories = it[11] as Set<String>,
+           collapsedDynamicCategories = it[12] as Set<String>,
        )
     }
 
@@ -810,22 +799,24 @@ class LibraryPresenter(
      * If category id '-1' is not empty, it means the library not grouped by categories
      */
     private fun getLibraryFlow(): Flow<LibraryData> {
-        return combine(
+        val libraryItemFlow = combine(
             getCategories.subscribe(),
             getLibraryManga.subscribe(),
             getPreferencesFlow(),
-            preferences.removeArticles().changes(),
-            fetchLibrary
-        ) { allCategories, libraryMangaList, prefs, removeArticles, _ ->
-            groupType = prefs.groupType
+            forceUpdateEvent.receiveAsFlow(),
+        ) { allCategories, libraryMangaList, prefs, _ ->
+            this.groupType = prefs.groupType
+            this.allCategories = allCategories
 
-            val (items, categories, hiddenItems) = if (groupType <= BY_DEFAULT || !libraryIsGrouped) {
+            // FIXME: Should return Map<Int, LibraryItem> where Int is category id
+            if (groupType <= BY_DEFAULT || !libraryIsGrouped) {
                 getLibraryItems(
-                    allCategories,
+                    allCategories,  // FIXME: Don't depends on allCategories
                     libraryMangaList,
                     prefs.sortingMode,
                     prefs.sortAscending,
                     prefs.showAllCategories,
+                    prefs.collapsedCategories,
                 )
             } else {
                 getDynamicLibraryItems(
@@ -833,8 +824,16 @@ class LibraryPresenter(
                     prefs.sortingMode,
                     prefs.sortAscending,
                     groupType,
+                    prefs.collapsedDynamicCategories,
                 )
             }
+        }
+
+        return combine(
+            libraryItemFlow,
+            preferences.removeArticles().changes(),
+        ) { libraryItems, removeArticles ->
+            val (items, categories, hiddenItems) = libraryItems
 
             LibraryData(
                 categories = categories,
@@ -852,6 +851,7 @@ class LibraryPresenter(
         sortingMode: Int,
         isAscending: Boolean,
         showAll: Boolean,
+        collapsedCategories: Set<String>,
     ): Triple<List<LibraryItem>, List<Category>, List<LibraryItem>> {
         val categories = allCategories.toMutableList()
         val hiddenItems = mutableListOf<LibraryItem>()
@@ -874,6 +874,11 @@ class LibraryPresenter(
             } + (-1 to catItemAll) + (0 to LibraryHeaderItem({ categories.getOrDefault(0) }, 0))
         ).toMap()
 
+        // TODO
+        val map = libraryManga.groupBy {
+            categories.getOrDefault(it.category)
+        }
+
         val items = if (libraryIsGrouped) {
             libraryManga
         } else {
@@ -893,16 +898,14 @@ class LibraryPresenter(
         val categoriesHidden = if (forceShowAllCategories || controllerIsSubClass) {
             emptySet()
         } else {
-            preferences.collapsedCategories().get().mapNotNull { it.toIntOrNull() }.toSet()
+            collapsedCategories.mapNotNull { it.toIntOrNull() }.toSet()
         }
 
         if (categorySet.contains(0)) categories.add(0, createDefaultCategory())
         if (libraryIsGrouped) {
             categories.forEach { category ->
                 val catId = category.id ?: return@forEach
-                if (catId > 0 && !categorySet.contains(catId) &&
-                    (catId !in categoriesHidden || !showAll)
-                ) {
+                if (catId > 0 && !categorySet.contains(catId) && (catId !in categoriesHidden || !showAll)) {
                     val headerItem = headerItems[catId]
                     if (headerItem != null) {
                         items.add(
@@ -955,6 +958,7 @@ class LibraryPresenter(
         sortingMode: Int,
         isAscending: Boolean,
         groupType: Int,
+        collapsedDynamicCategories: Set<String>,
     ): Triple<List<LibraryItem>, List<Category>, List<LibraryItem>> {
         val tagItems: MutableMap<String, LibraryHeaderItem> = mutableMapOf()
 
@@ -1057,7 +1061,7 @@ class LibraryPresenter(
         val hiddenDynamics = if (controllerIsSubClass) {
             emptySet()
         } else {
-            preferences.collapsedDynamicCategories().get()
+            collapsedDynamicCategories
         }
         val headers = tagItems.map { item ->
             Category.createCustom(
@@ -1213,7 +1217,6 @@ class LibraryPresenter(
                 .mapNotNull { if (it.id != null) MangaUpdate(it.id!!, favorite = false) else null }
 
             withIOContext { updateManga.awaitAll(mangaToDelete) }
-            getLibrary()
         }
     }
 
@@ -1236,8 +1239,11 @@ class LibraryPresenter(
         }
     }
 
-    /** Called when Library Service updates a manga, update the item as well */
-    fun updateManga() = getLibrary()
+    /** Force update the library */
+    fun updateLibrary() = presenterScope.launch {
+        forceUpdateEvent.send(Unit)
+    }
+
 
     /** Undo the removal of the manga once in library */
     fun reAddMangas(mangas: List<Manga>) {
@@ -1247,12 +1253,12 @@ class LibraryPresenter(
 
             withIOContext { updateManga.awaitAll(mangaToAdd) }
             (view as? FilteredLibraryController)?.updateStatsPage()
-            getLibrary()
         }
     }
 
     /** Returns first unread chapter of a manga */
     fun getFirstUnread(manga: Manga): Chapter? {
+        // FIXME: Don't do blocking
         val chapters = runBlocking { getChapter.awaitAll(manga) }
         return ChapterSort(manga, chapterFilter, preferences).getNextUnreadChapter(chapters, false)
     }
@@ -1304,7 +1310,6 @@ class LibraryPresenter(
         }
     }
 
-    // TODO: Use SQLDelight
     /** Shift a manga's category via drag & drop */
     fun moveMangaToCategory(
         manga: LibraryManga,
@@ -1350,7 +1355,7 @@ class LibraryPresenter(
                     )
                 }
             }
-            getLibrary()
+            updateLibrary()
         }
     }
 
@@ -1385,7 +1390,6 @@ class LibraryPresenter(
             }
             preferences.collapsedDynamicCategories().set(categoriesHidden)
         }
-        getLibrary()
     }
 
     private fun getDynamicCategoryName(category: Category): String =
@@ -1416,7 +1420,6 @@ class LibraryPresenter(
                 }
             }
         }
-        getLibrary()
     }
 
     fun allCategoriesExpanded(): Boolean {
@@ -1458,7 +1461,7 @@ class LibraryPresenter(
 
                 mapMangaChapters[manga] = chapters
             }
-            getLibrary()
+            updateLibrary()
         }
         return mapMangaChapters
     }
@@ -1474,7 +1477,7 @@ class LibraryPresenter(
                 }
             }.flatten()
             updateChapter.awaitAll(updates)
-            getLibrary()
+            updateLibrary()
         }
     }
 
@@ -1654,6 +1657,9 @@ class LibraryPresenter(
 
         val sortingMode: Int,
         val sortAscending: Boolean,
+
+        val collapsedCategories: Set<String>,
+        val collapsedDynamicCategories: Set<String>,
     )
 
     data class LibraryData(

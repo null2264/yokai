@@ -558,7 +558,7 @@ open class LibraryController(
             }
             presenter.groupType = item
             shouldScrollToTop = true
-            presenter.getLibrary()
+            presenter.updateLibrary()
             true
         }.show()
     }
@@ -1055,7 +1055,7 @@ open class LibraryController(
         if (type.isEnter) {
             binding.filterBottomSheet.filterBottomSheet.isVisible = true
             if (type == ControllerChangeType.POP_ENTER) {
-                presenter.getLibrary()
+                presenter.updateLibrary()
                 isPoppingIn = true
             }
             DownloadJob.callListeners()
@@ -1095,7 +1095,7 @@ open class LibraryController(
         if (!isBindingInitialized) return
         updateFilterSheetY()
         if (observeLater) {
-            presenter.getLibrary()
+            presenter.updateLibrary()
         }
     }
 
@@ -1408,7 +1408,7 @@ open class LibraryController(
 
     private fun onRefresh() {
         showCategories(false)
-        presenter.getLibrary()
+        presenter.updateLibrary()
         destroyActionModeIfNeeded()
     }
 
@@ -1432,14 +1432,14 @@ open class LibraryController(
         val isShowAllCategoriesSet = preferences.showAllCategories().get()
         if (!query.isNullOrBlank() && this.query.isBlank() && !isShowAllCategoriesSet) {
             presenter.forceShowAllCategories = preferences.showAllCategoriesWhenSearchingSingleCategory().get()
-            presenter.getLibrary()
+            presenter.updateLibrary()
         } else if (query.isNullOrBlank() && this.query.isNotBlank() && !isShowAllCategoriesSet) {
             if (!isSubClass) {
                 preferences.showAllCategoriesWhenSearchingSingleCategory()
                     .set(presenter.forceShowAllCategories)
             }
             presenter.forceShowAllCategories = false
-            presenter.getLibrary()
+            presenter.updateLibrary()
         }
 
         if (query != this.query && !query.isNullOrBlank()) {
@@ -1641,7 +1641,7 @@ open class LibraryController(
         if (mangaId == null) {
             adapter.getHeaderPositions().forEach { adapter.notifyItemChanged(it) }
         } else {
-            presenter.updateManga()
+            presenter.updateLibrary()
         }
     }
 
@@ -1820,7 +1820,7 @@ open class LibraryController(
         val category = (adapter.getItem(position) as? LibraryHeaderItem)?.category ?: return
         if (!category.isDynamic) {
             ManageCategoryDialog(category) {
-                presenter.getLibrary()
+                presenter.updateLibrary()
             }.showDialog(router)
         }
     }
@@ -1913,7 +1913,7 @@ open class LibraryController(
                 isGone = true
                 setOnClickListener {
                     presenter.forceShowAllCategories = !presenter.forceShowAllCategories
-                    presenter.getLibrary()
+                    presenter.updateLibrary()
                     isSelected = presenter.forceShowAllCategories
                 }
                 val pad = 12.dpToPx
@@ -2192,7 +2192,7 @@ open class LibraryController(
     private fun showChangeMangaCategoriesSheet() {
         val activity = activity ?: return
         selectedMangas.toList().moveCategories(activity) {
-            presenter.getLibrary()
+            presenter.updateLibrary()
             destroyActionModeIfNeeded()
         }
     }
