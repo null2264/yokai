@@ -28,7 +28,7 @@ coil3-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp" }
 compose-theme-adapter3 = { module = "com.google.accompanist:accompanist-themeadapter-material3", version = "0.33.2-alpha" }
 conductor = { module = "com.bluelinelabs:conductor", version = "4.0.0-preview-4" }
 conductor-support-preference = { module = "com.github.tachiyomiorg:conductor-support-preference", version = "3.0.0" }
-conscrypt = { module = "org.conscrypt:conscrypt-android", version = "2.5.2" }
+conscrypt = { module = "org.conscrypt:conscrypt-android", version = "2.5.3" }
 desugar = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.3" }
 directionalviewpager = { module = "com.github.tachiyomiorg:DirectionalViewPager", version = "1.0.0" }
 disklrucache = { module = "com.jakewharton:disklrucache", version = "2.0.2" }
