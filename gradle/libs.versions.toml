@@ -2,7 +2,7 @@
 aboutlibraries = "11.2.3"
 chucker = "3.5.2"
 flexible-adapter = "c8013533"
-fast_adapter = "5.6.0"
+fast_adapter = "5.7.0"
 moko = "0.24.4"
 okhttp = "5.0.0-alpha.14"
 shizuku = "13.1.5"
