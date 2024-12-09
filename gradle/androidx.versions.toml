@@ -6,7 +6,7 @@ lifecycle = "2.8.7"
 [libraries]
 activity = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
-annotation = { module = "androidx.annotation:annotation", version = "1.8.2" }
+annotation = { module = "androidx.annotation:annotation", version = "1.9.1" }
 appcompat = { module = "androidx.appcompat:appcompat", version = "1.7.0" }
 browser = { module = "androidx.browser:browser", version = "1.8.0" }
 biometric = { module = "androidx.biometric:biometric", version = "1.1.0" }
