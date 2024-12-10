@@ -33,11 +33,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
-import com.kevinnzou.accompanist.web.AccompanistWebViewClient
-import com.kevinnzou.accompanist.web.LoadingState
-import com.kevinnzou.accompanist.web.WebView
-import com.kevinnzou.accompanist.web.rememberWebViewNavigator
-import com.kevinnzou.accompanist.web.rememberWebViewState
+import com.kevinnzou.web.AccompanistWebViewClient
+import com.kevinnzou.web.LoadingState
+import com.kevinnzou.web.WebView
+import com.kevinnzou.web.rememberWebViewNavigator
+import com.kevinnzou.web.rememberWebViewState
 import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.util.system.extensionIntentForText
