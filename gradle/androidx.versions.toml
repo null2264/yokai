@@ -13,7 +13,7 @@ biometric = { module = "androidx.biometric:biometric", version = "1.1.0" }
 cardview = { module = "androidx.cardview:cardview", version = "1.0.0" }
 core = { module = "androidx.core:core-ktx", version = "1.15.0" }
 core-splashscreen = { module = "androidx.core:core-splashscreen", version = "1.0.1" }
-glance-appwidget = { module = "androidx.glance:glance-appwidget", version = "1.0.0" }
+glance-appwidget = { module = "androidx.glance:glance-appwidget", version = "1.1.1" }
 layout-constraint = { module = "androidx.constraintlayout:constraintlayout", version = "2.2.0" }
 layout-swiperefresh = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version = "1.1.0" }
 lifecycle-common = { module = "androidx.lifecycle:lifecycle-common", version.ref = "lifecycle" }
