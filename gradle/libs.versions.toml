@@ -108,7 +108,7 @@ voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", vers
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version = "3.0.2" }
 google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
-gradle-versions = { id = "com.github.ben-manes.versions", version = "0.42.0" }
+gradle-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "5.0.1" }
 moko = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
