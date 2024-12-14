@@ -15,6 +15,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency androidx.compose:compose-bom to v2024.12.01
 - Update plugin kotlinter to v5
 - Update plugin gradle-versions to v0.51.0
+- Update kotlin monorepo to v2.1.0
 
 ## [1.9.3]
 
