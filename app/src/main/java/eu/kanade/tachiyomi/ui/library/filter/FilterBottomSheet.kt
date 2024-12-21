@@ -36,6 +36,8 @@ import eu.kanade.tachiyomi.util.view.isCollapsed
 import eu.kanade.tachiyomi.util.view.isExpanded
 import eu.kanade.tachiyomi.util.view.isHidden
 import eu.kanade.tachiyomi.util.view.setText
+import kotlin.math.max
+import kotlin.math.roundToInt
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.drop
@@ -48,8 +50,6 @@ import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import yokai.i18n.MR
 import yokai.util.lang.getString
-import kotlin.math.max
-import kotlin.math.roundToInt
 
 class FilterBottomSheet @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     LinearLayout(context, attrs),
@@ -637,7 +637,7 @@ class FilterBottomSheet @JvmOverloads constructor(context: Context, attrs: Attri
         SeriesType('m', MR.strings.series_type),
         Bookmarked('b', MR.strings.bookmarked),
         Tracked('t', MR.strings.tracking),
-        ContentType('s', MR.strings.content_type);
+        ContentType('s', MR.strings.content_type)
         ;
 
         companion object {
