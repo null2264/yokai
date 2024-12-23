@@ -9,6 +9,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - `Translation` - Translation changes/updates
 - `Other` - Technical changes/updates
 
+## [Unreleased]
+
+### Other
+- Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.10.1
+
 ## [1.9.7]
 
 ### Changes
