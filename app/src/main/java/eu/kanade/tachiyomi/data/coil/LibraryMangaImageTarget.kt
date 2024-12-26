@@ -9,29 +9,35 @@ import eu.kanade.tachiyomi.data.cache.CoverCache
 import eu.kanade.tachiyomi.data.database.models.updateCoverLastModified
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.util.system.launchIO
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
+import yokai.domain.manga.models.MangaCover
+import yokai.domain.manga.models.cover
 
 class LibraryMangaImageTarget(
     override val view: ImageView,
     private val libraryManga: Manga,
 ) : ImageViewTarget(view) {
 
-    private val coverCache: CoverCache by injectLazy()
-
     override fun onError(error: Image?) {
         super.onError(error)
-        if (libraryManga.favorite) {
-            launchIO {
-                val file = coverCache.getCoverFile(libraryManga.thumbnail_url, false)
-                // if the file exists and the there was still an error then the file is corrupted
-                if (file != null && file.exists()) {
-                    val options = BitmapFactory.Options()
-                    options.inJustDecodeBounds = true
-                    BitmapFactory.decodeFile(file.path, options)
-                    if (options.outWidth == -1 || options.outHeight == -1) {
-                        libraryManga.updateCoverLastModified()
-                        file.delete()
-                    }
+        libraryManga.cover().onLibraryImageError()
+    }
+}
+
+fun MangaCover.onLibraryImageError(coverCache: CoverCache = Injekt.get()) {
+    if (this.inLibrary) {
+        launchIO {
+            val file = coverCache.getCoverFile(this@onLibraryImageError.url, false)
+            // if the file exists and the there was still an error then the file is corrupted
+            if (file != null && file.exists()) {
+                val options = BitmapFactory.Options()
+                options.inJustDecodeBounds = true
+                BitmapFactory.decodeFile(file.path, options)
+                if (options.outWidth == -1 || options.outHeight == -1) {
+                    this@onLibraryImageError.updateCoverLastModified()
+                    file.delete()
                 }
             }
         }

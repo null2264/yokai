@@ -6,7 +6,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import eu.kanade.tachiyomi.R
-import eu.kanade.tachiyomi.data.coil.useCustomCover
 import eu.kanade.tachiyomi.databinding.MangaGridItemBinding
 import eu.kanade.tachiyomi.databinding.MigrationProcessItemBinding
 import eu.kanade.tachiyomi.domain.manga.models.Manga
@@ -27,7 +26,6 @@ import yokai.domain.chapter.interactor.GetChapter
 import yokai.domain.manga.interactor.GetManga
 import yokai.domain.manga.models.cover
 import yokai.i18n.MR
-import yokai.presentation.core.util.coil.loadManga
 import yokai.util.lang.getString
 
 class MigrationProcessHolder(
@@ -59,7 +57,7 @@ class MigrationProcessHolder(
         this.item = item
         launchUI {
             binding.migrationMangaCardFrom.setFreeformCoverRatio(item.manga.manga())
-            binding.migrationMangaCardTo.setFreeformCoverRatio(null)
+            binding.migrationMangaCardTo.setFreeformCoverRatio(null as Manga?)
 
             val manga = item.manga.manga()
             val source = item.manga.mangaSource()
@@ -116,7 +114,8 @@ class MigrationProcessHolder(
                             )
                         }
                     } else {
-                        binding.migrationMangaCardTo.coverThumbnail.setImageDrawable(null)
+                        binding.migrationMangaCardTo.coverThumbnail.reset()
+                        //binding.migrationMangaCardTo.coverThumbnail.setImageDrawable(null)
                         binding.migrationMangaCardTo.progress.isVisible = false
                         binding.migrationMangaCardTo.title.text =
                             view.context.getString(MR.strings.no_alternatives_found)
@@ -131,7 +130,8 @@ class MigrationProcessHolder(
 
     private fun MangaGridItemBinding.resetManga() {
         progress.isVisible = true
-        coverThumbnail.setImageDrawable(null)
+        coverThumbnail.reset()
+//        coverThumbnail.setImageDrawable(null)
         compactTitle.text = ""
         title.text = ""
         subtitle.text = ""
@@ -145,9 +145,11 @@ class MigrationProcessHolder(
         (root.layoutParams as ConstraintLayout.LayoutParams).verticalBias = 1f
         progress.isVisible = false
 
-        coverThumbnail.loadManga(manga.cover(), progress) {
-            useCustomCover(false)
-        }
+        coverThumbnail.loadManga(
+            cover = manga.cover(),
+            progress = progress,
+            useCustomCover = false,
+        )
 
         compactTitle.isVisible = true
         gradient.isVisible = true

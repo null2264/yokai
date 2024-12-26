@@ -26,6 +26,7 @@ coil3 = { module = "io.coil-kt.coil3:coil" }
 coil3-svg = { module = "io.coil-kt.coil3:coil-svg" }
 coil3-gif = { module = "io.coil-kt.coil3:coil-gif" }
 coil3-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp" }
+coil3-compose = { module = "io.coil-kt.coil3:coil-compose" }
 compose-theme-adapter3 = { module = "com.google.accompanist:accompanist-themeadapter-material3", version = "0.33.2-alpha" }
 conductor = { module = "com.bluelinelabs:conductor", version = "4.0.0-preview-4" }
 conductor-support-preference = { module = "com.github.tachiyomiorg:conductor-support-preference", version = "3.0.0" }
@@ -116,7 +117,7 @@ sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 [bundles]
 db = [ "sqldelight-coroutines" ]
 db-android = [ "sqldelight-android-driver", "sqldelight-android-paging" ]
-coil = [ "coil3", "coil3-svg", "coil3-gif", "coil3-okhttp" ]
+coil = [ "coil3", "coil3-svg", "coil3-gif", "coil3-okhttp", "coil3-compose" ]
 logging = [ "kermit" ]
 # FIXME: Uncomment once SQLDelight support KMP AndroidX SQLiteDriver
 #sqlite = [ "sqlite", "sqlite-ktx" ]

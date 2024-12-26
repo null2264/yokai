@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import coil3.dispose
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.IFlexible
 import eu.kanade.tachiyomi.databinding.MangaGridItemBinding
@@ -13,7 +12,6 @@ import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.ui.library.LibraryCategoryAdapter
 import eu.kanade.tachiyomi.util.view.setCards
 import yokai.domain.manga.models.cover
-import yokai.presentation.core.util.coil.loadManga
 
 /**
  * Class used to hold the displayed data of a manga in the library, like the cover or the title.
@@ -60,7 +58,7 @@ class BrowseSourceGridHolder(
     override fun setImage(manga: Manga) {
         if ((view.context as? Activity)?.isDestroyed == true) return
         if (manga.thumbnail_url == null) {
-            binding.coverThumbnail.dispose()
+//            binding.coverThumbnail.dispose()
         } else {
             manga.id ?: return
             binding.coverThumbnail.loadManga(manga.cover(), binding.progress)
