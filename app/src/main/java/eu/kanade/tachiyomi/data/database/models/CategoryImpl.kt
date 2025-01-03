@@ -32,10 +32,14 @@ class CategoryImpl : Category {
 
         val category = other as Category
 
+        if (isDynamic && category.isDynamic) return dynamicHeaderKey() == category.dynamicHeaderKey()
+
         return name == category.name
     }
 
     override fun hashCode(): Int {
+        if (isDynamic) return dynamicHeaderKey().hashCode()
+
         return name.hashCode()
     }
 }
