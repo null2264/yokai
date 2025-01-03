@@ -368,7 +368,7 @@ class FilterBottomSheet @JvmOverloads constructor(context: Context, attrs: Attri
     suspend fun checkForManhwa(sourceManager: SourceManager) {
         if (checked) return
         withIOContext {
-            val libraryManga = controller?.presenter?.allLibraryItems ?: return@withIOContext
+            val libraryManga = controller?.presenter?.currentLibraryItems ?: return@withIOContext
             checked = true
             var types = mutableSetOf<StringResource>()
             libraryManga.forEach {

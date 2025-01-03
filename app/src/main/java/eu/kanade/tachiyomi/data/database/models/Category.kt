@@ -3,9 +3,9 @@ package eu.kanade.tachiyomi.data.database.models
 import android.content.Context
 import dev.icerock.moko.resources.StringResource
 import eu.kanade.tachiyomi.ui.library.LibrarySort
+import java.io.Serializable
 import yokai.i18n.MR
 import yokai.util.lang.getString
-import java.io.Serializable
 
 interface Category : Serializable {
 
@@ -56,7 +56,21 @@ interface Category : Serializable {
     fun mangaOrderToString(): String =
         if (mangaSort != null) mangaSort.toString() else mangaOrder.joinToString("/")
 
+    // For dynamic categories
+    fun dynamicHeaderKey(): String {
+        if (!isDynamic) throw IllegalStateException("This category is not a dynamic category")
+
+        return when {
+            sourceId != null -> "${name}$sourceSplitter${sourceId}"
+            langId != null -> "${langId}$langSplitter${name}"
+            else -> name
+        }
+    }
+
     companion object {
+        const val sourceSplitter = "◘•◘"
+        const val langSplitter = "⨼⨦⨠"
+
         var lastCategoriesAddedTo = emptySet<Int>()
 
         fun create(name: String): Category = CategoryImpl().apply {
