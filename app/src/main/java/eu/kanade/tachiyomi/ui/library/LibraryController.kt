@@ -451,7 +451,7 @@ open class LibraryController(
 
     private fun setActiveCategory() {
         val currentCategory = presenter.categories.indexOfFirst {
-            if (presenter.showAllCategories) it.order == activeCategory else presenter.currentCategory == it.id
+            if (presenter.showAllCategories) it.order == activeCategory else presenter.currentCategoryId == it.id
         }
         if (currentCategory > -1) {
             binding.categoryRecycler.setCategories(currentCategory)
@@ -522,7 +522,7 @@ open class LibraryController(
 
     private fun openRandomManga(global: Boolean) {
         val items = if (global) {
-            presenter.allLibraryItems
+            presenter.currentLibraryItems
         } else {
             adapter.currentItems
         }.filter { (it is LibraryItem && !it.manga.isBlank() && !it.manga.isHidden() && (!it.manga.initialized || it.manga.unread > 0)) }
@@ -662,7 +662,7 @@ open class LibraryController(
             createActionModeIfNeeded()
         }
 
-        if (presenter.libraryItems.isNotEmpty() && !isSubClass) {
+        if (presenter.libraryItemsToDisplay.isNotEmpty() && !isSubClass) {
             presenter.restoreLibrary()
             if (justStarted) {
                 val activityBinding = activityBinding ?: return
@@ -904,7 +904,7 @@ open class LibraryController(
             }
         } else {
             val newOffset =
-                presenter.categories.indexOfFirst { presenter.currentCategory == it.id } +
+                presenter.categories.indexOfFirst { presenter.currentCategoryId == it.id } +
                     (if (next) 1 else -1)
             if (if (!next) {
                 newOffset > -1
@@ -1459,7 +1459,7 @@ open class LibraryController(
             adapter.removeAllScrollableHeaders()
         }
         adapter.setFilter(query)
-        if (presenter.allLibraryItems.isEmpty()) return true
+        if (presenter.currentLibraryItems.isEmpty()) return true
         viewScope.launchUI {
             adapter.performFilterAsync()
         }

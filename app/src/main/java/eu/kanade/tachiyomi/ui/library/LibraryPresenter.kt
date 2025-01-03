@@ -82,7 +82,6 @@ import yokai.i18n.MR
 import yokai.util.isLewd
 import yokai.util.lang.getString
 
-// FIXME: Don't depends on LibraryHeaderItem, depends on Category instead
 typealias LibraryMap = Map<Category, List<LibraryItem>>
 typealias LibraryMutableMap = MutableMap<Category, List<LibraryItem>>
 
@@ -125,20 +124,26 @@ class LibraryPresenter(
     var categories: List<Category> = emptyList()
         private set
 
-    private var removeArticles: Boolean = preferences.removeArticles().get()
-
     /** All categories of the library, in case they are hidden because of hide categories is on */
     private var allCategories: List<Category> = emptyList()
+
+    private var removeArticles: Boolean = preferences.removeArticles().get()
 
     /** List of all manga to update the library */
     var currentLibrary: LibraryMap = mapOf()
         private set
-    var libraryItems: List<LibraryItem> = emptyList()
-    private var libraryMap: LibraryMutableMap = mutableMapOf()
-    var currentCategory = -1
-        private set
-    val allLibraryItems: List<LibraryItem>
+    val currentLibraryItems: List<LibraryItem>
         get() = currentLibrary.values.flatten()
+    private var libraryToDisplay: LibraryMutableMap = mutableMapOf()
+    val libraryItemsToDisplay: List<LibraryItem>
+        get() = libraryToDisplay.values.flatten()
+
+    var currentCategoryId = -1
+        private set
+    var currentCategory: Category?
+        get() = allCategories.find { it.id == currentCategoryId }
+        set(value) { currentCategoryId = value?.id ?: 0 }
+
     private var hiddenLibraryItems: List<LibraryItem> = emptyList()
     var forceShowAllCategories = false
     val showAllCategories
@@ -175,14 +180,14 @@ class LibraryPresenter(
 
     fun isCategoryMoreThanOne(): Boolean = allCategories.size > 1
 
-    fun findCurrentCategory() = allCategories.find { it.id == currentCategory }
+    fun findCurrentCategory() = allCategories.find { it.id == currentCategoryId }
 
     /** Save the current list to speed up loading later */
     override fun onDestroy() {
         val isSubController = controllerIsSubClass
         super.onDestroy()
         if (!isSubController) {
-            lastLibraryMap = libraryMap
+            lastDisplayedLibrary = libraryToDisplay
             lastCategories = categories
             lastLibrary = currentLibrary
         }
@@ -192,11 +197,11 @@ class LibraryPresenter(
         super.onCreate()
 
         if (!controllerIsSubClass) {
-            lastLibraryMap?.let { libraryMap = it }
+            lastDisplayedLibrary?.let { libraryToDisplay = it }
             lastCategories?.let { categories = it }
             lastLibrary?.let { currentLibrary = it }
             lastCategories = null
-            lastLibraryMap = null
+            lastDisplayedLibrary = null
             lastLibrary = null
         }
 
@@ -218,11 +223,11 @@ class LibraryPresenter(
 
     fun getItemCountInCategories(categoryId: Int): Int {
         val category = categories.find { it.id == categoryId }
-        val items = libraryMap[category]
+        val items = libraryToDisplay[category]
         return if (items?.firstOrNull()?.manga?.isHidden() == true || items?.firstOrNull()?.manga?.isBlank() == true) {
             items.firstOrNull()?.manga?.read ?: 0
         } else {
-            libraryMap[category]?.size ?: 0
+            libraryToDisplay[category]?.size ?: 0
         }
     }
 
@@ -261,7 +266,7 @@ class LibraryPresenter(
                 val mangaMap = library
                     .applyFilters()
                     .applySort()
-                val freshStart = libraryMap.isEmpty()
+                val freshStart = libraryToDisplay.isEmpty()
                 sectionLibrary(mangaMap, freshStart)
             }
         }
@@ -277,12 +282,12 @@ class LibraryPresenter(
 
     fun switchSection(order: Int) {
         preferences.lastUsedCategory().set(order)
-        val category = categories.find { it.order == order }
-        currentCategory = category?.id ?: return
-        view?.onNextLibraryUpdate(libraryMap[category] ?: blankItem())
+        val category = categories.find { it.order == order } ?: return
+        currentCategory = category
+        view?.onNextLibraryUpdate(libraryToDisplay[category] ?: blankItem())
     }
 
-    fun blankItem(id: Int = currentCategory, categories: List<Category>? = null): List<LibraryItem> {
+    fun blankItem(id: Int = currentCategoryId, categories: List<Category>? = null): List<LibraryItem> {
         val actualCategories = categories ?: this.categories
         return listOf(
             LibraryItem(
@@ -294,20 +299,17 @@ class LibraryPresenter(
     }
 
     fun restoreLibrary() {
-        val items = libraryMap
         val show = showAllCategories || !libraryIsGrouped || categories.size == 1
-        libraryItems = items.values.flatten()
-        if (!show && currentCategory == -1) {
-            currentCategory = categories.find { it.order == preferences.lastUsedCategory().get() }?.id ?: 0
+        if (!show && currentCategoryId == -1) {
+            currentCategory = categories.find { it.order == preferences.lastUsedCategory().get() }
         }
         view?.onNextLibraryUpdate(
             if (!show) {
-                val category = categories.find { it.id == currentCategory }
-                libraryMap[category]
-                    ?: libraryMap[categories.first()]
+                libraryToDisplay[currentCategory]
+                    ?: libraryToDisplay[categories.first()]
                     ?: blankItem()
             } else {
-                libraryItems
+                libraryItemsToDisplay
             },
             true,
         )
@@ -315,32 +317,26 @@ class LibraryPresenter(
 
     fun getMangaInCategories(catId: Int?): List<LibraryManga>? {
         catId ?: return null
-        return allLibraryItems.filter { it.header.category.id == catId }.map { it.manga }
+        return currentLibraryItems.filter { it.header.category.id == catId }.map { it.manga }
     }
 
     private suspend fun sectionLibrary(items: LibraryMap, freshStart: Boolean = false) {
-        sectionLibrary(items.toMutableMap(), freshStart)
-    }
-
-    private suspend fun sectionLibrary(items: LibraryMutableMap, freshStart: Boolean = false) {
         val showAll = showAllCategories || !libraryIsGrouped || categories.size <= 1
 
-        libraryItems = items.values.flatten()
-        libraryMap = items
+        libraryToDisplay = items.toMutableMap()
 
-        if (!showAll && currentCategory == -1) {
-            currentCategory = categories.find { it.order == preferences.lastUsedCategory().get() }?.id ?: 0
+        if (!showAll && currentCategoryId == -1) {
+            currentCategory = categories.find { it.order == preferences.lastUsedCategory().get() }
         }
 
         withUIContext {
             view?.onNextLibraryUpdate(
                 if (!showAll) {
-                    val category = categories.find { it.id == currentCategory }
-                    libraryMap[category]
-                        ?: libraryMap[categories.first()]
+                    libraryToDisplay[currentCategory]
+                        ?: libraryToDisplay[categories.first()]
                         ?: blankItem()
                 } else {
-                    libraryItems
+                    libraryItemsToDisplay
                 },
                 freshStart,
             )
@@ -374,12 +370,12 @@ class LibraryPresenter(
             val category by lazy { categories.find { it.id == key.id } }
 
             if (showEmptyCategoriesWhileFiltering) {
-                realCount[key.id ?: 0] = libraryMap[key]?.size ?: 0
+                realCount[key.id ?: 0] = libraryToDisplay[key]?.size ?: 0
             }
 
             items.filter f@{ item ->
                 if (!showEmptyCategoriesWhileFiltering && item.manga.isHidden()) {
-                    val subItems = libraryMap[category]?.takeUnless { it.size <= 1 }
+                    val subItems = libraryToDisplay[category]?.takeUnless { it.size <= 1 }
                         ?: hiddenLibraryItems.filter { it.manga.category == item.manga.category }
                     if (subItems.isEmpty()) {
                         return@f filtersOff
@@ -948,7 +944,7 @@ class LibraryPresenter(
                     val mergedTitle = mangaToRemove.joinToString("-") {
                         it.manga.title + "-" + it.manga.author
                     }
-                    libraryMap[category] = mangaToRemove
+                    libraryToDisplay[category] = mangaToRemove
                     hiddenItems.addAll(mangaToRemove)
                     val headerItem = headerItems[catId]
                     if (headerItem != null) {
@@ -1137,7 +1133,7 @@ class LibraryPresenter(
                 val mergedTitle = mangaToRemove.joinToString("-") {
                     it.manga.title + "-" + it.manga.author
                 }
-                libraryMap[category] = mangaToRemove
+                libraryToDisplay[category] = mangaToRemove
                 hiddenItems.addAll(mangaToRemove)
                 if (headerItem != null) {
                     map[category] = listOf(
@@ -1197,7 +1193,7 @@ class LibraryPresenter(
             val mangaMap = currentLibrary
             mangaMap.forEach { (_, items) -> badgeUpdate(items) }
             currentLibrary = mangaMap
-            val current = libraryMap
+            val current = libraryToDisplay
             current.forEach { (_, items) -> badgeUpdate(items) }
             sectionLibrary(current)
         }
@@ -1221,7 +1217,7 @@ class LibraryPresenter(
     /** Requests the library to be sorted. */
     private fun requestSortUpdate() {
         presenterScope.launch {
-            val mangaMap = libraryMap
+            val mangaMap = libraryToDisplay
                 .applySort()
             sectionLibrary(mangaMap)
         }
@@ -1531,7 +1527,7 @@ class LibraryPresenter(
     }
 
     companion object {
-        private var lastLibraryMap: LibraryMutableMap? = null
+        private var lastDisplayedLibrary: LibraryMutableMap? = null
         private var lastCategories: List<Category>? = null
         private var lastLibrary: LibraryMap? = null
         private const val dynamicCategorySplitter = "▄╪\t▄╪\t▄"
@@ -1549,7 +1545,7 @@ class LibraryPresenter(
         private const val randomGroupOfTagsNegate = 2
 
         fun onLowMemory() {
-            lastLibraryMap = null
+            lastDisplayedLibrary = null
             lastCategories = null
             lastLibrary = null
         }
