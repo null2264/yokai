@@ -129,11 +129,12 @@ class LibraryPresenter(
 
     private var removeArticles: Boolean = preferences.removeArticles().get()
 
-    /** List of all manga to update the library */
+    /** List of all manga */
     var currentLibrary: LibraryMap = mapOf()
         private set
     val currentLibraryItems: List<LibraryItem>
         get() = currentLibrary.values.flatten()
+    /** List of all manga to be displayed */
     private var libraryToDisplay: LibraryMutableMap = mutableMapOf()
     val libraryItemsToDisplay: List<LibraryItem>
         get() = libraryToDisplay.values.flatten()
@@ -179,8 +180,6 @@ class LibraryPresenter(
     }
 
     fun isCategoryMoreThanOne(): Boolean = allCategories.size > 1
-
-    fun findCurrentCategory() = allCategories.find { it.id == currentCategoryId }
 
     /** Save the current list to speed up loading later */
     override fun onDestroy() {

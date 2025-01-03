@@ -706,7 +706,7 @@ open class LibraryController(
             if (!LibraryUpdateJob.isRunning(context)) {
                 when {
                     !presenter.showAllCategories && presenter.groupType == BY_DEFAULT -> {
-                        presenter.findCurrentCategory()?.let {
+                        presenter.currentCategory?.let {
                             updateLibrary(it)
                         }
                     }
