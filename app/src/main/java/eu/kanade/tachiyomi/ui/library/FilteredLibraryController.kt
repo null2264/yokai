@@ -37,7 +37,7 @@ class FilteredLibraryController(bundle: Bundle? = null) : LibraryController(bund
         private set
     var filterLength: IntRange? = null
         private set
-    var filterCategories = emptyArray<Int>()
+    var filterCategories = emptyArray<Long>()
         private set
 
     private var customTitle: String? = null
@@ -53,7 +53,7 @@ class FilteredLibraryController(bundle: Bundle? = null) : LibraryController(bund
         filterSources: Array<Long> = emptyArray(),
         filterMangaType: Array<Int> = emptyArray(),
         filterLanguages: Array<String> = emptyArray(),
-        filterCategories: Array<Int> = emptyArray(),
+        filterCategories: Array<Long> = emptyArray(),
         filterTags: Array<String> = emptyArray(),
         filterTracked: Int = 0,
         filterTrackerName: String? = null,

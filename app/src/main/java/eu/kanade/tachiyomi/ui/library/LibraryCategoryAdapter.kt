@@ -13,15 +13,15 @@ import eu.kanade.tachiyomi.util.lang.removeArticles
 import eu.kanade.tachiyomi.util.system.isLTR
 import eu.kanade.tachiyomi.util.system.timeSpanFromNow
 import eu.kanade.tachiyomi.util.system.withDefContext
+import java.util.*
 import kotlinx.coroutines.runBlocking
 import uy.kohesive.injekt.injectLazy
-import yokai.domain.ui.UiPreferences
-import yokai.i18n.MR
-import yokai.util.lang.getString
-import java.util.*
 import yokai.domain.category.interactor.GetCategories
 import yokai.domain.chapter.interactor.GetChapter
 import yokai.domain.history.interactor.GetHistory
+import yokai.domain.ui.UiPreferences
+import yokai.i18n.MR
+import yokai.util.lang.getString
 
 /**
  * Adapter storing a list of manga in a certain category.
@@ -104,7 +104,7 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
      *
      * @param manga the manga to find.
      */
-    fun findCategoryHeader(catId: Int): LibraryHeaderItem? {
+    fun findCategoryHeader(catId: Long): LibraryHeaderItem? {
         return currentItems.find {
             (it is LibraryHeaderItem) && it.category.id == catId
         } as? LibraryHeaderItem
@@ -301,7 +301,7 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
         fun onItemReleased(position: Int)
         fun canDrag(): Boolean
         fun updateCategory(position: Int): Boolean
-        fun sortCategory(catId: Int, sortBy: Char)
+        fun sortCategory(catId: Long, sortBy: Char)
         fun selectAll(position: Int)
         fun allSelected(position: Int): Boolean
         fun toggleCategoryVisibility(position: Int)

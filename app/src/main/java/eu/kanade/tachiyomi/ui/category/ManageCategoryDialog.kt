@@ -30,12 +30,12 @@ import android.R as AR
 class ManageCategoryDialog(bundle: Bundle? = null) :
     DialogController(bundle) {
 
-    constructor(category: Category?, updateLibrary: ((Int?) -> Unit)) : this() {
+    constructor(category: Category?, updateLibrary: ((Long?) -> Unit)) : this() {
         this.updateLibrary = updateLibrary
         this.category = category
     }
 
-    private var updateLibrary: ((Int?) -> Unit)? = null
+    private var updateLibrary: ((Long?) -> Unit)? = null
     private var category: Category? = null
 
     private val preferences by injectLazy<PreferencesHelper>()
@@ -84,7 +84,7 @@ class ManageCategoryDialog(bundle: Bundle? = null) :
         val text = binding.title.text.toString()
         val categoryExists = categoryExists(text)
         val category = this.category ?: Category.create(text)
-        if (category.id != 0) {
+        if (category.id != 0L) {
             if (text.isNotBlank() && !categoryExists &&
                 !text.equals(this.category?.name ?: "", true)
             ) {
@@ -94,7 +94,7 @@ class ManageCategoryDialog(bundle: Bundle? = null) :
                     val categories = runBlocking { getCategories.await() }
                     category.order = (categories.maxOfOrNull { it.order } ?: 0) + 1
                     category.mangaSort = LibrarySort.Title.categoryValue
-                    category.id = runBlocking { insertCategories.awaitOne(category) }?.toInt()
+                    category.id = runBlocking { insertCategories.awaitOne(category) }
                     this.category = category
                 } else {
                     runBlocking { insertCategories.awaitOne(category) }
@@ -222,8 +222,8 @@ class ManageCategoryDialog(bundle: Bundle? = null) :
         box.isVisible = (updateCategories.isNotEmpty() || excludeUpdateCategories.isNotEmpty()) && shouldShow
         if (shouldShow) {
             box.state = when {
-                updateCategories.any { category?.id == it.toIntOrNull() } -> TriStateCheckBox.State.CHECKED
-                excludeUpdateCategories.any { category?.id == it.toIntOrNull() } -> TriStateCheckBox.State.IGNORE
+                updateCategories.any { category?.id == it.toLongOrNull() } -> TriStateCheckBox.State.CHECKED
+                excludeUpdateCategories.any { category?.id == it.toLongOrNull() } -> TriStateCheckBox.State.IGNORE
                 else -> TriStateCheckBox.State.UNCHECKED
             }
         }

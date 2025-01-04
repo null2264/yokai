@@ -3,13 +3,13 @@ package eu.kanade.tachiyomi.data.database.models
 import android.content.Context
 import dev.icerock.moko.resources.StringResource
 import eu.kanade.tachiyomi.ui.library.LibrarySort
+import java.io.Serializable
 import yokai.i18n.MR
 import yokai.util.lang.getString
-import java.io.Serializable
 
 interface Category : Serializable {
 
-    var id: Int?
+    var id: Long?
 
     var name: String
 
@@ -57,7 +57,7 @@ interface Category : Serializable {
         if (mangaSort != null) mangaSort.toString() else mangaOrder.joinToString("/")
 
     companion object {
-        var lastCategoriesAddedTo = emptySet<Int>()
+        var lastCategoriesAddedTo = emptySet<Long>()
 
         fun create(name: String): Category = CategoryImpl().apply {
             this.name = name
@@ -106,7 +106,7 @@ interface Category : Serializable {
             flags: Long,
             orderString: String,
         ) = create(name).also {
-            it.id = id.toInt()
+            it.id = id
             it.name = name
             it.order = sort.toInt()
             it.flags = flags.toInt()

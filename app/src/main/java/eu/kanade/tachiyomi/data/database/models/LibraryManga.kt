@@ -7,7 +7,7 @@ import yokai.data.updateStrategyAdapter
 data class LibraryManga(
     var unread: Int = 0,
     var read: Int = 0,
-    var category: Int = 0,
+    var category: Long = 0,
     var bookmarkCount: Int = 0,
     var totalChapters: Int = 0,
     var latestUpdate: Long = 0,
@@ -34,13 +34,13 @@ data class LibraryManga(
         }
 
     companion object {
-        fun createBlank(categoryId: Int): LibraryManga = LibraryManga().apply {
+        fun createBlank(categoryId: Long): LibraryManga = LibraryManga().apply {
             title = ""
             id = Long.MIN_VALUE
             category = categoryId
         }
 
-        fun createHide(categoryId: Int, title: String, hiddenItems: List<LibraryItem>): LibraryManga =
+        fun createHide(categoryId: Long, title: String, hiddenItems: List<LibraryItem>): LibraryManga =
             createBlank(categoryId).apply {
                 this.title = title
                 this.status = -1
@@ -78,7 +78,7 @@ data class LibraryManga(
             latestUpdate: Long,
             lastRead: Long,
             lastFetch: Long,
-        ): LibraryManga = createBlank(categoryId.toInt()).apply {
+        ): LibraryManga = LibraryManga().apply {
             this.id = id
             this.source = source
             this.url = url
@@ -103,6 +103,7 @@ data class LibraryManga(
             this.unread = maxOf((total - readCount).roundToInt(), 0)
             this.totalChapters = total.toInt()
             this.bookmarkCount = bookmarkCount.roundToInt()
+            this.category = categoryId
             this.latestUpdate = latestUpdate
             this.lastRead = lastRead
             this.lastFetch = lastFetch

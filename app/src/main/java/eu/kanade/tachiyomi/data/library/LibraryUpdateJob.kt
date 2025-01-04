@@ -117,7 +117,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
 
     private val mangaToUpdateMap = mutableMapOf<Long, List<LibraryManga>>()
 
-    private val categoryIds = mutableSetOf<Int>()
+    private val categoryIds = mutableSetOf<Long>()
 
     // List containing new updates
     private val newUpdates = mutableMapOf<LibraryManga, Array<Chapter>>()
@@ -176,7 +176,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
                 val mangas = getLibraryManga.await().filter {
                     it.id in savedMangasList
                 }.distinctBy { it.id }
-                val categoryId = inputData.getInt(KEY_CATEGORY, -1)
+                val categoryId = inputData.getLong(KEY_CATEGORY, -1)
                 if (categoryId > -1) categoryIds.add(categoryId)
                 mangas
             } else {
@@ -482,7 +482,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     }
 
     private suspend fun getMangaToUpdate(): List<LibraryManga> {
-        val categoryId = inputData.getInt(KEY_CATEGORY, -1)
+        val categoryId = inputData.getLong(KEY_CATEGORY, -1L)
         return getMangaToUpdate(categoryId)
     }
 
@@ -492,15 +492,15 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
      * @param categoryId the category to update
      * @return a list of manga to update
      */
-    private suspend fun getMangaToUpdate(categoryId: Int): List<LibraryManga> {
+    private suspend fun getMangaToUpdate(categoryId: Long): List<LibraryManga> {
         val libraryManga = getLibraryManga.await()
 
-        val listToUpdate = if (categoryId != -1) {
+        val listToUpdate = if (categoryId != -1L) {
             categoryIds.add(categoryId)
             libraryManga.filter { it.category == categoryId }
         } else {
             val categoriesToUpdate =
-                preferences.libraryUpdateCategories().get().map(String::toInt)
+                preferences.libraryUpdateCategories().get().map(String::toLong)
             if (categoriesToUpdate.isNotEmpty()) {
                 categoryIds.addAll(categoriesToUpdate)
                 libraryManga.filter { it.category in categoriesToUpdate }.distinctBy { it.id }
@@ -511,7 +511,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
         }
 
         val categoriesToExclude =
-            preferences.libraryUpdateCategoriesExclude().get().map(String::toInt)
+            preferences.libraryUpdateCategoriesExclude().get().map(String::toLong)
         val listToExclude = if (categoriesToExclude.isNotEmpty() && categoryId == -1) {
             libraryManga.filter { it.category in categoriesToExclude }.toSet()
         } else {
@@ -563,13 +563,13 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
         return File("")
     }
 
-    private fun addMangaToQueue(categoryId: Int, manga: List<LibraryManga>) {
+    private fun addMangaToQueue(categoryId: Long, manga: List<LibraryManga>) {
         val mangas = filterMangaToUpdate(manga).sortedBy { it.title }
         categoryIds.add(categoryId)
         addManga(mangas)
     }
 
-    private fun addCategory(categoryId: Int) {
+    private fun addCategory(categoryId: Long) {
         val mangas = filterMangaToUpdate(runBlocking { getMangaToUpdate(categoryId) }).sortedBy { it.title }
         categoryIds.add(categoryId)
         addManga(mangas)
@@ -698,7 +698,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
             return list.any { it.state == WorkInfo.State.RUNNING }
         }
 
-        fun categoryInQueue(id: Int?) = instance?.get()?.categoryIds?.contains(id) ?: false
+        fun categoryInQueue(id: Long?) = instance?.get()?.categoryIds?.contains(id) ?: false
 
         fun startNow(
             context: Context,
@@ -723,7 +723,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
             val builder = Data.Builder()
             builder.putString(KEY_TARGET, target.name)
             category?.id?.let { id ->
-                builder.putInt(KEY_CATEGORY, id)
+                builder.putLong(KEY_CATEGORY, id)
                 if (mangaToUse != null) {
                     builder.putLongArray(
                         KEY_MANGAS,

@@ -37,7 +37,7 @@ class CategoriesBackupRestorer(
                         sort = category.order.toLong(),
                         flags = category.flags.toLong(),
                     )
-                    category.id = categoriesQueries.selectLastInsertedRowId().executeAsOneOrNull()?.toInt()
+                    category.id = categoriesQueries.selectLastInsertedRowId().executeAsOneOrNull()
                 }
             }
         }

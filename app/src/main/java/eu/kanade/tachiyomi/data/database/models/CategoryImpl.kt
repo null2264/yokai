@@ -2,7 +2,7 @@ package eu.kanade.tachiyomi.data.database.models
 
 class CategoryImpl : Category {
 
-    override var id: Int? = null
+    override var id: Long? = null
 
     override lateinit var name: String
 

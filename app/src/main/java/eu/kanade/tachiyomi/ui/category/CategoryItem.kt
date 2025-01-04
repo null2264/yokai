@@ -65,6 +65,6 @@ class CategoryItem(val category: Category) : AbstractFlexibleItem<CategoryHolder
     }
 
     override fun hashCode(): Int {
-        return category.id!!
+        return category.id!!.hashCode()
     }
 }

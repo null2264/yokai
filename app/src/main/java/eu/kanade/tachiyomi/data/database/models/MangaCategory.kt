@@ -8,7 +8,7 @@ class MangaCategory {
 
     var manga_id: Long = 0
 
-    var category_id: Int = 0
+    var category_id: Long = 0
 
     companion object {
 

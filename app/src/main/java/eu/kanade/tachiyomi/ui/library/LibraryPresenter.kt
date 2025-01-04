@@ -57,7 +57,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.retry
-import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -129,8 +128,8 @@ class LibraryPresenter(
     // TODO: Store sectioned before flattening it out for "show all categories"
     private var currentLibrary: Map<Category, List<LibraryItem>> = mapOf()
     var libraryItems: List<LibraryItem> = emptyList()
-    private var sectionedLibraryItems: MutableMap<Int, List<LibraryItem>> = mutableMapOf()
-    var currentCategory = -1
+    private var sectionedLibraryItems: MutableMap<Long, List<LibraryItem>> = mutableMapOf()
+    var currentCategory = -1L
         private set
     var allLibraryItems: List<LibraryItem> = emptyList()
         private set
@@ -211,7 +210,7 @@ class LibraryPresenter(
         }
     }
 
-    fun getItemCountInCategories(categoryId: Int): Int {
+    fun getItemCountInCategories(categoryId: Long): Int {
         val items = sectionedLibraryItems[categoryId]
         return if (items?.firstOrNull()?.manga?.isHidden() == true || items?.firstOrNull()?.manga?.isBlank() == true) {
             items.firstOrNull()?.manga?.read ?: 0
@@ -274,7 +273,7 @@ class LibraryPresenter(
         view?.onNextLibraryUpdate(sectionedLibraryItems[currentCategory] ?: blankItem())
     }
 
-    fun blankItem(id: Int = currentCategory, categories: List<Category>? = null): List<LibraryItem> {
+    fun blankItem(id: Long = currentCategory, categories: List<Category>? = null): List<LibraryItem> {
         val actualCategories = categories ?: this.categories
         return listOf(
             LibraryItem(
@@ -289,7 +288,7 @@ class LibraryPresenter(
         val items = libraryItems
         val show = showAllCategories || !libraryIsGrouped || categories.size == 1
         sectionedLibraryItems = items.groupBy { it.header.category.id!! }.toMutableMap()
-        if (!show && currentCategory == -1) {
+        if (!show && currentCategory == -1L) {
             currentCategory = categories.find {
                 it.order == preferences.lastUsedCategory().get()
             }?.id ?: 0
@@ -305,7 +304,7 @@ class LibraryPresenter(
         )
     }
 
-    fun getMangaInCategories(catId: Int?): List<LibraryManga>? {
+    fun getMangaInCategories(catId: Long?): List<LibraryManga>? {
         catId ?: return null
         return allLibraryItems.filter { it.header.category.id == catId }.map { it.manga }
     }
@@ -314,7 +313,7 @@ class LibraryPresenter(
         libraryItems = items
         val showAll = showAllCategories || !libraryIsGrouped || categories.size <= 1
         sectionedLibraryItems = items.groupBy { it.header.category.id ?: 0 }.toMutableMap()
-        if (!showAll && currentCategory == -1) {
+        if (!showAll && currentCategory == -1L) {
             currentCategory = categories.find {
                 it.order == preferences.lastUsedCategory().get()
             }?.id ?: 0
@@ -354,7 +353,7 @@ class LibraryPresenter(
             )
         hasActiveFilters = !filtersOff
         val missingCategorySet = categories.mapNotNull { it.id }.toMutableSet()
-        val realCount = mutableMapOf<Int, Int>()
+        val realCount = mutableMapOf<Long, Int>()
         val filteredItems = this.filter f@{ item ->
             if (showEmptyCategoriesWhileFiltering) {
                 realCount[item.manga.category] = sectionedLibraryItems[item.manga.category]?.size ?: 0
@@ -632,7 +631,7 @@ class LibraryPresenter(
                 val category = i1.header.category
                 if (category.mangaOrder.isEmpty() && category.mangaSort == null) {
                     category.changeSortTo(preferences.librarySortingMode().get())
-                    if (category.id == 0) {
+                    if (category.id == 0L) {
                         preferences.defaultMangaOrder()
                             .set(category.mangaSort.toString())
                     } else if (!category.isDynamic) {
@@ -714,7 +713,7 @@ class LibraryPresenter(
      *
      * @param categoryId id of the category to get
      */
-    private fun List<Category>.getOrDefault(categoryId: Int): Category {
+    private fun List<Category>.getOrDefault(categoryId: Long): Category {
         val category = this.find { categoryId == it.id } ?: createDefaultCategory()
         category.isAlone = this.size <= 1
         return category
@@ -871,7 +870,7 @@ class LibraryPresenter(
             isAscending,
         )
         val catItemAll = LibraryHeaderItem({ categoryAll }, -1)
-        val categorySet = mutableSetOf<Int>()
+        val categorySet = mutableSetOf<Long>()
         val headerItems = (
             categories.mapNotNull { category ->
                 val id = category.id
@@ -907,7 +906,7 @@ class LibraryPresenter(
         val categoriesHidden = if (forceShowAllCategories || controllerIsSubClass) {
             emptySet()
         } else {
-            collapsedCategories.mapNotNull { it.toIntOrNull() }.toSet()
+            collapsedCategories.mapNotNull { it.toLongOrNull() }.toSet()
         }
 
         if (categorySet.contains(0)) categories.add(0, defaultCategory)
@@ -980,7 +979,7 @@ class LibraryPresenter(
                     return tagItems[swappedName]!!
                 }
             }
-            val headerItem = LibraryHeaderItem({ categories.getOrDefault(it) }, tagItems.count())
+            val headerItem = LibraryHeaderItem({ categories.getOrDefault(it) }, tagItems.count().toLong())
             tagItems[name] = headerItem
             return headerItem
         }
@@ -1004,7 +1003,7 @@ class LibraryPresenter(
                 BY_TRACK_STATUS -> {
                     val tracks = getTrack.awaitAllByMangaId(manga.id!!)
                     val track = tracks.find { track ->
-                        loggedServices.any { it.id == track?.sync_id }
+                        loggedServices.any { it.id == track.sync_id }
                     }
                     val service = loggedServices.find { it.id == track?.sync_id }
                     val status: String = if (track != null && service != null) {
@@ -1273,18 +1272,18 @@ class LibraryPresenter(
     }
 
     /** Update a category's sorting */
-    fun sortCategory(catId: Int, order: Char) {
+    fun sortCategory(catId: Long, order: Char) {
         val category = categories.find { catId == it.id } ?: return
         category.mangaSort = order
-        if (catId == -1 || category.isDynamic) {
+        if (catId == -1L || category.isDynamic) {
             val sort = category.sortingMode() ?: LibrarySort.Title
             preferences.librarySortingMode().set(sort.mainValue)
             preferences.librarySortingAscending().set(category.isAscending())
             categories.forEach {
                 it.mangaSort = category.mangaSort
             }
-        } else if (catId >= 0) {
-            if (category.id == 0) {
+        } else if (catId >= 0L) {
+            if (category.id == 0L) {
                 preferences.defaultMangaOrder().set(category.mangaSort.toString())
             } else {
                 onCategoryUpdate(
@@ -1299,13 +1298,13 @@ class LibraryPresenter(
     }
 
     /** Update a category's order */
-    fun rearrangeCategory(catId: Int?, mangaIds: List<Long>) {
+    fun rearrangeCategory(catId: Long?, mangaIds: List<Long>) {
         presenterScope.launch {
             val category = categories.find { catId == it.id } ?: return@launch
             if (category.isDynamic) return@launch
             category.mangaSort = null
             category.mangaOrder = mangaIds
-            if (category.id == 0) {
+            if (category.id == 0L) {
                 preferences.defaultMangaOrder().set(mangaIds.joinToString("/"))
             } else {
                 updateCategories.awaitOne(
@@ -1322,7 +1321,7 @@ class LibraryPresenter(
     /** Shift a manga's category via drag & drop */
     fun moveMangaToCategory(
         manga: LibraryManga,
-        catId: Int?,
+        catId: Long?,
         mangaIds: List<Long>,
     ) {
         presenterScope.launch {
@@ -1335,7 +1334,7 @@ class LibraryPresenter(
 
             val mc = ArrayList<Long>()
             val categories =
-                if (catId == 0) {
+                if (catId == 0L) {
                     emptyList()
                 } else {
                     getCategories.awaitByMangaId(manga.id!!)
@@ -1352,7 +1351,7 @@ class LibraryPresenter(
                 val ids = mangaIds.toMutableList()
                 if (!ids.contains(manga.id!!)) ids.add(manga.id!!)
                 category.mangaOrder = ids
-                if (category.id == 0) {
+                if (category.id == 0L) {
                     preferences.defaultMangaOrder()
                         .set(mangaIds.joinToString("/"))
                 } else {
@@ -1369,17 +1368,17 @@ class LibraryPresenter(
     }
 
     /** Returns if manga is in a category by id */
-    fun mangaIsInCategory(manga: LibraryManga, catId: Int?): Boolean {
+    fun mangaIsInCategory(manga: LibraryManga, catId: Long?): Boolean {
         // FIXME: Don't do blocking
         val categories = runBlocking { getCategories.awaitByMangaId(manga.id!!) }.map { it.id }
         return catId in categories
     }
 
-    fun toggleCategoryVisibility(categoryId: Int) {
+    fun toggleCategoryVisibility(categoryId: Long) {
         // if (categories.find { it.id == categoryId }?.isDynamic == true) return
         if (groupType == BY_DEFAULT) {
             val categoriesHidden = preferences.collapsedCategories().get().mapNotNull {
-                it.toIntOrNull()
+                it.toLongOrNull()
             }.toMutableSet()
             if (categoryId in categoriesHidden) {
                 categoriesHidden.remove(categoryId)

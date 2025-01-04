@@ -1827,7 +1827,7 @@ open class LibraryController(
         }
     }
 
-    override fun sortCategory(catId: Int, sortBy: Char) {
+    override fun sortCategory(catId: Long, sortBy: Char) {
         val category = presenter.categories.find { it.id == catId }
         if (category?.isDynamic == false && sortBy == LibrarySort.DragAndDrop.categoryValue) {
             val item = adapter.findCategoryHeader(catId) ?: return

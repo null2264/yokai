@@ -57,7 +57,7 @@ class CategoryPresenter(
         val default =
             Category.create(controller.view?.context?.getString(MR.strings.create_new_category) ?: "")
         default.order = CREATE_CATEGORY_ORDER
-        default.id = Int.MIN_VALUE
+        default.id = Long.MIN_VALUE
         return default
     }
 
@@ -166,7 +166,7 @@ class CategoryPresenter(
     /**
      * Returns true if a category with the given name already exists.
      */
-    private fun categoryExists(name: String, id: Int?): Boolean {
+    private fun categoryExists(name: String, id: Long?): Boolean {
         return categories.any { it.name.equals(name, true) && id != it.id }
     }
 

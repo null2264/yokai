@@ -52,7 +52,7 @@ class SetCategoriesSheet(
         activity: Activity,
         manga: Manga,
         categories: MutableList<Category>,
-        preselected: Array<Int>,
+        preselected: Array<Long>,
         addingToLibrary: Boolean,
         onMangaAdded: () -> Unit,
     ) : this(
@@ -298,7 +298,7 @@ class SetCategoriesSheet(
         }.flatten()
         if (addCategories.isNotEmpty() || listManga.size == 1) {
             Category.lastCategoriesAddedTo =
-                addCategories.mapNotNull { it.id }.toSet().ifEmpty { setOf(0) }
+                addCategories.mapNotNull { it.id }.toSet().ifEmpty { setOf(0L) }
         }
         runBlocking { setMangaCategories.awaitAll(listManga.mapNotNull { it.id }, mangaCategories) }
         onMangaAdded()

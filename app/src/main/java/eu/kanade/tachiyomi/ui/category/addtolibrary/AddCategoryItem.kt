@@ -16,7 +16,7 @@ class AddCategoryItem(val category: Category) : AbstractItem<FastAdapter.ViewHol
     /** defines the layout which will be used for this item in the list */
     override val layoutRes: Int = R.layout.add_category_item
 
-    override var identifier = category.id?.toLong() ?: -1L
+    override var identifier = category.id ?: -1L
 
     var state: TriStateCheckBox.State = TriStateCheckBox.State.UNCHECKED
         set(value) {
