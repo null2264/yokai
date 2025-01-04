@@ -363,18 +363,15 @@ class LibraryPresenter(
                 filterPrefs.filterContentType == 0
             )
         hasActiveFilters = !filtersOff
-        val missingCategorySet = categories.mapNotNull { it.id }.toMutableSet()
         val realCount = mutableMapOf<Int, Int>()
         val filteredItems = this.mapValues { (key, items) ->
-            val category by lazy { categories.find { it.id == key.id } }
-
             if (showEmptyCategoriesWhileFiltering) {
                 realCount[key.id ?: 0] = libraryToDisplay[key]?.size ?: 0
             }
 
             items.filter f@{ item ->
                 if (!showEmptyCategoriesWhileFiltering && item.manga.isHidden()) {
-                    val subItems = libraryToDisplay[category]?.takeUnless { it.size <= 1 }
+                    val subItems = libraryToDisplay[key]?.takeUnless { it.size <= 1 }
                         ?: hiddenLibraryItems.filter { it.manga.category == item.manga.category }
                     if (subItems.isEmpty()) {
                         return@f filtersOff
@@ -388,31 +385,32 @@ class LibraryPresenter(
                         }
                     }
                 } else if (item.manga.isBlank() || item.manga.isHidden()) {
-                    missingCategorySet.remove(item.manga.category)
                     return@f if (showAllCategories) {
                         filtersOff || showEmptyCategoriesWhileFiltering
                     } else {
                         true
                     }
                 }
-                val matches = matchesFilters(
+                matchesFilters(
                     item,
                     filterPrefs,
                     filterTrackers,
                 )
-                if (matches) {
-                    missingCategorySet.remove(item.manga.category)
+            }.ifEmpty {
+                if (showEmptyCategoriesWhileFiltering) {
+                    val catId = key.id!!
+                    listOf(
+                        LibraryItem(
+                            LibraryManga.createBlank(catId),
+                            LibraryHeaderItem({ this@LibraryPresenter.categories.getOrDefault(catId) }, catId),
+                            viewContext,
+                        ),
+                    )
+                } else {
+                    emptyList()
                 }
-                matches
             }
         }.toMutableMap()
-        if (showEmptyCategoriesWhileFiltering) {
-            missingCategorySet.forEach { id ->
-                val category = categories.find { it.id == id } ?: return@forEach
-                filteredItems[category] = (filteredItems[category] ?: emptyList()) +
-                    blankItem(id, categories).first().apply { manga.realMangaCount = realCount[id] ?: 0 }
-            }
-        }
         return filteredItems
     }
 
@@ -868,7 +866,7 @@ class LibraryPresenter(
     }
 
     private fun getLibraryItems(
-        allCategories: List<Category>,
+        dbCategories: List<Category>,
         libraryManga: List<LibraryManga>,
         sortingMode: Int,
         isAscending: Boolean,
@@ -876,7 +874,7 @@ class LibraryPresenter(
         collapsedCategories: Set<String>,
         defaultCategory: Category,
     ): Triple<LibraryMap, List<Category>, List<LibraryItem>> {
-        val categories = allCategories.toMutableList()
+        val categories = dbCategories.mapNotNull { if (it.id == null) null else it }.toMutableList()
         val hiddenItems = mutableListOf<LibraryItem>()
 
         val categoryAll = Category.createAll(
@@ -885,17 +883,13 @@ class LibraryPresenter(
             isAscending,
         )
         val catItemAll = LibraryHeaderItem({ categoryAll }, -1)
-        val categorySet = mutableSetOf<Int>()
+
         // NOTE: Don't call header.category, only header.catId
         val headerItems = (
-            categories.mapNotNull { category ->
-                val id = category.id
-                if (id == null) {
-                    null
-                } else {
-                    id to LibraryHeaderItem({ this@LibraryPresenter.categories.getOrDefault(id) }, id)
-                }
-            } + (-1 to catItemAll) + (0 to LibraryHeaderItem({ this@LibraryPresenter.categories.getOrDefault(0) }, 0))
+            categories.map { category ->
+                val id = category.id!!
+                id to LibraryHeaderItem({ this@LibraryPresenter.categories.getOrDefault(id) }, id)
+            } + (0 to LibraryHeaderItem({ this@LibraryPresenter.categories.getOrDefault(0) }, 0))
         ).toMap()
 
         val categoriesHidden = if (forceShowAllCategories || controllerIsSubClass) {
@@ -911,62 +905,58 @@ class LibraryPresenter(
                 .map { LibraryItem(it, catItemAll, viewContext) }
                 .groupBy { categoryAll }
         else {
-            libraryManga
+            val rt = libraryManga
                 .asSequence()
                 .mapNotNull {
                     val headerItem = headerItems[it.category] ?: return@mapNotNull null
-                    categorySet.add(it.category)
                     LibraryItem(it, headerItem, viewContext)
                 }
-                .groupBy { categories.getOrDefault(it.header.catId) }
-        }.toMutableMap()
+                .groupBy { it.header.catId }
 
-        // Only show default category when needed
-        if (categorySet.contains(0)) categories.add(0, defaultCategory)
-        if (libraryIsGrouped) {
-            categories.forEach { category ->
-                val catId = category.id ?: return@forEach
-                if (catId > 0 && !categorySet.contains(catId) && (catId !in categoriesHidden || !showAll)) {
-                    val headerItem = headerItems[catId]
-                    if (headerItem != null) {
-                        map[category] =
-                            (map[category] ?: emptyList()) + listOf(
-                                LibraryItem(
-                                    LibraryManga.createBlank(catId),
-                                    headerItem,
-                                    viewContext,
-                                )
-                            )
-                    }
-                } else if (catId in categoriesHidden && showAll && categories.size > 1) {
-                    val mangaToRemove = map[category] ?: return@forEach
-                    val mergedTitle = mangaToRemove.joinToString("-") {
-                        it.manga.title + "-" + it.manga.author
-                    }
-                    libraryToDisplay[category] = mangaToRemove
-                    hiddenItems.addAll(mangaToRemove)
-                    val headerItem = headerItems[catId]
-                    if (headerItem != null) {
-                        map[category] =
-                            (map[category]!! - mangaToRemove.toSet()) + listOf(
-                                LibraryItem(
-                                    LibraryManga.createHide(
-                                        catId,
-                                        mergedTitle,
-                                        mangaToRemove,
-                                    ),
-                                    headerItem,
-                                    viewContext,
+            // Only show default category when needed
+            if (rt.containsKey(0)) categories.add(defaultCategory)
+
+            // NOTE: Empty list means hide the category entirely
+            categories
+                .associateWith { rt[it.id].orEmpty() }
+                .mapValues { (key, values) ->
+                    val catId = key.id!!  // null check already handled by mapNotNull
+                    val headerItem = headerItems[catId]!!  // null check already handled by mapNotNull
+
+                    // Hide category if "Show all categories" is enabled and there's more than 1 category
+                    if (catId in categoriesHidden && showAll && categories.size > 1) {
+                        val mergedTitle = values.joinToString("-") {
+                            it.manga.title + "-" + it.manga.author
+                        }
+                        libraryToDisplay[key] = values
+                        hiddenItems.addAll(values)
+                        return@mapValues listOf(
+                            LibraryItem(
+                                LibraryManga.createHide(
+                                    catId,
+                                    mergedTitle,
+                                    values,
                                 ),
-                            )
+                                headerItem,
+                                viewContext,
+                            ),
+                        )
+                    }
+
+                    // Making sure empty category is shown properly
+                    values.ifEmpty {
+                        listOf(
+                            LibraryItem(
+                                LibraryManga.createBlank(catId),
+                                headerItem,
+                                viewContext,
+                            ),
+                        )
                     }
                 }
-            }
-        }
+        }.toMutableMap()
 
-        categories.forEach {
-            it.isHidden = it.id in categoriesHidden && showAll && categories.size > 1
-        }
+        categories.forEach { it.isHidden = it.id in categoriesHidden && showAll && categories.size > 1 }
 
         return Triple(
             map,

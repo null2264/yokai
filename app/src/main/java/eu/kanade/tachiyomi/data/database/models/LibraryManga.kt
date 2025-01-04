@@ -34,6 +34,9 @@ data class LibraryManga(
         }
 
     companion object {
+        /**
+         * To show empty category state
+         */
         fun createBlank(categoryId: Int): LibraryManga = LibraryManga().apply {
             title = ""
             id = Long.MIN_VALUE
@@ -78,7 +81,7 @@ data class LibraryManga(
             latestUpdate: Long,
             lastRead: Long,
             lastFetch: Long,
-        ): LibraryManga = createBlank(categoryId.toInt()).apply {
+        ): LibraryManga = LibraryManga().apply {
             this.id = id
             this.source = source
             this.url = url
