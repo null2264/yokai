@@ -153,7 +153,7 @@ class StatsDetailsPresenter(
 
     private suspend fun setupSeriesType() {
         currentStats = ArrayList()
-        val libraryFormat = mangasDistinct.filterByChip().groupBy { it.seriesType() }
+        val libraryFormat = mangasDistinct.filterByChip().groupBy { it.manga.seriesType() }
 
         libraryFormat.forEach { (seriesType, mangaList) ->
             currentStats?.add(
@@ -173,7 +173,7 @@ class StatsDetailsPresenter(
 
     private suspend fun setupStatus() {
         currentStats = ArrayList()
-        val libraryFormat = mangasDistinct.filterByChip().groupBy { it.status }
+        val libraryFormat = mangasDistinct.filterByChip().groupBy { it.manga.status }
 
         libraryFormat.forEach { (status, mangaList) ->
             currentStats?.add(
@@ -263,7 +263,7 @@ class StatsDetailsPresenter(
     private suspend fun setupTrackers() {
         currentStats = ArrayList()
         val libraryFormat = mangasDistinct.filterByChip()
-            .map { it to getTracks(it).ifEmpty { listOf(null) } }
+            .map { it to getTracks(it.manga).ifEmpty { listOf(null) } }
             .flatMap { it.second.map { track -> it.first to track } }
         val loggedServices = trackManager.services.filter { it.isLogged }
 
@@ -292,7 +292,7 @@ class StatsDetailsPresenter(
 
     private suspend fun setupSources() {
         currentStats = ArrayList()
-        val libraryFormat = mangasDistinct.filterByChip().groupBy { it.source }
+        val libraryFormat = mangasDistinct.filterByChip().groupBy { it.manga.source }
 
         libraryFormat.forEach { (sourceId, mangaList) ->
             val source = sourceManager.getOrStub(sourceId)
@@ -339,10 +339,10 @@ class StatsDetailsPresenter(
     private suspend fun setupTags() {
         currentStats = ArrayList()
         val mangaFiltered = mangasDistinct.filterByChip()
-        val tags = mangaFiltered.flatMap { it.getTags() }.distinctBy { it.uppercase() }
+        val tags = mangaFiltered.flatMap { it.manga.getTags() }.distinctBy { it.uppercase() }
         val libraryFormat = tags.map { tag ->
             tag to mangaFiltered.filter {
-                it.getTags().any { mangaTag -> mangaTag.equals(tag, true) }
+                it.manga.getTags().any { mangaTag -> mangaTag.equals(tag, true) }
             }
         }
 
@@ -433,7 +433,7 @@ class StatsDetailsPresenter(
             this
         } else {
             filter { manga ->
-                context.mapSeriesType(manga.seriesType()) in selectedSeriesType
+                context.mapSeriesType(manga.manga.seriesType()) in selectedSeriesType
             }
         }
     }
@@ -443,7 +443,7 @@ class StatsDetailsPresenter(
             this
         } else {
             filter { manga ->
-                context.mapStatus(manga.status) in selectedStatus
+                context.mapStatus(manga.manga.status) in selectedStatus
             }
         }
     }
@@ -463,7 +463,7 @@ class StatsDetailsPresenter(
             this
         } else {
             filter { manga ->
-                manga.source in selectedSource.map { it.id }
+                manga.manga.source in selectedSource.map { it.id }
             }
         }
     }
@@ -504,10 +504,10 @@ class StatsDetailsPresenter(
      * Get language name of a manga
      */
     private fun LibraryManga.getLanguage(): String {
-        val code = if (isLocal()) {
-            LocalSource.getMangaLang(this)
+        val code = if (manga.isLocal()) {
+            LocalSource.getMangaLang(this.manga)
         } else {
-            sourceManager.get(source)?.lang
+            sourceManager.get(manga.source)?.lang
         } ?: return context.getString(MR.strings.unknown)
         return LocaleHelper.getLocalizedDisplayName(code)
     }
@@ -516,7 +516,7 @@ class StatsDetailsPresenter(
      * Get mean score rounded to two decimal of a list of manga
      */
     private suspend fun List<LibraryManga>.getMeanScoreRounded(): Double? {
-        val mangaTracks = this.map { it to getTracks(it) }
+        val mangaTracks = this.map { it to getTracks(it.manga) }
         val scoresList = mangaTracks.filter { it.second.isNotEmpty() }
             .mapNotNull { it.second.getMeanScoreByTracker() }
         return if (scoresList.isEmpty()) null else scoresList.average().roundToTwoDecimal()
@@ -526,7 +526,7 @@ class StatsDetailsPresenter(
      * Get mean score rounded to int of a single manga
      */
     private suspend fun LibraryManga.getMeanScoreToInt(): Int? {
-        val mangaTracks = getTracks(this)
+        val mangaTracks = getTracks(this.manga)
         val scoresList = mangaTracks.filter { it.score > 0 }
             .mapNotNull { it.get10PointScore() }
         return if (scoresList.isEmpty()) null else scoresList.average().roundToInt().coerceIn(1..10)
@@ -550,8 +550,8 @@ class StatsDetailsPresenter(
     }
 
     private suspend fun LibraryManga.getStartYear(): Int? {
-        if (getChapter.awaitAll(id!!, false).any { it.read }) {
-            val chapters = getHistory.awaitAllByMangaId(id!!).filter { it.last_read > 0 }
+        if (getChapter.awaitAll(manga.id!!, false).any { it.read }) {
+            val chapters = getHistory.awaitAllByMangaId(manga.id!!).filter { it.last_read > 0 }
             val date = chapters.minOfOrNull { it.last_read } ?: return null
             val cal = Calendar.getInstance().apply { timeInMillis = date }
             return if (date <= 0L) null else cal.get(Calendar.YEAR)
@@ -564,7 +564,7 @@ class StatsDetailsPresenter(
     }
 
     private fun getEnabledSources(): List<Source> {
-        return mangasDistinct.mapNotNull { sourceManager.get(it.source) }
+        return mangasDistinct.mapNotNull { sourceManager.get(it.manga.source) }
             .distinct().sortedBy { it.name }
     }
 
@@ -589,7 +589,7 @@ class StatsDetailsPresenter(
     }
 
     private suspend fun List<LibraryManga>.getReadDuration(): Long {
-        return sumOf { manga -> getHistory.awaitAllByMangaId(manga.id!!).sumOf { it.time_read } }
+        return sumOf { manga -> getHistory.awaitAllByMangaId(manga.manga.id!!).sumOf { it.time_read } }
     }
 
     /**

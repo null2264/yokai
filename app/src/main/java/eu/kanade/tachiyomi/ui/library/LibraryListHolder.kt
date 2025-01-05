@@ -39,12 +39,12 @@ class LibraryListHolder(
         setCards(adapter.showOutline, binding.card, binding.unreadDownloadBadge.root)
         binding.title.isVisible = true
         binding.constraintLayout.minHeight = 56.dpToPx
-        if (item.manga.isBlank()) {
+        if (item.manga.isPlaceholder()) {
             binding.constraintLayout.minHeight = 0
             binding.constraintLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 height = ViewGroup.MarginLayoutParams.WRAP_CONTENT
             }
-            if (item.manga.status == -1) {
+            if (item.manga.isHidden()) {
                 binding.title.text = null
                 binding.title.isVisible = false
             } else {
@@ -75,12 +75,12 @@ class LibraryListHolder(
         setUnreadBadge(binding.unreadDownloadBadge.badgeView, item)
 
         val authorArtist =
-            if (item.manga.author == item.manga.artist || item.manga.artist.isNullOrBlank()) {
-                item.manga.author?.trim() ?: ""
+            if (item.manga.manga.author == item.manga.manga.artist || item.manga.manga.artist.isNullOrBlank()) {
+                item.manga.manga.author?.trim() ?: ""
             } else {
                 listOfNotNull(
-                    item.manga.author?.trim()?.takeIf { it.isNotBlank() },
-                    item.manga.artist?.trim()?.takeIf { it.isNotBlank() },
+                    item.manga.manga.author?.trim()?.takeIf { it.isNotBlank() },
+                    item.manga.manga.artist?.trim()?.takeIf { it.isNotBlank() },
                 ).joinToString(", ")
             }
 
@@ -95,7 +95,7 @@ class LibraryListHolder(
 
         // Update the cover.
         binding.coverThumbnail.dispose()
-        binding.coverThumbnail.loadManga(item.manga)
+        binding.coverThumbnail.loadManga(item.manga.manga)
     }
 
     override fun onActionStateChanged(position: Int, actionState: Int) {

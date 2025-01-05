@@ -65,19 +65,19 @@ class StatsPresenter(
         val includedCategories = prefs.libraryUpdateCategories().get().map(String::toInt)
         val excludedCategories = prefs.libraryUpdateCategoriesExclude().get().map(String::toInt)
         val restrictions = prefs.libraryUpdateMangaRestriction().get()
-        return libraryMangas.groupBy { it.id }
+        return libraryMangas.groupBy { it.manga.id }
             .filterNot { it.value.any { manga -> manga.category in excludedCategories } }
             .filter { includedCategories.isEmpty() || it.value.any { manga -> manga.category in includedCategories } }
             .filterNot {
                 val manga = it.value.first()
-                (MANGA_NON_COMPLETED in restrictions && manga.status == SManga.COMPLETED) ||
+                (MANGA_NON_COMPLETED in restrictions && manga.manga.status == SManga.COMPLETED) ||
                     (MANGA_HAS_UNREAD in restrictions && manga.unread != 0) ||
                     (MANGA_NON_READ in restrictions && manga.totalChapters > 0 && !manga.hasRead)
             }
     }
 
     fun getDownloadCount(manga: LibraryManga): Int {
-        return downloadManager.getDownloadCount(manga)
+        return downloadManager.getDownloadCount(manga.manga)
     }
 
     fun get10PointScore(track: Track): Float? {

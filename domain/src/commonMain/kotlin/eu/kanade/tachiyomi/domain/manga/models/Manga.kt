@@ -82,9 +82,6 @@ interface Manga : SManga {
         }
     }
 
-    fun isBlank() = id == Long.MIN_VALUE
-    fun isHidden() = status == -1
-
     fun setChapterOrder(sorting: Int, order: Int) {
         setChapterFlags(sorting, CHAPTER_SORTING_MASK)
         setChapterFlags(order, CHAPTER_SORT_MASK)

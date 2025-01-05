@@ -5,9 +5,6 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
 import com.google.android.material.card.MaterialCardView
 import eu.kanade.tachiyomi.R
-import yokai.i18n.MR
-import yokai.util.lang.getString
-import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.ui.base.holder.BaseFlexibleViewHolder
 import eu.kanade.tachiyomi.util.isLocal
 import eu.kanade.tachiyomi.util.system.getResourceColor
@@ -54,7 +51,7 @@ abstract class LibraryHolder(
             },
             when {
                 item.downloadCount == -1 -> -1
-                item.manga.isLocal() -> -2
+                item.manga.manga.isLocal() -> -2
                 else -> item.downloadCount
             },
             showTotal,
@@ -81,7 +78,7 @@ abstract class LibraryHolder(
     override fun onLongClick(view: View?): Boolean {
         return if (adapter.isLongPressDragEnabled) {
             val manga = (adapter.getItem(flexibleAdapterPosition) as? LibraryItem)?.manga
-            if (manga != null && !isDraggable && !manga.isBlank() && !manga.isHidden()) {
+            if (manga != null && !isDraggable && !manga.isPlaceholder()) {
                 adapter.mItemLongClickListener.onItemLongClick(flexibleAdapterPosition)
                 toggleActivation()
                 true

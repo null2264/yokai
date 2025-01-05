@@ -28,9 +28,9 @@ import eu.kanade.tachiyomi.util.system.roundToTwoDecimal
 import eu.kanade.tachiyomi.util.view.compatToolTipText
 import eu.kanade.tachiyomi.util.view.scrollViewWith
 import eu.kanade.tachiyomi.util.view.withFadeTransaction
+import kotlin.math.roundToInt
 import yokai.i18n.MR
 import yokai.util.lang.getString
-import kotlin.math.roundToInt
 import android.R as AR
 
 class StatsController : BaseLegacyController<StatsControllerBinding>() {
@@ -61,7 +61,7 @@ class StatsController : BaseLegacyController<StatsControllerBinding>() {
     }
 
     private fun handleGeneralStats() {
-        val mangaTracks = mangaDistinct.map { it to presenter.getTracks(it) }
+        val mangaTracks = mangaDistinct.map { it to presenter.getTracks(it.manga) }
         scoresList = getScoresList(mangaTracks)
         with(binding) {
             viewDetailLayout.isVisible = mangaDistinct.isNotEmpty()
@@ -76,8 +76,8 @@ class StatsController : BaseLegacyController<StatsControllerBinding>() {
             }
             statsTrackedMangaText.text = mangaTracks.count { it.second.isNotEmpty() }.toString()
             statsChaptersDownloadedText.text = mangaDistinct.sumOf { presenter.getDownloadCount(it) }.toString()
-            statsTotalTagsText.text = mangaDistinct.flatMap { it.getTags() }.distinct().count().toString()
-            statsMangaLocalText.text = mangaDistinct.count { it.isLocal() }.toString()
+            statsTotalTagsText.text = mangaDistinct.flatMap { it.manga.getTags() }.distinct().count().toString()
+            statsMangaLocalText.text = mangaDistinct.count { it.manga.isLocal() }.toString()
             statsGlobalUpdateMangaText.text = presenter.getGlobalUpdateManga().count().toString()
             statsSourcesText.text = presenter.getSources().count().toString()
             statsTrackersText.text = presenter.getLoggedTrackers().count().toString()
@@ -105,7 +105,7 @@ class StatsController : BaseLegacyController<StatsControllerBinding>() {
         val pieEntries = ArrayList<PieEntry>()
 
         val mangaStatusDistributionList = statusMap.mapNotNull { (status, color) ->
-            val libraryCount = mangaDistinct.count { it.status == status }
+            val libraryCount = mangaDistinct.count { it.manga.status == status }
             if (status == SManga.UNKNOWN && libraryCount == 0) return@mapNotNull null
             pieEntries.add(PieEntry(libraryCount.toFloat(), activity!!.mapStatus(status)))
             StatusDistributionItem(activity!!.mapStatus(status), libraryCount, color)
