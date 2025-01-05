@@ -68,7 +68,7 @@ class LibraryGridHolder(
         // Update the title and subtitle of the manga.
         setCards(adapter.showOutline, binding.card, binding.unreadDownloadBadge.root)
         binding.playButton.transitionName = "library chapter $bindingAdapterPosition transition"
-        binding.constraintLayout.isVisible = item.manga.manga.id == Long.MIN_VALUE
+        binding.constraintLayout.isVisible = item.manga.manga.id != Long.MIN_VALUE
         binding.title.text = item.manga.manga.title.highlightText(item.filter, color)
         binding.behindTitle.text = item.manga.manga.title
         val mangaColor = item.manga.manga.dominantCoverColors
