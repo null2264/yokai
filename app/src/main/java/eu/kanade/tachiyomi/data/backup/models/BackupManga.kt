@@ -57,8 +57,10 @@ data class BackupManga(
     @ProtoNumber(805) var customGenre: List<String>? = null,
 ) {
     fun getMangaImpl(): MangaImpl {
-        return MangaImpl().apply {
-            url = this@BackupManga.url
+        return MangaImpl(
+            source = this.source,
+            url = this.url,
+        ).apply {
             title = this@BackupManga.title
             artist = this@BackupManga.artist
             author = this@BackupManga.author
@@ -67,7 +69,6 @@ data class BackupManga(
             status = this@BackupManga.status
             thumbnail_url = this@BackupManga.thumbnailUrl
             favorite = this@BackupManga.favorite
-            source = this@BackupManga.source
             date_added = this@BackupManga.dateAdded
             viewer_flags = (
                 this@BackupManga.viewer_flags

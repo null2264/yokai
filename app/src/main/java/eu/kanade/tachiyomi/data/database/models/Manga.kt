@@ -182,15 +182,13 @@ var Manga.vibrantCoverColor: Int?
         id?.let { MangaCoverMetadata.setVibrantColor(it, value) }
     }
 
-fun Manga.Companion.create(source: Long) = MangaImpl().apply {
-    this.source = source
-}
-
-fun Manga.Companion.create(pathUrl: String, title: String, source: Long = 0) = MangaImpl().apply {
-    url = pathUrl
-    this.title = title
-    this.source = source
-}
+fun Manga.Companion.create(url: String, title: String, source: Long = 0) =
+    MangaImpl(
+        source = source,
+        url = url,
+    ).apply {
+        this.title = title
+    }
 
 fun Manga.Companion.mapper(
     id: Long,
@@ -213,14 +211,12 @@ fun Manga.Companion.mapper(
     filteredScanlators: String?,
     updateStrategy: Long,
     coverLastModified: Long,
-) = create(source).apply {
+) = create(url, title, source).apply {
     this.id = id
-    this.url = url
     this.artist = artist
     this.author = author
     this.description = description
     this.genre = genre
-    this.title = title
     this.status = status.toInt()
     this.thumbnail_url = thumbnailUrl
     this.favorite = favorite

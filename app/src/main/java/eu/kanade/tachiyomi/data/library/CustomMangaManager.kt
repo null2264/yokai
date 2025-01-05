@@ -4,6 +4,7 @@ import android.content.Context
 import com.hippo.unifile.UniFile
 import eu.kanade.tachiyomi.data.database.models.MangaImpl
 import eu.kanade.tachiyomi.domain.manga.models.Manga
+import java.nio.charset.StandardCharsets
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -26,7 +27,6 @@ import yokai.domain.library.custom.interactor.GetCustomManga
 import yokai.domain.library.custom.interactor.RelinkCustomManga
 import yokai.domain.library.custom.model.CustomMangaInfo
 import yokai.domain.library.custom.model.CustomMangaInfo.Companion.getMangaInfo
-import java.nio.charset.StandardCharsets
 
 class CustomMangaManager(val context: Context) {
     private val scope = CoroutineScope(Dispatchers.IO)
@@ -176,8 +176,7 @@ class CustomMangaManager(val context: Context) {
         val status: Int? = null,
     ) {
 
-        fun toManga() = MangaImpl().apply {
-            id = this@MangaJson.id
+        fun toManga() = MangaImpl(id = this.id).apply {
             title = this@MangaJson.title ?: ""
             author = this@MangaJson.author
             artist = this@MangaJson.artist
@@ -272,9 +271,6 @@ class CustomMangaManager(val context: Context) {
         }
     }
 
-    private fun mangaFromComicInfoObject(id: Long, comicInfo: ComicInfo) = MangaImpl().apply {
-        this.id = id
-        this.copyFromComicInfo(comicInfo)
-        this.title = comicInfo.series?.value ?: ""
-    }
+    private fun mangaFromComicInfoObject(id: Long, comicInfo: ComicInfo) =
+        MangaImpl(id = id).apply { this.copyFromComicInfo(comicInfo) }
 }

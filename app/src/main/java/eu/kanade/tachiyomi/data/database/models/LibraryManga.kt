@@ -4,6 +4,7 @@ import eu.kanade.tachiyomi.ui.library.LibraryItem
 import kotlin.math.roundToInt
 import yokai.data.updateStrategyAdapter
 
+// FIXME: Should probably not depends on MangaImpl
 data class LibraryManga(
     var unread: Int = 0,
     var read: Int = 0,

@@ -335,7 +335,7 @@ class ReaderViewModel(
         val info = delegatedSource.fetchMangaFromChapterUrl(url)
         if (info != null) {
             val (sChapter, sManga, chapters) = info
-            val manga = Manga.create(sourceId).apply { copyFrom(sManga) }
+            val manga = Manga.create(sManga.url, sManga.title, sourceId).apply { copyFrom(sManga) }
             val chapter = Chapter.create().apply { copyFrom(sChapter) }
             val id = insertManga.await(manga)
             manga.id = id ?: manga.id

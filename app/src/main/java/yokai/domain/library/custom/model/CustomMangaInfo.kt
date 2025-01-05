@@ -12,8 +12,7 @@ data class CustomMangaInfo(
     val genre: String? = null,
     val status: Int? = null,
 ) {
-    fun toManga() = MangaImpl().apply {
-        id = this@CustomMangaInfo.mangaId
+    fun toManga() = MangaImpl(id = this.mangaId).apply {
         title = this@CustomMangaInfo.title ?: ""
         author = this@CustomMangaInfo.author
         artist = this@CustomMangaInfo.artist

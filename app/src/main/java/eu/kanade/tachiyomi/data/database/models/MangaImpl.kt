@@ -8,13 +8,11 @@ import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.model.UpdateStrategy
 import uy.kohesive.injekt.injectLazy
 
-open class MangaImpl : Manga {
-
-    override var id: Long? = null
-
-    override var source: Long = -1
-
-    override lateinit var url: String
+open class MangaImpl(
+    override var id: Long? = null,
+    override var source: Long = -1,
+    override var url: String = "",
+) : Manga {
 
     private val customMangaManager: CustomMangaManager by injectLazy()
 
@@ -107,7 +105,7 @@ open class MangaImpl : Manga {
     }
 
     override fun hashCode(): Int {
-        return if (::url.isInitialized) {
+        return if (url.isNotBlank()) {
             url.hashCode()
         } else {
             (id ?: 0L).hashCode()

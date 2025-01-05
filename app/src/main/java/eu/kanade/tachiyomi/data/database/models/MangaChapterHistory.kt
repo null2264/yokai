@@ -12,7 +12,11 @@ import eu.kanade.tachiyomi.domain.manga.models.Manga
 data class MangaChapterHistory(val manga: Manga, val chapter: Chapter, val history: History, var extraChapters: List<ChapterHistory> = emptyList()) {
 
     companion object {
-        fun createBlank() = MangaChapterHistory(MangaImpl(), ChapterImpl(), HistoryImpl())
+        fun createBlank() = MangaChapterHistory(
+            MangaImpl(null, -1, ""),
+            ChapterImpl(),
+            HistoryImpl(),
+        )
 
         fun mapper(
             // manga
