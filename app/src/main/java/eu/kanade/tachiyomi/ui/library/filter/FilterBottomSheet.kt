@@ -22,6 +22,7 @@ import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.ui.library.LibraryController
 import eu.kanade.tachiyomi.ui.library.LibraryGroup
+import eu.kanade.tachiyomi.ui.library.LibraryMangaItem
 import eu.kanade.tachiyomi.ui.main.MainActivity
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.launchUI
@@ -372,7 +373,7 @@ class FilterBottomSheet @JvmOverloads constructor(context: Context, attrs: Attri
             checked = true
             var types = mutableSetOf<StringResource>()
             libraryManga.forEach {
-                if (it.manga.isPlaceholder()) return@forEach
+                if (it !is LibraryMangaItem) return@forEach
                 when (it.manga.manga.seriesType(sourceManager = sourceManager)) {
                     Manga.TYPE_MANHWA, Manga.TYPE_WEBTOON -> types.add(MR.strings.manhwa)
                     Manga.TYPE_MANHUA -> types.add(MR.strings.manhua)

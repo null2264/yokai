@@ -14,9 +14,7 @@ import eu.kanade.tachiyomi.util.view.setCards
  * Generic class used to hold the displayed data of a manga in the library.
  * @param view the inflated view for this holder.
  * @param adapter the adapter handling this holder.
- * @param listener a listener to react to the single tap and long tap events.
  */
-
 abstract class LibraryHolder(
     view: View,
     val adapter: LibraryCategoryAdapter,
@@ -40,7 +38,7 @@ abstract class LibraryHolder(
      */
     abstract fun onSetValues(item: LibraryItem)
 
-    fun setUnreadBadge(badge: LibraryBadge, item: LibraryItem) {
+    fun setUnreadBadge(badge: LibraryBadge, item: LibraryMangaItem) {
         val showTotal = item.header.category.sortingMode() == LibrarySort.TotalChapters
         badge.setUnreadDownload(
             when {
@@ -60,7 +58,7 @@ abstract class LibraryHolder(
         )
     }
 
-    fun setReadingButton(item: LibraryItem) {
+    fun setReadingButton(item: LibraryMangaItem) {
         itemView.findViewById<View>(R.id.play_layout)?.isVisible =
             item.manga.unread > 0 && !item.hideReadingButton
     }
@@ -77,8 +75,8 @@ abstract class LibraryHolder(
 
     override fun onLongClick(view: View?): Boolean {
         return if (adapter.isLongPressDragEnabled) {
-            val manga = (adapter.getItem(flexibleAdapterPosition) as? LibraryItem)?.manga
-            if (manga != null && !isDraggable && !manga.isPlaceholder()) {
+            val manga = (adapter.getItem(flexibleAdapterPosition) as? LibraryMangaItem)?.manga
+            if (manga != null && !isDraggable) {
                 adapter.mItemLongClickListener.onItemLongClick(flexibleAdapterPosition)
                 toggleActivation()
                 true

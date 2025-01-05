@@ -39,22 +39,25 @@ class LibraryListHolder(
         setCards(adapter.showOutline, binding.card, binding.unreadDownloadBadge.root)
         binding.title.isVisible = true
         binding.constraintLayout.minHeight = 56.dpToPx
-        if (item.manga.isPlaceholder()) {
+        if (item is LibraryPlaceholderItem) {
             binding.constraintLayout.minHeight = 0
             binding.constraintLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 height = ViewGroup.MarginLayoutParams.WRAP_CONTENT
             }
-            if (item.manga.isHidden()) {
-                binding.title.text = null
-                binding.title.isVisible = false
-            } else {
-                binding.title.text = itemView.context.getString(
-                    if (adapter.hasActiveFilters && item.manga.realMangaCount >= 1) {
-                        MR.strings.no_matches_for_filters_short
-                    } else {
-                        MR.strings.category_is_empty
-                    },
-                )
+            when (item.type) {
+                is LibraryPlaceholderItem.Type.Blank -> {
+                    binding.title.text = itemView.context.getString(
+                        if (adapter.hasActiveFilters && item.type.mangaCount >= 1) {
+                            MR.strings.no_matches_for_filters_short
+                        } else {
+                            MR.strings.category_is_empty
+                        },
+                    )
+                }
+                is LibraryPlaceholderItem.Type.Hidden -> {
+                    binding.title.text = null
+                    binding.title.isVisible = false
+                }
             }
             binding.title.textAlignment = View.TEXT_ALIGNMENT_CENTER
             binding.card.isVisible = false
@@ -63,6 +66,9 @@ class LibraryListHolder(
             binding.subtitle.isVisible = false
             return
         }
+
+        if (item !is LibraryMangaItem) error("${item::class.qualifiedName} is not a valid item")
+
         binding.constraintLayout.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             height = 52.dpToPx
         }
@@ -71,7 +77,7 @@ class LibraryListHolder(
         binding.title.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
 
         // Update the binding.title of the manga.
-        binding.title.text = item.manga.title.highlightText(item.filter, color)
+        binding.title.text = item.manga.manga.title.highlightText(item.filter, color)
         setUnreadBadge(binding.unreadDownloadBadge.badgeView, item)
 
         val authorArtist =

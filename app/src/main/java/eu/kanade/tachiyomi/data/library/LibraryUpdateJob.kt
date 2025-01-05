@@ -183,7 +183,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
             } else {
                 getMangaToUpdate()
             }
-            ).sortedBy { it.title }
+            ).sortedBy { it.manga.title }
 
         return withIOContext {
             try {
@@ -377,7 +377,6 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
 
     private fun checkIfMassiveUpdate() {
         val largestSourceSize = mangaToUpdate
-            .filterNot { it.isPlaceholder() }
             .groupBy { it.manga.source }
             .filterKeys { sourceManager.get(it) !is UnmeteredSource }
             .maxOfOrNull { it.value.size } ?: 0
@@ -566,13 +565,13 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     }
 
     private fun addMangaToQueue(categoryId: Int, manga: List<LibraryManga>) {
-        val mangas = filterMangaToUpdate(manga).sortedBy { it.title }
+        val mangas = filterMangaToUpdate(manga).sortedBy { it.manga.title }
         categoryIds.add(categoryId)
         addManga(mangas)
     }
 
     private fun addCategory(categoryId: Int) {
-        val mangas = filterMangaToUpdate(runBlocking { getMangaToUpdate(categoryId) }).sortedBy { it.title }
+        val mangas = filterMangaToUpdate(runBlocking { getMangaToUpdate(categoryId) }).sortedBy { it.manga.title }
         categoryIds.add(categoryId)
         addManga(mangas)
     }
@@ -708,7 +707,6 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
             target: Target = Target.CHAPTERS,
             mangaToUse: List<LibraryManga>? = null,
         ): Boolean {
-            val mangaToUse = mangaToUse?.filterNot { it.isPlaceholder() }
             if (isRunning(context)) {
                 if (target == Target.CHAPTERS) {
                     category?.id?.let {

@@ -117,8 +117,8 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
      */
     fun indexOf(manga: Manga): Int {
         return currentItems.indexOfFirst {
-            if (it is LibraryItem) {
-                it.manga.requireId() == manga.id
+            if (it is LibraryMangaItem) {
+                it.manga.manga.id == manga.id
             } else {
                 false
             }
@@ -142,7 +142,7 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
      */
     fun allIndexOf(manga: Manga): List<Int> {
         return currentItems.mapIndexedNotNull { index, it ->
-            if (it is LibraryItem && it.manga.requireId() == manga.id) {
+            if (it is LibraryMangaItem && it.manga.manga.id == manga.id) {
                 index
             } else {
                 null
@@ -164,7 +164,7 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
         } else {
             val filteredManga = withDefContext { mangas.filter { it.filter(s) } }
             if (filteredManga.isEmpty() && controller?.presenter?.showAllCategories == false) {
-                val catId = mangas.firstOrNull()?.let { it.header?.catId ?: it.manga.category }
+                val catId = (mangas.firstOrNull() as? LibraryMangaItem)?.let { it.header?.catId ?: it.manga.category }
                 val blankItem = catId?.let { controller.presenter.blankItem(it) }
                 updateDataSet(blankItem ?: emptyList())
             } else {
@@ -202,10 +202,11 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
                 vibrateOnCategoryChange(item.category.name)
                 item.category.name
             }
-            is LibraryItem -> {
-                val text = if (item.manga.isPlaceholder()) {
-                    return item.header?.category?.name.orEmpty()
-                } else {
+            is LibraryPlaceholderItem -> {
+                item.header?.category?.name.orEmpty()
+            }
+            is LibraryMangaItem -> {
+                val text =
                     when (getSort(position)) {
                         LibrarySort.DragAndDrop -> {
                             if (item.header.category.isDynamic && item.manga.manga.id != null) {
@@ -213,7 +214,7 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
                                 val category = runBlocking { getCategories.awaitByMangaId(item.manga.manga.id!!) }.firstOrNull()?.name
                                 category ?: context.getString(MR.strings.default_value)
                             } else {
-                                val title = item.manga.title
+                                val title = item.manga.manga.title
                                 if (preferences.removeArticles().get()) {
                                     title.removeArticles().chop(15)
                                 } else {
@@ -263,14 +264,13 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
                         }
                         LibrarySort.Title -> {
                             val title = if (preferences.removeArticles().get()) {
-                                item.manga.title.removeArticles()
+                                item.manga.manga.title.removeArticles()
                             } else {
-                                item.manga.title
+                                item.manga.manga.title
                             }
                             getFirstLetter(title)
                         }
                     }
-                }
                 if (!isSingleCategory) {
                     vibrateOnCategoryChange(item.header?.category?.name.orEmpty())
                 }

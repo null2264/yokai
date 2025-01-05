@@ -205,7 +205,7 @@ class LibraryUpdateNotifier(private val context: Context) {
                                 } catch (_: Exception) {
                                 }
                                 setGroupAlertBehavior(NotificationCompat.GROUP_ALERT_SUMMARY)
-                                setContentTitle(manga.title)
+                                setContentTitle(manga.manga.title)
                                 color = ContextCompat.getColor(context, R.color.secondaryTachiyomi)
                                 val chaptersNames = if (chapterNames.size > MAX_CHAPTERS) {
                                     "${chapterNames.take(MAX_CHAPTERS - 1).joinToString(", ")}, " +
@@ -281,13 +281,13 @@ class LibraryUpdateNotifier(private val context: Context) {
                                     NotificationCompat.BigTextStyle()
                                         .bigText(
                                             updates.keys.joinToString("\n") {
-                                                it.title.chop(45)
+                                                it.manga.title.chop(45)
                                             },
                                         ),
                                 )
                             }
                         } else if (!preferences.hideNotificationContent().get()) {
-                            setContentText(updates.keys.first().title.chop(45))
+                            setContentText(updates.keys.first().manga.title.chop(45))
                         }
                         priority = NotificationCompat.PRIORITY_HIGH
                         setGroup(Notifications.GROUP_NEW_CHAPTERS)
