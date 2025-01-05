@@ -106,6 +106,7 @@ data class LibraryManga(
             this.unread = maxOf((total - readCount).roundToInt(), 0)
             this.totalChapters = total.toInt()
             this.bookmarkCount = bookmarkCount.roundToInt()
+            this.category = categoryId.toInt()
             this.latestUpdate = latestUpdate
             this.lastRead = lastRead
             this.lastFetch = lastFetch
