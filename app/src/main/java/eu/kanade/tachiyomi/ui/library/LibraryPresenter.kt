@@ -936,7 +936,7 @@ class LibraryPresenter(
                 .groupBy { it.header.catId }
 
             // Only show default category when needed
-            if (rt.containsKey(0)) categories.add(defaultCategory)
+            if (rt.containsKey(0)) categories.add(0, defaultCategory)
 
             // NOTE: Empty list means hide the category entirely
             categories
