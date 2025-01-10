@@ -18,7 +18,6 @@ import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -66,6 +65,7 @@ import yokai.presentation.core.enterAlwaysCollapsedScrollBehavior
 import yokai.presentation.core.icons.CustomIcons
 import yokai.presentation.core.icons.Discord
 import yokai.presentation.core.icons.GitHub
+import yokai.presentation.core.rememberTopAppBarState
 import yokai.presentation.settings.SettingsScaffold
 import yokai.util.Screen
 import yokai.util.lang.getString

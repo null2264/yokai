@@ -1,7 +1,6 @@
 package yokai.presentation.settings.screen.about
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -13,6 +12,7 @@ import eu.kanade.tachiyomi.util.compose.currentOrThrow
 import yokai.i18n.MR
 import yokai.presentation.AppBarType
 import yokai.presentation.YokaiScaffold
+import yokai.presentation.core.pinnedScrollBehavior
 import yokai.util.Screen
 
 class AboutLicenseScreen : Screen() {
@@ -25,7 +25,7 @@ class AboutLicenseScreen : Screen() {
             onNavigationIconClicked = backPress,
             title = stringResource(MR.strings.open_source_licenses),
             appBarType = AppBarType.SMALL,
-            scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(),
+            scrollBehavior = pinnedScrollBehavior(),
         ) { innerPadding ->
             LibrariesContainer(
                 modifier = Modifier.fillMaxSize(),

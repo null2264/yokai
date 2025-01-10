@@ -11,8 +11,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -41,6 +39,8 @@ import yokai.presentation.AppBarType
 import yokai.presentation.YokaiScaffold
 import yokai.presentation.component.EmptyScreen
 import yokai.presentation.component.ToolTipButton
+import yokai.presentation.core.enterAlwaysScrollBehavior
+import yokai.presentation.core.rememberTopAppBarState
 import yokai.presentation.extension.repo.component.ExtensionRepoInput
 import yokai.presentation.extension.repo.component.ExtensionRepoItem
 import yokai.util.Screen
@@ -67,7 +67,7 @@ class ExtensionRepoScreen(
             onNavigationIconClicked = onBackPress,
             title = title,
             appBarType = AppBarType.SMALL,
-            scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
+            scrollBehavior = enterAlwaysScrollBehavior(
                 state = rememberTopAppBarState(),
                 canScroll = { listState.firstVisibleItemIndex > 0 || listState.firstVisibleItemScrollOffset > 0 },
             ),

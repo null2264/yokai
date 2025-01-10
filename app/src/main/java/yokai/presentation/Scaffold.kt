@@ -2,6 +2,7 @@ package yokai.presentation
 
 import android.app.Activity
 import android.os.Build
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
@@ -9,11 +10,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
-import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
@@ -28,6 +25,10 @@ import dev.icerock.moko.resources.compose.stringResource
 import yokai.i18n.MR
 import yokai.presentation.component.ToolTipButton
 import yokai.presentation.core.ExpandedAppBar
+import yokai.presentation.core.TopAppBar
+import yokai.presentation.core.TopAppBarScrollBehavior
+import yokai.presentation.core.enterAlwaysScrollBehavior
+import yokai.presentation.core.rememberTopAppBarState
 
 @Composable
 fun YokaiScaffold(
@@ -43,7 +44,7 @@ fun YokaiScaffold(
     snackbarHost: @Composable () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit,
 ) {
-    val scrollBehaviorOrDefault = scrollBehavior ?: TopAppBarDefaults.enterAlwaysScrollBehavior(state = rememberTopAppBarState())
+    val scrollBehaviorOrDefault = scrollBehavior ?: enterAlwaysScrollBehavior(state = rememberTopAppBarState())
     val view = LocalView.current
     val useDarkIcons = MaterialTheme.colorScheme.surface.luminance() > .5
     val (color, scrolledColor) = getTopAppBarColor(title)
@@ -63,7 +64,10 @@ fun YokaiScaffold(
             when (appBarType) {
                 AppBarType.SMALL -> TopAppBar(
                     title = {
-                        Text(text = title)
+                        Text(
+                            modifier = Modifier.basicMarquee(),
+                            text = title,
+                        )
                     },
                     // modifier = Modifier.statusBarsPadding(),
                     colors = topAppBarColors(
@@ -82,7 +86,10 @@ fun YokaiScaffold(
                 )
                 AppBarType.LARGE -> ExpandedAppBar(
                     title = {
-                        Text(text = title)
+                        Text(
+                            modifier = Modifier.basicMarquee(),
+                            text = title,
+                        )
                     },
                     // modifier = Modifier.statusBarsPadding(),
                     colors = topAppBarColors(

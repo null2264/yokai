@@ -7,8 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -29,8 +27,10 @@ import yokai.presentation.component.Gap
 import yokai.presentation.component.preference.Preference
 import yokai.presentation.component.preference.PreferenceItem
 import yokai.presentation.component.preference.widget.PreferenceGroupHeader
+import yokai.presentation.core.TopAppBarScrollBehavior
 import yokai.presentation.core.drawVerticalScrollbar
 import yokai.presentation.core.enterAlwaysCollapsedScrollBehavior
+import yokai.presentation.core.rememberTopAppBarState
 
 @Composable
 fun SettingsScaffold(
