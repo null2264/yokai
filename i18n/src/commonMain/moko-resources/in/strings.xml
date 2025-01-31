@@ -956,4 +956,27 @@
     <string name="onboarding_heading">Selamat datang!</string>
     <string name="action_menu_overflow_description">Opsi lebih lanjut</string>
     <string name="refresh">Segarkan</string>
+    <string name="just_now">Sekarang</string>
+    <string name="action_add_repo">Tambah repo</string>
+    <string name="label_add_repo">Tambah repo baru</string>
+    <string name="app_settings">Pengaturan aplikasi</string>
+    <string name="doki">Doki</string>
+    <string name="storage_usage">Penggunaan penyimpanan</string>
+    <string name="storage_location">Lokasi penyimpanan</string>
+    <string name="data_and_storage">Data dan penyimpanan</string>
+    <string name="available_disk_space_info">Tersedia: %1$s / Total: %2$s</string>
+    <string name="confirm_delete_repo_title">Hapus repo?</string>
+    <string name="action_webview_forward">Maju</string>
+    <string name="action_webview_back">Kembali</string>
+    <string name="action_webview_refresh">Segarkan</string>
+    <string name="content_type">Tipe konten</string>
+    <string name="open_in_browser_fail">Tidak dapat membuka url</string>
+    <string name="pref_hardware_bitmap_threshold_default">Bawaan (%d)</string>
+    <string name="action_replace_repo">Ganti</string>
+    <string name="source_settings">Pengaturan sumber</string>
+    <string name="ext_installer_packageinstaller">Bawaan</string>
+    <string name="pref_reader_debug_mode">Mode debug</string>
+    <string name="invalid_repo_url">Url repo tidak valid</string>
+    <string name="internal_error">Masalah internal: %s</string>
+    <string name="random">Acak</string>
 </resources>
