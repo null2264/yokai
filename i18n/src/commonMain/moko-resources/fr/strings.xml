@@ -986,4 +986,25 @@
     <string name="library_entries">Entrées de la bibliothèque</string>
     <string name="pref_debug_info">Informations de débogage</string>
     <string name="label_background_activity">Activité en arrière-plan</string>
+    <string name="onboarding_permission_notifications">Autorisation de notification</string>
+    <string name="action_menu_overflow_description">Plus d\'Options</string>
+    <string name="action_bar_up_description">Naviguer vers le haut</string>
+    <string name="onboarding_heading">Bienvenue!</string>
+    <string name="onboarding_description">Choisissons quelques valeurs par défaut. Vous pourrez toujours les modifier ultérieurement dans les paramètres.</string>
+    <string name="onboarding_finish">Commencer</string>
+    <string name="onboarding_storage_info">Sélectionnez un dossier dans lequel %1$s stockera les téléchargements de chapitres, les sauvegardes et plus encore.\n\nUn dossier dédié est recommandé.\n\nDossier sélectionné : %2$s</string>
+    <string name="onboarding_storage_action_select">Sélectionner un dossier</string>
+    <string name="onboarding_storage_help_action">Guide de stockage</string>
+    <string name="onboarding_permission_type_required">Requis</string>
+    <string name="onboarding_permission_type_optional">Facultatif mais recommandé</string>
+    <string name="onboarding_permission_install_apps">Autorisation d\'installation d\'applications</string>
+    <string name="onboarding_permission_ignore_battery_opts_description">Évitez les interruptions des mises à jour de bibliothèque, des téléchargements et des restaurations de sauvegarde de longue durée.</string>
+    <string name="onboarding_permission_action_grant">Accorder</string>
+    <string name="onboarding_permission_notifications_description">Soyez informé des mises à jour de la bibliothèque et plus encore.</string>
+    <string name="onboarding_permission_ignore_battery_opts">Utilisation de la batterie en arrière-plan</string>
+    <string name="no_location_set">Aucun emplacement de stockage défini</string>
+    <string name="invalid_location">Emplacement non valide: %s</string>
+    <string name="invalid_location_generic">Emplacement invalide</string>
+    <string name="onboarding_storage_help_info">Vous effectuez une mise à jour à partir d\'une ancienne version et vous ne savez pas quoi sélectionner ? Reportez-vous à la section Mise à niveau Tachiyomi dans le guide de stockage Mihon pour plus d\'information.</string>
+    <string name="onboarding_permission_install_apps_description">Pour installer l\'application sur les mises à jour.</string>
 </resources>
