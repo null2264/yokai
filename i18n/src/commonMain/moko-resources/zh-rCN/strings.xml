@@ -1017,7 +1017,7 @@
     <string name="action_replace_repo_message">%1$s 仓库的签名密钥指纹与 %2$s 仓库相同。\n如果继续，%2$s 将被替换，否则请联系仓库的维护者。</string>
     <string name="action_open_repo">打开图源仓库</string>
     <string name="open_in_browser_fail">无法打开网址</string>
-    <string name="download_with_id">自动附件ID</string>
+    <string name="download_with_id">自动附加ID</string>
     <string name="action_webview_refresh">刷新</string>
     <string name="sfw">SFW</string>
     <string name="nsfw">NSFW</string>
@@ -1049,4 +1049,6 @@
     <string name="just_now">刚才</string>
     <string name="internal_error">内部错误：%s</string>
     <string name="crash_screen_restart_application">重启应用</string>
+    <string name="random">乱序</string>
+    <string name="pref_use_compose_library">使用实验性的书架UI（基于Compose框架）</string>
 </resources>
