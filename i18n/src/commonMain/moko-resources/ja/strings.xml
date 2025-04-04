@@ -8,7 +8,7 @@
     <string name="onboarding_storage_help_info">旧バージョンからアップデートし、何を選ぶべきか分からない場合は、MihonストレージガイドのTachiyomi upgradeセクションを参照してください。</string>
     <string name="onboarding_storage_help_action">ストレージガイド</string>
     <string name="onboarding_permission_type_required">必須</string>
-    <string name="onboarding_permission_type_optional">オプションですが、お勧めします。</string>
+    <string name="onboarding_permission_type_optional">オプションですが、お勧めします</string>
     <string name="onboarding_permission_install_apps">アプリのインストール権限</string>
     <string name="onboarding_permission_install_apps_description">ソース拡張機能をインストールするために必要です。</string>
     <string name="onboarding_permission_notifications">通知の権限</string>
@@ -334,7 +334,7 @@
     <string name="finished_chapter">読み終わりました：</string>
     <string name="current_chapter">読んでいます：</string>
     <string name="next_title">次：</string>
-    <string name="previous_title">前：</string>
+    <string name="previous_title">先：</string>
     <string name="theres_no_next_chapter">次の章がありません</string>
     <string name="theres_no_previous_chapter">前の章がありません</string>
     <string name="loading_pages">ページをロード中…</string>
@@ -447,7 +447,7 @@
     <string name="start_past_cutout">カットアウト領域外から描画</string>
     <string name="cutout_behavior_only_applies">カットアウト領域の動作は、特定のスケールタイプの縦向きモードでのみ適用されます</string>
     <string name="pref_legacy_cutout">レガシーカットアウト設定を開く</string>
-    <string name="pref_legacy_cutout_info">Android 9.0 より古いデバイスでは、システム設定から手動で設定する以外に、カットアウト設定を変更する方法はありません。</string>
+    <string name="pref_legacy_cutout_info">Android 9.0 より古いデバイスでは、システム設定から手動で設定する以外に、カットアウト設定を変更する方法はありません</string>
     <string name="pref_cutout_short">カットアウト領域にコンテンツを表示</string>
     <string name="cutout_ignore">カットアウト領域を無視</string>
     <string name="page_layout">ページレイアウト</string>
@@ -1069,4 +1069,10 @@
     <string name="crash_screen_description">%s が予期しないエラーに遭遇しました。このメッセージをスクリーンショットにしてクラッシュログを保存し、GitHub Issue に共有することをお勧めします。</string>
     <string name="crash_screen_restart_application">アプリを再起動</string>
     <string name="refresh">更新</string>
+    <string name="random">無作為</string>
+    <string name="action_menu_overflow_description">もっと設定</string>
+    <string name="page_x_of_y">ページ%1$dから%2$d</string>
+    <string name="not_selected">不選択</string>
+    <string name="selected">選択</string>
+    <string name="label_recent_updates">更新</string>
 </resources>

@@ -17,8 +17,8 @@
         <item quantity="other">Nimikkeille %d</item>
     </plurals>
     <plurals name="restore_completed_message">
-        <item quantity="one">Valmistui %1$s virheitä löytyi %2$s</item>
-        <item quantity="other">Valmistui %1$s virheitä löytyi %2$s</item>
+        <item quantity="one">"Valmistui %1$s  ja %2$s virhe"</item>
+        <item quantity="other">"Valmistui %1$s  ja %2$s virhettä"</item>
     </plurals>
     <plurals name="cache_cleared">
         <item quantity="one">Välimuisti tyhjennetty. %d tiedosto on poistettu</item>
@@ -72,5 +72,29 @@
     <plurals name="missing_chapters_warning">
         <item quantity="one">1 puuttuva luku</item>
         <item quantity="other">%d puuttuvaa lukua</item>
+    </plurals>
+    <plurals name="_updates_pending">
+        <item quantity="one">%d odottava päivitys</item>
+        <item quantity="other">%d odottavaa päivitystä</item>
+    </plurals>
+    <plurals name="extensions_updated_plural">
+        <item quantity="one">%d laajennus päivitetty</item>
+        <item quantity="other">%d laajennusta päivitetty</item>
+    </plurals>
+    <plurals name="_series_types">
+        <item quantity="one">%d sarjatyyppi</item>
+        <item quantity="other">%d sarjatyyppiä</item>
+    </plurals>
+    <plurals name="_sources">
+        <item quantity="one">%d lähde</item>
+        <item quantity="other">%d lähdettä</item>
+    </plurals>
+    <plurals name="_statuses">
+        <item quantity="one">%d tila</item>
+        <item quantity="other">%d tilaa</item>
+    </plurals>
+    <plurals name="_languages">
+        <item quantity="one">%d kieli</item>
+        <item quantity="other">%d kieltä</item>
     </plurals>
 </resources>
