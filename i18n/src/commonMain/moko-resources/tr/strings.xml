@@ -956,4 +956,6 @@
     <string name="label_background_activity">Arka plan etkinliği</string>
     <string name="source_settings">Kaynak ayarları</string>
     <string name="app_settings">Uygulama ayarları</string>
+    <string name="action_menu_overflow_description">Daha fazla</string>
+    <string name="onboarding_heading">Hoşgeldiniz!</string>
 </resources>
