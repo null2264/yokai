@@ -173,6 +173,7 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
         }
         isLongPressDragEnabled = libraryListener?.canDrag() == true && s.isNullOrBlank()
         setItemsPerCategoryMap()
+        notifyDataSetChanged()
     }
 
     private fun getFirstLetter(name: String): String {

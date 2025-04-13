@@ -186,7 +186,17 @@ class LibraryHeaderHolder(val view: View, val adapter: LibraryCategoryAdapter) :
 
         binding.categoryTitle.text = categoryName +
             if (adapter.showNumber) {
-                " (${adapter.itemsPerCategory[item.catId]})"
+                val filteredCount = adapter.currentItems.count {
+                    it is LibraryMangaItem && it.header?.catId == item.catId
+                }
+                val totalCount = adapter.itemsPerCategory[item.catId] ?: 0
+                val searchText = adapter.getFilter(String::class.java)
+                var countText = if (searchText.isNullOrBlank()) {
+                    " ($totalCount)"
+                } else {
+                    " ($filteredCount/$totalCount)"
+                }
+                countText
             } else { "" }
         if (category.sourceId != null) {
             val icon = adapter.sourceManager.get(category.sourceId!!)?.icon()
