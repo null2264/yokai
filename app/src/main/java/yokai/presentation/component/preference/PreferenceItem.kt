@@ -12,9 +12,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.unit.dp
+import yokai.domain.connections.service.ConnectionsPreferences
 import eu.kanade.tachiyomi.core.storage.preference.collectAsState
 import eu.kanade.tachiyomi.data.track.TrackPreferences
+import yokai.presentation.component.preference.widget.ConnectionsPreferenceWidget
 import kotlinx.coroutines.launch
+import tachiyomi.core.preference.PreferenceStore
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import yokai.presentation.component.preference.widget.EditTextPreferenceWidget
@@ -166,6 +169,19 @@ internal fun PreferenceItem(
                     )
                 }
             }
+            is Preference.PreferenceItem.ConnectionsPreference -> {
+                val uName by Injekt.get<PreferenceStore>()
+                    .getString(ConnectionsPreferences.connectionsUsername(item.service.id))
+                    .collectAsState()
+                item.service.run {
+                    ConnectionsPreferenceWidget(
+                        service = this,
+                        checked = uName.isNotEmpty(),
+                        onClick = { if (isLogged) item.openSettings() else item.login() },
+                    )
+                }
+            }
+            
             is Preference.PreferenceItem.InfoPreference -> {
                 InfoWidget(text = item.title)
             }
