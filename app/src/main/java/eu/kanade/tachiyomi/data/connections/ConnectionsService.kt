@@ -4,7 +4,7 @@ import androidx.annotation.CallSuper
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import dev.icerock.moko.resources.StringResource
-import eu.kanade.domain.connections.service.ConnectionsPreferences
+import yokai.domain.connections.service.ConnectionsPreferences
 import eu.kanade.tachiyomi.network.NetworkHelper
 import okhttp3.OkHttpClient
 import uy.kohesive.injekt.injectLazy
