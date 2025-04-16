@@ -1,4 +1,4 @@
-package yokai.presentation.more.settings.screen
+package yokai.presentation.settings.screen
 
 import android.content.Context
 import androidx.annotation.StringRes
