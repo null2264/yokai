@@ -155,6 +155,21 @@ sealed class Preference {
             override val onValueChanged: suspend (newValue: String) -> Boolean = { true }
         }
 
+  /**
+         * A [PreferenceItem] for individual connections service.
+         */
+        data class ConnectionsPreference(
+            val service: ConnectionsService,
+            override val title: String,
+            val login: () -> Unit,
+            val openSettings: () -> Unit,
+        ) : PreferenceItem<String>() {
+            override val enabled: Boolean = true
+            override val subtitle: String? = null
+            override val icon: ImageVector? = null
+            override val onValueChanged: suspend (newValue: String) -> Boolean = { true }
+        }
+        
         data class InfoPreference(
             override val title: String,
         ) : PreferenceItem<String>() {
