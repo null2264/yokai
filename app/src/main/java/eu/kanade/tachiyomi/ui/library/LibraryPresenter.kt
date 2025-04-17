@@ -640,20 +640,6 @@ class LibraryPresenter(
         val sortFn: (LibraryItem, LibraryItem) -> Int = { i1, i2 ->
             if (i1.header.category.id == i2.header.category.id) {
                 val category = i1.header.category
-                if (category.mangaOrder.isEmpty() && category.mangaSort == null) {
-                    category.changeSortTo(preferences.librarySortingMode().get())
-                    if (category.id == 0) {
-                        preferences.defaultMangaOrder()
-                            .set(category.mangaSort.toString())
-                    } else if (!category.isDynamic) {
-                        onCategoryUpdate(
-                            CategoryUpdate(
-                                id = category.id!!.toLong(),
-                                mangaOrder = category.mangaOrderToString(),
-                            )
-                        )
-                    }
-                }
                 val compare = when {
                     category.mangaSort != null -> {
                         var sort = when (category.sortingMode() ?: LibrarySort.Title) {
@@ -717,7 +703,25 @@ class LibraryPresenter(
             }
         }
 
-        return this.sortedWith(Comparator(sortFn))
+        return this
+            .map {
+                val category = it.header.category
+                if (category.mangaOrder.isEmpty() && category.mangaSort == null) {
+                    category.changeSortTo(preferences.librarySortingMode().get())
+                    if (category.id == 0) {
+                        preferences.defaultMangaOrder()
+                            .set(category.mangaSort.toString())
+                    } else if (!category.isDynamic) {
+                        onCategoryUpdate(
+                            CategoryUpdate(
+                                id = category.id!!.toLong(),
+                                mangaOrder = category.mangaOrderToString(),
+                            )
+                        )
+                    }
+                }
+            }
+            .sortedWith(Comparator(sortFn))
     }
 
     /** Gets the category by id
