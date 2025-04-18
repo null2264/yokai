@@ -1051,4 +1051,10 @@
     <string name="crash_screen_restart_application">重启应用</string>
     <string name="random">乱序</string>
     <string name="pref_use_compose_library">使用实验性的书架UI（基于Compose框架）</string>
+    <string name="save_search_delete_message">是否确定要删除此项已保存的筛选：“%1$s”？</string>
+    <string name="save_search_title">已保存的筛选</string>
+    <string name="save_search_invalid_name">保存名称不可用</string>
+    <string name="save_search">保存当前的筛选设置？</string>
+    <string name="save_search_hint">保存名称</string>
+    <string name="save_search_delete">删除此项已保存的筛选设置？</string>
 </resources>

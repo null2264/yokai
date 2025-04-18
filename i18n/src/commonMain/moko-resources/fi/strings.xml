@@ -898,7 +898,7 @@
     <string name="add_tag">Lisää tunniste</string>
     <string name="on_hold_list">Odotuslista</string>
     <string name="cannot_remove_tracking_while_offline">Jäljitintä ei voi poistaa kohteesta %1$s ei-verkkotilassa</string>
-    <string name="global_updates">Laajamittaiset päivitykset</string>
+    <string name="global_updates">Yleisesti pätevät päivitykset</string>
     <string name="label_recent_updates">Päivitykset</string>
     <string name="updates_last_update_info">Kirjasto päivitetty viimeksi: %s</string>
     <string name="collapse_grouped_chapters">Kutista ryhmitetyt luvut</string>
