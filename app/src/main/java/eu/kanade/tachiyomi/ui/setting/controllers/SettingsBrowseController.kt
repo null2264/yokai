@@ -8,6 +8,7 @@ import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.R
+import yokai.domain.ui.UiPreferences
 import yokai.i18n.MR
 import yokai.util.lang.getString
 import dev.icerock.moko.resources.compose.stringResource
