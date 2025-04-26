@@ -46,6 +46,8 @@ class SettingsBrowseController : SettingsLegacyController() {
     val sourceManager: SourceManager by injectLazy()
     var updatedExtNotifPref: SwitchPreferenceCompat? = null
 
+    private val uiPreferences: UiPreferences by injectLazy()
+
     override fun setupPreferenceScreen(screen: PreferenceScreen) = screen.apply {
         titleRes = MR.strings.browse
 
