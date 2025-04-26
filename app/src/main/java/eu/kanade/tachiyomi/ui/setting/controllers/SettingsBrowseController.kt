@@ -198,6 +198,15 @@ class SettingsBrowseController : SettingsLegacyController() {
 
             infoPreference(MR.strings.you_can_migrate_in_library)
         }
+        
+        preferenceCategory {
+            titleRes = MR.strings.chapters
+
+            switchPreference {
+                bindTo(uiPreferences.enableChapterSwipeAction())
+                titleRes = MR.strings.enable_chapter_swipe_action
+            }
+        }
 
         preferenceCategory {
             titleRes = MR.strings.nsfw_sources
