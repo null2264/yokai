@@ -32,7 +32,7 @@ class SourceItem(val source: CatalogueSource, header: LangItem? = null, val isPi
     }
 
     override fun isSwipeable(): Boolean {
-        return Injekt.get<UiPreferences>().enableChapterSwipeAction().get() && source.id != LocalSource.ID && header != null && header.code != SourcePresenter.LAST_USED_KEY
+        return Injekt.get<UiPreferences>().enableSourceSwipeAction().get() && source.id != LocalSource.ID && header != null && header.code != SourcePresenter.LAST_USED_KEY
     }
 
     /**
