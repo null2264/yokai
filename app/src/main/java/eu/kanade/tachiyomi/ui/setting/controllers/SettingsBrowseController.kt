@@ -206,7 +206,7 @@ class SettingsBrowseController : SettingsLegacyController() {
             titleRes = MR.strings.sources
 
             switchPreference {
-                bindTo(uiPreferences.enableChapterSwipeAction())
+                bindTo(uiPreferences.enableSourceSwipeAction())
                 titleRes = MR.strings.enable_source_swipe_action
             }
         }
