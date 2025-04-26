@@ -203,11 +203,11 @@ class SettingsBrowseController : SettingsLegacyController() {
         }
         
         preferenceCategory {
-            titleRes = MR.strings.chapters
+            titleRes = MR.strings.sources
 
             switchPreference {
                 bindTo(uiPreferences.enableChapterSwipeAction())
-                titleRes = MR.strings.enable_chapter_swipe_action
+                titleRes = MR.strings.enable_source_swipe_action
             }
         }
 
