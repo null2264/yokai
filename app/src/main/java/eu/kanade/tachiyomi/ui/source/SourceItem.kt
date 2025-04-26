@@ -11,6 +11,9 @@ import yokai.util.lang.getString
 import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.LocalSource
+import uy.kohesive.injekt.Injekt
+import uy.kohesive.injekt.api.get
+import yokai.domain.ui.UiPreferences
 
 /**
  * Item that contains source information.
@@ -29,7 +32,7 @@ class SourceItem(val source: CatalogueSource, header: LangItem? = null, val isPi
     }
 
     override fun isSwipeable(): Boolean {
-        return source.id != LocalSource.ID && header != null && header.code != SourcePresenter.LAST_USED_KEY
+        return Injekt.get<UiPreferences>().enableChapterSwipeAction().get() && source.id != LocalSource.ID && header != null && header.code != SourcePresenter.LAST_USED_KEY
     }
 
     /**
