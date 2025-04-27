@@ -660,6 +660,9 @@ class LibraryPresenter(
      * @param itemList the map to sort.
      */
     private fun LibraryMap.applySort(): LibraryMap {
+        // Making sure `allCategories` is stable for `.sort()`
+        val categoryOrderMap = allCategories.associate { it.id to it.order }
+
         val sortFn: (LibraryItem, LibraryItem) -> Int = { i1, i2 ->
             val category = i1.header.category
             val compare = when {
@@ -688,12 +691,8 @@ class LibraryPresenter(
                         LibrarySort.DateAdded -> i2.manga.manga.date_added.compareTo(i1.manga.manga.date_added)
                         LibrarySort.DragAndDrop -> {
                             if (category.isDynamic) {
-                                val category1 =
-                                    allCategories.find { i1.manga.category == it.id }?.order
-                                        ?: 0
-                                val category2 =
-                                    allCategories.find { i2.manga.category == it.id }?.order
-                                        ?: 0
+                                val category1 = categoryOrderMap[i1.manga.category] ?: 0
+                                val category2 = categoryOrderMap[i2.manga.category] ?: 0
                                 category1.compareTo(category2)
                             } else {
                                 sortAlphabetical(i1, i2)
@@ -727,7 +726,7 @@ class LibraryPresenter(
         }
 
         return this.mapValues { (category, values) ->
-            // Making sure category has valid sort
+            // Making sure category has valid sort before doing the actual sorting
             if (category.mangaOrder.isEmpty() && category.mangaSort == null) {
                 category.changeSortTo(preferences.librarySortingMode().get())
                 if (category.id == 0) {
@@ -804,7 +803,7 @@ class LibraryPresenter(
 
         preferences.groupLibraryBy().changes(),
         preferences.showAllCategories().changes(),
-        
+
         preferences.librarySortingMode().changes(),
         preferences.librarySortingAscending().changes(),
 

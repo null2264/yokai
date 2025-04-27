@@ -16,6 +16,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ### Changes
 - Temporarily disable log file
+- Categories' header now show filtered count when you search the library (If you have "Show number of items" enabled)
 
 ### Fixes
 - Allow users to bypass onboarding's permission step if Shizuku is installed
@@ -23,6 +24,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix not fully loaded entries can't be selected on Library page
 - Fix certain Infinix devices being unable to use any "Open link in browser" actions, including tracker setup (@MajorTanya)
 - Fix source filter bottom sheet unable to be fully scrolled to the bottom
+- Prevent potential "Comparison method violates its general contract!" crash
 
 ### Translation
 - Update translations from Weblate
