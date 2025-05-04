@@ -47,6 +47,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
   - LibraryItem abstraction to make it easier to manage
   - LibraryManga no longer extend MangaImpl
 - Update dependency androidx.compose:compose-bom to v2025.01.00
+- Update dependency gradle to v8.12
 
 ## [1.9.7]
 
