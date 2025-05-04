@@ -8,6 +8,7 @@ import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.R
+import yokai.domain.ui.UiPreferences
 import yokai.i18n.MR
 import yokai.util.lang.getString
 import dev.icerock.moko.resources.compose.stringResource
@@ -44,6 +45,8 @@ class SettingsBrowseController : SettingsLegacyController() {
 
     val sourceManager: SourceManager by injectLazy()
     var updatedExtNotifPref: SwitchPreferenceCompat? = null
+
+    private val uiPreferences: UiPreferences by injectLazy()
 
     override fun setupPreferenceScreen(screen: PreferenceScreen) = screen.apply {
         titleRes = MR.strings.browse
@@ -197,6 +200,15 @@ class SettingsBrowseController : SettingsLegacyController() {
             }
 
             infoPreference(MR.strings.you_can_migrate_in_library)
+        }
+        
+        preferenceCategory {
+            titleRes = MR.strings.sources
+
+            switchPreference {
+                bindTo(uiPreferences.enableSourceSwipeAction())
+                titleRes = MR.strings.enable_source_swipe_action
+            }
         }
 
         preferenceCategory {
