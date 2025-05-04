@@ -13,6 +13,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 ### Additions
 - Add random library sort
 - Add the ability to save search queries
+- Add toggle to enable/disable hide source on swipe
 
 ### Changes
 - Temporarily disable log file
