@@ -50,6 +50,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency androidx.compose:compose-bom to v2025.01.00
 - Update dependency gradle to v8.12
 
+## [1.9.7.1]
+
+### Fixes
+- Prevent `Comparison method violates its general contract!` crashes
+
 ## [1.9.7]
 
 ### Changes
