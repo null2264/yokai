@@ -720,6 +720,7 @@ class LibraryPresenter(
                         )
                     }
                 }
+                it
             }
             .sortedWith(Comparator(sortFn))
     }
