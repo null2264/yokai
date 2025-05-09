@@ -9,6 +9,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - `Translation` - Translation changes/updates
 - `Other` - Technical changes/updates
 
+## [1.9.7.1]
+
+### Fixes
+- Fix `Comparison method violates its general contract!` crashes
+
 ## [1.9.7]
 
 ### Changes
