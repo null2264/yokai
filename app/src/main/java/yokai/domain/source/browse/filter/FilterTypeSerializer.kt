@@ -16,6 +16,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
+import kotlinx.serialization.json.putJsonObject
 
 interface Serializer<in T : Filter<out Any?>> {
     fun JsonObjectBuilder.serialize(filter: T) {}
@@ -103,26 +104,45 @@ class GroupSerializer(override val serializer: FilterSerializer) : Serializer<Fi
     override val clazz = Filter.Group::class
 
     override fun JsonObjectBuilder.serialize(filter: Filter.Group<Any?>) {
-        putJsonArray(Serializer.STATE) {
-            filter.state.forEach { state ->
-                @Suppress("UNCHECKED_CAST")
-                add((state as? Filter<Any?>)?.let { serializer.serialize(it) } ?: JsonNull)
+        putJsonObject(VALUES) {
+            filter.state.forEach { item ->
+                @Suppress("UNCHECKED_CAST", "SafeCastWithReturn")
+                item as? Filter<Any?> ?: return@forEach
+                // Assuming `item.name` is unique, not sure if it is tho...
+                put(item.name, serializer.serialize(item))
             }
         }
     }
 
     override fun deserialize(json: JsonObject, filter: Filter.Group<Any?>) {
-        json[Serializer.STATE]!!.jsonArray.forEachIndexed { index, element ->
-            if (element == JsonNull) return@forEachIndexed
+        val values = json[VALUES]?.jsonObject
+        if (values == null) {
+            // TODO: Delete later
+            json[Serializer.STATE]?.jsonArray?.forEachIndexed { index, element ->
+                if (element == JsonNull) return@forEachIndexed
 
-            @Suppress("UNCHECKED_CAST")
-            serializer.deserialize(filter.state[index] as Filter<Any?>, element.jsonObject)
+                @Suppress("UNCHECKED_CAST")
+                serializer.deserialize(filter.state[index] as Filter<Any?>, element.jsonObject)
+            }
+            return
+        }
+
+        filter.state.forEach { item ->
+            @Suppress("UNCHECKED_CAST", "SafeCastWithReturn")
+            item as? Filter<Any?> ?: return@forEach
+
+            val itemJson = values[item.name]?.jsonObject ?: return@forEach
+            serializer.deserialize(item, itemJson)
         }
     }
 
     override fun mappings() = listOf(
         Serializer.NAME to Filter.Group<Any?>::name,
     )
+
+    companion object {
+        const val VALUES = "values"
+    }
 }
 
 class SortSerializer(override val serializer: FilterSerializer) : Serializer<Filter.Sort> {
