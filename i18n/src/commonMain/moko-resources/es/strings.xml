@@ -184,7 +184,7 @@
     <string name="add">Añadir</string>
     <string name="no_network_connection">Conexión a la red no disponible</string>
     <string name="download_paused">Descarga detenida</string>
-    <string name="use_image_as_cover">¿Deseas fijar esta imagen como portada\?</string>
+    <string name="use_image_as_cover">¿Usar esta imagen como portada?</string>
     <string name="close">Cerrar</string>
     <string name="display">Mostrar</string>
     <string name="compact_grid">Cuadrícula compacta</string>
@@ -239,8 +239,8 @@
     <string name="category_with_name_exists">¡Ya existe una categoría con este nombre!</string>
     <string name="picture_saved">Imagen guardada</string>
     <string name="options">Opciones</string>
-    <string name="set_as_cover">Establecer como cubierta</string>
-    <string name="cover_updated">Cubierta actualizada</string>
+    <string name="set_as_cover">Establecer como portada</string>
+    <string name="cover_updated">Portada actualizada</string>
     <string name="failed_to_update_cover">Error al actualizar la portada</string>
     <string name="download_badge">Insignias de descarga</string>
     <string name="local">Local</string>
@@ -435,7 +435,7 @@
     <string name="hide_category_hopper">Ocultar tolva de categoría</string>
     <string name="display_as">Mostrar como</string>
     <string name="tap_library_to_show_filters">Toca el icono de la Biblioteca para mostrar los filtros</string>
-    <string name="uniform_covers">Cubiertas uniformes</string>
+    <string name="uniform_covers">Portadas uniformes</string>
     <string name="hide_start_reading_button">Ocultar el botón de inicio de lectura</string>
     <string name="comfortable_grid">Cuadrícula agradable</string>
     <string name="display_options">Opciones de visualización</string>
@@ -473,7 +473,7 @@
     <string name="cover_saved">Portada guardada</string>
     <string name="source_not_installed">Fuente no instalada</string>
     <string name="remember_this_choice">Recordar selección</string>
-    <string name="reset_cover">Recolocar portada</string>
+    <string name="reset_cover">Restablecer portada</string>
     <string name="use_default">Usar predefinida</string>
     <string name="tag">Etiqueta</string>
     <string name="sort_and_filter">Ordenar y filtrar</string>
@@ -616,8 +616,7 @@
     <string name="shift_double_pages">Mover páginas dobles</string>
     <string name="shift_one_page_over">Mover únicamente una página</string>
     <string name="add_to_">Añadido a %1$s</string>
-    <string name="delete_old_covers_in_library_used_">Elimina las portadas en la caché y no utilizadas de las entradas de la biblioteca que se han actualizado.
-\nActualmente estás usando: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Elimina las portadas almacenadas en caché antiguas y sin uso de las entradas de tu biblioteca que se han actualizado. \nActualmente estás usando: %1$s</string>
     <string name="not_logged_into_">Sin iniciar sesion en %1$s</string>
     <string name="hot_pink">Rosa chicle</string>
     <string name="spring_blossom">Florecer de primavera</string>
@@ -659,7 +658,7 @@
     <string name="match_enabled_sources">Igualar fuentes activadas</string>
     <string name="match_pinned_sources">Igualar fuentes marcadas</string>
     <string name="only_search_pinned_when">Buscar solo en fuentes fijadas</string>
-    <string name="clear_cached_covers_non_library">Eliminar portadas en la caché fuera de la biblioteca</string>
+    <string name="clear_cached_covers_non_library">Borrar portadas almacenadas en caché que no están en la biblioteca</string>
     <string name="starting_cleanup">Iniciando limpieza</string>
     <string name="clean_read_manga_not_in_library">Limpiar las entradas que no pertenezcan a la biblioteca</string>
     <string name="delete_unused_chapters">Eliminar carpetas de capítulos inexistentes, parcialmente descargados o leídos</string>
@@ -705,7 +704,7 @@
     <string name="certain_buttons_can_be_found">Ciertos botones se pueden encontrar en otros sitios estando esto desactivado</string>
     <string name="display_buttons_bottom_reader">Botones abajo del lector</string>
     <string name="grid_size">Tamaño de la cuadrícula</string>
-    <string name="uniform_grid_covers">Cuadrículas con cubiertas uniformes</string>
+    <string name="uniform_grid_covers">Cuadrículas con portadas uniformes</string>
     <string name="can_be_found_in_library_filters">También se puede encontrar al expandir los filtros de la biblioteca</string>
     <string name="expand_collapse_all_categories">Expandir / Colapsar todas las categorías</string>
     <string name="when_grouping_by_sources_tags">Al agrupar la biblioteca por fuentes, estados, etc.</string>
@@ -805,7 +804,7 @@
     <string name="extensions_updated">Extensiones actualizadas</string>
     <string name="installed_">Instalado %1$s</string>
     <string name="extension_updates_pending">Actualizaciones de la extensión pendientes</string>
-    <string name="affects_library_grid">Afecta a la rejilla de la biblioteca</string>
+    <string name="affects_library_grid">Afecta a las portadas de la cuadricula de la biblioteca</string>
     <string name="restrictions_">Restricciones: %1$s</string>
     <string name="no_matches_for_filters_short">Ningún resultado con tus filtros</string>
     <string name="show_categories_while_filtering">Mostrar categorías vacías al filtrar</string>
@@ -817,7 +816,7 @@
     <string name="help_translate">Ayudar a traducir</string>
     <string name="filter_groups">Filtrar grupos de scanlations</string>
     <string name="cannot_remove_tracking_while_offline">El seguimiento no se puede retirar de %1$s mientras esta fuera de línea</string>
-    <string name="theme_buttons_based_on_cover">Botones del tema basados en la cubierta</string>
+    <string name="theme_buttons_based_on_cover">Botones del tema basados en la portada</string>
     <string name="log_out">Cerrar sesión</string>
     <string name="log_out_from_">¿Cerrar sesión de %1$s\?</string>
     <string name="remove_from_">Eliminar de %1$s</string>
@@ -1014,7 +1013,7 @@
     <string name="information_webview_required">Se requiere WebView para que la aplicación funcione</string>
     <string name="action_webview_back">Atrás</string>
     <string name="action_webview_forward">Adelante</string>
-    <string name="action_webview_refresh">Refrescar</string>
+    <string name="action_webview_refresh">Actualizar</string>
     <string name="internal_error">Error interno: %s</string>
     <string name="sfw">SFW</string>
     <string name="nsfw">NSFW</string>
@@ -1072,4 +1071,5 @@
     <string name="action_replace_repo_title">La huella digital de la clave de firma ya existe</string>
     <string name="open_in_browser_fail">No se puede abrir la URL</string>
     <string name="move_series_to_bottom">Mover la serie al final</string>
+    <string name="enable_source_swipe_action">Habilitar la acción de deslizar la fuente</string>
 </resources>
