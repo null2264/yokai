@@ -1051,4 +1051,10 @@
     <string name="pref_display_profile">Custom na profile sa display</string>
     <string name="download_with_id_details">Maaaring maayos ang isyu sa mga na-download na kabanata na magkasalungat sa isa\'t isa kapag pareho sila ng pangalan</string>
     <string name="pref_use_compose_library">Gumamit ng eksperimental na compose library</string>
+    <string name="save_search_title">Mga naka-save na paghahanap</string>
+    <string name="save_search_hint">I-save ang pangalan ng paghahanap</string>
+    <string name="save_search">I-save ang kasalukuyang query sa paghahanap?</string>
+    <string name="save_search_invalid_name">Di-wastong naka-save na pangalan sa paghahanap</string>
+    <string name="save_search_delete">Tanggalin itong naka-save na query sa paghahanap?</string>
+    <string name="save_search_delete_message">Sigurado ka bang gusto mong tanggalin itong naka-save na query sa paghahanap: \'%1$s\'?</string>
 </resources>
