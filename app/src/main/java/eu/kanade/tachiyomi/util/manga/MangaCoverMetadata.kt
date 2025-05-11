@@ -10,7 +10,6 @@ import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import java.util.concurrent.ConcurrentHashMap
 import uy.kohesive.injekt.injectLazy
-import kotlin.jvm.Throws
 
 /** Object that holds info about a covers size ratio + dominant colors */
 object MangaCoverMetadata {
