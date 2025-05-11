@@ -26,8 +26,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix certain Infinix devices being unable to use any "Open link in browser" actions, including tracker setup (@MajorTanya)
 - Fix source filter bottom sheet unable to be fully scrolled to the bottom
 - Prevent potential "Comparison method violates its general contract!" crash
-- Fix staggered grid cover being squashed for local source
-  
+- Fix staggered grid cover being squashed for local source (@AwkwardPeak7)
+
 ### Translation
 - Update translations from Weblate
 
