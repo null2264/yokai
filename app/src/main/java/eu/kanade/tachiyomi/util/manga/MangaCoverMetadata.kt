@@ -66,7 +66,12 @@ object MangaCoverMetadata {
             } else {
                 options.inSampleSize = 4
             }
-            val bitmap = BitmapFactory.decodeFile(file.filePath, options)
+            val bitmap = try {
+                val stream = file.openInputStream()
+                BitmapFactory.decodeStream(stream, null, options)
+            } catch (_: Throwable) {
+                null
+            }
             if (bitmap != null) {
                 Palette.from(bitmap).generate { palette ->
                     if (isInLibrary) {
