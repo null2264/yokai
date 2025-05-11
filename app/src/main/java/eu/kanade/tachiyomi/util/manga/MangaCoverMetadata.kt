@@ -10,6 +10,7 @@ import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import java.util.concurrent.ConcurrentHashMap
 import uy.kohesive.injekt.injectLazy
+import kotlin.jvm.Throws
 
 /** Object that holds info about a covers size ratio + dominant colors */
 object MangaCoverMetadata {
@@ -66,7 +67,12 @@ object MangaCoverMetadata {
             } else {
                 options.inSampleSize = 4
             }
-            val bitmap = BitmapFactory.decodeFile(file.filePath, options)
+            val bitmap = try {
+                val stream = file.openInputStream()
+                BitmapFactory.decodeStream(stream, null, options)
+            } catch (_: Throwable) {
+                null
+            }
             if (bitmap != null) {
                 Palette.from(bitmap).generate { palette ->
                     if (isInLibrary) {
