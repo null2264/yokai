@@ -50,6 +50,12 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
   - LibraryManga no longer extend MangaImpl
 - Update dependency androidx.compose:compose-bom to v2025.01.00
 - Update dependency gradle to v8.12
+- Update user agent (@Hiirbaf)
+
+## [1.9.7.2]
+
+### Fixes
+- Fix MyAnimeList timeout issue
 
 ## [1.9.7.1]
 
