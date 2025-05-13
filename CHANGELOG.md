@@ -9,6 +9,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - `Translation` - Translation changes/updates
 - `Other` - Technical changes/updates
 
+## [1.9.7.2]
+
+### Fixes
+- Fix MyAnimeList timeout issue
+
 ## [1.9.7.1]
 
 ### Fixes
