@@ -581,4 +581,7 @@
     <string name="library_entries">लाइब्रेरी के आइटम</string>
     <string name="pref_debug_info">डीबग जानकारी</string>
     <string name="label_background_activity">पृष्ठभूमि गतिविधि</string>
+    <string name="action_menu_overflow_description">अधिक विकल्प</string>
+    <string name="onboarding_description">आइए कुछ डिफ़ॉल्ट चुनें। आप उन्हें बाद में सेटिंग में जाकर कभी भी बदल सकते हैं।</string>
+    <string name="onboarding_finish">शुरू हो जाओ</string>
 </resources>
