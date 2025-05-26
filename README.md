@@ -14,6 +14,7 @@ A free and open source manga reader
 
 [![Discord: Mihon](https://img.shields.io/discord/1195734228319617024.svg?label=&labelColor=6A7EC2&color=7389D8&logo=discord&logoColor=FFFFFF)](https://discord.gg/mihon)
 [![Mirror: GitLab](https://img.shields.io/badge/mirror-GitLab-orange.svg?labelColor=27303D)](https://gitlab.com/null2264/yokai)
+[![Mirror: git.aap](https://img.shields.io/badge/mirror-git.aap-orange.svg?labelColor=D40000)](https://git.aap.my.id/null2264/yokai)
 
 [![CI](https://github.com/null2264/yokai/actions/workflows/build_push.yml/badge.svg?labelColor=27303D)](https://github.com/null2264/yokai/actions/workflows/build_push.yml)
 [![License: Apache-2.0](https://img.shields.io/github/license/null2264/yokai?labelColor=27303D&color=0877d2)](/LICENSE)
