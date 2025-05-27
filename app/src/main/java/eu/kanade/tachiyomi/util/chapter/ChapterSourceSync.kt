@@ -17,6 +17,7 @@ import yokai.domain.chapter.interactor.InsertChapter
 import yokai.domain.chapter.interactor.UpdateChapter
 import yokai.domain.chapter.models.ChapterUpdate
 import yokai.domain.chapter.services.ChapterRecognition
+import yokai.domain.library.LibraryPreferences
 import yokai.domain.manga.interactor.UpdateManga
 import yokai.domain.manga.models.MangaUpdate
 
@@ -39,6 +40,7 @@ suspend fun syncChaptersWithSource(
     updateChapter: UpdateChapter = Injekt.get(),
     updateManga: UpdateManga = Injekt.get(),
     handler: DatabaseHandler = Injekt.get(),
+    libraryPreferences: LibraryPreferences = Injekt.get(),
 ): Pair<List<Chapter>, List<Chapter>> {
     if (rawSourceChapters.isEmpty()) {
         throw Exception("No chapters found")
@@ -122,11 +124,18 @@ suspend fun syncChaptersWithSource(
         return Pair(emptyList(), emptyList())
     }
 
-    val reAdded = mutableListOf<Chapter>()
+    val changedOrDuplicateReadUrls = mutableSetOf<String>()
 
     val deletedChapterNumbers = TreeSet<Float>()
     val deletedReadChapterNumbers = TreeSet<Float>()
     val deletedBookmarkedChapterNumbers = TreeSet<Float>()
+
+    val readChapterNumbers = dbChapters
+        .asSequence()
+        .filter { it.read && it.isRecognizedNumber }
+        .map { it.chapter_number }
+        .toSet()
+
     toDelete.forEach {
         if (it.read) deletedReadChapterNumbers.add(it.chapter_number)
         if (it.bookmark) deletedBookmarkedChapterNumbers.add(it.chapter_number)
@@ -135,6 +144,9 @@ suspend fun syncChaptersWithSource(
 
     val now = Date().time
 
+    val markDuplicateAsRead = libraryPreferences.markDuplicateReadChapterAsRead().get()
+        .contains(LibraryPreferences.MARK_DUPLICATE_READ_CHAPTER_READ_NEW)
+
     // Date fetch is set in such a way that the upper ones will have bigger value than the lower ones
     // Sources MUST return the chapters from most to less recent, which is common.
     var itemCount = toAdd.size
@@ -142,6 +154,11 @@ suspend fun syncChaptersWithSource(
         val chapter: Chapter = toAddItem.copy()
 
         chapter.date_fetch = now + itemCount--
+
+        if (chapter.chapter_number in readChapterNumbers && markDuplicateAsRead) {
+            changedOrDuplicateReadUrls.add(chapter.url)
+            chapter.read = true
+        }
 
         if (!chapter.isRecognizedNumber || chapter.chapter_number !in deletedChapterNumbers) return@map chapter
 
@@ -154,7 +171,7 @@ suspend fun syncChaptersWithSource(
                 chapter.date_fetch = it.date_fetch
             }
 
-        reAdded.add(chapter)
+        changedOrDuplicateReadUrls.add(chapter.url)
 
         chapter
     }
@@ -192,14 +209,13 @@ suspend fun syncChaptersWithSource(
     manga.last_update = Date().time
     updateManga.await(MangaUpdate(manga.id!!, lastUpdate = manga.last_update))
 
-    val reAddedUrls = reAdded.map { it.url }.toHashSet()
     val filteredScanlators = ChapterUtil.getScanlators(manga.filtered_scanlators).toHashSet()
 
     return Pair(
         updatedToAdd.filterNot {
-            it.url in reAddedUrls || it.scanlator in filteredScanlators
+            it.url in changedOrDuplicateReadUrls || it.scanlator in filteredScanlators
         },
-        toDelete.filterNot { it.url in reAddedUrls },
+        toDelete.filterNot { it.url in changedOrDuplicateReadUrls },
     )
 }
 

@@ -148,6 +148,14 @@ import eu.kanade.tachiyomi.util.view.setMessage
 import eu.kanade.tachiyomi.util.view.snack
 import eu.kanade.tachiyomi.widget.doOnEnd
 import eu.kanade.tachiyomi.widget.doOnStart
+import java.io.ByteArrayOutputStream
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.Collections
+import java.util.Locale
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.roundToInt
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -167,13 +175,6 @@ import yokai.domain.ui.settings.ReaderPreferences
 import yokai.domain.ui.settings.ReaderPreferences.LandscapeCutoutBehaviour
 import yokai.i18n.MR
 import yokai.util.lang.getString
-import java.io.ByteArrayOutputStream
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.util.*
-import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.roundToInt
 import android.R as AR
 
 /**
@@ -512,7 +513,6 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
                 }
             }
         }
-        viewModel.onSaveInstanceState()
         super.onSaveInstanceState(outState)
     }
 
@@ -1304,13 +1304,13 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
     }
 
     override fun onPause() {
-        viewModel.saveCurrentChapterReadingProgress()
+        viewModel.flushReadTimer()
         super.onPause()
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.setReadStartTime()
+        viewModel.restartReadTimer()
     }
 
     fun reloadChapters(doublePages: Boolean, force: Boolean = false) {

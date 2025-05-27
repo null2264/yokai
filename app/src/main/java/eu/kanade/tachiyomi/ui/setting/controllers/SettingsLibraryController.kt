@@ -34,6 +34,7 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import uy.kohesive.injekt.injectLazy
 import yokai.domain.category.interactor.GetCategories
+import yokai.domain.library.LibraryPreferences
 import yokai.domain.manga.interactor.GetLibraryManga
 import yokai.domain.ui.UiPreferences
 import yokai.i18n.MR
@@ -48,6 +49,7 @@ class SettingsLibraryController : SettingsLegacyController() {
     private val getCategories: GetCategories by injectLazy()
 
     private val uiPreferences: UiPreferences by injectLazy()
+    private val libraryPreferences: LibraryPreferences by injectLazy()
 
     override fun setupPreferenceScreen(screen: PreferenceScreen) = screen.apply {
         titleRes = MR.strings.library
@@ -212,11 +214,24 @@ class SettingsLibraryController : SettingsLegacyController() {
         }
 
         preferenceCategory {
-            titleRes = MR.strings.chapters
+            titleRes = MR.strings.pref_behavior
 
             switchPreference {
                 bindTo(uiPreferences.enableChapterSwipeAction())
                 titleRes = MR.strings.enable_chapter_swipe_action
+            }
+            multiSelectListPreferenceMat(activity) {
+                bindTo(preferences.libraryUpdateMangaRestriction())
+                titleRes = MR.strings.pref_mark_as_read_duplicate_read_chapter
+                val entries = mapOf(
+                    MR.strings.pref_mark_as_read_duplicate_read_chapter_existing to
+                        LibraryPreferences.MARK_DUPLICATE_READ_CHAPTER_READ_EXISTING,
+                    MR.strings.pref_mark_as_read_duplicate_read_chapter_new to
+                        LibraryPreferences.MARK_DUPLICATE_READ_CHAPTER_READ_NEW,
+                )
+                entriesRes = entries.keys.toTypedArray()
+                entryValues = entries.values.toList()
+                noSelectionRes = MR.strings.none
             }
         }
     }

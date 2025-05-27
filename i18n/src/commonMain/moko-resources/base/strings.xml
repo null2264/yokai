@@ -167,6 +167,10 @@
     <string name="ungrouped">Ungrouped</string>
 
     <string name="pref_use_compose_library">Use experimental compose library</string>
+    <string name="pref_behavior">Behavior</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter">Mark duplicate read chapter as read</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_existing">After reading a chapter</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_new">After fetching new chapter</string>
 
     <!-- Library Sort -->
     <string name="sort_by">Sort by</string>
