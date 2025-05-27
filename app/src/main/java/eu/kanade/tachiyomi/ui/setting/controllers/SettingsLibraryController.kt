@@ -221,7 +221,7 @@ class SettingsLibraryController : SettingsLegacyController() {
                 titleRes = MR.strings.enable_chapter_swipe_action
             }
             multiSelectListPreferenceMat(activity) {
-                bindTo(preferences.libraryUpdateMangaRestriction())
+                bindTo(libraryPreferences.markDuplicateReadChapterAsRead())
                 titleRes = MR.strings.pref_mark_as_read_duplicate_read_chapter
                 val entries = mapOf(
                     MR.strings.pref_mark_as_read_duplicate_read_chapter_existing to
