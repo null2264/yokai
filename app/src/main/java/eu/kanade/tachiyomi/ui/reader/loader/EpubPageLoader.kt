@@ -28,7 +28,7 @@ class EpubPageLoader(private val epub: EpubReader) : PageLoader() {
                 val streamFn = { epub.getInputStream(path)!! }
                 ReaderPage(i).apply {
                     stream = streamFn
-                    status = Page.State.READY
+                    status = Page.State.Ready
                 }
             }
     }

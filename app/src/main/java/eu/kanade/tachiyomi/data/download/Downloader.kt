@@ -1,7 +1,6 @@
 package eu.kanade.tachiyomi.data.download
 
 import android.content.Context
-import android.os.Looper
 import co.touchlab.kermit.Logger
 import com.hippo.unifile.UniFile
 import eu.kanade.tachiyomi.data.cache.ChapterCache
@@ -55,8 +54,8 @@ import kotlinx.coroutines.supervisorScope
 import nl.adaptivity.xmlutil.serialization.XML
 import okhttp3.Response
 import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.injectLazy
 import uy.kohesive.injekt.api.get
+import uy.kohesive.injekt.injectLazy
 import yokai.core.archive.ZipWriter
 import yokai.core.metadata.COMIC_INFO_FILE
 import yokai.core.metadata.ComicInfo
@@ -365,11 +364,11 @@ class Downloader(
 
             // Get all the URLs to the source images, fetch pages if necessary
             pageList.filter { it.imageUrl.isNullOrEmpty() }.forEach { page ->
-                page.status = Page.State.LOAD_PAGE
+                page.status = Page.State.LoadPage
                 try {
                     page.imageUrl = download.source.getImageUrl(page)
                 } catch (e: Throwable) {
-                    page.status = Page.State.ERROR
+                    page.status = Page.State.Error
                 }
             }
 
@@ -494,12 +493,12 @@ class Downloader(
 
             page.uri = file.uri
             page.progress = 100
-            page.status = Page.State.READY
+            page.status = Page.State.Ready
         } catch (e: Throwable) {
             if (e is CancellationException) throw e
             // Mark this page as error and allow to download the remaining
             page.progress = 0
-            page.status = Page.State.ERROR
+            page.status = Page.State.Error
             notifier.onError(e.message, chapName, download.manga.title)
         }
     }
@@ -518,7 +517,7 @@ class Downloader(
         tmpDir: UniFile,
         filename: String,
     ): UniFile {
-        page.status = Page.State.DOWNLOAD_IMAGE
+        page.status = Page.State.DownloadImage
         page.progress = 0
         return flow {
             val response = source.getImage(page)

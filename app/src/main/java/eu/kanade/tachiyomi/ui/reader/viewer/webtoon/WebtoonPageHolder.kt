@@ -128,9 +128,9 @@ class WebtoonPageHolder(
             launchIO { loader.loadPage(page) }
             page.statusFlow.collectLatest { status ->
                 when (status) {
-                    Page.State.QUEUE -> setQueued()
-                    Page.State.LOAD_PAGE -> setLoading()
-                    Page.State.DOWNLOAD_IMAGE -> {
+                    is Page.State.Queue -> setQueued()
+                    is Page.State.LoadPage -> setLoading()
+                    is Page.State.DownloadImage -> {
                         setDownloading()
                         scope.launch {
                             page.progressFlow.collectLatest { value ->
@@ -138,8 +138,8 @@ class WebtoonPageHolder(
                             }
                         }
                     }
-                    Page.State.READY -> setImage()
-                    Page.State.ERROR -> setError()
+                    is Page.State.Ready -> setImage()
+                    is Page.State.Error -> setError()
                 }
             }
         }

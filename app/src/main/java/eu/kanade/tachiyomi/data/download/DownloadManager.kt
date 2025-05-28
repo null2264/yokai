@@ -21,8 +21,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onStart
 import uy.kohesive.injekt.Injekt
-import uy.kohesive.injekt.injectLazy
 import uy.kohesive.injekt.api.get
+import uy.kohesive.injekt.injectLazy
 import yokai.domain.download.DownloadPreferences
 import yokai.i18n.MR
 import yokai.util.lang.getString
@@ -171,7 +171,7 @@ class DownloadManager(
 
         return files.sortedBy { it.name }
             .mapIndexed { i, file ->
-                Page(i, uri = file.uri).apply { status = Page.State.READY }
+                Page(i, uri = file.uri).apply { status = Page.State.Ready }
             }
     }
 

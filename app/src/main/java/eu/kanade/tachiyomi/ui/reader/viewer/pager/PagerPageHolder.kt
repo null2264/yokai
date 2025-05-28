@@ -109,8 +109,8 @@ class PagerPageHolder(
      */
     private var extraProgressJob: Job? = null
 
-    private var status = Page.State.READY
-    private var extraStatus = Page.State.READY
+    private var status = Page.State.Ready
+    private var extraStatus = Page.State.Ready
     private var progress: Int = 0
     private var extraProgress: Int = 0
 
@@ -337,19 +337,19 @@ class PagerPageHolder(
      */
     private suspend fun processStatus(status: Page.State) {
         when (status) {
-            Page.State.QUEUE -> setQueued()
-            Page.State.LOAD_PAGE -> setLoading()
-            Page.State.DOWNLOAD_IMAGE -> {
+            is Page.State.Queue -> setQueued()
+            is Page.State.LoadPage -> setLoading()
+            is Page.State.DownloadImage -> {
                 launchProgressJob()
                 setDownloading()
             }
-            Page.State.READY -> {
-                if (extraStatus == Page.State.READY || extraPage == null) {
+            is Page.State.Ready -> {
+                if (extraPage == null) {
                     setImage()
                 }
                 cancelProgressJob(1)
             }
-            Page.State.ERROR -> {
+            is Page.State.Error -> {
                 setError()
                 cancelProgressJob(1)
             }
@@ -363,19 +363,17 @@ class PagerPageHolder(
      */
     private suspend fun processStatus2(status: Page.State) {
         when (status) {
-            Page.State.QUEUE -> setQueued()
-            Page.State.LOAD_PAGE -> setLoading()
-            Page.State.DOWNLOAD_IMAGE -> {
+            is Page.State.Queue -> setQueued()
+            is Page.State.LoadPage -> setLoading()
+            is Page.State.DownloadImage -> {
                 launchProgressJob2()
                 setDownloading()
             }
-            Page.State.READY -> {
-                if (this.status == Page.State.READY) {
-                    setImage()
-                }
+            is Page.State.Ready -> {
+                setImage()
                 cancelProgressJob(2)
             }
-            Page.State.ERROR -> {
+            is Page.State.Error -> {
                 setError()
                 cancelProgressJob(2)
             }

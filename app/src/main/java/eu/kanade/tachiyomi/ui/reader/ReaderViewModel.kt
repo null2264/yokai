@@ -613,7 +613,7 @@ class ReaderViewModel(
         }
 
         val shouldTrack = !preferences.incognitoMode().get() || hasTrackers
-        if (shouldTrack && page.status != Page.State.ERROR) {
+        if (shouldTrack && page.status !is Page.State.Error) {
             readerChapter.chapter.last_page_read = page.index
             readerChapter.chapter.pages_left = (readerChapter.pages?.size ?: page.index) - page.index
             // For double pages, check if the second to last page is doubled up
@@ -860,7 +860,7 @@ class ReaderViewModel(
      * There's also a notification to allow sharing the image somewhere else or deleting it.
      */
     fun saveImage(page: ReaderPage) {
-        if (page.status != Page.State.READY) return
+        if (page.status !is Page.State.Ready) return
         val manga = manga ?: return
         val context = Injekt.get<Application>()
 
@@ -891,8 +891,8 @@ class ReaderViewModel(
 
     fun saveImages(firstPage: ReaderPage, secondPage: ReaderPage, isLTR: Boolean, @ColorInt bg: Int) {
         viewModelScope.launch {
-            if (firstPage.status != Page.State.READY) return@launch
-            if (secondPage.status != Page.State.READY) return@launch
+            if (firstPage.status !is Page.State.Ready) return@launch
+            if (secondPage.status !is Page.State.Ready) return@launch
             val manga = manga ?: return@launch
             val context = Injekt.get<Application>()
 
@@ -926,7 +926,7 @@ class ReaderViewModel(
      * image will be kept so it won't be taking lots of internal disk space.
      */
     fun shareImage(page: ReaderPage) {
-        if (page.status != Page.State.READY) return
+        if (page.status !is Page.State.Ready) return
         val manga = manga ?: return
         val context = Injekt.get<Application>()
 
@@ -940,8 +940,8 @@ class ReaderViewModel(
 
     fun shareImages(firstPage: ReaderPage, secondPage: ReaderPage, isLTR: Boolean, @ColorInt bg: Int) {
         viewModelScope.launch {
-            if (firstPage.status != Page.State.READY) return@launch
-            if (secondPage.status != Page.State.READY) return@launch
+            if (firstPage.status !is Page.State.Ready) return@launch
+            if (secondPage.status !is Page.State.Ready) return@launch
             val manga = manga ?: return@launch
             val context = Injekt.get<Application>()
 
@@ -958,7 +958,7 @@ class ReaderViewModel(
      * Sets the image of this [page] as cover and notifies the UI of the result.
      */
     fun setAsCover(page: ReaderPage) {
-        if (page.status != Page.State.READY) return
+        if (page.status !is Page.State.Ready) return
         val manga = manga ?: return
         val stream = page.stream ?: return
 

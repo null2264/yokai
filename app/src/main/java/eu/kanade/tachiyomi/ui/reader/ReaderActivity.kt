@@ -1655,7 +1655,7 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
     }
 
     private fun showSetCoverPrompt(page: ReaderPage) {
-        if (page.status != Page.State.READY) return
+        if (page.status !is Page.State.Ready) return
 
         materialAlertDialog()
             .setMessage(MR.strings.use_image_as_cover)
