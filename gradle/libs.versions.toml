@@ -95,7 +95,7 @@ sqldelight-dialects-sql = { module = "app.cash.sqldelight:sqlite-3-38-dialect", 
 subsamplingscaleimageview = { module = "com.github.null2264:subsampling-scale-image-view", version = "f7b674ebdd" }
 shizuku-api = { module = "dev.rikka.shizuku:api", version.ref = "shizuku" }
 shizuku-provider = { module = "dev.rikka.shizuku:provider", version.ref = "shizuku" }
-taptargetview = { module = "com.getkeepsafe.taptargetview:taptargetview", version = "1.13.3" }
+taptargetview = { module = "com.getkeepsafe.taptargetview:taptargetview", version = "1.15.0" }
 unifile = { module = "com.github.tachiyomiorg:unifile", version = "a9de196cc7" }
 viewstatepageradapter = { module = "com.nightlynexus.viewstatepageradapter:viewstatepageradapter", version = "1.1.0" }
 viewtooltip = { module = "com.github.CarlosEsco:ViewTooltip", version = "f79a8955ef" }  # FIXME: Don't depends on this
