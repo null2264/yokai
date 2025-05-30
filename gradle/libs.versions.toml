@@ -21,7 +21,7 @@ aboutlibraries = { module = "com.mikepenz:aboutlibraries-compose-m3", version.re
 
 chucker-library-no-op = { module = "com.github.ChuckerTeam.Chucker:library-no-op", version.ref = "chucker" }
 chucker-library = { module = "com.github.ChuckerTeam.Chucker:library", version.ref = "chucker" }
-coil3-bom = { module = "io.coil-kt.coil3:coil-bom", version = "3.0.4" }
+coil3-bom = { module = "io.coil-kt.coil3:coil-bom", version = "3.2.0" }
 coil3 = { module = "io.coil-kt.coil3:coil" }
 coil3-svg = { module = "io.coil-kt.coil3:coil-svg" }
 coil3-gif = { module = "io.coil-kt.coil3:coil-gif" }
