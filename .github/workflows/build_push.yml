@@ -43,7 +43,7 @@ jobs:
           ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "build-tools;35.0.0"
 
       - name: Setup Gradle
-        uses: null2264/actions/gradle-setup@363cb9cf3d66bd9c72ed6860142c6b2c121d7e94
+        uses: null2264/actions/gradle-java-setup@363cb9cf3d66bd9c72ed6860142c6b2c121d7e94
         with:
           java: 17
           distro: temurin
