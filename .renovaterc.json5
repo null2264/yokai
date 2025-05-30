@@ -24,6 +24,8 @@
         'com.github.tachiyomiorg:image-decoder',
         'com.github.tachiyomiorg:unifile',
         'com.github.tachiyomiorg:conductor-support-preference',
+        'com.github.chrisbanes:PhotoView',
+        'com.github.PhilJay:MPAndroidChart',
       ],
       enabled: false,
     },
