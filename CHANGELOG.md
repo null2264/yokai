@@ -35,7 +35,6 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ### Other
 - Refactor Library to utilize Flow even more
-- Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.10.1
 - Refactor EmptyView to use Compose
 - Refactor Reader ChapterTransition to use Compose (@arkon)
 - [Experimental] Add modified version of LargeTopAppBar that mimic J2K's ExpandedAppBarLayout
@@ -50,9 +49,41 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Refactor Library to store LibraryMap instead of flatten list of LibraryItem
   - LibraryItem abstraction to make it easier to manage
   - LibraryManga no longer extend MangaImpl
-- Update dependency androidx.compose:compose-bom to v2025.01.00
 - Update dependency gradle to v8.12
 - Update user agent (@Hiirbaf)
+- Update serialization to v1.8.1
+- Update dependency io.github.fornewid:material-motion-compose-core to v1.2.1
+- Update lifecycle to v2.9.0
+- Update dependency org.jsoup:jsoup to v1.20.1
+- Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.4.0
+- Update dependency io.mockk:mockk to v1.14.2
+- Update dependency io.coil-kt.coil3:coil-bom to v3.2.0
+- Update dependency com.squareup.okio:okio to v3.12.0
+- Update dependency com.google.firebase:firebase-bom to v33.14.0
+- Update dependency com.google.accompanist:accompanist-themeadapter-material3 to v0.36.0
+- Update dependency com.github.requery:sqlite-android to v3.49.0
+- Update dependency com.getkeepsafe.taptargetview:taptargetview to v1.15.0
+- Update dependency androidx.window:window to v1.4.0
+- Update dependency androidx.webkit:webkit to v1.13.0
+- Update dependency androidx.sqlite:sqlite-ktx to v2.5.1
+- Update dependency androidx.sqlite:sqlite to v2.5.1
+- Update dependency androidx.recyclerview:recyclerview to v1.4.0
+- Update dependency androidx.core:core-ktx to v1.16.0
+- Update dependency androidx.compose:compose-bom to v2025.05.01
+- Update aboutlibraries to v11.6.3
+- Update plugin kotlinter to v5.1.0
+- Update plugin gradle-versions to v0.52.0
+- Update okhttp monorepo to v5.0.0-alpha.16
+- Update moko to v0.24.5
+- Update kotlin monorepo to v2.1.21
+- Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.10.2
+- Update dependency me.zhanghai.android.libarchive:library to v1.1.5
+- Update dependency io.insert-koin:koin-bom to v4.0.4
+- Update dependency com.android.tools:desugar_jdk_libs to v2.1.5
+- Update dependency androidx.work:work-runtime-ktx to v2.10.1
+- Update dependency androidx.constraintlayout:constraintlayout to v2.2.1
+- Update plugin firebase-crashlytics to v3.0.3
+- Update null2264/actions digest to 363cb9c
 
 ## [1.9.7.2]
 
