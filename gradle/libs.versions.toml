@@ -8,7 +8,7 @@ okhttp = "5.0.0-alpha.16"
 shizuku = "13.1.5"
 # FIXME: Uncomment once SQLDelight support KMP AndroidX SQLiteDriver
 #sqlite = "2.5.0-alpha04"
-sqlite = "2.4.0"
+sqlite = "2.5.1"
 sqldelight = "2.0.2"
 junit = "5.11.3"
 kermit = "2.0.5"
