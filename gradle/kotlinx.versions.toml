@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.1.21"
 serialization = "1.8.1"
-xml_serialization = "0.90.3"
+xml_serialization = "0.91.1"
 
 [libraries]
 gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -15,7 +15,7 @@ serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-jso
 serialization-json-okio = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-okio", version.ref = "serialization" }
 serialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf", version.ref = "serialization" }
 serialization-xml-core = { module = "io.github.pdvrieze.xmlutil:core-android", version.ref = "xml_serialization" }
-serialization-xml = { module = "io.github.pdvrieze.xmlutil:serialization-android", version.ref = "xml_serialization" }
+serialization-xml = { module = "io.github.pdvrieze.xmlutil:serialization", version.ref = "xml_serialization" }
 immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.4.0" }
 
 [bundles]
