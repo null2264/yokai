@@ -200,6 +200,7 @@ dependencies {
     implementation(libs.play.services.gcm)
 
     // Database
+    implementation(libs.sqlite.android)
     implementation(libs.bundles.sqlite)
 
     // Model View Presenter
