@@ -86,6 +86,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update null2264/actions digest to 363cb9c
 - Update dependency io.github.pdvrieze.xmlutil:core-android to v0.91.1
 
+## [1.9.7.3]
+
+### Fixes
+- More `Comparison method violates its general contract!` crash prevention
+
 ## [1.9.7.2]
 
 ### Fixes
