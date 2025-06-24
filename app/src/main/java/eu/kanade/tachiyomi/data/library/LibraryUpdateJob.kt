@@ -46,6 +46,7 @@ import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.util.chapter.syncChaptersWithSource
 import eu.kanade.tachiyomi.util.chapter.syncChaptersWithTrackServiceTwoWay
 import eu.kanade.tachiyomi.util.manga.MangaShortcutManager
+import eu.kanade.tachiyomi.util.isLocal
 import eu.kanade.tachiyomi.util.shouldDownloadNewChapters
 import eu.kanade.tachiyomi.util.storage.getUriCompat
 import eu.kanade.tachiyomi.util.system.createFileInCacheDir
@@ -461,6 +462,11 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private fun filterMangaToUpdate(mangaToAdd: List<LibraryManga>): List<LibraryManga> {
         val restrictions = preferences.libraryUpdateMangaRestriction().get()
         return mangaToAdd.filter { manga ->
+            // TODO: See if this is problematic
+            // Always update local source entries if it's a manual global/library update
+            if (!tags.contains(WORK_NAME_AUTO) && manga.manga.isLocal()) {
+                return@filter true
+            }
             when {
                 MANGA_NON_COMPLETED in restrictions && manga.manga.status == SManga.COMPLETED -> {
                     skippedUpdates[manga.manga] = context.getString(MR.strings.skipped_reason_completed)
