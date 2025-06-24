@@ -49,6 +49,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Refactor Library to store LibraryMap instead of flatten list of LibraryItem
   - LibraryItem abstraction to make it easier to manage
   - LibraryManga no longer extend MangaImpl
+- Replace Requery's SQLite with AndroidX's new KMP SQLite
 - Update dependency gradle to v8.12
 - Update user agent (@Hiirbaf)
 - Update serialization to v1.8.1
@@ -65,8 +66,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency com.getkeepsafe.taptargetview:taptargetview to v1.15.0
 - Update dependency androidx.window:window to v1.4.0
 - Update dependency androidx.webkit:webkit to v1.13.0
-- Update dependency androidx.sqlite:sqlite-ktx to v2.5.1
-- Update dependency androidx.sqlite:sqlite to v2.5.1
+- Update androidxSqlite to v2.5.1
 - Update dependency androidx.recyclerview:recyclerview to v1.4.0
 - Update dependency androidx.core:core-ktx to v1.16.0
 - Update dependency androidx.compose:compose-bom to v2025.05.01
