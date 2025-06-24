@@ -499,7 +499,8 @@ class MangaDetailsPresenter(
 
     /** Refresh Manga Info and Chapter List (not tracking) */
     fun refreshAll() {
-        if (view?.isNotOnline() == true && !manga.isLocal()) return
+        val isLocal by lazy { manga.isLocal() }
+        if (view?.isNotOnline(!isLocal) == true && !isLocal) return
         presenterScope.launch {
             isLoading = true
             val tasks = listOf(
