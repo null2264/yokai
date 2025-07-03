@@ -23,11 +23,13 @@ import android.view.animation.DecelerateInterpolator
 import androidx.activity.BackEventCompat
 import androidx.activity.ComponentDialog
 import androidx.activity.OnBackPressedCallback
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams
 import androidx.core.animation.addListener
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.transition.ChangeBounds
 import androidx.transition.ChangeImageTransform
@@ -122,27 +124,26 @@ class FullCoverDialog(val controller: MangaDetailsController, drawable: Drawable
                 lastY = backEvent.touchY
                 velocityTracker.addMovement(motionEvent)
                 motionEvent.recycle()
-                binding.mangaCoverFull.scaleX = 1f - maxProgress * 0.6f
-                binding.mangaCoverFull.translationX =
+                binding.mangaCoverZoom.scaleX = 1f - maxProgress * 0.6f
+                binding.mangaCoverZoom.translationX =
                     maxProgress * 100f * (if (backEvent.swipeEdge == BackEventCompat.EDGE_LEFT) 1 else -1)
-                binding.mangaCoverFull.translationY = -maxProgress * 150f
-                binding.mangaCoverFull.scaleY = 1f - maxProgress * 0.6f
+                binding.mangaCoverZoom.translationY = -maxProgress * 150f
+                binding.mangaCoverZoom.scaleY = 1f - maxProgress * 0.6f
             }
 
             override fun handleOnBackCancelled() {
-                binding.mangaCoverFull.scaleX = 1f
-                binding.mangaCoverFull.translationX = 0f
-                binding.mangaCoverFull.translationY = 0f
-                binding.mangaCoverFull.scaleY = 1f
+                binding.mangaCoverZoom.scaleX = 1f
+                binding.mangaCoverZoom.translationX = 0f
+                binding.mangaCoverZoom.translationY = 0f
+                binding.mangaCoverZoom.scaleY = 1f
             }
         }
         onBackPressedDispatcher.addCallback(backPressedCallback)
 
-        binding.touchOutside.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
-        binding.mangaCoverFull.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
+        listOf(binding.touchOutside, binding.mangaCoverFull, binding.mangaCoverZoom).forEach {
+            it.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+            }
         }
 
         binding.btnSave.setOnClickListener {
@@ -159,6 +160,7 @@ class FullCoverDialog(val controller: MangaDetailsController, drawable: Drawable
                 .build()
 
         expandedImageView.setImageDrawable(drawable)
+        binding.mangaCoverZoom.setImageDrawable(drawable)
 
         val rect = Rect()
         thumbView.getGlobalVisibleRect(rect)
@@ -166,7 +168,7 @@ class FullCoverDialog(val controller: MangaDetailsController, drawable: Drawable
         val topInset = systemInsets?.top ?: 0
         val leftInset = systemInsets?.left ?: 0
         val rightInset = systemInsets?.right ?: 0
-        expandedImageView.updateLayoutParams<ConstraintLayout.LayoutParams> {
+        expandedImageView.updateLayoutParams<LayoutParams> {
             height = thumbView.height
             width = thumbView.width
             topMargin = rect.top - topInset
@@ -189,15 +191,17 @@ class FullCoverDialog(val controller: MangaDetailsController, drawable: Drawable
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 activity?.window?.decorView?.animateBlur(1f, 20f, 50)?.start()
             }
-            expandedImageView.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                height = 0
-                width = 0
-                topMargin = defMargin + 48.dpToPx
-                marginStart = defMargin
-                marginEnd = defMargin
-                bottomMargin = defMargin
-                horizontalBias = 0.5f
-                verticalBias = 0.5f
+            listOf(expandedImageView, binding.mangaCoverZoom).forEach {
+                it.updateLayoutParams<LayoutParams> {
+                    height = 0
+                    width = 0
+                    topMargin = defMargin + 48.dpToPx
+                    marginStart = defMargin
+                    marginEnd = defMargin
+                    bottomMargin = defMargin
+                    horizontalBias = 0.5f
+                    verticalBias = 0.5f
+                }
             }
 
             // TransitionSet for the full cover because using animation for this SUCKS
@@ -227,6 +231,12 @@ class FullCoverDialog(val controller: MangaDetailsController, drawable: Drawable
                     }
                 }
                 playTogether(radiusAnimator, saveAnimator)
+                doOnEnd {
+                    if (binding.touchOutside.isClickable) {
+                        binding.mangaCoverFull.isInvisible = true
+                        binding.mangaCoverZoom.isVisible = true
+                    }
+                }
                 duration = shortAnimationDuration
                 interpolator = DecelerateInterpolator()
                 start()
@@ -266,6 +276,13 @@ class FullCoverDialog(val controller: MangaDetailsController, drawable: Drawable
         }
         val rect2 = Rect()
         thumbView.getGlobalVisibleRect(rect2)
+        binding.mangaCoverFull.scaleX = binding.mangaCoverZoom.scaleX
+        binding.mangaCoverFull.translationX = binding.mangaCoverZoom.translationX
+        binding.mangaCoverFull.translationY = binding.mangaCoverZoom.translationY
+        binding.mangaCoverFull.scaleY = binding.mangaCoverZoom.scaleY
+        binding.mangaCoverFull.isVisible = true
+        binding.mangaCoverZoom.isVisible = false
+        binding.mangaCoverZoom.isClickable = false
         binding.mangaCoverFull.isClickable = false
         binding.touchOutside.isClickable = false
         val expandedImageView = binding.mangaCoverFull
@@ -273,7 +290,7 @@ class FullCoverDialog(val controller: MangaDetailsController, drawable: Drawable
         val topInset = systemInsets?.top ?: 0
         val leftInset = systemInsets?.left ?: 0
         val rightInset = systemInsets?.right ?: 0
-        expandedImageView.updateLayoutParams<ConstraintLayout.LayoutParams> {
+        expandedImageView.updateLayoutParams<LayoutParams> {
             height = thumbView.height
             width = thumbView.width
             topMargin = rect2.top - topInset
