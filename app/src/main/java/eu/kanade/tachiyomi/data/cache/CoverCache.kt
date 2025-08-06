@@ -175,7 +175,28 @@ class CoverCache(val context: Context) {
     @Throws(IOException::class)
     fun setCustomCoverToCache(manga: Manga, inputStream: InputStream) {
         val maxTextureSize = 4096f
-        var bitmap = BitmapFactory.decodeStream(inputStream)
+
+        val imageBytes = inputStream.readBytes()
+        inputStream.close()
+
+        val bounds = BitmapFactory.Options().apply {
+            inJustDecodeBounds = true
+        }
+        BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size, bounds)
+
+        val originalWidth = bounds.outWidth
+        val originalHeight = bounds.outHeight
+
+        val sampleSize = calculateInSampleSize(originalWidth, originalHeight, maxTextureSize.toInt())
+
+        val decodeOptions = BitmapFactory.Options().apply {
+            inSampleSize = sampleSize
+            inPreferredConfig = if (sampleSize > 1) Bitmap.Config.RGB_565 else Bitmap.Config.ARGB_8888
+        }
+
+        var bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size, decodeOptions)
+            ?: throw IOException("Failed to decode image")
+
         if (maxOf(bitmap.width, bitmap.height) > maxTextureSize) {
             val widthRatio = bitmap.width / maxTextureSize
             val heightRatio = bitmap.height / maxTextureSize
@@ -207,6 +228,28 @@ class CoverCache(val context: Context) {
             )
             bitmap.recycle()
         }
+    }
+
+    /**
+     * Calculate the largest inSampleSize value that is a power of 2 and keeps both
+     * height and width larger than the requested height and width.
+     *
+     * @param width the original image width.
+     * @param height the original image height.
+     * @param maxSize the maximum allowed dimension.
+     * @return the sample size to use for BitmapFactory.Options.
+     */
+    private fun calculateInSampleSize(width: Int, height: Int, maxSize: Int): Int {
+        var inSampleSize = 1
+        if (height > maxSize || width > maxSize) {
+            val halfHeight = height / 2
+            val halfWidth = width / 2
+
+            while ((halfHeight / inSampleSize) >= maxSize && (halfWidth / inSampleSize) >= maxSize) {
+                inSampleSize *= 2
+            }
+        }
+        return inSampleSize
     }
 
     /**
