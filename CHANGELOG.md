@@ -29,6 +29,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix source filter bottom sheet unable to be fully scrolled to the bottom
 - Prevent potential "Comparison method violates its general contract!" crash
 - Fix staggered grid cover being squashed for local source (@AwkwardPeak7)
+- Fix GPU crash when setting cover from downloaded chapters (@Angrevol)
 
 ### Translation
 - Update translations from Weblate
