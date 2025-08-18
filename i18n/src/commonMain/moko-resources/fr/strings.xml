@@ -1059,8 +1059,8 @@
     <string name="source_settings">Paramètre des sources</string>
     <string name="doki">Doki</string>
     <string name="pref_cutout_short">Voir le contenu de la zone découpé</string>
-    <string name="create_folders_by_manga_title">Créé un dossier selon le titre du manga</string>
-    <string name="save_pages_separately">Sauvegardé les pages dans un dossiers à part</string>
+    <string name="create_folders_by_manga_title">Créer un dossier selon le titre du manga</string>
+    <string name="save_pages_separately">Sauvegarder les pages dans un dossier à part</string>
     <string name="pref_display_profile">Profil d\'affichage personnalisé</string>
     <string name="data_and_storage">Donnée et stockage</string>
     <string name="storage_location">Dossier de stockage</string>
@@ -1070,7 +1070,7 @@
     <string name="confirm_delete_repo_title">Supprimer le répertoire ?</string>
     <string name="confirm_delete_repo">Êtes-vous sûr de vouloir supprimer ce répertoire \"%s\"?</string>
     <string name="repo_already_exists">Répertoire déjà existant</string>
-    <string name="information_empty_repos">Vous n\'avez pas encore ajouté de répertorié</string>
+    <string name="information_empty_repos">Vous n\'avez pas encore ajouté de répertoires.</string>
     <string name="action_open_repo">Répertoire open source</string>
     <string name="open_in_browser_fail">Impossible d\'ouvrir l\'url</string>
     <string name="download_with_id">Ajouter automatiquement l\'ID</string>
@@ -1078,5 +1078,10 @@
     <string name="apply">Appliqué</string>
     <string name="just_now">Juste à l\'instant</string>
     <string name="pref_reader_debug_mode">Mode de débogage</string>
-    <string name="pref_external_local_source">Scanner les stockage externe pour des entrées</string>
+    <string name="pref_external_local_source">Scanner les stockages externes pour des entrées</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter">Marquer les chapitres en double comme lus</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_existing">Après avoir lu un chapitre</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_new">Après avoir récupéré un nouveau chapitre</string>
+    <string name="pref_hardware_bitmap_threshold_summary">Si le lecteur charge une image vide, réduisez progressivement le seuil.\nActuellement : %s</string>
+    <string name="pref_verbose_logging">Journalisation explicite</string>
 </resources>
