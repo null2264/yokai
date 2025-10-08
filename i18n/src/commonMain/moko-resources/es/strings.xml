@@ -1011,7 +1011,7 @@
     <string name="file_picker_uri_permission_unsupported">No se pudo obtener acceso persistente a la carpeta. La aplicación podría tener un comportamiento inesperado.</string>
     <string name="information_cloudflare_help">Toque aquí para obtener ayuda con Cloudflare</string>
     <string name="information_webview_required">Se requiere WebView para que la aplicación funcione</string>
-    <string name="action_webview_back">Atrás</string>
+    <string name="action_webview_back">Volver</string>
     <string name="action_webview_forward">Adelante</string>
     <string name="action_webview_refresh">Actualizar</string>
     <string name="internal_error">Error interno: %s</string>
@@ -1052,7 +1052,7 @@
     <string name="selected">Seleccionado</string>
     <string name="open_random_series_global">Abrir una serie aleatoria (Global)</string>
     <string name="ext_installer_packageinstaller">Default</string>
-    <string name="ext_installer_summary_legacy">El instalador Legacy aún no está implementado; actualmente se recurre al PackageInstaller (default)</string>
+    <string name="ext_installer_summary_legacy">El instalador Clásico aún no está implementado; actualmente se recurre al PackageInstaller (default)</string>
     <string name="save_pages_separately">Guardar páginas en carpetas separadas</string>
     <string name="create_folders_by_manga_title">Crea carpetas según el título del manga</string>
     <string name="pref_hardware_bitmap_threshold_summary">Si el lector carga una imagen en blanco, reduzca gradualmente el umbral(Threshold).\nSeleccionado: %s</string>
@@ -1072,4 +1072,24 @@
     <string name="open_in_browser_fail">No se puede abrir la URL</string>
     <string name="move_series_to_bottom">Mover la serie al final</string>
     <string name="enable_source_swipe_action">Habilitar la acción de deslizar la fuente</string>
+    <string name="pref_behavior">Comportamiento</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter">Marcar capítulos duplicados como ya leídos</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_existing">Al terminar de leer un capítulo</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_new">Al obtener nuevo capítulo</string>
+    <string name="doki">Doki</string>
+    <string name="webtoon">Webtoon</string>
+    <string name="save_search_title">Búsquedas guardadas</string>
+    <string name="save_search">¿Guardar la consulta de búsqueda actual?</string>
+    <string name="save_search_hint">Guardar nombre de búsqueda</string>
+    <string name="save_search_invalid_name">Nombre de búsqueda guardado no válido</string>
+    <string name="save_search_delete">¿Eliminar esta consulta de búsqueda guardada?</string>
+    <string name="save_search_delete_message">¿Está seguro de que desea eliminar esta consulta de búsqueda guardada: \'%1$s\'?</string>
+    <string name="action_menu_overflow_description">Más opciones</string>
+    <string name="action_bar_up_description">Navegar hacia arriba</string>
+    <string name="pref_legacy_cutout_info">En dispositivos anteriores a Android 9.0, debe configurar los ajustes de recorte manualmente a través de la configuración del sistema</string>
+    <string name="onboarding_heading">¡Bienvenido/a!</string>
+    <string name="onboarding_finish">Empezar</string>
+    <string name="ext_installer_legacy">Clásico</string>
+    <string name="pref_hardware_bitmap_threshold">Elegir un tamaño máximo con el que decodificar imágenes por hardware</string>
+    <string name="pref_hardware_bitmap_threshold_default">Predeterminado (%d)</string>
 </resources>
