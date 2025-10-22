@@ -144,7 +144,7 @@
     <string name="other">Inne</string>
     <string name="global_search">Wyszukiwanie globalne…</string>
     <string name="latest">Najnowsze</string>
-    <string name="browse">Przeglądaj</string>
+    <string name="browse">Przeglądanie</string>
     <string name="in_library">W bibliotece</string>
     <string name="search_extensions">Szukaj rozszerzeń…</string>
     <string name="all_sources">Wszystkie źródła</string>
@@ -990,4 +990,11 @@
     <string name="library_entries">Biblioteka</string>
     <string name="pref_debug_info">Informacje debugowania</string>
     <string name="label_background_activity">Aktywność w tle</string>
+    <string name="action_menu_overflow_description">Więcej opcji</string>
+    <string name="onboarding_heading">Witaj!</string>
+    <string name="onboarding_storage_info">Wybierz folder w którym %1$s będzie przechowywać pobrane rozdziały, kopie zapasowe, i inne pliki.\n\nZalecany jest dedykowany folder.\n\nWybrany folder: %2$s</string>
+    <string name="onboarding_storage_action_select">Wybierz folder</string>
+    <string name="onboarding_permission_type_required">Wymagane</string>
+    <string name="onboarding_permission_type_optional">Opcjonalne, ale rekomendowane</string>
+    <string name="onboarding_permission_install_apps">Zezwolenie na instalowanie aplikacji</string>
 </resources>
