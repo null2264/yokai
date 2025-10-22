@@ -86,6 +86,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update plugin firebase-crashlytics to v3.0.3
 - Update null2264/actions digest to 363cb9c
 - Update dependency io.github.pdvrieze.xmlutil:core-android to v0.91.1
+- Improve X-Requested-With spoof to support newer WebView versions (@Hiirbaf)
 
 ## [1.9.7.3]
 
