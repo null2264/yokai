@@ -70,6 +70,7 @@ import androidx.compose.ui.util.fastCoerceIn
 import androidx.compose.ui.util.fastFirst
 import androidx.compose.ui.util.fastMaxOfOrNull
 import androidx.compose.ui.util.fastSumBy
+import androidx.compose.ui.util.lerp
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -157,17 +158,54 @@ private fun TwoRowsTopAppBar(
         }
     }
 
+    val state = scrollBehavior?.state
+
+    // Overall collapse fraction, from 0.0 (expanded) to 1.0 (fully collapsed).
+    // A lambda that computes the collapsed fraction. It is invoked within other lambdas to defer state reading.
+    val collapsedFraction = {
+        val offset = state?.heightOffset ?: 0f
+        val limit = state?.heightOffsetLimit ?: -expandedHeightPx
+        if (limit != 0f) (offset / limit) else 0f
+    }
+
+    // The fraction of the total collapse distance that corresponds to the bottom part collapsing.
+    val bottomPartCollapseEndFraction = {
+        if (expandedHeightPx > 0) {
+            (expandedHeightPx - collapsedHeightPx) / expandedHeightPx
+        } else {
+            0f
+        }
+    }
+
+    // The fraction of the way through the bottom part's collapse.
+    val bottomPartCollapseFraction = {
+        if (bottomPartCollapseEndFraction() > 0f) {
+            (collapsedFraction() / bottomPartCollapseEndFraction()).coerceIn(0f, 1f)
+        } else {
+            0f
+        }
+    }
+
+    // The fraction of the way through the top part's collapse.
+    val topPartCollapseFraction = {
+        if (bottomPartCollapseEndFraction() < 1f) {
+            ((collapsedFraction() - bottomPartCollapseEndFraction()) / (1f - bottomPartCollapseEndFraction())).coerceIn(0f, 1f)
+        } else {
+            0f
+        }
+    }
+
     // Obtain the container Color from the TopAppBarColors using the `collapsedFraction`, as the
     // bottom part of this TwoRowsTopAppBar changes color at the same rate the app bar expands or
     // collapse.
     // This will potentially animate or interpolate a transition between the container color and the
     // container's scrolled color according to the app bar's scroll state.
-    val colorTransitionFraction = scrollBehavior?.state?.bottomCollapsedFraction(collapsedHeightPx, expandedHeightPx) ?: 0f
+
     val appBarContainerColor = {
         lerp(
             colors.containerColor,
             colors.scrolledContainerColor,
-            FastOutLinearInEasing.transform(colorTransitionFraction)
+            FastOutLinearInEasing.transform(bottomPartCollapseFraction())
         )
     }
 
@@ -180,12 +218,20 @@ private fun TwoRowsTopAppBar(
                 content = actions
             )
         }
-    val topTitleAlpha = TitleAlphaEasing.transform(colorTransitionFraction)
-    val bottomTitleAlpha = 1f - colorTransitionFraction
+    val topTitleAlpha = TitleAlphaEasing.transform(bottomPartCollapseFraction())
+    val bottomTitleAlpha = 1f - bottomPartCollapseFraction()
     // Hide the top row title semantics when its alpha value goes below 0.5 threshold.
     // Hide the bottom row title semantics when the top title semantics are active.
-    val hideTopRowSemantics = colorTransitionFraction < 0.5f
+    val hideTopRowSemantics = bottomPartCollapseFraction() < 0.5f
     val hideBottomRowSemantics = !hideTopRowSemantics
+
+    val topRowOffset = {
+        lerp(0f, -collapsedHeightPx, topPartCollapseFraction())
+    }
+
+    val bottomRowOffset = {
+        lerp(0f, collapsedHeightPx - expandedHeightPx, bottomPartCollapseFraction())
+    }
 
     Box(
         modifier =
@@ -200,12 +246,7 @@ private fun TwoRowsTopAppBar(
                     Modifier.windowInsetsPadding(windowInsets)
                         // clip after padding so we don't show the title over the inset area
                         .clipToBounds(),
-                scrolledOffset = {
-                    scrollBehavior?.state?.topHeightOffset(
-                        topHeightPx = collapsedHeightPx,
-                        totalHeightPx = expandedHeightPx,
-                    ) ?: 0f
-                },
+                scrolledOffset = topRowOffset,
                 navigationIconContentColor = colors.navigationIconContentColor,
                 titleContentColor = colors.titleContentColor,
                 //subtitleContentColor = colors.subtitleContentColor,
@@ -232,12 +273,7 @@ private fun TwoRowsTopAppBar(
                         // padding will always be applied by the layout above
                         .windowInsetsPadding(windowInsets.only(WindowInsetsSides.Horizontal))
                         .clipToBounds(),
-                scrolledOffset = {
-                    scrollBehavior?.state?.bottomHeightOffset(
-                        topHeightPx = collapsedHeightPx,
-                        totalHeightPx = expandedHeightPx,
-                    ) ?: 0f
-                },
+                scrolledOffset = bottomRowOffset,
                 navigationIconContentColor = colors.navigationIconContentColor,
                 titleContentColor = colors.titleContentColor,
                 //subtitleContentColor = colors.subtitleContentColor,
