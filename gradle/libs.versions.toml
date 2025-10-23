@@ -6,9 +6,9 @@ fast_adapter = "5.7.0"
 moko = "0.24.5"
 okhttp = "5.0.0-alpha.16"
 shizuku = "13.1.5"
-# FIXME: Uncomment once SQLDelight support KMP AndroidX SQLiteDriver
-#sqlite = "2.5.0-alpha04"
-sqlite = "2.5.1"
+androidxSqlite = "2.5.1"
+# FIXME: Stay at 2.0.2 until 2.1.1 released because dialect is borked
+# REF: https://github.com/sqldelight/sqldelight/issues/5758
 sqldelight = "2.0.2"
 junit = "5.11.3"
 kermit = "2.0.5"
@@ -82,13 +82,12 @@ rxjava = { module = "io.reactivex:rxjava", version = "1.3.8" }
 rxandroid = { module = "io.reactivex:rxandroid", version = "1.2.1" }
 slice = { module = "com.github.mthli:Slice", version = "v1.2" }
 
-# FIXME: Uncomment once SQLDelight support KMP AndroidX SQLiteDriver
-#sqlite = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqlite" }
-sqlite-android = { module = "com.github.requery:sqlite-android", version = "3.49.0" }
+# SQLite interface
+sqlite = { module = "androidx.sqlite:sqlite", version.ref = "androidxSqlite" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidxSqlite" }
 
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
-sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-androidx-driver = { module = "com.eygraber:sqldelight-androidx-driver", version = "0.0.12" }
 sqldelight-android-paging = { module = "app.cash.sqldelight:androidx-paging3-extensions", version.ref = "sqldelight" }
 sqldelight-dialects-sql = { module = "app.cash.sqldelight:sqlite-3-38-dialect", version.ref = "sqldelight" }
 
@@ -114,13 +113,11 @@ moko = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko"
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 
 [bundles]
-db = [ "sqldelight-coroutines" ]
-db-android = [ "sqldelight-android-driver", "sqldelight-android-paging" ]
+db = [ "sqldelight-coroutines", "sqldelight-androidx-driver" ]
+db-android = [ "sqldelight-android-paging" ]
 coil = [ "coil3", "coil3-svg", "coil3-gif", "coil3-okhttp" ]
 logging = [ "kermit" ]
-# FIXME: Uncomment once SQLDelight support KMP AndroidX SQLiteDriver
-#sqlite = [ "sqlite", "sqlite-ktx" ]
-sqlite = [ "sqlite-ktx" ]
+sqlite = [ "sqlite", "sqlite-bundled" ]
 test = [ "junit-api", "kotest-assertions", "mockk" ]
 test-android = [ "junit-android" ]
 test-runtime = [ "junit-engine" ]
