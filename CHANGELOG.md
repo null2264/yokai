@@ -21,6 +21,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Temporarily disable log file
 - Categories' header now show filtered count when you search the library when you have "Show number of items" enabled (@LeeSF03)
 - Chapter progress now saved everything the page is changed
+- Adjust sorting order to be more consistent (@Astyyyyy)
 
 ### Fixes
 - Allow users to bypass onboarding's permission step if Shizuku is installed
