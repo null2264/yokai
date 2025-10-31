@@ -25,6 +25,7 @@ import eu.kanade.tachiyomi.data.library.LibraryUpdateJob.Target
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys
 import eu.kanade.tachiyomi.data.preference.changesIn
 import eu.kanade.tachiyomi.extension.installer.ShizukuInstaller
+import eu.kanade.tachiyomi.network.DataSaver
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.network.NetworkPreferences
 import eu.kanade.tachiyomi.network.PREF_DOH_360
@@ -260,6 +261,10 @@ class SettingsAdvancedController : SettingsLegacyController() {
                 summaryRes = MR.strings.clear_database_summary
                 onClick { router.pushController(ClearDatabaseController().withFadeTransaction()) }
             }
+            switchPreference {
+                bindTo(basePreferences.compressCustomCover())
+                titleRes = MR.strings.pref_compress_custom_cover
+            }
         }
 
         preferenceCategory {
@@ -314,6 +319,34 @@ class SettingsAdvancedController : SettingsLegacyController() {
                     }
                     context.toast(MR.strings.requires_app_restart)
                     true
+                }
+            }
+
+            intListPreference(activity) {
+                bindTo(networkPreferences.dataSaver())
+                titleRes = MR.strings.pref_data_saver
+
+                val entryMap = mapOf(
+                    DataSaver.NONE to context.getString(MR.strings.disabled),
+                    DataSaver.WSRV_NL to "wsrv.nl",
+                )
+                entries = entryMap.values.toList()
+                entryValues = entryMap.keys.toList()
+                onChange {
+                    context.toast(MR.strings.requires_app_restart)
+                    true
+                }
+            }
+            editTextPreference(activity) {
+                bindTo(networkPreferences.dataSaverWsrvNlUrl())
+                titleRes = MR.strings.pref_data_saver_wsrv_nl_url
+                onChange {
+                    context.toast(MR.strings.requires_app_restart)
+                    true
+                }
+            }.apply {
+                networkPreferences.dataSaver().changesIn(viewScope) {
+                    isVisible = it == DataSaver.WSRV_NL
                 }
             }
         }

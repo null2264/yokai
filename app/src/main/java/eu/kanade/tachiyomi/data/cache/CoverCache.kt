@@ -20,6 +20,7 @@ import java.util.concurrent.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.injectLazy
+import yokai.domain.base.BasePreferences
 import yokai.domain.manga.interactor.GetManga
 import yokai.i18n.MR
 import yokai.util.lang.getString
@@ -39,6 +40,8 @@ class CoverCache(val context: Context) {
         private const val CUSTOM_COVERS_DIR = "covers/custom"
         private const val ONLINE_COVERS_DIR = "online_covers"
     }
+
+    private val basePreferences: BasePreferences by injectLazy()
 
     private val getManga: GetManga by injectLazy()
 
@@ -174,6 +177,13 @@ class CoverCache(val context: Context) {
      */
     @Throws(IOException::class)
     fun setCustomCoverToCache(manga: Manga, inputStream: InputStream) {
+        if (!basePreferences.compressCustomCover().get()) {
+            getCustomCoverFile(manga).outputStream().use {
+                inputStream.copyTo(it)
+            }
+            return
+        }
+
         val maxTextureSize = 4096f
 
         val imageBytes = inputStream.readBytes()

@@ -51,4 +51,6 @@ class BasePreferences(private val preferenceStore: PreferenceStore) {
     fun hardwareBitmapThreshold() = preferenceStore.getInt("pref_hardware_bitmap_threshold", GLUtil.SAFE_TEXTURE_LIMIT)
 
     fun composeLibrary() = preferenceStore.getBoolean("pref_use_compose_library", false)
+
+    fun compressCustomCover() = preferenceStore.getBoolean("pref_compress_custom_cover", false)
 }

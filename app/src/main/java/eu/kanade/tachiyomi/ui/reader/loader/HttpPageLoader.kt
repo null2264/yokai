@@ -2,6 +2,8 @@ package eu.kanade.tachiyomi.ui.reader.loader
 
 import eu.kanade.tachiyomi.data.cache.ChapterCache
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
+import eu.kanade.tachiyomi.network.NetworkPreferences
+import eu.kanade.tachiyomi.network.getDataSaver
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.ui.reader.model.ReaderChapter
@@ -22,6 +24,7 @@ import kotlinx.coroutines.runInterruptible
 import kotlinx.coroutines.suspendCancellableCoroutine
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
+import yokai.util.getImage
 
 /**
  * Loader used to load chapters from an online source.
@@ -30,7 +33,8 @@ class HttpPageLoader(
     private val chapter: ReaderChapter,
     private val source: HttpSource,
     private val chapterCache: ChapterCache = Injekt.get(),
-    private val preferences: PreferencesHelper = Injekt.get(),
+    preferences: PreferencesHelper = Injekt.get(),
+    networkPreferences: NetworkPreferences = Injekt.get(),
 ) : PageLoader() {
 
     override val isLocal: Boolean = false
@@ -43,6 +47,8 @@ class HttpPageLoader(
     private val queue = PriorityBlockingQueue<PriorityPage>()
 
     private val preloadSize = preferences.preloadSize().get()
+
+    private val dataSaver = getDataSaver(source.id, networkPreferences)
 
     init {
         scope.launchIO {
@@ -199,7 +205,7 @@ class HttpPageLoader(
 
             if (!chapterCache.isImageInCache(imageUrl)) {
                 page.status = Page.State.DownloadImage
-                val imageResponse = source.getImage(page)
+                val imageResponse = source.getImage(page, dataSaver)
                 chapterCache.putImageToCache(imageUrl, imageResponse)
             }
 

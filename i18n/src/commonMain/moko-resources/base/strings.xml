@@ -818,15 +818,14 @@
     <string name="doh">DNS over HTTPS</string>
     <string name="user_agent_string">Default user agent string</string>
     <string name="error_user_agent_string_invalid">Invalid user agent string</string>
+
+    <string name="pref_data_saver">Data saver</string>
+    <string name="pref_data_saver_wsrv_nl_url">wsrv.nl API Url</string>
+    <string name="pref_data_saver_quality">Data saver quality</string>
+
+    <string name="pref_compress_custom_cover">Compress custom cover</string>
+
     <string name="disabled">Disabled</string>
-    <string name="cloudflare" translatable="false">Cloudflare</string>
-    <string name="google" translatable="false">Google</string>
-    <string name="ad_guard" translatable="false">AdGuard</string>
-    <string name="quad9" translatable="false">Quad9</string>
-    <string name="aliDNS" translatable="false">AliDNS</string>
-    <string name="dnsPod" translatable="false">DNSPod</string>
-    <string name="dns_360" translatable="false">360</string>
-    <string name="quad_101" translatable="false">Quad 101</string>
     <string name="requires_app_restart">Requires app restart to take effect</string>
     <string name="used_">Used: %1$s</string>
     <string name="cache_delete_error">Error occurred while clearing</string>
