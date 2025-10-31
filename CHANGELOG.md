@@ -56,7 +56,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update serialization to v1.8.1
 - Update dependency io.github.fornewid:material-motion-compose-core to v1.2.1
 - Update lifecycle to v2.9.0
-- Update dependency org.jsoup:jsoup to v1.20.1
+- Update dependency org.jsoup:jsoup to v1.21.2
 - Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.4.0
 - Update dependency io.mockk:mockk to v1.14.2
 - Update dependency io.coil-kt.coil3:coil-bom to v3.2.0
