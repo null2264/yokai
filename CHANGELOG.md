@@ -15,6 +15,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Add the ability to save search queries
 - Add toggle to enable/disable hide source on swipe (@Hiirbaf)
 - Add the ability to mark duplicate read chapters as read (@AntsyLich)
+- Add option to zoom into full covers (@Hiirbaf)
 
 ### Changes
 - Temporarily disable log file
