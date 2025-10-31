@@ -83,14 +83,19 @@ open class MangaImpl(
     override var cover_last_modified: Long = 0L
 
     override fun copyFrom(other: SManga) {
-        if (other is MangaImpl && other::ogTitle.isInitialized &&
-            other.title.isNotBlank() && other.ogTitle != ogTitle
-        ) {
-            val oldTitle = ogTitle
-            title = other.ogTitle
+        val remoteTitle = try {
+            if (other is Manga) other.ogTitle else other.title
+        } catch (_: UninitializedPropertyAccessException) {
+            ""
+        }
+
+        if (remoteTitle.isNotBlank() && remoteTitle != this.ogTitle) {
+            val oldTitle = this.ogTitle
+            this.ogTitle = remoteTitle
+
             val db: DownloadManager by injectLazy()
             val provider = DownloadProvider(db.context)
-            provider.renameMangaFolder(oldTitle, ogTitle, source)
+            provider.renameMangaFolder(oldTitle, this.ogTitle, source)
         }
         super.copyFrom(other)
     }
