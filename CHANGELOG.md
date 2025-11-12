@@ -71,9 +71,10 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency androidx.sqlite:sqlite-ktx to v2.5.1
 - Update dependency androidx.sqlite:sqlite to v2.5.1
 - Update dependency androidx.recyclerview:recyclerview to v1.4.0
-- Update dependency androidx.core:core-ktx to v1.16.0
+- Update dependency androidx.core:core-ktx to v1.17.0
+- Update dependency androidx.core:core-splashscreen to v1.2.0
 - Update dependency androidx.compose:compose-bom to v2025.11.00
-- Update aboutlibraries to v11.6.3
+- Update aboutlibraries to v13.1.0
 - Update plugin kotlinter to v5.1.0
 - Update plugin gradle-versions to v0.52.0
 - Update okhttp monorepo to v5.0.0-alpha.16
@@ -90,6 +91,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency io.github.pdvrieze.xmlutil:core-android to v0.91.1
 - Improve X-Requested-With spoof to support newer WebView versions (@Hiirbaf)
 - Update agp to v8.10.1
+- Update activity to v1.11.0
+- Update lifecycle to v2.9.4
 
 ## [1.9.7.3]
 

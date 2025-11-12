@@ -3,9 +3,12 @@ package yokai.presentation.settings.screen.about
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
-import com.mikepenz.aboutlibraries.ui.compose.m3.util.htmlReadyLicenseContent
+import com.mikepenz.aboutlibraries.ui.compose.util.htmlReadyLicenseContent
+import com.mikepenz.aboutlibraries.util.withContext
 import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.util.compose.LocalBackPress
 import eu.kanade.tachiyomi.util.compose.currentOrThrow
@@ -28,6 +31,7 @@ class AboutLicenseScreen : Screen() {
             scrollBehavior = pinnedAppBarScrollBehavior(),
         ) { innerPadding ->
             LibrariesContainer(
+                libraries = Libs.Builder().withContext(LocalContext.current).build(),
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = innerPadding,
                 onLibraryClick = {

@@ -85,8 +85,6 @@ interface JayAppBarScrollBehavior {
 
     fun Modifier.smallAppBarScrollBehavior(): Modifier = appBarScrollBehavior()
     fun Modifier.largeAppBarScrollBehavior(): Modifier = appBarScrollBehavior()
-
-    fun isAtTop() = !(contentOffset > 0.01f)
 }
 
 /**
@@ -223,6 +221,7 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
     override val snapAnimationSpec: AnimationSpec<Float>,
     override val flingAnimationSpec: DecayAnimationSpec<Float>,
     val canScroll: () -> Boolean = { true },
+    val isAtTop: () -> Boolean = { true },
     initialTopHeightPx: Float = 0f,
     initialBottomHeightPx: Float = 0f,
 ) : SettlingAppBarScrollBehavior {
@@ -384,6 +383,7 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
     companion object {
         fun Saver(
             canScroll: () -> Boolean,
+            isAtTop: () -> Boolean,
             snapAnimationSpec: AnimationSpec<Float>,
             flingAnimationSpec: DecayAnimationSpec<Float>,
         ): Saver<EnterAlwaysCollapsedAppBarScrollBehavior, *> =
@@ -403,6 +403,7 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
                         initialOffsetLimit = it[1],
                         initialContentOffset = it[2],
                         canScroll = canScroll,
+                        isAtTop = isAtTop,
                         initialTopHeightPx = it[3],
                         initialBottomHeightPx = it[4],
                         snapAnimationSpec = snapAnimationSpec,
@@ -570,6 +571,7 @@ fun enterAlwaysCollapsedAppBarScrollBehavior(
     initialOffsetLimit: Float = -Float.MAX_VALUE,
     initialContentOffset: Float = 0f,
     canScroll: () -> Boolean = { true },
+    isAtTop: () -> Boolean = { true },
     topHeightPx: Float = 0f,
     bottomHeightPx: Float = 0f,
     // TODO Load the motionScheme tokens from the component tokens file
@@ -580,9 +582,11 @@ fun enterAlwaysCollapsedAppBarScrollBehavior(
         snapAnimationSpec,
         flingAnimationSpec,
         canScroll,
+        isAtTop,
         saver =
             EnterAlwaysCollapsedAppBarScrollBehavior.Saver(
                 canScroll = canScroll,
+                isAtTop = isAtTop,
                 snapAnimationSpec = snapAnimationSpec,
                 flingAnimationSpec = flingAnimationSpec,
             )
@@ -592,6 +596,7 @@ fun enterAlwaysCollapsedAppBarScrollBehavior(
             initialOffsetLimit = initialOffsetLimit,
             initialContentOffset = initialContentOffset,
             canScroll = canScroll,
+            isAtTop = isAtTop,
             initialTopHeightPx = topHeightPx,
             initialBottomHeightPx = bottomHeightPx,
             snapAnimationSpec = snapAnimationSpec,

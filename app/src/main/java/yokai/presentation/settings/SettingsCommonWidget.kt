@@ -74,6 +74,7 @@ fun SettingsScaffold(
         appBarActions = appBarActions,
         appBarScrollBehavior = enterAlwaysCollapsedAppBarScrollBehavior(
             canScroll = { listState.canScrollForward || listState.canScrollBackward },
+            isAtTop = { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 },
         ),
     ) { innerPadding ->
         PreferenceScreen(

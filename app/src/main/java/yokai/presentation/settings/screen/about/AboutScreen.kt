@@ -114,6 +114,7 @@ class AboutScreen : Screen() {
             },
             appBarScrollBehavior = enterAlwaysCollapsedAppBarScrollBehavior(
                 canScroll = { listState.canScrollForward || listState.canScrollBackward },
+                isAtTop = { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 },
             ),
             content = { contentPadding ->
                 LazyColumn(
