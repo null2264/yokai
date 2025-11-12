@@ -1,12 +1,12 @@
 [versions]
-compose = "2025.05.01"
+compose = "2025.11.00"
 
 [libraries]
 bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
 animation = { module = "androidx.compose.animation:animation" }
 foundation = { module = "androidx.compose.foundation:foundation" }
 material3 = { module = "androidx.compose.material3:material3" }
-material-motion = { module = "io.github.fornewid:material-motion-compose-core", version = "1.2.1" }
+material-motion = { module = "io.github.fornewid:material-motion-compose-core", version = "2.0.1" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 icons = { module = "androidx.compose.material:material-icons-extended" }

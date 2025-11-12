@@ -41,6 +41,7 @@ import yokai.presentation.AppBarType
 import yokai.presentation.YokaiScaffold
 import yokai.presentation.component.EmptyScreen
 import yokai.presentation.component.ToolTipButton
+import yokai.presentation.core.enterAlwaysCollapsedAppBarScrollBehavior
 import yokai.presentation.extension.repo.component.ExtensionRepoInput
 import yokai.presentation.extension.repo.component.ExtensionRepoItem
 import yokai.util.Screen
@@ -67,8 +68,7 @@ class ExtensionRepoScreen(
             onNavigationIconClicked = onBackPress,
             title = title,
             appBarType = AppBarType.SMALL,
-            scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-                state = rememberTopAppBarState(),
+            scrollBehavior = enterAlwaysCollapsedAppBarScrollBehavior(
                 canScroll = { listState.firstVisibleItemIndex > 0 || listState.firstVisibleItemScrollOffset > 0 },
             ),
             actions = {

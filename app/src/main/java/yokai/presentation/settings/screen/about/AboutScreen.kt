@@ -18,7 +18,6 @@ import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -62,7 +61,7 @@ import yokai.domain.DialogHostState
 import yokai.i18n.MR
 import yokai.presentation.component.preference.widget.TextPreferenceWidget
 import yokai.presentation.core.components.LinkIcon
-import yokai.presentation.core.enterAlwaysCollapsedScrollBehavior
+import yokai.presentation.core.enterAlwaysCollapsedAppBarScrollBehavior
 import yokai.presentation.core.icons.CustomIcons
 import yokai.presentation.core.icons.Discord
 import yokai.presentation.core.icons.GitHub
@@ -113,10 +112,8 @@ class AboutScreen : Screen() {
             snackbarHost = {
                 SnackbarHost(hostState = snackbarHostState)
             },
-            appBarScrollBehavior = enterAlwaysCollapsedScrollBehavior(
-                state = rememberTopAppBarState(),
+            appBarScrollBehavior = enterAlwaysCollapsedAppBarScrollBehavior(
                 canScroll = { listState.canScrollForward || listState.canScrollBackward },
-                isAtTop = { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 },
             ),
             content = { contentPadding ->
                 LazyColumn(

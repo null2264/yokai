@@ -7,8 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -29,15 +27,16 @@ import yokai.presentation.component.Gap
 import yokai.presentation.component.preference.Preference
 import yokai.presentation.component.preference.PreferenceItem
 import yokai.presentation.component.preference.widget.PreferenceGroupHeader
+import yokai.presentation.core.JayAppBarScrollBehavior
 import yokai.presentation.core.drawVerticalScrollbar
-import yokai.presentation.core.enterAlwaysCollapsedScrollBehavior
+import yokai.presentation.core.enterAlwaysCollapsedAppBarScrollBehavior
 
 @Composable
 fun SettingsScaffold(
     title: String,
     appBarType: AppBarType? = null,
     appBarActions: @Composable RowScope.() -> Unit = {},
-    appBarScrollBehavior: TopAppBarScrollBehavior? = null,
+    appBarScrollBehavior: JayAppBarScrollBehavior? = null,
     snackbarHost: @Composable () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit,
 ) {
@@ -73,10 +72,8 @@ fun SettingsScaffold(
         title = title,
         appBarType = appBarType,
         appBarActions = appBarActions,
-        appBarScrollBehavior = enterAlwaysCollapsedScrollBehavior(
-            state = rememberTopAppBarState(),
+        appBarScrollBehavior = enterAlwaysCollapsedAppBarScrollBehavior(
             canScroll = { listState.canScrollForward || listState.canScrollBackward },
-            isAtTop = { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 },
         ),
     ) { innerPadding ->
         PreferenceScreen(

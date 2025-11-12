@@ -9,11 +9,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
-import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
@@ -27,14 +23,17 @@ import androidx.core.view.WindowInsetsControllerCompat
 import dev.icerock.moko.resources.compose.stringResource
 import yokai.i18n.MR
 import yokai.presentation.component.ToolTipButton
-import yokai.presentation.core.ExpandedAppBar
+import yokai.presentation.core.JayAppBarScrollBehavior
+import yokai.presentation.core.JayExpandedTopAppBar
+import yokai.presentation.core.JayTopAppBar
+import yokai.presentation.core.enterAlwaysAppBarScrollBehavior
 
 @Composable
 fun YokaiScaffold(
     onNavigationIconClicked: () -> Unit,
     modifier: Modifier = Modifier,
     title: String = "",
-    scrollBehavior: TopAppBarScrollBehavior? = null,
+    scrollBehavior: JayAppBarScrollBehavior? = null,
     fab: @Composable () -> Unit = {},
     navigationIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowBack,
     navigationIconLabel: String = stringResource(MR.strings.back),
@@ -43,7 +42,7 @@ fun YokaiScaffold(
     snackbarHost: @Composable () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit,
 ) {
-    val scrollBehaviorOrDefault = scrollBehavior ?: TopAppBarDefaults.enterAlwaysScrollBehavior(state = rememberTopAppBarState())
+    val scrollBehaviorOrDefault = scrollBehavior ?: enterAlwaysAppBarScrollBehavior()
     val view = LocalView.current
     val useDarkIcons = MaterialTheme.colorScheme.surface.luminance() > .5
     val (color, scrolledColor) = getTopAppBarColor(title)
@@ -61,7 +60,7 @@ fun YokaiScaffold(
         floatingActionButton = fab,
         topBar = {
             when (appBarType) {
-                AppBarType.SMALL -> TopAppBar(
+                AppBarType.SMALL -> JayTopAppBar(
                     title = {
                         Text(text = title)
                     },
@@ -80,7 +79,7 @@ fun YokaiScaffold(
                     scrollBehavior = scrollBehaviorOrDefault,
                     actions = actions,
                 )
-                AppBarType.LARGE -> ExpandedAppBar(
+                AppBarType.LARGE -> JayExpandedTopAppBar(
                     title = {
                         Text(text = title)
                     },

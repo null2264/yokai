@@ -55,7 +55,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency gradle to v8.12
 - Update user agent (@Hiirbaf)
 - Update serialization to v1.8.1
-- Update dependency io.github.fornewid:material-motion-compose-core to v1.2.1
+- Update dependency io.github.fornewid:material-motion-compose-core to v2.0.1
 - Update lifecycle to v2.9.0
 - Update dependency org.jsoup:jsoup to v1.21.2
 - Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.4.0
@@ -72,13 +72,13 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency androidx.sqlite:sqlite to v2.5.1
 - Update dependency androidx.recyclerview:recyclerview to v1.4.0
 - Update dependency androidx.core:core-ktx to v1.16.0
-- Update dependency androidx.compose:compose-bom to v2025.05.01
+- Update dependency androidx.compose:compose-bom to v2025.11.00
 - Update aboutlibraries to v11.6.3
 - Update plugin kotlinter to v5.1.0
 - Update plugin gradle-versions to v0.52.0
 - Update okhttp monorepo to v5.0.0-alpha.16
-- Update moko to v0.24.5
-- Update kotlin monorepo to v2.1.21
+- Update moko to v0.25.1
+- Update kotlin monorepo to v2.2.21
 - Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.10.2
 - Update dependency me.zhanghai.android.libarchive:library to v1.1.5
 - Update dependency io.insert-koin:koin-bom to v4.0.4
@@ -89,6 +89,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update null2264/actions digest to 363cb9c
 - Update dependency io.github.pdvrieze.xmlutil:core-android to v0.91.1
 - Improve X-Requested-With spoof to support newer WebView versions (@Hiirbaf)
+- Update agp to v8.10.1
 
 ## [1.9.7.3]
 

@@ -17,6 +17,7 @@ import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginE
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.File
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val Project.androidx get() = the<LibrariesForAndroidx>()
 val Project.compose get() = the<LibrariesForCompose>()
@@ -41,8 +42,8 @@ internal fun Project.configureAndroid(commonExtension: CommonExtension<*, *, *, 
         }
     }
     tasks.withType<KotlinCompile>().configureEach {
-        kotlinOptions {
-            jvmTarget = AndroidConfig.JavaVersion.toString()
+        compilerOptions {
+            jvmTarget.set(JvmTarget.fromTarget(AndroidConfig.JavaVersion.toString()))
             // freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
             // freeCompilerArgs += "-Xcontext-receivers"
             // Treat all Kotlin warnings as errors (disabled by default)
