@@ -40,7 +40,7 @@ import androidx.compose.ui.unit.dp
  * [androidx.compose.material3.LargeTopAppBar] implementation
  */
 @Composable
-fun JayExpandedTopAppBar(
+fun JayLargeTopAppBar(
     modifier: Modifier = Modifier,
     title: @Composable () -> Unit,
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),

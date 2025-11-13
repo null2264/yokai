@@ -74,28 +74,57 @@ interface JayAppBarScrollBehavior {
      */
     fun Modifier.appBarScrollBehavior(): Modifier
 
+    // Bunch of workarounds to make scroll behavior to work properly with LargeTopAppBar
     var topHeightPx: Float
         get() = 0f
         set(value) { throw NotImplementedError() }
     var bottomHeightPx: Float
         get() = 0f
         set(value) { throw NotImplementedError() }
+    var searchHeightPx: Float
+        get() = 0f
+        set(value) { throw NotImplementedError() }
     val totalHeightPx: Float
-        get() = topHeightPx + bottomHeightPx
+        get() = topHeightPx + bottomHeightPx + searchHeightPx
 
     fun Modifier.smallAppBarScrollBehavior(): Modifier = appBarScrollBehavior()
     fun Modifier.largeAppBarScrollBehavior(): Modifier = appBarScrollBehavior()
+    fun Modifier.searchAppBarScrollBehavior(): Modifier = appBarScrollBehavior()
 }
 
 /**
- * Default values:
- * - Top app bar height: 128px
- * - Total app bar height: 304px
- * - Bottom app bar height: 176px
- * - Top offset limit: (-(Total), (Top - Total)) = (-304px, -176px)
- * - Bottom offset limit: ((Top - Total), 0) = (-176px, 0px)
+ * Probably not the best way to do it, but fuck it anyway, it's a remnant code from when I try to make the custom AppBar
+ * to work with Google Material's [androidx.compose.material3.TopAppBarScrollBehavior] but their LargeTopAppBar was too
+ * laggy, turns out they have a separate TopAppBar called [androidx.compose.material3.AppBarWithSearch] that more
+ * optimized by offsetting [androidx.compose.material3.Surface] position instead of resizing the container and
+ * offsetting the entire children elements. And I'm too lazy to redo the whole thing :P
+ *
+ * Why don't they use similar implementation to [androidx.compose.material3.AppBarWithSearch] for
+ * [androidx.compose.material3.LargeTopAppBar] themselves???
+ * Yeah, I have no idea since it works just fine here. Just thinking about it pisses me off.
+ *
+ * This works by splitting the [scrollOffset] into 3 and calculating offset for each row of top app bar from there.
+ *
+ * Imaginary values:
+ * - (Total) Offset Limit = -100f
+ * - Search app bar height: 20px
+ * - Top app bar height: 40px (20px if Search app bar exists)
+ * - Bottom app bar height: 60px
+ * - Total app bar height: 100px
+ * - Top offset limit range: (-Total, -Bottom) = (-100f, -60f) -> Clamped to relative (-40f, 0f) -> Halved if Search app bar exists
+ * - Search offset limit: Half of top offset (-20f, 0f)
+ * - Bottom offset limit range: (-Bottom, 0f) = (-60f, 0f)
+ *
+ * ┌────────────────────┐  -> -100f
+ * │                    │  -> Search (Relative Offset Limit: -20f)
+ * ├────────────────────┤
+ * │                    │  -> Top (Relative Offset Limit: -20f)
+ * ├────────────────────┤
+ * │                    │  -> Bottom (Relative Offset Limit: -60f)
+ * │                    │
+ * │                    │
+ * └────────────────────┘  -> 0f
  */
-
 internal val JayAppBarScrollBehavior.rawTopScrollOffset: Float
     get() = scrollOffset + bottomHeightPx
 
@@ -272,14 +301,15 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
         }
 
     override fun Modifier.appBarScrollBehavior(): Modifier {
-        return this.draggable(
-            orientation = Orientation.Vertical,
-            state = DraggableState { delta -> scrollOffset += delta },
-            onDragStopped = { velocity ->
-                settleAppBar(velocity, flingAnimationSpec, snapAnimationSpec)
-            },
-            enabled = canScroll(),
-        )
+        return this
+            .draggable(
+                orientation = Orientation.Vertical,
+                state = DraggableState { delta -> scrollOffset += delta },
+                onDragStopped = { velocity ->
+                    settleAppBar(velocity, flingAnimationSpec, snapAnimationSpec)
+                },
+                enabled = canScroll(),
+            )
             .clipToBounds()
             .layout { measurable, constraints ->
                 val placeable = measurable.measure(constraints)
@@ -292,7 +322,8 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
     }
 
     override fun Modifier.smallAppBarScrollBehavior(): Modifier {
-        return this.clipToBounds()
+        return this
+            .clipToBounds()
             .layout { measurable, constraints ->
                 val placeable = measurable.measure(constraints)
                 val scrollOffset = topScrollOffset.roundToInt()
@@ -304,7 +335,8 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
     }
 
     override fun Modifier.largeAppBarScrollBehavior(): Modifier {
-        return this.clipToBounds()
+        return this
+            .clipToBounds()
             .layout { measurable, constraints ->
                 val placeable = measurable.measure(constraints)
                 val scrollOffset = bottomScrollOffset.roundToInt()
