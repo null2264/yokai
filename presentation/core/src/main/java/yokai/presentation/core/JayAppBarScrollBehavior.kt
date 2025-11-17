@@ -128,19 +128,26 @@ interface JayAppBarScrollBehavior {
 internal val JayAppBarScrollBehavior.rawTopScrollOffset: Float
     get() = scrollOffset + bottomHeightPx
 
-internal val JayAppBarScrollBehavior.topScrollOffset: Float
-    get() = rawTopScrollOffset.fastCoerceIn(-topHeightPx, 0f)
+internal fun JayAppBarScrollBehavior.overallTopScrollOffset(): Float
+    = rawTopScrollOffset.fastCoerceIn(-(topHeightPx + searchHeightPx), 0f)
 
-internal val JayAppBarScrollBehavior.bottomScrollOffset: Float
-    get() = scrollOffset.fastCoerceIn(-bottomHeightPx, 0f)
+internal fun JayAppBarScrollBehavior.searchScrollOffset(): Float
+    = (rawTopScrollOffset + topHeightPx).fastCoerceIn(-searchHeightPx, 0f)
 
-internal fun JayAppBarScrollBehavior.topCollapsedFraction(): Float {
-    return topScrollOffset / -topHeightPx
-}
+internal fun JayAppBarScrollBehavior.topScrollOffset(): Float
+    = rawTopScrollOffset.fastCoerceIn(-topHeightPx, 0f)
 
-internal fun JayAppBarScrollBehavior.bottomCollapsedFraction(offset: Float = 0f): Float {
-    return bottomScrollOffset / (-bottomHeightPx + offset)
-}
+internal fun JayAppBarScrollBehavior.bottomScrollOffset(): Float
+    = scrollOffset.fastCoerceIn(-bottomHeightPx, 0f)
+
+internal fun JayAppBarScrollBehavior.searchCollapsedFraction(): Float
+    = searchScrollOffset() / -searchHeightPx
+
+internal fun JayAppBarScrollBehavior.topCollapsedFraction(): Float
+    = topScrollOffset() / -topHeightPx
+
+internal fun JayAppBarScrollBehavior.bottomCollapsedFraction(offset: Float = 0f): Float
+    = bottomScrollOffset() / (-bottomHeightPx + offset)
 
 internal fun JayAppBarScrollBehavior.overlappedFraction(): Float =
     if (scrollOffsetLimit != 0f) {
@@ -178,10 +185,10 @@ interface SettlingAppBarScrollBehavior : JayAppBarScrollBehavior {
         // Note that we don't check for 0f due to float precision with the collapsedFraction
         // calculation.
         val collapsedFraction by lazy {
-            if (!isTopAndTotalPxValid) {
-                collapsedFraction
-            } else {
-                topCollapsedFraction()
+            when {
+                !isTopAndTotalPxValid -> collapsedFraction
+                searchHeightPx > 0f -> searchCollapsedFraction()
+                else -> topScrollOffset()
             }
         }
         if (collapsedFraction < 0.01f || collapsedFraction == 1f) {
@@ -208,16 +215,18 @@ interface SettlingAppBarScrollBehavior : JayAppBarScrollBehavior {
                 }
         }
         val actualScrollOffsetLimit by lazy {
-            if (!isTopAndTotalPxValid)
-                scrollOffsetLimit
-            else
-                -topHeightPx
+            when {
+                !isTopAndTotalPxValid -> scrollOffsetLimit
+                searchHeightPx > 0f -> -searchHeightPx
+                else -> -topHeightPx
+            }
         }
         val actualScrollOffset by lazy {
-            if (!isTopAndTotalPxValid)
-                scrollOffset
-            else
-                topScrollOffset
+            when {
+                !isTopAndTotalPxValid -> scrollOffset
+                searchHeightPx > 0f -> searchScrollOffset()
+                else -> topScrollOffset()
+            }
         }
         // Snap if animation specs were provided.
         if (snapAnimationSpec != null) {
@@ -253,10 +262,12 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
     val isAtTop: () -> Boolean = { true },
     initialTopHeightPx: Float = 0f,
     initialBottomHeightPx: Float = 0f,
+    initialSearchHeightPx: Float = 0f,
 ) : SettlingAppBarScrollBehavior {
 
     private var _topHeightPx by mutableFloatStateOf(initialTopHeightPx)
     private var _bottomHeightPx by mutableFloatStateOf(initialBottomHeightPx)
+    private var _searchHeightPx by mutableFloatStateOf(initialSearchHeightPx)
     private var _scrollOffset by mutableFloatStateOf(initialOffset)
     private var _scrollOffsetLimit by mutableFloatStateOf(initialOffsetLimit)
     private var _contentOffset by mutableFloatStateOf(initialContentOffset)
@@ -275,8 +286,18 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
             _scrollOffsetLimit = -totalHeightPx
         }
 
+    override var searchHeightPx: Float
+        get() = _searchHeightPx
+        set(value) {
+            _searchHeightPx = value
+            _scrollOffsetLimit = -totalHeightPx
+        }
+
+    /**
+     * Use [scrollOffsetLimit] instead of [topHeightPx] or [bottomHeightPx] if one of them is 0f!
+     */
     override val isTopAndTotalPxValid
-        get() = topHeightPx < totalHeightPx || totalHeightPx > 0f
+        get() = topHeightPx > 0f && bottomHeightPx > 0f
 
     override var scrollOffset: Float
         @FrequentlyChangingValue get() = _scrollOffset
@@ -300,6 +321,20 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
             _contentOffset = newOffset
         }
 
+    private fun Modifier.internalScrollBehavior(scrollOffset: () -> Float): Modifier {
+        return this
+            .clipToBounds()
+            .layout { measurable, constraints ->
+                val placeable = measurable.measure(constraints)
+                val scrollOffset = scrollOffset().roundToInt()
+                val scrolledHeight = (placeable.height + scrollOffset).coerceAtLeast(0)
+                layout(placeable.width, scrolledHeight) {
+                    placeable.placeWithLayer(0, scrollOffset)
+                }
+            }
+
+    }
+
     override fun Modifier.appBarScrollBehavior(): Modifier {
         return this
             .draggable(
@@ -310,41 +345,19 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
                 },
                 enabled = canScroll(),
             )
-            .clipToBounds()
-            .layout { measurable, constraints ->
-                val placeable = measurable.measure(constraints)
-                val scrollOffset = scrollOffset.roundToInt()
-                val scrolledHeight = (placeable.height + scrollOffset).coerceAtLeast(0)
-                layout(placeable.width, scrolledHeight) {
-                    placeable.placeWithLayer(0, scrollOffset)
-                }
-            }
+            .internalScrollBehavior { scrollOffset }
     }
 
     override fun Modifier.smallAppBarScrollBehavior(): Modifier {
-        return this
-            .clipToBounds()
-            .layout { measurable, constraints ->
-                val placeable = measurable.measure(constraints)
-                val scrollOffset = topScrollOffset.roundToInt()
-                val scrolledHeight = (placeable.height + scrollOffset).coerceAtLeast(0)
-                layout(placeable.width, scrolledHeight) {
-                    placeable.placeWithLayer(0, scrollOffset)
-                }
-            }
+        return this.internalScrollBehavior { topScrollOffset() }
     }
 
     override fun Modifier.largeAppBarScrollBehavior(): Modifier {
-        return this
-            .clipToBounds()
-            .layout { measurable, constraints ->
-                val placeable = measurable.measure(constraints)
-                val scrollOffset = bottomScrollOffset.roundToInt()
-                val scrolledHeight = (placeable.height + scrollOffset).coerceAtLeast(0)
-                layout(placeable.width, scrolledHeight) {
-                    placeable.placeWithLayer(0, scrollOffset)
-                }
-            }
+        return this.internalScrollBehavior { bottomScrollOffset() }
+    }
+
+    override fun Modifier.searchAppBarScrollBehavior(): Modifier {
+        return this.internalScrollBehavior { searchScrollOffset() }
     }
 
     override var nestedScrollConnection =
@@ -354,10 +367,11 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
                 // Don't intercept if scrolling down.
                 val scrollCheck = {
                     available.y > 0f &&
-                        if (isTopAndTotalPxValid)
-                            rawTopScrollOffset >= 0f
-                        else
-                            true
+                        when {
+                            !isTopAndTotalPxValid -> true
+                            searchHeightPx > 0f -> rawTopScrollOffset + searchHeightPx >= 0f
+                            else -> rawTopScrollOffset >= 0f
+                        }
                 }
                 if (!canScroll() || scrollCheck())
                     return Offset.Zero
@@ -426,7 +440,8 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
                         it.scrollOffsetLimit,
                         it.contentOffset,
                         it.topHeightPx,
-                        it.totalHeightPx,
+                        it.bottomHeightPx,
+                        it.searchHeightPx,
                     )
                 },
                 restore = {
@@ -438,6 +453,7 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
                         isAtTop = isAtTop,
                         initialTopHeightPx = it[3],
                         initialBottomHeightPx = it[4],
+                        initialSearchHeightPx = it[5],
                         snapAnimationSpec = snapAnimationSpec,
                         flingAnimationSpec = flingAnimationSpec,
                     )
@@ -606,6 +622,7 @@ fun enterAlwaysCollapsedAppBarScrollBehavior(
     isAtTop: () -> Boolean = { true },
     topHeightPx: Float = 0f,
     bottomHeightPx: Float = 0f,
+    searchHeightPx: Float = 0f,
     // TODO Load the motionScheme tokens from the component tokens file
     snapAnimationSpec: AnimationSpec<Float> = spring(stiffness = Spring.StiffnessMediumLow),
     flingAnimationSpec: DecayAnimationSpec<Float> = rememberSplineBasedDecay(),
@@ -631,6 +648,7 @@ fun enterAlwaysCollapsedAppBarScrollBehavior(
             isAtTop = isAtTop,
             initialTopHeightPx = topHeightPx,
             initialBottomHeightPx = bottomHeightPx,
+            initialSearchHeightPx = searchHeightPx,
             snapAnimationSpec = snapAnimationSpec,
             flingAnimationSpec = flingAnimationSpec,
         )

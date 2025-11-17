@@ -34,7 +34,7 @@ import yokai.presentation.core.enterAlwaysCollapsedAppBarScrollBehavior
 @Composable
 fun SettingsScaffold(
     title: String,
-    appBarType: AppBarType? = null,
+    appBarType: AppBarType = AppBarType.LARGE,
     appBarActions: @Composable RowScope.() -> Unit = {},
     appBarScrollBehavior: JayAppBarScrollBehavior? = null,
     snackbarHost: @Composable () -> Unit = {},
@@ -48,7 +48,7 @@ fun SettingsScaffold(
     YokaiScaffold(
         onNavigationIconClicked = onBackPress,
         title = title,
-        appBarType = appBarType ?: if (useLargeAppBar) AppBarType.LARGE else AppBarType.SMALL,
+        appBarType = appBarType,
         actions = appBarActions,
         scrollBehavior = appBarScrollBehavior,
         snackbarHost = snackbarHost,
@@ -62,7 +62,7 @@ fun SettingsScaffold(
 @Composable
 fun SettingsScaffold(
     title: String,
-    appBarType: AppBarType? = null,
+    appBarType: AppBarType = AppBarType.LARGE,
     appBarActions: @Composable RowScope.() -> Unit = {},
     itemsProvider: @Composable () -> List<Preference>,
 ) {

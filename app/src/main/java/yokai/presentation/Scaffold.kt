@@ -2,8 +2,10 @@ package yokai.presentation
 
 import android.app.Activity
 import android.os.Build
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.MaterialTheme
@@ -24,7 +26,7 @@ import dev.icerock.moko.resources.compose.stringResource
 import yokai.i18n.MR
 import yokai.presentation.component.ToolTipButton
 import yokai.presentation.core.JayAppBarScrollBehavior
-import yokai.presentation.core.JayLargeTopAppBar
+import yokai.presentation.core.JayExpandedTopAppBar
 import yokai.presentation.core.JayTopAppBar
 import yokai.presentation.core.enterAlwaysAppBarScrollBehavior
 
@@ -40,6 +42,8 @@ fun YokaiScaffold(
     actions: @Composable RowScope.() -> Unit = {},
     appBarType: AppBarType = AppBarType.LARGE,
     snackbarHost: @Composable () -> Unit = {},
+    textFieldState: TextFieldState? = null,
+    searchResult: @Composable (ColumnScope.() -> Unit)? = null,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val scrollBehaviorOrDefault = scrollBehavior ?: enterAlwaysAppBarScrollBehavior()
@@ -79,9 +83,7 @@ fun YokaiScaffold(
                     scrollBehavior = scrollBehaviorOrDefault,
                     actions = actions,
                 )
-                // FIXME: Expanded
-                AppBarType.EXPANDED,
-                AppBarType.LARGE -> JayLargeTopAppBar(
+                AppBarType.LARGE -> JayExpandedTopAppBar(
                     title = {
                         Text(text = title)
                     },
@@ -99,6 +101,8 @@ fun YokaiScaffold(
                     },
                     scrollBehavior = scrollBehaviorOrDefault,
                     actions = actions,
+                    textFieldState = textFieldState,
+                    searchResult = searchResult,
                 )
                 AppBarType.NONE -> {}
             }
@@ -121,9 +125,4 @@ enum class AppBarType {
     NONE,
     SMALL,
     LARGE,
-
-    /**
-     * [AppBarType.EXPANDED] is [AppBarType.LARGE] but with SearchBar at the bottom
-     */
-    EXPANDED,
 }
