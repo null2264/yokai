@@ -240,11 +240,10 @@ fun JayTopAppBar(
                 color = Color.Transparent,
                 modifier =
                     modifier
-                        .then(scrollBehavior?.let { with(it) { Modifier.searchAppBarScrollBehavior() } } ?: Modifier)
-                        .onSizeChanged { scrollBehavior?.searchHeightPx = it.height.toFloat() }
+                        .then(scrollBehavior?.let { with(it) { Modifier.appBarScrollBehavior() } } ?: Modifier)
+                        .onSizeChanged { scrollBehavior?.scrollOffsetLimit = -it.height.toFloat() }
                         .fillMaxWidth()
                         .windowInsetsPadding(windowInsets)
-                        .semantics { isTraversalGroup = true },
             ) {
                 SearchBar(
                     inputField = {
@@ -266,7 +265,6 @@ fun JayTopAppBar(
                 )
             }
         } else {
-            // FIXME: Replace this with SearchBar if textFieldState is not null
             Surface(
                 color = Color.Transparent,
                 modifier =
