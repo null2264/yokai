@@ -188,7 +188,7 @@ interface SettlingAppBarScrollBehavior : JayAppBarScrollBehavior {
             when {
                 !isTopAndTotalPxValid -> collapsedFraction
                 searchHeightPx > 0f -> searchCollapsedFraction()
-                else -> topScrollOffset()
+                else -> topCollapsedFraction()
             }
         }
         if (collapsedFraction < 0.01f || collapsedFraction == 1f) {
@@ -235,11 +235,15 @@ interface SettlingAppBarScrollBehavior : JayAppBarScrollBehavior {
                     if (collapsedFraction < 0.5f) {
                         0f
                     } else {
-                        -topHeightPx
+                        actualScrollOffsetLimit
                     },
                     animationSpec = snapAnimationSpec
                 ) {
-                    scrollOffset = value + (topHeightPx - totalHeightPx)
+                    scrollOffset = value - when {
+                        !isTopAndTotalPxValid -> abs(scrollOffsetLimit)
+                        searchHeightPx > 0f -> bottomHeightPx + topHeightPx
+                        else -> bottomHeightPx
+                    }
                 }
             }
         }

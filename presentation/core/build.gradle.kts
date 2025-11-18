@@ -29,6 +29,7 @@ kotlin {
 
 dependencies {
     api(libs.material)
+    api(libs.bundles.logging)
 
     implementation(compose.bundles.compose)
 }
