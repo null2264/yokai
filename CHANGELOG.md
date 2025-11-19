@@ -32,6 +32,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Prevent potential "Comparison method violates its general contract!" crash
 - Fix staggered grid cover being squashed for local source (@AwkwardPeak7)
 - Fix GPU crash when setting cover from downloaded chapters (@Angrevol)
+- Fix crashes when handling certain sources' deep links (@Hiirbaf)
+- Properly filter sources by extension (@Hiirbaf)
 
 ### Translation
 - Update translations from Weblate
