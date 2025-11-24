@@ -95,6 +95,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update agp to v8.10.1
 - Update activity to v1.11.0
 - Update lifecycle to v2.9.4
+- Update sqldelight to v2.2.1
 
 ## [1.9.7.3]
 
