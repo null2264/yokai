@@ -74,6 +74,7 @@ class CategoryRepositoryImpl(private val handler: DatabaseHandler) : CategoryRep
         }
     }
 
-    override suspend fun delete(id: Long) =
+    override suspend fun delete(id: Long) {
         handler.await { categoriesQueries.delete(id) }
+    }
 }
