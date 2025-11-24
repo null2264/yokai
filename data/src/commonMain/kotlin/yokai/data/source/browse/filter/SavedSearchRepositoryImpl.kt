@@ -25,8 +25,10 @@ class SavedSearchRepositoryImpl(private val handler: DatabaseHandler) : SavedSea
         saved_searchQueries.findById(id, RawSavedSearch::mapper)
     }
 
-    override suspend fun deleteById(id: Long) = handler.await {
-        saved_searchQueries.deleteById(id)
+    override suspend fun deleteById(id: Long) {
+        handler.await {
+            saved_searchQueries.deleteById(id)
+        }
     }
 
     override suspend fun insert(sourceId: Long, name: String, query: String?, filtersJson: String?) =
