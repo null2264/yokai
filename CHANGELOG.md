@@ -34,6 +34,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix GPU crash when setting cover from downloaded chapters (@Angrevol)
 - Fix crashes when handling certain sources' deep links (@Hiirbaf)
 - Properly filter sources by extension (@Hiirbaf)
+- Fix crashes caused by RecyclerView stable id (@MuhamadSyabitHidayattulloh)
 
 ### Translation
 - Update translations from Weblate
