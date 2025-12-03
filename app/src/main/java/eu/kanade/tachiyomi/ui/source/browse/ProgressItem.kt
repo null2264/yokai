@@ -44,6 +44,10 @@ class ProgressItem : AbstractFlexibleItem<ProgressItem.Holder>() {
         return this === other
     }
 
+    override fun hashCode(): Int {
+        return -1
+    }
+
     class Holder(view: View, adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>) : FlexibleViewHolder(view, adapter) {
 
         val progressBar: ProgressBar = view.findViewById(R.id.progress_bar)
