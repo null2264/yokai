@@ -53,6 +53,11 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
         private val LATEST_THRESHOLD = TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS)
         private val langMap = hashMapOf<String, String>()
 
+        private fun getMangaDirs(context: Context, url: String): Sequence<UniFile> {
+            return getBaseDirectories(context).asSequence()
+                .mapNotNull { it?.findFile(url) }
+        }
+
         fun decodeComicInfo(stream: InputStream, xml: XML = Injekt.get()): ComicInfo {
             return AndroidXmlReader(stream, StandardCharsets.UTF_8.name()).use { reader ->
                 xml.decodeFromReader<ComicInfo>(reader)
@@ -61,13 +66,14 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
 
         fun getMangaLang(manga: SManga, context: Context = Injekt.get<Application>()): String {
             return langMap.getOrPut(manga.url) {
-                val dir = getBaseDirectories(context).asSequence()
-                    .mapNotNull { it?.findFile(manga.url)?.listFiles() }
+                // Modified: check all directories for language info
+                val localDetails = getMangaDirs(context, manga.url)
+                    .mapNotNull { dir ->
+                         dir.listFiles().orEmpty()
+                            .filter { !it.isDirectory }
+                            .firstOrNull { it.name == COMIC_INFO_FILE }
+                    }
                     .firstOrNull()
-
-                val localDetails = dir.orEmpty()
-                    .filter { !it.isDirectory }
-                    .firstOrNull { it.name == COMIC_INFO_FILE }
 
                 val lang = if (localDetails != null) {
                     try {
@@ -85,22 +91,22 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
         }
 
         fun invalidateCover(manga: SManga, context: Context = Injekt.get<Application>()) {
-            val dir = getBaseDirectories(context).asSequence()
-                .mapNotNull { it?.findFile(manga.url) }
+            val cover = getMangaDirs(context, manga.url)
+                .mapNotNull { getCoverFile(it) }
                 .firstOrNull() ?: return
-            val cover = getCoverFile(dir) ?: return
 
             manga.thumbnail_url = cover.uri.toString()
         }
 
         fun updateCover(manga: SManga, input: InputStream, context: Context = Injekt.get<Application>()): UniFile? {
-            val dir = getBaseDirectories(context).asSequence()
-                .mapNotNull { it?.findFile(manga.url) }
-                .firstOrNull()
-            if (dir == null) {
+            val dirs = getMangaDirs(context, manga.url).toList()
+            if (dirs.isEmpty()) {
                 input.close()
                 return null
             }
+
+            // Prefer directory that already has a cover, else use the first one (primary)
+            val dir = dirs.find { getCoverFile(it) != null } ?: dirs.first()
 
             val cover = getCoverFile(dir) ?: dir.createFile(COVER_NAME)!!
             // It might not exist if using the external SD card
@@ -229,12 +235,20 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
         invalidateCover(manga, context)
 
         try {
-            val localMangaDir = getBaseDirectories(context).asSequence()
-                .mapNotNull { it?.findFile(manga.url) }
-                .firstOrNull() ?: throw Exception("${manga.url} is not a valid directory")
-            val localMangaFiles = localMangaDir.listFiles().orEmpty().filter { !it.isDirectory }
-            val comicInfoFile = localMangaFiles.firstOrNull { it.name.orEmpty() == COMIC_INFO_FILE }
-            val legacyJsonFile = localMangaFiles.firstOrNull { it.extension.orEmpty().equals("json", true) }
+            val mangaDirs = getMangaDirs(context, manga.url).toList()
+            if (mangaDirs.isEmpty()) throw Exception("${manga.url} is not a valid directory")
+
+            // Scan all dirs for metadata files
+            val metadataFiles = mangaDirs.map { dir ->
+                val files = dir.listFiles().orEmpty().filter { !it.isDirectory }
+                val info = files.firstOrNull { it.name.orEmpty() == COMIC_INFO_FILE }
+                val json = files.firstOrNull { it.extension.orEmpty().equals("json", true) }
+                Pair(info, json)
+            }
+
+            // Priority: 1. ComicInfo, 2. Legacy JSON
+            val comicInfoFile = metadataFiles.mapNotNull { it.first }.firstOrNull()
+            val legacyJsonFile = metadataFiles.mapNotNull { it.second }.firstOrNull()
 
             if (comicInfoFile != null)
                 return@withIOContext manga.copy().apply {
@@ -246,9 +260,15 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
                 val rt = manga.copy().apply {
                     setMangaDetailsFromLegacyJsonFile(legacyJsonFile.openInputStream(), this)
                 }
-                val comicInfo = rt.toComicInfo()
-                localMangaDir.createFile(COMIC_INFO_FILE)
-                    ?.writeText(xml.encodeToString(ComicInfo.serializer(), comicInfo)) { legacyJsonFile.delete() }
+                
+                // Try to find parent of legacy json to write the new info to
+                val legacyParent = mangaDirs.firstOrNull { it.findFile(legacyJsonFile.name) != null }
+                
+                if (legacyParent != null) {
+                    val comicInfo = rt.toComicInfo()
+                    legacyParent.createFile(COMIC_INFO_FILE)
+                        ?.writeText(xml.encodeToString(ComicInfo.serializer(), comicInfo)) { legacyJsonFile.delete() }
+                }
                 return@withIOContext rt
             }
         } catch (e: Exception) {
@@ -280,9 +300,7 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
     }
 
     fun updateMangaInfo(manga: SManga, lang: String?) {
-        val directory = getBaseDirectories(context).asSequence()
-            .mapNotNull { it?.findFile(manga.url) }
-            .firstOrNull() ?: return
+        val directory = getMangaDirs(context, manga.url).firstOrNull() ?: return
         if (!directory.exists()) return
 
         lang?.let { langMap[manga.url] = it }
@@ -317,13 +335,17 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
     }
 
     override suspend fun getChapterList(manga: SManga): List<SChapter> = withIOContext {
-        val dir = getBaseDirectories(context).asSequence()
-            .mapNotNull { it?.findFile(manga.url)?.listFiles() }
-            .firstOrNull()
-            .orEmpty()
-
-        val chapters = dir
+        val dirs = getMangaDirs(context, manga.url).toList()
+        
+        // 1. Gather files from ALL directories
+        // 2. Distinct by name to merge duplicates (prioritizing based on directory order in base dirs)
+        val validFiles = dirs.asSequence()
+            .flatMap { it.listFiles().orEmpty().asSequence() }
             .filter { it.isDirectory || isSupportedArchive(it.extension.orEmpty()) || it.extension.equals("epub", true) }
+            .distinctBy { it.name }
+            .toList()
+
+        val chapters = validFiles
             .map { chapterFile ->
                 SChapter.create().apply {
                     url = "${manga.url}/${chapterFile.name}"
@@ -370,9 +392,12 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
 
     fun getFormat(chapter: SChapter): Format {
         val (mangaDirName, chapterName) = chapter.url.split('/', limit = 2)
-        val chapFile = getBaseDirectories(context).asSequence()
-            .mapNotNull { it?.findFile(mangaDirName)?.findFile(chapterName) }
+        
+        // Modified to look for the chapter file in any storage location
+        val chapFile = getMangaDirs(context, mangaDirName)
+            .mapNotNull { it.findFile(chapterName) }
             .firstOrNull()
+
         if (chapFile == null || !chapFile.exists())
             throw Exception(context.getString(MR.strings.chapter_not_found))
 

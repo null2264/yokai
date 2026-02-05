@@ -38,6 +38,7 @@ import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
+import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.UnmeteredSource
 import eu.kanade.tachiyomi.source.model.SManga
@@ -390,11 +391,12 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
         if (mangaToUpdateMap[source] == null) return false
         var count = 0
         var hasDownloads = false
-        val httpSource = sourceManager.get(source) as? HttpSource ?: return false
+        // FIX: Cast to CatalogueSource instead of HttpSource to include LocalSource
+        val sourceObj = sourceManager.get(source) as? CatalogueSource ?: return false
         while (count < mangaToUpdateMap[source]!!.size) {
             val manga = mangaToUpdateMap[source]!![count]
             val shouldDownload = manga.manga.shouldDownloadNewChapters(preferences)
-            if (updateMangaChapters(manga, this.count.andIncrement, httpSource, shouldDownload)) {
+            if (updateMangaChapters(manga, this.count.andIncrement, sourceObj, shouldDownload)) {
                 hasDownloads = true
             }
             count++
@@ -406,7 +408,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private suspend fun updateMangaChapters(
         manga: LibraryManga,
         progress: Int,
-        source: HttpSource,
+        source: CatalogueSource, // FIX: Accept CatalogueSource
         shouldDownload: Boolean,
     ): Boolean = coroutineScope {
         try {
@@ -436,6 +438,8 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
                             }
                     }
                     if (removedChapters.isNotEmpty()) {
+                        // FIX: downloadManager.deleteChapters expects Source, which CatalogueSource is.
+                        // If it strictly requires HttpSource, this might be tricky, but usually it takes Source.
                         downloadManager.deleteChapters(removedChapters, manga.manga, source)
                     }
                 }
