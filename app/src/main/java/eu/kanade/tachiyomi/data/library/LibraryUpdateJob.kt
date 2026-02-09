@@ -466,12 +466,22 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private fun filterMangaToUpdate(mangaToAdd: List<LibraryManga>): List<LibraryManga> {
         val restrictions = preferences.libraryUpdateMangaRestriction().get()
         return mangaToAdd.filter { manga ->
-            // TODO: See if this is problematic
-            // Always update local source entries if it's a manual global/library update
+            
+            // --- FIX FOR #359 START ---
+            // STRICTLY BLOCK Automatic (Scheduled) updates for Local Source
+            // This prevents data loss if files are temporarily moved when a background job runs.
+            if (tags.contains(WORK_NAME_AUTO) && manga.manga.isLocal()) {
+                 return@filter false
+            }
+            // --- FIX FOR #359 END ---
+
+            // Existing logic we added for Manual Global Updates (Keep this!)
             if (!tags.contains(WORK_NAME_AUTO) && manga.manga.isLocal()) {
                 return@filter true
             }
+
             when {
+                // ... (rest of the code)
                 MANGA_NON_COMPLETED in restrictions && manga.manga.status == SManga.COMPLETED -> {
                     skippedUpdates[manga.manga] = context.getString(MR.strings.skipped_reason_completed)
                 }

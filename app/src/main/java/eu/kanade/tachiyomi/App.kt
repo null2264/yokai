@@ -1,5 +1,7 @@
 package eu.kanade.tachiyomi
 
+import coil3.gif.AnimatedImageDecoder
+import coil3.gif.GifDecoder
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.ActivityManager
@@ -278,34 +280,41 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
     }
 
     override fun newImageLoader(context: PlatformContext): ImageLoader {
-        return ImageLoader.Builder(this@App).apply {
-            val callFactoryLazy = lazy { Injekt.get<NetworkHelper>().client }
-            components {
-                // NetworkFetcher.Factory
-                add(OkHttpNetworkFetcherFactory(callFactoryLazy::value))
-                // Decoder.Factory
-                add(TachiyomiImageDecoder.Factory())
-                // Fetcher.Factory
-                add(BufferedSourceFetcher.Factory())
-                add(MangaCoverFetcher.MangaFactory(callFactoryLazy))
-                add(MangaCoverFetcher.MangaCoverFactory(callFactoryLazy))
-                // Keyer
-                add(MangaKeyer())
-                add(MangaCoverKeyer())
-            }
-            crossfade(true)
-            allowRgb565(this@App.getSystemService<ActivityManager>()!!.isLowRamDevice)
-            allowHardware(true)
-            if (networkPreferences.verboseLogging().get()) {
-                logger(DebugLogger())
-            }
+            return ImageLoader.Builder(this@App).apply {
+                val callFactoryLazy = lazy { Injekt.get<NetworkHelper>().client }
+                components {
+                    // --- NEW: Add Support for APNG, GIF, and Animated WebP ---
+                    // Android 9 (P) and above has native support for these via ImageDecoder
+                    if (Build.VERSION.SDK_INT >= 28) {
+                        add(AnimatedImageDecoder.Factory())
+                    } else {
+                        add(GifDecoder.Factory())
+                    }
 
-            fetcherCoroutineContext(Dispatchers.IO.limitedParallelism(8))
-            decoderCoroutineContext(Dispatchers.IO.limitedParallelism(3))
+                    // NetworkFetcher.Factory
+                    add(OkHttpNetworkFetcherFactory(callFactoryLazy::value))
+                    // Decoder.Factory (Tachiyomi's custom decoder for JXL/AVIF)
+                    add(TachiyomiImageDecoder.Factory())
+                    // Fetcher.Factory
+                    add(BufferedSourceFetcher.Factory())
+                    add(MangaCoverFetcher.MangaFactory(callFactoryLazy))
+                    add(MangaCoverFetcher.MangaCoverFactory(callFactoryLazy))
+                    // Keyer
+                    add(MangaKeyer())
+                    add(MangaCoverKeyer())
+                }
+                crossfade(true)
+                allowRgb565(this@App.getSystemService<ActivityManager>()!!.isLowRamDevice)
+                allowHardware(true)
+                if (networkPreferences.verboseLogging().get()) {
+                    logger(DebugLogger())
+                }
+    
+                fetcherCoroutineContext(Dispatchers.IO.limitedParallelism(8))
+                decoderCoroutineContext(Dispatchers.IO.limitedParallelism(3))
+            }
+                .build()
         }
-            .build()
-    }
-}
 
 fun buildLogWritersToAdd(logPath: UniFile?): List<LogWriter> {
     val networkPreferences: NetworkPreferences = Injekt.get()
