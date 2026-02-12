@@ -391,7 +391,6 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
         if (mangaToUpdateMap[source] == null) return false
         var count = 0
         var hasDownloads = false
-        // FIX: Cast to CatalogueSource instead of HttpSource to include LocalSource
         val sourceObj = sourceManager.get(source) as? CatalogueSource ?: return false
         while (count < mangaToUpdateMap[source]!!.size) {
             val manga = mangaToUpdateMap[source]!![count]
@@ -408,7 +407,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private suspend fun updateMangaChapters(
         manga: LibraryManga,
         progress: Int,
-        source: CatalogueSource, // FIX: Accept CatalogueSource
+        source: CatalogueSource,
         shouldDownload: Boolean,
     ): Boolean = coroutineScope {
         try {
@@ -438,8 +437,6 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
                             }
                     }
                     if (removedChapters.isNotEmpty()) {
-                        // FIX: downloadManager.deleteChapters expects Source, which CatalogueSource is.
-                        // If it strictly requires HttpSource, this might be tricky, but usually it takes Source.
                         downloadManager.deleteChapters(removedChapters, manga.manga, source)
                     }
                 }
@@ -466,22 +463,17 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private fun filterMangaToUpdate(mangaToAdd: List<LibraryManga>): List<LibraryManga> {
         val restrictions = preferences.libraryUpdateMangaRestriction().get()
         return mangaToAdd.filter { manga ->
-            
-            // --- FIX FOR #359 START ---
-            // STRICTLY BLOCK Automatic (Scheduled) updates for Local Source
-            // This prevents data loss if files are temporarily moved when a background job runs.
+
             if (tags.contains(WORK_NAME_AUTO) && manga.manga.isLocal()) {
+                // This prevents data loss if files are temporarily moved when a background job runs.
                  return@filter false
             }
-            // --- FIX FOR #359 END ---
 
-            // Existing logic we added for Manual Global Updates (Keep this!)
             if (!tags.contains(WORK_NAME_AUTO) && manga.manga.isLocal()) {
                 return@filter true
             }
 
             when {
-                // ... (rest of the code)
                 MANGA_NON_COMPLETED in restrictions && manga.manga.status == SManga.COMPLETED -> {
                     skippedUpdates[manga.manga] = context.getString(MR.strings.skipped_reason_completed)
                 }

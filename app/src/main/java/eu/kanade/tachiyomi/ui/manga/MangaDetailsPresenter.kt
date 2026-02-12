@@ -499,12 +499,10 @@ class MangaDetailsPresenter(
 
     /** Refresh Manga Info and Chapter List (not tracking) */
     fun refreshAll() {
-        // Fix: Don't block refresh if the manga is Local, even if offline
         val isLocal by lazy { manga.isLocal() }
         if (view?.isNotOnline() == true && !isLocal) return
 
         presenterScope.launch {
-            // ... (rest of the code stays same)
             isLoading = true
             val tasks = listOf(
                 async { fetchMangaFromSource() },

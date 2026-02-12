@@ -283,7 +283,6 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
         return ImageLoader.Builder(this@App).apply {
             val callFactoryLazy = lazy { Injekt.get<NetworkHelper>().client }
             components {
-                // --- NEW: Add Support for APNG, GIF, and Animated WebP ---
                 // Android 9 (P) and above has native support for these via ImageDecoder
                 if (Build.VERSION.SDK_INT >= 28) {
                     add(AnimatedImageDecoder.Factory())

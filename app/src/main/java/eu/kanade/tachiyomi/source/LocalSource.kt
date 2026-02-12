@@ -260,10 +260,10 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
                 val rt = manga.copy().apply {
                     setMangaDetailsFromLegacyJsonFile(legacyJsonFile.openInputStream(), this)
                 }
-                
+
                 // Try to find parent of legacy json to write the new info to
                 val legacyParent = mangaDirs.firstOrNull { it.findFile(legacyJsonFile.name) != null }
-                
+
                 if (legacyParent != null) {
                     val comicInfo = rt.toComicInfo()
                     legacyParent.createFile(COMIC_INFO_FILE)
@@ -336,7 +336,7 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
 
     override suspend fun getChapterList(manga: SManga): List<SChapter> = withIOContext {
         val dirs = getMangaDirs(context, manga.url).toList()
-        
+
         // 1. Gather files from ALL directories
         // 2. Distinct by name to merge duplicates (prioritizing based on directory order in base dirs)
         val validFiles = dirs.asSequence()
@@ -392,7 +392,7 @@ class LocalSource(private val context: Context) : CatalogueSource, UnmeteredSour
 
     fun getFormat(chapter: SChapter): Format {
         val (mangaDirName, chapterName) = chapter.url.split('/', limit = 2)
-        
+
         // Modified to look for the chapter file in any storage location
         val chapFile = getMangaDirs(context, mangaDirName)
             .mapNotNull { it.findFile(chapterName) }
