@@ -35,6 +35,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix crashes when handling certain sources' deep links (@Hiirbaf)
 - Properly filter sources by extension (@Hiirbaf)
 - Fix crashes caused by RecyclerView stable id (@MuhamadSyabitHidayattulloh)
+- Fix paused download notification is not shown (@MuhamadSyabitHidayattulloh)
 
 ### Translation
 - Update translations from Weblate
