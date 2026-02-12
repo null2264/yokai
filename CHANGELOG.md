@@ -16,12 +16,14 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Add toggle to enable/disable hide source on swipe (@Hiirbaf)
 - Add the ability to mark duplicate read chapters as read (@AntsyLich)
 - Add option to zoom into full covers (@Hiirbaf)
+- Add APNG support for Android 9+ (@lalalasupa0)
 
 ### Changes
 - Temporarily disable log file
 - Categories' header now show filtered count when you search the library when you have "Show number of items" enabled (@LeeSF03)
 - Chapter progress now saved everything the page is changed
 - Adjust sorting order to be more consistent (@Astyyyyy)
+- Improve Local Source when loading from `android/data` (@lalalasupa0)
 
 ### Fixes
 - Allow users to bypass onboarding's permission step if Shizuku is installed
@@ -36,6 +38,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Properly filter sources by extension (@Hiirbaf)
 - Fix crashes caused by RecyclerView stable id (@MuhamadSyabitHidayattulloh)
 - Fix paused download notification is not shown (@MuhamadSyabitHidayattulloh)
+- Disable auto refresh entry from Local Source (@lalalasupa0)
 
 ### Translation
 - Update translations from Weblate
