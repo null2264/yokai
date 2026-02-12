@@ -66,6 +66,14 @@ internal class DownloadNotifier(private val context: Context) {
      */
     fun dismiss() {
         context.notificationManager.cancel(Notifications.ID_DOWNLOAD_CHAPTER)
+        context.notificationManager.cancel(Notifications.ID_DOWNLOAD_PAUSED)
+    }
+
+    /**
+     * Dismiss only the paused notification.
+     */
+    fun dismissPaused() {
+        context.notificationManager.cancel(Notifications.ID_DOWNLOAD_PAUSED)
     }
 
     fun setPlaceholder(download: Download?): NotificationCompat.Builder {
@@ -189,7 +197,7 @@ internal class DownloadNotifier(private val context: Context) {
                 context.getString(MR.strings.cancel_all),
                 NotificationReceiver.clearDownloadsPendingBroadcast(context),
             )
-            show()
+            show(Notifications.ID_DOWNLOAD_PAUSED)
         }
 
         // Reset initial values
