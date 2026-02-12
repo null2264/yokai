@@ -1,5 +1,7 @@
 package eu.kanade.tachiyomi
 
+import coil3.gif.AnimatedImageDecoder
+import coil3.gif.GifDecoder
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.ActivityManager
@@ -281,9 +283,16 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
         return ImageLoader.Builder(this@App).apply {
             val callFactoryLazy = lazy { Injekt.get<NetworkHelper>().client }
             components {
+                // Android 9 (P) and above has native support for these via ImageDecoder
+                if (Build.VERSION.SDK_INT >= 28) {
+                    add(AnimatedImageDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+
                 // NetworkFetcher.Factory
                 add(OkHttpNetworkFetcherFactory(callFactoryLazy::value))
-                // Decoder.Factory
+                // Decoder.Factory (Tachiyomi's custom decoder for JXL/AVIF)
                 add(TachiyomiImageDecoder.Factory())
                 // Fetcher.Factory
                 add(BufferedSourceFetcher.Factory())
