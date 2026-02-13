@@ -9,6 +9,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - `Translation` - Translation changes/updates
 - `Other` - Technical changes/updates
 
+## [1.9.7.4]
+
+### Other
+- Prioritize extension classpath over app
+
 ## [1.9.7.3]
 
 ### Fixes
