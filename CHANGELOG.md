@@ -13,6 +13,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ### Other
 - Prioritize extension classpath over app
+- Update kotlin monorepo to v2.3.10
+- Update dependency gradle to v8.14.4
 
 ## [1.9.7.3]
 

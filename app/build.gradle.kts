@@ -251,7 +251,7 @@ dependencies {
     implementation(libs.shizuku.api)
     implementation(libs.shizuku.provider)
 
-    implementation(kotlin("stdlib", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION))
+    implementation(kotlin("stdlib"))
 
     implementation(platform(kotlinx.coroutines.bom))
     implementation(kotlinx.bundles.coroutines)
