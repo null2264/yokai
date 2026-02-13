@@ -47,8 +47,10 @@ import eu.kanade.tachiyomi.util.system.launchIO
 import eu.kanade.tachiyomi.util.system.launchNonCancellableIO
 import eu.kanade.tachiyomi.util.system.withIOContext
 import eu.kanade.tachiyomi.util.system.withUIContext
-import java.util.*
-import java.util.concurrent.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
+import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
@@ -792,7 +794,7 @@ class LibraryPresenter(
         }
     }
 
-    private fun getPreferencesFlow() = combine(
+    private fun getPreferencesFlow() = combine<Any, ItemPreferences>(
         preferences.filterDownloaded().changes(),
         preferences.filterUnread().changes(),
         preferences.filterCompleted().changes(),

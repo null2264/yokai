@@ -86,7 +86,6 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update plugin gradle-versions to v0.52.0
 - Update okhttp monorepo to v5.0.0-alpha.16
 - Update moko to v0.25.1
-- Update kotlin monorepo to v2.2.21
 - Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.10.2
 - Update dependency me.zhanghai.android.libarchive:library to v1.1.5
 - Update dependency io.insert-koin:koin-bom to v4.0.4
@@ -101,6 +100,12 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update activity to v1.11.0
 - Update lifecycle to v2.9.4
 - Update sqldelight to v2.2.1
+
+## [1.9.7.4]
+
+- Prioritize extension classpath over app
+- Update kotlin monorepo to v2.3.10
+- Update dependency gradle to v8.14.4
 
 ## [1.9.7.3]
 

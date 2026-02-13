@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - master
+      - backport/**
   workflow_dispatch:
     inputs:
       version:

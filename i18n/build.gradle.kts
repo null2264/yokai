@@ -1,5 +1,5 @@
-import yokai.build.generatedBuildDir
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import yokai.build.generatedBuildDir
 
 plugins {
     id("yokai.android.library")
@@ -9,9 +9,9 @@ plugins {
 
 kotlin {
     androidTarget()
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+//    iosX64()
+//    iosArm64()
+//    iosSimulatorArm64()
 
     applyDefaultHierarchyTemplate()
 
@@ -24,8 +24,8 @@ kotlin {
         }
         androidMain {
         }
-        iosMain {
-        }
+//        iosMain {
+//        }
     }
 }
 
