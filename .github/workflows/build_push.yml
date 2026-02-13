@@ -149,8 +149,8 @@ jobs:
               [ "$(echo '${{ env.VERSION_TAG }}' | grep 'v*-b')" = "" ] && stage="release" || stage="beta"
               ;;
             r*) stage="nightly" ;;
+            *) stage="dev" ;;
           esac
-          [ "$stage" = "" ] && exit 1  # something went wrong
 
           echo "STAGE=${stage}" >> $GITHUB_OUTPUT
 
