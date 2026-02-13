@@ -100,7 +100,7 @@ body:
           required: true
         - label: I have tried the [troubleshooting guide](https://mihon.app/docs/guides/troubleshooting/).
           required: true
-        - label: I have updated the app to version **[1.9.7.3](https://github.com/null2264/yokai/releases/latest)**.
+        - label: I have updated the app to version **[1.9.7.4](https://github.com/null2264/yokai/releases/latest)**.
           required: true
         - label: I have updated all installed extensions.
           required: true

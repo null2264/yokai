@@ -103,6 +103,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ## [1.9.7.4]
 
+### Other
 - Prioritize extension classpath over app
 - Update kotlin monorepo to v2.3.10
 - Update dependency gradle to v8.14.4
