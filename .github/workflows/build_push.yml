@@ -114,7 +114,7 @@ jobs:
 
       # NIGHTLY
       - name: Build nightly build and run tests
-        if: startsWith(env.VERSION_TAG, 'r')
+        if: startsWith(env.VERSION_TAG, 'r') || startsWith(steps.branch_name.outputs.NAME, 'backport/')
         run: ./gradlew assembleStandardNightly testReleaseUnitTest testStandardNightlyUnitTest
 
       - name: Upload R8 APK to artifact
