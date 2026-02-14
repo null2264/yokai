@@ -16,9 +16,9 @@
         <item quantity="other">Pour les titres des %d</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Supprimer %1$d chapitre téléchargé \?</item>
-        <item quantity="many">Supprimer %1$d chapitres téléchargés \?</item>
-        <item quantity="other">Supprimer %1$d chapitres téléchargés \?</item>
+        <item quantity="one">Supprimer %1$d chapitre téléchargé ?</item>
+        <item quantity="many">Supprimer %1$d chapitres téléchargés ?</item>
+        <item quantity="other">Supprimer %1$d chapitres téléchargés ?</item>
     </plurals>
     <plurals name="category_plural">
         <item quantity="one">%d catégorie</item>
