@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.ui.source.globalsearch
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -51,6 +52,22 @@ open class GlobalSearchController(
     SearchControllerInterface,
     GlobalSearchAdapter.OnTitleClickListener,
     GlobalSearchCardAdapter.OnMangaClickListener {
+
+    /**
+     * Start activity in a safe way: post to view and use activity context.
+     */
+    private fun safeStartActivity(intent: Intent) {
+        val activity = activity ?: return
+
+        try {
+            activity.startActivity(intent)
+        } catch (e: Exception) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            try {
+                activity.applicationContext.startActivity(intent)
+            } catch (_: Exception) {}
+        }
+    }
 
     /**
      * Preferences helper.
@@ -178,8 +195,8 @@ open class GlobalSearchController(
 
         setOnQueryTextChangeListener(activityBinding?.searchToolbar?.searchView, onlyOnSubmit = true, hideKbOnSubmit = true) {
             // try to handle the query as a manga URL
-            applicationContext?.extensionIntentForText(it ?: "")?.let {
-                startActivity(it)
+            applicationContext?.extensionIntentForText(it ?: "")?.let { intent ->
+                safeStartActivity(intent)
             }
             presenter.search(it ?: "")
             setTitle() // Update toolbar title
@@ -242,8 +259,11 @@ open class GlobalSearchController(
         }
 
         // try to handle the query as a manga URL
-        applicationContext?.extensionIntentForText(presenter.query)?.let {
-            startActivity(it)
+        // Prevent infinite loop: only launch deep link if this is the first controller creation
+        if (initialQuery == null) {
+            applicationContext?.extensionIntentForText(presenter.query)?.let { intent ->
+                safeStartActivity(intent)
+            }
         }
     }
 

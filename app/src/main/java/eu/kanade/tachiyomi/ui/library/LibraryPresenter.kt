@@ -47,8 +47,10 @@ import eu.kanade.tachiyomi.util.system.launchIO
 import eu.kanade.tachiyomi.util.system.launchNonCancellableIO
 import eu.kanade.tachiyomi.util.system.withIOContext
 import eu.kanade.tachiyomi.util.system.withUIContext
-import java.util.*
-import java.util.concurrent.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
+import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
@@ -680,13 +682,13 @@ class LibraryPresenter(
                             else -> i1.manga.unread.compareTo(i2.manga.unread)
                         }
                         LibrarySort.LastRead -> {
-                            i1.manga.lastRead.compareTo(i2.manga.lastRead)
+                            i2.manga.lastRead.compareTo(i1.manga.lastRead)
                         }
                         LibrarySort.TotalChapters -> {
-                            i1.manga.totalChapters.compareTo(i2.manga.totalChapters)
+                            i2.manga.totalChapters.compareTo(i1.manga.totalChapters)
                         }
                         LibrarySort.DateFetched -> {
-                            i1.manga.lastFetch.compareTo(i2.manga.lastFetch)
+                            i2.manga.lastFetch.compareTo(i1.manga.lastFetch)
                         }
                         LibrarySort.DateAdded -> i2.manga.manga.date_added.compareTo(i1.manga.manga.date_added)
                         LibrarySort.DragAndDrop -> {
@@ -792,7 +794,7 @@ class LibraryPresenter(
         }
     }
 
-    private fun getPreferencesFlow() = combine(
+    private fun getPreferencesFlow() = combine<Any, ItemPreferences>(
         preferences.filterDownloaded().changes(),
         preferences.filterUnread().changes(),
         preferences.filterCompleted().changes(),

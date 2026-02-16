@@ -6,8 +6,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Public
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
@@ -23,6 +21,7 @@ import yokai.i18n.MR
 import yokai.presentation.AppBarType
 import yokai.presentation.YokaiScaffold
 import yokai.presentation.component.ToolTipButton
+import yokai.presentation.core.enterAlwaysAppBarScrollBehavior
 import yokai.util.Screen
 
 class AboutLibraryLicenseScreen(
@@ -45,9 +44,7 @@ class AboutLibraryLicenseScreen(
             },
             title = name,
             appBarType = AppBarType.SMALL,
-            scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(
-                state = rememberTopAppBarState(),
-            ),
+            scrollBehavior = enterAlwaysAppBarScrollBehavior(),
             actions = {
                 if (website != null) {
                     ToolTipButton(

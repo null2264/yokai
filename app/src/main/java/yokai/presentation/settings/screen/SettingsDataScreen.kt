@@ -7,10 +7,13 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.Help
 import androidx.compose.material3.MultiChoiceSegmentedButtonRow
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -23,6 +26,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import co.touchlab.kermit.Logger
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -51,6 +55,7 @@ import yokai.domain.backup.BackupPreferences
 import yokai.domain.storage.StorageManager
 import yokai.domain.storage.StoragePreferences
 import yokai.i18n.MR
+import yokai.presentation.component.ToolTipButton
 import yokai.presentation.component.preference.Preference
 import yokai.presentation.component.preference.storageLocationText
 import yokai.presentation.component.preference.widget.BasePreferenceWidget
@@ -65,6 +70,17 @@ import yokai.util.lang.getString
 object SettingsDataScreen : ComposableSettings {
     @Composable
     override fun getTitleRes(): StringResource = MR.strings.data_and_storage
+
+    @Composable
+    override fun RowScope.AppBarAction() {
+        val uriHandler = LocalUriHandler.current
+
+        ToolTipButton(
+            toolTipLabel = stringResource(MR.strings.help),
+            icon = Icons.AutoMirrored.Outlined.Help,
+            buttonClicked = { uriHandler.openUri(BACKUPS_HELP_URL) },
+        )
+    }
 
     @Composable
     override fun getPreferences(): List<Preference> {
@@ -316,3 +332,5 @@ object SettingsDataScreen : ComposableSettings {
         )
     }
 }
+
+const val BACKUPS_HELP_URL = "https://mihon.app/docs/guides/backups"

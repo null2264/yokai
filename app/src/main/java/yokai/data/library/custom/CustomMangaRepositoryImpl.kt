@@ -54,18 +54,21 @@ class CustomMangaRepositoryImpl(private val handler: DatabaseHandler) : CustomMa
         }
     }
 
-    override suspend fun deleteCustomManga(mangaId: Long) =
+    override suspend fun deleteCustomManga(mangaId: Long) {
         handler.await { custom_manga_infoQueries.delete(mangaId) }
+    }
 
-    override suspend fun deleteBulkCustomManga(mangaIds: List<Long>) =
+    override suspend fun deleteBulkCustomManga(mangaIds: List<Long>) {
         handler.await(true) {
             for (mangaId in mangaIds) {
                 custom_manga_infoQueries.delete(mangaId)
             }
         }
+    }
 
-    override suspend fun relinkCustomManga(oldId: Long, newId: Long) =
+    override suspend fun relinkCustomManga(oldId: Long, newId: Long) {
         handler.await { custom_manga_infoQueries.relink(newId, oldId) }
+    }
 
     private fun mapCustomMangaInfo(
         mangaId: Long,

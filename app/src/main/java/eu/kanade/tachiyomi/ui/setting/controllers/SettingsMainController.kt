@@ -10,9 +10,6 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.SimpleSwapChangeHandler
 import eu.kanade.tachiyomi.R
-import yokai.i18n.MR
-import yokai.util.lang.getString
-import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.ui.main.FloatingSearchInterface
 import eu.kanade.tachiyomi.ui.more.AboutController
 import eu.kanade.tachiyomi.ui.setting.SettingsLegacyController
@@ -24,13 +21,15 @@ import eu.kanade.tachiyomi.ui.setting.onClick
 import eu.kanade.tachiyomi.ui.setting.onLongClick
 import eu.kanade.tachiyomi.ui.setting.preference
 import eu.kanade.tachiyomi.ui.setting.preferenceLongClickable
-import eu.kanade.tachiyomi.ui.setting.titleMRes as titleRes
 import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.toast
 import eu.kanade.tachiyomi.util.view.activityBinding
 import eu.kanade.tachiyomi.util.view.fadeTransactionHandler
 import eu.kanade.tachiyomi.util.view.openInBrowser
 import eu.kanade.tachiyomi.util.view.withFadeTransaction
+import yokai.i18n.MR
+import yokai.util.lang.getString
+import eu.kanade.tachiyomi.ui.setting.titleMRes as titleRes
 
 class SettingsMainController : SettingsLegacyController(), FloatingSearchInterface {
 
@@ -89,10 +88,10 @@ class SettingsMainController : SettingsLegacyController(), FloatingSearchInterfa
             iconRes = R.drawable.ic_storage_24dp
             iconTint = tintColor
             titleRes = MR.strings.data_and_storage
-            onClick { navigateTo(SettingsDataLegacyController()) }
+            onClick { navigateTo(SettingsDataController()) }
             onLongClick {
-                navigateTo(SettingsDataController())
-                context.toast("You're entering beta version of 'Data and storage'")
+                navigateTo(SettingsDataLegacyController())
+                context.toast("You're entering legacy version of 'Data and storage'")
             }
         }
         preference {

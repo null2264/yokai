@@ -1,5 +1,7 @@
 package eu.kanade.tachiyomi
 
+import coil3.gif.AnimatedImageDecoder
+import coil3.gif.GifDecoder
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.ActivityManager
@@ -11,6 +13,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Looper
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
@@ -59,6 +62,7 @@ import eu.kanade.tachiyomi.util.system.launchIO
 import eu.kanade.tachiyomi.util.system.localeContext
 import eu.kanade.tachiyomi.util.system.notification
 import eu.kanade.tachiyomi.util.system.setToDefault
+import eu.kanade.tachiyomi.util.system.WebViewUtil
 import java.security.Security
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
@@ -221,6 +225,22 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
         MultiDex.install(this)
     }
 
+    override fun getPackageName(): String {
+        try {
+            // Override the value passed as X-Requested-With in WebView requests
+            val stackTrace = Looper.getMainLooper().thread.stackTrace
+            val isChromiumCall = stackTrace.any { trace ->
+                trace.className.lowercase() in setOf("org.chromium.base.buildinfo", "org.chromium.base.apkinfo") &&
+                    trace.methodName.lowercase() in setOf("getall", "getpackagename", "<init>")
+            }
+
+            if (isChromiumCall) return WebViewUtil.spoofedPackageName(applicationContext)
+        } catch (_: Exception) {
+        }
+
+        return super.getPackageName()
+    }
+
     override fun onLowMemory() {
         super.onLowMemory()
         LibraryPresenter.onLowMemory()
@@ -263,9 +283,16 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
         return ImageLoader.Builder(this@App).apply {
             val callFactoryLazy = lazy { Injekt.get<NetworkHelper>().client }
             components {
+                // Android 9 (P) and above has native support for these via ImageDecoder
+                if (Build.VERSION.SDK_INT >= 28) {
+                    add(AnimatedImageDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+
                 // NetworkFetcher.Factory
                 add(OkHttpNetworkFetcherFactory(callFactoryLazy::value))
-                // Decoder.Factory
+                // Decoder.Factory (Tachiyomi's custom decoder for JXL/AVIF)
                 add(TachiyomiImageDecoder.Factory())
                 // Fetcher.Factory
                 add(BufferedSourceFetcher.Factory())

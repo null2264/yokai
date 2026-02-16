@@ -1,15 +1,11 @@
-import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.BasePlugin
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.util.*
+import java.util.Locale
 
 plugins {
     alias(libs.plugins.kotlinter)
     alias(libs.plugins.gradle.versions)
     alias(kotlinx.plugins.serialization) apply false
     alias(libs.plugins.aboutlibraries) apply false
+    alias(libs.plugins.aboutlibraries.android) apply false
     alias(libs.plugins.firebase.crashlytics) apply false
     alias(libs.plugins.google.services) apply false
     alias(libs.plugins.moko) apply false

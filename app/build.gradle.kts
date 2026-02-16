@@ -11,6 +11,7 @@ plugins {
     alias(kotlinx.plugins.serialization)
     alias(kotlinx.plugins.parcelize)
     alias(libs.plugins.aboutlibraries)
+    alias(libs.plugins.aboutlibraries.android)
     alias(libs.plugins.firebase.crashlytics) apply false
     alias(libs.plugins.google.services) apply false
 }
@@ -49,7 +50,7 @@ val supportedAbis = setOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 android {
     defaultConfig {
         applicationId = "eu.kanade.tachiyomi"
-        versionCode = 157
+        versionCode = 158
         versionName = _versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true

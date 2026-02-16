@@ -1057,4 +1057,9 @@
     <string name="save_search_invalid_name">Di-wastong naka-save na pangalan sa paghahanap</string>
     <string name="save_search_delete">Tanggalin itong naka-save na query sa paghahanap?</string>
     <string name="save_search_delete_message">Sigurado ka bang gusto mong tanggalin itong naka-save na query sa paghahanap: \'%1$s\'?</string>
+    <string name="enable_source_swipe_action">Paganahin ang pagkilos na pag-swipe ng source</string>
+    <string name="pref_behavior">Gawi</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_existing">Matapos basahin ang kabanata</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_new">Pagkatapos kumuha ng bagong kabanata</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter">Markahan ang duplikadong nabasang kabanata bilang nabasa na</string>
 </resources>

@@ -35,7 +35,7 @@ body:
           required: true
         - label: If this is an issue with an extension, or a request for an extension, I should be contacting the extensions repository's maintainer/support for help.
           required: true
-        - label: I have updated the app to version **[1.9.7.2](https://github.com/null2264/yokai/releases/latest)**.
+        - label: I have updated the app to version **[1.9.7.4](https://github.com/null2264/yokai/releases/latest)**.
           required: true
         - label: I have checked through the app settings for my feature.
           required: true

@@ -63,7 +63,7 @@ enum class LibrarySort(
     fun iconRes(isDynamic: Boolean) = if (isDynamic) dynamicIconRes else iconRes
 
     val hasInvertedSort: Boolean
-        get() = this in listOf(LastRead, DateAdded, LatestChapter, DateFetched)
+        get() = this in listOf(LastRead, TotalChapters, DateAdded, LatestChapter, DateFetched)
 
     val isDirectional: Boolean
         get() = this !in listOf(DragAndDrop, Random)

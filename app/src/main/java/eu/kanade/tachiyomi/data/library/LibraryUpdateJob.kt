@@ -38,6 +38,7 @@ import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.extension.ExtensionUpdateJob
+import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.source.UnmeteredSource
 import eu.kanade.tachiyomi.source.model.SManga
@@ -46,6 +47,7 @@ import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.util.chapter.syncChaptersWithSource
 import eu.kanade.tachiyomi.util.chapter.syncChaptersWithTrackServiceTwoWay
 import eu.kanade.tachiyomi.util.manga.MangaShortcutManager
+import eu.kanade.tachiyomi.util.isLocal
 import eu.kanade.tachiyomi.util.shouldDownloadNewChapters
 import eu.kanade.tachiyomi.util.storage.getUriCompat
 import eu.kanade.tachiyomi.util.system.createFileInCacheDir
@@ -389,11 +391,11 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
         if (mangaToUpdateMap[source] == null) return false
         var count = 0
         var hasDownloads = false
-        val httpSource = sourceManager.get(source) as? HttpSource ?: return false
+        val sourceObj = sourceManager.get(source) as? CatalogueSource ?: return false
         while (count < mangaToUpdateMap[source]!!.size) {
             val manga = mangaToUpdateMap[source]!![count]
             val shouldDownload = manga.manga.shouldDownloadNewChapters(preferences)
-            if (updateMangaChapters(manga, this.count.andIncrement, httpSource, shouldDownload)) {
+            if (updateMangaChapters(manga, this.count.andIncrement, sourceObj, shouldDownload)) {
                 hasDownloads = true
             }
             count++
@@ -405,7 +407,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private suspend fun updateMangaChapters(
         manga: LibraryManga,
         progress: Int,
-        source: HttpSource,
+        source: CatalogueSource,
         shouldDownload: Boolean,
     ): Boolean = coroutineScope {
         try {
@@ -461,6 +463,16 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     private fun filterMangaToUpdate(mangaToAdd: List<LibraryManga>): List<LibraryManga> {
         val restrictions = preferences.libraryUpdateMangaRestriction().get()
         return mangaToAdd.filter { manga ->
+
+            if (tags.contains(WORK_NAME_AUTO) && manga.manga.isLocal()) {
+                // This prevents data loss if files are temporarily moved when a background job runs.
+                 return@filter false
+            }
+
+            if (!tags.contains(WORK_NAME_AUTO) && manga.manga.isLocal()) {
+                return@filter true
+            }
+
             when {
                 MANGA_NON_COMPLETED in restrictions && manga.manga.status == SManga.COMPLETED -> {
                     skippedUpdates[manga.manga] = context.getString(MR.strings.skipped_reason_completed)

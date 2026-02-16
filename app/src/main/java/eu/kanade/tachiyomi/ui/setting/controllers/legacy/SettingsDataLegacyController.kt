@@ -49,6 +49,7 @@ import yokai.domain.backup.BackupPreferences
 import yokai.domain.storage.StorageManager
 import yokai.domain.storage.StoragePreferences
 import yokai.i18n.MR
+import yokai.presentation.settings.screen.BACKUPS_HELP_URL
 import yokai.util.lang.getString
 import android.R as AR
 import eu.kanade.tachiyomi.ui.setting.summaryMRes as summaryRes
@@ -225,7 +226,7 @@ class SettingsDataLegacyController : SettingsLegacyController() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_backup_help -> activity?.openInBrowser(HELP_URL)
+            R.id.action_backup_help -> activity?.openInBrowser(BACKUPS_HELP_URL)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -408,5 +409,3 @@ private const val CLEAR_CACHE_KEY = "pref_clear_cache_key"
 private const val CODE_DATA_DIR = 104
 private const val CODE_BACKUP_CREATE = 504
 private const val CODE_BACKUP_RESTORE = 505
-
-private const val HELP_URL = "https://tachiyomi.org/docs/guides/backups"

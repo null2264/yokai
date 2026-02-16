@@ -8,10 +8,11 @@ class TrackRepositoryImpl(private val handler: DatabaseHandler) : TrackRepositor
     override suspend fun getAllByMangaId(mangaId: Long): List<Track> =
         handler.awaitList { manga_syncQueries.getAllByMangaId(mangaId, Track::mapper) }
 
-    override suspend fun deleteForManga(mangaId: Long, syncId: Long) =
+    override suspend fun deleteForManga(mangaId: Long, syncId: Long) {
         handler.await { manga_syncQueries.deleteForManga(mangaId, syncId) }
+    }
 
-    override suspend fun insert(track: Track) =
+    override suspend fun insert(track: Track) {
         handler.await {
             manga_syncQueries.insert(
                 mangaId = track.manga_id,
@@ -28,8 +29,9 @@ class TrackRepositoryImpl(private val handler: DatabaseHandler) : TrackRepositor
                 finishDate = track.finished_reading_date,
             )
         }
+    }
 
-    override suspend fun insertBulk(tracks: List<Track>) =
+    override suspend fun insertBulk(tracks: List<Track>) {
         handler.await(inTransaction = true) {
             tracks.forEach { track ->
                 manga_syncQueries.insert(
@@ -48,4 +50,5 @@ class TrackRepositoryImpl(private val handler: DatabaseHandler) : TrackRepositor
                 )
             }
         }
+    }
 }
