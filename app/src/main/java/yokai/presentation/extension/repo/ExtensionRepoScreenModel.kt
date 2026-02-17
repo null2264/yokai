@@ -47,7 +47,10 @@ class ExtensionRepoScreenModel : StateScreenModel<ExtensionRepoScreenModel.State
     fun addRepo(url: String) {
         screenModelScope.launchIO {
             when (val result = createExtensionRepo.await(url)) {
-                is CreateExtensionRepo.Result.Success -> internalEvent.value = ExtensionRepoEvent.Success
+                is CreateExtensionRepo.Result.Success -> {
+                    internalEvent.value = ExtensionRepoEvent.Success
+                    extensionManager.findAvailableExtensions()
+                }
                 is CreateExtensionRepo.Result.Error -> internalEvent.value = ExtensionRepoEvent.InvalidUrl
                 is CreateExtensionRepo.Result.RepoAlreadyExists -> internalEvent.value = ExtensionRepoEvent.RepoAlreadyExists
                 is CreateExtensionRepo.Result.DuplicateFingerprint -> {
@@ -77,6 +80,7 @@ class ExtensionRepoScreenModel : StateScreenModel<ExtensionRepoScreenModel.State
     fun deleteRepo(url: String) {
         screenModelScope.launchIO {
             deleteExtensionRepo.await(url)
+            extensionManager.findAvailableExtensions()
         }
     }
 
