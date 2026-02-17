@@ -157,7 +157,7 @@ class ExtensionManager(
             api.findExtensions()
         } catch (e: Exception) {
             Logger.e(e) { "Failed to find available extensions" }
-            emptyList()
+            return
         }
 
         enableAdditionalSubLanguages(extensions)

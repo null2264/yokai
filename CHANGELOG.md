@@ -39,6 +39,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix crashes caused by RecyclerView stable id (@MuhamadSyabitHidayattulloh)
 - Fix paused download notification is not shown (@MuhamadSyabitHidayattulloh)
 - Disable auto refresh entry from Local Source (@lalalasupa0)
+- Fix extension download stuck on pending state
 
 ### Translation
 - Update translations from Weblate
