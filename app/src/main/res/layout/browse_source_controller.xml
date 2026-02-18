@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <com.google.android.material.button.MaterialButtonGroup
-            style="@style/Widget.Material3.MaterialButtonGroup.Connected"
+            style="@style/Widget.Material3Expressive.MaterialButtonGroup.Connected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <com.google.android.material.button.MaterialButton
