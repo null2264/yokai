@@ -56,7 +56,7 @@ leakcanary-plumber = { module = "com.squareup.leakcanary:plumber-android", versi
 
 libarchive = { module = "me.zhanghai.android.libarchive:library", version = "1.1.5" }
 
-material = { module = "com.google.android.material:material", version = "1.12.0" }
+material = { module = "com.google.android.material:material", version = "1.14.0-alpha09" }
 markwon = { module = "io.noties.markwon:core", version = "4.6.2" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version = "v3.1.0" }
 java-nat-sort = { module = "com.github.gpanther:java-nat-sort", version = "natural-comparator-1.1" }
