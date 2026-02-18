@@ -83,7 +83,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency androidx.recyclerview:recyclerview to v1.4.0
 - Update dependency androidx.core:core-ktx to v1.17.0
 - Update dependency androidx.core:core-splashscreen to v1.2.0
-- Update dependency androidx.compose:compose-bom to v2026.01.01
+- Update dependency androidx.compose:compose-bom to v2026.02.00
 - Update aboutlibraries to v13.1.0
 - Update plugin kotlinter to v5.1.0
 - Update plugin gradle-versions to v0.52.0
@@ -104,6 +104,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update lifecycle to v2.9.4
 - Update sqldelight to v2.2.1
 - Update dependency com.google.android.material:material to v1.14.0-alpha09
+- Update dependency androidx.compose.material3:material3 to v1.5.0-alpha14
 
 ## [1.9.7.4]
 
