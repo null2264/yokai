@@ -25,6 +25,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Adjust sorting order to be more consistent (@Astyyyyy)
 - Improve Local Source when loading from `android/data` (@lalalasupa0)
 - Refresh available extensions list when an extension repo is added or removed
+- Replace filter FAB with Floating Toolbar when browsing source
 
 ### Fixes
 - Allow users to bypass onboarding's permission step if Shizuku is installed
@@ -98,7 +99,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update null2264/actions digest to 363cb9c
 - Update dependency io.github.pdvrieze.xmlutil:core-android to v0.91.1
 - Improve X-Requested-With spoof to support newer WebView versions (@Hiirbaf)
-- Update agp to v8.10.1
+- Update agp to v8.12.2
 - Update activity to v1.11.0
 - Update lifecycle to v2.9.4
 - Update sqldelight to v2.2.1

@@ -32,11 +32,14 @@ import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.databinding.BrowseSourceControllerBinding
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.source.CatalogueSource
+import eu.kanade.tachiyomi.source.ConfigurableSource
 import eu.kanade.tachiyomi.source.LocalSource
 import eu.kanade.tachiyomi.source.model.Filter
 import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.online.HttpSource
+import eu.kanade.tachiyomi.source.pkgName
 import eu.kanade.tachiyomi.ui.base.controller.BaseCoroutineController
+import eu.kanade.tachiyomi.ui.extension.details.ExtensionDetailsController
 import eu.kanade.tachiyomi.ui.main.FloatingSearchInterface
 import eu.kanade.tachiyomi.ui.main.MainActivity
 import eu.kanade.tachiyomi.ui.main.SearchActivity
@@ -194,8 +197,32 @@ open class BrowseSourceController(bundle: Bundle) :
         adapter = FlexibleAdapter(null, this, false)
         setupRecycler(view)
 
-        binding.fab.isVisible = presenter.sourceFilters.isNotEmpty()
-        binding.fab.setOnClickListener { showFilters() }
+        if (presenter.sourceFilters.isEmpty() && !presenter.source.supportsLatest) {
+            binding.floatingBrowseBar.isVisible = false
+        } else {
+            binding.btnGroupFilter.isVisible = presenter.sourceFilters.isNotEmpty()
+            binding.btnGroupLatest.isVisible = presenter.source.supportsLatest
+        }
+        val isFiltered = { !presenter.filtersMatchDefault() || presenter.query.isNotBlank() }
+        binding.btnGroupPopular.setOnClickListener {
+            if (presenter.useLatest || isFiltered()) {
+                presenter.useLatest = false
+                resetPager()
+            }
+            updatePopLatestIcons()
+        }
+        binding.btnGroupLatest.setOnClickListener {
+            if (!presenter.useLatest || isFiltered()) {
+                presenter.useLatest = true
+                resetPager()
+            }
+            updatePopLatestIcons()
+        }
+        binding.btnGroupFilter.setOnClickListener {
+            showFilters()
+            binding.btnGroupFilter.isChecked = isFiltered()
+        }
+        updatePopLatestIcons()
 
         activityBinding?.appBar?.y = 0f
         activityBinding?.appBar?.updateAppBarAfterY(recycler)
@@ -267,8 +294,8 @@ open class BrowseSourceController(bundle: Bundle) :
             true,
             afterInsets = { insets ->
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                    binding.fab.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                        bottomMargin = insets.getInsets(systemBars() or ime()).bottom + 16.dpToPx
+                    binding.floatingBrowseBar.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                        bottomMargin = insets.getInsets(systemBars() or ime()).bottom + 8.dpToPx
                     }
                 }
                 val bigToolbarHeight = fullAppBarHeight ?: 0
@@ -281,19 +308,7 @@ open class BrowseSourceController(bundle: Bundle) :
                 )
             },
         )
-        binding.fab.applyBottomAnimatedInsets(16.dpToPx)
-
-        recycler.addOnScrollListener(
-            object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    if (dy <= 0 && !binding.fab.isExtended) {
-                        binding.fab.extend()
-                    } else if (dy > 0 && binding.fab.isExtended) {
-                        binding.fab.shrink()
-                    }
-                }
-            },
-        )
+        binding.floatingBrowseBar.applyBottomAnimatedInsets(8.dpToPx)
 
         if (oldPosition != RecyclerView.NO_POSITION) {
             (recycler.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(oldPosition, oldOffset.roundToInt())
@@ -321,30 +336,12 @@ open class BrowseSourceController(bundle: Bundle) :
             searchView?.setQuery("", true)
         }
 
-        updatePopularLatestIcon(menu)
-
         setOnQueryTextChangeListener(searchView, onlyOnSubmit = true, hideKbOnSubmit = true) {
             searchWithQuery(it ?: "")
             true
         }
         // Show next display mode
         updateDisplayMenuItem(menu)
-    }
-
-    private fun updatePopularLatestIcon(menu: Menu?) {
-        menu?.findItem(R.id.action_popular_latest)?.apply {
-            val icon = if (!presenter.useLatest) {
-                R.drawable.ic_new_releases_24dp
-            } else {
-                R.drawable.ic_heart_24dp
-            }
-            setIcon(icon)
-            title = activity?.getString(if (!presenter.useLatest) {
-                MR.strings.latest
-            } else {
-                MR.strings.popular
-            })
-        }
     }
 
     private fun updateDisplayMenuItem(menu: Menu?, isListMode: Boolean? = null) {
@@ -371,8 +368,8 @@ open class BrowseSourceController(bundle: Bundle) :
 
         val isHttpSource = presenter.source is HttpSource
         menu.findItem(R.id.action_open_in_web_view).isVisible = isHttpSource
-        val supportsLatest = (presenter.source as? CatalogueSource)?.supportsLatest == true
-        menu.findItem(R.id.action_popular_latest).isVisible = supportsLatest
+        val isConfigurableSource = presenter.source is ConfigurableSource
+        menu.findItem(R.id.action_source_settings).isVisible = isConfigurableSource
 
         val isLocalSource = presenter.source is LocalSource
         menu.findItem(R.id.action_local_source_help).isVisible = isLocalSource
@@ -384,7 +381,7 @@ open class BrowseSourceController(bundle: Bundle) :
             R.id.action_display_mode -> swapDisplayMode()
             R.id.action_open_in_web_view -> openInWebView()
             R.id.action_local_source_help -> openLocalSourceHelpGuide()
-            R.id.action_popular_latest -> swapPopularLatest()
+            R.id.action_source_settings -> openSourceSettings()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -565,6 +562,7 @@ open class BrowseSourceController(bundle: Bundle) :
             }
             searchWithQuery(genreName)
         }
+        updatePopLatestIcons()
     }
 
     private fun openInWebView() {
@@ -581,6 +579,16 @@ open class BrowseSourceController(bundle: Bundle) :
 
     private fun openLocalSourceHelpGuide() {
         activity?.openInBrowser(LocalSource.HELP_URL)
+    }
+
+    private fun openSourceSettings() {
+        presenter.source.pkgName()?.let {
+            router.pushController(
+                ExtensionDetailsController(
+                    it,
+                ).withFadeTransaction(),
+            )
+        }
     }
 
     override fun onChangeStarted(handler: ControllerChangeHandler, type: ControllerChangeType) {
@@ -755,10 +763,9 @@ open class BrowseSourceController(bundle: Bundle) :
         }
     }
 
-    private fun swapPopularLatest() {
+    private fun resetPager() {
         val adapter = adapter ?: return
 
-        presenter.useLatest = !presenter.useLatest
         showProgressBar()
         adapter.clear()
         updatePopLatestIcons()
@@ -775,9 +782,10 @@ open class BrowseSourceController(bundle: Bundle) :
     }
 
     private fun updatePopLatestIcons() {
-        listOf(activityBinding?.toolbar?.menu, activityBinding?.searchToolbar?.menu).forEach {
-            updatePopularLatestIcon(it)
-        }
+        val isNotFiltered = presenter.filtersMatchDefault() && presenter.query.isBlank()
+        binding.btnGroupPopular.isChecked = !presenter.useLatest && isNotFiltered
+        binding.btnGroupLatest.isChecked = presenter.useLatest && isNotFiltered
+        binding.btnGroupFilter.isChecked = !isNotFiltered
     }
 
     /**

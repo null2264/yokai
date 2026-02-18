@@ -26,12 +26,41 @@
 
     </FrameLayout>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab"
-        style="@style/Theme.Widget.FAB"
-        android:text="@string/filter"
-        android:visibility="gone"
-        app:icon="@drawable/ic_filter_list_24dp"/>
+    <com.google.android.material.floatingtoolbar.FloatingToolbarLayout
+        android:id="@+id/floating_browse_bar"
+        android:layout_gravity="bottom|center"
+        app:layout_behavior="com.google.android.material.behavior.HideViewOnScrollBehavior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButtonGroup
+            style="@style/Widget.Material3.MaterialButtonGroup.Connected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_group_popular"
+                android:text="@string/popular"
+                android:checkable="true"
+                app:icon="@drawable/ic_heart_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_group_latest"
+                android:text="@string/latest"
+                android:checkable="true"
+                app:icon="@drawable/ic_new_releases_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_group_filter"
+                android:text="@string/filter"
+                android:checkable="true"
+                app:icon="@drawable/ic_filter_list_24dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.button.MaterialButtonGroup>
+
+    </com.google.android.material.floatingtoolbar.FloatingToolbarLayout>
 
     <eu.kanade.tachiyomi.widget.EmptyView
         android:id="@+id/empty_view"
