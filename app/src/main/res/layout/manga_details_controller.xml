@@ -78,6 +78,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        style="@style/Theme.Widget.FAB"
+        android:text="@string/read"
+        android:visibility="gone"
+        app:icon="@drawable/ic_play_arrow_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/manga_cover_full"
         android:layout_width="match_parent"
