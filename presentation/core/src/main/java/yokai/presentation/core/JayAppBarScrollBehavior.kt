@@ -497,7 +497,16 @@ private class EnterAlwaysAppBarScrollBehavior(
         }
 
     override fun Modifier.appBarScrollBehavior(): Modifier {
-        return this.clipToBounds()
+        return this
+            .clipToBounds()
+            .layout { measurable, constraints ->
+                val placeable = measurable.measure(constraints)
+                val actualScrollOffset = scrollOffset.roundToInt()
+                val scrolledHeight = (placeable.height + actualScrollOffset).coerceAtLeast(0)
+                layout(placeable.width, scrolledHeight) {
+                    placeable.placeWithLayer(0, actualScrollOffset)
+                }
+            }
     }
 
     override var nestedScrollConnection =
