@@ -35,11 +35,13 @@ import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.ColorUtils
 import androidx.core.net.toFile
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePaddingRelative
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -245,6 +247,17 @@ class MangaDetailsController :
 
         setTabletMode(view)
         setRecycler(view)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.fab) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            view.updateLayoutParams {
+                if (this is CoordinatorLayout.LayoutParams) {
+                    bottomMargin = systemBars.bottom + 16.dpToPx
+                }
+            }
+
+            insets
+        }
         setPaletteColor()
         adapter?.fastScroller = binding.fastScroller
         binding.fastScroller.addOnScrollStateChangeListener {
