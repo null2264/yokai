@@ -258,7 +258,11 @@ class MangaDetailsController :
 
                 val headerBinding = getHeader()?.binding
                 if (headerBinding == null) {
-                    binding.fab.show()
+                    if (binding.fab.isEnabled) {
+                        binding.fab.show()
+                    } else {
+                        binding.fab.isVisible = false
+                    }
                     return
                 }
 
