@@ -197,7 +197,7 @@ class SettingsGeneralController : SettingsLegacyController() {
 
                     val locale = AppCompatDelegate.getApplicationLocales().get(0)?.toLanguageTag()
                     if (locale != null) {
-                        langs.find { it.tag == locale }?.let { tempValue = langs.indexOf(it) + 1 }
+                        langs.find { it.tag == locale }?.let { tempValue = langs.indexOf(it) }
                     }
 
                     onChange {
