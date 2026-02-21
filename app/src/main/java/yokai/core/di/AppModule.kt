@@ -2,12 +2,19 @@ package yokai.core.di
 
 import android.app.Application
 import androidx.core.content.ContextCompat
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import androidx.sqlite.driver.bundled.SQLITE_OPEN_CREATE
+import androidx.sqlite.driver.bundled.SQLITE_OPEN_READWRITE
 import app.cash.sqldelight.db.SqlDriver
-import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import co.touchlab.kermit.Logger
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.eygraber.sqldelight.androidx.driver.AndroidxSqliteConfiguration
+import com.eygraber.sqldelight.androidx.driver.AndroidxSqliteDatabaseType
+import com.eygraber.sqldelight.androidx.driver.AndroidxSqliteDriver
+import com.eygraber.sqldelight.androidx.driver.File
+import com.eygraber.sqldelight.androidx.driver.SqliteJournalMode
+import com.eygraber.sqldelight.androidx.driver.SqliteSync
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.core.storage.AndroidStorageFolderProvider
 import eu.kanade.tachiyomi.data.cache.ChapterCache
@@ -23,7 +30,6 @@ import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.util.chapter.ChapterFilter
 import eu.kanade.tachiyomi.util.manga.MangaShortcutManager
-import io.requery.android.database.sqlite.RequerySQLiteOpenHelperFactory
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.protobuf.ProtoBuf
 import nl.adaptivity.xmlutil.XmlDeclMode
@@ -42,46 +48,23 @@ fun appModule(app: Application) = module {
     single { app }
 
     single<SqlDriver> {
-        AndroidSqliteDriver(
+        AndroidxSqliteDriver(
+            createConnection = { name ->
+                BundledSQLiteDriver().open(name, SQLITE_OPEN_READWRITE or SQLITE_OPEN_CREATE)
+            },
+            databaseType = AndroidxSqliteDatabaseType.File(app, "tachiyomi.db"),
+            configuration = AndroidxSqliteConfiguration().apply {
+                isForeignKeyConstraintsEnabled = true
+                journalMode = SqliteJournalMode.WAL
+                sync = SqliteSync.Normal
+            },
             schema = Database.Schema,
-            context = app,
-            name = "tachiyomi.db",
-            // factory = if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //     // Support database inspector in Android Studio
-            //     FrameworkSQLiteOpenHelperFactory()
-            // } else {
-            //     RequerySQLiteOpenHelperFactory()
-            // },
-            factory = RequerySQLiteOpenHelperFactory(),
-            callback = object : AndroidSqliteDriver.Callback(Database.Schema) {
-                override fun onOpen(db: SupportSQLiteDatabase) {
-                    super.onOpen(db)
-                    setPragma(db, "foreign_keys = ON")
-                    setPragma(db, "journal_mode = WAL")
-                    setPragma(db, "synchronous = NORMAL")
-                }
-
-                private fun setPragma(db: SupportSQLiteDatabase, pragma: String) {
-                    val cursor = db.query("PRAGMA $pragma")
-                    cursor.moveToFirst()
-                    cursor.close()
-                }
-
-                // Not sure if this is still needed, but just in case
-                override fun onConfigure(db: SupportSQLiteDatabase) {
-                    db.setForeignKeyConstraintsEnabled(true)
-                }
-
-                override fun onCreate(db: SupportSQLiteDatabase) {
-                    Logger.d { "Creating new database..." }
-                    super.onCreate(db)
-                }
-
-                override fun onUpgrade(db: SupportSQLiteDatabase, oldVersion: Int, newVersion: Int) {
-                    if (oldVersion < newVersion) {
-                        Logger.d { "Upgrading database from $oldVersion to $newVersion" }
-                        super.onUpgrade(db, oldVersion, newVersion)
-                    }
+            onCreate = {
+                Logger.d { "Creating new database..." }
+            },
+            onUpdate = { oldVersion, newVersion ->
+                if (oldVersion < newVersion) {
+                    Logger.d { "Upgrading database from $oldVersion to $newVersion" }
                 }
             },
         )

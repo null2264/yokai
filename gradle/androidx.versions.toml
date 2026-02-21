@@ -29,7 +29,6 @@ multidex = { module = "androidx.multidex:multidex", version = "2.0.1" }
 palette = { module = "androidx.palette:palette", version = "1.0.0" }
 preference = { module = "androidx.preference:preference-ktx", version = "1.2.1" }
 recyclerview = { module = "androidx.recyclerview:recyclerview", version = "1.4.0" }
-sqlite = { module = "androidx.sqlite:sqlite", version = "2.5.1" }
 webkit = { module = "androidx.webkit:webkit", version = "1.13.0" }
 work = { module = "androidx.work:work-runtime-ktx", version = "2.10.1" }
 window = { module = "androidx.window:window", version = "1.4.0" }
@@ -39,7 +38,7 @@ androidx = [
     "activity", "activity-compose", "annotation", "appcompat", "browser", "biometric", "cardview", "core",
     "core-splashscreen", "layout-constraint", "glance-appwidget", "lifecycle-common", "lifecycle-livedata",
     "lifecycle-process", "lifecycle-runtime", "lifecycle-viewmodel", "lifecycle-viewmodel-compose", "multidex",
-    "palette", "preference", "recyclerview", "sqlite", "layout-swiperefresh", "webkit", "work", "window"
+    "palette", "preference", "recyclerview", "layout-swiperefresh", "webkit", "work", "window"
 ]
 
 [plugins]
