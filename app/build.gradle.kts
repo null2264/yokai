@@ -289,7 +289,7 @@ tasks {
     }
 
     // Duplicating Hebrew string assets due to some locale code issues on different devices
-    val copyHebrewStrings = task("copyHebrewStrings", type = Copy::class) {
+    val copyHebrewStrings = register("copyHebrewStrings", type = Copy::class) {
         from("./src/main/res/values-he")
         into("./src/main/res/values-iw")
         include("**/*")

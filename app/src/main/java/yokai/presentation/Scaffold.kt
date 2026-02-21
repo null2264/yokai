@@ -82,6 +82,8 @@ fun YokaiScaffold(
                     },
                     scrollBehavior = scrollBehaviorOrDefault,
                     actions = actions,
+                    textFieldState = textFieldState,
+                    searchResult = searchResult,
                 )
                 AppBarType.LARGE -> JayExpandedTopAppBar(
                     title = {
