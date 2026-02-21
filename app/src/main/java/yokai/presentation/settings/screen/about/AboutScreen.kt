@@ -19,6 +19,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -34,6 +35,7 @@ import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.BuildConfig
 import eu.kanade.tachiyomi.core.storage.preference.asDateFormat
+import eu.kanade.tachiyomi.core.storage.preference.collectAsState
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.updater.AppUpdateChecker
 import eu.kanade.tachiyomi.data.updater.AppUpdateNotifier
@@ -59,6 +61,7 @@ import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
 import yokai.domain.DialogHostState
 import yokai.i18n.MR
+import yokai.presentation.AppBarType
 import yokai.presentation.component.preference.widget.TextPreferenceWidget
 import yokai.presentation.core.components.LinkIcon
 import yokai.presentation.core.enterAlwaysCollapsedAppBarScrollBehavior
@@ -106,16 +109,18 @@ class AboutScreen : Screen() {
         }
 
         val dateFormat by lazy { preferences.dateFormatRaw().get().asDateFormat() }
+        val useLargeAppBar by preferences.useLargeToolbar().collectAsState()
 
         SettingsScaffold(
             title = stringResource(MR.strings.about),
+            appBarType = if (useLargeAppBar) AppBarType.LARGE else AppBarType.SMALL,
             snackbarHost = {
                 SnackbarHost(hostState = snackbarHostState)
             },
-            appBarScrollBehavior = enterAlwaysCollapsedAppBarScrollBehavior(
+            appBarScrollBehavior = if (useLargeAppBar) enterAlwaysCollapsedAppBarScrollBehavior(
                 canScroll = { listState.canScrollForward || listState.canScrollBackward },
                 isAtTop = { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 },
-            ),
+            ) else null,
             content = { contentPadding ->
                 LazyColumn(
                     contentPadding = contentPadding,

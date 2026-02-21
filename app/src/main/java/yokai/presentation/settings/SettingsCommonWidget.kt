@@ -34,21 +34,19 @@ import yokai.presentation.core.enterAlwaysCollapsedAppBarScrollBehavior
 @Composable
 fun SettingsScaffold(
     title: String,
-    appBarType: AppBarType? = null,
+    appBarType: AppBarType,
     appBarActions: @Composable RowScope.() -> Unit = {},
     appBarScrollBehavior: JayAppBarScrollBehavior? = null,
     snackbarHost: @Composable () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit,
 ) {
-    val preferences: PreferencesHelper by injectLazy()
-    val useLargeAppBar by preferences.useLargeToolbar().collectAsState()
     val onBackPress = LocalBackPress.currentOrThrow
     val alertDialog = LocalDialogHostState.currentOrThrow
 
     YokaiScaffold(
         onNavigationIconClicked = onBackPress,
         title = title,
-        appBarType = appBarType ?: if (useLargeAppBar) AppBarType.LARGE else AppBarType.SMALL,
+        appBarType = appBarType,
         actions = appBarActions,
         scrollBehavior = appBarScrollBehavior,
         snackbarHost = snackbarHost,
@@ -66,16 +64,18 @@ fun SettingsScaffold(
     appBarActions: @Composable RowScope.() -> Unit = {},
     itemsProvider: @Composable () -> List<Preference>,
 ) {
+    val preferences: PreferencesHelper by injectLazy()
+    val useLargeAppBar by preferences.useLargeToolbar().collectAsState()
     val listState = rememberLazyListState()
 
     SettingsScaffold(
         title = title,
-        appBarType = appBarType,
+        appBarType = appBarType ?: if (useLargeAppBar) AppBarType.LARGE else AppBarType.SMALL,
         appBarActions = appBarActions,
-        appBarScrollBehavior = enterAlwaysCollapsedAppBarScrollBehavior(
+        appBarScrollBehavior = if (useLargeAppBar) enterAlwaysCollapsedAppBarScrollBehavior(
             canScroll = { listState.canScrollForward || listState.canScrollBackward },
             isAtTop = { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 },
-        ),
+        ) else null,
     ) { innerPadding ->
         PreferenceScreen(
             items = itemsProvider(),
