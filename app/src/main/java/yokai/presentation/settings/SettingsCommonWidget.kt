@@ -51,9 +51,9 @@ fun SettingsScaffold(
         scrollBehavior = appBarScrollBehavior,
         snackbarHost = snackbarHost,
     ) { innerPadding ->
-        alertDialog.value?.invoke()
-
         content(innerPadding)
+
+        alertDialog.value?.invoke()
     }
 }
 
