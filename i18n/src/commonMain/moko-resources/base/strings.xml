@@ -429,6 +429,7 @@
     <string name="use_custom_brightness">Use custom brightness</string>
     <string name="grayscale">Grayscale</string>
     <string name="pref_inverted_colors">Inverted</string>
+    <string name="custom_filter">Filters</string>
     <string name="use_custom_color_filter">Use custom color filter</string>
     <string name="color_filter_blend_mode">Color filter blend mode</string>
     <string name="overlay">Overlay</string>
