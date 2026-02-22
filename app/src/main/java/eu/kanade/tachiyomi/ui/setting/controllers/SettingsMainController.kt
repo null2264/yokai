@@ -13,6 +13,7 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.ui.main.FloatingSearchInterface
 import eu.kanade.tachiyomi.ui.more.AboutController
 import eu.kanade.tachiyomi.ui.setting.SettingsLegacyController
+import eu.kanade.tachiyomi.ui.setting.controllers.legacy.SettingsAdvancedLegacyController
 import eu.kanade.tachiyomi.ui.setting.controllers.legacy.SettingsDataLegacyController
 import eu.kanade.tachiyomi.ui.setting.controllers.search.SettingsSearchController
 import eu.kanade.tachiyomi.ui.setting.iconRes
@@ -100,11 +101,15 @@ class SettingsMainController : SettingsLegacyController(), FloatingSearchInterfa
             titleRes = MR.strings.security
             onClick { navigateTo(SettingsSecurityController()) }
         }
-        preference {
+        preferenceLongClickable {
             iconRes = R.drawable.ic_code_24dp
             iconTint = tintColor
             titleRes = MR.strings.advanced
-            onClick { navigateTo(SettingsAdvancedController()) }
+            onClick { navigateTo(SettingsAdvancedLegacyController()) }
+            onLongClick {
+                navigateTo(SettingsAdvancedController())
+                context.toast("You're entering experimental version of 'Advanced'")
+            }
         }
         preference {
             iconRes = R.drawable.ic_info_outline_24dp

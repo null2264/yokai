@@ -10,7 +10,6 @@ import androidx.preference.PreferenceManager
 import eu.kanade.tachiyomi.ui.setting.SettingsComposeController
 import eu.kanade.tachiyomi.ui.setting.SettingsControllerInterface
 import eu.kanade.tachiyomi.ui.setting.SettingsLegacyController
-import eu.kanade.tachiyomi.ui.setting.controllers.SettingsAdvancedController
 import eu.kanade.tachiyomi.ui.setting.controllers.SettingsAppearanceController
 import eu.kanade.tachiyomi.ui.setting.controllers.SettingsBrowseController
 import eu.kanade.tachiyomi.ui.setting.controllers.SettingsDownloadController
@@ -19,6 +18,7 @@ import eu.kanade.tachiyomi.ui.setting.controllers.SettingsLibraryController
 import eu.kanade.tachiyomi.ui.setting.controllers.SettingsReaderController
 import eu.kanade.tachiyomi.ui.setting.controllers.SettingsSecurityController
 import eu.kanade.tachiyomi.ui.setting.controllers.SettingsTrackingController
+import eu.kanade.tachiyomi.ui.setting.controllers.legacy.SettingsAdvancedLegacyController
 import eu.kanade.tachiyomi.ui.setting.controllers.legacy.SettingsDataLegacyController
 import eu.kanade.tachiyomi.util.system.isLTR
 import eu.kanade.tachiyomi.util.system.launchNow
@@ -32,7 +32,7 @@ object SettingsSearchHelper {
      * All subclasses of `SettingsController` should be listed here, in order to have their preferences searchable.
      */
     private val settingControllersList: List<KClass<out SettingsControllerInterface>> = listOf(
-        SettingsAdvancedController::class,
+        SettingsAdvancedLegacyController::class,
         SettingsDataLegacyController::class,
         // SettingsDataController::class,  // compose
         SettingsBrowseController::class,
