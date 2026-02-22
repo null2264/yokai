@@ -899,7 +899,7 @@ class MangaDetailsController :
                 if (nextChapter.last_page_read > 0) {
                     MR.strings.resume
                 } else {
-                    MR.strings.read
+                    MR.strings.start_reading
                 },
             )
         } else {
