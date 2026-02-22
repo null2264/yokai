@@ -41,7 +41,7 @@ suspend fun DialogHostState.awaitCheckForBetaPrompt(
                 }
             ) {
                 Text(
-                    text = eu.kanade.tachiyomi.appwidget.util.stringResource(AR.string.ok),
+                    text = androidx.compose.ui.res.stringResource(AR.string.ok),
                     color = MaterialTheme.colorScheme.primary,
                     fontSize = 14.sp,
                 )
