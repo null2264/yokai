@@ -26,7 +26,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalUriHandler
 import co.touchlab.kermit.Logger
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -42,6 +41,7 @@ import eu.kanade.tachiyomi.util.compose.currentOrThrow
 import eu.kanade.tachiyomi.util.relativeTimeSpanString
 import eu.kanade.tachiyomi.util.system.DeviceUtil
 import eu.kanade.tachiyomi.util.system.launchNonCancellableIO
+import eu.kanade.tachiyomi.util.system.openInBrowser
 import eu.kanade.tachiyomi.util.system.toast
 import eu.kanade.tachiyomi.util.system.withUIContext
 import kotlinx.collections.immutable.persistentListOf
@@ -73,12 +73,12 @@ object SettingsDataScreen : ComposableSettings {
 
     @Composable
     override fun RowScope.AppBarAction() {
-        val uriHandler = LocalUriHandler.current
+        val context = LocalContext.current
 
         ToolTipButton(
             toolTipLabel = stringResource(MR.strings.help),
             icon = Icons.AutoMirrored.Outlined.Help,
-            buttonClicked = { uriHandler.openUri(BACKUPS_HELP_URL) },
+            buttonClicked = { context.openInBrowser(BACKUPS_HELP_URL) },
         )
     }
 

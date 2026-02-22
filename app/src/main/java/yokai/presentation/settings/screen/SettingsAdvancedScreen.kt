@@ -9,7 +9,6 @@ import android.webkit.WebView
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.core.net.toUri
 import co.touchlab.kermit.Logger
 import dev.icerock.moko.resources.StringResource
@@ -26,6 +25,7 @@ import eu.kanade.tachiyomi.util.compose.LocalRouter
 import eu.kanade.tachiyomi.util.compose.currentOrThrow
 import eu.kanade.tachiyomi.util.system.launchIO
 import eu.kanade.tachiyomi.util.system.localeContext
+import eu.kanade.tachiyomi.util.system.openInBrowser
 import eu.kanade.tachiyomi.util.system.setDefaultSettings
 import eu.kanade.tachiyomi.util.system.toast
 import eu.kanade.tachiyomi.util.view.withFadeTransaction
@@ -102,7 +102,6 @@ object SettingsAdvancedScreen : ComposableSettings {
     @Composable
     private fun getBackgroundActivityGroup(): Preference.PreferenceGroup {
         val context = LocalContext.current
-        val uriHandler = LocalUriHandler.current
 
         val children = buildList {
             val pm = context.getSystemService(Context.POWER_SERVICE) as? PowerManager?
@@ -128,7 +127,7 @@ object SettingsAdvancedScreen : ComposableSettings {
                 title = "Don't kill my app!",
                 subtitle = stringResource(MR.strings.about_dont_kill_my_app),
                 onClick = {
-                    uriHandler.openUri("https://dontkillmyapp.com/")
+                    context.openInBrowser("https://dontkillmyapp.com/")
                 },
             ))
         }.toPersistentList()
