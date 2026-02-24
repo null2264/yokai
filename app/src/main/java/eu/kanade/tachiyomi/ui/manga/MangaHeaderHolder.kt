@@ -46,6 +46,7 @@ import eu.kanade.tachiyomi.util.system.getResourceColor
 import eu.kanade.tachiyomi.util.system.isInNightMode
 import eu.kanade.tachiyomi.util.system.isLTR
 import eu.kanade.tachiyomi.util.view.resetStrokeColor
+import io.noties.markwon.Markwon
 import yokai.i18n.MR
 import yokai.util.coil.loadManga
 import yokai.util.lang.getString
@@ -69,6 +70,8 @@ class MangaHeaderHolder(
     } catch (e: Exception) {
         null
     }
+
+    private val markwon by lazy { Markwon.create(itemView.context) }
 
     private var showReadingButton = true
     private var showMoreButton = true
@@ -271,14 +274,7 @@ class MangaHeaderHolder(
             val desc = adapter.controller.mangaPresenter().manga.description
             binding.mangaSummary.text = when {
                 desc.isNullOrBlank() -> itemView.context.getString(MR.strings.no_description)
-                binding.mangaSummary.maxLines != Int.MAX_VALUE -> desc.replace(
-                    Regex(
-                        "[\\r\\n\\s*]{2,}",
-                        setOf(RegexOption.MULTILINE),
-                    ),
-                    "\n",
-                )
-                else -> desc.trim()
+                else -> markwon.toMarkdown(desc.trim())
             }
         }
     }
