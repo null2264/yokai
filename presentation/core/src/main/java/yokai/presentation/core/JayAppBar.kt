@@ -78,7 +78,7 @@ fun JayExpandedTopAppBar(
     val titleAlpha = {
         val bottomFraction = bottomCollapsedFractionOrZero()
         if (bottomFraction >= 1f) {
-            1f - (scrollBehavior?.topCollapsedFraction(titleTextFontSizePx) ?: 0f)
+            1f - (scrollBehavior?.topCollapsedFraction(titleTextFontSizePx - insetPaddingForSearchPx) ?: 0f)
         } else {
             TitleAlphaEasing.transform(bottomFraction)
         }
