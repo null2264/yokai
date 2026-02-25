@@ -1092,4 +1092,5 @@
     <string name="ext_installer_legacy">Clásico</string>
     <string name="pref_hardware_bitmap_threshold">Elegir un tamaño máximo con el que decodificar imágenes por hardware</string>
     <string name="pref_hardware_bitmap_threshold_default">Predeterminado (%d)</string>
+    <string name="custom_filter">Filtros</string>
 </resources>
