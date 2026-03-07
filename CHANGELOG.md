@@ -45,6 +45,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix paused download notification is not shown (@MuhamadSyabitHidayattulloh)
 - Disable auto refresh entry from Local Source (@lalalasupa0)
 - Fix extension download stuck on pending state
+- Only solve Cloudflare with WebView if it's not geoblock (@AwkwardPeak7)
 
 ### Translation
 - Update translations from Weblate
