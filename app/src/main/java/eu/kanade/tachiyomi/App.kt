@@ -30,6 +30,7 @@ import co.touchlab.kermit.Logger
 import coil3.ImageLoader
 import coil3.PlatformContext
 import coil3.SingletonImageLoader
+import coil3.memory.MemoryCache
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.allowHardware
 import coil3.request.allowRgb565
@@ -302,6 +303,13 @@ open class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.F
                 add(MangaKeyer())
                 add(MangaCoverKeyer())
             }
+
+            memoryCache(
+                MemoryCache.Builder()
+                    .maxSizePercent(context)
+                    .build(),
+            )
+
             crossfade(true)
             allowRgb565(this@App.getSystemService<ActivityManager>()!!.isLowRamDevice)
             allowHardware(true)

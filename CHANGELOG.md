@@ -109,6 +109,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update sqldelight to v2.2.1
 - Update dependency com.google.android.material:material to v1.14.0-alpha09
 - Update dependency androidx.compose.material3:material3 to v1.5.0-alpha14
+- Minimize memory usage by reducing in-memory cover cache size (@Lolle2000la)
 
 ## [1.9.7.4]
 
