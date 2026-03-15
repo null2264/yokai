@@ -13,6 +13,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import eu.kanade.tachiyomi.R
+import yokai.util.rememberResourceBitmapPainter
 
 @Composable
 fun MangaCover(
@@ -27,9 +29,8 @@ fun MangaCover(
 ) {
     AsyncImage(
         model = data,
-        // Using your placeholder color from the metadata logic
-        placeholder = ColorPainter(Color(0xFF3B3840)),
-//        error = rememberResourceBitmapPainter(id = R.drawable.cover_error),
+        placeholder = ColorPainter(Color(0x1F888888)),
+        error = rememberResourceBitmapPainter(id = R.drawable.cover_error),
         contentDescription = contentDescription,
         contentScale = contentScale,
         onSuccess = { _ ->

@@ -75,8 +75,16 @@ fun Badge(
             val leftStructuralPad = if (isFirst || segment.fillEntireSegment) 0.dp else slant
             val rightStructuralPad = if (isLast || segment.fillEntireSegment) 0.dp else slant
 
-            val startPad = leftStructuralPad + if (segment.fillEntireSegment) 0.dp else segment.contentPadding.calculateStartPadding(layoutDirection)
-            val endPad = rightStructuralPad + if (segment.fillEntireSegment) 0.dp else segment.contentPadding.calculateEndPadding(layoutDirection)
+            val startPad = leftStructuralPad +
+                if (segment.fillEntireSegment)
+                    0.dp
+                else
+                    segment.contentPadding.calculateStartPadding(layoutDirection).let { if (isFirst) it + 4.dp else it }
+            val endPad = rightStructuralPad +
+                if (segment.fillEntireSegment)
+                    0.dp
+                else
+                    segment.contentPadding.calculateEndPadding(layoutDirection).let { if (isLast) it + 4.dp else it }
             val topPad = if (segment.fillEntireSegment) 0.dp else segment.contentPadding.calculateTopPadding()
             val bottomPad = if (segment.fillEntireSegment) 0.dp else segment.contentPadding.calculateBottomPadding()
 
