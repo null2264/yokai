@@ -225,6 +225,12 @@ class SetCategoriesSheet(
     }
 
     fun updateBottomButtons() {
+        val bottomSheet = binding.root.parent as? android.view.View ?: return
+        val bottomSheetVisibleHeight = kotlin.math.max(
+            0,
+            bottomSheet.height - bottomSheet.top - (activity.window.decorView.height - bottomSheet.bottom)
+        )
+        binding.buttonLayout.translationY = -bottomSheetVisibleHeight.toFloat()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
