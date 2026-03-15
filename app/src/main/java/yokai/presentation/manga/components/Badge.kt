@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,10 +24,14 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class ForwardSlantedShape(private val slantAmount: Float) : Shape {
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
@@ -47,7 +52,32 @@ data class BadgeSegment(
     val fillEntireSegment: Boolean = false,
     val contentPadding: PaddingValues = PaddingValues(horizontal = 4.dp),
     val content: @Composable () -> Unit,
-)
+) {
+    companion object {
+        fun text(
+            text: String,
+            backgroundColor: Color = Color.Transparent,
+            textColor: Color = Color.Black,
+            fontSize: TextUnit = 13.sp,
+        ): BadgeSegment {
+            return BadgeSegment(
+                backgroundColor = backgroundColor,
+                content = {
+                    Text(
+                        text = text,
+                        color = textColor,
+                        fontSize = fontSize,
+                        style = TextStyle(
+                            platformStyle = PlatformTextStyle(
+                                includeFontPadding = false
+                            ),
+                        ),
+                    )
+                }
+            )
+        }
+    }
+}
 
 @Composable
 fun Badge(

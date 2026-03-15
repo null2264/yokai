@@ -77,7 +77,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency org.jsoup:jsoup to v1.21.2
 - Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.4.0
 - Update dependency io.mockk:mockk to v1.14.2
-- Update dependency io.coil-kt.coil3:coil-bom to v3.2.0
+- Update dependency io.coil-kt.coil3:coil-bom to v3.4.0
 - Update dependency com.squareup.okio:okio to v3.12.0
 - Update dependency com.google.firebase:firebase-bom to v33.14.0
 - Update dependency com.google.accompanist:accompanist-themeadapter-material3 to v0.36.0
