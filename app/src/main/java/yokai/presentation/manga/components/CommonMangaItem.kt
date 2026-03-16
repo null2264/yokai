@@ -1,7 +1,9 @@
 package yokai.presentation.manga.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -115,10 +117,12 @@ fun MangaComfortableGridItem(
     downloadCount: Int = 0,
     badgeSegments: List<BadgeSegment> = listOf(),
     isSelected: Boolean = false,
+    showOutline: Boolean = false,
     onClickContinueReading: (() -> Unit)? = null,
 ) {
     Column {
         MangaGridCover(
+            border = if (showOutline) BorderStroke(1.dp, MaterialTheme.colorScheme.outline) else null,
             cover = {
                 MangaCover(
                     modifier = Modifier
@@ -157,9 +161,11 @@ fun MangaCompactGridItem(
     downloadCount: Int = 0,
     badgeSegments: List<BadgeSegment> = listOf(),
     isSelected: Boolean = false,
+    showOutline: Boolean = false,
     onClickContinueReading: (() -> Unit)? = null,
 ) {
     MangaGridCover(
+        border = if (showOutline) BorderStroke(1.dp, MaterialTheme.colorScheme.outline) else null,
         cover = {
             MangaCover(
                 modifier = Modifier
@@ -238,6 +244,7 @@ private fun GridItemTitle(
 @Composable
 fun MangaGridCover(
     modifier: Modifier = Modifier,
+    border: BorderStroke? = null,
     cover: @Composable BoxScope.() -> Unit = {},
     badgeSegments: List<BadgeSegment> = listOf(),
     content: @Composable (BoxScope.() -> Unit)? = null,
@@ -246,7 +253,8 @@ fun MangaGridCover(
         modifier = modifier
             .fillMaxWidth()
             .aspectRatio(MangaCoverRatio.BOOK)
-            .clip(RoundedCornerShape(12.dp)),
+            .clip(RoundedCornerShape(12.dp))
+            .then(if (border != null) Modifier.border(border) else Modifier),
     ) {
         cover()
         content?.invoke(this)

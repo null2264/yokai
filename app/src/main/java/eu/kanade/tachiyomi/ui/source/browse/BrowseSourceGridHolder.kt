@@ -55,6 +55,7 @@ class BrowseSourceGridHolder(
                         coverData = cover,
                         title = title,
                         isSelected = cover.inLibrary,
+                        showOutline = showOutline,
                         badgeSegments = badgeSegments,
                     )
                 } else {
@@ -62,6 +63,7 @@ class BrowseSourceGridHolder(
                         coverData = cover,
                         title = title,
                         isSelected = cover.inLibrary,
+                        showOutline = showOutline,
                         badgeSegments = badgeSegments,
                     )
                 }
