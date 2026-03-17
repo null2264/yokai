@@ -254,7 +254,7 @@ fun MangaGridCover(
             .fillMaxWidth()
             .aspectRatio(MangaCoverRatio.BOOK)
             .clip(RoundedCornerShape(12.dp))
-            .then(if (border != null) Modifier.border(border) else Modifier),
+            .then(if (border != null) Modifier.border(border, RoundedCornerShape(12.dp)) else Modifier),
     ) {
         cover()
         content?.invoke(this)
