@@ -1,9 +1,11 @@
 package yokai.core.migration
 
+import io.kotest.assertions.nondeterministic.eventually
 import io.mockk.slot
 import io.mockk.spyk
 import io.mockk.verify
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.newSingleThreadContext
@@ -17,15 +19,17 @@ import org.junit.jupiter.api.Assertions.assertInstanceOf
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import kotlin.time.Duration.Companion.seconds
 
 class MigratorTest {
+
     lateinit var migrationCompletedListener: MigrationCompletedListener
     lateinit var migrationContext: MigrationContext
     lateinit var migrationJobFactory: MigrationJobFactory
     lateinit var migrationStrategyFactory: MigrationStrategyFactory
 
     @BeforeEach
-    fun initilize() {
+    fun initialize() {
         migrationContext = MigrationContext(false)
         migrationJobFactory = spyk(MigrationJobFactory(migrationContext, CoroutineScope(Dispatchers.Main + Job())))
         migrationCompletedListener = spyk<MigrationCompletedListener>(block = {})
@@ -44,7 +48,7 @@ class MigratorTest {
 
         verify { migrationJobFactory.create(capture(migrations)) }
         assertEquals(1, migrations.captured.size)
-        verify { migrationCompletedListener() }
+        eventually(2.seconds) { verify { migrationCompletedListener() } }
     }
 
     @Test
@@ -85,7 +89,7 @@ class MigratorTest {
 
         verify { migrationJobFactory.create(capture(migrations)) }
         assertEquals(2, migrations.captured.size)
-        verify { migrationCompletedListener() }
+        eventually(2.seconds) { verify { migrationCompletedListener() } }
     }
 
     @Test
@@ -113,7 +117,7 @@ class MigratorTest {
 
         verify { migrationJobFactory.create(capture(migrations)) }
         assertEquals(10, migrations.captured.size)
-        verify { migrationCompletedListener() }
+        eventually(2.seconds) { verify { migrationCompletedListener() } }
     }
 
     @Test
@@ -126,19 +130,20 @@ class MigratorTest {
             listOf(
                 Migration.of(Migration.ALWAYS) { true },
                 Migration.of(2f) { true },
-                Migration.of(3f) { false }
-            )
+                Migration.of(3f) { false },
+            ),
         )
 
         execute.await()
 
         verify { migrationJobFactory.create(capture(migrations)) }
         assertEquals(2, migrations.captured.size)
-        verify { migrationCompletedListener() }
+        eventually(2.seconds) { verify { migrationCompletedListener() } }
     }
 
     companion object {
 
+        @OptIn(DelicateCoroutinesApi::class)
         val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
         @BeforeAll
