@@ -12,7 +12,7 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.eygraber.sqldelight.androidx.driver.AndroidxSqliteConfiguration
 import com.eygraber.sqldelight.androidx.driver.AndroidxSqliteDatabaseType
 import com.eygraber.sqldelight.androidx.driver.AndroidxSqliteDriver
-import com.eygraber.sqldelight.androidx.driver.File
+import com.eygraber.sqldelight.androidx.driver.FileProvider
 import com.eygraber.sqldelight.androidx.driver.SqliteJournalMode
 import com.eygraber.sqldelight.androidx.driver.SqliteSync
 import eu.kanade.tachiyomi.BuildConfig
