@@ -7,8 +7,10 @@ import android.app.PendingIntent
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Icon
 import android.os.Build
@@ -33,11 +35,13 @@ import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.ColorUtils
 import androidx.core.net.toFile
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePaddingRelative
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -243,11 +247,54 @@ class MangaDetailsController :
 
         setTabletMode(view)
         setRecycler(view)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.fab) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            view.updateLayoutParams {
+                if (this is CoordinatorLayout.LayoutParams) {
+                    bottomMargin = systemBars.bottom + 16.dpToPx
+                }
+            }
+
+            insets
+        }
         setPaletteColor()
         adapter?.fastScroller = binding.fastScroller
         binding.fastScroller.addOnScrollStateChangeListener {
             activityBinding?.appBar?.y = 0f
         }
+        binding.recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                if (isTablet) return
+
+                val headerBinding = getHeader()?.binding
+                if (headerBinding == null) {
+                    if (binding.fab.isEnabled) {
+                        binding.fab.show()
+                    } else {
+                        binding.fab.isVisible = false
+                    }
+                    return
+                }
+
+                if (!headerBinding.startReadingButton.isVisible || !headerBinding.startReadingButton.isEnabled) {
+                    binding.fab.isVisible = false
+                    return
+                }
+
+                val bound = Rect()
+                binding.recycler.getHitRect(bound)
+                if (headerBinding.startReadingButton.getLocalVisibleRect(bound)) {
+                    binding.fab.hide()
+                } else {
+                    binding.fab.show()
+                }
+            }
+        })
+        binding.fab.transitionName = "details start reading transition"
+        binding.fab.setOnClickListener { readNextChapter(it) }
 
         presenter.onCreateLate()
         binding.swipeRefresh.isRefreshing = presenter.isLoading
@@ -360,7 +407,8 @@ class MangaDetailsController :
 
     private fun setItemColors() {
         getHeader()?.updateColors()
-        if (adapter?.itemCount ?: 0 > 1) {
+
+        if ((adapter?.itemCount ?: 0) > 1) {
             if (isTablet) {
                 val chapterHolder = binding.recycler.findViewHolderForAdapterPosition(0) as? MangaHeaderHolder
                 chapterHolder?.updateColors()
@@ -376,6 +424,24 @@ class MangaDetailsController :
                 )
             }
         }
+
+        val context = view?.context ?: return
+        val backgroundColor = accentColor ?: return
+
+        val states = arrayOf(
+            intArrayOf(-AR.attr.state_enabled),
+            intArrayOf(),
+        )
+        val colors = intArrayOf(
+            ColorUtils.setAlphaComponent(context.getResourceColor(R.attr.tabBarIconInactive), 43),
+            backgroundColor,
+        )
+        binding.fab.backgroundTintList = ColorStateList(states, colors)
+        val textColors = intArrayOf(
+            ColorUtils.setAlphaComponent(context.getResourceColor(R.attr.colorOnSurface), 97),
+            context.getResourceColor(AR.attr.textColorPrimaryInverse),
+        )
+        binding.fab.setTextColor(ColorStateList(states, textColors))
     }
 
     /** Check if device is tablet, and use a second recycler to hold the details header if so */
@@ -679,6 +745,7 @@ class MangaDetailsController :
             tabletAdapter?.notifyItemChanged(0)
             adapter?.setChapters(chapters)
             addMangaHeader()
+            updateFab()
             binding.recycler.itemAnimator = itemAnimator
         }
     }
@@ -823,12 +890,30 @@ class MangaDetailsController :
         updateMenuVisibility(activityBinding?.toolbar?.menu)
     }
 
+    fun updateFab() {
+        val context = view?.context ?: return
+        val nextChapter = presenter.getNextUnreadChapter()
+        binding.fab.isEnabled = nextChapter != null
+        if (nextChapter != null) {
+            binding.fab.text = context.getString(
+                if (nextChapter.last_page_read > 0) {
+                    MR.strings.resume
+                } else {
+                    MR.strings.start_reading
+                },
+            )
+        } else {
+            binding.fab.isVisible = false
+        }
+    }
+
     fun updateChapters() {
         view ?: return
         binding.swipeRefresh.isRefreshing = presenter.isLoading
         tabletAdapter?.notifyItemChanged(0)
         adapter?.setChapters(presenter.chapters)
         addMangaHeader()
+        updateFab()
         colorToolbar(binding.recycler.canScrollVertically(-1))
         updateMenuVisibility(activityBinding?.toolbar?.menu)
     }

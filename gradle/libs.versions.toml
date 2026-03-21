@@ -19,8 +19,9 @@ aboutlibraries = { module = "com.mikepenz:aboutlibraries-compose-m3", version.re
 
 chucker-library-no-op = { module = "com.github.ChuckerTeam.Chucker:library-no-op", version.ref = "chucker" }
 chucker-library = { module = "com.github.ChuckerTeam.Chucker:library", version.ref = "chucker" }
-coil3-bom = { module = "io.coil-kt.coil3:coil-bom", version = "3.2.0" }
+coil3-bom = { module = "io.coil-kt.coil3:coil-bom", version = "3.4.0" }
 coil3 = { module = "io.coil-kt.coil3:coil" }
+coil3-compose = { module = "io.coil-kt.coil3:coil-compose" }
 coil3-svg = { module = "io.coil-kt.coil3:coil-svg" }
 coil3-gif = { module = "io.coil-kt.coil3:coil-gif" }
 coil3-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp" }
@@ -54,7 +55,7 @@ leakcanary-plumber = { module = "com.squareup.leakcanary:plumber-android", versi
 
 libarchive = { module = "me.zhanghai.android.libarchive:library", version = "1.1.5" }
 
-material = { module = "com.google.android.material:material", version = "1.12.0" }
+material = { module = "com.google.android.material:material", version = "1.14.0-alpha09" }
 markwon = { module = "io.noties.markwon:core", version = "4.6.2" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version = "v3.1.0" }
 java-nat-sort = { module = "com.github.gpanther:java-nat-sort", version = "natural-comparator-1.1" }
@@ -113,8 +114,8 @@ sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 
 [bundles]
 db = [ "sqldelight-coroutines", "sqldelight-androidx-driver" ]
-db-android = [ "sqldelight-android-paging" ]
-coil = [ "coil3", "coil3-svg", "coil3-gif", "coil3-okhttp" ]
+db-android = [ "sqldelight-android-driver", "sqldelight-android-paging" ]
+coil = [ "coil3", "coil3-compose", "coil3-svg", "coil3-gif", "coil3-okhttp" ]
 logging = [ "kermit" ]
 sqlite = [ "sqlite", "sqlite-bundled" ]
 test = [ "junit-api", "kotest-assertions", "mockk" ]

@@ -176,21 +176,21 @@ suspend fun syncChaptersWithSource(
         chapter
     }
 
-    if (toDelete.isNotEmpty()) {
-        val idsToDelete = toDelete.mapNotNull { it.id }
-        deleteChapter.awaitAllById(idsToDelete)
-    }
-
-    if (updatedToAdd.isNotEmpty()) {
-        updatedToAdd = insertChapter.awaitBulk(updatedToAdd)
-    }
-
-    if (toChange.isNotEmpty()) {
-        updateChapter.awaitAll(toChange)
-    }
-
-    // Fix order in source.
     handler.await(inTransaction = true) {
+        if (toDelete.isNotEmpty()) {
+            val idsToDelete = toDelete.mapNotNull { it.id }
+            deleteChapter.awaitAllById(idsToDelete)
+        }
+
+        if (updatedToAdd.isNotEmpty()) {
+            updatedToAdd = insertChapter.awaitBulk(updatedToAdd)
+        }
+
+        if (toChange.isNotEmpty()) {
+            updateChapter.awaitAll(toChange)
+        }
+
+        // Fix order in source.
         sourceChapters.forEach { chapter ->
             if (chapter.manga_id == null) return@forEach
             chaptersQueries.fixSourceOrder(
@@ -199,15 +199,15 @@ suspend fun syncChaptersWithSource(
                 sourceOrder = chapter.source_order.toLong(),
             )
         }
+
+        // TODO: Predict when the next chapter gonna release
+
+        // Set this manga as updated since chapters were changed
+        // Note that last_update actually represents last time the chapter list changed at all
+        // Those changes already checked beforehand, so we can proceed to updating the manga
+        manga.last_update = Date().time
+        updateManga.await(MangaUpdate(manga.id!!, lastUpdate = manga.last_update))
     }
-
-    // TODO: Predict when the next chapter gonna release
-
-    // Set this manga as updated since chapters were changed
-    // Note that last_update actually represents last time the chapter list changed at all
-    // Those changes already checked beforehand, so we can proceed to updating the manga
-    manga.last_update = Date().time
-    updateManga.await(MangaUpdate(manga.id!!, lastUpdate = manga.last_update))
 
     val filteredScanlators = ChapterUtil.getScanlators(manga.filtered_scanlators).toHashSet()
 

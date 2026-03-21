@@ -78,9 +78,13 @@ class ExtensionManager(
         return getAppIconForSource(source.id)
     }
 
+    fun getPackageName(sourceId: Long): String? =
+        _installedExtensionsFlow.value
+            .find { ext -> ext.sources.any { it.id == sourceId } }
+            ?.pkgName
+
     private fun getAppIconForSource(sourceId: Long): Drawable? {
-        val pkgName = _installedExtensionsFlow.value
-            .find { ext -> ext.sources.any { it.id == sourceId } }?.pkgName
+        val pkgName = getPackageName(sourceId)
         return if (pkgName != null) {
             try {
                 return iconMap.getOrPut(pkgName) {
@@ -157,7 +161,7 @@ class ExtensionManager(
             api.findExtensions()
         } catch (e: Exception) {
             Logger.e(e) { "Failed to find available extensions" }
-            emptyList()
+            return
         }
 
         enableAdditionalSubLanguages(extensions)

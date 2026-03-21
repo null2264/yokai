@@ -295,7 +295,6 @@
         <item name="tabRippleColor">?colorControlHighlight</item>
     </style>
 
-
     <style name="Widget.Tachiyomi.NavigationRail" parent="Widget.Material3.NavigationRailView">
         <item name="android:minHeight">68dp</item>
         <item name="itemIconTint">@color/bottom_nav_item_selector</item>
@@ -306,7 +305,6 @@
         <item name="tabBarIconColor">?tabBarIconColor</item>
         <item name="tabRippleColor">?colorControlHighlight</item>
     </style>
-1
 
     <style name="Widget.Tachiyomi.Button.OutlinedButton.Icon" parent="Widget.Material3.Button.OutlinedButton.Icon">
         <item name="android:paddingStart">12dp</item>
@@ -390,8 +388,8 @@
         <item name="chipStrokeWidth">1dp</item>
         <item name="android:checkable">false</item>
     </style>
-    
-    
+
+
     <style name="Theme.TextAppearance.Chip" parent="TextAppearance.MaterialComponents.Chip">
         <item name="android:textSize">13sp</item>
     </style>

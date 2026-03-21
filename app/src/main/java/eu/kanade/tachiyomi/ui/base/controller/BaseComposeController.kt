@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import eu.kanade.tachiyomi.util.compose.LocalBackPress
 import eu.kanade.tachiyomi.util.compose.LocalDialogHostState
+import eu.kanade.tachiyomi.util.compose.LocalRouter
 import yokai.domain.DialogHostState
 import yokai.presentation.theme.YokaiTheme
 
@@ -37,6 +38,7 @@ abstract class BaseComposeController(bundle: Bundle? = null) :
                     CompositionLocalProvider(
                         LocalDialogHostState provides dialogHostState,
                         LocalBackPress provides router::handleBack,
+                        LocalRouter provides router,
                     ) {
                         ScreenContent()
                     }

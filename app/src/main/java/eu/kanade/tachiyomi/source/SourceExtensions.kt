@@ -22,6 +22,7 @@ fun Source.nameBasedOnEnabledLanguages(enabledLanguages: Set<String>, extensionM
 
 fun Source.icon(): Drawable? = Injekt.get<ExtensionManager>().getAppIconForSource(this)
 
+fun Source.pkgName() = Injekt.get<ExtensionManager>().getPackageName(this.id)
 fun HttpSource.getExtension(extensionManager: ExtensionManager? = null): Extension.Installed? =
     (extensionManager ?: Injekt.get()).installedExtensionsFlow.value.find { it.sources.contains(this) }
 

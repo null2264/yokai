@@ -6,20 +6,22 @@ import androidx.compose.runtime.ReadOnlyComposable
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import yokai.presentation.component.preference.Preference
+import yokai.util.Screen
 
-interface ComposableSettings {
+abstract class ComposableSettings : Screen() {
+
     @Composable
     @ReadOnlyComposable
-    fun getTitleRes(): StringResource
+    abstract fun getTitleRes(): StringResource
 
     @Composable
-    fun getPreferences(): List<Preference>
+    abstract fun getPreferences(): List<Preference>
 
     @Composable
-    fun RowScope.AppBarAction() {}
+    open fun RowScope.AppBarAction() {}
 
     @Composable
-    fun Content() {
+    override fun Content() {
         SettingsScaffold(
             title = stringResource(getTitleRes()),
             itemsProvider = { getPreferences() },

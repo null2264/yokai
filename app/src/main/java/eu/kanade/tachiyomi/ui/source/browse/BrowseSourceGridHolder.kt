@@ -1,19 +1,23 @@
 package eu.kanade.tachiyomi.ui.source.browse
 
 import android.app.Activity
-import android.view.View
-import androidx.core.graphics.ColorUtils
-import androidx.core.view.isVisible
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.RecyclerView
-import coil3.dispose
+import dev.icerock.moko.resources.compose.stringResource
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.IFlexible
-import eu.kanade.tachiyomi.databinding.MangaGridItemBinding
 import eu.kanade.tachiyomi.domain.manga.models.Manga
-import eu.kanade.tachiyomi.ui.library.LibraryCategoryAdapter
-import eu.kanade.tachiyomi.util.view.setCards
+import yokai.domain.manga.models.MangaCover
 import yokai.domain.manga.models.cover
-import yokai.util.coil.loadManga
+import yokai.i18n.MR
+import yokai.presentation.manga.components.BadgeSegment
+import yokai.presentation.manga.components.MangaComfortableGridItem
+import yokai.presentation.manga.components.MangaCompactGridItem
+import yokai.presentation.theme.YokaiTheme
 
 /**
  * Class used to hold the displayed data of a manga in the library, like the cover or the title.
@@ -24,21 +28,48 @@ import yokai.util.coil.loadManga
  * @constructor creates a new library holder.
  */
 class BrowseSourceGridHolder(
-    private val view: View,
+    private val view: ComposeView,
     private val adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>,
     compact: Boolean,
     showOutline: Boolean,
 ) : BrowseSourceHolder(view, adapter) {
 
-    private val binding = MangaGridItemBinding.bind(view)
+    var title by mutableStateOf("")
+    var cover by mutableStateOf(MangaCover(0L, 0L, "", 0L, false))
+
     init {
-        if (compact) {
-            binding.textLayout.isVisible = false
-        } else {
-            binding.compactTitle.isVisible = false
-            binding.gradient.isVisible = false
+        view.setContent {
+            YokaiTheme {
+                val badgeSegments = buildList {
+                    if (cover.inLibrary)
+                        add(
+                            BadgeSegment.text(
+                                backgroundColor = MaterialTheme.colorScheme.secondary,
+                                text = stringResource(MR.strings.in_library),
+                                textColor = MaterialTheme.colorScheme.onSecondary,
+                            )
+                        )
+                }
+                if (compact) {
+                    MangaCompactGridItem(
+                        coverData = cover,
+                        title = title,
+                        isSelected = cover.inLibrary,
+                        showOutline = showOutline,
+                        badgeSegments = badgeSegments,
+                    )
+                } else {
+                    MangaComfortableGridItem(
+                        coverData = cover,
+                        title = title,
+                        isSelected = cover.inLibrary,
+                        showOutline = showOutline,
+                        badgeSegments = badgeSegments,
+                    )
+                }
+            }
         }
-        setCards(showOutline, binding.card, binding.unreadDownloadBadge.badgeView)
+//        setCards(showOutline, binding.card, binding.unreadDownloadBadge.badgeView)
     }
 
     /**
@@ -49,9 +80,8 @@ class BrowseSourceGridHolder(
      */
     override fun onSetValues(manga: Manga) {
         // Update the title of the manga.
-        binding.title.text = manga.title
-        binding.compactTitle.text = binding.title.text
-        binding.unreadDownloadBadge.root.setInLibrary(manga.favorite)
+        title = manga.title
+        cover = manga.cover()
 
         // Update the cover.
         setImage(manga)
@@ -59,15 +89,6 @@ class BrowseSourceGridHolder(
 
     override fun setImage(manga: Manga) {
         if ((view.context as? Activity)?.isDestroyed == true) return
-        if (manga.thumbnail_url == null) {
-            binding.coverThumbnail.dispose()
-        } else {
-            manga.id ?: return
-            binding.coverThumbnail.loadManga(manga.cover(), binding.progress)
-            binding.coverThumbnail.alpha = if (manga.favorite) 0.34f else 1.0f
-            binding.card.strokeColorStateList?.defaultColor?.let { color ->
-                binding.card.strokeColor = ColorUtils.setAlphaComponent(color, if (manga.favorite) 87 else 255)
-            }
-        }
+        cover = manga.cover()
     }
 }

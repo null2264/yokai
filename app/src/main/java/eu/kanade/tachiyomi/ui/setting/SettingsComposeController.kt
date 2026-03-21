@@ -1,6 +1,8 @@
 package eu.kanade.tachiyomi.ui.setting
 
 import androidx.compose.runtime.Composable
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.CrossfadeTransition
 import eu.kanade.tachiyomi.ui.base.controller.BaseComposeController
 import yokai.presentation.settings.ComposableSettings
 
@@ -14,6 +16,11 @@ abstract class SettingsComposeController: BaseComposeController(), SettingsContr
 
     @Composable
     override fun ScreenContent() {
-        getComposableSettings().Content()
+        Navigator(
+            screen = getComposableSettings(),
+            content = {
+                CrossfadeTransition(navigator = it)
+            },
+        )
     }
 }

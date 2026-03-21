@@ -203,6 +203,15 @@ class ReaderChapterSheet @JvmOverloads constructor(context: Context, attrs: Attr
                 true
             }
         }
+        adapter?.onLongClickListener = { _, _, item, _ ->
+            if (!sheetBehavior.isExpanded() || activity.isLoading) {
+                false
+            } else {
+                viewModel.toggleRead(item.chapter)
+                refreshList()
+                true
+            }
+        }
         adapter?.addEventHook(
             object : ClickEventHook<ReaderChapterItem>() {
                 override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {

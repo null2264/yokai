@@ -7,34 +7,37 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.doOnNextLayout
 import androidx.core.view.isVisible
 import androidx.preference.PreferenceScreen
-import eu.kanade.tachiyomi.R
-import yokai.i18n.MR
-import yokai.util.lang.getString
-import dev.icerock.moko.resources.compose.stringResource
 import eu.kanade.tachiyomi.data.preference.changesIn
 import eu.kanade.tachiyomi.ui.setting.SettingsLegacyController
 import eu.kanade.tachiyomi.ui.setting.ThemePreference
 import eu.kanade.tachiyomi.ui.setting.bindTo
 import eu.kanade.tachiyomi.ui.setting.defaultValue
+import eu.kanade.tachiyomi.ui.setting.dropDownPreference
 import eu.kanade.tachiyomi.ui.setting.infoPreference
 import eu.kanade.tachiyomi.ui.setting.intListPreference
 import eu.kanade.tachiyomi.ui.setting.onChange
 import eu.kanade.tachiyomi.ui.setting.preferenceCategory
-import eu.kanade.tachiyomi.ui.setting.summaryMRes as summaryRes
 import eu.kanade.tachiyomi.ui.setting.switchPreference
 import eu.kanade.tachiyomi.ui.setting.themePreference
-import eu.kanade.tachiyomi.ui.setting.titleMRes as titleRes
+import eu.kanade.tachiyomi.util.lang.addBetaTag
 import eu.kanade.tachiyomi.util.system.SideNavMode
 import eu.kanade.tachiyomi.util.system.appDelegateNightMode
 import eu.kanade.tachiyomi.util.system.dpToPx
 import eu.kanade.tachiyomi.util.system.getPrefTheme
 import eu.kanade.tachiyomi.util.system.isInNightMode
+import eu.kanade.tachiyomi.util.system.materialAlertDialog
+import eu.kanade.tachiyomi.util.system.setAppIcon
 import eu.kanade.tachiyomi.util.view.activityBinding
 import eu.kanade.tachiyomi.util.view.moveRecyclerViewUp
+import kotlin.math.max
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlin.math.max
+import yokai.domain.base.BasePreferences
+import yokai.i18n.MR
+import yokai.util.lang.getString
 import eu.kanade.tachiyomi.data.preference.PreferenceKeys as Keys
+import eu.kanade.tachiyomi.ui.setting.summaryMRes as summaryRes
+import eu.kanade.tachiyomi.ui.setting.titleMRes as titleRes
 
 class SettingsAppearanceController : SettingsLegacyController() {
 
@@ -56,6 +59,31 @@ class SettingsAppearanceController : SettingsLegacyController() {
                 lastScrollPostionDark = lastThemeXDark
                 summary = context.getString(context.getPrefTheme(preferences).nameRes)
                 activity = this@SettingsAppearanceController.activity
+            }
+
+            // FIXME: Don't use dropdown, use something similar to Theme
+            dropDownPreference {
+                bindTo(basePreferences.appIcon())
+                title = "Change App Icon".addBetaTag(context)
+                summary = "This feature is still very experimental!"
+
+                val values = BasePreferences.AppIcons.entries.toList()
+                entries = values.map { it.displayName }.toTypedArray()
+                entryValues = values.map { it.name }.toTypedArray()
+
+                onChange {
+                    it as String
+                    context.materialAlertDialog()
+                        .setTitle("Change App Icon?")
+                        .setMessage("[Very Experimental] This may kill the app!")
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            value = it
+                            context.setAppIcon(basePreferences, BasePreferences.AppIcons.valueOf(it))
+                        }
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show()
+                    false
+                }
             }
 
             switchPreference {

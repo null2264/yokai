@@ -84,8 +84,6 @@ class ExtensionRepoScreen(
 
             val repos = (state as ExtensionRepoScreenModel.State.Success).repos
 
-            alertDialog.value?.invoke()
-
             LazyColumn(
                 modifier = Modifier.padding(innerPadding),
                 userScrollEnabled = true,
@@ -124,6 +122,8 @@ class ExtensionRepoScreen(
                     }
                 }
             }
+
+            alertDialog.value?.invoke()
         }
 
         LaunchedEffect(repoUrl) {
