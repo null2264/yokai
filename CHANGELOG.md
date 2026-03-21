@@ -86,7 +86,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency com.getkeepsafe.taptargetview:taptargetview to v1.15.0
 - Update dependency androidx.window:window to v1.4.0
 - Update dependency androidx.webkit:webkit to v1.13.0
-- Update androidxSqlite to v2.5.1
+- Update androidxSqlite to v2.6.2
 - Update dependency androidx.recyclerview:recyclerview to v1.4.0
 - Update dependency androidx.core:core-ktx to v1.17.0
 - Update dependency androidx.core:core-splashscreen to v1.2.0
