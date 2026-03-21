@@ -86,7 +86,7 @@ sqlite = { module = "androidx.sqlite:sqlite", version.ref = "androidxSqlite" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidxSqlite" }
 
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
-sqldelight-androidx-driver = { module = "com.eygraber:sqldelight-androidx-driver", version = "0.0.12" }
+sqldelight-androidx-driver = { module = "com.eygraber:sqldelight-androidx-driver", version = "0.0.17" }
 sqldelight-android-paging = { module = "app.cash.sqldelight:androidx-paging3-extensions", version.ref = "sqldelight" }
 sqldelight-dialects-sql = { module = "app.cash.sqldelight:sqlite-3-38-dialect", version.ref = "sqldelight" }
 

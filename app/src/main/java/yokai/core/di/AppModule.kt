@@ -49,15 +49,11 @@ fun appModule(app: Application) = module {
 
     single<SqlDriver> {
         AndroidxSqliteDriver(
-            createConnection = { name ->
-                BundledSQLiteDriver().open(name, SQLITE_OPEN_READWRITE or SQLITE_OPEN_CREATE)
-            },
-            databaseType = AndroidxSqliteDatabaseType.File(app, "tachiyomi.db"),
-            configuration = AndroidxSqliteConfiguration().apply {
-                isForeignKeyConstraintsEnabled = true
-                journalMode = SqliteJournalMode.WAL
-                sync = SqliteSync.Normal
-            },
+            driver = BundledSQLiteDriver(),
+            databaseType = AndroidxSqliteDatabaseType.FileProvider(app, "tachiyomi.db"),
+            configuration = AndroidxSqliteConfiguration(
+                isForeignKeyConstraintsEnabled = true,
+            ),
             schema = Database.Schema,
             onCreate = {
                 Logger.d { "Creating new database..." }
