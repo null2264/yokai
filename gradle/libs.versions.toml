@@ -114,7 +114,7 @@ sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 
 [bundles]
 db = [ "sqldelight-coroutines", "sqldelight-androidx-driver" ]
-db-android = [ "sqldelight-android-driver", "sqldelight-android-paging" ]
+db-android = [ "sqldelight-android-paging" ]
 coil = [ "coil3", "coil3-compose", "coil3-svg", "coil3-gif", "coil3-okhttp" ]
 logging = [ "kermit" ]
 sqlite = [ "sqlite", "sqlite-bundled" ]
