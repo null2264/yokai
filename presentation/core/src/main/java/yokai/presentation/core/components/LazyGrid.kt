@@ -7,6 +7,11 @@ import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridScope
+import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -34,7 +39,7 @@ fun FastScrollLazyVerticalGrid(
 ) {
     VerticalGridFastScroller(
         state = state,
-        columns = columns,
+        columns = DynamicGridCells(columns),
         arrangement = horizontalArrangement,
         contentPadding = contentPadding,
         modifier = modifier,
@@ -50,6 +55,48 @@ fun FastScrollLazyVerticalGrid(
             contentPadding = contentPadding,
             reverseLayout = reverseLayout,
             verticalArrangement = verticalArrangement,
+            horizontalArrangement = horizontalArrangement,
+            userScrollEnabled = userScrollEnabled,
+            content = content,
+        )
+    }
+}
+
+@Composable
+fun FastScrollLazyVerticalStaggeredGrid(
+    columns: StaggeredGridCells,
+    modifier: Modifier = Modifier,
+    state: LazyStaggeredGridState = rememberLazyStaggeredGridState(),
+    thumbAllowed: () -> Boolean = { true },
+    thumbColor: Color = MaterialTheme.colorScheme.primary,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+    topContentPadding: Dp = Dp.Hairline,
+    bottomContentPadding: Dp = Dp.Hairline,
+    endContentPadding: Dp = Dp.Hairline,
+    reverseLayout: Boolean = false,
+    verticalItemSpacing: Dp = Dp.Hairline,
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
+    userScrollEnabled: Boolean = true,
+    content: LazyStaggeredGridScope.() -> Unit,
+) {
+    VerticalGridFastScroller(
+        state = state,
+        columns = DynamicGridCells(columns),
+        arrangement = horizontalArrangement,
+        contentPadding = contentPadding,
+        modifier = modifier,
+        thumbAllowed = thumbAllowed,
+        thumbColor = thumbColor,
+        topContentPadding = topContentPadding,
+        bottomContentPadding = bottomContentPadding,
+        endContentPadding = endContentPadding,
+    ) {
+        LazyVerticalStaggeredGrid(
+            columns = columns,
+            state = state,
+            contentPadding = contentPadding,
+            reverseLayout = reverseLayout,
+            verticalItemSpacing = verticalItemSpacing,
             horizontalArrangement = horizontalArrangement,
             userScrollEnabled = userScrollEnabled,
             content = content,

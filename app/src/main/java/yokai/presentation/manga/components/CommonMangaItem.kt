@@ -49,7 +49,7 @@ import coil3.compose.AsyncImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 import dev.icerock.moko.resources.desc.Utils
 import yokai.i18n.MR
-import yokai.presentation.library.components.LazyLibraryGrid
+import yokai.presentation.library.components.LazyLibraryStaggeredGrid
 import yokai.domain.manga.models.MangaCover as MangaCoverModel
 
 // TODO:
@@ -340,12 +340,12 @@ fun MangaGridCover(
 private fun MangaGridCoverPreview() {
     MaterialTheme {
         Scaffold { contentPadding ->
-            LazyLibraryGrid(
+            LazyLibraryStaggeredGrid(
                 columns = 3,
                 contentPadding = contentPadding,
             ) {
                 items(10) {
-                    MangaCompactGridItem(
+                    MangaComfortableGridItem(
                         coverData = MangaCoverModel(
                             mangaId = 0,
                             sourceId = 0,
