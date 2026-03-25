@@ -273,7 +273,7 @@ class MangaHeaderHolder(
 
     private fun setDescription() {
         if (binding != null) {
-            val desc = adapter.controller.mangaPresenter().manga.description?.replace("<", "&lt;")?.replace(">", "&gt;")?.replace(Regex("(?m)^-"), "\\\\-")?.replace(Regex("(?m)^\\*"), "\\\\*")
+            val desc = adapter.controller.mangaPresenter().manga.description?.replace("<", "&lt;")?.replace(">", "&gt;")?.replace(Regex("""(?m)^\s*-\s*$"""), "\\-")?.replace(Regex("""(?m)^\s*\*\s*$"""), "\\*")
             binding.mangaSummary.text = when {
                 binding.mangaSummary.movementMethod = LinkMovementMethod.getInstance()
                 desc.isNullOrBlank() -> itemView.context.getString(MR.strings.no_description)

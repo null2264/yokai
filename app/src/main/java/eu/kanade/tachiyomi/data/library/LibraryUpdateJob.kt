@@ -265,7 +265,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
                 requestSemaphore.withPermit {
                     list.forEach { manga ->
                         ensureActive()
-                        val source = sourceManager.get(manga.manga.source) as? HttpSource ?: return@async
+                        val source = sourceManager.get(manga.manga.source) as? CatalogueSource ?: return@async
                         notifier.showProgressNotification(
                             manga.manga,
                             count.andIncrement,
