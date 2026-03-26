@@ -784,7 +784,21 @@ open class BrowseSourceController(bundle: Bundle) :
     private fun updatePopLatestIcons() {
         val isNotFiltered = presenter.filtersMatchDefault() && presenter.query.isBlank()
         binding.btnGroupPopular.isChecked = !presenter.useLatest && isNotFiltered
+        binding.btnGroupPopular.setIconResource(
+            if (!presenter.useLatest && isNotFiltered) {
+                R.drawable.ic_heart_24dp
+            } else {
+                R.drawable.ic_heart_outline_24dp
+            },
+        )
         binding.btnGroupLatest.isChecked = presenter.useLatest && isNotFiltered
+        binding.btnGroupLatest.setIconResource(
+            if (presenter.useLatest && isNotFiltered) {
+                R.drawable.ic_new_releases_24dp
+            } else {
+                R.drawable.ic_new_releases_outline_24dp
+            },
+        )
         binding.btnGroupFilter.isChecked = !isNotFiltered
     }
 

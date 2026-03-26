@@ -92,7 +92,7 @@ internal class AppUpdateNotifier(private val context: Context) {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             }
             addAction(
-                R.drawable.ic_new_releases_24dp,
+                R.drawable.ic_new_releases_outline_24dp,
                 context.getString(MR.strings.release_page),
                 PendingIntent.getActivity(context, releaseUrl.hashCode(), releaseIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE),
             )

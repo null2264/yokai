@@ -23,6 +23,7 @@
         <item name="colorSecondaryVariant">@color/secondaryVariantTachiyomi</item> // much darker / lighter version of colorSecondary
         <item name="colorPrimaryContainer">@color/primary_container</item>
         <item name="colorSecondaryContainer">@color/secondary_container</item>
+        <item name="colorSurfaceContainer">?colorPrimaryVariant</item>
         <item name="background">@color/background</item>
         <item name="colorOnBackground">@color/colorOnBackground</item>
         <item name="colorBackgroundFloating">?colorSurface</item>

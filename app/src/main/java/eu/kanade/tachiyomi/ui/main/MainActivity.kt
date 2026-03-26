@@ -1537,7 +1537,7 @@ open class MainActivity : BaseActivity<MainActivityBinding>() {
             MaterialMenuSheet.MenuSheetItem(
                 0,
                 textRes = MR.strings.whats_new_this_release,
-                drawable = R.drawable.ic_new_releases_24dp,
+                drawable = R.drawable.ic_new_releases_outline_24dp,
             ),
             MaterialMenuSheet.MenuSheetItem(
                 1,
