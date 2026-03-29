@@ -9,58 +9,23 @@
     android:layout_height="match_parent">
 
     <FrameLayout
+        android:id="@+id/catalogue_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/catalogue_view"
         tools:context="eu.kanade.tachiyomi.ui.source.browse.BrowseSourceController">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
+        <com.google.android.material.loadingindicator.LoadingIndicator
             android:id="@+id/progress"
             android:indeterminate="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:visibility="gone"
-            tools:visibility="visible"/>
+            tools:visibility="visible"
+            app:indicatorSize="100dp"/>
 
     </FrameLayout>
-
-    <com.google.android.material.floatingtoolbar.FloatingToolbarLayout
-        android:id="@+id/floating_browse_bar"
-        android:layout_gravity="bottom|center"
-        app:layout_behavior="com.google.android.material.behavior.HideViewOnScrollBehavior"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <com.google.android.material.button.MaterialButtonGroup
-            style="@style/Widget.Material3Expressive.MaterialButtonGroup.Connected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_group_popular"
-                android:text="@string/popular"
-                android:checkable="true"
-                app:icon="@drawable/ic_heart_24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_group_latest"
-                android:text="@string/latest"
-                android:checkable="true"
-                app:icon="@drawable/ic_new_releases_24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_group_filter"
-                android:text="@string/filter"
-                android:checkable="true"
-                app:icon="@drawable/ic_filter_list_24dp"
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.button.MaterialButtonGroup>
-
-    </com.google.android.material.floatingtoolbar.FloatingToolbarLayout>
 
     <eu.kanade.tachiyomi.widget.EmptyView
         android:id="@+id/empty_view"
@@ -74,5 +39,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/extension_uninstall_button"/>
+
+    <!-- Barra flotante de botones (Popular / Latest / Filter) -->
+    <com.google.android.material.floatingtoolbar.FloatingToolbarLayout
+        android:id="@+id/floating_browse_bar"
+        android:layout_gravity="bottom|center"
+        app:layout_behavior="com.google.android.material.behavior.HideViewOnScrollBehavior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.google.android.material.button.MaterialButtonGroup
+            android:id="@+id/buttonGroup"
+            style="@style/Widget.Material3Expressive.MaterialButtonGroup.Connected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialButtonStyle"
+                android:id="@+id/btn_group_popular"
+                android:text="@string/popular"
+                android:checkable="true"
+                app:icon="@drawable/ic_heart_outline_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialButtonStyle"
+                android:id="@+id/btn_group_latest"
+                android:text="@string/latest"
+                android:checkable="true"
+                app:icon="@drawable/ic_new_releases_outline_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.button.MaterialButton
+                style="?attr/materialButtonStyle"
+                android:id="@+id/btn_group_filter"
+                android:text="@string/filter"
+                android:checkable="true"
+                app:icon="@drawable/ic_filter_list_24dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.button.MaterialButtonGroup>
+
+    </com.google.android.material.floatingtoolbar.FloatingToolbarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

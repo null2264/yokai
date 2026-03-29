@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:descendantFocusability="blocksDescendants" />
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
+    <com.google.android.material.loadingindicator.LoadingIndicator
         android:id="@+id/please_wait"
         android:layout_width="56dp"
         android:layout_height="56dp"

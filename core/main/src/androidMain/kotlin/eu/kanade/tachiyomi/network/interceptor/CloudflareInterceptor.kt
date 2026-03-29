@@ -16,6 +16,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
+import org.jsoup.Jsoup
 import yokai.i18n.MR
 import yokai.util.lang.getString
 
@@ -29,7 +30,18 @@ class CloudflareInterceptor(
 
     override fun shouldIntercept(response: Response): Boolean {
         // Check if Cloudflare anti-bot is on
-        return response.code in ERROR_CODES && response.header("Server") in SERVER_CHECK
+        return if (response.code in ERROR_CODES && response.header("Server") in SERVER_CHECK) {
+            val document = Jsoup.parse(
+                response.peekBody(Long.MAX_VALUE).string(),
+                response.request.url.toString(),
+            )
+
+            // solve with webview only on captcha, not on geo block
+            document.getElementById("challenge-error-title") != null ||
+                document.getElementById("challenge-error-text") != null
+        } else {
+            false
+        }
     }
 
     override fun intercept(
@@ -61,7 +73,7 @@ class CloudflareInterceptor(
         // OkHttp doesn't support asynchronous interceptors.
         val latch = CountDownLatch(1)
 
-        var webView: WebView? = null
+        var webview: WebView? = null
 
         var challengeFound = false
         var cloudflareBypassed = false
@@ -71,9 +83,9 @@ class CloudflareInterceptor(
         val headers = parseHeaders(originalRequest.headers)
 
         executor.execute {
-            webView = createWebView(originalRequest)
+            webview = createWebView(originalRequest)
 
-            webView?.webViewClient = object : WebViewClientCompat() {
+            webview.webViewClient = object : WebViewClientCompat() {
                 override fun onPageFinished(view: WebView, url: String) {
                     fun isCloudFlareBypassed(): Boolean {
                         return cookieManager.get(origRequestUrl.toHttpUrl())
@@ -111,17 +123,17 @@ class CloudflareInterceptor(
                 }
             }
 
-            webView?.loadUrl(origRequestUrl, headers)
+            webview.loadUrl(origRequestUrl, headers)
         }
 
         latch.awaitFor30Seconds()
 
         executor.execute {
             if (!cloudflareBypassed) {
-                isWebViewOutdated = webView?.isOutdated() == true
+                isWebViewOutdated = webview?.isOutdated() == true
             }
 
-            webView?.run {
+            webview?.run {
                 stopLoading()
                 destroy()
             }

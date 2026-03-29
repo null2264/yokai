@@ -18,6 +18,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Add option to zoom into full covers (@Hiirbaf)
 - Add APNG support for Android 9+ (@lalalasupa0)
 - Add markdown support to entry description (@luigidotmoe)
+  - Fix text disappeared when it's surrounded by `<>` (@lalalasupa0)
 
 ### Changes
 - Temporarily disable log file
@@ -29,6 +30,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Replace filter FAB with Floating Toolbar when browsing source
 - Show FAB button to read/resume chapter when start/continue reading button is off-screen
 - LocalSource entries no longer auto-refresh when opened (@lalalasupa0)
+- Long tap chapters on Reader now mark it as read (@lalalasupa0)
 
 ### Fixes
 - Allow users to bypass onboarding's permission step if Shizuku is installed
@@ -45,6 +47,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix paused download notification is not shown (@MuhamadSyabitHidayattulloh)
 - Disable auto refresh entry from Local Source (@lalalasupa0)
 - Fix extension download stuck on pending state
+- Only solve Cloudflare with WebView if it's not geoblock (@AwkwardPeak7)
+- Fix cover from LocalSource sometimes didn't load (@lalalasupa0)
 
 ### Translation
 - Update translations from Weblate
@@ -73,7 +77,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency org.jsoup:jsoup to v1.21.2
 - Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.4.0
 - Update dependency io.mockk:mockk to v1.14.2
-- Update dependency io.coil-kt.coil3:coil-bom to v3.2.0
+- Update dependency io.coil-kt.coil3:coil-bom to v3.4.0
 - Update dependency com.squareup.okio:okio to v3.12.0
 - Update dependency com.google.firebase:firebase-bom to v33.14.0
 - Update dependency com.google.accompanist:accompanist-themeadapter-material3 to v0.36.0
@@ -108,6 +112,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update sqldelight to v2.2.1
 - Update dependency com.google.android.material:material to v1.14.0-alpha09
 - Update dependency androidx.compose.material3:material3 to v1.5.0-alpha14
+- Minimize memory usage by reducing in-memory cover cache size (@Lolle2000la)
 
 ## [1.9.7.4]
 

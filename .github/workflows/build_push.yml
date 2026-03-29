@@ -187,7 +187,7 @@ jobs:
           cp $dir/app-standard-x86-*-signed.apk yokai-x86-${{ env.VERSION_TAG }}.apk
           sha=`sha256sum yokai-x86-${{ env.VERSION_TAG }}.apk | awk '{ print $1 }'`
           echo "APK_X86_SHA=$sha" >> $GITHUB_ENV
-          
+
           cp $dir/app-standard-x86_64-*-signed.apk yokai-x86_64-${{ env.VERSION_TAG }}.apk
           sha=`sha256sum yokai-x86_64-${{ env.VERSION_TAG }}.apk | awk '{ print $1 }'`
           echo "APK_X86_64_SHA=$sha" >> $GITHUB_ENV
@@ -213,7 +213,7 @@ jobs:
             | armeabi-v7a | ${{ env.APK_ARMEABI_V7A_SHA }}
             | x86 | ${{ env.APK_X86_SHA }} |
             | x86_64 | ${{ env.APK_X86_64_SHA }} |
-            
+
             > [!TIP]
             >
             > If you are unsure which version to download then go with **yokai-${{ env.VERSION_TAG }}.apk**
@@ -242,7 +242,7 @@ jobs:
             > This build is triggered by commit [`${{ env.COMMIT_SHORT_HASH }}`](https://github.com/null2264/yokai/commit/${{ env.COMMIT_HASH }})
 
             It is not ready for daily use and we do not guarantee its usability. Please download the latest stable releases instead (https://github.com/null2264/yokai/releases/latest). If you insist, please be sure to ALWAYS backup before updating.
-            
+
             ${{ steps.changelog.outputs.CHANGELOG }}
             ---
 
@@ -255,7 +255,7 @@ jobs:
             | armeabi-v7a | ${{ env.APK_ARMEABI_V7A_SHA }}
             | x86 | ${{ env.APK_X86_SHA }} |
             | x86_64 | ${{ env.APK_X86_64_SHA }} |
-            
+
             > [!TIP]
             >
             > If you are unsure which version to download then go with **yokai-${{ env.VERSION_TAG }}.apk**
@@ -267,5 +267,4 @@ jobs:
             yokai-x86_64-${{ env.VERSION_TAG }}.apk
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.NIGHTLY_PAT }}
+          token: ${{ secrets.NIGHTLY_PAT }}

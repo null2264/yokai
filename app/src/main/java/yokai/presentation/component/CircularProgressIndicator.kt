@@ -1,13 +1,6 @@
 package yokai.presentation.component
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
@@ -17,9 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,14 +22,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.tooling.preview.Preview
 
-/**
- * A combined [CircularProgressIndicator] that always rotates.
- *
- * By always rotating we give the feedback to the user that the application isn't 'stuck'.
- */
 @Composable
 fun CombinedCircularProgressIndicator(
     progress: () -> Float,
@@ -50,29 +36,14 @@ fun CombinedCircularProgressIndicator(
     ) { indeterminate ->
         if (indeterminate) {
             // Indeterminate
-            CircularProgressIndicator(
+            CircularWavyProgressIndicator(
                 color = if (isInverted()) MaterialTheme.colorScheme.inversePrimary else MaterialTheme.colorScheme.primary,
+                amplitude = 0f,
             )
         } else {
             // Determinate
-            val infiniteTransition = rememberInfiniteTransition(label = "infiniteRotation")
-            val rotation by infiniteTransition.animateFloat(
-                initialValue = 0f,
-                targetValue = 360f,
-                animationSpec = infiniteRepeatable(
-                    animation = tween(2000, easing = LinearEasing),
-                    repeatMode = RepeatMode.Restart,
-                ),
-                label = "rotation",
-            )
-            val animatedProgress by animateFloatAsState(
-                targetValue = progress(),
-                animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec,
-                label = "progress",
-            )
-            CircularProgressIndicator(
-                progress = { animatedProgress },
-                modifier = Modifier.rotate(rotation),
+            CircularWavyProgressIndicator(
+                progress = progress,
                 color = if (isInverted()) MaterialTheme.colorScheme.inversePrimary else MaterialTheme.colorScheme.primary,
             )
         }
@@ -82,7 +53,7 @@ fun CombinedCircularProgressIndicator(
 @Preview
 @Composable
 private fun CombinedCircularProgressIndicatorPreview() {
-    var progress by remember { mutableFloatStateOf(0f) }
+    var progress by remember { mutableFloatStateOf(0.5f) }
     var isInverted by remember { mutableStateOf(false) }
     MaterialTheme {
         Scaffold(

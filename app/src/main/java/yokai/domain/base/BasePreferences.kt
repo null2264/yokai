@@ -1,10 +1,11 @@
 package yokai.domain.base
 
 import dev.icerock.moko.resources.StringResource
+import eu.kanade.tachiyomi.BuildConfig
+import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.core.preference.Preference
 import eu.kanade.tachiyomi.core.preference.PreferenceStore
 import eu.kanade.tachiyomi.core.preference.getEnum
-import eu.kanade.tachiyomi.extension.util.ExtensionInstaller
 import eu.kanade.tachiyomi.util.system.GLUtil
 import yokai.i18n.MR
 
@@ -45,10 +46,20 @@ class BasePreferences(private val preferenceStore: PreferenceStore) {
 
     enum class LongTapRecents(val titleResId: StringResource) {
         DEFAULT(MR.strings.recents_long_tap_default),
-        LAST_READ(MR.strings.recents_long_tap_last_read)
+        LAST_READ(MR.strings.recents_long_tap_last_read),
     }
 
     fun hardwareBitmapThreshold() = preferenceStore.getInt("pref_hardware_bitmap_threshold", GLUtil.SAFE_TEXTURE_LIMIT)
 
     fun composeLibrary() = preferenceStore.getBoolean("pref_use_compose_library", false)
+
+    fun appIcon() = preferenceStore.getEnum("pref_use_compose_library", AppIcons.DEFAULT)
+
+    enum class AppIcons(val displayName: String, val id: String, val icon: Int) {
+        DEFAULT("Default", "${BuildConfig.APPLICATION_ID}.MainActivityDefault", R.mipmap.ic_launcher_round),
+        BLUE("Blue", "${BuildConfig.APPLICATION_ID}.MainActivityBlue", R.mipmap.ic_launcher_round_blue),
+        ORANGE("Orange", "${BuildConfig.APPLICATION_ID}.MainActivityOrange", R.mipmap.ic_launcher_round_orange),
+        GRAY("Gray", "${BuildConfig.APPLICATION_ID}.MainActivityGray", R.mipmap.ic_launcher_round_gray),
+        CLASSIC("Classic", "${BuildConfig.APPLICATION_ID}.MainActivityClassic", R.mipmap.ic_launcher_round_classic),
+    }
 }

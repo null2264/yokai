@@ -57,11 +57,11 @@ import okhttp3.Headers
 import rikka.sui.Sui
 import uy.kohesive.injekt.injectLazy
 import yokai.domain.base.BasePreferences
+import yokai.domain.simple
 import yokai.i18n.MR
 import yokai.presentation.component.preference.Preference
 import yokai.presentation.settings.ComposableSettings
 import yokai.presentation.settings.screen.advanced.StoryBookScreen
-import yokai.presentation.settings.screen.advanced.awaitCheckForBetaPrompt
 
 object SettingsAdvancedScreen : ComposableSettings() {
 
@@ -91,7 +91,7 @@ object SettingsAdvancedScreen : ComposableSettings() {
             ))
             add(getDebugInfo())
             add(getBackgroundActivityGroup())
-            if (isUpdaterEnabled) {
+            if (isUpdaterEnabled || BuildConfig.DEBUG) {
                 add(getCheckForBeta(preferences))
             }
             add(getDataManagementGroup())
@@ -182,8 +182,12 @@ object SettingsAdvancedScreen : ComposableSettings() {
             onValueChanged = {
                 if (it != BuildConfig.BETA) {
                     scope.launch {
-                        alertDialog.awaitCheckForBetaPrompt(it) {
-                            pref.set(it)
+                        alertDialog.simple {
+                            titleRes = MR.strings.warning
+                            textRes = if (it) MR.strings.warning_enroll_into_beta else MR.strings.warning_unenroll_from_beta
+                            onConfirm = {
+                                pref.set(it)
+                            }
                         }
                     }
                     false
@@ -310,8 +314,11 @@ object SettingsAdvancedScreen : ComposableSettings() {
 
     @Composable
     private fun getExtensionGroup(basePreferences: BasePreferences): Preference.PreferenceGroup {
+        val scope = rememberCoroutineScope()
         val context = LocalContext.current
+        val alertDialog = LocalDialogHostState.currentOrThrow
         val installerPref by basePreferences.extensionInstaller().collectAsState()
+
 
         val children = buildList {
             add(Preference.PreferenceItem.ListPreference(
@@ -323,8 +330,16 @@ object SettingsAdvancedScreen : ComposableSettings() {
                 onValueChanged = onChange@{
                     if (it == BasePreferences.ExtensionInstaller.SHIZUKU) {
                         return@onChange if (!context.isPackageInstalled(ShizukuInstaller.shizukuPkgName) && !Sui.isSui()) {
-                            context.toast(MR.strings.ext_installer_shizuku_unavailable_dialog)
-                            // TODO: Migrate alert dialog
+                            scope.launch {
+                                alertDialog.simple {
+                                    titleRes = MR.strings.ext_installer_shizuku
+                                    textRes = MR.strings.ext_installer_shizuku_unavailable_dialog
+                                    confirmTextRes = MR.strings.download
+                                    onConfirm = {
+                                        context.openInBrowser(ShizukuInstaller.downloadLink)
+                                    }
+                                }
+                            }
                             false
                         } else {
                             true
