@@ -306,7 +306,7 @@
     <string name="multiply">Reizināt</string>
     <string name="backup_location">Dublējuma atrašanās vieta</string>
     <string name="automatic_backups">Automātiskā dublēšana</string>
-    <string name="backup_frequency">Dublējumu biežums</string>
+    <string name="backup_frequency">Rezerves kopijas izveides biežums</string>
     <string name="disable_battery_optimization">Atspējot akumulatora optimizāciju</string>
     <string name="nsfw_sources">NSFW (18+) avoti</string>
     <string name="save_chapters_as_cbz">Saglabāt kā CBZ arhīvu</string>
