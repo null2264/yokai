@@ -80,6 +80,8 @@ fun WebView.setDefaultSettings() {
         builtInZoomControls = true
         displayZoomControls = false
         cacheMode = WebSettings.LOAD_DEFAULT
+        // Handle popups properly
+        setSupportMultipleWindows(true)
     }
 
     CookieManager.getInstance().acceptThirdPartyCookies(this)
