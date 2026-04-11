@@ -61,6 +61,7 @@ suspend fun syncChaptersWithTrackServiceTwoWay(
 }
 
 internal data class TwoWayTrackerSyncResult(
+    val coveredChapterNumbers: Set<Float>,
     val chapterUpdates: List<Chapter>,
     val localLastRead: Float,
 )
@@ -69,21 +70,29 @@ internal fun calculateTwoWayTrackerSync(
     chapters: List<Chapter>,
     remoteLastRead: Float,
 ): TwoWayTrackerSyncResult {
-    val dbChapters = chapters
+    val recognizedChapters = chapters
         .filter { it.isRecognizedNumber }
         .sortedByDescending { it.source_order }
 
-    val sortedChapters = dbChapters.sortedBy { it.chapter_number }
+    val sortedChapters = recognizedChapters.sortedBy { it.chapter_number }
+    val orderedUniqueChapterNumbers = recognizedChapters
+        .map { it.chapter_number }
+        .distinct()
 
     var lastCheckChapter = 0.0f
-    var checkingChapter = 0.0f
 
-    val chapterUpdates = dbChapters
-        .takeWhile { chapter ->
-            lastCheckChapter = checkingChapter
-            checkingChapter = chapter.chapter_number
-            chapter.chapter_number >= lastCheckChapter && chapter.chapter_number <= remoteLastRead
+    val coveredChapterNumbers = orderedUniqueChapterNumbers
+        .takeWhile { chapterNumber ->
+            val isCovered = chapterNumber >= lastCheckChapter && chapterNumber <= remoteLastRead
+            if (isCovered) {
+                lastCheckChapter = chapterNumber
+            }
+            isCovered
         }
+        .toSet()
+
+    val chapterUpdates = recognizedChapters
+        .filter { it.chapter_number in coveredChapterNumbers }
         .filterNot { it.read }
 
     val localLastRead = sortedChapters
@@ -93,6 +102,7 @@ internal fun calculateTwoWayTrackerSync(
         ?: 0f
 
     return TwoWayTrackerSyncResult(
+        coveredChapterNumbers = coveredChapterNumbers,
         chapterUpdates = chapterUpdates,
         localLastRead = localLastRead,
     )
