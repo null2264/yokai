@@ -275,14 +275,21 @@ class MangaDetailsPresenter(
     }
 
     private suspend fun getChapters(queue: List<Download> = downloadManager.queueState.value) {
-        val chapters = getChapter.awaitAll(mangaId, isScanlatorFiltered()).map { it.toModel() }
-        allChapters = if (!isScanlatorFiltered()) chapters else getChapter.awaitAll(mangaId, false).map { it.toModel() }
+        val isScanlatorFiltered = isScanlatorFiltered()
+        val filteredChapters = getChapter.awaitAll(mangaId, isScanlatorFiltered).map { it.toModel() }
 
-        // Find downloaded chapters
-        setDownloadedChapters(chapters, queue)
+        allChapters = if (isScanlatorFiltered) {
+            getChapter.awaitAll(mangaId, false).map { it.toModel() }
+        }else{
+            filteredChapters
+        }   
+         // Find downloaded chapters
+        setDownloadedChapters(allChapters, queue)
+        if (isScanlatorFiltered) {
+            setDownloadedChapters(filteredChapters, queue)
+        }
         allChapterScanlators = allChapters.mapNotNull { it.chapter.scanlator }.toSet()
-
-        this.chapters = applyChapterFilters(chapters)
+        this.chapters = applyChapterFilters(filteredChapters)
     }
 
     private suspend fun getHistory() {
