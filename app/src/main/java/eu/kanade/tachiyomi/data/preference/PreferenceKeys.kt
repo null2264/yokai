@@ -91,6 +91,8 @@ object PreferenceKeys {
 
     const val trackMarkedAsRead = "track_marked_as_read"
 
+    const val autoSyncProgressFromTrackers = "pref_auto_sync_progress_from_trackers_key"
+
     const val trackingsToAddOnline = "pref_tracking_for_online"
 
     const val lastUsedCatalogueSource = "last_catalogue_source"

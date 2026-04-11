@@ -589,11 +589,12 @@
     <string name="tracked">Tracked</string>
     <string name="not_tracked">Not tracked</string>
     <string name="services">Services</string>
-    <string name="tracking_info">One-way sync to update the chapter progress in tracking services. Set up tracking for individual entries from their tracking button.</string>
+    <string name="tracking_info">Two-way sync for chapter progress in tracking services. Set up tracking for individual entries from their tracking button.</string>
     <string name="enhanced_services">Enhanced services</string>
     <string name="enhanced_tracking_info">Services that provide enhanced features for specific sources. Entries are automatically tracked when added to your library.</string>
     <string name="update_tracking_after_reading">Update tracking after reading</string>
     <string name="update_tracking_marked_read">Update tracking when marked as read</string>
+    <string name="pref_auto_sync_progress_from_trackers">Auto sync progress from trackers</string>
     <string name="reading">Reading</string>
     <string name="currently_reading">Currently Reading</string>
     <string name="dropped">Dropped</string>
@@ -846,6 +847,7 @@
     <string name="updates_covers_genres_desc">Updates covers, genres, description and entries status information</string>
     <string name="refresh_tracking_metadata">Refresh tracking metadata</string>
     <string name="updates_tracking_details">Updates status, score and last chapter read from the tracking services</string>
+    <string name="sync_progress_from_trackers_up_to_chapter">Synced progress from trackers up to chapter %1$d</string>
     <string name="clean_up_downloaded_chapters">Clean up downloaded chapters</string>
     <string name="delete_unused_chapters">Delete non-existent, partially downloaded,
         and read chapter folders</string>

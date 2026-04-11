@@ -5,7 +5,6 @@ import eu.kanade.tachiyomi.data.database.models.Chapter
 import eu.kanade.tachiyomi.data.database.models.Track
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.track.DelayedTrackingUpdateJob
-import eu.kanade.tachiyomi.data.track.EnhancedTrackService
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.data.track.TrackService
 import eu.kanade.tachiyomi.util.system.isOnline
@@ -19,6 +18,7 @@ import uy.kohesive.injekt.api.get
 import yokai.domain.chapter.interactor.UpdateChapter
 import yokai.domain.track.interactor.GetTrack
 import yokai.domain.track.interactor.InsertTrack
+import kotlin.math.max
 
 /**
  * Helper method for syncing a remote track with the local chapters, and back
@@ -33,30 +33,69 @@ suspend fun syncChaptersWithTrackServiceTwoWay(
     remoteTrack: Track,
     service: TrackService,
     updateChapter: UpdateChapter = Injekt.get(),
-    insertTrack: InsertTrack = Injekt.get()
-) = withIOContext {
-    if (service !is EnhancedTrackService) {
-        return@withIOContext
-    }
-
-    val sortedChapters = chapters.sortedBy { it.chapter_number }
-    sortedChapters
-        .filter { chapter -> chapter.chapter_number <= remoteTrack.last_chapter_read && !chapter.read }
-        .forEach { it.read = true }
-    updateChapter.awaitAll(sortedChapters.map(Chapter::toProgressUpdate))
-
-    // only take into account continuous reading
-    val localLastRead = sortedChapters.takeWhile { it.read }.lastOrNull()?.chapter_number ?: 0F
-
-    // update remote
-    remoteTrack.last_chapter_read = localLastRead
+    insertTrack: InsertTrack = Injekt.get(),
+): Int? = withIOContext {
+    val syncResult = calculateTwoWayTrackerSync(chapters, remoteTrack.last_chapter_read)
+    val lastRead = max(remoteTrack.last_chapter_read.toDouble(), syncResult.localLastRead.toDouble()).toFloat()
 
     try {
-        service.update(remoteTrack)
-        insertTrack.await(remoteTrack)
+        if (lastRead > remoteTrack.last_chapter_read) {
+            remoteTrack.last_chapter_read = lastRead
+            val updatedTrack = service.update(remoteTrack)
+            insertTrack.await(updatedTrack)
+        }
+
+        if (
+            syncResult.chapterUpdates.isNotEmpty() &&
+            !service.hasNotStartedReading(remoteTrack.status)
+        ) {
+            syncResult.chapterUpdates.forEach { it.read = true }
+            updateChapter.awaitAll(syncResult.chapterUpdates.map(Chapter::toProgressUpdate))
+            return@withIOContext lastRead.toInt()
+        }
     } catch (e: Throwable) {
         Logger.w(e)
     }
+
+    return@withIOContext null
+}
+
+internal data class TwoWayTrackerSyncResult(
+    val chapterUpdates: List<Chapter>,
+    val localLastRead: Float,
+)
+
+internal fun calculateTwoWayTrackerSync(
+    chapters: List<Chapter>,
+    remoteLastRead: Float,
+): TwoWayTrackerSyncResult {
+    val dbChapters = chapters
+        .filter { it.isRecognizedNumber }
+        .sortedByDescending { it.source_order }
+
+    val sortedChapters = dbChapters.sortedBy { it.chapter_number }
+
+    var lastCheckChapter = 0.0f
+    var checkingChapter = 0.0f
+
+    val chapterUpdates = dbChapters
+        .takeWhile { chapter ->
+            lastCheckChapter = checkingChapter
+            checkingChapter = chapter.chapter_number
+            chapter.chapter_number >= lastCheckChapter && chapter.chapter_number <= remoteLastRead
+        }
+        .filterNot { it.read }
+
+    val localLastRead = sortedChapters
+        .takeWhile { it.read }
+        .lastOrNull()
+        ?.chapter_number
+        ?: 0f
+
+    return TwoWayTrackerSyncResult(
+        chapterUpdates = chapterUpdates,
+        localLastRead = localLastRead,
+    )
 }
 
 private var trackingJobs = HashMap<Long, Pair<Job?, Float?>>()

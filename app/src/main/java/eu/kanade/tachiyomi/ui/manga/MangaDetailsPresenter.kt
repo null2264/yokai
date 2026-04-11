@@ -32,6 +32,7 @@ import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
 import eu.kanade.tachiyomi.data.track.EnhancedTrackService
 import eu.kanade.tachiyomi.data.track.TrackManager
+import eu.kanade.tachiyomi.data.track.TrackPreferences
 import eu.kanade.tachiyomi.data.track.TrackService
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.network.HttpException
@@ -66,6 +67,7 @@ import eu.kanade.tachiyomi.util.system.launchIO
 import eu.kanade.tachiyomi.util.system.launchNonCancellableIO
 import eu.kanade.tachiyomi.util.system.launchNow
 import eu.kanade.tachiyomi.util.system.launchUI
+import eu.kanade.tachiyomi.util.system.toast
 import eu.kanade.tachiyomi.util.system.withIOContext
 import eu.kanade.tachiyomi.util.system.withUIContext
 import eu.kanade.tachiyomi.widget.TriStateCheckBox
@@ -74,9 +76,11 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filter
@@ -125,6 +129,7 @@ class MangaDetailsPresenter(
     private val getTrack: GetTrack by injectLazy()
     private val insertTrack: InsertTrack by injectLazy()
     private val getHistory: GetHistory by injectLazy()
+    private val trackPreferences: TrackPreferences by injectLazy()
 
     private val networkPreferences: NetworkPreferences by injectLazy()
 
@@ -323,6 +328,8 @@ class MangaDetailsPresenter(
         return model
     }
 
+    private fun allDbChapters(): List<Chapter> = allChapters.map { it.chapter }
+
     /**
      * Whether the sorting method is descending or ascending.
      */
@@ -504,11 +511,24 @@ class MangaDetailsPresenter(
 
         presenterScope.launch {
             isLoading = true
+            val autoSyncTrackers = trackPreferences.autoSyncProgressFromTrackers().get()
+            val canRefreshTrackers = autoSyncTrackers && (view?.isNotOnline() != true || !isLocal)
             val tasks = listOf(
+                async {
+                    if (canRefreshTrackers) {
+                        refreshTracksAndSync(
+                            items = trackList.filter { it.track != null },
+                            showSyncToast = true,
+                        )
+                    }
+                },
                 async { fetchMangaFromSource() },
                 async { fetchChaptersFromSource() },
             )
             tasks.awaitAll()
+            if (canRefreshTrackers) {
+                fetchTracks()
+            }
             isLoading = false
             withUIContext {
                 view?.updateChapters()
@@ -969,28 +989,43 @@ class MangaDetailsPresenter(
         withContext(Dispatchers.Main) { view?.refreshTracking(trackList) }
     }
 
+    private suspend fun refreshTracksAndSync(
+        items: List<TrackItem>,
+        showSyncToast: Boolean,
+    ) {
+        val syncedChapter: Int? = coroutineScope {
+            val refreshJobs: List<Deferred<Int?>> = items.map { item ->
+                async<Int?>(Dispatchers.IO) {
+                    try {
+                        val refreshedTrack = item.service.refresh(item.track!!)
+                        insertTrack.await(refreshedTrack)
+                        syncChaptersWithTrackServiceTwoWay(allDbChapters(), refreshedTrack, item.service)
+                    } catch (e: Exception) {
+                        trackError(e)
+                        null
+                    }
+                }
+            }
+            val refreshedChapters: List<Int?> = refreshJobs.awaitAll()
+            refreshedChapters.filterNotNull().maxOrNull()
+        }
+
+        if (showSyncToast) {
+            syncedChapter?.let {
+                withUIContext {
+                    view?.activity?.toast(MR.strings.sync_progress_from_trackers_up_to_chapter, it)
+                }
+            }
+        }
+    }
+
     fun refreshTracking(showOfflineSnack: Boolean = false, trackIndex: Int? = null) {
         if (view?.isNotOnline(showOfflineSnack) == false) {
             presenterScope.launch {
-                val asyncList = (trackIndex?.let { listOf(trackList[it]) } ?: trackList.filter { it.track != null })
-                    .map { item ->
-                        async(Dispatchers.IO) {
-                            val trackItem = try {
-                                item.service.refresh(item.track!!)
-                            } catch (e: Exception) {
-                                trackError(e)
-                                null
-                            }
-                            if (trackItem != null) {
-                                insertTrack.await(trackItem)
-                                syncChaptersWithTrackServiceTwoWay(chapters, trackItem, item.service)
-                                trackItem
-                            } else {
-                                item.track
-                            }
-                        }
-                    }
-                asyncList.awaitAll()
+                refreshTracksAndSync(
+                    items = trackIndex?.let { listOf(trackList[it]) } ?: trackList.filter { it.track != null },
+                    showSyncToast = true,
+                )
                 fetchTracks()
             }
         }
@@ -1024,9 +1059,12 @@ class MangaDetailsPresenter(
                 withContext(Dispatchers.IO) {
                     if (binding != null) {
                         insertTrack.await(binding)
+                        syncChaptersWithTrackServiceTwoWay(allDbChapters(), binding, service)?.let {
+                            withUIContext {
+                                view?.activity?.toast(MR.strings.sync_progress_from_trackers_up_to_chapter, it)
+                            }
+                        }
                     }
-
-                    syncChaptersWithTrackServiceTwoWay(chapters, item, service)
                 }
                 fetchTracks()
             }

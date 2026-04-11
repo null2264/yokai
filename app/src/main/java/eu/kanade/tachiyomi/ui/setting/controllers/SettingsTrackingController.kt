@@ -59,6 +59,11 @@ class SettingsTrackingController :
             titleRes = MR.strings.update_tracking_marked_read
             defaultValue = false
         }
+        switchPreference {
+            key = Keys.autoSyncProgressFromTrackers
+            titleRes = MR.strings.pref_auto_sync_progress_from_trackers
+            defaultValue = true
+        }
         preferenceCategory {
             titleRes = MR.strings.services
 
