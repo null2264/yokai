@@ -208,7 +208,7 @@ class ReaderChapterSheet @JvmOverloads constructor(context: Context, attrs: Attr
                 false
             } else {
                 viewModel.toggleRead(item.chapter)
-                refreshList()
+                refreshList(scrollToCurrent = false)
                 true
             }
         }
@@ -229,8 +229,10 @@ class ReaderChapterSheet @JvmOverloads constructor(context: Context, attrs: Attr
                     item: ReaderChapterItem,
                 ) {
                     if (!activity.isLoading && sheetBehavior.isExpanded()) {
-                        viewModel.toggleBookmark(item.chapter)
-                        refreshList()
+                            activity.lifecycleScope.launch {
+                            viewModel.toggleBookmark(item.chapter)
+                            fastAdapter.notifyItemChanged(position)
+                        }
                     }
                 }
             },
@@ -269,18 +271,33 @@ class ReaderChapterSheet @JvmOverloads constructor(context: Context, attrs: Attr
         itemView?.progress?.isVisible = false
     }
 
-    fun refreshList() {
+    fun refreshList(scrollToCurrent: Boolean = true) {
         launchUI {
             val chapters = viewModel.getChapters()
 
             selectedChapterId = chapters.find { it.isCurrent }?.chapter?.id ?: -1L
+            val layoutManager = binding.chapterRecycler.layoutManager as LinearLayoutManager
+            
+            var firstVisible = -1
+            var offset = 0
+            if (!scrollToCurrent) {
+                firstVisible = layoutManager.findFirstVisibleItemPosition()
+                offset = layoutManager.findViewByPosition(firstVisible)?.top ?: 0
+            }
+
             itemAdapter.clear()
             itemAdapter.add(chapters)
 
-            (binding.chapterRecycler.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
-                adapter?.getPosition(viewModel.getCurrentChapter()?.chapter?.id ?: 0L) ?: 0,
-                binding.chapterRecycler.height / 2 - 30.dpToPx,
-            )
+            if (scrollToCurrent) {
+                layoutManager.scrollToPositionWithOffset(
+                    adapter?.getPosition(viewModel.getCurrentChapter()?.chapter?.id ?: 0L) ?: 0,
+                    binding.chapterRecycler.height / 2 - 30.dpToPx,
+                )
+            } else if (firstVisible != -1) {
+                binding.chapterRecycler.post {
+                    layoutManager.scrollToPositionWithOffset(firstVisible, offset)
+                }
+            }
         }
     }
 
