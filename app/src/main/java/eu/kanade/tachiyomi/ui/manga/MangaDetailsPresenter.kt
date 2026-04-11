@@ -108,6 +108,8 @@ import yokai.domain.track.interactor.GetTrack
 import yokai.domain.track.interactor.InsertTrack
 import yokai.i18n.MR
 import yokai.util.lang.getString
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 
 class MangaDetailsPresenter(
     val mangaId: Long,
@@ -132,6 +134,10 @@ class MangaDetailsPresenter(
     private val trackPreferences: TrackPreferences by injectLazy()
 
     private val networkPreferences: NetworkPreferences by injectLazy()
+    private val chapterFormat = DecimalFormat(
+        "#.###",
+        DecimalFormatSymbols().apply { decimalSeparator = '.' },
+    )
 
 //    private val currentMangaInternal: MutableStateFlow<Manga?> = MutableStateFlow(null)
 //    val currentManga get() = currentMangaInternal.asStateFlow()
@@ -241,14 +247,18 @@ class MangaDetailsPresenter(
             )
             tasks.awaitAll()
             isLoading = false
+            setTrackItems()
+            if (trackPreferences.autoSyncProgressFromTrackers().get()) {
+                refreshTracksAndSync(
+                    items = trackList.filter { it.track != null },
+                    showSyncToast = false,
+                )
+            }
+            fetchTracks()
             withUIContext {
                 controller.updateChapters()
             }
-
-            setTrackItems()
         }
-
-        refreshTracking(false)
     }
 
     fun fetchChapters(andTracking: Boolean = true) {
@@ -1010,10 +1020,20 @@ class MangaDetailsPresenter(
             refreshedChapters.filterNotNull().maxOrNull()
         }
 
-        if (showSyncToast) {
-            syncedChapter?.let {
+        syncedChapter?.let {
+            getChapters()
+            withUIContext {
+                view?.updateChapters()
+            }
+
+            if (showSyncToast) {
                 withUIContext {
-                    view?.activity?.toast(MR.strings.sync_progress_from_trackers_up_to_chapter, it)
+                    view?.activity?.toast(
+                        view?.activity?.getString(
+                            MR.strings.sync_progress_from_trackers_up_to_chapter,
+                            formatSyncedChapter(it.toFloat()),
+                        ),
+                    )
                 }
             }
         }
@@ -1050,24 +1070,42 @@ class MangaDetailsPresenter(
             item.manga_id = manga.id!!
 
             presenterScope.launch {
-                val binding = try {
+                val refreshedTrack = try {
                     service.bind(item)
+                        .let { service.refresh(it) }
                 } catch (e: Exception) {
                     trackError(e)
                     null
                 }
                 withContext(Dispatchers.IO) {
-                    if (binding != null) {
-                        insertTrack.await(binding)
-                        syncChaptersWithTrackServiceTwoWay(allDbChapters(), binding, service)?.let {
+                    if (refreshedTrack != null) {
+                        insertTrack.await(refreshedTrack)
+                        syncChaptersWithTrackServiceTwoWay(allDbChapters(), refreshedTrack, service)?.let {
+                            getChapters()
                             withUIContext {
-                                view?.activity?.toast(MR.strings.sync_progress_from_trackers_up_to_chapter, it)
+                                view?.updateChapters()
+                            }
+                            withUIContext {
+                                view?.activity?.toast(
+                                    view?.activity?.getString(
+                                        MR.strings.sync_progress_from_trackers_up_to_chapter,
+                                        formatSyncedChapter(it.toFloat()),
+                                    ),
+                                )
                             }
                         }
                     }
                 }
                 fetchTracks()
             }
+        }
+    }
+
+    private fun formatSyncedChapter(chapter: Float): String {
+        return if (chapter % 1f == 0f) {
+            chapter.toInt().toString()
+        } else {
+            chapterFormat.format(chapter.toDouble())
         }
     }
 
