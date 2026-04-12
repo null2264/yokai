@@ -1053,6 +1053,7 @@
     <string name="action_webview_back">Back</string>
     <string name="action_webview_forward">Forward</string>
     <string name="action_webview_refresh">Refresh</string>
+    <string name="action_webview_close_tab">Close tab</string>
 
     <!-- App widget -->
     <string name="appwidget_updates_description">See your recently updated library entries</string>
