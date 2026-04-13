@@ -158,8 +158,8 @@ class ReaderViewModel(
     private var chapterToDownload: Download? = null
 
     private val unfilteredChapterList by lazy {
-        val manga = manga!!
-        runBlocking { getChapter.awaitAll(manga, filterScanlators = false) }
+        val currentManga = manga ?: return@lazy emptyList()
+        runBlocking { getChapter.awaitAll(currentManga, filterScanlators = false) }
     }
 
     private lateinit var chapterList: List<ReaderChapter>
@@ -253,8 +253,9 @@ class ReaderViewModel(
     }
 
     private suspend fun getChapterList(): List<ReaderChapter> {
-        val manga = manga!!
-        val dbChapters = getChapter.awaitAll(manga.id!!, true)
+        val currentManga = manga ?: return emptyList()
+        val mangaId = currentManga.id ?: return emptyList()
+        val dbChapters = getChapter.awaitAll(mangaId, true)
 
         val selectedChapter = dbChapters.find { it.id == chapterId }
             ?: error("Requested chapter of id $chapterId not found in chapter list")

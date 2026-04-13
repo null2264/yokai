@@ -1277,7 +1277,7 @@ class LibraryPresenter(
         presenterScope.launch {
             // Create a set of the list
             val mangaToDelete = mangas.distinctBy { it.id }
-                .mapNotNull { if (it.id != null) MangaUpdate(it.id!!, favorite = false) else null }
+                .mapNotNull { it.id?.let { id -> MangaUpdate(id, favorite = false) } }
 
             withIOContext { updateManga.awaitAll(mangaToDelete) }
         }
@@ -1312,7 +1312,7 @@ class LibraryPresenter(
     fun reAddMangas(mangas: List<Manga>) {
         presenterScope.launch {
             val mangaToAdd = mangas.distinctBy { it.id }
-                .mapNotNull { if (it.id != null) MangaUpdate(it.id!!, favorite = true) else null }
+                .mapNotNull { it.id?.let { id -> MangaUpdate(id, favorite = true) } }
 
             withIOContext { updateManga.awaitAll(mangaToAdd) }
             (view as? FilteredLibraryController)?.updateStatsPage()
