@@ -17,24 +17,12 @@
         <item quantity="other">%d فئة</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="zero">لم يُزل أيُّ فصل من المصدر:
-            \n%2$s
-            \nأأحذف تنزيلاته؟</item>
-        <item quantity="one">أُزيل فصل من المصدر:
-            \n%2$s
-            \nأأحذف تنزيلاته؟</item>
-        <item quantity="two">أُزيل فصلان من المصدر:
-            \n%2$s
-            \nأأحذف تنزيلاتهما؟</item>
-        <item quantity="few">أُزيلت %1$s فصول من المصدر:
-            \n%2$s
-            \nأأحذف تنزيلاتهم؟</item>
-        <item quantity="many">أُزيل %1$s فصلًا من المصدر:
-            \n%2$s
-            \nأأحذف تنزيلاتهم؟</item>
-        <item quantity="other">أُزيل %1$s فصل من المصدر:
-            \n%2$s
-            \nأأحذف تنزيلاتهم؟</item>
+        <item quantity="zero">لم يُزل أيُّ فصل من المصدر: \n%2$s \nأأحذف تنزيلاته؟</item>
+        <item quantity="one">أُزيل فصل من المصدر: \n%2$s \nأأحذف تنزيلاته؟</item>
+        <item quantity="two">أُزيل فصلان من المصدر: \n%2$s \nأأحذف تنزيلاتهما؟</item>
+        <item quantity="few">أُزيلت %1$s فصول من المصدر: \n%2$s \nأأحذف تنزيلاتهم؟</item>
+        <item quantity="many">أُزيل %1$s فصلًا من المصدر: \n%2$s \nأأحذف تنزيلاتهم؟</item>
+        <item quantity="other">أُزيل %1$s فصل من المصدر: \n%2$s \nأأحذف تنزيلاتهم؟</item>
     </plurals>
     <plurals name="remove_n_chapters">
         <item quantity="zero">ألا أزيل أيَّ فصل؟</item>

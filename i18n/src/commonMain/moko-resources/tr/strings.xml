@@ -161,7 +161,7 @@
     <string name="cookies_cleared">Çerezler temizlendi</string>
     <string name="clear_database">Veritabanını temizle</string>
     <string name="clear_database_summary">Kitaplığına kaydedilmeyen girdilerin geçmiş bilgisini sil</string>
-    <string name="clear_database_confirmation">Emin misin\? Kitaplıkta olmayan girdilerin okunan bölümleri ve ilerlemesi kaybolacak</string>
+    <string name="clear_database_confirmation">Emin misin? Kitaplıkta olmayan girdilerin okunan bölümleri ve ilerlemesi kaybolacak</string>
     <string name="clear_database_completed">Girdiler silindi</string>
     <string name="refresh_library_metadata">Kitaplık üst verilerini yenile</string>
     <string name="updates_covers_genres_desc">Kapakları, türleri, açıklamayı ve manga durum bilgisini günceller</string>
@@ -337,7 +337,7 @@
     <string name="add_categories">Kategori ekle</string>
     <string name="already_in_category">Manga zaten bu kategoride</string>
     <string name="confirm_category_deletion_message">Bu kategorideki mangalar varsayılan kategoriye taşınacak.</string>
-    <string name="confirm_category_deletion">Kategoriyi sil\?</string>
+    <string name="confirm_category_deletion">Kategoriyi sil?</string>
     <string name="category_is_empty">Kategori boş</string>
     <string name="create_new_category">Yeni kategori oluştur</string>
     <string name="_already_in_queue">%1$s zaten kuyrukta</string>
@@ -361,8 +361,7 @@
     <string name="in_progress">Devam Ediyor</string>
     <string name="comic">Çizgi Roman</string>
     <string name="clear_cached_covers_non_library">Kitaplıkta olmayan önbelleklenmiş kapakları temizleyin</string>
-    <string name="delete_old_covers_in_library_used_">Güncellenen kitaplığınızdaki eski ve kullanılmayan önbelleklenmiş manga kapaklarını silin.
-\nŞu anda kullanılan: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Güncellenen kitaplığınızdaki eski ve kullanılmayan önbelleklenmiş manga kapaklarını silin. \nŞu anda kullanılan: %1$s</string>
     <string name="clean_up_cached_covers">Önbelleklenmiş kapakları temizle</string>
     <string name="disable_if_issues_with_updating">Kitaplığınızı güncelleme veya geri yükleme ile ilgili sorunlar yaşıyorsanız bunu devre dışı bırakın</string>
     <string name="clean_read_manga_not_in_library">Kitaplıkta olmayan mangayı temizle</string>
@@ -390,7 +389,7 @@
     <string name="show_bookmarked_chapters">İşaretlenmiş bölümleri göster</string>
     <string name="show_all">Tümünü göster</string>
     <string name="all_read_chapters">Tüm okunan bölümler</string>
-    <string name="mark_all_chapters_as_read">Tüm bölümler okundu olarak işaretlensin mi\?</string>
+    <string name="mark_all_chapters_as_read">Tüm bölümler okundu olarak işaretlensin mi?</string>
     <string name="no_description">Açıklama yok</string>
     <string name="add_to_library">Kitaplığa ekle</string>
     <string name="continue_reading">Okumaya devam et</string>
@@ -437,14 +436,11 @@
     <string name="locale">Yerel</string>
     <string name="automatic_backups">Kendiliğinden yedekleme</string>
     <string name="invalid_backup_file">Geçersiz yedekleme dosyası</string>
-    <string name="invalid_backup_file_type">Geçersiz yedekleme dosyası türü: %1$s
-\n.proto.gz veya .json ile bitmelidir.</string>
+    <string name="invalid_backup_file_type">Geçersiz yedekleme dosyası türü: %1$s \n.proto.gz veya .json ile bitmelidir.</string>
     <string name="backup_has_no_manga">Yedek bir manga içermiyor.</string>
     <string name="restore_missing_sources">Eksik kaynaklar:</string>
     <string name="restore_missing_trackers">İzleyiciler giriş yapmadı:</string>
-    <string name="restore_content_full">Yedek dosyadaki veriler geri yüklenecek.
-\n
-\nEksik uzantıları yüklemeniz ve daha sonra bunları kullanmak için izleme hizmetlerinde oturum açmanız gerekecektir.</string>
+    <string name="restore_content_full">Yedek dosyadaki veriler geri yüklenecek. \n \nEksik uzantıları yüklemeniz ve daha sonra bunları kullanmak için izleme hizmetlerinde oturum açmanız gerekecektir.</string>
     <string name="restoring_backup_canceled">Geri yükleme iptal edildi</string>
     <string name="restore_duration">%02d dk, %02d sn</string>
     <string name="no_chapters_error">Bölüm bulunamadı</string>
@@ -483,7 +479,7 @@
     <string name="hot_pink">Sıcak Pembe</string>
     <string name="spring_blossom">Bahar Çiçeği</string>
     <string name="midnight_dusk">Alacakaranlık</string>
-    <string name="stop_migrating">Geçişi durdur\?</string>
+    <string name="stop_migrating">Geçişi durdur?</string>
     <string name="no_alternatives_found">Alternatif Bulunamadı</string>
     <string name="migrate_">%1$s \'i geçiş yap</string>
     <string name="copy_now">Şimdi kopyala</string>
@@ -504,12 +500,12 @@
     <string name="remove_tracking_from_">%1$s \'den de kaldır</string>
     <string name="custom_manga_info">Özel manga bilgisi</string>
     <string name="error_sharing_cover">Kapak paylaşılamadı</string>
-    <string name="add_x_to_library">%1$s kitaplığa eklensin mi\?</string>
+    <string name="add_x_to_library">%1$s kitaplığa eklensin mi?</string>
     <string name="all_but_bookmarked_chapters">Yer imli bölümler hariç tümü</string>
     <string name="search_chapters">Bölümleri ara</string>
     <string name="select_ending_chapter">Bitiş bölümünü seç</string>
     <string name="select_starting_chapter">Başlangıç bölümünü seç</string>
-    <string name="mark_all_chapters_as_unread">Tüm bölümler okunmadı olarak işaretlensin mi\?</string>
+    <string name="mark_all_chapters_as_unread">Tüm bölümler okunmadı olarak işaretlensin mi?</string>
     <string name="season_">Sezon %1$d</string>
     <string name="volume_">Kısım %1$d</string>
     <string name="start_reading">Okumaya başla</string>
@@ -553,7 +549,7 @@
     <string name="only_unread">Yalnızca okunmayan</string>
     <string name="show_download_button">İndirme düğmesini göster</string>
     <string name="press_and_hold_to_also_reset">Basılı tutma da bölüm geçmişini de sıfırlayabilir</string>
-    <string name="reset_chapter_question">Bölümü sıfırla\?</string>
+    <string name="reset_chapter_question">Bölümü sıfırla?</string>
     <string name="grouped">Gruplu</string>
     <string name="search_recents">Yakındakileri ara…</string>
     <string name="added_">%1$s eklendi</string>
@@ -588,8 +584,7 @@
     <string name="add_x_to">%1$s ögesini ekle…</string>
     <string name="move_x_to">%1$s ögesini taşı…</string>
     <string name="drag_handle">Sürükleme kolu</string>
-    <string name="delete_all_covers__not_in_library_used_">Kitaplığınızda bulunmayan önbelleklenmiş tüm kapakları silin
-\nŞu anda kullanılan: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Kitaplığınızda bulunmayan önbelleklenmiş tüm kapakları silin \nŞu anda kullanılan: %1$s</string>
     <string name="amount_of_pages_to_preload">Okurken önden yüklenecek sayfa sayısı. Daha yüksek değerler, daha yüksek önbellek ve ağ kullanımı pahasına daha sorunsuz bir okuma deneyimiyle sonuçlanacaktır.</string>
     <string name="clean_orphaned_downloads">Artıkları temizle</string>
     <string name="not_logged_into_">%1$s \'de oturum açılamadı</string>
@@ -629,7 +624,7 @@
     <string name="start_past_cutout">Kesmeden sonra başla</string>
     <string name="if_disabled_transition_will_skip">Devre dışıysa, sonraki bölüm yüklendiğinde geçiş sayfası atlanır</string>
     <string name="reset_all_chapters_for_this_">Bu %1$s için tüm bölümleri sıfırla</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Bu, \"%1$s\" in okunma tarihini kaldıracaktır. Emin misiniz\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Bu, \"%1$s\" in okunma tarihini kaldıracaktır. Emin misiniz?</string>
     <string name="manage_whats_downloading">İndirilenleri yönet</string>
     <string name="bottom">Alt</string>
     <string name="beta">BETA</string>
@@ -690,7 +685,7 @@
     <string name="updates_and_history">Güncellemeler ve geçmiş</string>
     <string name="your_library">Kitaplığınız</string>
     <string name="no_chapters_to_delete">Silinecek bölüm yok</string>
-    <string name="remove_all_downloads">Tüm indirmeleri kaldır\?</string>
+    <string name="remove_all_downloads">Tüm indirmeleri kaldır?</string>
     <string name="locked_landscape">Kilitli yatay</string>
     <string name="locked_portrait">Kilitli dikey</string>
     <string name="landscape">Yatay</string>
@@ -771,7 +766,7 @@
     <string name="restrictions_">Kısıtlamalar: %1$s</string>
     <string name="keep_both_on_service">Her ikisini de %1$s\'de tut ve yalnızca yerel olarak değiştir</string>
     <string name="remove_x_from_service_and_add_y">%1$s\'i %2$s\'den kaldır ve %3$s ekle</string>
-    <string name="remove_previous_tracker">Önceki izleyici kaldırılsın mı\?</string>
+    <string name="remove_previous_tracker">Önceki izleyici kaldırılsın mı?</string>
     <string name="select_an_entry">Girdi seç</string>
     <string name="getting_started_guide">Başlangıç kılavuzu</string>
     <string name="no_matches_for_filters_short">Filtreleriniz için eşleşme yok</string>
@@ -792,7 +787,7 @@
     <string name="theme_buttons_based_on_cover">Kapağa dayalı tema düğmeleri</string>
     <string name="log_in">Oturum aç</string>
     <string name="log_out">Oturumu kapat</string>
-    <string name="log_out_from_">%1$s\'ten çıkış yapılsın mı\?</string>
+    <string name="log_out_from_">%1$s\'ten çıkış yapılsın mı?</string>
     <string name="keep_in_">%1$s içinde kal</string>
     <string name="scanlators">Tarayıcılar</string>
     <string name="channel_errors">Hatalar</string>
@@ -836,14 +831,11 @@
     <string name="zoom_double_page_spreads">İki sayfaya yayılanları yakınlaştır</string>
     <string name="clear_database_source_item_count">Veri tabanında %1$d kitaplık dışı girdi</string>
     <string name="database_clean">Veri tabanı temiz</string>
-    <string name="confirm_manga_add_duplicate">Kitaplığınızda aynı ada sahip ama farklı bir kaynaktan olan bir öge var (%1$s).
-\n
-\nHâlâ devam etmek istiyor musunuz\?</string>
+    <string name="confirm_manga_add_duplicate">Kitaplığınızda aynı ada sahip ama farklı bir kaynaktan olan bir öge var (%1$s). \n \nHâlâ devam etmek istiyor musunuz?</string>
     <string name="select_inverse">Tersini seç</string>
     <string name="must_view_details_before_migration">Taşınmadan önce bu girdinin ayrıntılar sayfası görüntülenmelidir</string>
     <string name="select_uninstalled_sources">Kaldırılan kaynakları seç</string>
-    <string name="downloads_swipe_tutorial">İndirmeler, kaydırılarak iptal edilebilir
-\nKapatmak için bu ipucunu kaydırın</string>
+    <string name="downloads_swipe_tutorial">İndirmeler, kaydırılarak iptal edilebilir \nKapatmak için bu ipucunu kaydırın</string>
     <string name="most_entries">Çoğu girdi</string>
     <string name="show_">%1$s göster</string>
     <string name="cover_only_grid">Sadece-kapak ızgara</string>
@@ -868,7 +860,7 @@
     <string name="update_tracking_after_reading">Okuduktan sonra izlemeyi güncelle</string>
     <string name="clear_history">Geçmişi temizle</string>
     <string name="clear_history_completed">Geçmiş silindi</string>
-    <string name="clear_history_confirmation">Emin misiniz\? Tüm geçmiş silinecek.</string>
+    <string name="clear_history_confirmation">Emin misiniz? Tüm geçmiş silinecek.</string>
     <string name="backup_restore_invalid_uri">Hata: boş URI</string>
     <string name="backup_info">Otomatik yedeklemeler şiddetle tavsiye edilir. Kopyaları başka yerlerde de tutmalısınız.</string>
     <string name="download_ahead">Önceden indir</string>

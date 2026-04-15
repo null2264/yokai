@@ -1,41 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <plurals name="chapters_plural">
         <item quantity="one">%1$s Capítulo</item>
         <item quantity="other">%1$s Capítulos</item>
     </plurals>
-
     <plurals name="category_plural">
         <item quantity="one">%d categoría</item>
         <item quantity="other">%d categorías</item>
     </plurals>
-
     <plurals name="remove_n_chapters">
-        <item quantity="one">¿Borrar %1$d capítulo descargado\?</item>
-        <item quantity="other">¿Borrar %1$d capítulos descargados\?</item>
+        <item quantity="one">¿Borrar %1$d capítulo descargado?</item>
+        <item quantity="other">¿Borrar %1$d capítulos descargados?</item>
     </plurals>
-
     <plurals name="after_minutes">
         <item quantity="one">Despois de 1 minutoDespois de %1$s minutos</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="restore_completed_message">
         <item quantity="one">Feito en %1$s con %2$s erro</item>
         <item quantity="other">Feito en %1$s con %2$s erros</item>
     </plurals>
-
     <plurals name="next_unread_chapters">
         <item quantity="one">Seguinte capítulo sen ler</item>
         <item quantity="other">Seguintes %d capítulos sen ler</item>
     </plurals>
-
     <plurals name="extension_updates_available">
         <item quantity="one">Hai unha actualización dunha extensión</item>
         <item quantity="other">Hai actualizacións de %d extensións</item>
     </plurals>
-
     <plurals name="missing_chapters_warning">
         <item quantity="one">Saltouse %d capítulo: falta na fonte ou ignorouse</item>
         <item quantity="other">Saltáronse %d capítulos: faltan na fonte ou ignoráronse</item>

@@ -46,27 +46,19 @@
         <item quantity="other">%d mangas migrés</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Copier le manga %1$d%2$s \?</item>
-        <item quantity="many">Copier les mangas %1$d%2$s \?</item>
-        <item quantity="other">Copier les mangas %1$d%2$s \?</item>
+        <item quantity="one">Copier le manga %1$d%2$s ?</item>
+        <item quantity="many">Copier les mangas %1$d%2$s ?</item>
+        <item quantity="other">Copier les mangas %1$d%2$s ?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migrer le manga %1$d%2$s \?</item>
-        <item quantity="many">Migrer les mangas %1$d%2$s \?</item>
-        <item quantity="other">Migrer les mangas %1$d%2$s \?</item>
+        <item quantity="one">Migrer le manga %1$d%2$s ?</item>
+        <item quantity="many">Migrer les mangas %1$d%2$s ?</item>
+        <item quantity="other">Migrer les mangas %1$d%2$s ?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Un chapitre a été retiré de la source :
-\n%2$s
-\nSupprimer le téléchargement \?</item>
-        <item quantity="many">%1$s chapitres ont été retirés de la source :
-\n%2$s
-\n
-\nSupprimer les téléchargements \?</item>
-        <item quantity="other">%1$s chapitres ont été retirés de la source :
-\n%2$s
-\n
-\nSupprimer les téléchargements \?</item>
+        <item quantity="one">Un chapitre a été retiré de la source : \n%2$s \nSupprimer le téléchargement ?</item>
+        <item quantity="many">%1$s chapitres ont été retirés de la source : \n%2$s \n \nSupprimer les téléchargements ?</item>
+        <item quantity="other">%1$s chapitres ont été retirés de la source : \n%2$s \n \nSupprimer les téléchargements ?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Effectuée en %1$s avec %2$s erreur</item>

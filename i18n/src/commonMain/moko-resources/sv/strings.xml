@@ -152,7 +152,7 @@
     <string name="max_auto_backups">Max automatiska backups</string>
     <string name="backup_created">Säkerhetskopia skapad</string>
     <string name="restore_completed">Återställning slutförd</string>
-    <string name="what_should_backup">Vad vill du skapa backup på\?</string>
+    <string name="what_should_backup">Vad vill du skapa backup på?</string>
     <string name="restoring_backup">Återställer säkerhetskopia</string>
     <string name="clear_chapter_cache">Rensa kapitelcache</string>
     <string name="used_">Används: %1$s</string>
@@ -161,7 +161,7 @@
     <string name="cookies_cleared">Cookies rensade</string>
     <string name="clear_database">Rensa databas</string>
     <string name="clear_database_summary">Radera historik för poster som inte sparas i ditt bibliotek</string>
-    <string name="clear_database_confirmation">Är du säker på det\? Lästa kapitel och framsteg för poster som inte finns i biblioteket kommer att gå förlorade</string>
+    <string name="clear_database_confirmation">Är du säker på det? Lästa kapitel och framsteg för poster som inte finns i biblioteket kommer att gå förlorade</string>
     <string name="clear_database_completed">Inlägg raderade</string>
     <string name="refresh_library_metadata">Uppdatera biblioteksmetadata</string>
     <string name="updates_covers_genres_desc">Uppdaterar omslag, genrer, beskrivning och statusinformation för poster</string>
@@ -221,7 +221,7 @@
     <string name="page_">Sida: %1$d</string>
     <string name="next_chapter_not_found">Nästa kapitel kunde inte hittas</string>
     <string name="decode_image_error">Bilden kunde inte laddas</string>
-    <string name="use_image_as_cover">Vill du ställa in denna bilden som omslaget\?</string>
+    <string name="use_image_as_cover">Vill du ställa in denna bilden som omslaget?</string>
     <string name="finished_chapter">Färdig:</string>
     <string name="current_chapter">Nuvarande:</string>
     <string name="next_title">Nästa:</string>
@@ -337,14 +337,11 @@
     <string name="locale">Språk</string>
     <string name="automatic_backups">Automatiska säkerhetskopior</string>
     <string name="invalid_backup_file">Ogiltig säkerhetskopia</string>
-    <string name="invalid_backup_file_type">Ogiltig säkerhetskopia: %1$s
-\nDet bör sluta med .proto.gz eller .json.</string>
+    <string name="invalid_backup_file_type">Ogiltig säkerhetskopia: %1$s \nDet bör sluta med .proto.gz eller .json.</string>
     <string name="backup_has_no_manga">Säkerhetskopian innehåller inga inlägg.</string>
     <string name="restore_missing_sources">Saknade källor:</string>
     <string name="restore_missing_trackers">Spårare som inte har loggats in:</string>
-    <string name="restore_content_full">Data från säkerhetskopian återställs.
-\n
-\nDu måste installera eventuella tillägg som saknas och logga in på spårningstjänster efteråt för att kunna använda dem.</string>
+    <string name="restore_content_full">Data från säkerhetskopian återställs. \n \nDu måste installera eventuella tillägg som saknas och logga in på spårningstjänster efteråt för att kunna använda dem.</string>
     <string name="restoring_backup_canceled">Avbruten återställning</string>
     <string name="restore_duration">%02d minuter, %02d sekunder</string>
     <string name="source_migration_guide">Migreringsguide för källor</string>
@@ -400,7 +397,7 @@
     <string name="add_categories">Lägg till kategorin</string>
     <string name="already_in_category">Inlägg finns redan i kategorin</string>
     <string name="confirm_category_deletion_message">Inlägg i denna kategori kommer att flyttas till standardkategorin.</string>
-    <string name="confirm_category_deletion">Ta bort kategori\?</string>
+    <string name="confirm_category_deletion">Ta bort kategori?</string>
     <string name="category_is_empty">Kategorin är tom</string>
     <string name="create_new_category">Skapa ny kategori</string>
     <string name="_already_in_queue">%1$s är redan i kö</string>
@@ -462,7 +459,7 @@
     <string name="source_hidden">Källa dold</string>
     <string name="all_sources">Alla källor</string>
     <string name="search_extensions">Sök tillägg…</string>
-    <string name="reset_chapter_question">Återställ kapitel\?</string>
+    <string name="reset_chapter_question">Återställ kapitel?</string>
     <string name="search_recents">Sök senaste…</string>
     <string name="view_all_updates">Visa alla uppdateringar</string>
     <string name="view_history">Visa historik</string>
@@ -471,7 +468,7 @@
     <string name="read_">Läs %1$s</string>
     <string name="last_read_">Senast läst %1$s</string>
     <string name="reset_all_chapters_for_this_">Återställ alla kapitel för detta %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Detta tar bort läsdatumet \"%1$s\". Är du säker\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Detta tar bort läsdatumet \"%1$s\". Är du säker?</string>
     <string name="newly_added">Nyligen tillagda</string>
     <string name="recents">Senaste</string>
     <string name="auto_refresh_covers_summary">Uppdatera även omslagen i biblioteket när du uppdaterar biblioteket</string>
@@ -512,14 +509,14 @@
     <string name="show_downloaded_chapters">Visa nedladdade kapitel</string>
     <string name="show_bookmarked_chapters">Visa bokmärkta kapitel</string>
     <string name="show_all">Visa alla</string>
-    <string name="add_x_to_library">Lägga till %1$s i biblioteket\?</string>
+    <string name="add_x_to_library">Lägga till %1$s i biblioteket?</string>
     <string name="all_but_bookmarked_chapters">Alla kapitel utom bokmärkta</string>
     <string name="all_read_chapters">Alla lästa kapitel</string>
     <string name="search_chapters">Sök kapitel</string>
     <string name="select_ending_chapter">Välj avslutande kapitel</string>
     <string name="select_starting_chapter">Välj startkapitel</string>
-    <string name="mark_all_chapters_as_unread">Markera alla kapitel som olästa\?</string>
-    <string name="mark_all_chapters_as_read">Markera alla kapitel som lästa\?</string>
+    <string name="mark_all_chapters_as_unread">Markera alla kapitel som olästa?</string>
+    <string name="mark_all_chapters_as_read">Markera alla kapitel som lästa?</string>
     <string name="no_description">Ingen beskrivning</string>
     <string name="season_">Säsong %1$d</string>
     <string name="volume_">Volym %1$d</string>
@@ -566,11 +563,9 @@
     <string name="new_category">Ny kategori</string>
     <string name="add_x_to">Lägg till %1$s i…</string>
     <string name="move_x_to">Flytta %1$s till…</string>
-    <string name="delete_all_covers__not_in_library_used_">Ta bort alla cachade omslag som inte finns i ditt bibliotek
-\nFör närvarande används: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Ta bort alla cachade omslag som inte finns i ditt bibliotek \nFör närvarande används: %1$s</string>
     <string name="clear_cached_covers_non_library">Rensa cachade omslag som inte finns i biblioteket</string>
-    <string name="delete_old_covers_in_library_used_">Ta bort gamla och oanvända cachade omslag av poster i ditt bibliotek som har uppdaterats.
-\nAnvänder för närvarande: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Ta bort gamla och oanvända cachade omslag av poster i ditt bibliotek som har uppdaterats. \nAnvänder för närvarande: %1$s</string>
     <string name="clean_up_cached_covers">Rensa cachelagrade omslag</string>
     <string name="disable_if_issues_with_updating">Inaktivera detta om du har problem med att uppdatera eller återställa ditt bibliotek</string>
     <string name="no_folders_to_cleanup">Inga mappar att rensa</string>
@@ -594,7 +589,7 @@
     <string name="spring_blossom">Vårblommor</string>
     <string name="midnight_dusk">Midnattskymning</string>
     <string name="skipping_">(hoppar över %1$d)</string>
-    <string name="stop_migrating">Sluta migrera\?</string>
+    <string name="stop_migrating">Sluta migrera?</string>
     <string name="no_alternatives_found">Inga alternativ hittades</string>
     <string name="no_chapters_found_for_migration">Inga kapitel hittade, denna serie kan inte användas för migrering</string>
     <string name="migrate_">Migrera %1$s</string>
@@ -689,7 +684,7 @@
     <string name="updates_and_history">Uppdateringar och historia</string>
     <string name="your_library">Ditt bibliotek</string>
     <string name="no_chapters_to_delete">Inga kapitel att radera</string>
-    <string name="remove_all_downloads">Ta bort alla nedladdningar\?</string>
+    <string name="remove_all_downloads">Ta bort alla nedladdningar?</string>
     <string name="label_global_search">Global sökning</string>
     <string name="locked_landscape">Låst landskap</string>
     <string name="locked_portrait">Låst porträtt</string>
@@ -785,12 +780,12 @@
     <string name="theme_buttons_based_on_cover">Temaknappar baserade på omslag</string>
     <string name="show_in_sources_and_extensions">Visa i källor och tilläggslistor</string>
     <string name="log_in">Logga in</string>
-    <string name="log_out_from_">Logga ut från %1$s\?</string>
+    <string name="log_out_from_">Logga ut från %1$s?</string>
     <string name="filter_groups">Filtrera översättningsgrupp</string>
     <string name="sapphire_dusk">Safirskymning</string>
     <string name="helpful_translation_links">Användbara översättningslänkar</string>
     <string name="select_an_entry">Välj ett objekt</string>
-    <string name="remove_previous_tracker">Ta bort förregående spårare\?</string>
+    <string name="remove_previous_tracker">Ta bort förregående spårare?</string>
     <string name="keep_both_on_service">Behåll båda på %1$s och ersätt bara lokalt</string>
     <string name="cannot_remove_tracking_while_offline">Spårare kan inte tas bort från %1$s medans du är offline</string>
     <string name="use_suggested_date">Använd föreslaget datum</string>
@@ -836,9 +831,7 @@
     <string name="check_for_beta_releases">Kontrollera om det finns betaversioner</string>
     <string name="new_beta_version_available">Ny beta-version tillgänglig!</string>
     <string name="warning_unenroll_from_beta">Att återgå till den tidigare produktionsversionen kan orsaka problem och kan kräva att du rensar appdata.</string>
-    <string name="confirm_manga_add_duplicate">Du har en post i ditt bibliotek med samma namn men från en annan källa (%1$s).
-\n
-\nVill du fortfarande fortsätta\?</string>
+    <string name="confirm_manga_add_duplicate">Du har en post i ditt bibliotek med samma namn men från en annan källa (%1$s). \n \nVill du fortfarande fortsätta?</string>
     <string name="select_inverse">Välj omvänd</string>
     <string name="cover_only_grid">Endast omslags-rutnät</string>
     <string name="notification_update_error">%1$d uppdatering(ar) misslyckades</string>
@@ -855,15 +848,14 @@
     <string name="tap_to_learn_more">Tryck på för att få veta mer</string>
     <string name="clear_history">Rensa historik</string>
     <string name="clear_history_completed">Historiken har tagits bort</string>
-    <string name="clear_history_confirmation">Är du säker\? All historik kommer att försvinna.</string>
+    <string name="clear_history_confirmation">Är du säker? All historik kommer att försvinna.</string>
     <string name="use_staggered_grid">Använd ett förskjutet rutnät</string>
     <string name="pref_update_only_completely_read_summary">Uppdatera bara inlägg om det inte finns några olästa kapitel (helt lästa)</string>
     <string name="select_uninstalled_sources">Välj avinstallerade källor</string>
     <string name="show_">Visa %1$s</string>
     <string name="update_tracking_after_reading">Uppdatera spårning efter läsning</string>
     <string name="most_entries">Flest inlägg</string>
-    <string name="downloads_swipe_tutorial">Nedladdningar kan avbrytas genom att svepa bort dem
-\nSvep det här tipset för att avlägsna det</string>
+    <string name="downloads_swipe_tutorial">Nedladdningar kan avbrytas genom att svepa bort dem \nSvep det här tipset för att avlägsna det</string>
     <string name="pref_clear_webview_data">Rensa data från WebView</string>
     <string name="must_view_details_before_migration">Den här posten\'s informationssida måste ses innan du kan migrera</string>
     <string name="view_all">Visa alla</string>
@@ -956,4 +948,8 @@
     <string name="app_settings">Appinställningar</string>
     <string name="pref_debug_info">Felsökningsinformation</string>
     <string name="label_background_activity">Bakgrundsaktivitet</string>
+    <string name="action_menu_overflow_description">Fler inställningar</string>
+    <string name="action_bar_up_description">Navigera upp</string>
+    <string name="onboarding_heading">Välkommen!</string>
+    <string name="onboarding_finish">Kör igång</string>
 </resources>

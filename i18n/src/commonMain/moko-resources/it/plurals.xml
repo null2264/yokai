@@ -11,9 +11,9 @@
         <item quantity="other">%d categorie</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Rimuovere %1$d capitolo scaricato\?</item>
-        <item quantity="many">Rimuovere %1$d capitoli scaricati\?</item>
-        <item quantity="other">Rimuovere %1$d capitoli scaricati\?</item>
+        <item quantity="one">Rimuovere %1$d capitolo scaricato?</item>
+        <item quantity="many">Rimuovere %1$d capitoli scaricati?</item>
+        <item quantity="other">Rimuovere %1$d capitoli scaricati?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Dopo un minuto</item>
@@ -36,27 +36,19 @@
         <item quantity="other">%d serie migrate</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Copiare la serie %1$d%2$s\?</item>
-        <item quantity="many">Copiare le serie %1$d%2$s\?</item>
-        <item quantity="other">Copiare le serie %1$d%2$s\?</item>
+        <item quantity="one">Copiare la serie %1$d%2$s?</item>
+        <item quantity="many">Copiare le serie %1$d%2$s?</item>
+        <item quantity="other">Copiare le serie %1$d%2$s?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migrare la serie %2$s\?</item>
-        <item quantity="many">Migrare le serie %1$d%2$s\?</item>
-        <item quantity="other">Migrare le serie %1$d%2$s\?</item>
+        <item quantity="one">Migrare la serie %2$s?</item>
+        <item quantity="many">Migrare le serie %1$d%2$s?</item>
+        <item quantity="other">Migrare le serie %1$d%2$s?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Un capitolo è stato rimosso dalla sorgente:
-\n%2$s
-\nEliminare il suo download\?</item>
-        <item quantity="many">%1$s capitoli sono stati rimossi dalla sorgente:
-\n%2$s
-\n
-\nEliminare i loro download\?</item>
-        <item quantity="other">%1$s capitoli sono stati rimossi dalla sorgente:
-\n%2$s
-\n
-\nEliminare i loro download\?</item>
+        <item quantity="one">Un capitolo è stato rimosso dalla sorgente: \n%2$s \nEliminare il suo download?</item>
+        <item quantity="many">%1$s capitoli sono stati rimossi dalla sorgente: \n%2$s \n \nEliminare i loro download?</item>
+        <item quantity="other">%1$s capitoli sono stati rimossi dalla sorgente: \n%2$s \n \nEliminare i loro download?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">e un altro capitolo</item>
@@ -76,7 +68,7 @@
     <plurals name="chapters_plural">
         <item quantity="one">%1$s capitolo</item>
         <item quantity="many">%1$s capitoli</item>
-        <item quantity="other"/>
+        <item quantity="other"></item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d pagina</item>

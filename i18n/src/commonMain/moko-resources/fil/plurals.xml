@@ -13,8 +13,8 @@
         <item quantity="other">%d (na) kategorya</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Tanggalin ang %1$d na-download na kabanata\?</item>
-        <item quantity="other">Tanggalin ang %1$d (na) na-download na kabanata\?</item>
+        <item quantity="one">Tanggalin ang %1$d na-download na kabanata?</item>
+        <item quantity="other">Tanggalin ang %1$d (na) na-download na kabanata?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Na-restore sa loob ng %1$s na may %2$s error</item>
@@ -53,25 +53,20 @@
         <item quantity="other">Pagkatapos ng %1$s (na) minuto</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Ilipat ang %1$d manga %2$s\?</item>
-        <item quantity="other">Ilipat ang %1$d (na) manga %2$s\?</item>
+        <item quantity="one">Ilipat ang %1$d manga %2$s?</item>
+        <item quantity="other">Ilipat ang %1$d (na) manga %2$s?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Tinanggal sa source ang kabanata:
-\n%2$s
-\nBurahin ang na-download\?</item>
-        <item quantity="other">%1$s (na) kabanata ang tinanggal sa source:
-\n%2$s
-\n
-\nBurahin ang mga na-download\?</item>
+        <item quantity="one">Tinanggal sa source ang kabanata: \n%2$s \nBurahin ang na-download?</item>
+        <item quantity="other">%1$s (na) kabanata ang tinanggal sa source: \n%2$s \n \nBurahin ang mga na-download?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="one">Nailipat na ang %d manga</item>
         <item quantity="other">Nailipat na ang %d (na) manga</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Kopyahin ang %1$d manga %2$s\?</item>
-        <item quantity="other">Kopyahin ang %1$d (na) manga %2$s\?</item>
+        <item quantity="one">Kopyahin ang %1$d manga %2$s?</item>
+        <item quantity="other">Kopyahin ang %1$d (na) manga %2$s?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Tapos na ang paglilinis. Inalis ang %d folder</item>

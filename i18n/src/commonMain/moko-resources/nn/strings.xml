@@ -138,7 +138,7 @@
     <string name="backup_has_no_manga">Reservekopi inneheld ingen manga.</string>
     <string name="restore_missing_sources">Manglande kjelder:</string>
     <string name="restore_missing_trackers">Sporingstenester ikkje logga inn i:</string>
-    <string name="what_should_backup">Kva ønskjer du å ta reservekopi av\?</string>
+    <string name="what_should_backup">Kva ønskjer du å ta reservekopi av?</string>
     <string name="network">Nettverk</string>
     <string name="used_">Brukt: %1$s</string>
     <string name="check_for_extension_updates">Sjå etter oppdateringar for utvidingar</string>

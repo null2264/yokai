@@ -4,12 +4,10 @@
         <item quantity="one">%d Kategoriya%d Mga kategoriya</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="after_minutes">
         <item quantity="one">Human sa %1$s ka minutoHuman sa %1$s ka minuto</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="restore_completed_message">
         <item quantity="one">Nabuhat sa %1$s nga adunay %2$s nga sayup</item>
         <item quantity="other">Nabuhat sa %1$s nga adunay %2$s nga mga sayop</item>

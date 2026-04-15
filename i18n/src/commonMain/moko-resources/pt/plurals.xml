@@ -11,9 +11,9 @@
         <item quantity="other">%d categorias</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Remover %1$d capítulo transferido\?</item>
-        <item quantity="many">Remover %1$d capítulos transferidos\?</item>
-        <item quantity="other">Remover %1$d capítulos transferidos\?</item>
+        <item quantity="one">Remover %1$d capítulo transferido?</item>
+        <item quantity="many">Remover %1$d capítulos transferidos?</item>
+        <item quantity="other">Remover %1$d capítulos transferidos?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Concluído em %1$s com %2$s erro</item>
@@ -22,6 +22,7 @@
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s capítulo</item>
+        <item quantity="many"></item>
         <item quantity="other">%1$s capítulos</item>
     </plurals>
     <plurals name="notification_and_n_more">
@@ -55,25 +56,19 @@
         <item quantity="other">%d mangas migradas</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Copiar %1$d%2$s manga\?</item>
-        <item quantity="many">Copiar %1$d%2$s mangas\?</item>
-        <item quantity="other">Copiar %1$d%2$s mangas\?</item>
+        <item quantity="one">Copiar %1$d%2$s manga?</item>
+        <item quantity="many">Copiar %1$d%2$s mangas?</item>
+        <item quantity="other">Copiar %1$d%2$s mangas?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migrar %1$d%2$s manga\?</item>
-        <item quantity="many">Migrar %1$d%2$s mangas\?</item>
-        <item quantity="other">Migrar %1$d%2$s mangas\?</item>
+        <item quantity="one">Migrar %1$d%2$s manga?</item>
+        <item quantity="many">Migrar %1$d%2$s mangas?</item>
+        <item quantity="other">Migrar %1$d%2$s mangas?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Um capítulo foi removido da fonte:
-\n%2$s
-\nApagar a sua transferência\?</item>
-        <item quantity="many">%1$s capítulos foram removidos da fonte:
-\n%2$s
-\nApagar as suas transferências\?</item>
-        <item quantity="other">%1$s capítulos foram removidos da fonte:
-\n%2$s
-\nApagar as suas transferências\?</item>
+        <item quantity="one">Um capítulo foi removido da fonte: \n%2$s \nApagar a sua transferência?</item>
+        <item quantity="many">%1$s capítulos foram removidos da fonte: \n%2$s \nApagar as suas transferências?</item>
+        <item quantity="other">%1$s capítulos foram removidos da fonte: \n%2$s \nApagar as suas transferências?</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d página</item>

@@ -171,7 +171,7 @@
     <string name="completed">Dokončený</string>
     <string name="chapter_">Kapitola %1$s</string>
     <string name="creating_backup">Vytvára sa záloha</string>
-    <string name="what_should_backup">Čo chcete zálohovať\?</string>
+    <string name="what_should_backup">Čo chcete zálohovať?</string>
     <string name="restoring_backup">Obnovuje sa záloha</string>
     <string name="update">Aktualizovať</string>
     <string name="no_new_updates_available">Žiadné nové aktualizácie</string>
@@ -190,7 +190,7 @@
     <string name="set_as_cover">Nastaviť ako obal</string>
     <string name="cover_updated">Obal bol aktualizovaný</string>
     <string name="next_chapter_not_found">Ďalšia kapitola nebola nájdená</string>
-    <string name="use_image_as_cover">Chcete použiť tento obrázok ako obal\?</string>
+    <string name="use_image_as_cover">Chcete použiť tento obrázok ako obal?</string>
     <string name="next">Ďalší</string>
     <string name="previous">Predchádzajúcí</string>
     <string name="theres_no_next_chapter">Žiadna ďalšia kapitola</string>
@@ -220,7 +220,7 @@
     <string name="clear_cookies">Vymazať cookies</string>
     <string name="cookies_cleared">Súbory cookie boli vymazané</string>
     <string name="clear_database">Vymazať databázu</string>
-    <string name="clear_database_confirmation">Ste si istý\? Čítanie kapitol a pokrok v mangách mimo vašu knižnicu sa stratí</string>
+    <string name="clear_database_confirmation">Ste si istý? Čítanie kapitol a pokrok v mangách mimo vašu knižnicu sa stratí</string>
     <string name="clear_database_completed">Záznamy boli odstránené</string>
     <string name="updates_tracking_details">Aktualizuje stav, skóre a poslednú čítanú kapitolu zo sledovacích služieb</string>
     <string name="pref_global_search">Hľadať všade</string>
@@ -332,7 +332,7 @@
     <string name="updating_library">Aktualizácia knižnice</string>
     <string name="auto_download_while_reading">Automatické sťahovanie počas čítania</string>
     <string name="long_strip_side_padding_5">5%</string>
-    <string name="remove_all_downloads">Odstrániť všetky stiahnuté súbory\?</string>
+    <string name="remove_all_downloads">Odstrániť všetky stiahnuté súbory?</string>
     <string name="lock_with_biometrics">Vyžaduje odomknutie</string>
     <string name="unlock">Odomknúť</string>
     <string name="new_chapters">Nové kapitoly</string>
@@ -366,7 +366,7 @@
     <string name="no_chapters_to_delete">Žiadne kapitoly na odstránenie</string>
     <string name="show_categories_while_filtering">Zobrazenie prázdnych kategórií pri filtrovaní</string>
     <string name="no_matches_for_filters_short">Žiadne zhody pre vaše filtre</string>
-    <string name="confirm_category_deletion">Odstrániť kategóriu\?</string>
+    <string name="confirm_category_deletion">Odstrániť kategóriu?</string>
     <string name="already_in_category">Manga už je v kategórii</string>
     <string name="add_categories">Pridanie kategórií</string>
     <string name="add_edit_categories">Pridanie/úprava kategórií</string>
@@ -432,9 +432,7 @@
     <string name="adding_category_to_queue">Pridanie %1$s na aktualizáciu frontu</string>
     <string name="move_dynamic_to_bottom">Presunúť zbalené dynamické kategórie nadol</string>
     <string name="when_grouping_by_sources_tags">Pri zoskupovaní knižnice podľa zdrojov, stavu atď.</string>
-    <string name="confirm_manga_add_duplicate">V knižnici máte položku s rovnakým názvom, ale z iného zdroja (%1$s).
-\n
-\nChcete ešte pokračovať\?</string>
+    <string name="confirm_manga_add_duplicate">V knižnici máte položku s rovnakým názvom, ale z iného zdroja (%1$s). \n \nChcete ešte pokračovať?</string>
     <string name="download_queue_size_warning">Upozornenie: Veľké hromadné sťahovanie môže viesť k spomaleniu zdrojov a/alebo blokovaniu Tachiyomi. Klepnutím sa dozviete viac.</string>
     <string name="skipped_reason_completed">Preskočené, pretože séria je dokončená</string>
     <string name="skipped_reason_not_caught_up">Preskočené, pretože obsahuje neprečítané kapitoly</string>
@@ -477,7 +475,7 @@
     <string name="enhanced_tracking_info">Služby, ktoré poskytujú rozšírené funkcie pre konkrétne zdroje. Mangy sú automaticky sledované po pridaní do vašej knižnice.</string>
     <string name="tracking_info">Jednosmerná synchronizácia na aktualizáciu priebehu kapitol v službách sledovania. Nastavte sledovanie pre jednotlivé položky mangy z ich tlačidla sledovania.</string>
     <string name="clear_history_completed">História bola odstránená</string>
-    <string name="clear_history_confirmation">Ste si istý\? Celá história sa stratí.</string>
+    <string name="clear_history_confirmation">Ste si istý? Celá história sa stratí.</string>
     <string name="display_options">Možnosti zobrazenia</string>
     <string name="pref_high">Vysoké</string>
     <string name="pref_low">Nízke</string>
@@ -494,7 +492,7 @@
     <string name="no_description">Bez popisu</string>
     <string name="no_match_found">Nenašla sa žiadna zhoda</string>
     <string name="disable_battery_optimization">Zakázať optimalizáciu batérie</string>
-    <string name="log_out_from_">Odhlásiť sa z %1$s\?</string>
+    <string name="log_out_from_">Odhlásiť sa z %1$s?</string>
     <string name="successfully_logged_out">Teraz ste odhlásení</string>
     <string name="move_series_to_top">Presunúť sériu na začiatok</string>
     <string name="webview_is_required">WebView je potrebné pre Tachiyomi</string>
@@ -505,9 +503,7 @@
     <string name="paged">Stránkovanie</string>
     <string name="pauses_reading_history">Pozastaví históriu čítania</string>
     <string name="backup_has_no_manga">Záloha neobsahuje žiadnu mangu.</string>
-    <string name="restore_content_full">Údaje zo záložného súboru sa obnovia.
-\n
-\nBudete musieť nainštalovať všetky chýbajúce rozšírenia a potom sa prihlásiť do sledovacích služieb, aby ste ich mohli používať.</string>
+    <string name="restore_content_full">Údaje zo záložného súboru sa obnovia. \n \nBudete musieť nainštalovať všetky chýbajúce rozšírenia a potom sa prihlásiť do sledovacích služieb, aby ste ich mohli používať.</string>
     <string name="complete">Kompletný</string>
     <string name="include_">Zahrnúť: %s</string>
     <string name="open_source_licenses">Licencia Open Source</string>

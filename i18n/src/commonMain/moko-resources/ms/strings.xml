@@ -144,7 +144,7 @@
     <string name="cookies_cleared">Cookies dihapuskan</string>
     <string name="clear_database">Hapus pangkalan data</string>
     <string name="clear_database_summary">Hapus sejarah entri yang tidak disimpan di dalam pustaka</string>
-    <string name="clear_database_confirmation">Adakah anda pasti\? Bab dibaca dan kemajuan entri bukan-pustaka akan hilang</string>
+    <string name="clear_database_confirmation">Adakah anda pasti? Bab dibaca dan kemajuan entri bukan-pustaka akan hilang</string>
     <string name="clear_database_completed">Entri dihapuskan</string>
     <string name="refresh_library_metadata">Muat semula metadata koleksi</string>
     <string name="updates_covers_genres_desc">Kemas kini muka hadapan, genre, keterangan dan maklumat status manga</string>
@@ -356,7 +356,7 @@
     <string name="add_categories">Tambah</string>
     <string name="already_in_category">Manga sudah tersedia di pustaka</string>
     <string name="confirm_category_deletion_message">Manga di kategori ini akan dipindahkan ke kategori.</string>
-    <string name="confirm_category_deletion">Padam kategori\?</string>
+    <string name="confirm_category_deletion">Padam kategori?</string>
     <string name="category_is_empty">Kategori kosong</string>
     <string name="create_new_category">Cipta kategori baharu</string>
     <string name="_already_in_queue">%1$s sudah tersedia di barisan</string>
@@ -381,7 +381,7 @@
     <string name="read_">Baca %1$s</string>
     <string name="last_read_">Bacaan terakhir %1$s</string>
     <string name="reset_all_chapters_for_this_">Ulang semula semua bab untuk %1$s ini</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Ini akan membuang tarikh bacaan bagi \"%1$s\". Anda pasti\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Ini akan membuang tarikh bacaan bagi \"%1$s\". Anda pasti?</string>
     <string name="newly_added">Baharu di</string>
     <string name="recents">Baru</string>
     <string name="auto_refresh_covers_summary">Segar semula covers di pustaka juga apabila mengemas kini pustaka</string>
@@ -428,11 +428,9 @@
     <string name="match_enabled_sources">Padankan sumber yang di</string>
     <string name="match_pinned_sources">Padankan sumber yang di</string>
     <string name="only_search_pinned_when">Hanya cari sumber yang di</string>
-    <string name="delete_all_covers__not_in_library_used_">Padam semua covers cached yang tidak ada di pustaka
-\nTengah di guna: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Padam semua covers cached yang tidak ada di pustaka \nTengah di guna: %1$s</string>
     <string name="clear_cached_covers_non_library">Besihkan cached covers bukan di</string>
-    <string name="delete_old_covers_in_library_used_">Padam cached covers lama dan tidak di guna di dalam pustaka yang telah di kemas kini.
-\nTengah digunakan: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Padam cached covers lama dan tidak di guna di dalam pustaka yang telah di kemas kini. \nTengah digunakan: %1$s</string>
     <string name="clean_up_cached_covers">Bersihkan cached</string>
     <string name="disable_if_issues_with_updating">Nyahaktif ini jikalau anda mengalaki isu dengan mengemas kini atau memulihkan pustaka anda</string>
     <string name="no_folders_to_cleanup">Tiada folder untuk di</string>
@@ -447,7 +445,7 @@
     <string name="restore_error">Gagal memulihkan sandaran</string>
     <string name="white_theme">Pure White</string>
     <string name="skipping_">(Melangkah %1$d)</string>
-    <string name="stop_migrating">Hentikan perpindahan\?</string>
+    <string name="stop_migrating">Hentikan perpindahan?</string>
     <string name="no_alternatives_found">Tiada Alternatif Di</string>
     <string name="no_chapters_found_for_migration">Tiada bab di jumpai, manga ini tidak boleh di gunakan untuk</string>
     <string name="migrate_">Pindah %1$s</string>
@@ -491,13 +489,13 @@
     <string name="show_downloaded_chapters">Tunjuk bab yang telah di muat</string>
     <string name="show_bookmarked_chapters">Tunjuk bab yang di</string>
     <string name="show_all">Tunjuk</string>
-    <string name="add_x_to_library">Tambah %1$s ke pustaka\?</string>
+    <string name="add_x_to_library">Tambah %1$s ke pustaka?</string>
     <string name="all_but_bookmarked_chapters">Semua tetapi bab yang ditanda</string>
     <string name="all_read_chapters">Semua yang sudah dibaca</string>
     <string name="search_chapters">Cari</string>
     <string name="select_ending_chapter">Pilih penamat</string>
     <string name="select_starting_chapter">Pilih permulaan bab</string>
-    <string name="mark_all_chapters_as_read">Tanda semua bab sebagai sudah di baca\?</string>
+    <string name="mark_all_chapters_as_read">Tanda semua bab sebagai sudah di baca?</string>
     <string name="no_description">Tiada</string>
     <string name="add_to_library">Tambah ke Pustaka</string>
     <string name="season_">Musim %1$d</string>
@@ -521,7 +519,7 @@
     <string name="all_sources">Semua</string>
     <string name="search_extensions">Cari penambahan…</string>
     <string name="in_library">Dalam Pustaka</string>
-    <string name="reset_chapter_question">Ulang semula bab\?</string>
+    <string name="reset_chapter_question">Ulang semula bab?</string>
     <string name="keep">Simpan</string>
     <string name="top">Atas</string>
     <string name="tag">Tag</string>
@@ -556,14 +554,11 @@
     <string name="locale">Penempatan</string>
     <string name="automatic_backups">Sandaran automatik</string>
     <string name="invalid_backup_file">Fail sandaran tidak sah</string>
-    <string name="invalid_backup_file_type">Jenis fail sandaran tidak sah: %1$s\t
-\nIa sepatutnya berakhir dengan .proto.gz atau .json.</string>
+    <string name="invalid_backup_file_type">Jenis fail sandaran tidak sah: %1$s\t \nIa sepatutnya berakhir dengan .proto.gz atau .json.</string>
     <string name="backup_has_no_manga">Sandaran tidak mengandungi apa-apa siri.</string>
     <string name="restore_missing_sources">Tiada sumber:</string>
     <string name="restore_missing_trackers">Penjejak yang tidak dilog masuk:</string>
-    <string name="restore_content_full">Data dari fail sandaran akan dipulihkan.
-\n
-\nAnda perlu memasang sambungan yang hilang dan log masuk ke penjejakan untuk menggunakannya.</string>
+    <string name="restore_content_full">Data dari fail sandaran akan dipulihkan. \n \nAnda perlu memasang sambungan yang hilang dan log masuk ke penjejakan untuk menggunakannya.</string>
     <string name="restoring_backup_canceled">Pemulih dibatalkan</string>
     <string name="restore_duration">%02d minit, %02d saat</string>
     <string name="file_picker_error">Tiada aplikasi memilih fail</string>
@@ -584,7 +579,7 @@
     <string name="hide_bottom_nav">Auto-sembunyi navigasi bawah</string>
     <string name="last_used_library_recents">Akhir digunakan (Pustaka atau Terkini)</string>
     <string name="custom_manga_info">Maklumat manga tersuai</string>
-    <string name="mark_all_chapters_as_unread">Tanda semua bab sebagai belum dibaca\?</string>
+    <string name="mark_all_chapters_as_unread">Tanda semua bab sebagai belum dibaca?</string>
     <string name="cutout_ignore">Abai kawasan bertakuk</string>
     <string name="start_past_cutout">Mula selepas kawasan bertakuk</string>
     <string name="pad_cutout_areas">Berpad kawasan bertakuk</string>
@@ -685,7 +680,7 @@
     <string name="updates_and_history">Kemaskini &amp; Sejarah</string>
     <string name="your_library">Pustaka anda</string>
     <string name="no_chapters_to_delete">Tiada bab untuk dipadam</string>
-    <string name="remove_all_downloads">Padam semua yang dimuat turun\?</string>
+    <string name="remove_all_downloads">Padam semua yang dimuat turun?</string>
     <string name="label_global_search">Carian keseluruhan</string>
     <string name="search_">Cari %1$s</string>
     <string name="group_chapters_together">kumpul bab bersama</string>
@@ -730,7 +725,7 @@
     <string name="show_in_sources_and_extensions">Tunjuk dalam senarai sumber dan sambungan</string>
     <string name="help_translate">Bantu menterjemah</string>
     <string name="log_out">Log keluar</string>
-    <string name="log_out_from_">Log keluar daripada %1$s\?</string>
+    <string name="log_out_from_">Log keluar daripada %1$s?</string>
     <string name="include_">Hanya: %s</string>
     <string name="name">Nama</string>
     <string name="warning">Amaran</string>
@@ -754,9 +749,7 @@
     <string name="descending">Menurun</string>
     <string name="clear_database_source_item_count">%1$d entri bukan pustaka dalam pangkalan data</string>
     <string name="database_clean">Bersihkan pengkalan data</string>
-    <string name="confirm_manga_add_duplicate">Anda mempunyai entri yang mempunyai nama yang sama tetapi daripada sumber yang berlainan (%1$s).
-\n
-\nAdakah anda masih ingin meneruskan\?</string>
+    <string name="confirm_manga_add_duplicate">Anda mempunyai entri yang mempunyai nama yang sama tetapi daripada sumber yang berlainan (%1$s). \n \nAdakah anda masih ingin meneruskan?</string>
     <string name="select_inverse">Pilih songsang</string>
     <string name="cover_only_grid">Grid Muka Hadapan Sahaja</string>
     <string name="notification_update_error">%1$d kemas kini gagal</string>
@@ -776,7 +769,7 @@
     <string name="save_chapters_as_cbz">Simpan sebagai arkib CBZ</string>
     <string name="clear_history">Padamkan sejarah</string>
     <string name="clear_history_completed">Sejarah dipadamkan</string>
-    <string name="clear_history_confirmation">Anda pasti\? Semua sejarah akan hilang.</string>
+    <string name="clear_history_confirmation">Anda pasti? Semua sejarah akan hilang.</string>
     <string name="backup_restore_invalid_uri">Ralat: tiada URI</string>
     <string name="backup_info">Sandaran automatik sangat disyorkan. Anda patut simpan salinan di tempat lain juga.</string>
     <string name="pref_manage_notifications">Uruskan pemberitahuan</string>
@@ -852,7 +845,7 @@
     <string name="installed_">Dipasang %1$s</string>
     <string name="filter_groups">Tapis kumpulan scanlator</string>
     <string name="keep_both_on_service">Simpan kedua-dua pada %1$s dan hanya ganti setempat</string>
-    <string name="remove_previous_tracker">Buang penjejak terdahulu\?</string>
+    <string name="remove_previous_tracker">Buang penjejak terdahulu?</string>
     <string name="remove_x_from_service_and_add_y">Buang %1$s daripada %2$s dan tambah %3$s</string>
     <string name="use_staggered_grid">Guna grid berperingkat</string>
     <string name="default_behavior">Perilaku lalai</string>
@@ -898,8 +891,7 @@
     <string name="auto_updates">Auto-kemas kini</string>
     <string name="most_entries">Entri terbanyak</string>
     <string name="select_uninstalled_sources">Pilih sumber ternyahpasang</string>
-    <string name="downloads_swipe_tutorial">Muat turun boleh dibatalkan dengan meleretnya jauh
-\nLeret tip ini untuk membuangnya</string>
+    <string name="downloads_swipe_tutorial">Muat turun boleh dibatalkan dengan meleretnya jauh \nLeret tip ini untuk membuangnya</string>
     <string name="helpful_translation_links">Pautan terjemahan berguna</string>
     <string name="keep_in_">Simpan dalam %1$s</string>
     <string name="auto_download_while_reading">Muat turun automatik semasa membaca</string>

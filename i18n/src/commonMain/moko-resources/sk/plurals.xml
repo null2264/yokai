@@ -3,46 +3,55 @@
     <plurals name="extension_updates_available">
         <item quantity="one">Je dostupná aktualizácia pre rozšírenie</item>
         <item quantity="few">Je dostupných %d aktualizácii pre rozšírenia</item>
+        <item quantity="many">Sú dostupné %d aktualizácii pre rozšírenia</item>
         <item quantity="other">Sú dostupné %d aktualizácii pre rozšírenia</item>
     </plurals>
     <plurals name="category_plural">
         <item quantity="one">%d kategória</item>
         <item quantity="few">%d kategórie</item>
+        <item quantity="many">%d kategórií</item>
         <item quantity="other">%d kategórií</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Dokončené za %1$s s %2$s chybou</item>
         <item quantity="few">Dokončené za %1$s s %2$s chybami</item>
+        <item quantity="many">Dokončené za %1$s s %2$s chybami</item>
         <item quantity="other">Dokončené za %1$s s %2$s chybami</item>
     </plurals>
     <plurals name="next_unread_chapters">
         <item quantity="one">Ďalšia neprečítaná kapitola</item>
         <item quantity="few">Ďalšie %d neprečítané kapitoly</item>
+        <item quantity="many">Ďalších %d neprečítaných kapitol</item>
         <item quantity="other">Ďalších %d neprečítaných kapitol</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s kapitola</item>
         <item quantity="few">%1$s kapitoly</item>
+        <item quantity="many">%1$s kapitol</item>
         <item quantity="other">%1$s kapitol</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Odstrániť %1$d stiahnutú kapitolu\?</item>
-        <item quantity="few">Odstrániť %1$d stiahnute kapitoly\?</item>
-        <item quantity="other">Odstrániť %1$d stiahnutých kapitol\?</item>
+        <item quantity="one">Odstrániť %1$d stiahnutú kapitolu?</item>
+        <item quantity="few">Odstrániť %1$d stiahnute kapitoly?</item>
+        <item quantity="many">Odstrániť %1$d stiahnutých kapitol?</item>
+        <item quantity="other">Odstrániť %1$d stiahnutých kapitol?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Po %1$s minúte</item>
         <item quantity="few">Po %1$s minútach</item>
+        <item quantity="many">Po %1$s minútach</item>
         <item quantity="other">Po %1$s minútach</item>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">Pre %d titul</item>
         <item quantity="few">Pre %d tituly</item>
+        <item quantity="many">Pre %d titulov</item>
         <item quantity="other">Pre %d titulov</item>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="one">Preskočenie %d kapitoly, buď zdroj chýba, alebo bol odfiltrovaný</item>
         <item quantity="few">Preskočenie %d kapitol, buď zdroj chýba, alebo bol odfiltrovaný</item>
+        <item quantity="many">Zložky %d kapitoly, buď zdroj chýba, alebo boli filtrované</item>
         <item quantity="other">Zložky %d kapitoly, buď zdroj chýba, alebo boli filtrované</item>
     </plurals>
 </resources>

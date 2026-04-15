@@ -101,7 +101,7 @@
     <string name="webview_is_required">Tachiyomi ପାଇଁ WebView ଆବଶ୍ୟକ ଅଟେ</string>
     <string name="downloading_progress">ଡାଉନଲୋଡ୍ ହେଉଛି (%1$d/%2$d)</string>
     <string name="undo">ପୂର୍ବବତ୍</string>
-    <string name="use_image_as_cover">ଏଇ ପ୍ରତିଛବିଟିକୁ ମଲାଟ ଚିତ୍ରକଳା ଭାବରେ ବ୍ୟବହାର କରିବେ କି\?</string>
+    <string name="use_image_as_cover">ଏଇ ପ୍ରତିଛବିଟିକୁ ମଲାଟ ଚିତ୍ରକଳା ଭାବରେ ବ୍ୟବହାର କରିବେ କି?</string>
     <string name="general">ସାଧାରଣ</string>
     <string name="cover_of_image">ମଙ୍ଗାର ମଲାଟ</string>
     <string name="ascending">ଆରୋହଣ</string>

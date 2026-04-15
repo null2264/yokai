@@ -57,7 +57,7 @@
     <string name="all">Все</string>
     <string name="amoled_black">AMOLED чёрная</string>
     <string name="backup">Резервная копия</string>
-    <string name="what_should_backup">Что добавить в резервную копию\?</string>
+    <string name="what_should_backup">Что добавить в резервную копию?</string>
     <string name="backup_created">Резервная копия создана</string>
     <string name="black">Чёрный</string>
     <string name="browse">Поисковик</string>
@@ -72,13 +72,13 @@
     <string name="chapters">Главы</string>
     <string name="charging">На зарядке</string>
     <string name="clear_database_completed">Серии удалены</string>
-    <string name="clear_database_confirmation">Вы уверены\? Прочитанные главы и прогресс не библиотечных серий будет потерян</string>
+    <string name="clear_database_confirmation">Вы уверены? Прочитанные главы и прогресс не библиотечных серий будет потерян</string>
     <string name="alpha_initial">А</string>
     <string name="blue_initial">С</string>
     <string name="green_initial">З</string>
     <string name="red_initial">К</string>
     <string name="completed">Завершено</string>
-    <string name="use_image_as_cover">Использовать это изображение как обложку серии\?</string>
+    <string name="use_image_as_cover">Использовать это изображение как обложку серии?</string>
     <string name="cookies_cleared">Cookies очищены</string>
     <string name="_copied_to_clipboard">%1$s скопировано в буфер обмена</string>
     <string name="cover_updated">Обложка обновлена</string>
@@ -266,7 +266,7 @@
     <string name="source_not_installed_">Источник не установлен: %1$s</string>
     <string name="search_filters">Поисковые фильтры</string>
     <string name="starting_cleanup">Начало очистки</string>
-    <string name="stop_migrating">Остановить миграцию\?</string>
+    <string name="stop_migrating">Остановить миграцию?</string>
     <string name="system_default">Система</string>
     <string name="third_to_last">Третья от прочитанной</string>
     <string name="title">Название</string>
@@ -341,7 +341,7 @@
     <string name="_already_in_queue">%1$s уже в очереди</string>
     <string name="create_new_category">Создать новую категорию</string>
     <string name="category_is_empty">Категория пуста</string>
-    <string name="confirm_category_deletion">Удалить категорию\?</string>
+    <string name="confirm_category_deletion">Удалить категорию?</string>
     <string name="confirm_category_deletion_message">Серия в этой категории будет перемещена в категорию по умолчанию.</string>
     <string name="already_in_category">Серия уже в категории</string>
     <string name="add_categories">Добавить категории</string>
@@ -385,7 +385,7 @@
     <!-- Recents -->
     <string name="recents">Недавние</string>
     <string name="newly_added">Добавлено недавно</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Это удалит дату прочтения главы %1$s. Вы уверены\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Это удалит дату прочтения главы %1$s. Вы уверены?</string>
     <string name="reset_all_chapters_for_this_">Сбросить все главы для %1$s</string>
     <string name="last_read_">Последнее чтение %1$s</string>
     <string name="read_">Прочитано %1$s</string>
@@ -394,7 +394,7 @@
     <string name="view_history">Просмотреть историю</string>
     <string name="view_all_updates">Просмотреть обновления</string>
     <string name="search_recents">Поиск недавних…</string>
-    <string name="reset_chapter_question">Сбросить главу\?</string>
+    <string name="reset_chapter_question">Сбросить главу?</string>
     <!-- Browse -->
     <string name="in_library">В библиотеке</string>
     <string name="search_extensions">Поиск расширений…</string>
@@ -431,7 +431,7 @@
     <string name="season_">Сезон %1$d</string>
     <string name="add_to_library">Добавить в библиотеку</string>
     <string name="no_description">Без описания</string>
-    <string name="mark_all_chapters_as_read">Отметить все главы как «Прочитано»\?</string>
+    <string name="mark_all_chapters_as_read">Отметить все главы как «Прочитано»?</string>
     <string name="remove_from_library">Удалить из библиотеки</string>
     <string name="select_starting_chapter">Выберите первую главу</string>
     <string name="select_ending_chapter">Выберите последнюю главу</string>
@@ -441,7 +441,7 @@
     <string name="custom_range">Другое количество</string>
     <string name="all_read_chapters">Все прочитанные главы</string>
     <string name="all_but_bookmarked_chapters">Все главы, кроме добавленных в закладки</string>
-    <string name="add_x_to_library">Добавить %1$s в библиотеку\?</string>
+    <string name="add_x_to_library">Добавить %1$s в библиотеку?</string>
     <string name="show_all">Показать всё</string>
     <string name="show_bookmarked_chapters">Показать главы с закладками</string>
     <string name="show_downloaded_chapters">Показать загруженные главы</string>
@@ -492,11 +492,9 @@
     <string name="disable_if_issues_with_updating">Отключите это, если у вас возникли проблемы с обновлением/восстановлением вашей библиотеки</string>
     <string name="battery_optimization_disabled">Оптимизация батареи уже выключена</string>
     <string name="clean_up_cached_covers">Очистить кэш обложек</string>
-    <string name="delete_old_covers_in_library_used_">Удалять старые и неиспользуемые кэшированные обложки серий в вашей библиотеке, которые были обновлены.
-\nИспользуется: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Удалять старые и неиспользуемые кэшированные обложки серий в вашей библиотеке, которые были обновлены. \nИспользуется: %1$s</string>
     <string name="clear_cached_covers_non_library">Очистить кешированные обложки, которых нет в библиотеке</string>
-    <string name="delete_all_covers__not_in_library_used_">Удалить все кешированные обложки, которых нет в библиотеке
-\nИспользуется: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Удалить все кешированные обложки, которых нет в библиотеке \nИспользуется: %1$s</string>
     <!-- Browse Settings -->
     <string name="pref_global_search">Глобальный поиск</string>
     <string name="check_for_extension_updates">Проверить обновления для расширений</string>
@@ -587,14 +585,11 @@
     <string name="locale">Региональные настройки</string>
     <string name="automatic_backups">Автоматические резервные копии</string>
     <string name="invalid_backup_file">Неверный файл резервной копии</string>
-    <string name="invalid_backup_file_type">Неверный тип файла резервной копии: %1$s
-\nФайл должен заканчиваться на .proto.gz или .json.</string>
+    <string name="invalid_backup_file_type">Неверный тип файла резервной копии: %1$s \nФайл должен заканчиваться на .proto.gz или .json.</string>
     <string name="backup_has_no_manga">Резервная копия не содержит серий.</string>
     <string name="restore_missing_sources">Отсутствующие источники:</string>
     <string name="restore_missing_trackers">Сервисы отслеживания, в которые не выполнен вход:</string>
-    <string name="restore_content_full">Данные из файла резервной копии будут восстановлены.
-\n
-\nВам будет нужно установить все недостающие расширения и после этого, войти в сервисы отслеживания для их использования.</string>
+    <string name="restore_content_full">Данные из файла резервной копии будут восстановлены. \n \nВам будет нужно установить все недостающие расширения и после этого, войти в сервисы отслеживания для их использования.</string>
     <string name="restoring_backup_canceled">Восстановление отменено</string>
     <string name="restore_duration">%02d мин, %02d сек</string>
     <string name="file_picker_error">Приложение для выбора файлов не найдено</string>
@@ -636,7 +631,7 @@
     <string name="saves_error_logs">Сохраняет журнал ошибок в файл для отправки разработчикам</string>
     <string name="crash_log_saved">Журнал с ошибками сохранён</string>
     <string name="updated_to_">Обновлено до в%1$s</string>
-    <string name="mark_all_chapters_as_unread">Отметить все главы как «Не прочитано»\?</string>
+    <string name="mark_all_chapters_as_unread">Отметить все главы как «Не прочитано»?</string>
     <string name="category_cannot_be_blank">Имя категории не может быть пустым</string>
     <string name="new_category">Новая категория</string>
     <string name="add_x_to">Добавить %1$s в…</string>
@@ -719,7 +714,7 @@
     <string name="updates_and_history">Обновления и история</string>
     <string name="your_library">Ваша библиотека</string>
     <string name="no_chapters_to_delete">Нет глав для удаления</string>
-    <string name="remove_all_downloads">Удалить все загрузки\?</string>
+    <string name="remove_all_downloads">Удалить все загрузки?</string>
     <string name="label_global_search">Глобальный поиск</string>
     <string name="locked_landscape">Заблокированная альбомная</string>
     <string name="locked_portrait">Заблокированная портретная</string>
@@ -802,7 +797,7 @@
     <string name="select_an_entry">Выберите запись</string>
     <string name="keep_both_on_service">Оставить оба в %1$s и заменить локально</string>
     <string name="remove_x_from_service_and_add_y">Удалить %1$s из %2$s и добавить %3$s</string>
-    <string name="remove_previous_tracker">Удалить предыдущий сервис\?</string>
+    <string name="remove_previous_tracker">Удалить предыдущий сервис?</string>
     <string name="sapphire_dusk">Сапфировые Сумерки</string>
     <string name="teal_ocean">Бирюзовый Океан</string>
     <string name="appearance">Отображение</string>
@@ -823,7 +818,7 @@
     <string name="details_page">Сведения серии</string>
     <string name="theme_buttons_based_on_cover">Цвет кнопок на основе обложки</string>
     <string name="log_in">Войти</string>
-    <string name="log_out_from_">Выйти из %1$s\?</string>
+    <string name="log_out_from_">Выйти из %1$s?</string>
     <string name="scanlators">Переводчики</string>
     <string name="channel_errors">Ошибки</string>
     <string name="notification_size_warning">Большие обновления могут привести к повышенному расходу батареи и замедлению работы источников. Нажмите, чтобы узнать больше.</string>
@@ -854,9 +849,7 @@
     <string name="ascending">По возрастанию</string>
     <string name="clear_database_source_item_count">%1$d не библиотечных серий в базе данных</string>
     <string name="database_clean">Очистка базы данных</string>
-    <string name="confirm_manga_add_duplicate">В вашей библиотеке есть серия с таким же названием, но из другого источника (%1$s).
-\n
-\nВы по-прежнему хотите продолжить\?</string>
+    <string name="confirm_manga_add_duplicate">В вашей библиотеке есть серия с таким же названием, но из другого источника (%1$s). \n \nВы по-прежнему хотите продолжить?</string>
     <string name="select_inverse">Выбрать наоборот</string>
     <string name="new_beta_version_available">Доступна новая бета-версия!</string>
     <string name="tap_to_learn_more">Нажать для подробностей</string>
@@ -876,7 +869,7 @@
     <string name="channel_skipped">Пропущено</string>
     <string name="clear_history">Очистить историю</string>
     <string name="clear_history_completed">История удалена</string>
-    <string name="clear_history_confirmation">Вы уверены\? Вся история будет удалена.</string>
+    <string name="clear_history_confirmation">Вы уверены? Вся история будет удалена.</string>
     <string name="backup_restore_invalid_uri">Ошибка: Пустой URI</string>
     <string name="backup_info">Настоятельно рекомендуется использовать автоматические резервные копии. Вы также должны хранить копии в разных папках.</string>
     <string name="zoom_double_page_spreads">Увеличивать масштаб для двухстраничных разворотов</string>
@@ -896,8 +889,7 @@
     <string name="use_staggered_grid">Использовать сетку в виде шахматной доски</string>
     <string name="pref_update_only_completely_read_summary">Обновлять мангу, только если нет непрочитанных глав (полностью прочитано)</string>
     <string name="select_uninstalled_sources">Выбрать неустановленные источники</string>
-    <string name="downloads_swipe_tutorial">Загрузки можно отменить свайпом
-\nСвайпните, чтобы убрать эту подсказку</string>
+    <string name="downloads_swipe_tutorial">Загрузки можно отменить свайпом \nСвайпните, чтобы убрать эту подсказку</string>
     <string name="scoring_type_updated">Обновлен тип подсчета оценки</string>
     <string name="could_not_update_scoring_">Не удалось обновить тип подсчета оценки: %1$s</string>
     <string name="update_tracking_marked_read">Обновлять отслеживание при пометке как прочитано</string>

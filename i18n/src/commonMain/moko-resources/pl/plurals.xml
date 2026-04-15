@@ -37,27 +37,16 @@
         <item quantity="other">%d aktualizacji rozszerzeń dostępnych</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Rozdział został usunięty ze źródła:
-\n%2$s
-\nUsunąć pobrane\?</item>
-        <item quantity="few">%1$s rozdziały zostały usunięte ze źródła:
-\n%2$s
-\n
-\nUsunąć pobrane\?</item>
-        <item quantity="many">%1$s rozdziałów zostało usuniętych ze źródła:
-\n%2$s
-\n
-\nUsunąć pobrane\?</item>
-        <item quantity="other">%1$s rozdziałów zostało usuniętych ze źródła:
-\n%2$s
-\n
-\nUsunąć pobrane\?</item>
+        <item quantity="one">Rozdział został usunięty ze źródła: \n%2$s \nUsunąć pobrane?</item>
+        <item quantity="few">%1$s rozdziały zostały usunięte ze źródła: \n%2$s \n \nUsunąć pobrane?</item>
+        <item quantity="many">%1$s rozdziałów zostało usuniętych ze źródła: \n%2$s \n \nUsunąć pobrane?</item>
+        <item quantity="other">%1$s rozdziałów zostało usuniętych ze źródła: \n%2$s \n \nUsunąć pobrane?</item>
     </plurals>
     <plurals name="migrate_manga">
         <item quantity="one">Migrować %1$d%2$s mangę?</item>
         <item quantity="few">Migrować %1$d%2$s mangi?</item>
         <item quantity="many">Migrować %1$d%2$s mang?</item>
-        <item quantity="other">Migrate %1$d%2$s mang?</item>
+        <item quantity="other">Migrować %1$d%2$s mang?</item>
     </plurals>
     <plurals name="copy_manga">
         <item quantity="one">Skopiować %1$d%2$s mangę?</item>

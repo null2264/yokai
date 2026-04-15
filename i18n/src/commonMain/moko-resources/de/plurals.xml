@@ -25,13 +25,8 @@
         <item quantity="other">%d Erweiterungsaktualisierungen verfügbar</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Ein Kapitel wurde von der Quelle entfernt:
-            \n%2$s
-            \nDiese heruntergeladene Datei löschen\?</item>
-        <item quantity="other">%1$s Kapitel wurden von der Quelle entfernt:
-            \n%2$s
-            \n
-            \nDiese heruntergeladenen Dateien löschen\?</item>
+        <item quantity="one">Ein Kapitel wurde von der Quelle entfernt: \n%2$s \nDiese heruntergeladene Datei löschen?</item>
+        <item quantity="other">%1$s Kapitel wurden von der Quelle entfernt: \n%2$s \n \nDiese heruntergeladenen Dateien löschen?</item>
     </plurals>
     <plurals name="migrate_manga">
         <item quantity="one">%1$d%2$s Manga migrieren?</item>

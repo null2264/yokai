@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Remover %1$d capítulo baixado\?</item>
-        <item quantity="many">Remover %1$d capítulos baixados\?</item>
-        <item quantity="other">Remover %1$d capítulos baixados\?</item>
+        <item quantity="one">Remover %1$d capítulo baixado?</item>
+        <item quantity="many">Remover %1$d capítulos baixados?</item>
+        <item quantity="other">Remover %1$d capítulos baixados?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s capítulo</item>
@@ -31,27 +31,19 @@
         <item quantity="other">%d atualizações de extensão disponíveis</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Um capítulo foi removido da fonte:
-\n%2$s
-\nExcluir seu download\?</item>
-        <item quantity="many">%1$s capítulos foram removidos da fonte:
-\n%2$s
-\n
-\nExcluir seus downloads\?</item>
-        <item quantity="other">%1$s capítulos foram removidos da fonte:
-\n%2$s
-\n
-\nExcluir seus downloads\?</item>
+        <item quantity="one">Um capítulo foi removido da fonte: \n%2$s \nExcluir seu download?</item>
+        <item quantity="many">%1$s capítulos foram removidos da fonte: \n%2$s \n \nExcluir seus downloads?</item>
+        <item quantity="other">%1$s capítulos foram removidos da fonte: \n%2$s \n \nExcluir seus downloads?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migrar %1$d%2$s mangá\?</item>
-        <item quantity="many">Migrar %1$d%2$s mangás\?</item>
-        <item quantity="other">Migrar %1$d%2$s mangás\?</item>
+        <item quantity="one">Migrar %1$d%2$s mangá?</item>
+        <item quantity="many">Migrar %1$d%2$s mangás?</item>
+        <item quantity="other">Migrar %1$d%2$s mangás?</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Copiar %1$d%2$s mangá\?</item>
-        <item quantity="many">Copiar %1$d%2$s mangás\?</item>
-        <item quantity="other">Copiar %1$d%2$s mangás\?</item>
+        <item quantity="one">Copiar %1$d%2$s mangá?</item>
+        <item quantity="many">Copiar %1$d%2$s mangás?</item>
+        <item quantity="other">Copiar %1$d%2$s mangás?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="one">%d mangá migrado</item>

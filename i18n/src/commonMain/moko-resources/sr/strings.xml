@@ -152,7 +152,7 @@
     <string name="max_auto_backups">Maksimalano automatskih rezernih kopija</string>
     <string name="backup_created">Направљена је резервна копија</string>
     <string name="restore_completed">Враћање је завршено</string>
-    <string name="what_should_backup">\?Šta želite da stavite u rezernu kopiju\?</string>
+    <string name="what_should_backup">\?Šta želite da stavite u rezernu kopiju?</string>
     <string name="restoring_backup">Враћа се на резервну копију</string>
     <string name="clear_chapter_cache">Izbriši keš poglavlja</string>
     <string name="used_">Koristio: %1$s</string>
@@ -161,7 +161,7 @@
     <string name="cookies_cleared">Колачићи су избрисани</string>
     <string name="clear_database">Izbriši baze podataka</string>
     <string name="clear_database_summary">Обриши историју за наслове који нису сачувани у твојој колекцији</string>
-    <string name="clear_database_confirmation">Да ли сте сигурни\? Изгубићете прочитана поглавља и статус наслова који нису у колекцији</string>
+    <string name="clear_database_confirmation">Да ли сте сигурни? Изгубићете прочитана поглавља и статус наслова који нису у колекцији</string>
     <string name="clear_database_completed">Уноси избрисани</string>
     <string name="refresh_library_metadata">Osvježi metada biblioteke</string>
     <string name="updates_covers_genres_desc">Ažuriraj naslovnice, žanrove, deskripcije i status informacije o mangama</string>
@@ -225,7 +225,7 @@
     <string name="obsolete_extension_message">Овај додатак није више доступан.</string>
     <string name="set_as_cover">Постави као омот</string>
     <string name="next_chapter_not_found">Sledeće poglavlje nije pronađeno</string>
-    <string name="use_image_as_cover">Koristite ovu sliku kao naslovnu\?</string>
+    <string name="use_image_as_cover">Koristite ovu sliku kao naslovnu?</string>
     <string name="next">Sledeće</string>
     <string name="previous">Prethodno</string>
     <string name="theres_no_next_chapter">Nema sledećeg poglavlja</string>
@@ -337,8 +337,7 @@
     <string name="whats_new">Šta je novo</string>
     <string name="file_picker_error">Није пронађен програм за бирање датотека</string>
     <string name="channel_errors">Грешке</string>
-    <string name="invalid_backup_file_type">Neispravan fajl rezervne kopije: %1$s
-\nTreba da se završava sa .proto.gz ili .json.</string>
+    <string name="invalid_backup_file_type">Neispravan fajl rezervne kopije: %1$s \nTreba da se završava sa .proto.gz ili .json.</string>
     <string name="backup_in_progress">Прављење резервне копије је већ у току</string>
     <string name="decode_image_error">Није могуће учитати слику</string>
     <string name="by_chapter_number">Prema broju poglavlja</string>
@@ -361,7 +360,7 @@
     <string name="source_migration_guide">Vodič za migraciju izvora</string>
     <string name="nsfw_sources">Izvori za odrasle (18+)</string>
     <string name="does_not_prevent_unofficial_nsfw">Ovo ne sprečava nezvanične ili potencijalno pogrešno označene dodatke da prikažu sadržaj za odrasle (18+) unutar aplikacije.</string>
-    <string name="log_out_from_">Izloguj se od %1$s\?</string>
+    <string name="log_out_from_">Izloguj se od %1$s?</string>
     <string name="could_not_download_unexpected_error">Nije moguće preuzeti poglavlje zbog neočekivane greške</string>
     <string name="no_wifi_connection">Nema dostupne Wi-Fi veze</string>
     <string name="date_fetched">Datum preuzimanja</string>
@@ -396,9 +395,7 @@
     <string name="backup_and_restore">Rezervna kopija i oporavak</string>
     <string name="automatic_backups">Automatsko pravljenje rezervne kopije</string>
     <string name="backup_has_no_manga">Rezervna kopija ne sadrži nijednu mangu.</string>
-    <string name="restore_content_full">Podaci iz fajla rezervne kopije će se koristiti za oporavak.
-\n
-\nZa upotrebu podataka ćete nakon toga morati da instalirate sve dodatke koji nedostaju i da se prijavite na trekere.</string>
+    <string name="restore_content_full">Podaci iz fajla rezervne kopije će se koristiti za oporavak. \n \nZa upotrebu podataka ćete nakon toga morati da instalirate sve dodatke koji nedostaju i da se prijavite na trekere.</string>
     <string name="complete">Заврши</string>
     <string name="crash_logs">Logovi krešova</string>
     <string name="saves_error_logs">Čuva logove grešaka u fajl za dalji uvid developerima</string>
@@ -428,7 +425,7 @@
     <string name="not_bookmarked">Nije zabeleženo</string>
     <string name="uniform_grid_covers">Ujednačeni mrežasti pokrivači</string>
     <string name="no_chapters_to_delete">Nema poglavlja za brisanje</string>
-    <string name="remove_all_downloads">Želi te li da izbrišete sva preuzimanja\?</string>
+    <string name="remove_all_downloads">Želi te li da izbrišete sva preuzimanja?</string>
     <string name="grid_size">Veličina mreže</string>
     <string name="select_none">Izaberite nijedan</string>
     <string name="clean_up_downloaded_chapters">Očiatite preuzeta poglavlja</string>
@@ -440,7 +437,7 @@
     <string name="auto_refresh_covers">Automatski osvežiti korice</string>
     <string name="search_tips_show_periodically">Saveti za pretragu će se periodično pojavljivati.Dugo pritisnite predlog kako bi ga prtražili.</string>
     <string name="recents">Nedavni</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Ovo će izbrisati datum čitanja od \"%1$s\".Da li si siguran\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Ovo će izbrisati datum čitanja od \"%1$s\".Da li si siguran?</string>
     <string name="reset_chapter_history">Resetuj istoriju poglavlja</string>
     <string name="a_while_ago">Pre nekog vremena</string>
     <string name="switch_to_double">Prebaci na duple stranice</string>
@@ -456,14 +453,14 @@
     <string name="data_to_include_in_migration">Podaci koje treba uključiti u migraciju</string>
     <string name="currently_reading">Trenutno čita</string>
     <string name="no_description">Nema opisa</string>
-    <string name="mark_all_chapters_as_unread">Označi sva poglavlja kao nepročitane\?</string>
+    <string name="mark_all_chapters_as_unread">Označi sva poglavlja kao nepročitane?</string>
     <string name="select_starting_chapter">Izaberite početno poglavlje</string>
     <string name="show_downloaded_chapters">Pokaži preuzeta poglavlja</string>
     <string name="show_unread_chapters">Pokaži nepročitana poglavlja</string>
     <string name="hide_chapter_titles">Sakriti naslove poglavlja</string>
     <string name="remove_tracking">Uklonite praćenja iz aplikacije</string>
     <string name="remove_tracking_from_">Ukluni i iz %1$s</string>
-    <string name="remove_previous_tracker">Ukloni prethodni tragač\?</string>
+    <string name="remove_previous_tracker">Ukloni prethodni tragač?</string>
     <string name="remove_x_from_service_and_add_y">Ukloni %1$s iz %2$s i dodaj %3$s</string>
     <string name="myanimelist_relogin">Molimo prijavite se ponovo na MAL</string>
     <string name="use_suggested_date">Koristite predloženi datum</string>
@@ -478,7 +475,7 @@
     <string name="migrate_now">Migrirajte sad</string>
     <string name="copy_now">Kopirajte sada</string>
     <string name="no_chapters_found_for_migration">Podglavlja nisu pronadjena, ova manga se nemože koristiti za migraciju</string>
-    <string name="stop_migrating">Prestati sa migracijom\?</string>
+    <string name="stop_migrating">Prestati sa migracijom?</string>
     <string name="skipping_">(Preskakanje %1$d)</string>
     <string name="turn_on_">Uključ %s</string>
     <string name="turn_off_">Isključi %s</string>
@@ -592,8 +589,7 @@
     <string name="show_recent_sources">Prikaži nedavno korišćene izvore</string>
     <string name="show_recent_series">Prikaži nedavne serije</string>
     <string name="data_management">Upravljanje podacima</string>
-    <string name="delete_old_covers_in_library_used_">Izbrišite stare i neiskorišćene korice mangi u vašoj biblioteci koje su već ažurirane.
-\nTrenutno koristi : %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Izbrišite stare i neiskorišćene korice mangi u vašoj biblioteci koje su već ažurirane. \nTrenutno koristi : %1$s</string>
     <string name="clear_cached_covers_non_library">Obrišite keširane korice koje nisu u biblioteci</string>
     <string name="no_folders_to_cleanup">Nema fascikla za čišćenje</string>
     <string name="disable_if_issues_with_updating">Isključi ovo ako imate problema sa ažuriranjem ili vraćanjem vaše biblioteke</string>
@@ -644,7 +640,7 @@
     <string name="add_to_library">Dodaj u biblioteku</string>
     <string name="all_read_chapters">Sva poglavlja pročitana</string>
     <string name="all_but_bookmarked_chapters">Sva poglavlja osim obeleženih</string>
-    <string name="add_x_to_library">Želi te li da dodate %1$s u biblioteku\?</string>
+    <string name="add_x_to_library">Želi te li da dodate %1$s u biblioteku?</string>
     <string name="show_all">Pokaži sve</string>
     <string name="show_bookmarked_chapters">Pokaži obeležena poglavlja</string>
     <string name="source_not_installed">Izvor nije instaliran</string>
@@ -682,7 +678,7 @@
     <string name="hide_unread_badges">Sakrij nepročitane serijale</string>
     <string name="reset_all_chapters_for_this_">Resetuj sva poglavlja za ovaj %1$s</string>
     <string name="grouped">Grupisano</string>
-    <string name="reset_chapter_question">Restartuj poglavlje\?</string>
+    <string name="reset_chapter_question">Restartuj poglavlje?</string>
     <string name="search_recents">Pretraži nedavni…</string>
     <string name="save_first_page">Sačuvaj prvu stranicu</string>
     <string name="search_extensions">Pretraga ekstenzija…</string>
@@ -713,7 +709,7 @@
     <string name="cutout_area_behavior">Ponašanje oblasti izraza</string>
     <string name="about_this_">O ovome %1$s</string>
     <string name="automatic_orientation">Automatsko (na osnovu orijentacije)</string>
-    <string name="mark_all_chapters_as_read">Označi sva poglavlja kao pročitana\?</string>
+    <string name="mark_all_chapters_as_read">Označi sva poglavlja kao pročitana?</string>
     <string name="select_ending_chapter">Izaberite krajne poglavlje</string>
     <string name="manhwa">Koreanska manga</string>
     <string name="custom_manga_info">Prilagodjene informacije o mangi</string>
@@ -741,8 +737,7 @@
     <string name="not_logged_into_">Niste prijavljeni na %1$s</string>
     <string name="force_download_cache_refresh_summary">Ovo će priporati keš za preuzimanje da se ponovo izračuna.Korisno ako ste izmenili preuzimanje van ove aplikacije i želite da ih aplikacija preuzme</string>
     <string name="delete_unused_chapters">Izbrišite nepostojeće, delimično preuzete, i pročitane fascikle poglavlja</string>
-    <string name="delete_all_covers__not_in_library_used_">Izbrisati sve keširane korice koje nisu u tvojoj biblioteci
-\nTrenutno koristi: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Izbrisati sve keširane korice koje nisu u tvojoj biblioteci \nTrenutno koristi: %1$s</string>
     <string name="always_keep">Uvek čuvaj</string>
     <string name="helpful_translation_links">Korisne adrese za prevod</string>
     <string name="not_downloaded">Nije preuzeto</string>
@@ -767,7 +762,7 @@
     <string name="scanlators">Prevodioci</string>
     <string name="adding_category_to_queue">Dodavanje %1$s u red za ažuriranje</string>
     <string name="manage_category">Upravljanje kategorijama</string>
-    <string name="confirm_category_deletion">Izbrisati kategoriju\?</string>
+    <string name="confirm_category_deletion">Izbrisati kategoriju?</string>
     <string name="confirm_category_deletion_message">Manga u ovoj kategoriji će se premestiti u podrazumevanoj kategoriji.</string>
     <string name="category_cannot_be_blank">Ime kategorije nesme ostati prazno</string>
     <string name="category_deleted">Kategorija izbrisana</string>
@@ -826,9 +821,7 @@
     <string name="descending">Opadajuće</string>
     <string name="clear_database_source_item_count">Број наслова у бази података које нису у колекцији: %1$d</string>
     <string name="database_clean">Čišćenje baze podataka</string>
-    <string name="confirm_manga_add_duplicate">Imate unos u kolekciji sa istim imenom, ali iz drugog izvora (%1$s).
-\n
-\nDa li i dalje želite da nastavite\?</string>
+    <string name="confirm_manga_add_duplicate">Imate unos u kolekciji sa istim imenom, ali iz drugog izvora (%1$s). \n \nDa li i dalje želite da nastavite?</string>
     <string name="select_inverse">Izaberi obrnuto</string>
     <string name="skipped_reason_not_caught_up">Preskočeno jer ima nepročitanih poglavlja</string>
     <string name="channel_skipped">Прескочено</string>
@@ -864,11 +857,10 @@
     <string name="show_">Prikaži%1$s</string>
     <string name="clear_history">Избриши историју</string>
     <string name="clear_history_completed">Историја је избрисана</string>
-    <string name="clear_history_confirmation">Да ли сте сигурни\? Цела историја ће бити изгубљена.</string>
+    <string name="clear_history_confirmation">Да ли сте сигурни? Цела историја ће бити изгубљена.</string>
     <string name="view_all">Pogledati sve</string>
     <string name="select_uninstalled_sources">Izaberite deinstalirane izvore</string>
-    <string name="downloads_swipe_tutorial">Preuzimanja se mogu otkazati prevlačenjem
-\nPrevocite ovaj savet kako biste ga odbacili</string>
+    <string name="downloads_swipe_tutorial">Preuzimanja se mogu otkazati prevlačenjem \nPrevocite ovaj savet kako biste ga odbacili</string>
     <string name="backup_restore_invalid_uri">Greška: prazan URI</string>
     <string name="backup_info">Препоручује се аутоматско прављење резервне копије. Чувајте копије и на другим местима.</string>
     <string name="pref_manage_notifications">Управљај обавештењима</string>

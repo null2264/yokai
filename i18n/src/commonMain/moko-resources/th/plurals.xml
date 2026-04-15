@@ -13,16 +13,16 @@
         <item quantity="other">ข้ามตอนที่ %d อาจเป็นเพราะหายมาจากแหล่งที่มาหรือถูกกรองออก</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="other">โยกย้าย %1$d%2$s เรื่อง\?</item>
+        <item quantity="other">โยกย้าย %1$d%2$s เรื่อง?</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="other">คัดลอก %1$d%2$s เรื่อง\?</item>
+        <item quantity="other">คัดลอก %1$d%2$s เรื่อง?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="other">ล้างเสร็จสิ้น ลบออกไป %d โฟล์เดอร์</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="other">ต้องการนำ %1$d ตอนที่ดาวน์โหลดไว้ออกหรือไม่\?</item>
+        <item quantity="other">ต้องการนำ %1$d ตอนที่ดาวน์โหลดไว้ออกหรือไม่?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="other">%1$s ตอน</item>
@@ -52,10 +52,7 @@
         <item quantity="other">%1$d หน้า</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">%1$s ตอนได้ถูกนำออกจากแหล่งที่มาแล้ว:
-\n%2$s
-\n
-\nต้องการลบการดาวน์โหลด\?</item>
+        <item quantity="other">%1$s ตอนได้ถูกนำออกจากแหล่งที่มาแล้ว: \n%2$s \n \nต้องการลบการดาวน์โหลด?</item>
     </plurals>
     <plurals name="next_unread_chapters">
         <item quantity="other">%d ตอนที่ยังไม่ได้อ่านถัดไป</item>

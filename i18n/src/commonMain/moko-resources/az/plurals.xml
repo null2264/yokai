@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Endirilmiş %1$d bölüm silinsin\?</item>
-        <item quantity="other">Endirilmiş %1$d bölüm silinsin\?</item>
+        <item quantity="one">Endirilmiş %1$d bölüm silinsin?</item>
+        <item quantity="other">Endirilmiş %1$d bölüm silinsin?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s bölüm</item>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <plurals name="after_minutes">
         <item quantity="one">ఒక నిమిషము తరువాత%1$s నిమిషముల తరువాత</item>
         <item quantity="other"/>
