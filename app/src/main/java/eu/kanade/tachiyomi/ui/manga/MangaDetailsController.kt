@@ -269,6 +269,11 @@ class MangaDetailsController :
 
                 if (isTablet) return
 
+                when {
+                    dy > 0 && binding.fab.isExtended -> binding.fab.shrink()
+                    dy < 0 && !binding.fab.isExtended -> binding.fab.extend()
+                }
+
                 val headerBinding = getHeader()?.binding
                 if (headerBinding == null) {
                     if (binding.fab.isEnabled) {
@@ -569,7 +574,8 @@ class MangaDetailsController :
 
     private fun setInsets(insets: WindowInsetsCompat, appbarHeight: Int, offset: Int) {
         val systemInsets = insets.ignoredSystemInsets
-        binding.recycler.updatePaddingRelative(bottom = systemInsets.bottom)
+        val fabPadding = 72.dpToPx // FAB height (56dp) + margin (16dp)
+        binding.recycler.updatePaddingRelative(bottom = systemInsets.bottom + fabPadding)
         binding.tabletRecycler.updatePaddingRelative(bottom = systemInsets.bottom)
         val tHeight = toolbarHeight.takeIf { it ?: 0 > 0 } ?: appbarHeight
         headerHeight = tHeight + systemInsets.top
