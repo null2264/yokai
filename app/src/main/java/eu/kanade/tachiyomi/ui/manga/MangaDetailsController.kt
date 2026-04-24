@@ -230,6 +230,9 @@ class MangaDetailsController :
     var returningFromReader = false
     private var floatingActionMode: android.view.ActionMode? = null
 
+    var leftDeadZonePx = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) (32f * (resources?.displayMetrics?.density ?: 0f)).toInt() else 0
+    var rightDeadZonePx = leftDeadZonePx
+
     override fun getTitle(): String? {
         return manga?.title
     }
@@ -255,6 +258,11 @@ class MangaDetailsController :
                     bottomMargin = systemBars.bottom + 16.dpToPx
                 }
             }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val systemGesture = insets.getInsets(WindowInsetsCompat.Type.systemGestures())
+                if (systemGesture.left > 0) leftDeadZonePx = systemGesture.left
+                if (systemGesture.right > 0) rightDeadZonePx = systemGesture.right
+            }
 
             insets
         }
@@ -262,6 +270,27 @@ class MangaDetailsController :
         adapter?.fastScroller = binding.fastScroller
         binding.fastScroller.addOnScrollStateChangeListener {
             activityBinding?.appBar?.y = 0f
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Add deadzone to swipeable items for Android 10+ to prevent conflict with system's back gesture
+            binding.recycler.addOnItemTouchListener(
+                object : RecyclerView.OnItemTouchListener {
+                    override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                        if (e.actionMasked == MotionEvent.ACTION_DOWN) {
+                            val x = e.x
+                            if (x < leftDeadZonePx || x > rv.width - rightDeadZonePx) {
+                                adapter?.setSwipeEnabled(false)
+                            } else {
+                                adapter?.setSwipeEnabled(true)
+                            }
+                        }
+                        return false
+                    }
+
+                    override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+                    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+                }
+            )
         }
         binding.recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

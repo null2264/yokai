@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 import dev.icerock.moko.resources.desc.Utils
+import kotlin.random.Random
 import yokai.i18n.MR
 import yokai.presentation.library.components.LazyLibraryStaggeredGrid
 import yokai.domain.manga.models.MangaCover as MangaCoverModel
@@ -131,6 +132,7 @@ fun MangaComfortableGridItem(
     unreadCount: Int = 0,
     downloadCount: Int = 0,
     badgeSegments: List<BadgeSegment> = listOf(),
+    ratio: Float? = null,
     isSelected: Boolean = false,
     showOutline: Boolean = false,
     onClickContinueReading: (() -> Unit)? = null,
@@ -146,9 +148,10 @@ fun MangaComfortableGridItem(
                             .fillMaxWidth()
                             .alpha(if (isSelected) 0.34f else 1.0f),
                         data = coverData,
+                        ratio = ratio,
                         onState = { state ->
                             isLoading = state is AsyncImagePainter.State.Loading
-                        }
+                        },
                     )
                     if (isLoading) {
                         LoadingIndicator(modifier = Modifier.align(Alignment.Center))
@@ -189,6 +192,7 @@ fun MangaCompactGridItem(
     unreadCount: Int = 0,
     downloadCount: Int = 0,
     badgeSegments: List<BadgeSegment> = listOf(),
+    ratio: Float? = null,
     isSelected: Boolean = false,
     showOutline: Boolean = false,
     onClickContinueReading: (() -> Unit)? = null,
@@ -203,9 +207,10 @@ fun MangaCompactGridItem(
                         .fillMaxWidth()
                         .alpha(if (isSelected) 0.34f else 1.0f),
                     data = coverData,
+                    ratio = ratio,
                     onState = { state ->
                         isLoading = state is AsyncImagePainter.State.Loading
-                    }
+                    },
                 )
                 if (isLoading) {
                     LoadingIndicator(modifier = Modifier.align(Alignment.Center))
@@ -362,6 +367,7 @@ private fun MangaGridCoverPreview() {
                                 textColor = MaterialTheme.colorScheme.onSecondary,
                             ),
                         ),
+                        ratio = 2f / Random.nextInt(3, 4).toFloat(),
                         onClickContinueReading = {},
                     )
                 }
