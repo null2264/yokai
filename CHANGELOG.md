@@ -16,7 +16,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Add toggle to enable/disable hide source on swipe (@Hiirbaf)
 - Add the ability to mark duplicate read chapters as read (@AntsyLich)
 - Add option to zoom into full covers (@Hiirbaf)
-- Add APNG support for Android 9+ (@lalalasupa0)
+- Add Animated WebP and GIF support for Android 9+ (@lalalasupa0)
 - Add markdown support to entry description (@luigidotmoe)
   - Fix text disappeared when it's surrounded by `<>` (@lalalasupa0)
 
