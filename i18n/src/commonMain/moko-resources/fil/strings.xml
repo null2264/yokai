@@ -38,7 +38,7 @@
     <string name="backup_created">Nai-backup na</string>
     <string name="restore_completed">Na-restore na</string>
     <string name="creating_backup">Bina-backup</string>
-    <string name="what_should_backup">Anong iba-backup mo\?</string>
+    <string name="what_should_backup">Anong iba-backup mo?</string>
     <string name="restoring_backup">Rine-restore ang backup</string>
     <string name="clear_chapter_cache">Linisin ang cache ng kabanata</string>
     <string name="network">Network</string>
@@ -48,7 +48,7 @@
     <string name="clear_cookies">Linisin ang mga cookie</string>
     <string name="cookies_cleared">Nalinis na ang mga cookie</string>
     <string name="clear_database">Linisin ang database</string>
-    <string name="clear_database_confirmation">Sigurado ka ba\? Ang mga nabasang kabanata at pag-unlad ng mga wala sa aklatan ay mawawala</string>
+    <string name="clear_database_confirmation">Sigurado ka ba? Ang mga nabasang kabanata at pag-unlad ng mga wala sa aklatan ay mawawala</string>
     <string name="clear_database_completed">Binura na</string>
     <string name="updates_tracking_details">Ina-update ang estado, iskor, at huling nabasang kabanata mula sa mga serbisyo sa pagta-track</string>
     <string name="disable_battery_optimization">Patayin ang pag-o-optimisa sa baterya</string>
@@ -164,7 +164,7 @@
     <string name="set_as_cover">Gawing cover</string>
     <string name="cover_updated">Napalitan na ang cover</string>
     <string name="next_chapter_not_found">Di makita ang susunod na kabanata</string>
-    <string name="use_image_as_cover">Gamitin ang larawang ito bilang cover\?</string>
+    <string name="use_image_as_cover">Gamitin ang larawang ito bilang cover?</string>
     <string name="next">Susunod</string>
     <string name="previous">Nakaraan</string>
     <string name="theres_no_next_chapter">Wala nang susunod na kabanata</string>
@@ -340,14 +340,11 @@
     <string name="locale">Lokal</string>
     <string name="automatic_backups">Awtomatikong pag-backup</string>
     <string name="invalid_backup_file">Imbalido ang backup</string>
-    <string name="invalid_backup_file_type">Imbalidong backup: %1$s
-\nDapat nagtatapos ito sa .proto.gz o .json.</string>
+    <string name="invalid_backup_file_type">Imbalidong backup: %1$s \nDapat nagtatapos ito sa .proto.gz o .json.</string>
     <string name="backup_has_no_manga">Walang manga ang backup.</string>
     <string name="restore_missing_sources">Nawawalang source:</string>
     <string name="restore_missing_trackers">Di naka-login sa mga tracker:</string>
-    <string name="restore_content_full">Ire-restore ang data mula sa file ng backup.
-\n
-\nKakailanganin mo na ma-install ang mga nawawalang mga extension at mag-login sa mga tracking service pagkatapos para magamit muli.</string>
+    <string name="restore_content_full">Ire-restore ang data mula sa file ng backup. \n \nKakailanganin mo na ma-install ang mga nawawalang mga extension at mag-login sa mga tracking service pagkatapos para magamit muli.</string>
     <string name="restoring_backup_canceled">Kinansela ang pag-restore</string>
     <string name="restore_duration">%02d (na) min, %02d (na) seg</string>
     <string name="file_picker_error">Walang nakitang app para makapili</string>
@@ -382,7 +379,7 @@
     <string name="add_categories">Magdagdag</string>
     <string name="already_in_category">Nasa kategorya na ang manga</string>
     <string name="confirm_category_deletion_message">Ang mga entry sa kategoryang ito ay ililipat sa default na kategorya.</string>
-    <string name="confirm_category_deletion">Burahin ang kategorya\?</string>
+    <string name="confirm_category_deletion">Burahin ang kategorya?</string>
     <string name="category_is_empty">Walang laman ang kategorya</string>
     <string name="new_category">Bagong kategorya</string>
     <string name="create_new_category">Gumawa ng bago</string>
@@ -390,20 +387,19 @@
     <string name="adding_category_to_queue">Dinadagdag ang %1$s sa mga ia-update</string>
     <string name="category">Kategorya</string>
     <string name="no_chapters_to_delete">Walang kabanatang buburahin</string>
-    <string name="remove_all_downloads">Tanggalin lahat ng na-download\?</string>
+    <string name="remove_all_downloads">Tanggalin lahat ng na-download?</string>
     <string name="no_pages_found">Walang nakitang pahina</string>
     <string name="add_x_to">Idagdag ang %1$s sa…</string>
     <string name="move_x_to">Ilipat ang %1$s sa…</string>
     <string name="ask_on_chapters_page">Tanggalin sa panahon ng global update, magtanong sa pahina ng Mga Kabanata</string>
-    <string name="delete_old_covers_in_library_used_">Buburahin ang mga luma at di na ginagamit na naka-cache na cover ng mga manga mula sa aklatan na na-update.
-\nKasalukuyang ginagamit: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Buburahin ang mga luma at di na ginagamit na naka-cache na cover ng mga manga mula sa aklatan na na-update. \nKasalukuyang ginagamit: %1$s</string>
     <string name="updates_covers_genres_desc">Ina-update ang mga impormasyon sa cover, genre, paglalarawan, at estado ng manga</string>
     <string name="extension_updates">Mga bago sa mga extension</string>
     <string name="show_updated_time">Ipakita ang oras ng pag-update</string>
     <string name="no_recent_read_updated_manga">Walang kamakailang binasa o in-update na manga</string>
     <string name="view_all_updates">Tingnan lahat ng update</string>
     <string name="updated_">In-update noong %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Tatanggalin nito ang petsa ng pagbasa sa \"%1$s\". Sigurado ka ba\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Tatanggalin nito ang petsa ng pagbasa sa \"%1$s\". Sigurado ka ba?</string>
     <string name="recent_updates">Mga bago</string>
     <string name="updates_and_history">Bago at kasaysayan</string>
     <string name="include_in_global_update">Isama sa panlahatang update</string>
@@ -461,7 +457,7 @@
     <string name="show_unread_count">Ipakita ang bilang ng di pa nabasa</string>
     <string name="show_all">Ipakita lahat</string>
     <string name="hide_unread_badges">Itago ang bilang ng babasahin</string>
-    <string name="stop_migrating">Itigil ang paglipat\?</string>
+    <string name="stop_migrating">Itigil ang paglipat?</string>
     <string name="portrait">Patayo</string>
     <string name="disabled">Sarado</string>
     <string name="landscape">Pahiga</string>
@@ -551,7 +547,7 @@
     <string name="unread_or_downloaded">Di pa nabasa o na-download</string>
     <string name="show_download_button">Ipakita ang I-download</string>
     <string name="press_and_hold_to_also_reset">Pindutin nang matagal ay maaari ding i-reset ang kasaysayan ng kabanata</string>
-    <string name="reset_chapter_question">I-reset ang kabanata\?</string>
+    <string name="reset_chapter_question">I-reset ang kabanata?</string>
     <string name="grouped">Nakagrupo</string>
     <string name="no_recently_read_manga">Walang kamakailang nabasa</string>
     <string name="no_recent_chapters">Walang kamakailang kabanata</string>
@@ -598,8 +594,8 @@
     <string name="continue_reading_chapter_">Ipagpatuloy basahin ang Kabanata %1$s</string>
     <string name="start_reading_chapter_">Simulang basahin ang Kabanata %1$s</string>
     <string name="_copied_to_clipboard">Kinopya sa clipboard ang %1$s</string>
-    <string name="mark_all_chapters_as_read">Markahan ang lahat ng mga kabanata bilang nabasa na\?</string>
-    <string name="mark_all_chapters_as_unread">Markahan ang lahat ng mga kabanata bilang di pa nabasa\?</string>
+    <string name="mark_all_chapters_as_read">Markahan ang lahat ng mga kabanata bilang nabasa na?</string>
+    <string name="mark_all_chapters_as_unread">Markahan ang lahat ng mga kabanata bilang di pa nabasa?</string>
     <string name="extension_updates_pending">May nakabinbing update sa mga extension</string>
     <string name="select_starting_chapter">Piliin ang simulang kabanata</string>
     <string name="search_chapters">Maghanap ng mga kabanata</string>
@@ -636,7 +632,7 @@
     <string name="doh">DNS kesa HTTPS</string>
     <string name="show_in_sources_and_extensions">Ipakita sa mga source at mga extension</string>
     <string name="log_out">Mag-logout</string>
-    <string name="log_out_from_">Mag-logout sa %1$s\?</string>
+    <string name="log_out_from_">Mag-logout sa %1$s?</string>
     <string name="webview_is_required">Kinakailangan ng Yokai ang WebView</string>
     <string name="exclude_">Di-kasama: %s</string>
     <string name="top">Taas</string>
@@ -662,9 +658,7 @@
     <string name="descending">Pababa</string>
     <string name="clear_database_source_item_count">%1$d na entry sa database na wala sa Aklatan</string>
     <string name="database_clean">Linisin ang database</string>
-    <string name="confirm_manga_add_duplicate">May entry ka sa Aklatan na may kaparehong pangalan pero galing sa ibang source (%1$s).
-\n
-\nGusto mo pa rin bang magpatuloy\?</string>
+    <string name="confirm_manga_add_duplicate">May entry ka sa Aklatan na may kaparehong pangalan pero galing sa ibang source (%1$s). \n \nGusto mo pa rin bang magpatuloy?</string>
     <string name="select_inverse">Baligtarin</string>
     <string name="cover_only_grid">cover lang</string>
     <string name="notification_update_error">Nabigo ang %1$d (na) update</string>
@@ -699,7 +693,7 @@
     <string name="series_opens_new_chapters">Ang mga shortcut ng serye ay nagbubukas ng mga bagong kabanata</string>
     <string name="cutout_behavior_only_applies">Gagana lang sa Patayo ang gagawin sa cutout area para sa mga piling paraan ng pagsasalaki</string>
     <string name="show_downloaded_chapters">Ipakita ang mga kabanatang na-download</string>
-    <string name="add_x_to_library">Idagdag ang %1$s sa Aklatan\?</string>
+    <string name="add_x_to_library">Idagdag ang %1$s sa Aklatan?</string>
     <string name="show_bookmarked_chapters">Ipakita ang mga kabanatang may pananda</string>
     <string name="remove_x_from_service_and_add_y">Tanggalin ang %1$s mula %2$s at idagdag ang %3$s</string>
     <string name="could_not_update_scoring_">Di magawang ma-update ang uri ng iskor: %1$s</string>
@@ -727,7 +721,7 @@
     <string name="default_behavior">Default na pagkilos</string>
     <string name="by_default_side_nav_info">Bilang default, ginagamit ang side navigation para sa ilang mga telepono at maliliit na tablet kapag nasa landscape, at laging ipinapakita sa mas malalaking tablet</string>
     <string name="new_beta_version_available">May bagong beta na bersyon!</string>
-    <string name="remove_previous_tracker">Tanggalin ang nakaraang tracker\?</string>
+    <string name="remove_previous_tracker">Tanggalin ang nakaraang tracker?</string>
     <string name="yin">Yin</string>
     <string name="dark">Madilim</string>
     <string name="custom_range">Pinili kong saklaw</string>
@@ -812,8 +806,7 @@
     <string name="keep">Panatilihin</string>
     <string name="move_to_">Ilipat sa %1$s</string>
     <string name="preview">Silipin</string>
-    <string name="delete_all_covers__not_in_library_used_">Burahin ang lahat ng mga cover na naka-cache na wala sa Aklatan mo.
-\nKasalukuyang ginagamit: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Burahin ang lahat ng mga cover na naka-cache na wala sa Aklatan mo. \nKasalukuyang ginagamit: %1$s</string>
     <string name="not_downloaded">Di na-download</string>
     <string name="remove_after_read">Tanggalin pagkabasa</string>
     <string name="clean_orphaned_downloads">Linisin ang mga orphan</string>
@@ -821,8 +814,7 @@
     <string name="select_uninstalled_sources">Piliin ang mga na-uninstall na source</string>
     <string name="notify_extension_updated">Na-update na ang mga extension na Notify</string>
     <string name="only_search_pinned_when">Maghanap lang sa mga naka-pin na source</string>
-    <string name="downloads_swipe_tutorial">Maaaring kanselahin ang pag-download sa pamamagitan ng pag-swipe sa kanila
-\nI-swipe ang tip na ito para mawala ito</string>
+    <string name="downloads_swipe_tutorial">Maaaring kanselahin ang pag-download sa pamamagitan ng pag-swipe sa kanila \nI-swipe ang tip na ito para mawala ito</string>
     <string name="remove_download">Tanggalin ang download</string>
     <string name="remove_downloads">Tanggalin ang mga download</string>
     <string name="download_ahead">I-download agad</string>
@@ -1062,4 +1054,5 @@
     <string name="pref_mark_as_read_duplicate_read_chapter_existing">Matapos basahin ang kabanata</string>
     <string name="pref_mark_as_read_duplicate_read_chapter_new">Pagkatapos kumuha ng bagong kabanata</string>
     <string name="pref_mark_as_read_duplicate_read_chapter">Markahan ang duplikadong nabasang kabanata bilang nabasa na</string>
+    <string name="custom_filter">Mga Filter</string>
 </resources>

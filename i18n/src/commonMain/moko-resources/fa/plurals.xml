@@ -4,37 +4,30 @@
         <item quantity="one">آپدیت برای یک افرونه موجود استآپدیت برای %d افرونه موجود است</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="chapters_plural">
         <item quantity="one">قسمت%1$s</item>
         <item quantity="other">قسمت ها%1$s</item>
     </plurals>
-
     <plurals name="restore_completed_message">
         <item quantity="one">در %1$s با %2$s خطا انجام شددر %1$s با %2$s خطا انجام شد</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="category_plural">
         <item quantity="one">%d دسته%d دسته</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="after_minutes">
         <item quantity="one">بعد از %1$s دقیقهبعد از %1$s دقیقه</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="for_n_titles">
         <item quantity="one">برای ۱ مانگابرای %d مانگا</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="next_unread_chapters">
         <item quantity="one">قسمت خوانده نشده بعدی</item>
         <item quantity="other">%d قسمت خوانده نشده بعدی</item>
     </plurals>
-
     <plurals name="missing_chapters_warning">
         <item quantity="one">1 قسمت جا افتاده است</item>
         <item quantity="other">%d قسمت جا افتاده است</item>

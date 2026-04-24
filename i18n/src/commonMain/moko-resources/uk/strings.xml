@@ -152,7 +152,7 @@
     <string name="max_auto_backups">Максимальна кількість резервних копій</string>
     <string name="backup_created">Резервна копія створена</string>
     <string name="restore_completed">Відновлення завершено</string>
-    <string name="what_should_backup">Що ви хочете зберегти до резервної копії\?</string>
+    <string name="what_should_backup">Що ви хочете зберегти до резервної копії?</string>
     <string name="restoring_backup">Відновлення резервної копії</string>
     <string name="clear_chapter_cache">Очистити кеш розділів</string>
     <string name="used_">Використано: %1$s</string>
@@ -161,7 +161,7 @@
     <string name="cookies_cleared">Куки очищено</string>
     <string name="clear_database">Очистити базу даних</string>
     <string name="clear_database_summary">Видалити історію для записів, котрі не знаходяться в вашій бібліотеці</string>
-    <string name="clear_database_confirmation">Ви впевнені\? Прочитані розділи та прогрес не бібліотечних записів будуть втрачені</string>
+    <string name="clear_database_confirmation">Ви впевнені? Прочитані розділи та прогрес не бібліотечних записів будуть втрачені</string>
     <string name="clear_database_completed">Дані видалено</string>
     <string name="refresh_library_metadata">Оновити метадані</string>
     <string name="updates_covers_genres_desc">Оновити обкладинки, жанри, описи та інформацію про манґу</string>
@@ -221,7 +221,7 @@
     <string name="page_">Сторінка %1$d</string>
     <string name="next_chapter_not_found">Наступний розділ не знайдено</string>
     <string name="decode_image_error">Зображення не вдалося завантажити</string>
-    <string name="use_image_as_cover">Ви бажаєте встановити цю картинку як обкладинку\?</string>
+    <string name="use_image_as_cover">Ви бажаєте встановити цю картинку як обкладинку?</string>
     <string name="finished_chapter">Завершено:</string>
     <string name="current_chapter">Поточна:</string>
     <string name="next_title">Наступна:</string>
@@ -324,7 +324,7 @@
     <string name="unpin">Відкріпити</string>
     <string name="view_chapters">Подивитись розділи</string>
     <string name="confirm_category_deletion_message">Манґу з цієї категорії буде переміщено до основної категорії.</string>
-    <string name="confirm_category_deletion">Видалити категорію\?</string>
+    <string name="confirm_category_deletion">Видалити категорію?</string>
     <string name="category_is_empty">Категорія порожня</string>
     <string name="create_new_category">Створити нову категорію</string>
     <string name="_already_in_queue">%1$s вже в черзі</string>
@@ -360,7 +360,7 @@
     <string name="all_sources">Всі джерела</string>
     <string name="search_extensions">Пошук розширеннь…</string>
     <string name="in_library">В бібліотеці</string>
-    <string name="reset_chapter_question">Скинути розділ\?</string>
+    <string name="reset_chapter_question">Скинути розділ?</string>
     <string name="search_recents">Нещодавно шукалось…</string>
     <string name="view_all_updates">Переглянути всі оновлення</string>
     <string name="view_history">Історія перегляду</string>
@@ -369,7 +369,7 @@
     <string name="read_">Читати %1$s</string>
     <string name="last_read_">Останнє прочитане %1$s</string>
     <string name="reset_all_chapters_for_this_">Скинути всі розділи для %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Це видалить дату прочитання для \"%1$s\". Ви впевнені\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Це видалить дату прочитання для \"%1$s\". Ви впевнені?</string>
     <string name="newly_added">Свіжо додані</string>
     <string name="recents">Останні</string>
     <string name="auto_refresh_covers_summary">Оновлювати обкладинки при оновленні бібліотеки</string>
@@ -438,13 +438,13 @@
     <string name="show_downloaded_chapters">Показати завантажені розділи</string>
     <string name="show_bookmarked_chapters">Показати розділи в закладинках</string>
     <string name="show_all">Показати все</string>
-    <string name="add_x_to_library">Додати %1$s до бібліотеки\?</string>
+    <string name="add_x_to_library">Додати %1$s до бібліотеки?</string>
     <string name="all_but_bookmarked_chapters">Всі розділи окрім закладинок</string>
     <string name="all_read_chapters">Всі прочитані розділи</string>
     <string name="search_chapters">Пошук розділів</string>
     <string name="select_ending_chapter">Обрати останній розділ</string>
     <string name="select_starting_chapter">Обрати початковий розділ</string>
-    <string name="mark_all_chapters_as_read">Позначити всі розділи як прочитані\?</string>
+    <string name="mark_all_chapters_as_read">Позначити всі розділи як прочитані?</string>
     <string name="no_description">Немає опису</string>
     <string name="add_to_library">Додати до бібліотеки</string>
     <string name="season_">Сезон %1$d</string>
@@ -461,7 +461,7 @@
     <string name="restore_error">Не вдалось відновити резервну копію</string>
     <string name="white_theme">Чисто-білий</string>
     <string name="skipping_">(пропускаємо %1$d)</string>
-    <string name="stop_migrating">Припинити міграцію\?</string>
+    <string name="stop_migrating">Припинити міграцію?</string>
     <string name="no_alternatives_found">Альтернатив не знайдено</string>
     <string name="no_chapters_found_for_migration">Розділи не знайдено, цю манґу не можна використати для міграції</string>
     <string name="migrate_">Мігрувати %1$s</string>
@@ -483,11 +483,9 @@
     <string name="match_enabled_sources">Відповідність включених джерел</string>
     <string name="only_search_pinned_when">Шукати тільки в закріплених джерелах</string>
     <string name="match_pinned_sources">Відповідність до закріплених джерел</string>
-    <string name="delete_all_covers__not_in_library_used_">Видалити усі кешовані обкладинки котрих нема у вашій бібліотеці
-\nВикористовується: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Видалити усі кешовані обкладинки котрих нема у вашій бібліотеці \nВикористовується: %1$s</string>
     <string name="clear_cached_covers_non_library">Очистити кешовані обкладинки котрих нема в бібліотеці</string>
-    <string name="delete_old_covers_in_library_used_">Видалити старі та невикористовувані чи кешовані обкладинки манґи, у вашій бібліотеці котру було оновлено.
-\nВикористовується: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Видалити старі та невикористовувані чи кешовані обкладинки манґи, у вашій бібліотеці котру було оновлено. \nВикористовується: %1$s</string>
     <string name="clean_up_cached_covers">Очистити кеш обкладинок</string>
     <string name="disable_if_issues_with_updating">Вимкніть це, якщо у вас виникли проблеми з оновленням чи відновленням бібліотеки</string>
     <string name="no_folders_to_cleanup">Нема тек для очищення</string>
@@ -555,14 +553,11 @@
     <string name="none">Немає</string>
     <string name="automatic_backups">Автоматичне резервування</string>
     <string name="invalid_backup_file">Невірний файл резервної копії</string>
-    <string name="invalid_backup_file_type">Невірний файл резервної копії: %1$s
-\nЙого розширення повинне бути .proto.gz or .json.</string>
+    <string name="invalid_backup_file_type">Невірний файл резервної копії: %1$s \nЙого розширення повинне бути .proto.gz or .json.</string>
     <string name="backup_has_no_manga">Резервна копія не містить жодної манґи.</string>
     <string name="restore_missing_sources">Відсутні джерела:</string>
     <string name="restore_missing_trackers">Трекери не авторизовано:</string>
-    <string name="restore_content_full">Дані з файлу резервної копії буде відновлено.
-\n
-\nВам потрібно встановити розширення яких бракує та увійти в сервіси відстеження для їх використання.</string>
+    <string name="restore_content_full">Дані з файлу резервної копії буде відновлено. \n \nВам потрібно встановити розширення яких бракує та увійти в сервіси відстеження для їх використання.</string>
     <string name="restoring_backup_canceled">Відновлення відмінено</string>
     <string name="restore_duration">%02d хв, %02d сек</string>
     <string name="source_migration_guide">Гайд по міграції джерел</string>
@@ -617,7 +612,7 @@
     <string name="doh">DNS поверх HTTPS</string>
     <string name="show_in_sources_and_extensions">Показувати в списку джерел та розширень</string>
     <string name="log_out">Вихід</string>
-    <string name="log_out_from_">Вихід із %1$s\?</string>
+    <string name="log_out_from_">Вихід із %1$s?</string>
     <string name="exclude_">Виключати: %s</string>
     <string name="channel_errors">Помилки</string>
     <string name="update_all">Оновити все</string>
@@ -648,7 +643,7 @@
     <string name="by_source_order">У порядку джерела</string>
     <string name="category">Категорія</string>
     <string name="category_cannot_be_blank">Назва категорії не може бути порожньою</string>
-    <string name="remove_all_downloads">Видалити всі завантаження\?</string>
+    <string name="remove_all_downloads">Видалити всі завантаження?</string>
     <string name="no_chapters_to_delete">Немає розділів для видалення</string>
     <string name="global_updates">Глобальні оновлення</string>
     <string name="affects_library_grid">Впливає на обкладинки сітки бібліотек</string>
@@ -670,10 +665,10 @@
     <string name="search_suggestions">Пошукові пропозиції</string>
     <string name="vertically">Вертикально</string>
     <string name="show_on_long_press">Показати при довгому натисканні</string>
-    <string name="mark_all_chapters_as_unread">Позначити всі розділи як непрочитані\?</string>
+    <string name="mark_all_chapters_as_unread">Позначити всі розділи як непрочитані?</string>
     <string name="add_tag">Додати мітку</string>
     <string name="select_an_entry">Виберіть запис</string>
-    <string name="remove_previous_tracker">Видалити попереднє відстеження\?</string>
+    <string name="remove_previous_tracker">Видалити попереднє відстеження?</string>
     <string name="keep_both_on_service">Зберегти обидва на %1$s і замінити тільки на пристрої</string>
     <string name="use_suggested_date">Використовувати запропоновану дату</string>
     <string name="classic_blue">Класичний синій</string>
@@ -827,7 +822,7 @@
     <string name="tap_to_see_details">Тицьніть для перегляду подробиць</string>
     <string name="clear_history">Очистити історію</string>
     <string name="clear_history_completed">Історію видалено</string>
-    <string name="clear_history_confirmation">Ви впевнені\? Всю історію буде втрачено.</string>
+    <string name="clear_history_confirmation">Ви впевнені? Всю історію буде втрачено.</string>
     <string name="backup_restore_invalid_uri">Помилка: порожній URI</string>
     <string name="backup_info">Наполегливо рекомендується використовувати автоматичне резервування. Також ви повинні зберігати копії в інших місцях.</string>
     <string name="pref_manage_notifications">Керування сповіщеннями</string>
@@ -869,17 +864,14 @@
     <string name="learn_why">Дізнайтеся чому</string>
     <string name="show_">Показати %1$s</string>
     <string name="must_view_details_before_migration">Сторінку відомостей про цей запис необхідно переглянути, перш ніж можна буде виконувати міграцію</string>
-    <string name="confirm_manga_add_duplicate">У вашій бібліотеці є серія з такою самою назвою, але з іншого джерела (%1$s).
-\n
-\nВи хочете продовжити\?</string>
+    <string name="confirm_manga_add_duplicate">У вашій бібліотеці є серія з такою самою назвою, але з іншого джерела (%1$s). \n \nВи хочете продовжити?</string>
     <string name="pref_update_only_completely_read_summary">Оновлювати манґу, лише якщо немає непрочитаних розділів (повністю прочитано)</string>
     <string name="update_tracking_marked_read">Оновлювати відстеження, якщо позначено як прочитане</string>
     <string name="update_tracking_after_reading">Оновлювати відстеження після читання</string>
     <string name="check_for_beta_releases">Перевіряти наявність бета-релізів</string>
     <string name="try_new_features">Спробуйте нові можливості перед тим, як вони офіційно з\'являться. Бета-версії можуть бути нестабільними та надаються для отримання зворотного зв\'язку розробникам.</string>
     <string name="pref_clear_webview_data">Очистити дані WebView</string>
-    <string name="downloads_swipe_tutorial">Завантаження можна скасувати свайпом
-\nСвайпніть, щоб прибрати цю підказку</string>
+    <string name="downloads_swipe_tutorial">Завантаження можна скасувати свайпом \nСвайпніть, щоб прибрати цю підказку</string>
     <string name="reading_list">Читаю</string>
     <string name="wish_list">Заплановано</string>
     <string name="complete_list">Прочитано</string>

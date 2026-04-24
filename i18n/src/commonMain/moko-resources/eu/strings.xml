@@ -5,7 +5,7 @@
     <string name="create_new_category">Kategoria berria sortu</string>
     <string name="category_is_empty">Kategoria hutsik dago</string>
     <string name="manage_category">Kategoria kudeatu</string>
-    <string name="confirm_category_deletion">Kategoria ezabatu\?</string>
+    <string name="confirm_category_deletion">Kategoria ezabatu?</string>
     <string name="confirm_category_deletion_message">Kategoria honetako mangak kategoria lehentsira mugituko dira.</string>
     <string name="add_categories">Gehitu kategoriak</string>
     <string name="could_not_install_update">Ez izan da eguneraketa instalatu</string>
@@ -100,7 +100,7 @@
     <string name="chapter_not_found">Kapitulua ez da aurkitu</string>
     <string name="no_chapters_error">Ez dira kapitulurik aurkitu</string>
     <string name="no_pages_found">Ez dira orrialderik aurkitu</string>
-    <string name="remove_all_downloads">Deskarga guztiak ezabatu\?</string>
+    <string name="remove_all_downloads">Deskarga guztiak ezabatu?</string>
     <string name="no_chapters_to_delete">Ez dago kapitulurik ezabatzeko</string>
     <string name="by_source_order">Iturriaren ordenaren arabera</string>
     <string name="by_chapter_number">Kapitulu zenbakiaren arabera</string>
@@ -242,7 +242,7 @@
     <string name="search_recents">Bilatu azkenekoak…</string>
     <string name="show_updated_time">Erakutsi eguneratutako ordua</string>
     <string name="categories_to_include_in_global_update">Eguneratze globalean sartu beharreko kategoriak</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Honek \"%1$s\"-ren irakurketa-data kenduko du. Ziur zaude\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Honek \"%1$s\"-ren irakurketa-data kenduko du. Ziur zaude?</string>
     <string name="extension_info">Luzapenaren informazioa</string>
     <string name="ext_installer_shizuku_unavailable_dialog">Instalatu eta abiarazi Shizuku luzapen instalatzaile gisa erabiltzeko.</string>
     <string name="untrusted_extension">Fidagarria ez den luzapena</string>
@@ -251,7 +251,7 @@
     <string name="updating_extensions">Luzapenak eguneratzen</string>
     <string name="installed_">%1$s Instalatua</string>
     <string name="could_not_install_extension">Ezin izan da luzapena instalatu</string>
-    <string name="use_image_as_cover">Irudi hau azaleko arte gisa erabili\?</string>
+    <string name="use_image_as_cover">Irudi hau azaleko arte gisa erabili?</string>
     <string name="previous_title">Aurrekoa:</string>
     <string name="loading_pages">Orriak kargatzen…</string>
     <string name="failed_to_load_pages_">Ezin izan dira orriak kargatu: %1$s</string>
@@ -352,9 +352,7 @@
     <string name="webview_is_required">WebView beharrezkoa da Tachiyomi-rentzat</string>
     <string name="select_backup_file">Hautatu babeskopia fitxategia</string>
     <string name="show_unread_badges">Erakutsi irakurri gabeko bereizgarriak</string>
-    <string name="restore_content_full">Babeskopia fitxategiko datuak berreskuratu egingo dira.
-\n
-\nFalta diren luzapenak instalatu eta jarraipen-zerbitzuetan saioa hasi beharko duzu ondoren horiek erabiltzeko.</string>
+    <string name="restore_content_full">Babeskopia fitxategiko datuak berreskuratu egingo dira. \n \nFalta diren luzapenak instalatu eta jarraipen-zerbitzuetan saioa hasi beharko duzu ondoren horiek erabiltzeko.</string>
     <string name="check_for_extension_updates">Egiaztatu luzapenen eguneraketak</string>
     <string name="updates_tracking_details">Jarraipen zerbitzuetatik egoera, puntuazioa eta irakurritako azken kapitulua eguneratzen ditu</string>
     <string name="about_dont_kill_my_app">Fabrikatzaile batzuek aplikazioen murrizketa gehigarriak dituzte, atzeko planoko zerbitzuak akabatzen dituztenak. Webgune honek informazio gehiago du nola konpondu jakiteko.</string>
@@ -370,13 +368,13 @@
     <string name="removed_from_library">Liburutegitik kendua</string>
     <string name="_copied_to_clipboard">%1$s arbelean kopiatu da</string>
     <string name="source_not_installed_">Iturria ez dago instalatuta: %1$s</string>
-    <string name="mark_all_chapters_as_unread">Kapitulu guztiak irakurri gabeak bezala markatu\?</string>
+    <string name="mark_all_chapters_as_unread">Kapitulu guztiak irakurri gabeak bezala markatu?</string>
     <string name="oldest_first">Zaharrenetik berrienera</string>
     <string name="cover_saved">Azala gorde da</string>
     <string name="started_reading_date">Irakurtzen hasi den data</string>
     <string name="myanimelist_relogin">Mesedez, hasi saioa berriro MAL-en</string>
     <string name="no_chapters_found_for_migration">Ez da kapitulurik aurkitu, manga hau ezin da migraziorako erabili</string>
-    <string name="stop_migrating">Migratzea gelditu\?</string>
+    <string name="stop_migrating">Migratzea gelditu?</string>
     <string name="skipping_">(%1$d saltatzen)</string>
     <string name="classic_blue">Urdin Klasikoa</string>
     <string name="midnight_dusk">Gauerdiko ilunabarra</string>
@@ -404,7 +402,7 @@
     <string name="open_source_licenses">Open Source lizentziak</string>
     <string name="password">Pasahitza</string>
     <string name="log_out">Saioa itxi</string>
-    <string name="log_out_from_">Itxi saioa %1$s-n\?</string>
+    <string name="log_out_from_">Itxi saioa %1$s-n?</string>
     <string name="successfully_logged_in">Saioa behar bezala hasi da</string>
     <string name="successfully_logged_out">Saioa itxi da</string>
     <string name="no_wifi_connection">Ez dago Wi-Fi konexiorik erabilgarri</string>
@@ -466,7 +464,7 @@
     <string name="no_alternatives_found">Ez da alternatibarik aurkitu</string>
     <string name="restoring_backup">Babeskopiatik berreskuratzen</string>
     <string name="creating_backup">Babeskopia sortzen</string>
-    <string name="what_should_backup">Zeren babeskopia nahi duzu\?</string>
+    <string name="what_should_backup">Zeren babeskopia nahi duzu?</string>
     <string name="restore_duration">%02d min, %02d seg</string>
     <string name="restore_miui_warning">Baliteke babeskopiak/berreskuratzeak behar bezala ez funtzionatzea MIUI optimizazioa desgaituta badago.</string>
     <string name="progress">Aurrerapena</string>
@@ -496,7 +494,7 @@
     <string name="no_recent_read_updated_manga">Ez da duela gutxi mangarik irakurri edo eguneratu</string>
     <string name="no_recently_read_manga">Ez dago duela gutxi irakurritako mangarik</string>
     <string name="grouped">Taldekatua</string>
-    <string name="reset_chapter_question">Kapitulua berrezarri\?</string>
+    <string name="reset_chapter_question">Kapitulua berrezarri?</string>
     <string name="show_reset_history_button">Erakutsi historia berrezartzeko botoia</string>
     <string name="show_read_chapters_all">Erakutsi irakurritako kapituluak Taldekatuetan eta Guztietan</string>
     <string name="show_title_first">Erakutsi izenburua lehenik</string>
@@ -540,12 +538,12 @@
     <string name="show_on_long_press">Erakutsi sakaketa luzean</string>
     <string name="cutout_behavior_only_applies">Mozturiko eremuen portaera modu bertikalean bakarrik aplikatzen da eskala mota jakin batzuekin</string>
     <string name="no_description">Deskribapenik gabea</string>
-    <string name="mark_all_chapters_as_read">Kapitulu guztiak irakurriak bezala markatu\?</string>
+    <string name="mark_all_chapters_as_read">Kapitulu guztiak irakurriak bezala markatu?</string>
     <string name="remove_from_library">Kendu liburutegitik</string>
     <string name="all_chapters">Kapitulu guztiak</string>
     <string name="all_read_chapters">Kapitulu irakurri guztiak</string>
     <string name="all_but_bookmarked_chapters">Laster-marka gabeko kapitulu guztiak</string>
-    <string name="add_x_to_library">%1$s liburutegira gehitu\?</string>
+    <string name="add_x_to_library">%1$s liburutegira gehitu?</string>
     <string name="show_all">Erakutsi denak</string>
     <string name="show_read_chapters">Erakutsi kapitulu irakurriak</string>
     <string name="add_tag">Gehitu etiketa</string>
@@ -570,8 +568,7 @@
     <string name="backup_frequency">Babeskopien maiztasuna</string>
     <string name="max_auto_backups">Gehienezko babeskopia automatikoak</string>
     <string name="invalid_backup_file">Babeskopia fitxategi baliogabea</string>
-    <string name="invalid_backup_file_type">Babeskopia-fitxategi mota baliogabea: %1$s
-\n.proto.gz edo .json-ekin amaitu behar da.</string>
+    <string name="invalid_backup_file_type">Babeskopia-fitxategi mota baliogabea: %1$s \n.proto.gz edo .json-ekin amaitu behar da.</string>
     <string name="backup_created">Babeskopia sortu da</string>
     <string name="nsfw_sources">NSFW (18+) iturriak</string>
     <string name="add">Gehitu</string>
@@ -700,7 +697,7 @@
     <string name="remove_tracking">Kendu jarraipena aplikaziotik</string>
     <string name="cannot_remove_tracking_while_offline">Tracker ezin da kendu %1$s-tik konexiorik gabe dagoen bitartean</string>
     <string name="remove_tracking_from_">Kendu %1$s-tik ere</string>
-    <string name="remove_previous_tracker">Aurreko jarraitzailea kendu\?</string>
+    <string name="remove_previous_tracker">Aurreko jarraitzailea kendu?</string>
     <string name="remove_x_from_service_and_add_y">Kendu %1$s %2$stik eta gehitu %3$s</string>
     <string name="skip_this_step_next_time">Saltatu urrats hau hurrengoan</string>
     <string name="to_show_again_setting_sources">Pantaila hau berriro erakusteko, joan Ezarpenak -&gt; Iturriak atalera.</string>
@@ -760,16 +757,14 @@
     <string name="disable_if_issues_with_updating">Desgaitu hau zure liburutegia eguneratzeko edo berreskuratzeko arazoak badituzu</string>
     <string name="clean_orphaned_downloads">Garbitu umezurtzak</string>
     <string name="battery_optimization_disabled">Bateriaren optimizazioa desgaituta dago dagoeneko</string>
-    <string name="clear_database_confirmation">Ziur zaude\? Kapitulu iraurriak eta liburutegikoak ez diren manga-en aurrerapenak galduko dira</string>
-    <string name="delete_old_covers_in_library_used_">Liburutegian eguneratu berriak dauden manga-en azalen cache-ko kopia zahar eta erabili gabeak ezabatu.
-\nUne honetan erabiltzen: %1$s</string>
+    <string name="clear_database_confirmation">Ziur zaude? Kapitulu iraurriak eta liburutegikoak ez diren manga-en aurrerapenak galduko dira</string>
+    <string name="delete_old_covers_in_library_used_">Liburutegian eguneratu berriak dauden manga-en azalen cache-ko kopia zahar eta erabili gabeak ezabatu. \nUne honetan erabiltzen: %1$s</string>
     <string name="pref_global_search">Bilaketa globala</string>
     <string name="auto_update_extensions">Eguneratu luzapenak automatikoki</string>
     <string name="notify_extension_updated">Jakinarazi luzapena eguneratu dela</string>
     <string name="some_extensions_may_not_update">Baliteke luzapen batzuk automatikoki ez eguneratzea aplikazio honetatik kanpo instalatu badira</string>
     <string name="migration_sources_changed">Migrazio iturriak aldatu dira</string>
-    <string name="delete_all_covers__not_in_library_used_">Ezabatu zure liburutegian ez dauden azalen cachean gordetako kopia guztiak
-\nUne honetan erabiltzen: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Ezabatu zure liburutegian ez dauden azalen cachean gordetako kopia guztiak \nUne honetan erabiltzen: %1$s</string>
     <string name="match_pinned_sources">Elkartu ainguratutako iturriak</string>
     <string name="use_last_saved_migration_preferences">Erabili gordetako azken migrazioaren aurreko hobespenak eta iturriak migrazio masiboa egiteko</string>
     <string name="version">Bertsioa</string>
@@ -821,9 +816,7 @@
     <string name="descending">Beherantz</string>
     <string name="database_clean">Datu-basea garbi</string>
     <string name="clear_database_source_item_count">Liburutegian ez dauden %1$d manga datubasean</string>
-    <string name="confirm_manga_add_duplicate">Zure liburutegian izen bereko sarrera bat duzu, baina beste iturri batekoa (%1$s).
-\n
-\nJarraitu nahi duzu\?</string>
+    <string name="confirm_manga_add_duplicate">Zure liburutegian izen bereko sarrera bat duzu, baina beste iturri batekoa (%1$s). \n \nJarraitu nahi duzu?</string>
     <string name="select_inverse">Hautatu alderantzizkoa</string>
     <string name="skipped_reason_completed">Saltatu egin da seriea bukatua dagoelako</string>
     <string name="skipped_reason_not_caught_up">Saltatu egin da irakurri gabeko kapituluak daudelako</string>
@@ -831,7 +824,7 @@
     <string name="tap_to_see_details">Sakatu xehetasunak ikusteko</string>
     <string name="clear_history">Garbitu historia</string>
     <string name="clear_history_completed">Historia ezabatu da</string>
-    <string name="clear_history_confirmation">Ziur zaude\? Historia guztia galduko da.</string>
+    <string name="clear_history_confirmation">Ziur zaude? Historia guztia galduko da.</string>
     <string name="backup_restore_invalid_uri">Errorea: URI-a hutsik</string>
     <string name="backup_info">Babeskopia automatikoak oso gomendagarriak dira. Kopiak beste leku batzuetan ere gorde beharko zenituzke.</string>
     <string name="pref_manage_notifications">Kudeatu jakinarazpenak</string>

@@ -126,7 +126,7 @@
     <string name="cookies_cleared">Бисквитки изчистени</string>
     <string name="clear_database">Изчисти базата данни</string>
     <string name="clear_database_summary">Изтрий манга и глави, които не са в библиотеката ми</string>
-    <string name="clear_database_confirmation">Сигурни ли сте\? Прочетените глави и напредъкът на манги, които не са в библиотеката Ви, ще бъдат изгубени</string>
+    <string name="clear_database_confirmation">Сигурни ли сте? Прочетените глави и напредъкът на манги, които не са в библиотеката Ви, ще бъдат изгубени</string>
     <string name="clear_database_completed">Базата данни изчистена</string>
     <string name="refresh_library_metadata">Обнови метаданните на библиотеката</string>
     <string name="updates_covers_genres_desc">Обновява кориците, жанровете, описанието и статуса на мангите</string>
@@ -382,7 +382,7 @@
     <string name="complete">Готово</string>
     <string name="updated_to_">Обновена до v%1$s</string>
     <string name="confirm_category_deletion_message">Мангата в тази категория ще се премести в категорията по подразбиране.</string>
-    <string name="confirm_category_deletion">Да се изтрие ли категорията\?</string>
+    <string name="confirm_category_deletion">Да се изтрие ли категорията?</string>
     <string name="category_is_empty">Категорията е празна</string>
     <string name="create_new_category">Създайте нова категория</string>
     <string name="_already_in_queue">%1$s вече е на опашка</string>
@@ -420,8 +420,7 @@
     <string name="cancel_all_for_series">Премахни всичко от тази серия</string>
     <string name="l_nav">L-образно</string>
     <string name="kindlish_nav">Kindle-подобно</string>
-    <string name="invalid_backup_file_type">Невалиден тип на файла: %1$s
-        \nТрябва да завършва на .proto.gz или .json.</string>
+    <string name="invalid_backup_file_type">Невалиден тип на файла: %1$s \nТрябва да завършва на .proto.gz или .json.</string>
     <string name="requires_app_restart">Изисква рестартиране, за да влезе в сила</string>
     <string name="about_dont_kill_my_app">Някои производители ограничават приложенията, за да убият задноплановите услуги. Следният уебсайт съдържа информация за разрешаването на проблема.</string>
     <string name="error_sharing_cover">Грешка при споделянето на корицата</string>
@@ -464,16 +463,14 @@
     <string name="tako">Тако</string>
     <string name="side_nav_icon_alignment">Подравняване на страничната навигационна икона</string>
     <string name="hide_notification_content">Скривай съдържанието на уведомленията</string>
-    <string name="restore_content_full">Ще бъдат възстановени данните от резервното копие.
-        \n
-        \nТрябва да инсталирате липсващи разширения, ако има такива, и да се впишете в услугите за тракинг, за да ги ползвате.</string>
+    <string name="restore_content_full">Ще бъдат възстановени данните от резервното копие. \n \nТрябва да инсталирате липсващи разширения, ако има такива, и да се впишете в услугите за тракинг, за да ги ползвате.</string>
     <string name="dump_crash_logs">Разтовари записите от сривовете</string>
     <string name="saves_error_logs">Запазва записи от сривове, които може да бъдат споделени с разработчиците</string>
     <string name="doh">DNS пред HTTPS</string>
     <string name="disabled">Изключено</string>
     <string name="nsfw_sources">NSFW (18+) източници</string>
     <string name="show_in_sources_and_extensions">Показвай в списъка с източници и разширения</string>
-    <string name="log_out_from_">Искате ли да излезете от %1$s\?</string>
+    <string name="log_out_from_">Искате ли да излезете от %1$s?</string>
     <string name="webview_is_required">WebView е необходим за Tachiyomi</string>
     <string name="next">След</string>
     <string name="top">Горна част</string>
@@ -483,7 +480,7 @@
     <string name="yotsuba">Йоцуба</string>
     <string name="log_out">Излез</string>
     <string name="not_bookmarked">Не е отбелязано в отметките</string>
-    <string name="remove_all_downloads">Премахване на всички изтегляния\?</string>
+    <string name="remove_all_downloads">Премахване на всички изтегляния?</string>
     <string name="no_chapters_to_delete">Няма глави за изтриване</string>
     <string name="by_source_order">По поръчка на източника</string>
     <string name="hide_start_reading_button">Скриване на бутона за начало на четене</string>
@@ -582,7 +579,7 @@
     <string name="updated_">Актуализирано %1$s</string>
     <string name="added_">Добавено %1$s</string>
     <string name="fetched_">Извлечено %1$s</string>
-    <string name="reset_chapter_question">Нулиране на главата\?</string>
+    <string name="reset_chapter_question">Нулиране на главата?</string>
     <string name="press_and_hold_to_also_reset">Натискането и задържането може също да нулира историята на главите</string>
     <string name="could_not_install_extension">Не може да се инсталира разширение</string>
     <string name="updating_extensions">Актуализиране на разширенията</string>
@@ -609,10 +606,10 @@
     <string name="automatic_orientation">Автоматично (в зависимост от ориентацията)</string>
     <string name="show_on_long_press">Показване при продължително натискане</string>
     <string name="no_description">няма описание</string>
-    <string name="mark_all_chapters_as_read">Маркирате всички глави като прочетени\?</string>
+    <string name="mark_all_chapters_as_read">Маркирате всички глави като прочетени?</string>
     <string name="search_chapters">Търсене на глави</string>
     <string name="all_read_chapters">Всички прочетени глави</string>
-    <string name="add_x_to_library">Добавяне на %1$s към библиотеката\?</string>
+    <string name="add_x_to_library">Добавяне на %1$s към библиотеката?</string>
     <string name="all_but_bookmarked_chapters">Всички глави, освен тези с отметки</string>
     <string name="hide_chapter_titles">Скриване на заглавията на глави</string>
     <string name="sort_by_chapter_number">Сортиране по номер на главата</string>
@@ -630,7 +627,7 @@
     <string name="remove_tracking_from_">Премахнете също от %1$s</string>
     <string name="keep_both_on_service">Запазете и двете на %1$s и заменяйте само локално</string>
     <string name="remove_x_from_service_and_add_y">Премахнете %1$s от %2$s и добавете %3$s</string>
-    <string name="remove_previous_tracker">Премахване на предишния тракер\?</string>
+    <string name="remove_previous_tracker">Премахване на предишния тракер?</string>
     <string name="finished_reading_date">Дата на приключване на четенето</string>
     <string name="myanimelist_relogin">Моля, влезте отново в MAL</string>
     <string name="use_suggested_date">Използвайте предложената дата</string>
@@ -653,7 +650,7 @@
     <string name="no_chapters_found_for_migration">Няма намерени глави, тази манга не може да се използва за миграция</string>
     <string name="skipping_">(пропускане на %1$d)</string>
     <string name="no_alternatives_found">Не са намерени алтернативи</string>
-    <string name="stop_migrating">Спрете мигрирането\?</string>
+    <string name="stop_migrating">Спрете мигрирането?</string>
     <string name="turn_on_">Включване на %s</string>
     <string name="turn_off_">Изключване на %s</string>
     <string name="classic_blue">Класическо синьо</string>
@@ -686,7 +683,7 @@
     <string name="updates_and_history">Актуализации &amp; история</string>
     <string name="newly_added">Наскоро добавени</string>
     <string name="reset_chapter_history">Нулиране на хронологията на главите</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Това ще премахне датата на четене на \"%1$s\". Сигурни ли сте\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Това ще премахне датата на четене на \"%1$s\". Сигурни ли сте?</string>
     <string name="view_all_updates">Преглед на всички актуализации</string>
     <string name="search_recents">Търсете скорошни…</string>
     <string name="unread_or_downloaded">Непрочетени или изтеглени</string>
@@ -704,7 +701,7 @@
     <string name="extension_updates_pending">Изчакващи актуализации на разширението</string>
     <string name="all_sources">Всички източници</string>
     <string name="filter_languages">Филтриране на езици</string>
-    <string name="mark_all_chapters_as_unread">Маркирате всички глави като непрочетени\?</string>
+    <string name="mark_all_chapters_as_unread">Маркирате всички глави като непрочетени?</string>
     <string name="select_starting_chapter">Изберете начална глава</string>
     <string name="remember_this_choice">Запомнете този избор</string>
     <string name="dont_migrate">Не мигрирай</string>
@@ -768,10 +765,8 @@
     <string name="starting_cleanup">Стартиране на почистването</string>
     <string name="no_folders_to_cleanup">Няма папки за почистване</string>
     <string name="clean_up_cached_covers">Почистване на кеширани корици</string>
-    <string name="delete_old_covers_in_library_used_">Изтрийте старите и неизползвани кеширани корици на манга в библиотеката си, които са били актуализирани.
-        \nВ момента използвате: %1$s</string>
-    <string name="delete_all_covers__not_in_library_used_">Изтриване на всички корици в кеша, които не са в библиотеката ви
-        \nВ момента използвани: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Изтрийте старите и неизползвани кеширани корици на манга в библиотеката си, които са били актуализирани. \nВ момента използвате: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Изтриване на всички корици в кеша, които не са в библиотеката ви \nВ момента използвани: %1$s</string>
     <string name="match_pinned_sources">Съвпадение на фиксирани източници</string>
     <string name="match_enabled_sources">Съвпадение на разрешени източници</string>
     <string name="only_enable_enabled_for_migration">Разрешете само текущо разрешените източници за миграция</string>
@@ -856,7 +851,7 @@
     <string name="cover_only_grid">Решетка само с корици</string>
     <string name="clear_history">Изчисти историята</string>
     <string name="clear_history_completed">Историята изтрита</string>
-    <string name="clear_history_confirmation">Напълно ли сте сигурен\? Всичката ви история ще бъде загубена.</string>
+    <string name="clear_history_confirmation">Напълно ли сте сигурен? Всичката ви история ще бъде загубена.</string>
     <string name="backup_info">Автоматичното запазване е препоръчително. Добре е да имате копия на няколко места.</string>
     <string name="pref_manage_notifications">Уведомления</string>
     <string name="faq_and_guides">Често задавани въпроси и ръководства</string>
@@ -889,9 +884,7 @@
     <string name="empty_backup_error">Няма заглавия в библиотеката за резервно копие</string>
     <string name="channel_skipped">Пропуснати</string>
     <string name="pref_update_only_started">Незапочнати</string>
-    <string name="confirm_manga_add_duplicate">Имате заглавие в библиотеката със същото име, но от различен източник (%1$s).
-        \n
-        \nИскате ли да продължите\?</string>
+    <string name="confirm_manga_add_duplicate">Имате заглавие в библиотеката със същото име, но от различен източник (%1$s). \n \nИскате ли да продължите?</string>
     <string name="wish_list">Списък с желания</string>
     <string name="complete_list">Списък със завършени</string>
     <string name="on_hold_list">Списък със спрени</string>

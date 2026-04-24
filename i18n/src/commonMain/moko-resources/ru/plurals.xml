@@ -13,16 +13,16 @@
         <item quantity="other">Очистка завершена. %d папок удалено</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Копировать %1$d%2$s серию\?</item>
-        <item quantity="few">Копировать %1$d%2$s серии\?</item>
-        <item quantity="many">Копировать %1$d%2$s серий\?</item>
-        <item quantity="other">Копировать %1$d%2$s серий\?</item>
+        <item quantity="one">Копировать %1$d%2$s серию?</item>
+        <item quantity="few">Копировать %1$d%2$s серии?</item>
+        <item quantity="many">Копировать %1$d%2$s серий?</item>
+        <item quantity="other">Копировать %1$d%2$s серий?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Мигрировать %1$d%2$s серию\?</item>
-        <item quantity="few">Мигрировать %1$d%2$s серии\?</item>
-        <item quantity="many">Мигрировать %1$d%2$s серий\?</item>
-        <item quantity="other">Мигрировать %1$d%2$s серий\?</item>
+        <item quantity="one">Мигрировать %1$d%2$s серию?</item>
+        <item quantity="few">Мигрировать %1$d%2$s серии?</item>
+        <item quantity="many">Мигрировать %1$d%2$s серий?</item>
+        <item quantity="other">Мигрировать %1$d%2$s серий?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Через %1$s минуту</item>
@@ -49,10 +49,10 @@
         <item quantity="other">Для %d серий</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Удалить %1$d загруженную главу\?</item>
-        <item quantity="few">Удалить %1$d загруженных глав\?</item>
-        <item quantity="many">Удалить %1$d загруженных глав\?</item>
-        <item quantity="other">Удалить %1$d загруженных глав\?</item>
+        <item quantity="one">Удалить %1$d загруженную главу?</item>
+        <item quantity="few">Удалить %1$d загруженных глав?</item>
+        <item quantity="many">Удалить %1$d загруженных глав?</item>
+        <item quantity="other">Удалить %1$d загруженных глав?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s глава</item>
@@ -67,18 +67,10 @@
         <item quantity="other">%d категорий</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">%1$s глава была удалена из источника:
-\n%2$s
-\nУдалить загрузку\?</item>
-        <item quantity="few">%1$s главы было удалено из источника:
-\n%2$s
-\nУдалить загрузку\?</item>
-        <item quantity="many">%1$s глав было удалено из источника:
-\n%2$s
-\nУдалить загрузку\?</item>
-        <item quantity="other">%1$s глав было удалено из источника:
-\n%2$s
-\nУдалить загрузку\?</item>
+        <item quantity="one">%1$s глава была удалена из источника: \n%2$s \nУдалить загрузку?</item>
+        <item quantity="few">%1$s главы было удалено из источника: \n%2$s \nУдалить загрузку?</item>
+        <item quantity="many">%1$s глав было удалено из источника: \n%2$s \nУдалить загрузку?</item>
+        <item quantity="other">%1$s глав было удалено из источника: \n%2$s \nУдалить загрузку?</item>
     </plurals>
     <plurals name="extension_updates_available">
         <item quantity="one">Доступно %d обновление для расширения</item>

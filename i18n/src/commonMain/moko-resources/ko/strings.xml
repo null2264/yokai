@@ -24,7 +24,7 @@
     <string name="move_to_categories">카테고리로 이동</string>
     <string name="stop">정지</string>
     <string name="remove">제거</string>
-    <string name="resume">계속 읽기</string>
+    <string name="resume">다운로드 재개</string>
     <string name="open_in_browser">브라우저에서 열기</string>
     <string name="compact_grid">그리드</string>
     <string name="list">리스트</string>
@@ -60,7 +60,7 @@
     <string name="extensions">확장 앱</string>
     <string name="extension_info">확장 앱 정보</string>
     <string name="pause">일시중지</string>
-    <string name="default_value">기본값</string>
+    <string name="default_value">기본</string>
     <string name="library_update_frequency">서재 업데이트 주기</string>
     <string name="manual">수동</string>
     <string name="every_6_hours">6시간</string>
@@ -69,7 +69,7 @@
     <string name="every_2_days">2일</string>
     <string name="weekly">1주</string>
     <string name="categories_to_include_in_global_update">전역 업데이트에 포함할 카테고리</string>
-    <string name="all">전부</string>
+    <string name="all">전체</string>
     <string name="library_update_restriction">디바이스 제한 사항</string>
     <string name="library_update_restriction_summary">조건들이 충족 될 때에만 업데이트</string>
     <string name="charging">충전중</string>
@@ -138,7 +138,7 @@
     <string name="cookies_cleared">쿠키 삭제됨</string>
     <string name="clear_database">데이터베이스 삭제</string>
     <string name="clear_database_summary">서재에 추가되지 않은 항목의 기록을 삭제합니다</string>
-    <string name="clear_database_confirmation">확실합니까\? 서재에 없는 항목의 읽은 기록이 삭제됩니다</string>
+    <string name="clear_database_confirmation">확실합니까? 서재에 없는 항목의 읽은 기록이 삭제됩니다</string>
     <string name="refresh_library_metadata">서재 메타데이터 갱신</string>
     <string name="updates_covers_genres_desc">표지와 장르, 설명, 만화 상태 정보들을 업데이트합니다</string>
     <string name="refresh_tracking_metadata">동기화 메타데이터 새로 고침</string>
@@ -181,7 +181,7 @@
     <string name="page_">페이지: %1$d</string>
     <string name="next_chapter_not_found">다음 챕터가 없습니다</string>
     <string name="decode_image_error">이미지를 로드할 수 없습니다</string>
-    <string name="use_image_as_cover">이 이미지를 표지로 설정하시겠습니까\?</string>
+    <string name="use_image_as_cover">이 이미지를 표지로 설정하시겠습니까?</string>
     <string name="finished_chapter">완료:</string>
     <string name="current_chapter">현재:</string>
     <string name="next_title">다음:</string>
@@ -228,7 +228,7 @@
     <string name="fourth_to_last">네번째 챕터에서 끝까지</string>
     <string name="fifth_to_last">다섯번째 챕터에서 끝까지</string>
     <string name="categories_to_include_in_download">다운로드에 포함할 카테고리</string>
-    <string name="what_should_backup">어떤 항목들을 백업하겠습니까\?</string>
+    <string name="what_should_backup">어떤 항목들을 백업하겠습니까?</string>
     <string name="clear_database_completed">항목 삭제됨</string>
     <string name="local">로컬</string>
     <string name="local_source">로컬 저장소</string>
@@ -280,8 +280,7 @@
     <string name="requires_app_restart">설정을 적용하기 위해 앱을 재시작해야 합니다</string>
     <string name="restoring_backup_canceled">복원 취소</string>
     <string name="restore_duration">%02d분 %02d초</string>
-    <string name="invalid_backup_file_type">부적합한 백업 파일 타입: %1$s
-\n백업파일은 .photo .gz 또는 .json으로 끝나야 합니다.</string>
+    <string name="invalid_backup_file_type">부적합한 백업 파일 타입: %1$s \n백업파일은 .photo .gz 또는 .json으로 끝나야 합니다.</string>
     <string name="invalid_backup_file">잘못된 백업 파일</string>
     <string name="disabled">끄기</string>
     <string name="right_and_left_nav">좌우 이동</string>
@@ -297,7 +296,7 @@
     <string name="log_out">로그아웃</string>
     <string name="invalid_download_location">유효하지 않은 다운로드 위치</string>
     <string name="backup_failed">백업 실패</string>
-    <string name="log_out_from_">%1$s 에서 로그아웃 하시겠습니까\?</string>
+    <string name="log_out_from_">%1$s 에서 로그아웃 하시겠습니까?</string>
     <string name="date_added">추가된 날짜</string>
     <string name="latest_chapter">최신 챕터</string>
     <string name="unofficial">비공식</string>
@@ -336,7 +335,7 @@
     <string name="invert_tapping">탭 영역 반전</string>
     <string name="actions">행동</string>
     <string name="appearance">모양</string>
-    <string name="last_used">마지막으로 사용</string>
+    <string name="last_used">최근 사용</string>
     <string name="view_chapters">회차 목록 보기</string>
     <string name="warning">경고</string>
     <string name="extension_updates">확장 앱 업데이트</string>
@@ -403,9 +402,7 @@
     <string name="failed_to_bypass_cloudflare">Cloudflare를 통과하지 못했습니다</string>
     <string name="chapters_">%1$s화</string>
     <string name="refresh_tracking">트래커 동기화 새로고침</string>
-    <string name="restore_content_full">백업 파일에서 데이터가 복구됩니다.
-\n
-\n복구 완료 후 없어진 소스를 다시 설치하고 트래킹 서비스에 로그인 해야 합니다.</string>
+    <string name="restore_content_full">백업 파일에서 데이터가 복구됩니다. \n \n복구 완료 후 없어진 소스를 다시 설치하고 트래킹 서비스에 로그인 해야 합니다.</string>
     <string name="restore_missing_trackers">로그인 되지않은 트래커:</string>
     <string name="every_3_days">3일</string>
     <string name="check_site_in_web">WebView에서 사이트 열기</string>
@@ -446,9 +443,7 @@
     <string name="descending">내림차순</string>
     <string name="clear_database_source_item_count">데이터베이스에 없는 항목이 %1$d개 있습니다</string>
     <string name="database_clean">데이터베이스 정리</string>
-    <string name="confirm_manga_add_duplicate">서재에 제목이 같지만 소스가 다른 항목이 있습니다 (%1$s).
-\n
-\n계속하시겠습니까\?</string>
+    <string name="confirm_manga_add_duplicate">서재에 제목이 같지만 소스가 다른 항목이 있습니다 (%1$s). \n \n계속하시겠습니까?</string>
     <string name="select_inverse">선택 반전</string>
     <string name="cover_only_grid">표지 그리드</string>
     <string name="notification_update_error">%1$d개의 업데이트가 실패했습니다</string>
@@ -484,7 +479,7 @@
     <string name="marked_as_unread">읽은 상태로 표시</string>
     <string name="removed_bookmark">책갈피 제거됨</string>
     <string name="chapters_removed">챕터가 제거되었습니다.</string>
-    <string name="remove_all_downloads">다운로드된 모든 챕터를 제거할까요\?</string>
+    <string name="remove_all_downloads">다운로드된 모든 챕터를 제거할까요?</string>
     <string name="by_source_order">출처 순서별</string>
     <string name="category_cannot_be_blank">카테고리 이름은 비워 둘 수 없습니다</string>
     <string name="create_new_category">새 카테고리 만들기</string>
@@ -499,7 +494,7 @@
     <string name="_already_in_queue">%1$s이(가) 이미 큐에 있습니다</string>
     <string name="new_category">새 카테고리</string>
     <string name="category_is_empty">카테고리가 비어 있습니다</string>
-    <string name="confirm_category_deletion">카테고리를 삭제하시겠습니까\?</string>
+    <string name="confirm_category_deletion">카테고리를 삭제하시겠습니까?</string>
     <string name="confirm_category_deletion_message">이 카테고리의 만화는 기본 카테고리로 이동합니다.</string>
     <string name="already_in_category">이미 카테고리에 있습니다</string>
     <string name="show_categories_while_filtering">필터링하는 동안 빈 카테고리 표시</string>
@@ -519,7 +514,7 @@
     <string name="save_chapters_as_cbz">CBZ 파일로 저장</string>
     <string name="clear_history">내역 삭제</string>
     <string name="clear_history_completed">기록이 삭제되었습니다</string>
-    <string name="clear_history_confirmation">계속하시겠습니까\? 모든 기록이 삭제됩니다.</string>
+    <string name="clear_history_confirmation">계속하시겠습니까? 모든 기록이 삭제됩니다.</string>
     <string name="backup_restore_invalid_uri">오류: 빈 URI</string>
     <string name="backup_info">자동 백업이 매우 권장됩니다. 백업 파일은 다른 장소에 나눠 보관하세요.</string>
     <string name="fetched_">%1$s 가져옴</string>
@@ -574,7 +569,7 @@
     <string name="global_updates">전역 업데이트</string>
     <string name="display_buttons_bottom_reader">리더 밑 버튼</string>
     <string name="auto_refresh_covers_summary">업데이트 할 땐 서재의 표지도 새로고침</string>
-    <string name="group_library_by">서재 분류 방법은…</string>
+    <string name="group_library_by">서재 분류 방법…</string>
     <string name="ungrouped">그룹화되지 않음</string>
     <string name="when_sorting_ignore_articles">알파벳으로 정렬 할 땐, 만화 제목 첫머리에 관사 (a, an, the)를 무시하고 정렬</string>
     <string name="uniform_grid_covers">균등 그리드 표지</string>
@@ -588,7 +583,7 @@
     <string name="read_">%1$s 읽기</string>
     <string name="updated_">%1$s 업데이트됨</string>
     <string name="newly_added">새로 추가됨</string>
-    <string name="this_will_remove_the_read_date_for_x_question">\"%1$s\"의 읽은 날짜가 제거됩니다. 확실합니까\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">\"%1$s\"의 읽은 날짜가 제거됩니다. 확실합니까?</string>
     <string name="read_progress">진행 상황 읽기</string>
     <string name="can_be_found_in_library_filters">library 서재 필터를 확장하여 찾을 수도 있습니다</string>
     <string name="recents">최근</string>
@@ -659,7 +654,7 @@
     <string name="pages_">페이지 %1$s</string>
     <string name="set_second_page_as_cover">두 번째 페이지를 표지로 설정</string>
     <string name="share_second_page">두 번째 페이지 공유</string>
-    <string name="reset_chapter_question">챕터 재설정\?</string>
+    <string name="reset_chapter_question">챕터 재설정?</string>
     <string name="press_and_hold_to_also_reset">길게 누르면 장 기록을 재설정 할 수도 있습니다</string>
     <string name="only_unread">읽지 않은 상태만</string>
     <string name="only_downloaded">다운로드만</string>
@@ -668,16 +663,16 @@
     <string name="changing_will_reset_reading_mode">이를 변경하면 이 시리즈의 읽기 모드가 재설정됩니다</string>
     <string name="switch_to_single">단일 페이지로 전환</string>
     <string name="smart_based_on_page">스마트(페이지 기반)</string>
-    <string name="mark_all_chapters_as_read">모든 챕터를 읽은 것으로 표시하시겠습니까\?</string>
+    <string name="mark_all_chapters_as_read">모든 챕터를 읽은 것으로 표시하시겠습니까?</string>
     <string name="all_read_chapters">모든 읽기 챕터</string>
-    <string name="add_x_to_library">서재에 %1$s를 추가하시겠습니까\?</string>
+    <string name="add_x_to_library">서재에 %1$s를 추가하시겠습니까?</string>
     <string name="dont_migrate">마이그레이션하지 않음</string>
     <string name="details_page">세부내용 페이지</string>
     <string name="turn_off_">%s 끄기</string>
     <string name="cutout_ignore">컷아웃 영역 무시</string>
     <string name="page_layout">페이지 레이아웃</string>
     <string name="remember_this_choice">이 선택을 기억하십시오</string>
-    <string name="stop_migrating">마이그레이션을 중지하시겠습니까\?</string>
+    <string name="stop_migrating">마이그레이션을 중지하시겠습니까?</string>
     <string name="classic_blue">클래식 블루</string>
     <string name="clear_tags">태그 지우기</string>
     <string name="show_all">모두 보기</string>
@@ -745,9 +740,9 @@
     <string name="expanded_toolbar">확장된 도구 모음</string>
     <string name="both_axes">두 축 모두</string>
     <string name="start_reading_chapter_">챕터 %1$s 읽기 시작</string>
-    <string name="continue_reading_chapter_">계속 읽기 챕터 %1$s</string>
+    <string name="continue_reading_chapter_">챕터 %1$s부터 읽기</string>
     <string name="show_unread_chapters">읽지 않은 챕터 표시</string>
-    <string name="continue_reading">계속 읽기</string>
+    <string name="continue_reading">이어 읽기</string>
     <string name="season_">시즌 %1$d</string>
     <string name="show_downloaded_chapters">책갈피가 지정된 장 표시</string>
     <string name="hide_chapter_titles">장 제목 숨기기</string>
@@ -762,7 +757,7 @@
     <string name="chocolate_strawberries">초콜릿 딸기</string>
     <string name="theme_buttons_based_on_cover">표지를 기반으로 한 테마 버튼</string>
     <string name="show_larger_toolbar">대부분의 페이지 맨 위에 더 크고 확장된 도구 모음 표시(설정에 관계없이 작은 장치에는 표시되지 않음)</string>
-    <string name="mark_all_chapters_as_unread">모든 챕터를 읽지 않은 것으로 표시하시겠습니까\?</string>
+    <string name="mark_all_chapters_as_unread">모든 챕터를 읽지 않은 것으로 표시하시겠습니까?</string>
     <string name="skipping_">(%1$d 건너뛰기)</string>
     <string name="smart_based_on_page_and_theme">스마트(페이지 및 테마 기준)</string>
     <string name="start_past_cutout">과거 컷아웃 시작</string>
@@ -780,12 +775,12 @@
     <string name="scoring_type_updated">점수 유형 업데이트됨</string>
     <string name="select_sources">소스 선택</string>
     <string name="cannot_remove_tracking_while_offline">오프라인 상태에서는 %1$s에서 트래커를 제거할 수 없습니다</string>
-    <string name="remove_previous_tracker">이전 트래커를 제거하시겠습니까\?</string>
+    <string name="remove_previous_tracker">이전 트래커를 제거하시겠습니까?</string>
     <string name="teal_ocean">청록색 바다</string>
     <string name="lime_time">라임 타임</string>
     <string name="flat_lime">플랫 라임</string>
     <string name="white_theme">퓨어 화이트</string>
-    <string name="last_used_library_recents">마지막으로 사용(서재 또는 최근)</string>
+    <string name="last_used_library_recents">최근 사용(서재 또는 최근)</string>
     <string name="select_a_source_then_item_to_migrate">원본을 선택한 다음 마이그레이션할 항목을 선택합니다</string>
     <string name="migration">마이그레이션</string>
     <string name="skip_pre_migration">마이그레이션 전 건너뛰기</string>
@@ -795,7 +790,7 @@
     <string name="force_download_cache_refresh">다운로드 캐시 새로 고침</string>
     <string name="force_download_cache_refresh_summary">이렇게 하면 다운로드 캐시가 강제로 다시 계산됩니다. 이 앱 외부에서 다운로드를 수정하고 앱에서 다운로드를 선택하려는 경우에 유용합니다</string>
     <string name="warning_enroll_into_beta">베타 릴리스는 불안정할 수 있으며 앱 데이터를 지워야 할 수 있습니다.</string>
-    <string name="pressing_back_to_start">시작 화면으로 다시 누르기</string>
+    <string name="pressing_back_to_start">뒤로가기 버튼으로 홈으로 이동</string>
     <string name="restore_in_progress">복원이 이미 진행 중입니다</string>
     <string name="delete_unused_chapters">존재하지 않는 삭제, 부분적으로 다운로드된 항목 및 챕터 폴더 읽기</string>
     <string name="back_to_start">시작 화면</string>
@@ -868,8 +863,7 @@
     <string name="delete_removed_chapters">제거된 챕터 삭제</string>
     <string name="delete_downloaded_if_removed_online">소스가 온라인으로 챕터를 제거한 경우 다운로드한 챕터 삭제</string>
     <string name="always_delete">항상 삭제</string>
-    <string name="downloads_swipe_tutorial">다운로드는 옆으로 밀어서 취소할 수 있습니다
-\n이 정보를 살짝 밀어 숨길 수 있습니다</string>
+    <string name="downloads_swipe_tutorial">다운로드는 옆으로 밀어서 취소할 수 있습니다 \n이 정보를 살짝 밀어 숨길 수 있습니다</string>
     <string name="add_to_">%1$s에 추가</string>
     <string name="change">변경</string>
     <string name="download_unread">읽지 않은 다운로드</string>
@@ -880,8 +874,7 @@
     <string name="open_in_app">앱에서 열기</string>
     <string name="remove_from_">%1$s에서 제거</string>
     <string name="auto_update_extensions">확장 앱 자동 업데이트</string>
-    <string name="delete_all_covers__not_in_library_used_">서재에 없는 캐시 된 모든 표지 삭제
-\n현재 사용 중: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">서재에 없는 캐시 된 모든 표지 삭제 \n현재 사용 중: %1$s</string>
     <string name="select_uninstalled_sources">제거된 소스 선택</string>
     <string name="use_last_saved_migration_preferences">마지막으로 저장된 마이그레이션 전 기본 설정 및 원본을 사용하여 대량 마이그레이션</string>
     <string name="remove_download">다운로드 제거</string>
@@ -890,8 +883,7 @@
     <string name="keep_in_">%1$s에 보관</string>
     <string name="no_folders_to_cleanup">정리할 폴더가 없습니다</string>
     <string name="disable_if_issues_with_updating">서재를 업데이트하거나 복원하는 데 문제가 있는 경우 이 기능을 사용하지 않도록 설정합니다</string>
-    <string name="delete_old_covers_in_library_used_">업데이트 된 서재에서 오래되고 사용되지 않은 만화 표지를 삭제하십시오.
-\n현재 사용 중: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">업데이트 된 서재에서 오래되고 사용되지 않은 만화 표지를 삭제하십시오. \n현재 사용 중: %1$s</string>
     <string name="clear_cached_covers_non_library">서재에 없는 캐시된 표지 정리</string>
     <string name="starting_cleanup">정리 시작</string>
     <string name="mark_range_as_read">다양한 챕터를 읽은 것으로 표시</string>
@@ -953,4 +945,14 @@
     <string name="library_entries">서재 항목</string>
     <string name="pref_debug_info">디버그 정보</string>
     <string name="label_background_activity">백그라운드 활동</string>
+    <string name="action_menu_overflow_description">설정 더보기</string>
+    <string name="action_bar_up_description">위로 가기</string>
+    <string name="onboarding_heading">안녕하세요!</string>
+    <string name="pref_cutout_short">컷아웃 구간에 이미지 보이기</string>
+    <string name="long_strip">연속 스크롤</string>
+    <string name="pref_double_tap_zoom">두 번 탭하여 확대</string>
+    <string name="save_pages_separately">페이지를 개별 폴더에 저장</string>
+    <string name="create_folders_by_manga_title">만화 제목에 따라 폴더 생성</string>
+    <string name="move_series_to_bottom">만화 전체를 맨 아래로 이동</string>
+    <string name="data_and_storage">데이터 및 저장 공간</string>
 </resources>

@@ -17,7 +17,7 @@
     <string name="sources">स्रोतहरू</string>
     <string name="cover_updated">आवरण अपडेट भयो</string>
     <string name="next_chapter_not_found">अर्को अध्याय भेटिएन</string>
-    <string name="use_image_as_cover">यो छवि आवरण को रूपमा राख्न चाहनुहुन्छ\?</string>
+    <string name="use_image_as_cover">यो छवि आवरण को रूपमा राख्न चाहनुहुन्छ?</string>
     <string name="reading_mode">पढ्ने मोड</string>
     <string name="grayscale">ग्रे-स्केल</string>
     <string name="pref_inverted_colors">उल्टो</string>
@@ -102,7 +102,7 @@
     <string name="pref_update_only_non_completed">\"समाप्त\" स्थिति भएको</string>
     <string name="pref_update_only_started">जो सुरु भएको छैन</string>
     <string name="clear_history_completed">इतिहास हटाइयो</string>
-    <string name="clear_history_confirmation">के तपाईँ निश्चित हुनुहुन्छ\? सबै इतिहास हराउनेछ।</string>
+    <string name="clear_history_confirmation">के तपाईँ निश्चित हुनुहुन्छ? सबै इतिहास हराउनेछ।</string>
     <string name="no_more_results">थप परिणामहरू छैनन्</string>
     <string name="no_results_found">कुनै परिणाम फेला परेन</string>
     <string name="local_source">लोकल स्रोत</string>
@@ -277,12 +277,10 @@
     <string name="restore_completed">रिस्टोर सम्पन्न भयो</string>
     <string name="restore_missing_sources">छुटेको स्रोतहरू:</string>
     <string name="restore_missing_trackers">ट्र्याकरहरूमा लगइन छैनन्:</string>
-    <string name="restore_content_full">ब्याकअप फाइलबाट डेटा रिस्टोर हुनेछ।
-\n
-\nतपाईंले कुनै पनि छुटेको एक्सटेन्शनहरू स्थापना गर्न र तिनीहरूलाई प्रयोग गर्न पछि ट्र्याकिङ सेवाहरूमा लगइन गर्न आवश्यक हुनेछ।</string>
+    <string name="restore_content_full">ब्याकअप फाइलबाट डेटा रिस्टोर हुनेछ। \n \nतपाईंले कुनै पनि छुटेको एक्सटेन्शनहरू स्थापना गर्न र तिनीहरूलाई प्रयोग गर्न पछि ट्र्याकिङ सेवाहरूमा लगइन गर्न आवश्यक हुनेछ।</string>
     <string name="restoring_backup_canceled">रिस्टोर रद्द गरियो</string>
     <string name="creating_backup">ब्याकअप सिर्जना गर्दै</string>
-    <string name="what_should_backup">तपाई के ब्याकअप गर्न चाहनुहुन्छ\?</string>
+    <string name="what_should_backup">तपाई के ब्याकअप गर्न चाहनुहुन्छ?</string>
     <string name="restoring_backup">ब्याकअप रिस्टोर गर्दै</string>
     <string name="restore_duration">%02d मिनेट, %02d सेकेन्ड</string>
     <string name="restore_miui_warning">यदि MIUI अप्टिमाइजेसन असक्षम छ भने ब्याकअप/रिस्टोरले राम्ररी काम नगर्न सक्छ।</string>
@@ -321,7 +319,7 @@
     <string name="email">ईमेल ठेगाना</string>
     <string name="password">पासवर्ड</string>
     <string name="log_out">लग-आउट</string>
-    <string name="log_out_from_">%1$s बाट लग-आउट गर्ने हो\?</string>
+    <string name="log_out_from_">%1$s बाट लग-आउट गर्ने हो?</string>
     <string name="cancel_all">सबै रद्द गर्नुहोस्</string>
     <string name="move_series_to_top">श्रृङ्खलालाई शीर्षमा सर्नुहोस्</string>
     <string name="cancel_all_for_series">यी श्रृङ्खलाका सबै रद्द गर्नुहोस्</string>
@@ -443,7 +441,7 @@
     <string name="marked_as_unread">नपढिएको चिन्ह लगाइयो</string>
     <string name="chapters_removed">अध्यायहरू हटाइयो।</string>
     <string name="lock_with_biometrics">अनलक गर्न आवश्यक छ</string>
-    <string name="remove_all_downloads">सबै डाउनलोडहरू हटाउने हो\?</string>
+    <string name="remove_all_downloads">सबै डाउनलोडहरू हटाउने हो?</string>
     <string name="backup_in_progress">ब्याकअप पहिले नै प्रगतिमा छ</string>
     <string name="tracker">ट्र्याकर</string>
     <string name="titles_in_library">पुस्तकालयमा शीर्षकहरू</string>
@@ -473,7 +471,7 @@
     <string name="category">वर्ग</string>
     <string name="_already_in_queue">%1$s पहिले नै लाममा छ</string>
     <string name="no_matches_for_filters_short">तपाईँको फिल्टरका लागि कुनै मेल खाँदैन</string>
-    <string name="confirm_category_deletion">वर्ग हटाउने हो\?</string>
+    <string name="confirm_category_deletion">वर्ग हटाउने हो?</string>
     <string name="confirm_category_deletion_message">यस वर्गका इन्ट्रीहरू पूर्वनिर्धारित वर्गमा सारिनेछ।</string>
     <string name="already_in_category">इन्ट्री पहिले नै वर्गमा छ</string>
     <string name="add_categories">वर्गहरू थप्नुहोस्</string>
@@ -516,7 +514,7 @@
     <string name="no_recent_chapters">हालको कुनै अध्यायहरू छैनन्</string>
     <string name="no_recently_read_manga">हालसालै पढिएको श्रृङ्खला छैन</string>
     <string name="grouped">समूहबद्ध</string>
-    <string name="reset_chapter_question">अध्याय रिसेट गर्ने हो\?</string>
+    <string name="reset_chapter_question">अध्याय रिसेट गर्ने हो?</string>
     <string name="press_and_hold_to_also_reset">थिचेर होल्ड गरेर पनि अध्याय रिसेट गर्न सकिन्छ</string>
     <string name="show_download_button">डाउनलोड बटन देखाउनुहोस्</string>
     <string name="show_reset_history_button">रिसेट इतिहास बटन देखाउनुहोस्</string>
@@ -584,7 +582,7 @@
     <string name="newly_added">नयाँ थपिएको</string>
     <string name="reset_chapter_history">अध्याय इतिहास रिसेट गर्नुहोस्</string>
     <string name="recent_updates">हालैका अपडेटहरू</string>
-    <string name="this_will_remove_the_read_date_for_x_question">यसले \"%1$s\" को पढेको मिति हटाउनेछ। के तपाईँ निश्चित हुनुहुन्छ\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">यसले \"%1$s\" को पढेको मिति हटाउनेछ। के तपाईँ निश्चित हुनुहुन्छ?</string>
     <string name="reset_all_chapters_for_this_">यसका लागि सबै अध्यायहरू रिसेट गर्नुहोस् %1$s</string>
     <string name="last_read_">अन्तिम पटक पढिएको %1$s</string>
     <string name="updated_">%1$s अपडेट गरियो</string>
@@ -635,9 +633,7 @@
     <string name="horizontally">तेर्सो रूपमा</string>
     <string name="vertically">ठाडो रूपमा</string>
     <string name="about_this_">यस बारे %1$s</string>
-    <string name="confirm_manga_add_duplicate">तपाईको पुस्तकालयमा एउटै नामको इन्ट्री छ तर फरक स्रोतबाट (%1$s)।
-\n
-\nके तपाईं अझै जारी राख्न चाहनुहुन्छ\?</string>
+    <string name="confirm_manga_add_duplicate">तपाईको पुस्तकालयमा एउटै नामको इन्ट्री छ तर फरक स्रोतबाट (%1$s)। \n \nके तपाईं अझै जारी राख्न चाहनुहुन्छ?</string>
     <string name="_copied_to_clipboard">%1$s क्लिपबोर्डमा प्रतिलिपि गरियो</string>
     <string name="update_tracking_marked_read">पढिएको चिन्ह लगाउँदा ट्र्याकिङ अपडेट गर्नुहोस्</string>
     <string name="enhanced_tracking_info">सेवाहरू जसले विशिष्ट स्रोतहरूको लागि परिष्कृत सुविधाहरू प्रदान गर्दछ। तपाईंको पुस्तकालयमा श्रृङ्खला थप्दा स्वतः ट्र्याक गरिन्छ।</string>
@@ -696,13 +692,13 @@
     <string name="season_">सिजन %1$d</string>
     <string name="show_">%1$s देखाउनुहोस्</string>
     <string name="must_view_details_before_migration">स्थानान्तरण गर्न सक्षम हुनु अघि यो इन्ट्रीको विवरण पृष्ठ हेर्नुपर्छ</string>
-    <string name="mark_all_chapters_as_read">सबै अध्यायहरू पढिएको रूपमा चिन्ह लगाउने हो\?</string>
+    <string name="mark_all_chapters_as_read">सबै अध्यायहरू पढिएको रूपमा चिन्ह लगाउने हो?</string>
     <string name="select_starting_chapter">प्रारम्भिक अध्याय चयन गर्नुहोस्</string>
     <string name="custom_range">कस्टम रेन्ज</string>
     <string name="all_chapters">सबै अध्यायहरू</string>
     <string name="all_unread_chapters">सबै नपढिएका अध्यायहरू</string>
     <string name="all_read_chapters">सबै पढेका अध्यायहरू</string>
-    <string name="add_x_to_library">पुस्तकालयमा %1$s राख्ने हो\?</string>
+    <string name="add_x_to_library">पुस्तकालयमा %1$s राख्ने हो?</string>
     <string name="show_all">सबै देखाउनुहोस्</string>
     <string name="show_read_chapters">पढेका अध्यायहरू देखाउनुहोस्</string>
     <string name="hide_chapter_titles">अध्याय शीर्षक लुकाउनुहोस्</string>
@@ -726,7 +722,7 @@
     <string name="dont_migrate">स्थानान्तरण नगर्नुहोस्</string>
     <string name="search_manually">म्यानुअल रूपमा खोज्नुहोस्</string>
     <string name="migrate_now">अहिले स्थानान्तरण गर्नुहोस्</string>
-    <string name="stop_migrating">स्थानान्तरण रोक्ने हो\?</string>
+    <string name="stop_migrating">स्थानान्तरण रोक्ने हो?</string>
     <string name="turn_on_">%s अन गर्नुहोस्</string>
     <string name="turn_off_">%s अफ गर्नुहोस्</string>
     <string name="light_theme">उज्यालो थीम</string>
@@ -775,7 +771,7 @@
     <string name="cutout_ignore">कटआउट क्षेत्रहरू बेवास्ता गर्नुहोस्</string>
     <string name="cutout_behavior_only_applies">कटआउट क्षेत्र व्यवहार निश्चित स्केल प्रकारहरूसँग पोर्ट्रेट मोडमा मात्र लागू हुन्छ</string>
     <string name="search_chapters">अध्यायहरू खोज्नुहोस्</string>
-    <string name="mark_all_chapters_as_unread">सबै अध्यायहरू नपढिएको रूपमा चिन्ह लगाउने हो\?</string>
+    <string name="mark_all_chapters_as_unread">सबै अध्यायहरू नपढिएको रूपमा चिन्ह लगाउने हो?</string>
     <string name="select_ending_chapter">अन्तिम अध्याय चयन गर्नुहोस्</string>
     <string name="not_tracked">ट्र्याक नगरिएको</string>
     <string name="flat_lime">फ्लैट लाइम</string>
@@ -789,7 +785,7 @@
     <string name="clear_tags">ट्यागहरू खाली गर्नुहोस्</string>
     <string name="add_tag">ट्याग थप्नुहोस्</string>
     <string name="remove_tracking_from_">%1$s बाट पनि हटाउनुहोस्</string>
-    <string name="remove_previous_tracker">अघिल्लो ट्र्याकर हटाउने हो\?</string>
+    <string name="remove_previous_tracker">अघिल्लो ट्र्याकर हटाउने हो?</string>
     <string name="update_tracking_scoring_type">%1$s को स्कोरिङ प्रकार अपडेट गर्नुहोस्</string>
     <string name="could_not_update_scoring_">स्कोरिङ प्रकार अपडेट गर्न सकिएन: %1$s</string>
     <string name="scoring_type_updated">स्कोरिङ प्रकार अपडेट गरियो</string>
@@ -805,14 +801,12 @@
     <string name="side_nav_icon_alignment">साइड नेभिगेसन आइकन अलाइनमेंट</string>
     <string name="backup">ब्याकअप</string>
     <string name="backup_has_no_manga">ब्याकअपमा कुनै इन्ट्री समावेश छैन।</string>
-    <string name="clear_database_confirmation">के तपाईँ निश्चित हुनुहुन्छ\? तपाईंले पढ्नुभएको अध्यायहरू र गैर-पुस्तकालय इन्ट्रीहरूको प्रगति हराउनेछ</string>
+    <string name="clear_database_confirmation">के तपाईँ निश्चित हुनुहुन्छ? तपाईंले पढ्नुभएको अध्यायहरू र गैर-पुस्तकालय इन्ट्रीहरूको प्रगति हराउनेछ</string>
     <string name="clean_up_cached_covers">क्यास गरिएका आवरणहरू सफा गर्नुहोस्</string>
-    <string name="delete_all_covers__not_in_library_used_">तपाईंको पुस्तकालयमा नभएका क्यास गरिएका सबै आवरणहरू हटाउनुहोस्
-\nहाल प्रयोग गर्दै: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">तपाईंको पुस्तकालयमा नभएका क्यास गरिएका सबै आवरणहरू हटाउनुहोस् \nहाल प्रयोग गर्दै: %1$s</string>
     <string name="select_uninstalled_sources">अनइन्स्टल गरिएको स्रोतहरू चयन गर्नुहोस्</string>
     <string name="check_for_extension_updates">एक्सटेन्शन अपडेटहरूको लागि जाँच गर्नुहोस्</string>
-    <string name="downloads_swipe_tutorial">डाउनलोडहरूलाई स्वाइप गरेर रद्द गर्न सकिन्छ
-\nयसलाई खारेज गर्न यो टिप स्वाइप गर्नुहोस्</string>
+    <string name="downloads_swipe_tutorial">डाउनलोडहरूलाई स्वाइप गरेर रद्द गर्न सकिन्छ \nयसलाई खारेज गर्न यो टिप स्वाइप गर्नुहोस्</string>
     <string name="successfully_logged_in">सफलतापूर्वक लगइन गरियो</string>
     <string name="downloading_">डाउनलोड गर्दै: %1$s</string>
     <string name="added_to_">%1$s मा थपियो</string>
@@ -838,8 +832,7 @@
     <string name="wifi">Wi-Fi</string>
     <string name="restore_in_progress">रिस्टोर पहिले नै प्रगतिमा छ</string>
     <string name="max_auto_backups">अधिकतम स्वचालित ब्याकअप</string>
-    <string name="invalid_backup_file_type">अवैध ब्याकअप फाइल प्रकार: %1$s
-\nयो .proto.gz वा .json सँग अन्त्य हुनुपर्छ।</string>
+    <string name="invalid_backup_file_type">अवैध ब्याकअप फाइल प्रकार: %1$s \nयो .proto.gz वा .json सँग अन्त्य हुनुपर्छ।</string>
     <string name="restore_error">ब्याकअप रिस्टोर गर्न असफल भयो</string>
     <string name="backup_restore_invalid_uri">त्रुटि: खाली URI</string>
     <string name="backup_info">स्वचालित ब्याकअपहरू राख्न अत्यधिक सिफारिस गरिन्छ। तपाईंले अन्य ठाउँहरूमा पनि प्रतिलिपिहरू राख्नु पर्छ।</string>
@@ -933,8 +926,7 @@
     <string name="no_folders_to_cleanup">सफा गर्न कुनै फोल्डर छैनन्</string>
     <string name="disable_if_issues_with_updating">यदि तपाईँले आफ्नो पुस्तकालय अपडेट गर्न वा रिस्टोर गर्न समस्याहरू अनुभव गर्दै हुनुहुन्छ भने यो असक्षम पार्नुहोस्</string>
     <string name="updates_covers_genres_desc">यसले आवरणहरू, विवरणहरू, जानरा, र इन्ट्रीहरूको स्थिति जानकारी अपडेट गर्दछ</string>
-    <string name="delete_old_covers_in_library_used_">अपडेट गरिएको तपाईंको पुस्तकालयमा इन्ट्रीको पुरानो र प्रयोग नगरिएको क्यास कभरहरू हटाउनुहोस्।
-\nहाल प्रयोग गर्दै: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">अपडेट गरिएको तपाईंको पुस्तकालयमा इन्ट्रीको पुरानो र प्रयोग नगरिएको क्यास कभरहरू हटाउनुहोस्। \nहाल प्रयोग गर्दै: %1$s</string>
     <string name="you_can_migrate_in_library">तपाईंले आफ्नो पुस्तकालयमा इन्ट्री चयन गरेर पनि स्थानान्तरण गर्न सक्नुहुन्छ</string>
     <string name="only_search_pinned_when">पिन गरिएका स्रोतहरूमा मात्र खोज्नुहोस्</string>
     <string name="invalid_download_location">अवैध डाउनलोड स्थान</string>

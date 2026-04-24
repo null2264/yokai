@@ -196,7 +196,7 @@
     <string name="reading_mode">Modo de lectura</string>
     <string name="hide_notification_content">Esconde os contidos de notificacións</string>
     <string name="removed_bookmark">Marcador borrado</string>
-    <string name="remove_all_downloads">¿Borrar todas as descargas\?</string>
+    <string name="remove_all_downloads">¿Borrar todas as descargas?</string>
     <string name="no_chapters_to_delete">Non hai capítulos para borrar</string>
     <string name="by_source_order">Por orde de fonte</string>
     <string name="by_chapter_number">Por número de capítulo</string>
@@ -263,7 +263,7 @@
     <string name="dropped">Abandonado</string>
     <string name="on_hold">En espera</string>
     <string name="strawberry_daiquiri">Daiquiri de amorodo</string>
-    <string name="what_should_backup">De que queres facer unha copia de seguridade\?</string>
+    <string name="what_should_backup">De que queres facer unha copia de seguridade?</string>
     <string name="restoring_backup">Restaurando a copia de seguridade</string>
     <string name="progress">Progreso</string>
     <string name="clear_chapter_cache">Borrar a caché dos capítulos</string>
@@ -287,7 +287,7 @@
     <string name="refresh_tracking">Actualizar o seguemento</string>
     <string name="channel_errors">Erros</string>
     <string name="clear_history_completed">Eliminouse o historial</string>
-    <string name="clear_history_confirmation">Estás seguro\? Perderás o historial.</string>
+    <string name="clear_history_confirmation">Estás seguro? Perderás o historial.</string>
     <string name="latest">Máis recente</string>
     <string name="removed_from_library">Eliminado da biblioteca</string>
     <string name="incognito_mode">Modo incógnito</string>
@@ -330,7 +330,7 @@
     <string name="extension_updates">Actualizacións das extensións</string>
     <string name="ext_installer_shizuku_stopped">Shizuku non se está executando</string>
     <string name="next_chapter_not_found">Non se atopou a o capítulo seguinte</string>
-    <string name="use_image_as_cover">Queres usar esta imaxe como portada\?</string>
+    <string name="use_image_as_cover">Queres usar esta imaxe como portada?</string>
     <string name="current_chapter">Actual:</string>
     <string name="next_title">Seguinte:</string>
     <string name="theres_no_next_chapter">Non hai ningún capítulo máis</string>
@@ -430,9 +430,7 @@
     <string name="dump_crash_logs">Baixar os rexistros de erros</string>
     <string name="empty_backup_error">Ningún elemento na biblioteca co que facer a copia de seguridade</string>
     <string name="restore_missing_trackers">Servizos de seguemento sen conectar:</string>
-    <string name="restore_content_full">Restauraranse os datos da copia de seguridade.
-\n
-\nTerás que instalar as extensións que falten e iniciar sesión nos servizos de seguemento para usalos.</string>
+    <string name="restore_content_full">Restauraranse os datos da copia de seguridade. \n \nTerás que instalar as extensións que falten e iniciar sesión nos servizos de seguemento para usalos.</string>
     <string name="include_">Incluír: %s</string>
     <string name="creating_backup">Creando a copia de seguridade</string>
     <string name="picture_saved">Imaxe gardada</string>
@@ -464,7 +462,7 @@
     <string name="email">Correo electrónico</string>
     <string name="password">Contrasinal</string>
     <string name="log_out">Pechar sesión</string>
-    <string name="log_out_from_">Pechar a sesión en %1$s\?</string>
+    <string name="log_out_from_">Pechar a sesión en %1$s?</string>
     <string name="next">Seguinte</string>
     <string name="updates_last_update_info">Última actualización da biblioteca: %s</string>
     <string name="use_side_navigation">Usar a navegación lateral</string>
@@ -483,7 +481,7 @@
     <string name="pref_remove_exclude_categories">Categorías excluídas</string>
     <string name="ext_installer_pref">Instalador</string>
     <string name="library_entries">Elementos da biblioteca</string>
-    <string name="clear_database_confirmation">Estás seguro\? Perderanse os capítulos lidos e o progreso dos elementos que non estean na biblioteca</string>
+    <string name="clear_database_confirmation">Estás seguro? Perderanse os capítulos lidos e o progreso dos elementos que non estean na biblioteca</string>
     <string name="clear_database_source_item_count">Hai %1$d elementos na base de datos que non están na biblioteca</string>
     <string name="clear_database_summary">Borrar o historial dos elementos que non estean gardados na túa biblioteca</string>
     <string name="pref_debug_info">Información de depuración</string>

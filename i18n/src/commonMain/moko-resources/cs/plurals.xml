@@ -3,124 +3,139 @@
     <plurals name="restore_completed_message">
         <item quantity="one">Dokončeno za %1$s s %2$s chybou</item>
         <item quantity="few">Dokončeno za %1$s s %2$s chybami</item>
+        <item quantity="many">Dokončeno za %1$s s %2$s chybami</item>
         <item quantity="other">Dokončeno za %1$s s %2$s chybami</item>
     </plurals>
     <plurals name="category_plural">
         <item quantity="one">%d kategorie</item>
         <item quantity="few">%d kategorie</item>
+        <item quantity="many">%d kategorií</item>
         <item quantity="other">%d kategorií</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s kapitola</item>
         <item quantity="few">%1$s kapitoly</item>
+        <item quantity="many">%1$s kapitol</item>
         <item quantity="other">%1$s kapitol</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Odstranit %1$d staženou kapitolu\?</item>
-        <item quantity="few">Odstranit %1$d stažené kapitoly\?</item>
-        <item quantity="other">Odstranit %1$d stažených kapitol\?</item>
+        <item quantity="one">Odstranit %1$d staženou kapitolu?</item>
+        <item quantity="few">Odstranit %1$d stažené kapitoly?</item>
+        <item quantity="many">Odstranit %1$d stažených kapitol?</item>
+        <item quantity="other">Odstranit %1$d stažených kapitol?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">a %1$d další kapitolu</item>
         <item quantity="few">a %1$d další kapitoly</item>
+        <item quantity="many">a %1$d dalších kapitol</item>
         <item quantity="other">a %1$d dalších kapitol</item>
     </plurals>
     <plurals name="extension_updates_available">
         <item quantity="one">Je dostupná aktualizace rozšíření</item>
         <item quantity="few">Jsou dostupné %d aktualizace rozšíření</item>
+        <item quantity="many">Je dostupných %d aktualizací rozšíření</item>
         <item quantity="other">Je dostupných %d aktualizací rozšíření</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Jedna kapitola byla z tohoto zdroje odstraněna:
-            \n%2$s
-            \nChcete ji smazat\?</item>
-        <item quantity="few">%1$s kapitoly byly z tohoto zdroje odstraněny:
-            \n%2$s
-            \n
-            \nChcete je smazat\?</item>
-        <item quantity="other">%1$s kapitol bylo z tohoto zdroje odstraněno:
-            \n%2$s
-            \n
-            \nChcete je smazat\?</item>
+        <item quantity="one">Jedna kapitola byla z tohoto zdroje odstraněna: \n%2$s \nChcete ji smazat?</item>
+        <item quantity="few">%1$s kapitoly byly z tohoto zdroje odstraněny: \n%2$s \n \nChcete je smazat?</item>
+        <item quantity="many">%1$s kapitol bylo z tohoto zdroje odstraněno: \n%2$s \n \nChcete je smazat?</item>
+        <item quantity="other">%1$s kapitol bylo z tohoto zdroje odstraněno: \n%2$s \n \nChcete je smazat?</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d stránka</item>
         <item quantity="few">%1$d stránky</item>
+        <item quantity="many">%1$d stránek</item>
         <item quantity="other">%1$d stránek</item>
     </plurals>
     <plurals name="_updates_pending">
         <item quantity="one">%d aktualizace čeká</item>
         <item quantity="few">%d aktualizace čekají</item>
+        <item quantity="many">%d aktualizací čeká</item>
         <item quantity="other">%d aktualizací čeká</item>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="one">Přeskočena %d kapitola, buď chybí ve zdroji nebo byla vyfiltrována</item>
         <item quantity="few">Přeskočeny %d kapitoly, buď chybí ve zdroji nebo byly vyfiltrovány</item>
+        <item quantity="many">Přeskočeno %d kapitol, buď chybí ve zdroji nebo byly vyfiltrovány</item>
         <item quantity="other">Přeskočeno %d kapitol, buď chybí ve zdroji nebo byly vyfiltrovány</item>
     </plurals>
     <plurals name="extensions_updated_plural">
         <item quantity="one">Rozšíření bylo aktualizováno</item>
         <item quantity="few">%d rozšíření byla aktualizována</item>
+        <item quantity="many">%d rozšíření bylo aktualizováno</item>
         <item quantity="other">%d rozšíření bylo aktualizováno</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Po %1$s minutě</item>
         <item quantity="few">Po %1$s minutách</item>
+        <item quantity="many">Po %1$s minutách</item>
         <item quantity="other">Po %1$s minutách</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migrovat %1$d%2$s mangu\?</item>
-        <item quantity="few">Migrovat %1$d%2$s mangy\?</item>
-        <item quantity="other">Migrovat %1$d%2$s mang\?</item>
+        <item quantity="one">Migrovat %1$d%2$s mangu?</item>
+        <item quantity="few">Migrovat %1$d%2$s mangy?</item>
+        <item quantity="many">Migrovat %1$d%2$s mang?</item>
+        <item quantity="other">Migrovat %1$d%2$s mang?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Vyčištění dokončeno. %d odstraněná složka</item>
         <item quantity="few">Vyčištění dokončeno. %d odstraněné složky</item>
+        <item quantity="many">Vyčištění dokončeno. %d odstraněných složek</item>
         <item quantity="other">Vyčištění dokončeno. %d odstraněných složek</item>
     </plurals>
     <plurals name="next_unread_chapters">
         <item quantity="one">Další nepřečtená kapitola</item>
         <item quantity="few">Další %d nepřečtené kapitoly</item>
+        <item quantity="many">Dalších %d nepřečtených kapitol</item>
         <item quantity="other">Dalších %d nepřečtených kapitol</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Kopírovat %1$d%2$s mangu\?</item>
-        <item quantity="few">Kopírovat %1$d%2$s mangy\?</item>
-        <item quantity="other">Kopírovat %1$d%2$s mang\?</item>
+        <item quantity="one">Kopírovat %1$d%2$s mangu?</item>
+        <item quantity="few">Kopírovat %1$d%2$s mangy?</item>
+        <item quantity="many">Kopírovat %1$d%2$s mang?</item>
+        <item quantity="other">Kopírovat %1$d%2$s mang?</item>
     </plurals>
     <plurals name="cache_cleared">
         <item quantity="one">Mezipaměť vymazána. %d soubor byl odstraněn</item>
         <item quantity="few">Mezipaměť vymazána. %d soubory byly odstraněny</item>
+        <item quantity="many">Mezipaměť vymazána. %d souborů bylo odstraněno</item>
         <item quantity="other">Mezipaměť vymazána. %d souborů bylo odstraněno</item>
     </plurals>
     <plurals name="_sources">
         <item quantity="one">%d zdroj</item>
         <item quantity="few">%d zdroje</item>
+        <item quantity="many">%d zdrojů</item>
         <item quantity="other">%d zdrojů</item>
     </plurals>
     <plurals name="_series_types">
         <item quantity="one">%d druh sérií</item>
         <item quantity="few">%d druhy sérií</item>
+        <item quantity="many">%d druhů sérií</item>
         <item quantity="other">%d druhů sérií</item>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">Pro %d titul</item>
         <item quantity="few">Pro %d tituly</item>
+        <item quantity="many">Pro %d titulů</item>
         <item quantity="other">Pro %d titulů</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="one">%d manga migrována</item>
         <item quantity="few">%d manga migrovány</item>
+        <item quantity="many">%d manga migrováno</item>
         <item quantity="other">%d manga migrováno</item>
     </plurals>
     <plurals name="_languages">
         <item quantity="one">%d jazyk</item>
         <item quantity="few">%d jazyky</item>
+        <item quantity="many">%d jazyků</item>
         <item quantity="other">%d jazyků</item>
     </plurals>
     <plurals name="_statuses">
         <item quantity="one">%d status</item>
         <item quantity="few">%d statusy</item>
+        <item quantity="many">%d statusů</item>
         <item quantity="other">%d statusů</item>
     </plurals>
 </resources>

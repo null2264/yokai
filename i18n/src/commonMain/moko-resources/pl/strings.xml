@@ -123,8 +123,7 @@
     <string name="newly_added">Nowo dodane</string>
     <string name="history">Historia</string>
     <string name="recent_updates">Ostatnie aktualizacje</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Ta czynność usunie datę przeczytania z
-        \"%1$s\". Kontynuować?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Ta czynność usunie datę przeczytania z \"%1$s\". Kontynuować?</string>
     <string name="reset_all_chapters_for_this_">Zresetuj wszystkie rozdziały dla %1$s</string>
     <string name="last_read_">Wcześniej czytano %1$s</string>
     <string name="read_">Czytano %1$s</string>
@@ -176,7 +175,7 @@
     <string name="page_">Strona %1$d</string>
     <string name="next_chapter_not_found">Nie znaleziono następnego rozdziału</string>
     <string name="decode_image_error">Nie udało się wczytać obrazka</string>
-    <string name="use_image_as_cover">Ustawić ten obrazek jako okładkę\?</string>
+    <string name="use_image_as_cover">Ustawić ten obrazek jako okładkę?</string>
     <string name="finished_chapter">Przeczytany:</string>
     <string name="current_chapter">Obecny:</string>
     <string name="next_title">Następny:</string>
@@ -255,7 +254,7 @@
     <string name="_copied_to_clipboard">%1$s skopiowany do schowka</string>
     <string name="source_not_installed_">Nie zainstalowano źródła: %1$s</string>
     <string name="no_description">Brak opisu</string>
-    <string name="mark_all_chapters_as_read">Oznaczyć wszystkie rozdziały jako przeczytane\?</string>
+    <string name="mark_all_chapters_as_read">Oznaczyć wszystkie rozdziały jako przeczytane?</string>
     <string name="remove_from_library">Usuń z biblioteki</string>
     <string name="select_starting_chapter">Wybierz początkowy rozdział</string>
     <string name="select_ending_chapter">Wybierz końcowy rozdział</string>
@@ -376,7 +375,7 @@
     <string name="cookies_cleared">Ciasteczka usunięte</string>
     <string name="clear_database">Wyczyść bazę danych</string>
     <string name="clear_database_summary">Usuń historię wpisów, których nie ma w twojej bibliotece</string>
-    <string name="clear_database_confirmation">Na pewno\? Przeczytane rozdziały i postęp w wpisach spoza biblioteki zostaną utracone</string>
+    <string name="clear_database_confirmation">Na pewno? Przeczytane rozdziały i postęp w wpisach spoza biblioteki zostaną utracone</string>
     <string name="clear_database_completed">Pozycje usunięte</string>
     <string name="refresh_library_metadata">Odśwież metadane biblioteki</string>
     <string name="updates_covers_genres_desc">Aktualizuje okładki, gatunki, opisy i informacje o statusie mang</string>
@@ -393,11 +392,9 @@
     <string name="disable_if_issues_with_updating">Wyłącz optymalizację baterii jeżeli masz problemy z aktualizowaniem lub przywracaniem biblioteki</string>
     <string name="battery_optimization_disabled">Oszczędzanie baterii jest już wyłączone</string>
     <string name="clean_up_cached_covers">Wyczyść okładki zapisane w pamięci podręcznej</string>
-    <string name="delete_old_covers_in_library_used_">Usuń stare i nieużywane okładki mang w twojej bibliotece, które zostały zaktualizowane, z pamięci podręcznej.
-\nObecnie używane: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Usuń stare i nieużywane okładki mang w twojej bibliotece, które zostały zaktualizowane, z pamięci podręcznej. \nObecnie używane: %1$s</string>
     <string name="clear_cached_covers_non_library">Wyczyść okładki spoza biblioteki zapisane w pamięci podręcznej</string>
-    <string name="delete_all_covers__not_in_library_used_">Usuń wszystkie okładki nie znajdujące się w twojej bibliotece z pamięci podręcznej
-\nObecnie używane: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Usuń wszystkie okładki nie znajdujące się w twojej bibliotece z pamięci podręcznej \nObecnie używane: %1$s</string>
     <!-- Browse Settings -->
     <string name="pref_global_search">Wyszukiwanie globalne</string>
     <string name="check_for_extension_updates">Szukaj aktualizacji rozszerzenia</string>
@@ -593,8 +590,7 @@
     <string name="none">Brak</string>
     <string name="automatic_backups">Automatyczna kopia zapasowa</string>
     <string name="invalid_backup_file">Nieprawidłowy plik kopii zapasowej</string>
-    <string name="invalid_backup_file_type">Nieprawidłowe rozszczerzenie pliku kopii zapasowej: %1$s
-\nPowinno być .proto.gz albo .json.</string>
+    <string name="invalid_backup_file_type">Nieprawidłowe rozszczerzenie pliku kopii zapasowej: %1$s \nPowinno być .proto.gz albo .json.</string>
     <string name="backup_has_no_manga">Kopia zapasowa nie zawiera żadnych mang.</string>
     <string name="restore_missing_sources">Brakujące źródła:</string>
     <string name="restore_missing_trackers">Serwisy, do których nie zalogowono:</string>
@@ -616,9 +612,7 @@
     <string name="next">Następny</string>
     <string name="menu">menu</string>
     <string name="whats_new_this_release">Co nowego w tej wersji</string>
-    <string name="restore_content_full">Dane z kopii zapasowej zostaną przywrócone.
-\n
-\nBędziesz musiał zainstalować wszystkie brakujące rozszerzenia oraz zalogować się do usług śledzenia by móc je używać.</string>
+    <string name="restore_content_full">Dane z kopii zapasowej zostaną przywrócone. \n \nBędziesz musiał zainstalować wszystkie brakujące rozszerzenia oraz zalogować się do usług śledzenia by móc je używać.</string>
     <string name="backup_in_progress">Kopia zapasowa jest już w trakcie tworzenia</string>
     <string name="restore_in_progress">Kopia zapasowa jest już w trakcie przywracania</string>
     <string name="pressing_back_to_start">Wciskanie wstecz by wrócić na ekran startowy</string>
@@ -628,7 +622,7 @@
     <string name="hide_bottom_nav">Automatyczne ukrywanie dolnej nawigacji</string>
     <string name="last_used_library_recents">Ostatnio użyte (Biblioteka lub Ostatnie)</string>
     <string name="custom_manga_info">Własna informacja o mandze</string>
-    <string name="mark_all_chapters_as_unread">Oznaczyć wszystkie rozdziały jako nieprzeczytane\?</string>
+    <string name="mark_all_chapters_as_unread">Oznaczyć wszystkie rozdziały jako nieprzeczytane?</string>
     <string name="cutout_ignore">Ignoruj obszary wycięcia</string>
     <string name="start_past_cutout">Zacznij za wycięciem</string>
     <string name="pad_cutout_areas">Wypełnij obszar wycięcia</string>
@@ -696,7 +690,7 @@
     <string name="category_cannot_be_blank">Nazwa kategorii nie może być pusta</string>
     <string name="new_category">Nowa kategoria</string>
     <string name="no_chapters_to_delete">Brak rozdziałów do usunięcia</string>
-    <string name="remove_all_downloads">Usunąć wszystkie pobrane pliki\?</string>
+    <string name="remove_all_downloads">Usunąć wszystkie pobrane pliki?</string>
     <string name="add_x_to">Dodaj %1$s do…</string>
     <string name="move_x_to">Przenieś %1$s do…</string>
     <string name="landscape">Poziomo</string>
@@ -811,7 +805,7 @@
     <string name="help_translate">Pomóż tłumaczyć</string>
     <string name="keep_both_on_service">Zachowaj oba na %1$s i zamień tylko lokalnie</string>
     <string name="remove_x_from_service_and_add_y">Usuń %1$s z %2$s i dodaj %3$s</string>
-    <string name="remove_previous_tracker">Usunąć wcześniejsze śledzenie\?</string>
+    <string name="remove_previous_tracker">Usunąć wcześniejsze śledzenie?</string>
     <string name="no_match_found">Nie znaleziono pasującego wyniku</string>
     <string name="crop_borders_paged">Przycinaj krawędzie (Strony)</string>
     <string name="some_extensions_may_prompt">Niektóre rozszerzenia mogą nadal prosić o zainstalowanie.</string>
@@ -832,7 +826,7 @@
     <string name="use_suggested_date">Użyj proponowanej daty</string>
     <string name="details_page">Strona ze szczegółami</string>
     <string name="remove_from_">Usuń z %1$s</string>
-    <string name="log_out_from_">Wylogować z %1$s\?</string>
+    <string name="log_out_from_">Wylogować z %1$s?</string>
     <string name="keep_in_">Zostaw w %1$s</string>
     <string name="show_in_sources_and_extensions">Pokazuj na liście źródeł i rozszerzeń</string>
     <string name="notification_size_warning">Duże aktualizacje biblioteki mogą prowadzić do zwiększonego zużycia baterii oraz spowolnienia działania źródeł.</string>
@@ -860,9 +854,7 @@
     <string name="descending">Malejąco</string>
     <string name="clear_database_source_item_count">%1$d wpisów spoza biblioteki w bazie danych</string>
     <string name="database_clean">Baza danych wyczyszczona</string>
-    <string name="confirm_manga_add_duplicate">W swojej bibliotece posiadasz wpis o tej samej nazwie lecz z innego źródła(%1$s).
-\n
-\nCzy nadal chcesz kontynuować\?</string>
+    <string name="confirm_manga_add_duplicate">W swojej bibliotece posiadasz wpis o tej samej nazwie lecz z innego źródła(%1$s). \n \nCzy nadal chcesz kontynuować?</string>
     <string name="select_inverse">Odwróć zaznaczenie</string>
     <string name="cover_only_grid">Siatka z samych okładek</string>
     <string name="skipped_reason_completed">Pominięto, ponieważ seria została ukończona</string>
@@ -872,7 +864,7 @@
     <string name="tap_to_see_details">Kliknij, by wyświetlić detale</string>
     <string name="clear_history">Wyczyść historię</string>
     <string name="clear_history_completed">Historia usunięta</string>
-    <string name="clear_history_confirmation">Jesteś pewien\? CAŁA historia zostanie usunięta.</string>
+    <string name="clear_history_confirmation">Jesteś pewien? CAŁA historia zostanie usunięta.</string>
     <string name="backup_restore_invalid_uri">Błąd: pusty URI</string>
     <string name="backup_info">Automatyczne kopie zapasowe są wysoce zalecane. Radzimy również przechowywać kopie w innych miejscach.</string>
     <string name="new_beta_version_available">Dostępna jest nowa wersja beta!</string>
@@ -928,8 +920,7 @@
     <string name="warning_enroll_into_beta">Wersje beta mogą być niestabilne i mogą wymagać wyczyszczenia danych aplikacji.</string>
     <string name="violet">Fiołkowy</string>
     <string name="clear_db_exclude_read">Zachowaj mangi z przeczytanymi rozdziałami</string>
-    <string name="downloads_swipe_tutorial">Pobieranie można anulować, przesuwając je w bok
-\nPrzesuń tę wskazówkę, aby ją odrzucić</string>
+    <string name="downloads_swipe_tutorial">Pobieranie można anulować, przesuwając je w bok \nPrzesuń tę wskazówkę, aby ją odrzucić</string>
     <string name="download_ahead_info">Działa tylko na wpisach w bibliotece oraz jeśli aktualny rozdział i następny są już pobrane</string>
     <string name="select_uninstalled_sources">Wybierz niezainstalowane źródła</string>
     <string name="most_entries">Najwięcej wpisów</string>

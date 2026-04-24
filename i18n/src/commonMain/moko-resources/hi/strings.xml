@@ -145,7 +145,7 @@
     <string name="cookies_cleared">कुकीज़ को साफ़ किया हुआ</string>
     <string name="clear_database">डेटाबेस साफ़ करें</string>
     <string name="clear_database_summary">उन आइटम का इतिहास हटाएं जो आपकी पुस्तकालय में सहेजी नहीं गई हैं</string>
-    <string name="clear_database_confirmation">क्या आपको यकीन है\? आपके द्वारा पढ़े गए अध्याय और गैर-पुस्तकालय आइटम की प्रगति खो जाएगी</string>
+    <string name="clear_database_confirmation">क्या आपको यकीन है? आपके द्वारा पढ़े गए अध्याय और गैर-पुस्तकालय आइटम की प्रगति खो जाएगी</string>
     <string name="clear_database_completed">प्रविष्टियां हटाई गईं</string>
     <string name="refresh_library_metadata">रीफ़्रेश लाइब्रेरी मेटाडेटा</string>
     <string name="updates_covers_genres_desc">अपडेट कवर, शैलियों, विवरण और मंगा स्थिति की जानकारी</string>
@@ -351,14 +351,11 @@
     <string name="locale">भाषा</string>
     <string name="automatic_backups">स्वचालित बैकअप</string>
     <string name="invalid_backup_file">अमान्य बैकअप फ़ाइल</string>
-    <string name="invalid_backup_file_type">अमान्य बैकअप फ़ाइल प्रकार: %1$s
-\nयह .proto.gz या .json के साथ समाप्त होना चाहिए।</string>
+    <string name="invalid_backup_file_type">अमान्य बैकअप फ़ाइल प्रकार: %1$s \nयह .proto.gz या .json के साथ समाप्त होना चाहिए।</string>
     <string name="backup_has_no_manga">बैकअप में कोई मंगा नहीं होता है।</string>
     <string name="restore_missing_sources">अनुपलब्ध स्रोत:</string>
     <string name="restore_missing_trackers">ट्रैकर्स में लॉग इन नहीं किया गया:</string>
-    <string name="restore_content_full">बैकअप फ़ाइल से डेटा बहाल किया जाएगा।
-\n
-\nआपको किसी भी लापता एक्सटेंशन को इंस्टॉल करना होगा और बाद में सेवाओं को ट्रैक करने के लिए लॉग इन करना होगा ताकि उनका उपयोग किया जा सके।</string>
+    <string name="restore_content_full">बैकअप फ़ाइल से डेटा बहाल किया जाएगा। \n \nआपको किसी भी लापता एक्सटेंशन को इंस्टॉल करना होगा और बाद में सेवाओं को ट्रैक करने के लिए लॉग इन करना होगा ताकि उनका उपयोग किया जा सके।</string>
     <string name="restoring_backup_canceled">पुनर्स्थापना रद्द की गई</string>
     <string name="restore_duration">%02d मिनट,%02d सेकंड</string>
     <string name="source_migration_guide">स्रोत माइग्रेशन गाइड</string>
@@ -428,7 +425,7 @@
     <string name="doh">HTTP पर DNS</string>
     <string name="disabled">बंद करें</string>
     <string name="show_in_sources_and_extensions">स्रोतों और एक्सटेंशन सूचियों में दिखाएं</string>
-    <string name="log_out_from_">%1$s से लॉगआउट करें\?</string>
+    <string name="log_out_from_">%1$s से लॉगआउट करें?</string>
     <string name="webview_is_required">WebView के लिए आवश्यक है Tachiyomi</string>
     <string name="include_">शामिल करें: %s</string>
     <string name="channel_errors">त्रुटियाँ</string>
@@ -455,7 +452,7 @@
     <string name="category">श्रेणी</string>
     <string name="chapters_removed">अध्याय हटा दिया गया है।</string>
     <string name="removed_bookmark">बुकमार्क हटा दिया गया है</string>
-    <string name="remove_all_downloads">क्या सभी डौन्लोडस को हटाना है\?</string>
+    <string name="remove_all_downloads">क्या सभी डौन्लोडस को हटाना है?</string>
     <string name="no_chapters_to_delete">नष्ट करने के लिए कोई अध्याय नहीं है</string>
     <string name="scanlators">स्कैनलेटर्स</string>
     <string name="adding_category_to_queue">%1$s को अद्यतन कतार में जोड़ा जा रहा है</string>
@@ -463,7 +460,7 @@
     <string name="create_new_category">नई श्रेड़ी का निर्माण करें</string>
     <string name="new_category">नई श्रेणी</string>
     <string name="category_is_empty">श्रेणी खाली है</string>
-    <string name="confirm_category_deletion">क्या श्रेणी को नष्ट करना है\?</string>
+    <string name="confirm_category_deletion">क्या श्रेणी को नष्ट करना है?</string>
     <string name="marked_as_read">पठित जैसा चिह्नित</string>
     <string name="marked_as_unread">अपठित जैसा चिह्नित</string>
     <string name="tracking_info">ट्रैकिंग सेवाओं में अध्याय की प्रगति को अद्यतन करने के लिए एकतरफा सिंक। अपने ट्रैकिंग बटन से व्यक्तिगत मंगा प्रविष्टियों के लिए ट्रैकिंग सेट अप करें।</string>
@@ -483,9 +480,7 @@
     <string name="descending">अवरोही</string>
     <string name="database_clean">डेटाबेस साफ़ करें</string>
     <string name="clear_database_source_item_count">डेटाबेस में %1$d गैर-पुस्तकालय आइटम</string>
-    <string name="confirm_manga_add_duplicate">आपकी लाइब्रेरी में एक ही नाम के साथ लेकिन एक अलग स्रोत (%1$s) से एक प्रविष्टि है।
-\n
-\nक्या आप अभी भी जारी रखना चाहते हैं\?</string>
+    <string name="confirm_manga_add_duplicate">आपकी लाइब्रेरी में एक ही नाम के साथ लेकिन एक अलग स्रोत (%1$s) से एक प्रविष्टि है। \n \nक्या आप अभी भी जारी रखना चाहते हैं?</string>
     <string name="select_inverse">विलोम का चयन करें</string>
     <string name="cover_only_grid">केवल कवर ग्रिड</string>
     <string name="notification_update_error">%1$d अपडेट विफल</string>
@@ -498,7 +493,7 @@
     <string name="save_chapters_as_cbz">CBZ आर्कैव के रूप में सहेजें</string>
     <string name="clear_history">इतिहास मिटा दें</string>
     <string name="clear_history_completed">इतिहास हटाया गया</string>
-    <string name="clear_history_confirmation">क्या आपको यकीन है\? सारा इतिहास खो जाएगा।</string>
+    <string name="clear_history_confirmation">क्या आपको यकीन है? सारा इतिहास खो जाएगा।</string>
     <string name="backup_restore_invalid_uri">त्रुटि: खाली यू॰आर॰ऐ</string>
     <string name="backup_info">स्वचालित बैकअप की अत्यधिक अनुशंसा की जाती है। आपको अन्य जगहों पर भी प्रतियां रखनी चाहिए।</string>
     <string name="pref_manage_notifications">सूचनाओं का प्रबंधन</string>

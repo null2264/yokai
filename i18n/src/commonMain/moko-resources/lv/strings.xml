@@ -64,7 +64,7 @@
     <string name="backup_failed">Dublēšana neizdevās</string>
     <string name="restore_completed">Atjaunošana pabeigta</string>
     <string name="creating_backup">Izveido dublējumu</string>
-    <string name="what_should_backup">Ko tu gribi dublēt\?</string>
+    <string name="what_should_backup">Ko tu gribi dublēt?</string>
     <string name="restoring_backup">Dublējuma atjaunošana</string>
     <string name="pref_global_search">Globālā meklēšana</string>
     <string name="cancel_all">Atcelt visu</string>
@@ -139,7 +139,7 @@
     <string name="add_categories">Pievienot kategorijām</string>
     <string name="already_in_category">Manga jau ir kategorijā</string>
     <string name="confirm_category_deletion_message">Manga šajā kategorijā tiks pārvietota uz noklusēto kategoriju.</string>
-    <string name="confirm_category_deletion">Dzēst kategoriju\?</string>
+    <string name="confirm_category_deletion">Dzēst kategoriju?</string>
     <string name="default_category">Noklusētā kategorija</string>
     <string name="category_is_empty">Kategorija ir tukša</string>
     <string name="create_new_category">Izveido jaunu kategoriju</string>
@@ -177,8 +177,7 @@
     <string name="next_chapter">Nākama nodaļa</string>
     <string name="previous_chapter">Iepriekšēja nodaļa</string>
     <string name="label_global_search">Globālā meklēšana</string>
-    <string name="invalid_backup_file_type">Nederīgs dublējuma faila tips: %1$s
-\nTam vajadzētu beigties ar .proto.gz vai .json.</string>
+    <string name="invalid_backup_file_type">Nederīgs dublējuma faila tips: %1$s \nTam vajadzētu beigties ar .proto.gz vai .json.</string>
     <string name="restrictions_">Ierobežojumi: %1$s</string>
     <string name="library_update_restriction">Bibliotēkas atjaunināšanas ierobežojumi</string>
     <string name="new_chapters_found">Atrastas jaunas nodaļas</string>
@@ -191,7 +190,7 @@
     <string name="by_chapter_number">Pēc nodaļas numura</string>
     <string name="by_source_order">Pēc avota secības</string>
     <string name="no_chapters_to_delete">Nav nodaļu, ko izdzēst</string>
-    <string name="remove_all_downloads">Noņemt visas lejupielādes\?</string>
+    <string name="remove_all_downloads">Noņemt visas lejupielādes?</string>
     <string name="category">Kategorija</string>
     <string name="backup_in_progress">Dublēšana jau notiek</string>
     <string name="move_x_to">Pārvietot %1$s uz…</string>
@@ -203,9 +202,7 @@
     <string name="show_number_of_items">Parādīt lietu skaitu</string>
     <string name="hide_notification_content">Slēpt paziņojumu saturu</string>
     <string name="restore_missing_trackers">Nav pieslēgts pie izsekotājiems:</string>
-    <string name="restore_content_full">Dati no dublējuma faila būs atjaunoti.
-\n
-\nJums būs nepieciešams instalēt jebkādus trūkstošos paplašinājumus un pēc tam pieslēgties izsekošanas pakalpojumiem.</string>
+    <string name="restore_content_full">Dati no dublējuma faila būs atjaunoti. \n \nJums būs nepieciešams instalēt jebkādus trūkstošos paplašinājumus un pēc tam pieslēgties izsekošanas pakalpojumiem.</string>
     <string name="webview_is_required">Tachiyomi ir nepieciešams WebView</string>
     <string name="name">Nosaukums</string>
     <string name="ascending">Augoši</string>
@@ -227,7 +224,7 @@
     <string name="cookies_cleared">Sīkfaili notīrīti</string>
     <string name="version">Versija</string>
     <string name="tracking_info">Vienvirziena sinhronizācija, lai atjauninātu izsekošanas pakalpojumu nodaļas progresu. Iestatiet izsekošanu atsevišķiem manga ierakstiem, izmantojot izsekošanas pogu.</string>
-    <string name="clear_database_confirmation">Vai esi pārliecināts\? Lasītās nodaļas un progress priekš ieraksta, kuras nav bibliotēkā, būs zudis</string>
+    <string name="clear_database_confirmation">Vai esi pārliecināts? Lasītās nodaļas un progress priekš ieraksta, kuras nav bibliotēkā, būs zudis</string>
     <string name="crash_log_saved">Avārijas žurnāli saglabāti</string>
     <string name="restoring_backup_canceled">Atjaunošana atcelta</string>
     <string name="kindlish_nav">Kindle-ish</string>
@@ -432,11 +429,9 @@
     <string name="getting_started_guide">Darba sākšanas rokasgrāmata</string>
     <string name="no_more_results">Vairāk rezultātu nav</string>
     <string name="clear_history_completed">Vēsture izdzēsta</string>
-    <string name="clear_history_confirmation">Vai esat pārliecināts\? Visa vēsture tiks pazaudēta.</string>
+    <string name="clear_history_confirmation">Vai esat pārliecināts? Visa vēsture tiks pazaudēta.</string>
     <string name="cover_updated">Vāks atjaunināts</string>
-    <string name="confirm_manga_add_duplicate">Jums bibliotēkā ir ieraksts ar tādu pašu nosaukumu, bet no cita avota (%1$s)
-\n
-\nVai joprojām vēlaties turpināt\?</string>
+    <string name="confirm_manga_add_duplicate">Jums bibliotēkā ir ieraksts ar tādu pašu nosaukumu, bet no cita avota (%1$s) \n \nVai joprojām vēlaties turpināt?</string>
     <string name="error_sharing_cover">Kļūda koplietojot vāku</string>
     <string name="paused">Pauzēts</string>
     <string name="source_not_installed_">Avots nav instalēts: %1$s</string>
@@ -450,7 +445,7 @@
     <string name="no_match_found">Neizdevās atrast</string>
     <string name="progress">Progress</string>
     <string name="helps_fix_bugs">Palīdz novērst jebkādas problēmas. Sensitīvi dati netiks nosūtīti</string>
-    <string name="log_out_from_">Izrakstīties no %1$s\?</string>
+    <string name="log_out_from_">Izrakstīties no %1$s?</string>
     <string name="global_search">Globālā meklēšana…</string>
     <string name="last_used">Pēdējo reizi izmantots</string>
     <string name="check_site_in_web">Pārbaudīt tīmekļa vietni šeit: WebView</string>
@@ -495,7 +490,7 @@
     <string name="no_pages_found">Lapas nav atrastas</string>
     <string name="chapters_">Nodaļas %1$s</string>
     <string name="clear_history">Notīrīt vēsturi</string>
-    <string name="use_image_as_cover">Vai izmantot šo attēlu kā vāku\?</string>
+    <string name="use_image_as_cover">Vai izmantot šo attēlu kā vāku?</string>
     <string name="rereading">Pārlasīšana</string>
     <string name="lavender">Lavanda</string>
     <string name="tap_zones">Skāriena zonas</string>

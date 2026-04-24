@@ -17,8 +17,8 @@
         <item quantity="other">%1$s kapitel</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Ta bort %1$d nerladdade kapitel\?</item>
-        <item quantity="other">Ta bort%1$d nerladdade kapitel\?</item>
+        <item quantity="one">Ta bort %1$d nerladdade kapitel?</item>
+        <item quantity="other">Ta bort%1$d nerladdade kapitel?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">och %1$d ytterligare kapitel</item>
@@ -29,13 +29,8 @@
         <item quantity="other">För %d titlar</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Ett kapitel har tagits bort från källan:
-\n%2$s
-\nTa bort nedladdningen\?</item>
-        <item quantity="other">%1$s kapitel har tagits bort från källan:
-\n%2$s
-\n
-\nTa bort nedladdningen\?</item>
+        <item quantity="one">Ett kapitel har tagits bort från källan: \n%2$s \nTa bort nedladdningen?</item>
+        <item quantity="other">%1$s kapitel har tagits bort från källan: \n%2$s \n \nTa bort nedladdningen?</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d sida</item>
@@ -54,12 +49,12 @@
         <item quantity="other">%d serier migrerade</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Kopiera %1$d%2$s serie\?</item>
-        <item quantity="other">Kopiera %1$d%2$s serier\?</item>
+        <item quantity="one">Kopiera %1$d%2$s serie?</item>
+        <item quantity="other">Kopiera %1$d%2$s serier?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migrera %1$d%2$s serie\?</item>
-        <item quantity="other">Migrera %1$d%2$s serier\?</item>
+        <item quantity="one">Migrera %1$d%2$s serie?</item>
+        <item quantity="other">Migrera %1$d%2$s serier?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Efter %1$s minut</item>

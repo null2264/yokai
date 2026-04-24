@@ -13,8 +13,8 @@
         <item quantity="other">%d kateogrier</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Fjern %1$d nedlastet kapittel\?</item>
-        <item quantity="other">Fjern %1$d nedlastede kapitler\?</item>
+        <item quantity="one">Fjern %1$d nedlastet kapittel?</item>
+        <item quantity="other">Fjern %1$d nedlastede kapitler?</item>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="one">Hopper over %d kapittel, enten så mangler kilden den eller så har den blitt filtrert ut</item>
@@ -29,14 +29,8 @@
         <item quantity="other">%1$s kapitler</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">kapittel har blitt fjernet fra denne kilden
-\n%2$s
-\n
-\nSlett nedlastningen av det\?</item>
-        <item quantity="other">%1$s kapitler har blitt fjernet fra denne kilden
-\n%2$s
-\n
-\nSlett nedlastningenene av dem\?</item>
+        <item quantity="one">kapittel har blitt fjernet fra denne kilden \n%2$s \n \nSlett nedlastningen av det?</item>
+        <item quantity="other">%1$s kapitler har blitt fjernet fra denne kilden \n%2$s \n \nSlett nedlastningenene av dem?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Opprenskning ferdig. Fjernet én mappe</item>
@@ -59,12 +53,12 @@
         <item quantity="other">%d manga flyttet</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Kopier %1$d%2$s manga\?</item>
-        <item quantity="other">Kopier %1$d%2$s manga\?</item>
+        <item quantity="one">Kopier %1$d%2$s manga?</item>
+        <item quantity="other">Kopier %1$d%2$s manga?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Flytt %1$d%2$s manga\?</item>
-        <item quantity="other">Flytt %1$d%2$s manga\?</item>
+        <item quantity="one">Flytt %1$d%2$s manga?</item>
+        <item quantity="other">Flytt %1$d%2$s manga?</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d side</item>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <plurals name="cleanup_done">
         <item quantity="one">Tapos na ang paglilinis. Nakapagtanggal ng %d folder.</item>
         <item quantity="other">Tapos na ang paglilinis. Nakapagtanggal ng %d na mga folder.</item>

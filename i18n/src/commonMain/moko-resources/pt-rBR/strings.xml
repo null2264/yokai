@@ -88,8 +88,7 @@
     <string name="selected_">Selecionado: %1$d</string>
     <string name="local">Local</string>
     <string name="library_search_hint">Pesquisar título, marcações, fonte</string>
-    <string name="library_is_empty_add_from_browse">Sua biblioteca está vazia, adicione séries 
-        à sua biblioteca na aba Navegar.</string>
+    <string name="library_is_empty_add_from_browse">Sua biblioteca está vazia, adicione séries à sua biblioteca na aba Navegar.</string>
     <string name="no_matches_for_filters">Nenhum resultado corresponde aos seus filtros atuais</string>
     <string name="show_all_categories">Mostrar todas as categorias</string>
     <string name="always_show_current_category">Sempre mostrar a categoria atual</string>
@@ -139,7 +138,7 @@
     <string name="newly_added">Adicionado recentemente</string>
     <string name="history">Histórico</string>
     <string name="recent_updates">Atualizações recentes</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Isto removerá a data de leitura de \"%1$s\". Tem certeza\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Isto removerá a data de leitura de \"%1$s\". Tem certeza?</string>
     <string name="reset_all_chapters_for_this_">Redefinir todos os capítulos para este %1$s</string>
     <string name="last_read_">Última leitura %1$s</string>
     <string name="read_">%1$s lido</string>
@@ -180,7 +179,7 @@
     <string name="trust">Confiar</string>
     <string name="untrusted">Não confiável</string>
     <string name="uninstall">Desinstalar</string>
-    <string name="ext_installer_private">Privado</string>
+    <string name="ext_installer_private" translatable="false">Privado</string>
     <string name="ext_installer_packageinstaller">Padrão</string>
     <string name="ext_installer_legacy">Legado</string>
     <string name="untrusted_extension">Extensão não confiável</string>
@@ -322,8 +321,7 @@
     <string name="source_migration">Migração de fonte</string>
     <string name="migration">Migração</string>
     <string name="skip_pre_migration">Pular pré-migração</string>
-    <string name="select_a_source_then_item_to_migrate">Selecione uma fonte e selecione um
-        item para migrar</string>
+    <string name="select_a_source_then_item_to_migrate">Selecione uma fonte e selecione um item para migrar</string>
     <string name="data_to_include_in_migration">Dados a incluir na migração</string>
     <string name="search_parameter_eg">Parâmetro de pesquisa (ex., language:english)</string>
     <string name="include_extra_search_parameter">Incluir parâmetro extra ao pesquisar</string>
@@ -333,15 +331,14 @@
     <string name="to_show_again_setting_sources">Para ver esta tela novamente, vá em Configurações -&gt; Fontes.</string>
     <string name="latest_">Último: %1$s</string>
     <string name="migrating_to">migrando para</string>
-    <string name="dont_migrate">"Não migrar"</string>
+    <string name="dont_migrate">Não migrar</string>
     <string name="search_manually">Pesquisar manualmente</string>
     <string name="migrate_now">Migrar agora</string>
     <string name="copy_now">Copiar agora</string>
     <string name="migrate">Migrar</string>
     <string name="migrate_">Migrar %1$s</string>
     <string name="copy_value">Copiar</string>
-    <string name="no_chapters_found_for_migration">Nenhum capítulo encontrado, este mangá não
-        pode ser usado para migração</string>
+    <string name="no_chapters_found_for_migration">Nenhum capítulo encontrado, este mangá não pode ser usado para migração</string>
     <string name="no_alternatives_found">Nenhuma alternativa encontrada</string>
     <string name="stop_migrating">Parar de migrar?</string>
     <string name="skipping_">(pulando %1$d)</string>
@@ -392,36 +389,30 @@
     <string name="cookies_cleared">Cookies limpos</string>
     <string name="clear_database">Limpar banco de dados</string>
     <string name="clear_database_summary">Exclui o histórico de itens que não estão salvos em sua biblioteca</string>
-    <string name="clear_database_confirmation">Tem certeza\? Os capítulos lidos e o progresso em itens que não estão na sua biblioteca serão perdidos</string>
+    <string name="clear_database_confirmation">Tem certeza? Os capítulos lidos e o progresso em itens que não estão na sua biblioteca serão perdidos</string>
     <string name="clear_database_completed">Entradas excluídas</string>
     <string name="refresh_library_metadata">Atualizar metadados da biblioteca</string>
     <string name="updates_covers_genres_desc">Atualiza capas, gêneros, descrição e informação de estado dos mangás</string>
     <string name="refresh_tracking_metadata">Atualizar metadados do monitoramento</string>
     <string name="updates_tracking_details">Atualiza estado, avaliação e último capítulo lido dos serviços de monitoramento</string>
     <string name="clean_up_downloaded_chapters">Limpar capítulos baixados</string>
-    <string name="delete_unused_chapters">Excluir arquivos inexistentes, parcialmente baixados, 
-            e lê as pastas dos capítulos</string>
+    <string name="delete_unused_chapters">Excluir arquivos inexistentes, parcialmente baixados, e lê as pastas dos capítulos</string>
     <string name="starting_cleanup">Iniciando a limpeza</string>
     <string name="no_folders_to_cleanup">Nenhuma pasta para limpar</string>
     <string name="disable_battery_optimization">Desativar otimização da bateria</string>
-    <string name="disable_if_issues_with_updating">Desative isso se você estiver com problemas 
-        para atualizar ou restaurar sua biblioteca</string>
+    <string name="disable_if_issues_with_updating">Desative isso se você estiver com problemas para atualizar ou restaurar sua biblioteca</string>
     <string name="battery_optimization_disabled">A otimização de bateria já está desativada</string>
     <string name="clean_up_cached_covers">Limpar capas em cache</string>
-    <string name="delete_old_covers_in_library_used_">Exclua capas em cache antigas e não usadas de mangás em sua biblioteca que foram atualizados.
-\nAtualmente usando: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Exclua capas em cache antigas e não usadas de mangás em sua biblioteca que foram atualizados. \nAtualmente usando: %1$s</string>
     <!-- Browse Settings -->
     <string name="pref_global_search">Pesquisa global</string>
     <string name="check_for_extension_updates">Verifique se há atualizações de extensão</string>
     <string name="only_search_pinned_when">Pesquisar apenas fontes fixadas</string>
     <string name="match_pinned_sources">Corresponder às fontes fixadas</string>
     <string name="match_enabled_sources">Corresponder às fontes ativadas</string>
-    <string name="only_enable_pinned_for_migration">Ative apenas suas fontes fixadas
-        para migração</string>
-    <string name="only_enable_enabled_for_migration">Ative apenas suas fontes ativadas atualmente
-        para migração</string>
-    <string name="use_last_saved_migration_preferences">Usar as últimas preferências de pré-migração 
-    salvas e fontes para migrar em massa</string>
+    <string name="only_enable_pinned_for_migration">Ative apenas suas fontes fixadas para migração</string>
+    <string name="only_enable_enabled_for_migration">Ative apenas suas fontes ativadas atualmente para migração</string>
+    <string name="use_last_saved_migration_preferences">Usar as últimas preferências de pré-migração salvas e fontes para migrar em massa</string>
     <string name="you_can_migrate_in_library">Você também pode migrar selecionando o mangá na sua biblioteca</string>
     <!-- Extension repos -->
     <string name="source_repos">Repositórios de extensões</string>
@@ -598,8 +589,7 @@
     <string name="download_unread">Baixar não lidos</string>
     <string name="username_must_not_be_blank">Usuário ou senha não podem estar em branco</string>
     <string name="migration_sources_changed">Fontes de migração alteradas</string>
-    <string name="delete_all_covers__not_in_library_used_">Exclui todas as capas em cache fora da sua biblioteca.
-\nAtualmente usando: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Exclui todas as capas em cache fora da sua biblioteca. \nAtualmente usando: %1$s</string>
     <string name="clear_cached_covers_non_library">Limpar capas em cache fora da biblioteca</string>
     <string name="clean_read_manga_not_in_library">Limpar mangás fora da biblioteca</string>
     <string name="clean_read_downloads">Limpar capítulos lidos</string>
@@ -638,14 +628,11 @@
     <string name="locale">Localidade</string>
     <string name="automatic_backups">Backups automáticos</string>
     <string name="invalid_backup_file">Arquivo de backup inválido</string>
-    <string name="invalid_backup_file_type">Tipo de arquivo de backup inválido: %1$s
-\nO arquivo deve terminar com .proto.gz ou .json.</string>
+    <string name="invalid_backup_file_type">Tipo de arquivo de backup inválido: %1$s \nO arquivo deve terminar com .proto.gz ou .json.</string>
     <string name="backup_has_no_manga">O backup não possui nenhum mangá.</string>
     <string name="restore_missing_sources">Fontes faltando:</string>
     <string name="restore_missing_trackers">Monitoradores sem login realizado:</string>
-    <string name="restore_content_full">Os dados do arquivo de backup serão restaurados.
-\n
-\nVocê precisará instalar quaisquer extensões que estejam faltando e depois realizar o login nos serviços de monitoramento para utilizá-los.</string>
+    <string name="restore_content_full">Os dados do arquivo de backup serão restaurados. \n \nVocê precisará instalar quaisquer extensões que estejam faltando e depois realizar o login nos serviços de monitoramento para utilizá-los.</string>
     <string name="restoring_backup_canceled">Restauração cancelada</string>
     <string name="restore_duration">%02d min e %02d seg</string>
     <string name="source_migration_guide">Guia de migração de fonte</string>
@@ -688,7 +675,7 @@
     <string name="when_grouping_by_sources_tags">Ao agrupar a biblioteca por: fontes, estados etc.</string>
     <string name="no_pages_found">Nenhuma página encontrada</string>
     <string name="custom_manga_info">Informações de mangá personalizada</string>
-    <string name="mark_all_chapters_as_unread">Marcar todos os capítulos como não lidos\?</string>
+    <string name="mark_all_chapters_as_unread">Marcar todos os capítulos como não lidos?</string>
     <string name="selection">Seleção</string>
     <string name="previous">Anterior</string>
     <string name="preview">Prévia</string>
@@ -774,7 +761,7 @@
     <string name="updates_and_history">Atualizações &amp; histórico</string>
     <string name="your_library">Sua biblioteca</string>
     <string name="no_chapters_to_delete">Sem capítulos para excluir</string>
-    <string name="remove_all_downloads">Remover todos os downloads\?</string>
+    <string name="remove_all_downloads">Remover todos os downloads?</string>
     <string name="date_fetched">Data da atualização local</string>
     <string name="locked_landscape">Paisagem bloqueado</string>
     <string name="locked_portrait">Retrato bloqueado</string>
@@ -855,7 +842,7 @@
     <string name="force_download_cache_refresh_summary">Isso irá forçar o cache de download á recalcular. Útil se você modificou downloads fora do aplicativo e quer que ele seja selecionado novamente pelo aplicativo</string>
     <string name="use_side_navigation">Usar navegação lateral</string>
     <string name="appearance">Aparência</string>
-    <string name="remove_previous_tracker">Remover rastreadores anteriores\?</string>
+    <string name="remove_previous_tracker">Remover rastreadores anteriores?</string>
     <string name="help_translate">Ajude a traduzir</string>
     <string name="strawberry_daiquiri">Coquetel de Morango</string>
     <string name="helpful_translation_links">Links auxiliares para tradução</string>
@@ -875,7 +862,7 @@
     <string name="show_in_sources_and_extensions">Mostrar nas fontes e na lista de extensões</string>
     <string name="keep_in_">Manter em %1$s</string>
     <string name="log_in">Entrar</string>
-    <string name="log_out_from_">Sair de %1$s\?</string>
+    <string name="log_out_from_">Sair de %1$s?</string>
     <string name="remove_from_">Remover de %1$s</string>
     <string name="filter_groups">Filtrar grupos de scanlators</string>
     <string name="cannot_remove_tracking_while_offline">Monitorador não pode ser removido do %1$s enquanto offline</string>
@@ -909,9 +896,7 @@
     <string name="descending">Decrescente</string>
     <string name="clear_database_source_item_count">%1$d itens que não estão na biblioteca no banco de dados</string>
     <string name="database_clean">Banco de dados limpo</string>
-    <string name="confirm_manga_add_duplicate">Você tem um item na sua biblioteca com o mesmo nome, mas de uma fonte diferente (%1$s).
-\n
-\nVocê deseja continuar mesmo assim\?</string>
+    <string name="confirm_manga_add_duplicate">Você tem um item na sua biblioteca com o mesmo nome, mas de uma fonte diferente (%1$s). \n \nVocê deseja continuar mesmo assim?</string>
     <string name="select_inverse">Inverter a seleção</string>
     <string name="notification_update_error">%1$d atualização(ões) falhou(aram)</string>
     <string name="notification_update_skipped">%1$d atualização(ões) pulada(s)</string>
@@ -947,13 +932,12 @@
     <string name="select_uninstalled_sources">Selecionar fontes desinstaladas</string>
     <string name="update_tracking_after_reading">Atualizar monitoramento após a leitura</string>
     <string name="view_all">Mostrar tudo</string>
-    <string name="downloads_swipe_tutorial">Downloads podem ser cancelados arrastando para os lados
-\nArraste esta notificação para dispensá-la</string>
+    <string name="downloads_swipe_tutorial">Downloads podem ser cancelados arrastando para os lados \nArraste esta notificação para dispensá-la</string>
     <string name="scoring_type_updated">Sistema de avaliação atualizado</string>
     <string name="could_not_update_scoring_">Não foi possível atualizar o sistema de avaliação: %1$s</string>
     <string name="clear_history_completed">Histórico excluído</string>
     <string name="clear_history">Limpar o histórico</string>
-    <string name="clear_history_confirmation">Você tem certeza\? Todo o histórico será perdido.</string>
+    <string name="clear_history_confirmation">Você tem certeza? Todo o histórico será perdido.</string>
     <string name="backup_restore_invalid_uri">Erro: URI vazia</string>
     <string name="backup_info">Backups automáticos são altamente recomendados. Você deve manter cópias em outros locais também.</string>
     <string name="download_ahead">Fazer download a frente</string>

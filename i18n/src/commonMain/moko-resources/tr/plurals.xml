@@ -9,8 +9,8 @@
         <item quantity="other">%d kategoriler</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">İndirilmiş %1$d bölüm silinsin mi\?</item>
-        <item quantity="other">İndirilmiş %1$d bölüm silinsin mi\?</item>
+        <item quantity="one">İndirilmiş %1$d bölüm silinsin mi?</item>
+        <item quantity="other">İndirilmiş %1$d bölüm silinsin mi?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">%1$s içinde %2$s hatayla tamamlandı</item>
@@ -37,29 +37,24 @@
         <item quantity="other">Önbellek temizlendi. %d dosya silindi</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">%1$d%2$s manga kopyala\?</item>
-        <item quantity="other">%1$d%2$s manga kopyala\?</item>
+        <item quantity="one">%1$d%2$s manga kopyala?</item>
+        <item quantity="other">%1$d%2$s manga kopyala?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="one">%d manga geçiş yaptı</item>
         <item quantity="other">%d manga geçiş yaptı</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">%1$d%2$s mangayı geçiş yap\?</item>
-        <item quantity="other">%1$d%2$s mangayı geçiş yap\?</item>
+        <item quantity="one">%1$d%2$s mangayı geçiş yap?</item>
+        <item quantity="other">%1$d%2$s mangayı geçiş yap?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Temizleme bitti. %d klasörü kaldırıldı</item>
         <item quantity="other">Temizleme bitti. %d klasörü kaldırıldı</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Kaynaktan bir bölüm kaldırıldı:
-\n%2$s
-\nİndirmesi silinsin mi\?</item>
-        <item quantity="other">Kaynaktan %1$s bölüm kaldırıldı:
-\n%2$s
-\n
-\nİndirmesi silinsin mi\?</item>
+        <item quantity="one">Kaynaktan bir bölüm kaldırıldı: \n%2$s \nİndirmesi silinsin mi?</item>
+        <item quantity="other">Kaynaktan %1$s bölüm kaldırıldı: \n%2$s \n \nİndirmesi silinsin mi?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">%1$s dakika sonra</item>

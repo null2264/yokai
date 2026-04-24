@@ -9,8 +9,8 @@
         <item quantity="other">%d kategoriaa</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Poistetaanko %1$d ladattu luku\?</item>
-        <item quantity="other">Poistetaanko %1$d ladattua lukua\?</item>
+        <item quantity="one">Poistetaanko %1$d ladattu luku?</item>
+        <item quantity="other">Poistetaanko %1$d ladattua lukua?</item>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">Nimikkeelle %d</item>
@@ -29,21 +29,16 @@
         <item quantity="other">%d mangaa siirretty</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Kopioi %1$d%2$s manga\?</item>
-        <item quantity="other">Kopioi %1$d%2$s mangasta\?</item>
+        <item quantity="one">Kopioi %1$d%2$s manga?</item>
+        <item quantity="other">Kopioi %1$d%2$s mangasta?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Siirrä %1$d%2$s manga\?</item>
-        <item quantity="other">Siirrä %1$d%2$s mangaa\?</item>
+        <item quantity="one">Siirrä %1$d%2$s manga?</item>
+        <item quantity="other">Siirrä %1$d%2$s mangaa?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Luku on poistettu lähteestä:
-\n%2$s
-\nPoistetaanko sen lataus\?</item>
-        <item quantity="other">%1$s lukua on poistettu lähteestä:
-\n%2$s
-\n
-\nPoistetaanko niiden lataukset\?</item>
+        <item quantity="one">Luku on poistettu lähteestä: \n%2$s \nPoistetaanko sen lataus?</item>
+        <item quantity="other">%1$s lukua on poistettu lähteestä: \n%2$s \n \nPoistetaanko niiden lataukset?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">ja %1$d lisää luku</item>

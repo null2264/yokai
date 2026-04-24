@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Boqonnaa %1$d buufame haquu\?</item>
-        <item quantity="other">Boqonnaawwan %1$d buufaman haquu\?</item>
+        <item quantity="one">Boqonnaa %1$d buufame haquu?</item>
+        <item quantity="other">Boqonnaawwan %1$d buufaman haquu?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">Boqonnaa %1$s</item>

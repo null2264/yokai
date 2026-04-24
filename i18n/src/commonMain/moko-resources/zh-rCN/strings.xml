@@ -488,11 +488,9 @@
     <string name="match_enabled_sources">匹配启用图源</string>
     <string name="match_pinned_sources">匹配置顶图源</string>
     <string name="only_search_pinned_when">仅搜索置顶图源</string>
-    <string name="delete_all_covers__not_in_library_used_">删除不在书架的所有封面缓存
-\n当前使用：%1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">删除不在书架的所有封面缓存 \n当前使用：%1$s</string>
     <string name="clear_cached_covers_non_library">清除不在书架的漫画缓存</string>
-    <string name="delete_old_covers_in_library_used_">删除书架更新过后旧的和未使用的漫画封面缓存
-\n当前使用：%1$s</string>
+    <string name="delete_old_covers_in_library_used_">删除书架更新过后旧的和未使用的漫画封面缓存 \n当前使用：%1$s</string>
     <string name="clean_up_cached_covers">清理缓存的封面</string>
     <string name="disable_if_issues_with_updating">如果更新或恢复书架过程中出现问题，禁用此项</string>
     <string name="no_folders_to_cleanup">没有待清除的目录</string>
@@ -553,8 +551,7 @@
     <string name="started_reading_date">开始阅读日期</string>
     <string name="finished_reading_date">完成阅读日期</string>
     <string name="myanimelist_relogin">请重新登录 MyAnimeList</string>
-    <string name="invalid_backup_file_type">无效的备份文件类型：%1$s
-\n文件扩展名应为 .proto.gz 或 .json。</string>
+    <string name="invalid_backup_file_type">无效的备份文件类型：%1$s \n文件扩展名应为 .proto.gz 或 .json。</string>
     <string name="backup_has_no_manga">备份不包含任何漫画。</string>
     <string name="restore_missing_sources">缺少图源：</string>
     <string name="restore_missing_trackers">未登录的追踪源：</string>
@@ -835,14 +832,11 @@
     <string name="database_clean">无需清理</string>
     <string name="clear_database_source_item_count">数据库中有 %1$d 部作品未添加到书架</string>
     <string name="select_inverse">反选</string>
-    <string name="confirm_manga_add_duplicate">库中有一个名称相同但图源不同（%1$s）的条目。
-\n
-\n你仍希望继续吗？</string>
+    <string name="confirm_manga_add_duplicate">库中有一个名称相同但图源不同（%1$s）的条目。 \n \n你仍希望继续吗？</string>
     <string name="select_uninstalled_sources">选择未卸载的图源</string>
     <string name="show_">显示 %1$s</string>
     <string name="must_view_details_before_migration">必须先查看此条目的详细信息页面，然后才能迁移</string>
-    <string name="downloads_swipe_tutorial">可以通过滑动下载项来取消下载
-\n滑动此提示以将其关闭</string>
+    <string name="downloads_swipe_tutorial">可以通过滑动下载项来取消下载 \n滑动此提示以将其关闭</string>
     <string name="most_entries">多数条目</string>
     <string name="use_staggered_grid">使用交错网格</string>
     <string name="pref_update_only_completely_read_summary">只在没有未读章节时才更新漫画（全读完）</string>

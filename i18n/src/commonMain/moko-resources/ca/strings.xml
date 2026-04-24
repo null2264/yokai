@@ -152,7 +152,7 @@
     <string name="max_auto_backups">Màxim de còpies de seguretat automàtiques</string>
     <string name="backup_created">S’ha creat la còpia de seguretat</string>
     <string name="restore_completed">S’ha completat la restauració</string>
-    <string name="what_should_backup">De què voleu fer una còpia de seguretat\?</string>
+    <string name="what_should_backup">De què voleu fer una còpia de seguretat?</string>
     <string name="restoring_backup">S’està restaurant la còpia de seguretat</string>
     <string name="clear_chapter_cache">Buida la memòria cau de capítols</string>
     <string name="used_">Ús: %1$s</string>
@@ -161,7 +161,7 @@
     <string name="cookies_cleared">S’han esborrat les galetes</string>
     <string name="clear_database">Buida la base de dades</string>
     <string name="clear_database_summary">Suprimeix l’historial dels elements que no siguin a la biblioteca</string>
-    <string name="clear_database_confirmation">N’esteu segur\? Es perdrà el progrés i els capítols llegits dels elements que no siguin a la biblioteca</string>
+    <string name="clear_database_confirmation">N’esteu segur? Es perdrà el progrés i els capítols llegits dels elements que no siguin a la biblioteca</string>
     <string name="clear_database_completed">S’han suprimit les entrades</string>
     <string name="refresh_library_metadata">Refresca les metadades de la biblioteca</string>
     <string name="updates_covers_genres_desc">Actualitza portades, gèneres, descripcions i informació de l’estat del manga</string>
@@ -221,7 +221,7 @@
     <string name="page_">Pàgina: %1$d</string>
     <string name="next_chapter_not_found">No s’ha trobat el capítol següent</string>
     <string name="decode_image_error">No s’ha pogut carregar la imatge</string>
-    <string name="use_image_as_cover">Voleu definir aquesta imatge com a portada\?</string>
+    <string name="use_image_as_cover">Voleu definir aquesta imatge com a portada?</string>
     <string name="finished_chapter">Finalitzat:</string>
     <string name="current_chapter">Actual:</string>
     <string name="next_title">Següent:</string>
@@ -354,7 +354,7 @@
     <string name="show_all_categories">Mostra totes les categories</string>
     <string name="add_categories">Afegeix categories</string>
     <string name="confirm_category_deletion_message">El manga d’aquesta categoria es mourà a la categoria per defecte.</string>
-    <string name="confirm_category_deletion">Voleu suprimir la categoria\?</string>
+    <string name="confirm_category_deletion">Voleu suprimir la categoria?</string>
     <string name="next_page">Pàgina següent</string>
     <string name="previous_page">Pàgina anterior</string>
     <string name="next_chapter">Capítol següent</string>
@@ -383,14 +383,11 @@
     <string name="locale">Llengua</string>
     <string name="automatic_backups">Còpies de seguretat automàtiques</string>
     <string name="invalid_backup_file">Fitxer de còpia de seguretat invàlid</string>
-    <string name="invalid_backup_file_type">Tipus de fitxer de còpia de seguretat invàlid: %1$s
-\nHauria d’acabar en .proto.gz o .json.</string>
+    <string name="invalid_backup_file_type">Tipus de fitxer de còpia de seguretat invàlid: %1$s \nHauria d’acabar en .proto.gz o .json.</string>
     <string name="backup_has_no_manga">La còpia de seguretat no conté cap manga.</string>
     <string name="restore_missing_sources">Manquen fonts:</string>
     <string name="restore_missing_trackers">Seguidors sense sessió iniciada:</string>
-    <string name="restore_content_full">Es restauraran les dades del fitxer de còpia de seguretat.
-\n
-\nCaldrà que instal·leu les extensions que manquin i que després inicieu la sessió als serveis de seguiment per a utilitzar-los.</string>
+    <string name="restore_content_full">Es restauraran les dades del fitxer de còpia de seguretat. \n \nCaldrà que instal·leu les extensions que manquin i que després inicieu la sessió als serveis de seguiment per a utilitzar-los.</string>
     <string name="source_migration_guide">Guia de migració de fonts</string>
     <string name="nsfw_sources">Fonts NSFW (+18)</string>
     <string name="does_not_prevent_unofficial_nsfw">Això no evita que les extensions no oficials o possiblement mal etiquetades puguin mostrar contingut NSFW (+18) a l’aplicació.</string>
@@ -433,7 +430,7 @@
     <string name="pauses_reading_history">Pausa l’historial de lectura</string>
     <string name="hide_notification_content">Amaga el contingut de les notificacions</string>
     <string name="log_out">Tancar sessió</string>
-    <string name="log_out_from_">Voleu tancar la sessió a %1$s\?</string>
+    <string name="log_out_from_">Voleu tancar la sessió a %1$s?</string>
     <string name="webview_is_required">El Tachiyomi requereix el WebView</string>
     <string name="include_">Inclou: %s</string>
     <string name="name">Nom</string>
@@ -446,7 +443,7 @@
     <string name="category_cannot_be_blank">El nom de la categoria no pot ser buit</string>
     <string name="by_source_order">Per l’ordre de la font</string>
     <string name="no_matches_for_filters_short">No hi ha cap coincidència per als vostres filtres</string>
-    <string name="remove_all_downloads">Voleu eliminar totes les baixades\?</string>
+    <string name="remove_all_downloads">Voleu eliminar totes les baixades?</string>
     <string name="no_chapters_to_delete">No hi ha capítols per a eliminar</string>
     <string name="show_categories_while_filtering">Mostra les categories buides en filtrar</string>
     <string name="category">Categoria</string>
@@ -502,9 +499,7 @@
     <string name="descending">Descendent</string>
     <string name="clear_database_source_item_count">Hi ha %1$d elements a la base de dades que no són a la biblioteca</string>
     <string name="database_clean">Buidatge de la base de dades</string>
-    <string name="confirm_manga_add_duplicate">Teniu un element a la vostra biblioteca amb el mateix nom però d’una font diferent (%1$s).
-\n
-\nVoleu continuar igualment\?</string>
+    <string name="confirm_manga_add_duplicate">Teniu un element a la vostra biblioteca amb el mateix nom però d’una font diferent (%1$s). \n \nVoleu continuar igualment?</string>
     <string name="select_inverse">Inverteix la selecció</string>
     <string name="cover_only_grid">Graella només a la portada</string>
     <string name="notification_update_error">Han fallat %1$d actualitzacions</string>
@@ -540,7 +535,7 @@
     <string name="when_sorting_ignore_articles">En ordenar alfabèticament, ordena ignorant els articles («un», «una», «el», «la») a l’inici dels títols dels mangues</string>
     <string name="clear_history">Suprimeix l’historial</string>
     <string name="clear_history_completed">S’ha buidat l’historial</string>
-    <string name="clear_history_confirmation">N’esteu segur\? Es perdrà tot l’historial.</string>
+    <string name="clear_history_confirmation">N’esteu segur? Es perdrà tot l’historial.</string>
     <string name="save_chapters_as_cbz">Desa com a arxiu CBZ</string>
     <string name="backup_restore_invalid_uri">Error: URI buida</string>
     <string name="backup_info">És molt recomanable activar les còpies de seguretat automàtiques. També n’hauríeu de desar còpies en altres llocs.</string>
@@ -628,7 +623,7 @@
     <string name="show_more_chapters">Mostra més capítols</string>
     <string name="collapse_grouped_chapters">Replega els capítols agrupats</string>
     <string name="search_recents">Cerca als recents…</string>
-    <string name="reset_chapter_question">Voleu restablir el capítol\?</string>
+    <string name="reset_chapter_question">Voleu restablir el capítol?</string>
     <string name="show_bookmarked_chapters">Mostra els capítols marcats</string>
     <string name="show_unread_chapters">Mostra els capítols no llegits</string>
     <string name="pages_">Pàgines %1$s</string>
@@ -645,7 +640,7 @@
     <string name="start_reading">Comença a llegir</string>
     <string name="start_reading_chapter_">Comença a llegir el capítol %1$s</string>
     <string name="must_view_details_before_migration">Cal que vegeu la pàgina de detalls d’aquest element abans de poder-lo migrar</string>
-    <string name="mark_all_chapters_as_unread">Voleu marcar tots els capítols com a no llegits\?</string>
+    <string name="mark_all_chapters_as_unread">Voleu marcar tots els capítols com a no llegits?</string>
     <string name="select_ending_chapter">Sel·lecciona el capítol final</string>
     <string name="page_layout">Distribució de les pàgines</string>
     <string name="search_chapters">Cerca capítols</string>
@@ -660,7 +655,7 @@
     <string name="share_second_page">Comparteix la segona pàgina</string>
     <string name="save_second_page">Desa la segona pàgina</string>
     <string name="set_second_page_as_cover">Defineix la segona pàgina com a portada</string>
-    <string name="add_x_to_library">Voleu afegir %1$s a la biblioteca\?</string>
+    <string name="add_x_to_library">Voleu afegir %1$s a la biblioteca?</string>
     <string name="single_page">Pàgina única</string>
     <string name="split_double_pages">Divideix les pàgines dobles</string>
     <string name="if_disabled_transition_will_skip">Si ho desactiveu, s’ometrà la pàgina de transició si es carrega el capítol següent</string>
@@ -675,7 +670,7 @@
     <string name="filter_groups">Filtra els grups de scanlations</string>
     <string name="horizontally">En horitzontal</string>
     <string name="save_combined_pages">Desa pàgines combinades</string>
-    <string name="mark_all_chapters_as_read">Voleu marcar tots els capítols com a llegits\?</string>
+    <string name="mark_all_chapters_as_read">Voleu marcar tots els capítols com a llegits?</string>
     <string name="smart_by_page">Intel·ligent (per pàgina)</string>
     <string name="vertically">En vertical</string>
     <string name="start_past_cutout">Comença més enllà del retall</string>

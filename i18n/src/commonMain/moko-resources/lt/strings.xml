@@ -18,12 +18,12 @@
     <string name="history">Istorija</string>
     <string name="clear_history">Išvalyti istoriją</string>
     <string name="clear_history_completed">Istorija ištrinta</string>
-    <string name="clear_history_confirmation">Ar tu tuo tikras\? Visa istorija bus prarasta.</string>
+    <string name="clear_history_confirmation">Ar tu tuo tikras? Visa istorija bus prarasta.</string>
     <string name="sources">Šaltiniai</string>
     <string name="untrusted_extension">Nepatikimas plėtinys</string>
     <string name="set_as_cover">Nustatyti kaip viršelį</string>
     <string name="next_chapter_not_found">Kitas skyrius nerastas</string>
-    <string name="use_image_as_cover">Naudoti šį paveiksliuką kaip viršelį\?</string>
+    <string name="use_image_as_cover">Naudoti šį paveiksliuką kaip viršelį?</string>
     <string name="finished_chapter">Baigta:</string>
     <string name="current_chapter">Dabartinis:</string>
     <string name="next_title">Kitas:</string>
@@ -124,13 +124,11 @@
     <string name="uninstall">Šalinti</string>
     <string name="ext_installer_shizuku_stopped">Shizuku neveikia</string>
     <string name="ext_installer_shizuku_unavailable_dialog">Instaliuoti ir paleisti Shizuku, kad galėtumėte naudoti Shizuku kaip papildinių instaliuotoją.</string>
-    <string name="restore_content_full">Atsarginės failo kopijos duomenys bus atkurti.
-\n
-\nNorėdami jais naudotis, turėsite įdiegti trūkstamus plėtinius ir po to prisijungti prie stebėjimo paslaugų.</string>
+    <string name="restore_content_full">Atsarginės failo kopijos duomenys bus atkurti. \n \nNorėdami jais naudotis, turėsite įdiegti trūkstamus plėtinius ir po to prisijungti prie stebėjimo paslaugų.</string>
     <string name="restoring_backup_canceled">Atšauktas atkūrimas</string>
     <string name="backup_restore_invalid_uri">Klaida: tuščias URI</string>
     <string name="creating_backup">Atsarginės kopijos kūrimas</string>
-    <string name="what_should_backup">Ką norite įtraukti į atsarginę kopiją\?</string>
+    <string name="what_should_backup">Ką norite įtraukti į atsarginę kopiją?</string>
     <string name="restoring_backup">Atkuriama atsarginė kopija</string>
     <string name="restore_duration">%02d min, %02d sek</string>
     <string name="restore_miui_warning">Atsarginės kopijos kūrimas / atkūrimas gali veikti netinkamai, jei \"MIUI Optimization\" yra išjungtas.</string>
@@ -151,7 +149,7 @@
     <string name="pref_clear_webview_data">Išvalyti \"WebView\" duomenis</string>
     <string name="webview_data_deleted">„WebView“ duomenys išvalyti</string>
     <string name="clear_database_source_item_count">%1$d nebibliotekiniai įrašai duomenų bazėje</string>
-    <string name="clear_database_confirmation">Ar tikrai\? Perskaityti skyriai ir nebibliotekinių įrašų progresas bus prarastas</string>
+    <string name="clear_database_confirmation">Ar tikrai? Perskaityti skyriai ir nebibliotekinių įrašų progresas bus prarastas</string>
     <string name="clear_database_completed">Ištrinti įrašai</string>
     <string name="updates_tracking_details">Atnaujina būseną, įvertinimą ir paskutinį perskaitytą skyrių iš sekimo paslaugų</string>
     <string name="disable_battery_optimization">Išjungti akumuliatoriaus optimizavimą</string>
@@ -173,7 +171,7 @@
     <string name="email">El. pašto adresas</string>
     <string name="password">Slaptažodis</string>
     <string name="log_out">Atsijungti</string>
-    <string name="log_out_from_">Atsijungti nuo %1$s\?</string>
+    <string name="log_out_from_">Atsijungti nuo %1$s?</string>
     <string name="successfully_logged_out">Dabar esate atsijungęs</string>
     <string name="downloads">Atsiuntimai</string>
     <string name="download_queue">Atsisiuntimų sąrašas</string>
@@ -308,9 +306,7 @@
     <string name="chapters_">Skyriai %1$s</string>
     <string name="added_to_library">Įtraukta į biblioteką</string>
     <string name="removed_from_library">Pašalinti iš bibliotekos</string>
-    <string name="confirm_manga_add_duplicate">Bibliotekoje turite įrašą tokiu pačiu pavadinimu, bet iš kito šaltinio (%1$s).
-\n
-\nAr vis dar norite tęsti\?</string>
+    <string name="confirm_manga_add_duplicate">Bibliotekoje turite įrašą tokiu pačiu pavadinimu, bet iš kito šaltinio (%1$s). \n \nAr vis dar norite tęsti?</string>
     <string name="source_not_installed_">Šaltinis neįdiegtas: %1$s</string>
     <string name="no_description">Nėra aprašymo</string>
     <string name="tracking">Sekimas</string>
@@ -453,7 +449,7 @@
     <string name="marked_as_read">Pažymėta kaip perskaityta</string>
     <string name="marked_as_unread">Pažymėta kaip neskaityta</string>
     <string name="chapters_removed">Skyriai pašalinti.</string>
-    <string name="remove_all_downloads">Pašalinti visus atsisiuntimus\?</string>
+    <string name="remove_all_downloads">Pašalinti visus atsisiuntimus?</string>
     <string name="statistics">Statistika</string>
     <string name="trackers">Sekliai</string>
     <string name="read_duration">Skaitymo trukmė</string>

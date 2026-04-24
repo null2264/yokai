@@ -125,7 +125,7 @@
     <string name="cookies_cleared">Thông tin lưu trữ đã được xóa</string>
     <string name="clear_database">Dọn dẹp cơ sở dữ liệu</string>
     <string name="clear_database_summary">Xóa lịch sử đọc truyện và các chương không nằm trong thư viện</string>
-    <string name="clear_database_confirmation">Bạn có chắc không\? Các chương đã đọc và tiến độ đọc các truyện không nằm trong thư viện sẽ bị mất</string>
+    <string name="clear_database_confirmation">Bạn có chắc không? Các chương đã đọc và tiến độ đọc các truyện không nằm trong thư viện sẽ bị mất</string>
     <string name="clear_database_completed">Các mục đã bị xóa</string>
     <string name="refresh_library_metadata">Làm mới siêu dữ liệu của thư viện</string>
     <string name="updates_covers_genres_desc">Cập nhật ảnh bìa, thể loại, thông tin trạng thái của các bộ truyện</string>
@@ -257,7 +257,7 @@
     <string name="max_auto_backups">Sao lưu tự động tối đa</string>
     <string name="backup_created">Sao lưu đã được tạo</string>
     <string name="restore_completed">Khôi phục hoàn tất</string>
-    <string name="what_should_backup">Bạn có muốn sao lưu không\?</string>
+    <string name="what_should_backup">Bạn có muốn sao lưu không?</string>
     <string name="restoring_backup">Khôi phục sao lưu</string>
     <string name="refresh_tracking_metadata">Làm mới siêu dữ liệu nguồn</string>
     <string name="updates_tracking_details">Cập nhật trạng thái, điểm số và chương cuối đã đọc từ dịch vụ theo dõi</string>
@@ -376,8 +376,7 @@
     <string name="label_global_search">Tìm kiếm toàn bộ</string>
     <string name="disabled">Vô hiệu hóa</string>
     <string name="requires_app_restart">Yêu cầu khởi động lại ứng dụng để có hiệu lực</string>
-    <string name="invalid_backup_file_type">Lỗi định dạng : %1$s
-\nPhải kết thúc với đuôi .proto.gz hay .json.</string>
+    <string name="invalid_backup_file_type">Lỗi định dạng : %1$s \nPhải kết thúc với đuôi .proto.gz hay .json.</string>
     <string name="edge_nav">Dạng góc cạnh</string>
     <string name="kindlish_nav">Dạng giống Kindle</string>
     <string name="l_nav">Dạng chữ L</string>
@@ -462,11 +461,9 @@
     <string name="match_enabled_sources">Khớp với nguồn được bật</string>
     <string name="match_pinned_sources">Khớp với nguồn được ghim</string>
     <string name="only_search_pinned_when">Chỉ tìm kiếm nguồn được ghim</string>
-    <string name="delete_all_covers__not_in_library_used_">Xoá tất cả ảnh bìa không có trong thư viện 
-\nHiện tại đang sử dụng : %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Xoá tất cả ảnh bìa không có trong thư viện \nHiện tại đang sử dụng : %1$s</string>
     <string name="clear_cached_covers_non_library">Xoá ảnh bìa không có trong thư viện</string>
-    <string name="delete_old_covers_in_library_used_">Xoá ảnh bìa cũ hoặc không dùng đến của truyện trong thư viện sau khi được cập nhật.
-\nHiện tại đang sử dụng %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Xoá ảnh bìa cũ hoặc không dùng đến của truyện trong thư viện sau khi được cập nhật. \nHiện tại đang sử dụng %1$s</string>
     <string name="clean_up_cached_covers">Làm sạch ảnh bìa tạm</string>
     <string name="disable_if_issues_with_updating">Vui lòng tắt nếu bạn gặp vấn đề khi cập nhật hoặc khôi phục lại thư viện</string>
     <string name="no_folders_to_cleanup">Không có thư mục để làm sạch</string>
@@ -486,9 +483,7 @@
     <string name="restore_missing_trackers">Bộ theo dõi chưa được đăng nhập vào :</string>
     <string name="complete">Hoàn thành</string>
     <string name="progress">Tiến trình</string>
-    <string name="restore_content_full">Dữ liệu từ tệp sao lưu sẽ được khôi phục.
-\n
-\nBạn sẽ cần cài đặt bất kỳ tiện ích mở rộng nào bị thiếu và sau đó đăng nhập vào các dịch vụ theo dõi để sử dụng chúng.</string>
+    <string name="restore_content_full">Dữ liệu từ tệp sao lưu sẽ được khôi phục. \n \nBạn sẽ cần cài đặt bất kỳ tiện ích mở rộng nào bị thiếu và sau đó đăng nhập vào các dịch vụ theo dõi để sử dụng chúng.</string>
     <string name="restore_missing_sources">Thiếu các nguồn:</string>
     <string name="restore_error">Khôi phục sao lưu thất bại</string>
     <string name="backup_failed">Sao lưu thất bại</string>
@@ -514,7 +509,7 @@
     <string name="turn_off_">Tắt %s</string>
     <string name="turn_on_">Bật %s</string>
     <string name="skipping_">(bỏ qua %1$d)</string>
-    <string name="stop_migrating">Dừng di chuyển\?</string>
+    <string name="stop_migrating">Dừng di chuyển?</string>
     <string name="no_alternatives_found">Không tìm thấy nguồn thay thế</string>
     <string name="use_first_source">Sử dụng nguồn đầu tiên cùng với nguồn thay thế</string>
     <string name="no_chapters_found_for_migration">Không có chương, truyện này không thể di chuyển</string>
@@ -563,13 +558,13 @@
     <string name="show_unread_chapters">Hiện những chương chưa đọc</string>
     <string name="show_read_chapters">Hiện những chương đã đọc</string>
     <string name="show_all">Hiên tất cả</string>
-    <string name="add_x_to_library">Thêm %1$s vào thư viện\?</string>
+    <string name="add_x_to_library">Thêm %1$s vào thư viện?</string>
     <string name="all_read_chapters">Tất cả các chương đọc</string>
     <string name="search_chapters">Tìm kiếm chương</string>
     <string name="select_ending_chapter">Chọn chương kết thúc</string>
     <string name="select_starting_chapter">Chọn chương bắt đầu</string>
-    <string name="mark_all_chapters_as_read">Đánh dấu tất cả chương dưới dạng đã đọc\?</string>
-    <string name="mark_all_chapters_as_unread">Đánh dấu tất cả chương dưới dạng chưa đọc\?</string>
+    <string name="mark_all_chapters_as_read">Đánh dấu tất cả chương dưới dạng đã đọc?</string>
+    <string name="mark_all_chapters_as_unread">Đánh dấu tất cả chương dưới dạng chưa đọc?</string>
     <string name="no_description">Không có mô tả</string>
     <string name="add_to_library">Thêm vào thư viện</string>
     <string name="season_">Mùa %1$d</string>
@@ -605,7 +600,7 @@
     <string name="only_unread">Chỉ chưa đọc</string>
     <string name="show_download_button">Hiện nút tải xuống</string>
     <string name="press_and_hold_to_also_reset">Nhấn và giữ còn có thể làm mới lại lịch sử chương</string>
-    <string name="reset_chapter_question">Làm mới lại chương\?</string>
+    <string name="reset_chapter_question">Làm mới lại chương?</string>
     <string name="grouped">Nhóm</string>
     <string name="no_recent_read_updated_manga">Gần đây không có truyện nào được đọc hoặc được cập nhật</string>
     <string name="search_recents">Tìm kiếm gần đây…</string>
@@ -617,7 +612,7 @@
     <string name="read_">Đọc %1$s</string>
     <string name="last_read_">Lần đọc cuối %1$s</string>
     <string name="reset_all_chapters_for_this_">Làm mới lại tất cả chương cho %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Điều này sẽ xóa đi ngày đọc của \"%1$s\". Bạn có chắc không\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Điều này sẽ xóa đi ngày đọc của \"%1$s\". Bạn có chắc không?</string>
     <string name="reset_chapter_history">Cài đặt lại lịch sử chương</string>
     <string name="newly_added">Mới được thêm vào</string>
     <string name="updates_and_history">Cập nhật &amp; lịch sử</string>
@@ -683,7 +678,7 @@
     <string name="add_categories">Thêm danh mục</string>
     <string name="already_in_category">Truyện đã có trong danh mục</string>
     <string name="confirm_category_deletion_message">Truyện trong danh mục này sẽ được chuyển qua danh mục mặc định.</string>
-    <string name="confirm_category_deletion">Xoá danh mục\?</string>
+    <string name="confirm_category_deletion">Xoá danh mục?</string>
     <string name="category_is_empty">Danh mục trống</string>
     <string name="new_category">Danh mục mới</string>
     <string name="create_new_category">Tạo danh mục mới</string>
@@ -691,7 +686,7 @@
     <string name="adding_category_to_queue">Đang thêm %1$s vào hàng đợi cập nhật</string>
     <string name="category">Danh mục</string>
     <string name="no_chapters_to_delete">Không có chương để xóa</string>
-    <string name="remove_all_downloads">Xoá tất cả những gì tải xuống\?</string>
+    <string name="remove_all_downloads">Xoá tất cả những gì tải xuống?</string>
     <string name="no_pages_found">Không tìm thấy trang</string>
     <string name="add_x_to">Thêm %1$s vào…</string>
     <string name="move_x_to">Di chuyển %1$s đến…</string>
@@ -781,7 +776,7 @@
     <string name="some_extensions_may_prompt">Một số tiện ích mở rộng vẫn cần được cân nhắc khi cài đặt trước.</string>
     <string name="updating_extensions">Đang cập nhật các tiện ích mở rộng</string>
     <string name="set_as_default">Đặt làm mặc định</string>
-    <string name="remove_previous_tracker">Có gỡ bỏ bộ theo dõi cũ không \?</string>
+    <string name="remove_previous_tracker">Có gỡ bỏ bộ theo dõi cũ không ?</string>
     <string name="use_suggested_date">Sử dụng ngày được đề xuất</string>
     <string name="sapphire_dusk">Chủ đề: Hoàng Hôn Sapphire</string>
     <string name="chocolate_strawberries">Chủ đề: Sô-cô-la Dâu Tây</string>
@@ -822,7 +817,7 @@
     <string name="name">Tên</string>
     <string name="log_in">Đăng nhập</string>
     <string name="log_out">Đăng xuất</string>
-    <string name="log_out_from_">Bạn muốn đăng xuất ra khỏi %1$s\?</string>
+    <string name="log_out_from_">Bạn muốn đăng xuất ra khỏi %1$s?</string>
     <string name="keep_in_">Giữ trong %1$s</string>
     <string name="helpful_translation_links">Liên kết dịch thuật hữu ích</string>
     <string name="include_">Thêm vào: %s</string>
@@ -859,9 +854,7 @@
     <string name="descending">Giảm dần</string>
     <string name="database_clean">Dọn cơ sở dữ liệu</string>
     <string name="clear_database_source_item_count">%1$d truyện ngoài thư viện có trong cơ sở dữ liệu</string>
-    <string name="confirm_manga_add_duplicate">Bạn đang có một bộ truyện ở trong thư viện có cùng tên nhưng sử dụng nguồn khác (%1$s).
-\n
-\nBạn vẫn muốn tiếp tục chứ\?</string>
+    <string name="confirm_manga_add_duplicate">Bạn đang có một bộ truyện ở trong thư viện có cùng tên nhưng sử dụng nguồn khác (%1$s). \n \nBạn vẫn muốn tiếp tục chứ?</string>
     <string name="select_inverse">Đảo ngược lựa chọn</string>
     <string name="cover_only_grid">Lưới chỉ mỗi bìa</string>
     <string name="notification_update_error">%1$d cập nhật thất bại</string>
@@ -878,7 +871,7 @@
     <string name="tap_to_learn_more">Nhấn để tìm hiểu thêm</string>
     <string name="clear_history">Xoá lịch sử</string>
     <string name="clear_history_completed">Lịch sử đã được xoá</string>
-    <string name="clear_history_confirmation">Bạn có chắc không\? Tất cả lịch sử sẽ bị xoá.</string>
+    <string name="clear_history_confirmation">Bạn có chắc không? Tất cả lịch sử sẽ bị xoá.</string>
     <string name="backup_restore_invalid_uri">Lỗi: URI trống</string>
     <string name="backup_info">Tự động sao lưu là phương án an toàn nhất. Bạn cũng nên giữ lại các bản sao lưu ở những nơi khác.</string>
     <string name="new_beta_version_available">Phiên bản beta mới khả dụng!</string>
@@ -891,8 +884,7 @@
     <string name="check_for_beta_releases">Kiểm tra phát hành beta</string>
     <string name="update_tracking_marked_read">Cập nhật theo dõi khi được đánh dấu đã đọc</string>
     <string name="most_entries">Các mục hơn cả</string>
-    <string name="downloads_swipe_tutorial">Tải xuống có thể được hủy bỏ bằng cách vuốt chúng sang bên
-\nVuốt mẹo này đi để thu hồi nó</string>
+    <string name="downloads_swipe_tutorial">Tải xuống có thể được hủy bỏ bằng cách vuốt chúng sang bên \nVuốt mẹo này đi để thu hồi nó</string>
     <string name="zoom_double_page_spreads">Phóng to thành trải trang đôi</string>
     <string name="use_staggered_grid">Sử dụng lưới so le</string>
     <string name="pref_update_only_completely_read_summary">Chỉ cập nhập truyện nếu không có bất kỳ trang truyện nào chưa đọc (đã được đọc hết)</string>

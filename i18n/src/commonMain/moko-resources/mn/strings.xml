@@ -43,7 +43,7 @@
     <string name="local_invalid_format">Бүлгийн бичиглэл буруу</string>
     <string name="order_by">Эрэмбэлэх</string>
     <string name="no_pages_found">Хуудас олдсонгүй</string>
-    <string name="remove_all_downloads">Бүх таталтыг устгах уу\?</string>
+    <string name="remove_all_downloads">Бүх таталтыг устгах уу?</string>
     <string name="no_chapters_to_delete">Устгах бүлэг байхгүй</string>
     <string name="by_source_order">Эх үүсвэрээр эрэмбэлэх</string>
     <string name="by_chapter_number">Бүлгийн дугаараар</string>

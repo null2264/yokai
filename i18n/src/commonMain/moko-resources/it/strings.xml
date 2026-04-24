@@ -122,7 +122,7 @@
     <string name="cookies_cleared">Cookie cancellati</string>
     <string name="clear_database">Pulisci database</string>
     <string name="clear_database_summary">Elimina la cronologia delle voci che non sono salvate nella libreria</string>
-    <string name="clear_database_confirmation">Sei sicuro\? I capitoli letti e i progressi di lettura di voci fuori dalla libreria verranno persi</string>
+    <string name="clear_database_confirmation">Sei sicuro? I capitoli letti e i progressi di lettura di voci fuori dalla libreria verranno persi</string>
     <string name="clear_database_completed">Elementi eliminati</string>
     <string name="refresh_library_metadata">Aggiorna metadati libreria</string>
     <string name="updates_covers_genres_desc">Aggiorna copertine, generi, descrizioni e stato delle voci</string>
@@ -387,7 +387,7 @@
     <string name="add_categories">Aggiungi categorie</string>
     <string name="already_in_category">Voce già nella categoria</string>
     <string name="confirm_category_deletion_message">Le voci di questa categoria verranno spostate nella categoria predefinita.</string>
-    <string name="confirm_category_deletion">Eliminare la categoria\?</string>
+    <string name="confirm_category_deletion">Eliminare la categoria?</string>
     <string name="sort_and_filter">Ordina e filtra</string>
     <string name="tag">Etichetta</string>
     <string name="reset_tags">Reimposta le etichette</string>
@@ -416,7 +416,7 @@
     <string name="_unread">%d non letto</string>
     <string name="collapse_all_categories">Riduci tutte le categorie</string>
     <string name="updating_">Aggiornamento di %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Questo rimuoverà la data di lettura di «%1$s». Sei sicuro/a\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Questo rimuoverà la data di lettura di «%1$s». Sei sicuro/a?</string>
     <string name="search_globally">Cerca «%1$s» globalmente</string>
     <string name="display_options">Opzioni di visualizzazione</string>
     <string name="read_">Leggi %1$s</string>
@@ -454,10 +454,8 @@
     <string name="match_enabled_sources">Abbina sorgenti attive</string>
     <string name="match_pinned_sources">Abbina sorgenti spuntate</string>
     <string name="clear_cached_covers_non_library">Elimina dalla cache le copertine non presenti in Libreria</string>
-    <string name="delete_all_covers__not_in_library_used_">Elimina tutte le copertine non presenti in Libreria
-\nIn uso: %1$s</string>
-    <string name="delete_old_covers_in_library_used_">Elimina dalla cache le vecchie copertine delle voci presenti nella tua libreria, le cui copertine sono state aggiornate.
-\nIn uso: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Elimina tutte le copertine non presenti in Libreria \nIn uso: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Elimina dalla cache le vecchie copertine delle voci presenti nella tua libreria, le cui copertine sono state aggiornate. \nIn uso: %1$s</string>
     <string name="clean_up_cached_covers">Elimina le copertine in cache</string>
     <string name="disable_if_issues_with_updating">Disabilita questo se hai problemi ad aggiornare o recuperare la tua libreria</string>
     <string name="no_folders_to_cleanup">Nessuna cartella da eliminare</string>
@@ -472,7 +470,7 @@
     <string name="restore_error">Impossibile ripristinare il backup</string>
     <string name="white_theme">Bianco puro</string>
     <string name="skipping_">(saltare %1$d)</string>
-    <string name="stop_migrating">Interrompere la migrazione\?</string>
+    <string name="stop_migrating">Interrompere la migrazione?</string>
     <string name="no_alternatives_found">Nessun Alternativa Trovata</string>
     <string name="no_chapters_found_for_migration">Nessun capitolo trovato, questa serie non può essere usata per la migrazione</string>
     <string name="migrate_">Migra %1$s</string>
@@ -515,13 +513,13 @@
     <string name="show_downloaded_chapters">Mostra i capitoli scaricati</string>
     <string name="show_bookmarked_chapters">Mostra i capitoli con segnalibro</string>
     <string name="show_all">Mostra tutti</string>
-    <string name="add_x_to_library">Aggiungere %1$s alla Libreria\?</string>
+    <string name="add_x_to_library">Aggiungere %1$s alla Libreria?</string>
     <string name="all_but_bookmarked_chapters">Tutti i capitoli senza segnalibro</string>
     <string name="all_read_chapters">Capitoli letti</string>
     <string name="search_chapters">Cerca capitoli</string>
     <string name="select_ending_chapter">Seleziona il capitolo con cui finire</string>
     <string name="select_starting_chapter">Seleziona il capitolo da cui iniziare</string>
-    <string name="mark_all_chapters_as_read">Segnare tutti i capitoli come letti\?</string>
+    <string name="mark_all_chapters_as_read">Segnare tutti i capitoli come letti?</string>
     <string name="no_description">Nessuna descrizione</string>
     <string name="add_to_library">Aggiungi alla libreria</string>
     <string name="season_">Stagione %1$d</string>
@@ -544,7 +542,7 @@
     <string name="all_sources">Tutte le sorgenti</string>
     <string name="search_extensions">Cerca estensioni…</string>
     <string name="in_library">Nella libreria</string>
-    <string name="reset_chapter_question">Resettare il capitolo\?</string>
+    <string name="reset_chapter_question">Resettare il capitolo?</string>
     <string name="search_recents">Cerca recenti…</string>
     <string name="view_all_updates">Visualizza tutti gli aggiornamenti</string>
     <string name="view_history">Visualizza la cronologia</string>
@@ -567,7 +565,7 @@
     <string name="previous_chapter">Capitolo precedente</string>
     <string name="animate_page_transitions">Anima le transazioni di pagina</string>
     <string name="no_chapters_error">Nessun capitolo trovato</string>
-    <string name="restore_duration">%02d min, %02d sec</string>
+    <string name="restore_duration">%02d min, %02d sec</string>
     <string name="source_migration_guide">Guida alla migrazione di origine</string>
     <string name="nsfw_sources">Fonti NSFW (18+)</string>
     <string name="does_not_prevent_unofficial_nsfw">Questo non impedisce a estensioni non ufficiali o potenzialmente segnalate in modo errato mostrare contenuti 18+ all\'interno dell\'applicazione.</string>
@@ -591,14 +589,11 @@
     <string name="locale">Locale</string>
     <string name="automatic_backups">Backup automatici</string>
     <string name="invalid_backup_file">File di backup invalido</string>
-    <string name="invalid_backup_file_type">File di backup invalido: %1$s
-\nDovrebbe terminare con .proto.gz oppure .json.</string>
+    <string name="invalid_backup_file_type">File di backup invalido: %1$s \nDovrebbe terminare con .proto.gz oppure .json.</string>
     <string name="backup_has_no_manga">Il backup non contiene nessuna voce.</string>
     <string name="restore_missing_sources">Fonti mancanti:</string>
     <string name="restore_missing_trackers">Trackers non collegati:</string>
-    <string name="restore_content_full">I dati dal file di backup verranno recuperati.
-\n
-\nAvrai bisogno di installare le estensioni mancanti ed effettuare il login nei trackers per utilizzarli.</string>
+    <string name="restore_content_full">I dati dal file di backup verranno recuperati. \n \nAvrai bisogno di installare le estensioni mancanti ed effettuare il login nei trackers per utilizzarli.</string>
     <string name="restoring_backup_canceled">Ripristino cancellato</string>
     <string name="open_log">Apri log</string>
     <string name="backup_and_restore">Backup e ripristino</string>
@@ -620,7 +615,7 @@
     <string name="category_cannot_be_blank">Il nome della categoria non può essere vuoto</string>
     <string name="new_category">Nuova categoria</string>
     <string name="no_chapters_to_delete">Nessun capitolo da eliminare</string>
-    <string name="remove_all_downloads">Rimuovere tutti gli scaricamenti\?</string>
+    <string name="remove_all_downloads">Rimuovere tutti gli scaricamenti?</string>
     <string name="no_pages_found">Nessuna pagina trovata</string>
     <string name="add_x_to">Aggiungi %1$s a…</string>
     <string name="move_x_to">Sposta %1$s in…</string>
@@ -676,7 +671,7 @@
     <string name="last_used_library_recents">Ultimo uso (Libreria o Recenti)</string>
     <string name="pauses_reading_history">Sospendi cronologia di lettura</string>
     <string name="incognito_mode">Modalità incognito</string>
-    <string name="mark_all_chapters_as_unread">Segna tutti i capitoli come non letti\?</string>
+    <string name="mark_all_chapters_as_unread">Segna tutti i capitoli come non letti?</string>
     <string name="page_layout">Impaginazione</string>
     <string name="switch_to_single">Passa a pagina singola</string>
     <string name="switch_to_double">Passa a doppia pagina</string>
@@ -804,7 +799,7 @@
     <string name="restrictions_">Restrizioni: %1$s</string>
     <string name="keep_both_on_service">Mantieni entrambi su %1$s e sostituisci solo localmente</string>
     <string name="remove_x_from_service_and_add_y">Rimuovi %1$s da %2$s e aggiungi %3$s</string>
-    <string name="remove_previous_tracker">Rimuovere il tracciamento precedente\?</string>
+    <string name="remove_previous_tracker">Rimuovere il tracciamento precedente?</string>
     <string name="select_an_entry">Seleziona una voce</string>
     <string name="getting_started_guide">Guida introduttiva</string>
     <string name="sapphire_dusk">Zaffiro Crepuscolo</string>
@@ -825,7 +820,7 @@
     <string name="details_page">Pagina dei dettagli</string>
     <string name="theme_buttons_based_on_cover">Pulsanti a tema basati sulla copertina</string>
     <string name="log_in">Accedi</string>
-    <string name="log_out_from_">Disconnettersi da %1$s\?</string>
+    <string name="log_out_from_">Disconnettersi da %1$s?</string>
     <string name="keep_in_">Tieni in %1$s</string>
     <string name="scanlators">Scanlator</string>
     <string name="channel_errors">Errori</string>
@@ -860,9 +855,7 @@
     <string name="descending">Decrescente</string>
     <string name="database_clean">Database pulito</string>
     <string name="clear_database_source_item_count">%1$d voci non presenti in libreria nel database</string>
-    <string name="confirm_manga_add_duplicate">Hai un elemento nella libreria con lo stesso nome ma da un altra fonte (%1$s).
-\n
-\nVuoi comunque continuare\?</string>
+    <string name="confirm_manga_add_duplicate">Hai un elemento nella libreria con lo stesso nome ma da un altra fonte (%1$s). \n \nVuoi comunque continuare?</string>
     <string name="select_inverse">Inverti selezione</string>
     <string name="cover_only_grid">Griglia con solo copertine</string>
     <string name="notification_update_error">%1$d aggiornamento(i) fallito(i)</string>
@@ -884,11 +877,10 @@
     <string name="view_all">Visualizza tutto</string>
     <string name="expanded_toolbar">Barra degli strumenti ampliata</string>
     <string name="check_for_beta_releases">Controlla le versioni beta</string>
-    <string name="downloads_swipe_tutorial">Gli scaricamenti possono essere annullati scorrendoli via
-\nScorri questo suggerimento per eliminarlo</string>
+    <string name="downloads_swipe_tutorial">Gli scaricamenti possono essere annullati scorrendoli via \nScorri questo suggerimento per eliminarlo</string>
     <string name="clear_history">Svuota cronologia</string>
     <string name="clear_history_completed">Cronologia cancellata</string>
-    <string name="clear_history_confirmation">Sei sicuro\? Tutta la cronologia verrà persa.</string>
+    <string name="clear_history_confirmation">Sei sicuro? Tutta la cronologia verrà persa.</string>
     <string name="backup_restore_invalid_uri">Errore: URI vuoto</string>
     <string name="backup_info">I backup automatici sono altamente consigliati. Dovresti tenere delle copie anche in altri posti.</string>
     <string name="battery_not_low">Batteria non scarica</string>

@@ -4,7 +4,7 @@
         <item quantity="other">%d ថ្នាក់</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="other">លុបភាគ %1$d ដែលបានទាញយកចោល\?</item>
+        <item quantity="other">លុបភាគ %1$d ដែលបានទាញយកចោល?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="other">%1$s ភាគ</item>

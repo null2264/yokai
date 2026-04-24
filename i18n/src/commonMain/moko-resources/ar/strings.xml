@@ -493,11 +493,9 @@
     <string name="read_">قُرئ %1$s</string>
     <string name="last_read_">قرئ أخيرًا %1$s</string>
     <string name="newly_added">المضافة حديثًا</string>
-    <string name="delete_all_covers__not_in_library_used_">حذف كافة الأغلفة المخزنة مؤقتاً غير الموجودة في مكتبتك
-        \nحاليا يتم استخدام: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">حذف كافة الأغلفة المخزنة مؤقتاً غير الموجودة في مكتبتك \nحاليا يتم استخدام: %1$s</string>
     <string name="clear_cached_covers_non_library">مسح الأغلفة المخزنة مؤقتًا غير الموجودة في المكتبة</string>
-    <string name="delete_old_covers_in_library_used_">احذف الغُلُف القديمة للمدخلات التي حُدِّثت غُلُفها.
-        \nيُستخدَم الآن: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">احذف الغُلُف القديمة للمدخلات التي حُدِّثت غُلُفها. \nيُستخدَم الآن: %1$s</string>
     <string name="clean_up_cached_covers">تنظيف الأغلفة المخزنة مؤقتًا</string>
     <string name="error_sharing_cover">فشلت مشاركة الغلاف</string>
     <string name="error_saving_cover">خطأ في حفظ الغلاف</string>
@@ -555,8 +553,7 @@
     <string name="locale">محلي</string>
     <string name="automatic_backups">النسخ الاحتياطيُّ التلقائيُّ</string>
     <string name="invalid_backup_file">ملفُّ النسخ الاحتياطيِّ غير صالح</string>
-    <string name="invalid_backup_file_type">نوع ملفِّ النسخ الاحتياطي غير صالح: %1$s
-        \nيجب أن ينتهي ب‍ .proto.gz أو .json.</string>
+    <string name="invalid_backup_file_type">نوع ملفِّ النسخ الاحتياطي غير صالح: %1$s \nيجب أن ينتهي ب‍ .proto.gz أو .json.</string>
     <string name="backup_has_no_manga">ليس في النسخة الاحتياطية أيُّ سلسلة.</string>
     <string name="restore_missing_sources">المصادر المفقودة:</string>
     <string name="restore_missing_trackers">المتتبِّعات التي لم يسجَّل الدخول فيها:</string>
@@ -574,9 +571,7 @@
     <string name="crash_log_saved">تم حفظ سجلات الأخطاء</string>
     <string name="updated_to_">حُدِّث إلى الإصدار v%1$s</string>
     <string name="next">التالي</string>
-    <string name="restore_content_full">سوف تُستعاد البيانات من ملفِّ النسخ الاحتياطيِّ.
-        \n
-        \nعليك تثبيت أيِّ إضافة مفقودة وتسجيل دخولك في خدمات التتبع لتستخدمهم.</string>
+    <string name="restore_content_full">سوف تُستعاد البيانات من ملفِّ النسخ الاحتياطيِّ. \n \nعليك تثبيت أيِّ إضافة مفقودة وتسجيل دخولك في خدمات التتبع لتستخدمهم.</string>
     <string name="label_global_search">بحث شامل</string>
     <string name="disabled">معطل</string>
     <string name="landscape">عرضيٌّ</string>
@@ -836,14 +831,11 @@
     <string name="descending">تنازلًا</string>
     <string name="clear_database_source_item_count">%1$d مدخلةً في قاعدة البيانات وليست في المكتبة</string>
     <string name="database_clean">قاعدة البيانات نظيفة</string>
-    <string name="confirm_manga_add_duplicate">لديك مدخلة في مكتبتك بنفس السم و لكن من مصدر مختلف (%1$s).
-        \n
-        \nألا زلت تريد أن تكمل؟</string>
+    <string name="confirm_manga_add_duplicate">لديك مدخلة في مكتبتك بنفس السم و لكن من مصدر مختلف (%1$s). \n \nألا زلت تريد أن تكمل؟</string>
     <string name="select_inverse">حدِّد المعكوس</string>
     <string name="show_">أظهر %1$s</string>
     <string name="must_view_details_before_migration">عليك تفقُّد تفاصيل هذه المدخلة قبل ترحيلها</string>
-    <string name="downloads_swipe_tutorial">يمكنك الغاء التنزيل عبر سحب هذا الإشعار
-        \nاسحب هذا التلميح بسحبه</string>
+    <string name="downloads_swipe_tutorial">يمكنك الغاء التنزيل عبر سحب هذا الإشعار \nاسحب هذا التلميح بسحبه</string>
     <string name="select_uninstalled_sources">إختار المصادر الغير مثبتة</string>
     <string name="most_entries">عدد المجلات</string>
     <string name="skipped_reason_completed">تُخُطِّيت لأنها تمِّت</string>

@@ -145,7 +145,7 @@
     <string name="cookies_cleared">কুকিস পরিষ্কার হয়েছে</string>
     <string name="clear_database">ডাটাবেজ পরিষ্কার করুন</string>
     <string name="clear_database_summary">আপনার মাংগাশালায় যেসব মাংগা এবং অধ্যায়গুলো নেই সেগুলো মুছে ফেলুন</string>
-    <string name="clear_database_confirmation">আপনি কি নিশ্চিত\? পঠিত অধ্যায় এবং সংগ্রহশালাতে অনুপস্থিত মাংগার অগ্রগতি মুছে যাবে</string>
+    <string name="clear_database_confirmation">আপনি কি নিশ্চিত? পঠিত অধ্যায় এবং সংগ্রহশালাতে অনুপস্থিত মাংগার অগ্রগতি মুছে যাবে</string>
     <string name="clear_database_completed">এন্ট্রিগুলো মুছে ফেলা হয়েছে</string>
     <string name="refresh_library_metadata">মাংগাশালার মেটাডাটা রিফ্রেশ করা হয়েছে</string>
     <string name="updates_covers_genres_desc">আপডেটস কভারগুলো, প্রকার, বিবৃতি এবং মাংগার স্ট্যাটাস তথ্য</string>
@@ -323,7 +323,7 @@
     <string name="reorder">পুনরায় সাজান</string>
     <string name="unpin">আলগা করুন</string>
     <string name="view_chapters">অধ্যায়গুলি দেখুন</string>
-    <string name="confirm_category_deletion">বিভাগ মুছবো\?</string>
+    <string name="confirm_category_deletion">বিভাগ মুছবো?</string>
     <string name="category_is_empty">বিভাগটি খালি</string>
     <string name="create_new_category">নতুন বিভাগ তৈরি করুন</string>
     <string name="_already_in_queue">%1$s আগে থেকেই সারিতে আছে</string>
@@ -392,7 +392,7 @@
     <string name="restore_error">ব্যাকআপ পুনরুদ্ধার করতে ব্যর্থ হয়েছে</string>
     <string name="white_theme">পুরো সাদা</string>
     <string name="skipping_">(%1$d এড়িয়ে যাওয়া হচ্ছে)</string>
-    <string name="stop_migrating">স্থানান্তর বন্ধ করবেন\?</string>
+    <string name="stop_migrating">স্থানান্তর বন্ধ করবেন?</string>
     <string name="no_alternatives_found">কোনো বিকল্প পাওয়া যায় নি</string>
     <string name="migrate_">স্থানান্তর করুন %1$s</string>
     <string name="copy_now">এখনই কপি করুন</string>
@@ -421,13 +421,13 @@
     <string name="show_downloaded_chapters">ডাউনলোড করা অধ্যায়গুলো প্রদর্শন করুন</string>
     <string name="show_bookmarked_chapters">বুকমার্ক করা অধ্যায়গুলো প্রদর্শন করুন</string>
     <string name="show_all">সমস্ত কিছু প্রদর্শন করুন</string>
-    <string name="add_x_to_library">%1$sকে লাইব্রেরিতে যুক্ত করুন\?</string>
+    <string name="add_x_to_library">%1$sকে লাইব্রেরিতে যুক্ত করুন?</string>
     <string name="all_but_bookmarked_chapters">বুকমার্ক করা অধ্যায়গুলো ছাড়া সমস্ত</string>
     <string name="all_read_chapters">সকল পঠিত অধ্যায়</string>
     <string name="search_chapters">অধ্যায়গুলো অনুসন্ধান করুন</string>
     <string name="select_ending_chapter">শেষ অধ্যায় নির্বাচন করুন</string>
     <string name="select_starting_chapter">শুরুর অধ্যায় নির্বাচন করুন</string>
-    <string name="mark_all_chapters_as_read">সকল অধ্যায় পঠিত চিহ্নিত করুন\?</string>
+    <string name="mark_all_chapters_as_read">সকল অধ্যায় পঠিত চিহ্নিত করুন?</string>
     <string name="no_description">বর্ণনা নেই</string>
     <string name="add_to_library">লাইব্রেরিতে যুক্ত করুন</string>
     <string name="season_">সিজন %1$d</string>
@@ -451,7 +451,7 @@
     <string name="all_sources">সব উৎস</string>
     <string name="search_extensions">এক্সটেনশন খুঁজুন…</string>
     <string name="in_library">লাইব্রেরীতে</string>
-    <string name="reset_chapter_question">রিসেট অধ্যায়\?</string>
+    <string name="reset_chapter_question">রিসেট অধ্যায়?</string>
     <string name="search_recents">নতুন গুলো খুঁজুন…</string>
     <string name="view_all_updates">সকল আপডেট প্রদর্শন করুন</string>
     <string name="view_history">ইতিহাস প্রদর্শন করুন</string>
@@ -459,7 +459,7 @@
     <string name="added_">যোগ করা হয়েছে %1$s</string>
     <string name="updated_">আপডেট হয়েছে %1$s</string>
     <string name="read_">পঠিত %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">এটা %1$s এর পড়ার তারিখ মুছে ফেলবে। আপনি কি নিশ্চিত\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">এটা %1$s এর পড়ার তারিখ মুছে ফেলবে। আপনি কি নিশ্চিত?</string>
     <string name="newly_added">নবসংযোজিত</string>
     <string name="recents">নতুন</string>
     <string name="sort_by">সাজান</string>
@@ -503,8 +503,7 @@
     <string name="locale">স্থানীয়</string>
     <string name="automatic_backups">স্বয়ংক্রিয় ব্যাকআপ</string>
     <string name="invalid_backup_file">ব্যাকআপ ফাইল গ্রহণযোগ্য নয়</string>
-    <string name="invalid_backup_file_type">অকার্যকর ব্যাকআপ ফাইল ধরণ: %1$s
-\nএটা .proto.gz বা .json দিয়ে শেষ হওয়া উচিত।</string>
+    <string name="invalid_backup_file_type">অকার্যকর ব্যাকআপ ফাইল ধরণ: %1$s \nএটা .proto.gz বা .json দিয়ে শেষ হওয়া উচিত।</string>
     <string name="backup_has_no_manga">ব্যাকআপে কোনো মাংগা নেই।</string>
     <string name="restore_missing_sources">উৎস অনুপলব্ধ:</string>
     <string name="restore_missing_trackers">ট্র্যাকারগুলিতে প্রবেশ হয়নি:</string>
@@ -550,9 +549,7 @@
     <string name="next">পরবর্তী</string>
     <string name="by_chapter_number">অধ্যায়ের নম্বর অনুসারে</string>
     <string name="by_update_date">আপলোডের তারিখ অনুসারে</string>
-    <string name="restore_content_full">ব্যাকআপ ফাইল থেকে ডেটা পুনরুদ্ধার করা হবে।
-\n
-\nআপনাকে যে কোন অনুপস্থিত এক্সটেনশন ইনস্টল করতে হবে এবং সেগুলি ব্যবহার করার জন্য পরে ট্র্যাকিং পরিষেবাগুলিতে লগ ইন করতে হবে।</string>
+    <string name="restore_content_full">ব্যাকআপ ফাইল থেকে ডেটা পুনরুদ্ধার করা হবে। \n \nআপনাকে যে কোন অনুপস্থিত এক্সটেনশন ইনস্টল করতে হবে এবং সেগুলি ব্যবহার করার জন্য পরে ট্র্যাকিং পরিষেবাগুলিতে লগ ইন করতে হবে।</string>
     <string name="nsfw_sources">প্রাপ্তবয়স্কদের জন্য (18+) উৎস</string>
     <string name="date_fetched">প্রাপ্তির তারিখ</string>
     <string name="no_match_found">পাওয়া যায়নি</string>
@@ -564,13 +561,13 @@
     <string name="dump_crash_logs">ডাম্প ক্র্যাশ লগ</string>
     <string name="does_not_prevent_unofficial_nsfw">এটি অ্যাপের মধ্যে প্রাপ্তবয়স্কদের (18+) বিষয়বস্তু সারফেস করা থেকে অনানুষ্ঠানিক বা সম্ভাব্য ভুলভাবে পতাকাঙ্কিত এক্সটেনশানগুলিকে বাধা দেয় না।</string>
     <string name="log_out">প্রস্থান</string>
-    <string name="log_out_from_">প্রস্থান করবেন %1$s থেকে\?</string>
+    <string name="log_out_from_">প্রস্থান করবেন %1$s থেকে?</string>
     <string name="webview_is_required">টাচিয়ামির জন্য ওয়েবভিউ প্রয়োজন</string>
     <string name="exclude_">বাদ দিন: %s</string>
     <string name="doh">এইচটিটিপিএস এর উপর ডিএনএস</string>
     <string name="channel_errors">ত্রুটিসমূহ</string>
     <string name="not_bookmarked">বুকমার্ক করা হয়নি</string>
-    <string name="remove_all_downloads">সব ডাউনলোড সরাবেন\?</string>
+    <string name="remove_all_downloads">সব ডাউনলোড সরাবেন?</string>
     <string name="no_chapters_to_delete">মুছে ফেলার জন্য কোন অধ্যায় নেই</string>
     <string name="by_source_order">উৎসের নির্দেশে</string>
     <string name="add_edit_categories">বিভাগ যোগ করুন/সম্পাদনা করুন</string>
@@ -667,22 +664,20 @@
     <string name="add_tag">ট্যাগ যোগ কর</string>
     <string name="filter_groups">স্ক্যানলেটরের গ্রুপ ফিল্টার কর</string>
     <string name="select_an_entry">একটি এন্ট্রি নির্বাচন কর</string>
-    <string name="remove_previous_tracker">আগের ট্র্যাকার সরাবেন\?</string>
+    <string name="remove_previous_tracker">আগের ট্র্যাকার সরাবেন?</string>
     <string name="includes_recently_read_updated_added">সম্প্রতি পঠিত, আপডেট করা এবং যোগ করা সিরিজ অন্তর্ভুক্ত</string>
     <string name="select_a_source_then_item_to_migrate">একটি উত্স নির্বাচন করুন, তারপর স্থানান্তর করতে একটি আইটেম নির্বাচন করুন</string>
     <string name="use_first_source">বিকল্পের সাথে প্রথম উৎস ব্যবহার কর</string>
     <string name="a_calmer_you">এ কামার ইউ (ডাইন্যামিক)</string>
     <string name="show_recent_series">সাম্প্রতিক সিরিজ দেখাও</string>
     <string name="series_opens_new_chapters">সিরিজ শর্টকাট নতুন অধ্যায় খোলে</string>
-    <string name="delete_old_covers_in_library_used_">আপনার লাইব্রেরিতে মাঙ্গার পুরানো এবং অব্যবহৃত ক্যাশে করা কভারগুলি মুছুন যা আপডেট করা হয়েছে।
-\nবর্তমানে ব্যবহার করছে: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">আপনার লাইব্রেরিতে মাঙ্গার পুরানো এবং অব্যবহৃত ক্যাশে করা কভারগুলি মুছুন যা আপডেট করা হয়েছে। \nবর্তমানে ব্যবহার করছে: %1$s</string>
     <string name="default_behavior">ডিফল্ট আচরণ</string>
     <string name="by_default_side_nav_info">ডিফল্টরূপে, ল্যান্ডস্কেপে থাকাকালীন নির্দিষ্ট ফোন এবং ছোট ট্যাবলেটগুলির জন্য সাইড নেভিগেশন ব্যবহার করা হয় এবং সর্বদা বড় ট্যাবলেটগুলিতে দেখায়</string>
     <string name="clean_up_downloaded_chapters">ডাউনলোড করা অধ্যায়গুলি পরিষ্কার কর</string>
     <string name="clean_orphaned_downloads">পরিচ্ছন্ন অরফান</string>
     <string name="clean_read_downloads">পরিচ্ছন্ন পঠিত</string>
-    <string name="delete_all_covers__not_in_library_used_">আপনার লাইব্রেরিতে না থাকা ক্যাশে থাকা সমস্ত কভার মুছুন
-\nবর্তমানে ব্যবহার করছে: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">আপনার লাইব্রেরিতে না থাকা ক্যাশে থাকা সমস্ত কভার মুছুন \nবর্তমানে ব্যবহার করছে: %1$s</string>
     <string name="orientation">ওরিয়েন্টেশন</string>
     <string name="visit_recents_for_download_queue">ডাউনলোড সারি অ্যাক্সেস করতে সাম্প্রতিক ট্যাবে যান৷ দ্রুত অ্যাক্সেসের জন্য আপনি ডবল ট্যাপ বা টিপুন এবং ধরে রাখতে পারেন</string>
     <string name="automatic_removal">স্বয়ংক্রিয় অপসারণ</string>
@@ -725,7 +720,7 @@
     <string name="cutout_behavior_only_applies">কাটআউট এলাকার আচরণ শুধুমাত্র নির্দিষ্ট স্কেলের প্রকারের সাথে প্রতিকৃতি মোডে প্রযোজ্য</string>
     <string name="automatic_can_still_switch">স্বয়ংক্রিয় পৃষ্ঠা বিন্যাস ব্যবহার করার সময়, আপনি এখনও এই সেটিং ওভাররাইড না করে পড়ার সময় লেআউটগুলির মধ্যে স্যুইচ করতে পারেন</string>
     <string name="show_on_long_press">দীর্ঘ প্রেসে দেখও</string>
-    <string name="mark_all_chapters_as_unread">সমস্ত অধ্যায় অপঠিত হিসাবে চিহ্নিত করবেন\?</string>
+    <string name="mark_all_chapters_as_unread">সমস্ত অধ্যায় অপঠিত হিসাবে চিহ্নিত করবেন?</string>
     <string name="newest_first">নতুন থেকে পুরাতন</string>
     <string name="oldest_first">পুরাতন থেকে নতুন</string>
     <string name="remove_tracking">অ্যাপ থেকে ট্র্যাকিং সরাও</string>
@@ -819,7 +814,7 @@
     <string name="select_inverse">উল্টো নির্বাচন করুন</string>
     <string name="clear_history">ইতিহাস সাফ করুন</string>
     <string name="clear_history_completed">ইতিহাস মুছে ফেলা হয়েছে</string>
-    <string name="clear_history_confirmation">আপনি নিশ্চিত\? সব ইতিহাস মুছে যাবে।</string>
+    <string name="clear_history_confirmation">আপনি নিশ্চিত? সব ইতিহাস মুছে যাবে।</string>
     <string name="backup_info">স্বয়ংক্রিয় ব্যাকআপ অত্যন্ত সুপারিশময়. আপনি অন্যান্য জায়গায়ও কপি রাখা উচিত।</string>
     <string name="pref_manage_notifications">বিজ্ঞপ্তিগুলি নিয়ন্ত্রণ করুন</string>
     <string name="pref_hide_threshold">স্ক্রলে মেনু লুকানোর জন্য সংবেদনশীলতা</string>
