@@ -72,18 +72,19 @@ internal fun calculateTwoWayTrackerSync(
 ): TwoWayTrackerSyncResult {
     val recognizedChapters = chapters
         .filter { it.isRecognizedNumber }
-        .sortedByDescending { it.source_order }
+        .sortedBy { it.source_order }
 
     val sortedChapters = recognizedChapters.sortedBy { it.chapter_number }
     val orderedUniqueChapterNumbers = recognizedChapters
         .map { it.chapter_number }
         .distinct()
 
-    var lastCheckChapter = 0.0f
+    var lastCheckChapter = Float.POSITIVE_INFINITY
 
     val coveredChapterNumbers = orderedUniqueChapterNumbers
+        .dropWhile { chapterNumber -> chapterNumber > remoteLastRead }
         .takeWhile { chapterNumber ->
-            val isCovered = chapterNumber >= lastCheckChapter && chapterNumber <= remoteLastRead
+            val isCovered = chapterNumber <= lastCheckChapter
             if (isCovered) {
                 lastCheckChapter = chapterNumber
             }

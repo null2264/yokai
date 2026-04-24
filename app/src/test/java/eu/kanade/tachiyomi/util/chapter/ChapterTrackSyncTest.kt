@@ -82,8 +82,8 @@ class ChapterTrackSyncTest {
             remoteLastRead = 3f,
         )
 
-        assertEquals(setOf(3f), result.coveredChapterNumbers)
-        assertEquals(listOf(3f), result.chapterUpdates.map { it.chapter_number })
+        assertEquals(setOf(3f, 1f), result.coveredChapterNumbers)
+        assertEquals(listOf(3f, 1f), result.chapterUpdates.map { it.chapter_number })
     }
 
     @Test
