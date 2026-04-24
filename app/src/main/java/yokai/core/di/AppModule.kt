@@ -25,6 +25,7 @@ import eu.kanade.tachiyomi.util.chapter.ChapterFilter
 import eu.kanade.tachiyomi.util.manga.MangaShortcutManager
 import io.requery.android.database.sqlite.RequerySQLiteOpenHelperFactory
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.protobuf.ProtoBuf
 import nl.adaptivity.xmlutil.XmlDeclMode
 import nl.adaptivity.xmlutil.core.XmlVersion
 import nl.adaptivity.xmlutil.serialization.XML
@@ -144,6 +145,9 @@ fun appModule(app: Application) = module {
             indent = 2
             xmlVersion = XmlVersion.XML10
         }
+    }
+    single<ProtoBuf> {
+        ProtoBuf
     }
 
     single { ChapterFilter() }
