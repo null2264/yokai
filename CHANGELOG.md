@@ -114,6 +114,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency androidx.compose.material3:material3 to v1.5.0-alpha14
 - Minimize memory usage by reducing in-memory cover cache size (@Lolle2000la)
 
+## [1.9.7.5]
+
+### Fixes
+- Add missing ProtoBuf singleton definition to the DI for extensions
+
 ## [1.9.7.4]
 
 ### Other
