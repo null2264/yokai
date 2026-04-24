@@ -9,6 +9,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - `Translation` - Translation changes/updates
 - `Other` - Technical changes/updates
 
+## [1.9.7.5]
+
+### Fixes
+- Add missing ProtoBuf singleton definition to the DI for extensions
+
 ## [1.9.7.4]
 
 ### Other
