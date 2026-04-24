@@ -327,7 +327,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
                         val newTrack = service.refresh(track)
                         insertTrack.await(newTrack)
 
-                        syncChaptersWithTrackServiceTwoWay(getChapter.awaitAll(manga.manga.id!!, false), track, service)
+                        syncChaptersWithTrackServiceTwoWay(getChapter.awaitAll(manga.manga.id!!, false), newTrack, service)
                     } catch (e: Exception) {
                         Logger.e(e)
                     }

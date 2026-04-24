@@ -47,6 +47,8 @@ abstract class TrackService(val id: Long) {
     abstract fun readingStatus(): Int
     abstract fun planningStatus(): Int
 
+    open fun hasNotStartedReading(status: Int): Boolean = status == planningStatus()
+
     abstract fun getStatus(status: Int): String
 
     abstract fun getGlobalStatus(status: Int): String

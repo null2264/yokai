@@ -887,6 +887,7 @@ class MangaDetailsController :
         adapter?.setChapters(presenter.chapters)
         tabletAdapter?.notifyItemChanged(0)
         addMangaHeader()
+        rebindVisibleHeader()
         updateMenuVisibility(activityBinding?.toolbar?.menu)
     }
 
@@ -913,6 +914,7 @@ class MangaDetailsController :
         tabletAdapter?.notifyItemChanged(0)
         adapter?.setChapters(presenter.chapters)
         addMangaHeader()
+        rebindVisibleHeader()
         updateFab()
         colorToolbar(binding.recycler.canScrollVertically(-1))
         updateMenuVisibility(activityBinding?.toolbar?.menu)
@@ -929,6 +931,10 @@ class MangaDetailsController :
             adapter?.removeAllScrollableHeaders()
             adapter?.addScrollableHeader(presenter.headerItem)
         }
+    }
+
+    private fun rebindVisibleHeader() {
+        getHeader()?.bind(presenter.headerItem)
     }
 
     @SuppressLint("NotifyDataSetChanged")
