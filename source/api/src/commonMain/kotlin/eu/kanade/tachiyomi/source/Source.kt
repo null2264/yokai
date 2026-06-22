@@ -1,9 +1,11 @@
 package eu.kanade.tachiyomi.source
 
+import eu.kanade.tachiyomi.source.model.FilterList
+import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
-import eu.kanade.tachiyomi.util.awaitSingle
+import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import rx.Observable
 
 /**
@@ -25,28 +27,56 @@ interface Source {
         get() = ""
 
     /**
-     * Get the updated details for a manga.
-     *
-     * @since extensions-lib 1.5
-     * @param manga the manga to update.
-     * @return the updated manga.
+     * Whether the source has support for latest updates.
      */
-    @Suppress("DEPRECATION")
-    suspend fun getMangaDetails(manga: SManga): SManga {
-        return fetchMangaDetails(manga).awaitSingle()
-    }
+    val supportsLatest: Boolean
+
 
     /**
-     * Get all the available chapters for a manga.
-     *
-     * @since extensions-lib 1.5
-     * @param manga the manga to update.
-     * @return the chapters for the manga.
+     * Returns the list of filters for the source.
      */
-    @Suppress("DEPRECATION")
-    suspend fun getChapterList(manga: SManga): List<SChapter> {
-        return fetchChapterList(manga).awaitSingle()
-    }
+    fun getFilterList(): FilterList = FilterList()
+
+    /**
+     * Get a page with a list of manga.
+     *
+     * @since tachiyomix 1.6
+     * @param page the page number to retrieve.
+     */
+    suspend fun getPopularManga(page: Int): MangasPage
+
+    /**
+     * Get a page with a list of latest manga updates.
+     *
+     * @since tachiyomix 1.6
+     * @param page the page number to retrieve.
+     */
+    suspend fun getLatestUpdates(page: Int): MangasPage
+
+    /**
+     * Get a page with a list of manga.
+     *
+     * @since tachiyomix 1.6
+     * @param page the page number to retrieve.
+     * @param query the search query.
+     * @param filters the list of filters to apply.
+     */
+    suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage
+
+    /**
+     * Get a page with a list of manga.
+     *
+     * @since tachiyomix 1.6
+     * @param page the page number to retrieve.
+     * @param query the search query.
+     * @param filters the list of filters to apply.
+     */
+    suspend fun getMangaUpdate(
+        manga: SManga,
+        chapters: List<SChapter>,
+        fetchDetails: Boolean,
+        fetchChapters: Boolean,
+    ): SMangaUpdate
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
@@ -56,10 +86,7 @@ interface Source {
      * @param chapter the chapter.
      * @return the pages for the chapter.
      */
-    @Suppress("DEPRECATION")
-    suspend fun getPageList(chapter: SChapter): List<Page> {
-        return fetchPageList(chapter).awaitSingle()
-    }
+    suspend fun getPageList(chapter: SChapter): List<Page>
 
     @Deprecated(
         "Use the non-RxJava API instead",
