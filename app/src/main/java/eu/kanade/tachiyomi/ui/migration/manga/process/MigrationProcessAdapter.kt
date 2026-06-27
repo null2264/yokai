@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.ui.migration.manga.process
 
 import android.view.MenuItem
+import androidx.recyclerview.widget.RecyclerView
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.kanade.tachiyomi.data.cache.CoverCache
 import eu.kanade.tachiyomi.data.database.models.History
@@ -58,6 +59,11 @@ class MigrationProcessAdapter(
     override fun updateDataSet(items: List<MigrationProcessItem>?) {
         this.items = items ?: emptyList()
         super.updateDataSet(items)
+    }
+
+    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+        super.onViewRecycled(holder)
+        (holder as? MigrationProcessHolder)?.onRecycled()
     }
 
     interface MigrationProcessInterface {

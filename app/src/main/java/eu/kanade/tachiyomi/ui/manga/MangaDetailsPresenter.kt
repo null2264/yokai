@@ -104,6 +104,7 @@ import yokai.domain.track.interactor.GetTrack
 import yokai.domain.track.interactor.InsertTrack
 import yokai.i18n.MR
 import yokai.util.lang.getString
+import kotlinx.coroutines.flow.debounce
 
 class MangaDetailsPresenter(
     val mangaId: Long,
@@ -187,7 +188,7 @@ class MangaDetailsPresenter(
         val controller = view ?: return
 
         isLockedFromSearch = controller.shouldLockIfNeeded && SecureActivityDelegate.shouldBeLocked()
-        if (!::manga.isInitialized) runBlocking { refreshMangaFromDb() }
+        if (!::manga.isInitialized || manga.description == null) runBlocking { refreshMangaFromDb() }
         syncData()
 
         presenterScope.launchUI {
@@ -203,7 +204,9 @@ class MangaDetailsPresenter(
                 .collect(::onQueueUpdate)
         }
         presenterScope.launchIO {
-            downloadManager.queueState.collectLatest(::onQueueUpdate)
+            downloadManager.queueState
+                .debounce(500L)
+                .collectLatest(::onQueueUpdate)
         }
 
         runBlocking {
@@ -540,8 +543,13 @@ class MangaDetailsPresenter(
                 it.toProgressUpdate()
             }
             updateChapter.awaitAll(updates)
-            getChapters()
-            withUIContext { view?.updateChapters() }
+            if (selectedChapters.size == 1) {
+                getChapters()
+                withUIContext { view?.updateChaptersQuick(selectedChapters.first().id ?: return@withUIContext) }
+            } else {
+                getChapters()
+                withUIContext { view?.updateChapters() }
+            }
         }
     }
 
@@ -570,8 +578,13 @@ class MangaDetailsPresenter(
             if (read && deleteNow && preferences.removeAfterMarkedAsRead().get()) {
                 deleteChapters(selectedChapters, false)
             }
-            getChapters()
-            withUIContext { view?.updateChapters() }
+            if (selectedChapters.size == 1) {
+                getChapters()
+                withUIContext { view?.updateChaptersQuick(selectedChapters.first().id ?: return@withUIContext) }
+            } else {
+                getChapters()
+                withUIContext { view?.updateChapters() }
+            }
             if (read && deleteNow) {
                 val latestReadChapter = selectedChapters.maxByOrNull { it.chapter_number.toInt() }?.chapter
                 updateTrackChapterMarkedAsRead(preferences, latestReadChapter, manga.id) {
@@ -1119,6 +1132,10 @@ class MangaDetailsPresenter(
     }
 
     private suspend fun onQueueUpdate(queue: List<Download>) = withIOContext {
+        // Only rebuild if this manga has chapters in the queue.
+        // Without this, every download progress tick for any manga triggers
+        // a full chapter list rebuild and RecyclerView rebind, causing excessive scroll stutter.
+        if (queue.none { it.manga.id == mangaId }) return@withIOContext
         getChapters(queue)
         withUIContext {
             view?.updateChapters()

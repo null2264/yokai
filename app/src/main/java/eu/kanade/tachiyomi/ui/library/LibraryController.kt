@@ -1128,7 +1128,15 @@ open class LibraryController(
             return
         }
         view ?: return
-        destroyActionModeIfNeeded()
+        // Only destroy action mode if no manga are selected, or if none of the
+        // selected manga exist in the updated library list (e.g. deleted/filtered out).
+        // Previously this fired unconditionally, wiping selection on every chapter
+        // download completion when the library flow re-emitted.
+        if (selectedMangas.isEmpty() || selectedMangas.none { selected ->
+                mangaMap.filterIsInstance<LibraryMangaItem>().any { it.manga.manga.id == selected.id }
+            }) {
+            destroyActionModeIfNeeded()
+        }
         if (mangaMap.isNotEmpty()) {
             if (!binding.progress.isVisible) {
                 (activity as? MainActivity)?.showNotificationPermissionPrompt()
