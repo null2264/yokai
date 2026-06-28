@@ -104,7 +104,6 @@ import yokai.domain.track.interactor.GetTrack
 import yokai.domain.track.interactor.InsertTrack
 import yokai.i18n.MR
 import yokai.util.lang.getString
-import kotlinx.coroutines.flow.debounce
 
 class MangaDetailsPresenter(
     val mangaId: Long,
@@ -205,7 +204,6 @@ class MangaDetailsPresenter(
         }
         presenterScope.launchIO {
             downloadManager.queueState
-                .debounce(500L)
                 .collectLatest(::onQueueUpdate)
         }
 

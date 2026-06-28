@@ -406,16 +406,32 @@ class MigrationListController(bundle: Bundle? = null) :
 
     fun migrateMangas() {
         launchUI {
-            adapter?.performMigrations(false)
+            val dialog = showMigrationProgressDialog()
+            adapter?.performMigrations(false) { current, total ->
+                dialog.setMessage("$current / $total")
+            }
+            dialog.dismiss()
             navigateOut()
         }
     }
 
     fun copyMangas() {
         launchUI {
-            adapter?.performMigrations(true)
+            val dialog = showMigrationProgressDialog()
+            adapter?.performMigrations(true) { current, total ->
+                dialog.setMessage("$current / $total")
+            }
+            dialog.dismiss()
             navigateOut()
         }
+    }
+
+    private fun showMigrationProgressDialog(): androidx.appcompat.app.AlertDialog {
+        return activity!!.materialAlertDialog()
+            .setTitle(MR.strings.migrating_progress)
+            .setMessage("0 / 0")
+            .setCancelable(false)
+            .show()
     }
 
     private fun navigateOut() {
