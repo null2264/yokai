@@ -54,6 +54,9 @@ class MigrationProcessHolder(
     private var bindJob: Job? = null
 
     init {
+        // We need to post a Runnable to show the popup to make sure that the PopupMenu is
+        // correctly positioned. The reason being that the view may change position before the
+        // PopupMenu is shown.
         binding.migrationMenu.setOnClickListener { it.post { showPopupMenu(it) } }
         binding.skipManga.setOnClickListener { it.post { adapter.removeManga(flexibleAdapterPosition) } }
         arrayOf(binding.migrationMangaCardFrom, binding.migrationMangaCardTo).forEach {
@@ -198,22 +201,28 @@ class MigrationProcessHolder(
     private fun showPopupMenu(view: View) {
         val item = adapter.getItem(flexibleAdapterPosition) ?: return
 
+        // Create a PopupMenu, giving it the clicked view for an anchor
         val popup = PopupMenu(view.context, view)
+
+        // Inflate our menu resource into the PopupMenu's Menu
         popup.menuInflater.inflate(R.menu.migration_single, popup.menu)
 
         val mangas = item.manga
 
         popup.menu.findItem(R.id.action_search_manually).isVisible = true
+        // Hide download and show delete if the chapter is downloaded
         if (mangas.searchResult.content != null) {
             popup.menu.findItem(R.id.action_migrate_now).isVisible = true
             popup.menu.findItem(R.id.action_copy_now).isVisible = true
         }
 
+        // Set a listener so we are notified if a menu item is clicked
         popup.setOnMenuItemClickListener { menuItem ->
             adapter.menuItemListener.onMenuItemClick(flexibleAdapterPosition, menuItem)
             true
         }
 
+        // Finally show the PopupMenu
         popup.show()
     }
 }

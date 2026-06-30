@@ -20,6 +20,7 @@ data class LibraryManga(
     companion object {
         // Used by findAll (one-shot fetch) — includes description
         fun mapper(
+            // manga
             id: Long,
             source: Long,
             url: String,
@@ -40,6 +41,7 @@ data class LibraryManga(
             filteredScanlators: String?,
             updateStrategy: Long,
             coverLastModified: Long,
+            // libraryManga
             total: Long,
             readCount: Double,
             bookmarkCount: Double,
@@ -83,6 +85,7 @@ data class LibraryManga(
         // Used by findAllAsFlow (reactive subscription) — excludes description to
         // avoid CursorWindow overflow on large libraries with frequent re-emissions.
         fun flowMapper(
+            // manga
             id: Long,
             source: Long,
             url: String,
@@ -102,6 +105,7 @@ data class LibraryManga(
             filteredScanlators: String?,
             updateStrategy: Long,
             coverLastModified: Long,
+            // libraryManga
             total: Long,
             readCount: Double,
             bookmarkCount: Double,

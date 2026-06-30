@@ -52,6 +52,7 @@ class MigratingManga(
     }
 
     fun toModal(): MigrationProcessItem {
+        // Create the model object.
         return MigrationProcessItem(this)
     }
 }

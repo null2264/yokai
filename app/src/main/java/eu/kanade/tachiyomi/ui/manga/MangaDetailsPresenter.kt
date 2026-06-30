@@ -1129,11 +1129,16 @@ class MangaDetailsPresenter(
         onPageProgressUpdate(download)
     }
 
+    private var hadQueuedChapters = false
+
     private suspend fun onQueueUpdate(queue: List<Download>) = withIOContext {
-        // Only rebuild if this manga has chapters in the queue.
-        // Without this, every download progress tick for any manga triggers
-        // a full chapter list rebuild and RecyclerView rebind, causing excessive scroll stutter.
-        if (queue.none { it.manga.id == mangaId }) return@withIOContext
+        // Skip rebuilds for manga unrelated to this screen (avoids stutter),
+        // but still rebuild on the transition to empty - otherwise the final
+        // "download complete" update gets skipped since the chapter is already
+        // removed from the queue by the time this fires.
+        val hasQueuedNow = queue.any { it.manga.id == mangaId }
+        if (!hasQueuedNow && !hadQueuedChapters) return@withIOContext
+        hadQueuedChapters = hasQueuedNow
         getChapters(queue)
         withUIContext {
             view?.updateChapters()
