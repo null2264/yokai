@@ -583,9 +583,18 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
     }
 
     private fun addCategory(categoryId: Int) {
-        val mangas = filterMangaToUpdate(runBlocking { getMangaToUpdate(categoryId) }).sortedBy { it.manga.title }
-        categoryIds.add(categoryId)
-        addManga(mangas)
+        // getMangaToUpdate() calls getLibraryManga.await(), which fetches the whole library
+        // from the database. This used to run via runBlocking{} directly on the calling
+        // thread - since addCategory() is invoked from startNow(), which itself runs on the
+        // UI thread from a button tap, that blocked the UI for as long as the query took.
+        // That DB query competes with the already-running job's own heavy DB/network
+        // activity, which is what caused the multi-second freeze when adding a second
+        // category to an already in-progress update.
+        extraScope.launch {
+            val mangas = filterMangaToUpdate(getMangaToUpdate(categoryId)).sortedBy { it.manga.title }
+            categoryIds.add(categoryId)
+            addManga(mangas)
+        }
     }
 
     private fun addManga(mangaToAdd: List<LibraryManga>) {
@@ -707,6 +716,15 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
         }
 
         fun isRunning(context: Context): Boolean {
+            // instance is set the moment doWork() actually starts and cleared to null the moment
+            // it finishes (see doWork()'s finally block), so it has the exact same lifetime as
+            // "is a job currently running." Checking it first avoids a blocking
+            // WorkManager.getWorkInfosByTag(TAG).get() call on the calling thread whenever a job
+            // is already running in this process - a cheap in-memory check instead of a WorkManager
+            // round-trip. Falls through to the WorkManager query only when nothing is running
+            // locally (e.g. checking from a fresh process), where it's a fast query anyway since
+            // there's nothing active to look up.
+            if (instance?.get() != null) return true
             val list = WorkManager.getInstance(context).getWorkInfosByTag(TAG).get()
             return list.any { it.state == WorkInfo.State.RUNNING }
         }
