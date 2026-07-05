@@ -13,8 +13,8 @@
         <item quantity="other">%1$s fejezetek</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Eltávolítasz %1$d letöltött fejezetet\?</item>
-        <item quantity="other">Eltávolítasz %1$d letöltött fejezeteket\?</item>
+        <item quantity="one">Eltávolítasz %1$d letöltött fejezetet?</item>
+        <item quantity="other">Eltávolítasz %1$d letöltött fejezeteket?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Befejezve %1$s alatt, %2$s hibával</item>

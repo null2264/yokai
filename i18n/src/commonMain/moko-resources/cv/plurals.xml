@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="extension_updates_available">
-        <item quantity="one">Хушма валли ҫӗнетӳ пур</item>
-        <item quantity="other">%d хушма валли ҫӗнетӳ пур</item>
+        <item quantity="zero">Хушма валли ҫӗнетӳ пур</item>
+        <item quantity="one">%d хушма валли ҫӗнетӳ пур</item>
+        <item quantity="other"/>
     </plurals>
     <plurals name="chapters_plural">
+        <item quantity="zero">%1$s сыпӑк</item>
         <item quantity="one">%1$s сыпӑк</item>
-        <item quantity="other">%1$s сыпӑк</item>
+        <item quantity="other"/>
     </plurals>
     <plurals name="category_plural">
+        <item quantity="zero">%d пухмӑш</item>
         <item quantity="one">%d пухмӑш</item>
-        <item quantity="other">%d пухмӑш</item>
+        <item quantity="other"/>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">%1$d тиенӗ сыпӑка катертмелле-и\?</item>
-        <item quantity="other">%1$d тиенӗ сыпӑксене катертмелле-и\?</item>
+        <item quantity="zero">%1$d тиенӗ сыпӑка катертмелле-и?</item>
+        <item quantity="one">%1$d тиенӗ сыпӑксене катертмелле-и?</item>
+        <item quantity="other"/>
     </plurals>
     <plurals name="restore_completed_message">
-        <item quantity="one">%1$s,%2$s йӑнӑшпа тӑвӑннӑ%1$s, %2$s йӑнӑшпа тӑвӑннӑ</item>
+        <item quantity="zero">%1$s,%2$s йӑнӑшпа тӑвӑннӑ%1$s, %2$s йӑнӑшпа тӑвӑннӑ</item>
+        <item quantity="one"/>
         <item quantity="other"/>
     </plurals>
     <plurals name="after_minutes">
-        <item quantity="one">1 минут хыҫҫӑн%1$s минут хыҫҫӑн</item>
+        <item quantity="zero">1 минут хыҫҫӑн%1$s минут хыҫҫӑн</item>
+        <item quantity="one"/>
         <item quantity="other"/>
     </plurals>
     <plurals name="for_n_titles">
-        <item quantity="one">Ҫӗнӗ сыпӑксем 1 хайлав валли тупӑннӑҪӗнӗ сыпӑксем %d хайлав валли тупӑннӑ</item>
+        <item quantity="zero">Ҫӗнӗ сыпӑксем 1 хайлав валли тупӑннӑҪӗнӗ сыпӑксем %d хайлав валли тупӑннӑ</item>
+        <item quantity="one"/>
         <item quantity="other"/>
     </plurals>
     <plurals name="missing_chapters_warning">
-        <item quantity="one">1 сыпӑк ҫук</item>
-        <item quantity="other">%d сыпӑк ҫук</item>
+        <item quantity="zero">1 сыпӑк ҫук</item>
+        <item quantity="one">%d сыпӑк ҫук</item>
+        <item quantity="other"/>
     </plurals>
 </resources>

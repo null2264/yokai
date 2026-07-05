@@ -13,7 +13,7 @@
         <item quantity="other">%d kategori</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="other">Hapus %1$d bab yang diunduh\?</item>
+        <item quantity="other">Hapus %1$d bab yang diunduh?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="other">Selesai dalam %1$s dengan %2$s kesalahan</item>
@@ -22,16 +22,13 @@
         <item quantity="other">%1$s bab</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">%1$s bab telah dihapus dari sumber:
-\n%2$s
-\n
-\nHapus unduhan\?</item>
+        <item quantity="other">%1$s bab telah dihapus dari sumber: \n%2$s \n \nHapus unduhan?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="other">%d manga dimigrasi</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="other">Salin manga %1$d%2$s\?</item>
+        <item quantity="other">Salin manga %1$d%2$s?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="other">Pembersihan selesai. %d folder telah dihapus</item>
@@ -46,7 +43,7 @@
         <item quantity="other">Setelah %1$s menit</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="other">Migrasi %1$d%2$s manga\?</item>
+        <item quantity="other">Migrasi %1$d%2$s manga?</item>
     </plurals>
     <plurals name="_updates_pending">
         <item quantity="other">Pembaruan %d ditunda</item>

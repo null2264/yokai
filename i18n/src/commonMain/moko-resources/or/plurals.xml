@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <plurals name="restore_completed_message">
         <item quantity="one">%2$sଟିଏ ତ୍ରୁଟି ସହ %1$sରେ କରାଗଲା</item>
         <item quantity="other">%2$sଟି ତ୍ରୁଟି ସହିତ %1$sରେ କରାଗଲା</item>

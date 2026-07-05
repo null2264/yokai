@@ -13,8 +13,8 @@
         <item quantity="other">%1$s সময়ে %2$sটি ত্রুটি সম্পন্ন</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">%1$dটি ডাউনলোড করা অধ্যায় সরাবেন\?</item>
-        <item quantity="other">ডাউনলোড করা %1$dটি অধ্যায় সরাবেন\?</item>
+        <item quantity="one">%1$dটি ডাউনলোড করা অধ্যায় সরাবেন?</item>
+        <item quantity="other">ডাউনলোড করা %1$dটি অধ্যায় সরাবেন?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$sটি অধ্যায়</item>
@@ -25,21 +25,16 @@
         <item quantity="other">%d অধ্যায় কিপ করা হচ্ছে, হয় উৎসটি তাদের অনুপস্থিত অথবা সেগুলি ফিল্টার করা হয়েছে</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">উৎস থেকে একটি অধ্যায় সরানো হয়েছে:
-            \n%2$s
-            \nএর ডাউনলোড মুছে ফেলবেন\?</item>
-        <item quantity="other">উৎস থেকে %1$sটি অধ্যায় সরানো হয়েছে:
-            \n%2$s
-            \n
-            \nতাদের ডাউনলোড মুছে ফেলবেন\?</item>
+        <item quantity="one">উৎস থেকে একটি অধ্যায় সরানো হয়েছে: \n%2$s \nএর ডাউনলোড মুছে ফেলবেন?</item>
+        <item quantity="other">উৎস থেকে %1$sটি অধ্যায় সরানো হয়েছে: \n%2$s \n \nতাদের ডাউনলোড মুছে ফেলবেন?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="one">%d টি মাঙ্গা স্থানান্তরিত হয়েছে</item>
         <item quantity="other">%d টা মাঙ্গা স্থানান্তরিত হয়েছে</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">%1$d%2$s মাঙ্গা কপি করবেন\?</item>
-        <item quantity="other">%1$d%2$s টা মাঙ্গা কপি করবেন\?</item>
+        <item quantity="one">%1$d%2$s মাঙ্গা কপি করবেন?</item>
+        <item quantity="other">%1$d%2$s টা মাঙ্গা কপি করবেন?</item>
     </plurals>
     <plurals name="cache_cleared">
         <item quantity="one">ক্যাশে সাফ করা হয়েছে। %d ফাইল মুছে ফেলা হয়েছে</item>
@@ -70,8 +65,8 @@
         <item quantity="other">%1$dটি পৃষ্ঠা</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">%1$d%2$s মাঙ্গা মাইগ্রেট করবেন\?</item>
-        <item quantity="other">%1$d%2$s টা মাঙ্গা মাইগ্রেট করবেন\?</item>
+        <item quantity="one">%1$d%2$s মাঙ্গা মাইগ্রেট করবেন?</item>
+        <item quantity="other">%1$d%2$s টা মাঙ্গা মাইগ্রেট করবেন?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">%1$s মিনিট পরে</item>

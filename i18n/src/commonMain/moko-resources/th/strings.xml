@@ -153,7 +153,7 @@
     <string name="max_auto_backups">จำนวนการสำรองข้อมูลสูงสุด</string>
     <string name="backup_created">สร้างการสำรองข้อมูลแล้ว</string>
     <string name="restore_completed">คืนค่าเสร็จสมบูรณ์</string>
-    <string name="what_should_backup">ต้องการสำรองข้อมูลใดบ้าง\?</string>
+    <string name="what_should_backup">ต้องการสำรองข้อมูลใดบ้าง?</string>
     <string name="restoring_backup">กำลังคืนค่าการสำรองข้อมูล</string>
     <string name="clear_chapter_cache">ล้างแคชตอน</string>
     <string name="used_">ใช้ไปแล้ว: %1$s</string>
@@ -162,7 +162,7 @@
     <string name="cookies_cleared">ล้างคุกกี้แล้ว</string>
     <string name="clear_database">ล้างฐานข้อมูล</string>
     <string name="clear_database_summary">ลบประวัติรายการที่ไม่ได้บันทึกไว้ในคลัง</string>
-    <string name="clear_database_confirmation">แน่ใจไหม\? ข้อมูลการอ่านของรายการที่ไม่ได้อยู่ในคลังจะหายไป</string>
+    <string name="clear_database_confirmation">แน่ใจไหม? ข้อมูลการอ่านของรายการที่ไม่ได้อยู่ในคลังจะหายไป</string>
     <string name="clear_database_completed">ลบรายการแล้ว</string>
     <string name="refresh_library_metadata">โหลดข้อมูลเมตาของคลังใหม่</string>
     <string name="updates_covers_genres_desc">อัปเดตข้อมูลภาพปก, ประเภท, รายละเอียดและสถานะของรายการ</string>
@@ -230,7 +230,7 @@
     <string name="page_">หน้า %1$d</string>
     <string name="next_chapter_not_found">ไม่พบตอนต่อไป</string>
     <string name="decode_image_error">ไม่สามารถโหลดภาพนี้ได้</string>
-    <string name="use_image_as_cover">ใช้ภาพนี้เป็นภาพหน้าปก\?</string>
+    <string name="use_image_as_cover">ใช้ภาพนี้เป็นภาพหน้าปก?</string>
     <string name="finished_chapter">อ่านจบแล้ว:</string>
     <string name="current_chapter">ปัจจุบัน:</string>
     <string name="next_title">ตอนถัดไป:</string>
@@ -287,8 +287,7 @@
     <string name="requires_app_restart">ต้องรีสตาร์ทแอปจึงจะมีผล</string>
     <string name="restoring_backup_canceled">ยกเลิกการคืนค่า</string>
     <string name="restore_duration">%02d นาที %02d วินาที</string>
-    <string name="invalid_backup_file_type">ประเภทแฟ้มข้อมูลสำรองไม่ถูกต้อง: %1$s
-\nควรลงท้ายด้วย .proto.gz หรือ .json</string>
+    <string name="invalid_backup_file_type">ประเภทแฟ้มข้อมูลสำรองไม่ถูกต้อง: %1$s \nควรลงท้ายด้วย .proto.gz หรือ .json</string>
     <string name="invalid_backup_file">ข้อมูลสำรองไม่ถูกต้อง</string>
     <string name="disabled">ปิดการใช้งาน</string>
     <string name="long_strip_side_padding_25">25%</string>
@@ -367,9 +366,7 @@
     <string name="backup_has_no_manga">แฟ้มข้อมูลสํารองไม่มีรายการใด ๆ</string>
     <string name="restore_missing_sources">แหล่งที่มาที่หายไป:</string>
     <string name="restore_missing_trackers">ตัวติดตามไม่ได้เข้าสู่ระบบ:</string>
-    <string name="restore_content_full">ข้อมูลจากแฟ้มข้อมูลสำรองจะถูกคืนค่า
-\n
-\nคุณจะต้องติดตั้งส่วนขยายที่ขาดหายไปและลงชื่อเข้าใช้บริการติดตามจึงจะสามารถใช้งานได้</string>
+    <string name="restore_content_full">ข้อมูลจากแฟ้มข้อมูลสำรองจะถูกคืนค่า \n \nคุณจะต้องติดตั้งส่วนขยายที่ขาดหายไปและลงชื่อเข้าใช้บริการติดตามจึงจะสามารถใช้งานได้</string>
     <string name="complete">เสร็จสมบูรณ์</string>
     <string name="crash_logs">บันทึกข้อขัดข้อง</string>
     <string name="dump_crash_logs">ดัมพ์บันทึกข้อขัดข้อง</string>
@@ -381,7 +378,7 @@
     <string name="does_not_prevent_unofficial_nsfw">นี่ไม่ได้เป็นการป้องกันไม่ให้ส่วนขยายที่ไม่เป็นทางการ หรือที่อาจถูกตั้งค่าสถานะไม่ถูกต้อง ให้แสดงเนื้อหา NSFW (18+) ภายในแอป</string>
     <string name="open_source_licenses">ใบอนุญาตโอเพ่นซอร์ส</string>
     <string name="log_out">ออกจากระบบ</string>
-    <string name="log_out_from_">ออกจากระบบจาก %1$s\?</string>
+    <string name="log_out_from_">ออกจากระบบจาก %1$s?</string>
     <string name="successfully_logged_out">ออกจากระบบแล้ว</string>
     <string name="invalid_download_location">ตําแหน่งการดาวน์โหลดไม่ถูกต้อง</string>
     <string name="failed_to_bypass_cloudflare">ไม่สามารถเลี่ยงผ่าน Cloudflare ได้</string>
@@ -422,7 +419,7 @@
     <string name="sort_by">เรียงตาม</string>
     <string name="when_sorting_ignore_articles">เมื่อจัดเรียงตามตัวอักษร ให้เรียงลำดับโดยไม่สนใจคำนำหน้าคำนาม (เช่น a, an, the) ที่ด้านหน้าของชื่อรายการ</string>
     <string name="show_download_button">แสดงปุ่มดาวน์โหลด</string>
-    <string name="reset_chapter_question">รีเซ็ตตอน\?</string>
+    <string name="reset_chapter_question">รีเซ็ตตอน?</string>
     <string name="only_downloaded">เฉพาะดาวน์โหลดไว้</string>
     <string name="show_reset_history_button">แสดงปุ่มรีเซ็ตประวัติ</string>
     <string name="a_while_ago">เมื่อสักครู่นี้</string>
@@ -435,7 +432,7 @@
     <string name="automatic_can_still_switch">ในขณะที่ใช้เค้าโครงหน้าอัตโนมัติ คุณยังคงสามารถสลับไปมาระหว่างเค้าโครงขณะอ่านได้โดยไม่ต้องแทนที่การตั้งค่านี้</string>
     <string name="add_to_library">เพิ่มไปในคลัง</string>
     <string name="select_ending_chapter">เลือกตอนจบ</string>
-    <string name="remove_previous_tracker">ลบตัวติดตามก่อนหน้า\?</string>
+    <string name="remove_previous_tracker">ลบตัวติดตามก่อนหน้า?</string>
     <string name="show_read_chapters">แสดงตอนที่อ่านแล้ว</string>
     <string name="clear_tags">ล้างแท็ก</string>
     <string name="add_tag">เพิ่มแท็ก</string>
@@ -457,10 +454,8 @@
     <string name="over_any_network">ผ่านทุกเครือข่าย</string>
     <string name="show_recent_series">แสดงเรื่องล่าสุด</string>
     <string name="clean_read_manga_not_in_library">ล้างรายการที่ไม่มีอยู่ในคลัง</string>
-    <string name="delete_old_covers_in_library_used_">ลบหน้าปกเก่าและไม่ได้ใช้ของรายการที่อยู่ในคลังอัปเดต
-\nกำลังใช้: %1$s</string>
-    <string name="delete_all_covers__not_in_library_used_">ล้างแคชภาพปกที่ไม่ได้อยู่ในคลังทั้งหมด
-\nกำลังใช้ไป: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">ลบหน้าปกเก่าและไม่ได้ใช้ของรายการที่อยู่ในคลังอัปเดต \nกำลังใช้: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">ล้างแคชภาพปกที่ไม่ได้อยู่ในคลังทั้งหมด \nกำลังใช้ไป: %1$s</string>
     <string name="some_extensions_may_not_update">ส่วนขยายบางรายการอาจอัปเดตอัตโนมัติไม่ได้ หากติดตั้งจากภายนอกแอป</string>
     <string name="migration_sources_changed">แหล่งที่มาของการโยกย้ายมีการเปลี่ยนแปลง</string>
     <string name="only_enable_pinned_for_migration">โยกย้ายได้เฉพาะแหล่งที่มาที่ตรึงไว้อยู่เท่านั้น</string>
@@ -482,7 +477,7 @@
     <string name="by_source_order">เรียงตามแหล่งที่มา</string>
     <string name="removed_bookmark">นำบุ๊คมาร์กออกแล้ว</string>
     <string name="new_category">หมวดหมู่ใหม่</string>
-    <string name="confirm_category_deletion">ลบหมวดหมู่\?</string>
+    <string name="confirm_category_deletion">ลบหมวดหมู่?</string>
     <string name="already_in_category">รายการอยู่ในหมวดหมู่อยู่แล้ว</string>
     <string name="add_categories">เพิ่มหมวดหมู่</string>
     <string name="add_edit_categories">เพิ่ม/แก้ไขหมวดหมู่</string>
@@ -497,7 +492,7 @@
     <string name="read_progress">ความคืบหน้าการอ่าน</string>
     <string name="series">เรื่อง</string>
     <string name="no_chapters_to_delete">ไม่มีตอนที่จะถูกลบ</string>
-    <string name="remove_all_downloads">ต้องการนำที่ดาวน์โหลดไว้ออกทั้งหมดไหม\?</string>
+    <string name="remove_all_downloads">ต้องการนำที่ดาวน์โหลดไว้ออกทั้งหมดไหม?</string>
     <string name="expand_collapse_all_categories">ขยาย/ยุบหมวดหมู่ทั้งหมด</string>
     <string name="show_updated_time">แสดงเวลาที่อัปเดต</string>
     <string name="grouped">จัดกลุ่ม</string>
@@ -544,10 +539,10 @@
     <string name="volume_">เล่มที่ %1$d</string>
     <string name="season_">ภาคที่ %1$d</string>
     <string name="no_description">ไม่มีคำอธิบาย</string>
-    <string name="mark_all_chapters_as_read">ทำเครื่องหมายทุกตอนว่าอ่านแล้ว\?</string>
-    <string name="mark_all_chapters_as_unread">ทำเครื่องหมายทุกตอนว่ายังไม่ได้อ่าน\?</string>
+    <string name="mark_all_chapters_as_read">ทำเครื่องหมายทุกตอนว่าอ่านแล้ว?</string>
+    <string name="mark_all_chapters_as_unread">ทำเครื่องหมายทุกตอนว่ายังไม่ได้อ่าน?</string>
     <string name="all_but_bookmarked_chapters">ทั้งหมดยกเว้นตอนที่บุ๊กมาร์กไว้</string>
-    <string name="add_x_to_library">เพิ่ม%1$sไปในคลัง\?</string>
+    <string name="add_x_to_library">เพิ่ม%1$sไปในคลัง?</string>
     <string name="show_bookmarked_chapters">แสดงตอนที่บุ๊กมาร์กไว้</string>
     <string name="show_downloaded_chapters">แสดงตอนที่ดาวน์โหลดไว้</string>
     <string name="show_unread_chapters">แสดงตอนที่ยังไม่ได้อ่าน</string>
@@ -567,7 +562,7 @@
     <string name="skip_this_step_next_time">ข้ามขั้นตอนนี้ในครั้งต่อไป</string>
     <string name="migrating_to">โยกย้ายไปยัง</string>
     <string name="copy_now">คัดลอกเลย</string>
-    <string name="stop_migrating">หยุดโยกย้าย\?</string>
+    <string name="stop_migrating">หยุดโยกย้าย?</string>
     <string name="midnight_dusk">มิดไนท์ดัสก์</string>
     <string name="flat_lime">ไลม์เรียบ</string>
     <string name="white_theme">ขาวสนิท</string>
@@ -728,7 +723,7 @@
     <string name="no_recent_read_updated_manga">ไม่มีรายการที่อ่านหรืออัปเดตล่าสุด</string>
     <string name="reset_chapter_history">รีเซ็ตประวัติตอน</string>
     <string name="newly_added">เพิ่มล่าสุด</string>
-    <string name="this_will_remove_the_read_date_for_x_question">การดำเนินการนี้จะลบวันที่อ่านของ \"%1$s\" แน่ใจไหม\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">การดำเนินการนี้จะลบวันที่อ่านของ \"%1$s\" แน่ใจไหม?</string>
     <string name="reset_all_chapters_for_this_">รีเซ็ตตอนทั้งหมดของ%1$sเรื่องนี้</string>
     <string name="view_history">ดูประวัติ</string>
     <string name="view_all_updates">ดูอัปเดตทั้งหมด</string>
@@ -835,9 +830,7 @@
     <string name="descending">มากไปน้อย</string>
     <string name="clear_database_source_item_count">มี %1$d รายการ ที่ไม่ได้อยู่ในคลังในฐานข้อมูล</string>
     <string name="database_clean">ล้างฐานข้อมูลแล้ว</string>
-    <string name="confirm_manga_add_duplicate">มีรายการในคลังที่มีชื่อเดียวกัน แต่มาจากคนละแหล่งที่มา (%1$s)
-\n
-\nยังต้องการดำเนินการต่อหรือไม่\?</string>
+    <string name="confirm_manga_add_duplicate">มีรายการในคลังที่มีชื่อเดียวกัน แต่มาจากคนละแหล่งที่มา (%1$s) \n \nยังต้องการดำเนินการต่อหรือไม่?</string>
     <string name="select_inverse">สลับการเลือก</string>
     <string name="cover_only_grid">ตารางแสดงแค่หน้าปก</string>
     <string name="notification_update_error">อัปเดตผิดพลาด %1$d รายการ</string>
@@ -854,7 +847,7 @@
     <string name="tap_to_learn_more">แตะเพื่อเรียนรู้เพิ่มเติม</string>
     <string name="clear_history">ล้างประวัติ</string>
     <string name="clear_history_completed">ลบประวัติแล้ว</string>
-    <string name="clear_history_confirmation">แน่ใจไหม\? ประวัติทั้งหมดจะหายไป</string>
+    <string name="clear_history_confirmation">แน่ใจไหม? ประวัติทั้งหมดจะหายไป</string>
     <string name="zoom_double_page_spreads">ซูมเข้าไปในหน้าคู่แยก</string>
     <string name="most_entries">รายการที่มากที่สุด</string>
     <string name="use_staggered_grid">ตารางแบบถมที่</string>
@@ -867,8 +860,7 @@
     <string name="must_view_details_before_migration">ต้องดูหน้ารายละเอียดของรายการนี้ก่อนจึงจะสามารถโยกย้ายข้อมูลได้</string>
     <string name="update_tracking_marked_read">อัปเดตการติดตามเมื่อทำเครื่องหมายว่าอ่านแล้ว</string>
     <string name="webview_data_deleted">ล้างข้อมูล WebView แล้ว</string>
-    <string name="downloads_swipe_tutorial">การดาวน์โหลดสามารถยกเลิกได้โดยการปัดทิ้ง
-\nปัดเพื่อปิดเคล็ดลับนี้</string>
+    <string name="downloads_swipe_tutorial">การดาวน์โหลดสามารถยกเลิกได้โดยการปัดทิ้ง \nปัดเพื่อปิดเคล็ดลับนี้</string>
     <string name="backup_restore_invalid_uri">เกิดข้อผิดพลาด: URI ว่างเปล่า</string>
     <string name="backup_info">ขอแนะนำให้สำรองข้อมูลอัตโนมัติ คุณควรเก็บสำเนาไว้ที่อื่นด้วยเช่นกัน</string>
     <string name="download_ahead_info">ใช้ได้เฉพาะกับรายการที่อยู่ในคลังและตอนปัจจุบันกับตอนถัด ๆ ไปดาวน์โหลดไว้อยู่แล้ว</string>

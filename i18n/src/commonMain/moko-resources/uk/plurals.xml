@@ -7,10 +7,10 @@
         <item quantity="other">%d оновлень для розширень доступні</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Видалити %1$d завантажений розділ\?</item>
-        <item quantity="few">Видалити %1$d завантажених розділів\?</item>
-        <item quantity="many">Видалити %1$d завантажених розділів\?</item>
-        <item quantity="other">Видалити %1$d завантажених розділів\?</item>
+        <item quantity="one">Видалити %1$d завантажений розділ?</item>
+        <item quantity="few">Видалити %1$d завантажених розділів?</item>
+        <item quantity="many">Видалити %1$d завантажених розділів?</item>
+        <item quantity="other">Видалити %1$d завантажених розділів?</item>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">Для %d заголовку</item>
@@ -37,33 +37,22 @@
         <item quantity="other">%d манґи змігровано</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Копіювати %1$d%2$s манґу\?</item>
-        <item quantity="few">Копіювати %1$d%2$s манґи\?</item>
-        <item quantity="many">Копіювати %1$d%2$s манґи\?</item>
-        <item quantity="other">Копіювати %1$d%2$s манґи\?</item>
+        <item quantity="one">Копіювати %1$d%2$s манґу?</item>
+        <item quantity="few">Копіювати %1$d%2$s манґи?</item>
+        <item quantity="many">Копіювати %1$d%2$s манґи?</item>
+        <item quantity="other">Копіювати %1$d%2$s манґи?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Мігрувати %1$d%2$s манґу\?</item>
-        <item quantity="few">Мігрувати %1$d%2$s манґ\?</item>
-        <item quantity="many">Мігрувати %1$d%2$s манґ\?</item>
-        <item quantity="other">Мігрувати %1$d%2$s манґ\?</item>
+        <item quantity="one">Мігрувати %1$d%2$s манґу?</item>
+        <item quantity="few">Мігрувати %1$d%2$s манґ?</item>
+        <item quantity="many">Мігрувати %1$d%2$s манґ?</item>
+        <item quantity="other">Мігрувати %1$d%2$s манґ?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Розділ було видалено з джерела:
-\n%2$s
-\nВидалити завантажене\?</item>
-        <item quantity="few">%1$s розділів було видалено з джерела:
-\n%2$s
-\n
-\nВидалити завантажене\?</item>
-        <item quantity="many">%1$s розділів було видалено з джерела:
-\n%2$s
-\n
-\nВидалити завантажене\?</item>
-        <item quantity="other">%1$s розділів було видалено з джерела:
-\n%2$s
-\n
-\nВидалити завантажене\?</item>
+        <item quantity="one">Розділ було видалено з джерела: \n%2$s \nВидалити завантажене?</item>
+        <item quantity="few">%1$s розділів було видалено з джерела: \n%2$s \n \nВидалити завантажене?</item>
+        <item quantity="many">%1$s розділів було видалено з джерела: \n%2$s \n \nВидалити завантажене?</item>
+        <item quantity="other">%1$s розділів було видалено з джерела: \n%2$s \n \nВидалити завантажене?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Очистку завершено. %d тека видалена</item>

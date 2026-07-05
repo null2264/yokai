@@ -21,9 +21,9 @@
         <item quantity="other">%1$s capitole</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Eliminați %1$d capitolul descărcat\?</item>
-        <item quantity="few">Eliminați %1$d capitole descărcate\?</item>
-        <item quantity="other">Eliminați %1$d capitole descărcate\?</item>
+        <item quantity="one">Eliminați %1$d capitolul descărcat?</item>
+        <item quantity="few">Eliminați %1$d capitole descărcate?</item>
+        <item quantity="other">Eliminați %1$d capitole descărcate?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">și %1$d capitol mai mult</item>
@@ -36,27 +36,19 @@
         <item quantity="other">Pentru %d titluri</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Copiați %1$d%2$s manga\?</item>
-        <item quantity="few">Copiați %1$d%2$s manga\?</item>
-        <item quantity="other">Copiați %1$d%2$s manga\?</item>
+        <item quantity="one">Copiați %1$d%2$s manga?</item>
+        <item quantity="few">Copiați %1$d%2$s manga?</item>
+        <item quantity="other">Copiați %1$d%2$s manga?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migrează %1$d%2$s manga\?</item>
-        <item quantity="few">Migrează %1$d%2$s manga\?</item>
-        <item quantity="other">Migrează %1$d%2$s manga\?</item>
+        <item quantity="one">Migrează %1$d%2$s manga?</item>
+        <item quantity="few">Migrează %1$d%2$s manga?</item>
+        <item quantity="other">Migrează %1$d%2$s manga?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Un capitol a fost eliminat din sursă:
-\n%2$s
-\nȘtergeți descărcarea acestuia\?</item>
-        <item quantity="few">%1$s capitole au fost eliminate din sursă:
-\n%2$s
-\n
-\nȘtergeți descărcarea acestora\?</item>
-        <item quantity="other">%1$s capitole au fost eliminate din sursă:
-\n%2$s
-\n
-\nȘtergeți descărcarea acestora\?</item>
+        <item quantity="one">Un capitol a fost eliminat din sursă: \n%2$s \nȘtergeți descărcarea acestuia?</item>
+        <item quantity="few">%1$s capitole au fost eliminate din sursă: \n%2$s \n \nȘtergeți descărcarea acestora?</item>
+        <item quantity="other">%1$s capitole au fost eliminate din sursă: \n%2$s \n \nȘtergeți descărcarea acestora?</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d pagină</item>

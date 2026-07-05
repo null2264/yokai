@@ -20,7 +20,7 @@
     <string name="search_settings">პარამეტრების ძიება</string>
     <string name="updated_to_">განახლებულია v%1$s-მდე</string>
     <string name="backup_has_no_manga">რეზერვი არ შეიცავს არცერთ მანგას.</string>
-    <string name="what_should_backup">რას გსურს რომ შეუქმნა რეზერვი\?</string>
+    <string name="what_should_backup">რას გსურს რომ შეუქმნა რეზერვი?</string>
     <string name="does_not_prevent_unofficial_nsfw">ეს არ აღმოფხვრავს პროგრამაში NSFW (18+) შიგთავსის არაოფიციალურ, ან შესაძლო არასწორად მონიშნული გაფართოებებოიდან გამოჩენას.</string>
     <string name="whats_new">რა არის ახალი</string>
     <string name="download_queue">გადმოწერის რიგი</string>
@@ -146,7 +146,7 @@
     <string name="uninstall">წაშლა</string>
     <string name="untrusted_extension">არასანდო დამატება</string>
     <string name="unofficial">არაოფიციცალური</string>
-    <string name="use_image_as_cover">გამოვიყენოთ ეს სურათი ყდის ნახატად\?</string>
+    <string name="use_image_as_cover">გამოვიყენოთ ეს სურათი ყდის ნახატად?</string>
     <string name="current_chapter">მიმდინარე:</string>
     <string name="next_title">შემდეგი:</string>
     <string name="previous_title">წინა:</string>
@@ -214,9 +214,9 @@
     <string name="clear_chapter_cache">თავის ქეშის გასუფთავება</string>
     <string name="restore_duration">%02d წუთი, %02d წამი</string>
     <string name="clear_database">მონაცემთა ბაზის გასუფთავება</string>
-    <string name="clear_database_confirmation">დარწმუნებული ბრძანდებით\? წაკითხული თავები და ბიბლიოთეკაში არ არსებული ჩანაწერების პროგრესი დაიკარგება</string>
+    <string name="clear_database_confirmation">დარწმუნებული ბრძანდებით? წაკითხული თავები და ბიბლიოთეკაში არ არსებული ჩანაწერების პროგრესი დაიკარგება</string>
     <string name="disable_battery_optimization">გამორთე ბატარეის ოპტიმიზაცია</string>
-    <string name="log_out_from_">გამოვიდე %1$s-დან\?</string>
+    <string name="log_out_from_">გამოვიდე %1$s-დან?</string>
     <string name="downloaded">გადმოწერილი</string>
     <string name="downloading">იტვირთება</string>
     <string name="download">გადმოწერა</string>

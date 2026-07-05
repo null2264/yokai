@@ -155,7 +155,7 @@
     <string name="no_pages_found">គ្មានទំព័រ</string>
     <string name="chapter_not_found">គ្មានភាគ</string>
     <string name="no_chapters_error">គ្មានភាគ</string>
-    <string name="remove_all_downloads">លុបអ្វីដែលបានទាញយករួចចោលទាំងអស់\?</string>
+    <string name="remove_all_downloads">លុបអ្វីដែលបានទាញយករួចចោលទាំងអស់?</string>
     <string name="order_by">តម្រង់</string>
     <string name="adding_category_to_queue">កំពុងថែម %1$s ដើម្បីធ្វើបច្ចុប្បន្នភាព</string>
     <string name="confirm_category_deletion_message">ម៊េងហ្គាដែលនៅក្នុងថ្នាក់នេះនឹងត្រូវបានប្លាស់ប្តូរទៅថ្នាក់ធម្មតា</string>
@@ -201,7 +201,7 @@
     <string name="new_version_available">មានវើសិនថ្មី!</string>
     <string name="no_new_updates_available">គ្មានការធ្វើបច្ចុប្បន្នភាពថ្មីទេ</string>
     <string name="category_is_empty">ថ្នាក់ទទេ</string>
-    <string name="confirm_category_deletion">លុបថ្នាក់\?</string>
+    <string name="confirm_category_deletion">លុបថ្នាក់?</string>
     <string name="add_categories">ថែមថ្នាក់</string>
     <string name="move_to_categories">ប្លាស់ប្តូរទៅថ្នាក់</string>
     <string name="category_cannot_be_blank">ឈ្មោះថ្នាក់មិនអាចទទេបានទេ</string>
