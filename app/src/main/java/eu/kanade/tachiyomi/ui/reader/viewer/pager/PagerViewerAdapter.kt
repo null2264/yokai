@@ -30,7 +30,16 @@ class PagerViewerAdapter(private val viewer: PagerViewer) : ViewPagerAdapter() {
     /** Single list of items */
     private var subItems: MutableList<ReaderItem> = mutableListOf()
 
+    /**
+     * Cached chapter-transition references. These always describe the chapter pair on either side
+     * of the current chapter, but they are NOT guaranteed to be present in [joinedItems] (e.g. a
+     * prev/next chapter that is already loaded is skipped and never added as a transition item).
+     * Use them to look up the adjacent chapter, not to assume a transition page is displayed.
+     */
     var nextTransition: ChapterTransition.Next? = null
+        private set
+
+    var prevTransition: ChapterTransition.Prev? = null
         private set
 
     /** Page used to start the shifted pages */
@@ -74,9 +83,12 @@ class PagerViewerAdapter(private val viewer: PagerViewer) : ViewPagerAdapter() {
         }
 
         // Skip transition page if the chapter is loaded & current page is not a transition page
-        if (prevHasMissingChapters || forceTransition || chapters.prevChapter?.state !is ReaderChapter.State.Loaded) {
-            newItems.add(ChapterTransition.Prev(chapters.currChapter, chapters.prevChapter))
-        }
+        prevTransition = ChapterTransition.Prev(chapters.currChapter, chapters.prevChapter)
+            .also {
+                if (prevHasMissingChapters || forceTransition || chapters.prevChapter?.state !is ReaderChapter.State.Loaded) {
+                    newItems.add(it)
+                }
+            }
 
         // Add current chapter.
         val currPages = chapters.currChapter.pages
