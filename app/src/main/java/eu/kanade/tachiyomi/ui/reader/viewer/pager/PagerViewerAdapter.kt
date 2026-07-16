@@ -33,6 +33,9 @@ class PagerViewerAdapter(private val viewer: PagerViewer) : ViewPagerAdapter() {
     var nextTransition: ChapterTransition.Next? = null
         private set
 
+    var prevTransition: ChapterTransition.Prev? = null
+        private set
+
     /** Page used to start the shifted pages */
     var pageToShift: ReaderPage? = null
 
@@ -74,9 +77,12 @@ class PagerViewerAdapter(private val viewer: PagerViewer) : ViewPagerAdapter() {
         }
 
         // Skip transition page if the chapter is loaded & current page is not a transition page
-        if (prevHasMissingChapters || forceTransition || chapters.prevChapter?.state !is ReaderChapter.State.Loaded) {
-            newItems.add(ChapterTransition.Prev(chapters.currChapter, chapters.prevChapter))
-        }
+        prevTransition = ChapterTransition.Prev(chapters.currChapter, chapters.prevChapter)
+            .also {
+                if (prevHasMissingChapters || forceTransition || chapters.prevChapter?.state !is ReaderChapter.State.Loaded) {
+                    newItems.add(it)
+                }
+            }
 
         // Add current chapter.
         val currPages = chapters.currChapter.pages
