@@ -294,8 +294,7 @@ internal object ExtensionLoader {
             return LoadResult.Error
         }
 
-        // Prefer tachiyomix.extensionLib metadata (string or float), fall back to versionName.
-        // Float→String→Double avoids IEEE precision issues (e.g. 1.6f > 1.6 as Double).
+        // tachiyomix.extensionLib metadata, else versionName. String→Double avoids float precision.
         val libVersion = metaData.getString(METADATA_EXTENSION_LIB)?.toDoubleOrNull()
             ?: metaData.getFloat(METADATA_EXTENSION_LIB)
                 .takeUnless { it == 0.0f }
@@ -326,7 +325,7 @@ internal object ExtensionLoader {
             return LoadResult.Untrusted(extension)
         }
 
-        // Content rating: 0 = Safe, 1 = Mixed, 2 = NSFW (int or string in manifest)
+        // 0 = Safe, 1 = Mixed, 2 = NSFW
         val contentWarning = metaData.getString(METADATA_CONTENT_WARNING)?.toIntOrNull()
             ?: metaData.getInt(METADATA_CONTENT_WARNING, 0)
         val isNsfw = contentWarning > 0 || metaData.getInt(METADATA_NSFW) == 1

@@ -447,8 +447,7 @@ class MangaDetailsPresenter(
                 emptyList()
             }
 
-            // Prefer a single combined call when both are needed (extlib 1.6).
-            // On failure, fall back to independent fetches so one side can still succeed.
+            // Combined fetch first; fall back to separate calls on failure.
             if (fetchDetails && fetchChapters) {
                 try {
                     val update = source.getMangaUpdate(
@@ -463,7 +462,7 @@ class MangaDetailsPresenter(
                 } catch (e: CancellationException) {
                     throw e
                 } catch (_: Exception) {
-                    // Fall through to independent fetches.
+                    // Fall through.
                 }
             }
 
