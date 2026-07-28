@@ -2,14 +2,12 @@ package eu.kanade.tachiyomi.network
 
 import android.content.Context
 import eu.kanade.tachiyomi.network.interceptor.CloudflareInterceptor
-import eu.kanade.tachiyomi.network.interceptor.IgnoreGzipInterceptor
 import eu.kanade.tachiyomi.network.interceptor.UncaughtExceptionInterceptor
 import eu.kanade.tachiyomi.network.interceptor.UserAgentInterceptor
 import java.io.File
 import java.util.concurrent.TimeUnit
 import okhttp3.Cache
 import okhttp3.OkHttpClient
-import okhttp3.brotli.BrotliInterceptor
 
 class NetworkHelper(
     val context: Context,
@@ -33,8 +31,6 @@ class NetworkHelper(
             )
             .addInterceptor(UncaughtExceptionInterceptor())
             .addInterceptor(UserAgentInterceptor(::defaultUserAgent))
-            .addNetworkInterceptor(IgnoreGzipInterceptor())
-            .addNetworkInterceptor(BrotliInterceptor)
 
         block(builder)
 

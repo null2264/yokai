@@ -136,7 +136,6 @@ class ExtensionRepoScreen(
         LaunchedEffect(Unit) {
             screenModel.event.collectLatest { event ->
                 when (event) {
-                    is ExtensionRepoEvent.NoOp -> {}
                     is ExtensionRepoEvent.LocalizedMessage -> context.toast(event.stringRes)
                     is ExtensionRepoEvent.Success -> inputText = ""
                     is ExtensionRepoEvent.ShowDialog -> {

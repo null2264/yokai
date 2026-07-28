@@ -64,12 +64,20 @@ interface Source {
     suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage
 
     /**
-     * Get a page with a list of manga.
+     * Fetches updated information for a manga.
+     *
+     * Depending on the provided flags or source availability, this may include
+     * updated manga metadata, available chapters, or both.
+     *
+     * If a value is not requested, the existing provided value can be returned as-is.
+     * The host app may apply any returned updates regardless of the flags,
+     * so care should be taken to only return accurate and intentional changes.
      *
      * @since tachiyomix 1.6
-     * @param page the page number to retrieve.
-     * @param query the search query.
-     * @param filters the list of filters to apply.
+     * @param manga The manga to fetch updates for.
+     * @param chapters Existing chapters of the manga
+     * @param fetchDetails Whether to fetch updated manga details.
+     * @param fetchChapters Whether to fetch available chapters.
      */
     suspend fun getMangaUpdate(
         manga: SManga,
@@ -77,6 +85,34 @@ interface Source {
         fetchDetails: Boolean,
         fetchChapters: Boolean,
     ): SMangaUpdate
+
+    /**
+     * Get the updated details for a manga.
+     *
+     * Prefer [getMangaUpdate] when both details and chapters are needed so 1.6
+     * sources are not invoked concurrently for the same manga.
+     *
+     * @since extensions-lib 1.5
+     * @param manga the manga to update.
+     * @return the updated manga.
+     */
+    suspend fun getMangaDetails(manga: SManga): SManga {
+        return getMangaUpdate(manga, emptyList(), fetchDetails = true, fetchChapters = false).manga
+    }
+
+    /**
+     * Get all the available chapters for a manga.
+     *
+     * Prefer [getMangaUpdate] when both details and chapters are needed so 1.6
+     * sources are not invoked concurrently for the same manga.
+     *
+     * @since extensions-lib 1.5
+     * @param manga the manga to update.
+     * @return the chapters for the manga.
+     */
+    suspend fun getChapterList(manga: SManga): List<SChapter> {
+        return getMangaUpdate(manga, emptyList(), fetchDetails = false, fetchChapters = true).chapters
+    }
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
@@ -89,15 +125,15 @@ interface Source {
     suspend fun getPageList(chapter: SChapter): List<Page>
 
     @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getMangaDetails"),
+        "Use the combined suspend API instead",
+        ReplaceWith("getMangaUpdate"),
     )
     fun fetchMangaDetails(manga: SManga): Observable<SManga> =
         throw IllegalStateException("Not used")
 
     @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getChapterList"),
+        "Use the combined suspend API instead",
+        ReplaceWith("getMangaUpdate"),
     )
     fun fetchChapterList(manga: SManga): Observable<List<SChapter>> =
         throw IllegalStateException("Not used")

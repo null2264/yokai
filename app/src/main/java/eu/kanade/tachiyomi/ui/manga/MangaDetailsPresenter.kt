@@ -230,11 +230,13 @@ class MangaDetailsPresenter(
             withUIContext {
                 controller.updateHeader()
             }
-            val tasks = listOf(
-                async { if (fetchMangaNeeded) fetchMangaFromSource() },
-                async { if (fetchChaptersNeeded) fetchChaptersFromSource(false) },
-            )
-            tasks.awaitAll()
+            if (fetchMangaNeeded || fetchChaptersNeeded) {
+                fetchMangaUpdateFromSource(
+                    fetchDetails = fetchMangaNeeded,
+                    fetchChapters = fetchChaptersNeeded,
+                    manualFetch = false,
+                )
+            }
             isLoading = false
             withUIContext {
                 controller.updateChapters()
@@ -430,67 +432,77 @@ class MangaDetailsPresenter(
         return dbManga
     }
 
-    private suspend fun fetchMangaFromSource() {
+    private suspend fun fetchMangaUpdateFromSource(
+        fetchDetails: Boolean = true,
+        fetchChapters: Boolean = true,
+        manualFetch: Boolean = true,
+    ) {
+        if (!fetchDetails && !fetchChapters) return
         try {
             withIOContext {
-                val networkManga = source.getMangaDetails(manga.copy())
-                manga.prepareCoverUpdate(coverCache, networkManga, false)
-                manga.copyFrom(networkManga)
-                manga.initialized = true
+                val existingChapters = if (fetchChapters) {
+                    getChapter.awaitAll(mangaId, false)
+                } else {
+                    emptyList()
+                }
+                val update = source.getMangaUpdate(
+                    manga = manga.copy(),
+                    chapters = existingChapters,
+                    fetchDetails = fetchDetails,
+                    fetchChapters = fetchChapters,
+                )
 
-                updateManga.await(manga.toMangaUpdate())
+                if (fetchDetails) {
+                    manga.prepareCoverUpdate(coverCache, update.manga, false)
+                    manga.copyFrom(update.manga)
+                    manga.initialized = true
+                    updateManga.await(manga.toMangaUpdate())
 
-                presenterScope.launchNonCancellableIO {
-                    val request =
-                        ImageRequest.Builder(preferences.context).data(manga.cover())
-                            .memoryCachePolicy(CachePolicy.DISABLED)
-                            .diskCachePolicy(CachePolicy.WRITE_ONLY)
-                            .build()
+                    presenterScope.launchNonCancellableIO {
+                        val request =
+                            ImageRequest.Builder(preferences.context).data(manga.cover())
+                                .memoryCachePolicy(CachePolicy.DISABLED)
+                                .diskCachePolicy(CachePolicy.WRITE_ONLY)
+                                .build()
 
-                    if (preferences.context.imageLoader.execute(request) is SuccessResult) {
-                        withUIContext {
-                            view?.setPaletteColor()
+                        if (preferences.context.imageLoader.execute(request) is SuccessResult) {
+                            withUIContext {
+                                view?.setPaletteColor()
+                            }
                         }
                     }
+                }
+
+                if (fetchChapters) {
+                    val (added, removed) = withIOContext {
+                        syncChaptersWithSource(update.chapters, manga, source)
+                    }
+                    if (added.isNotEmpty()) {
+                        if (manga.shouldDownloadNewChapters(preferences) && manualFetch) {
+                            downloadChapters(
+                                added.sortedBy { it.chapter_number }
+                                    .map { it.toModel() },
+                            )
+                        }
+                        view?.view?.context?.let { mangaShortcutManager.updateShortcuts(it) }
+                    }
+                    if (removed.isNotEmpty()) {
+                        val removedChaptersId = removed.map { it.id }
+                        val removedChapters = this@MangaDetailsPresenter.chapters.filter {
+                            it.id in removedChaptersId && it.isDownloaded
+                        }
+                        if (removedChapters.isNotEmpty()) {
+                            withUIContext {
+                                view?.showChaptersRemovedPopup(removedChapters)
+                            }
+                        }
+                    }
+                    getChapters()
+                    getHistory()
                 }
             }
         } catch (e: Exception) {
             if (e is HttpException && e.code == 103) return
-            withUIContext {
-                view?.showError(trimException(e))
-            }
-        }
-    }
-
-    private suspend fun fetchChaptersFromSource(manualFetch: Boolean = true) {
-        try {
-            withIOContext {
-                val chapters = source.getChapterList(manga.copy())
-                val (added, removed) = withIOContext { syncChaptersWithSource(chapters, manga, source) }
-                if (added.isNotEmpty()) {
-                    if (manga.shouldDownloadNewChapters(preferences) && manualFetch) {
-                        downloadChapters(
-                            added.sortedBy { it.chapter_number }
-                                .map { it.toModel() },
-                        )
-                    }
-                    view?.view?.context?.let { mangaShortcutManager.updateShortcuts(it) }
-                }
-                if (removed.isNotEmpty()) {
-                    val removedChaptersId = removed.map { it.id }
-                    val removedChapters = this@MangaDetailsPresenter.chapters.filter {
-                        it.id in removedChaptersId && it.isDownloaded
-                    }
-                    if (removedChapters.isNotEmpty()) {
-                        withUIContext {
-                            view?.showChaptersRemovedPopup(removedChapters)
-                        }
-                    }
-                }
-                getChapters()
-                getHistory()
-            }
-        } catch (e: Exception) {
             withUIContext {
                 view?.showError(trimException(e))
             }
@@ -504,11 +516,7 @@ class MangaDetailsPresenter(
 
         presenterScope.launch {
             isLoading = true
-            val tasks = listOf(
-                async { fetchMangaFromSource() },
-                async { fetchChaptersFromSource() },
-            )
-            tasks.awaitAll()
+            fetchMangaUpdateFromSource(fetchDetails = true, fetchChapters = true, manualFetch = true)
             isLoading = false
             withUIContext {
                 view?.updateChapters()

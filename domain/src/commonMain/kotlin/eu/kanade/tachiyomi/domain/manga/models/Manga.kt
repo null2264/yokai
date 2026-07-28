@@ -77,6 +77,8 @@ interface Manga : SManga {
 
         update_strategy = other.update_strategy
 
+        memo = other.memo
+
         if (!initialized) {
             initialized = other.initialized
         }

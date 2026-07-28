@@ -12,7 +12,6 @@ import eu.kanade.tachiyomi.source.online.DelegatedHttpSource
 import eu.kanade.tachiyomi.source.online.HttpSource
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -63,12 +62,14 @@ class MangaDex(delegate: HttpSource) : DelegatedHttpSource(delegate) {
         val mangaId = dataObject.mangaId ?: throw Exception("No manga associated with chapter")
         val mangaUrl = "/manga/$mangaId/"
         return withContext(Dispatchers.IO) {
-            val deferredManga = async {
-                getManga.awaitByUrlAndSource(mangaUrl, delegate.id) ?: getMangaDetailsByUrl(mangaUrl)
-            }
-            val deferredChapters = async { getChapterListByUrl(mangaUrl) }
-            val manga = deferredManga.await()
-            val chapters = deferredChapters.await()
+            val cachedManga = getManga.awaitByUrlAndSource(mangaUrl, delegate.id)
+            val update = getMangaUpdateByUrl(
+                mangaUrl,
+                fetchDetails = cachedManga == null,
+                fetchChapters = true,
+            )
+            val manga = cachedManga ?: update.manga
+            val chapters = update.chapters
             val context = Injekt.get<PreferencesHelper>().context
             val trueChapter = chapters.find { it.url == "/api$url" }?.toChapter() ?: error(
                 context.getString(MR.strings.chapter_not_found),
