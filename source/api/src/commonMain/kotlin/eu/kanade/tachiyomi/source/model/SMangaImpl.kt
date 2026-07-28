@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.source.model
 
+import kotlin.jvm.Transient
 import kotlinx.serialization.json.JsonObject
 
 class SMangaImpl : SManga {
@@ -24,5 +25,6 @@ class SMangaImpl : SManga {
 
     override var initialized: Boolean = false
 
+    @Transient
     override var memo: JsonObject = JsonObject(emptyMap())
 }

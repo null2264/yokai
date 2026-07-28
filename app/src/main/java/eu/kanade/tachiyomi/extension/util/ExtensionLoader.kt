@@ -282,8 +282,9 @@ internal object ExtensionLoader {
         val pkgInfo = extensionInfo.packageInfo
         val appInfo = pkgInfo.applicationInfo!!
         val pkgName = pkgInfo.packageName
+        val metaData = appInfo.metaData ?: return LoadResult.Error
 
-        val extName = appInfo.metaData.getString(METADATA_NAME)
+        val extName = metaData.getString(METADATA_NAME)
             ?: pkgManager.getApplicationLabel(appInfo).toString().substringAfter("Tachiyomi: ")
         val versionName = pkgInfo.versionName
         val versionCode = PackageInfoCompat.getLongVersionCode(pkgInfo)
@@ -293,11 +294,13 @@ internal object ExtensionLoader {
             return LoadResult.Error
         }
 
-        // Validate lib version (prefer tachiyomix.extensionLib metadata, fall back to versionName)
-        val libVersion = appInfo.metaData.getFloat(METADATA_EXTENSION_LIB)
-            .takeUnless { it == 0.0f }
-            ?.toString()
-            ?.toDouble()
+        // Prefer tachiyomix.extensionLib metadata (string or float), fall back to versionName.
+        // Float→String→Double avoids IEEE precision issues (e.g. 1.6f > 1.6 as Double).
+        val libVersion = metaData.getString(METADATA_EXTENSION_LIB)?.toDoubleOrNull()
+            ?: metaData.getFloat(METADATA_EXTENSION_LIB)
+                .takeUnless { it == 0.0f }
+                ?.toString()
+                ?.toDouble()
             ?: versionName.substringBeforeLast('.').toDoubleOrNull()
         if (libVersion == null || libVersion < LIB_VERSION_MIN || libVersion > LIB_VERSION_MAX) {
             Logger.w {
@@ -323,15 +326,17 @@ internal object ExtensionLoader {
             return LoadResult.Untrusted(extension)
         }
 
-        val isNsfw = appInfo.metaData.getInt(METADATA_CONTENT_WARNING) > 0 ||
-            appInfo.metaData.getInt(METADATA_NSFW) == 1
+        // Content rating: 0 = Safe, 1 = Mixed, 2 = NSFW (int or string in manifest)
+        val contentWarning = metaData.getString(METADATA_CONTENT_WARNING)?.toIntOrNull()
+            ?: metaData.getInt(METADATA_CONTENT_WARNING, 0)
+        val isNsfw = contentWarning > 0 || metaData.getInt(METADATA_NSFW) == 1
         if (!loadNsfwSource && isNsfw) {
             Logger.w { "NSFW extension $pkgName not allowed" }
             return LoadResult.Error
         }
 
-        val hasReadme = appInfo.metaData.getInt(METADATA_HAS_README, 0) == 1
-        val hasChangelog = appInfo.metaData.getInt(METADATA_HAS_CHANGELOG, 0) == 1
+        val hasReadme = metaData.getInt(METADATA_HAS_README, 0) == 1
+        val hasChangelog = metaData.getInt(METADATA_HAS_CHANGELOG, 0) == 1
 
         val classLoader = try {
             ChildFirstPathClassLoader(appInfo.sourceDir, null, context.classLoader)
@@ -340,7 +345,7 @@ internal object ExtensionLoader {
             return LoadResult.Error
         }
 
-        val sources = appInfo.metaData.getString(METADATA_SOURCE_CLASS)!!
+        val sources = metaData.getString(METADATA_SOURCE_CLASS)!!
             .split(";")
             .map {
                 val sourceClass = it.trim()
@@ -381,7 +386,7 @@ internal object ExtensionLoader {
             lang = lang,
             isNsfw = isNsfw,
             sources = sources,
-            pkgFactory = appInfo.metaData.getString(METADATA_SOURCE_FACTORY),
+            pkgFactory = metaData.getString(METADATA_SOURCE_FACTORY),
             icon = appInfo.loadIcon(pkgManager),
             isShared = extensionInfo.isShared,
         )

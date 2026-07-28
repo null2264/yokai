@@ -7,7 +7,7 @@ import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import eu.kanade.tachiyomi.util.awaitSingle
 import kotlinx.coroutines.async
-import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.coroutineScope
 import rx.Observable
 
 interface CatalogueSource : Source {
@@ -58,20 +58,19 @@ interface CatalogueSource : Source {
     }
 
     /**
-     * Legacy bridge: fetch details and/or chapters via the Rx helpers used by
-     * HttpSource / ParsedHttpSource. KeiSource (extlib 1.6) overrides this.
+     * Bridges to [getMangaDetails]/[getChapterList] so 1.5 extensions that override those
+     * methods keep working. KeiSource (extlib 1.6) overrides this instead.
      *
      * @since tachiyomix 1.6
      */
-    @Suppress("DEPRECATION")
     override suspend fun getMangaUpdate(
         manga: SManga,
         chapters: List<SChapter>,
         fetchDetails: Boolean,
         fetchChapters: Boolean,
-    ): SMangaUpdate = supervisorScope {
-        val asyncManga = if (fetchDetails) async { fetchMangaDetails(manga).awaitSingle() } else null
-        val asyncChapters = if (fetchChapters) async { fetchChapterList(manga).awaitSingle() } else null
+    ): SMangaUpdate = coroutineScope {
+        val asyncManga = if (fetchDetails) async { getMangaDetails(manga) } else null
+        val asyncChapters = if (fetchChapters) async { getChapterList(manga) } else null
         SMangaUpdate(asyncManga?.await() ?: manga, asyncChapters?.await() ?: chapters)
     }
 

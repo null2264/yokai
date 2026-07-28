@@ -53,7 +53,7 @@ class BasePreferences(private val preferenceStore: PreferenceStore) {
 
     fun composeLibrary() = preferenceStore.getBoolean("pref_use_compose_library", false)
 
-    fun appIcon() = preferenceStore.getEnum("pref_use_compose_library", AppIcons.DEFAULT)
+    fun appIcon() = preferenceStore.getEnum("pref_app_icon", AppIcons.DEFAULT)
 
     enum class AppIcons(val displayName: String, val id: String, val icon: Int) {
         DEFAULT("Default", "${BuildConfig.APPLICATION_ID}.MainActivityDefault", R.mipmap.ic_launcher_round),

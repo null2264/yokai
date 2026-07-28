@@ -212,7 +212,19 @@ abstract class HttpSource : CatalogueSource {
      */
     protected abstract fun latestUpdatesParse(response: Response): MangasPage
 
-    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
+    /**
+     * Get the updated details for a manga.
+     * Normally it's not needed to override this method.
+     *
+     * @param manga the manga to update.
+     * @return the updated manga.
+     */
+    @Suppress("DEPRECATION")
+    override suspend fun getMangaDetails(manga: SManga): SManga {
+        return fetchMangaDetails(manga).awaitSingle()
+    }
+
+    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getMangaDetails"))
     override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
         return client.newCall(mangaDetailsRequest(manga))
             .asObservableSuccess()
@@ -238,7 +250,19 @@ abstract class HttpSource : CatalogueSource {
      */
     protected abstract fun mangaDetailsParse(response: Response): SManga
 
-    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
+    /**
+     * Get all the available chapters for a manga.
+     * Normally it's not needed to override this method.
+     *
+     * @param manga the manga to update.
+     * @return the chapters for the manga.
+     */
+    @Suppress("DEPRECATION")
+    override suspend fun getChapterList(manga: SManga): List<SChapter> {
+        return fetchChapterList(manga).awaitSingle()
+    }
+
+    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getChapterList"))
     override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
         return client.newCall(chapterListRequest(manga))
             .asObservableSuccess()

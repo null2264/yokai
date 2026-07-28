@@ -421,7 +421,7 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
             notifier.showProgressNotification(manga.manga, progress, mangaToUpdate.size)
             val fetchedChapters = source.getMangaUpdate(
                 manga = manga.manga.copy(),
-                chapters = emptyList(),
+                chapters = getChapter.awaitAll(manga.manga.id!!, false),
                 fetchDetails = false,
                 fetchChapters = true,
             ).chapters

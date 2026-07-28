@@ -54,7 +54,7 @@ interface SManga : Serializable {
         it.thumbnail_url = thumbnail_url
         it.update_strategy = update_strategy
         it.initialized = initialized
-        it.memo = memo
+        it.memo = safeMemo()
     }
 
     companion object {
@@ -70,4 +70,13 @@ interface SManga : Serializable {
             return SMangaImpl()
         }
     }
+}
+
+/**
+ * Safely reads [SManga.memo] from older extension binaries that predate the property.
+ */
+fun SManga.safeMemo(): JsonObject = try {
+    memo
+} catch (_: LinkageError) {
+    JsonObject(emptyMap())
 }

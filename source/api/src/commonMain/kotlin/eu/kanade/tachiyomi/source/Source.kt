@@ -73,6 +73,12 @@ interface Source {
      * The host app may apply any returned updates regardless of the flags,
      * so care should be taken to only return accurate and intentional changes.
      *
+     * Prefer this over calling [getMangaDetails] and [getChapterList] separately when both
+     * are needed so 1.6 sources are not invoked concurrently for the same manga.
+     *
+     * Default implementation bridges to [getMangaDetails]/[getChapterList] so legacy 1.5
+     * sources that override those methods keep working. 1.6 sources should override this.
+     *
      * @since tachiyomix 1.6
      * @param manga The manga to fetch updates for.
      * @param chapters Existing chapters of the manga
@@ -96,9 +102,7 @@ interface Source {
      * @param manga the manga to update.
      * @return the updated manga.
      */
-    suspend fun getMangaDetails(manga: SManga): SManga {
-        return getMangaUpdate(manga, emptyList(), fetchDetails = true, fetchChapters = false).manga
-    }
+    suspend fun getMangaDetails(manga: SManga): SManga
 
     /**
      * Get all the available chapters for a manga.
@@ -110,9 +114,7 @@ interface Source {
      * @param manga the manga to update.
      * @return the chapters for the manga.
      */
-    suspend fun getChapterList(manga: SManga): List<SChapter> {
-        return getMangaUpdate(manga, emptyList(), fetchDetails = false, fetchChapters = true).chapters
-    }
+    suspend fun getChapterList(manga: SManga): List<SChapter>
 
     /**
      * Get the list of pages a chapter has. Pages should be returned

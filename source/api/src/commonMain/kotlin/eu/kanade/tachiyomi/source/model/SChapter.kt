@@ -34,7 +34,7 @@ interface SChapter : Serializable {
         date_upload = other.date_upload
         chapter_number = other.chapter_number
         scanlator = other.scanlator
-        memo = other.memo
+        memo = other.safeMemo()
     }
 
     companion object {
@@ -42,4 +42,13 @@ interface SChapter : Serializable {
             return SChapterImpl()
         }
     }
+}
+
+/**
+ * Safely reads [SChapter.memo] from older extension binaries that predate the property.
+ */
+fun SChapter.safeMemo(): JsonObject = try {
+    memo
+} catch (_: LinkageError) {
+    JsonObject(emptyMap())
 }

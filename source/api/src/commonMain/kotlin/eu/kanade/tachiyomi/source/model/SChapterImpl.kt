@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.source.model
 
+import kotlin.jvm.Transient
 import kotlinx.serialization.json.JsonObject
 
 class SChapterImpl : SChapter {
@@ -14,5 +15,6 @@ class SChapterImpl : SChapter {
 
     override var date_upload: Long = 0
 
+    @Transient
     override var memo: JsonObject = JsonObject(emptyMap())
 }

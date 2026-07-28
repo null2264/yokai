@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.domain.manga.models
 
 import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.safeMemo
 import java.util.Locale
 import yokai.domain.manga.models.MangaUpdate
 
@@ -77,7 +78,7 @@ interface Manga : SManga {
 
         update_strategy = other.update_strategy
 
-        memo = other.memo
+        memo = other.safeMemo()
 
         if (!initialized) {
             initialized = other.initialized

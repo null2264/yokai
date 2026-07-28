@@ -31,6 +31,10 @@ class NetworkHelper(
             )
             .addInterceptor(UncaughtExceptionInterceptor())
             .addInterceptor(UserAgentInterceptor(::defaultUserAgent))
+            // Do NOT add IgnoreGzipInterceptor / BrotliInterceptor here.
+            // KeiSource (extlib 1.6) asserts they are absent and registers
+            // CompressionInterceptor(Brotli, Gzip, Zstd) on its own client.
+            // OkHttp's BridgeInterceptor still handles transparent gzip for legacy sources.
 
         block(builder)
 

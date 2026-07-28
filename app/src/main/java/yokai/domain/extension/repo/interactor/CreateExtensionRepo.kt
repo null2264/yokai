@@ -33,6 +33,8 @@ class CreateExtensionRepo(
      */
     private fun normalizeToBaseUrl(repoUrl: String): String? {
         val trimmed = repoUrl.trim()
+            .substringBefore('?')
+            .substringBefore('#')
             .toRawGithubusercontentIfNeeded()
             .trimEnd('/')
         if (!trimmed.startsWith("https://")) return null
@@ -46,7 +48,7 @@ class CreateExtensionRepo(
         }.trimEnd('/')
 
         // Require at least https://host/path
-        return base.takeIf { it.count { c -> c == '/' } >= 3 }
+        return base.takeIf { url -> url.count { c -> c == '/' } >= 3 }
     }
 
     /**

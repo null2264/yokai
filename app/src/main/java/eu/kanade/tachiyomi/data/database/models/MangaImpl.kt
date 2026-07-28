@@ -6,6 +6,7 @@ import eu.kanade.tachiyomi.data.library.CustomMangaManager
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.model.UpdateStrategy
+import kotlin.jvm.Transient
 import kotlinx.serialization.json.JsonObject
 import uy.kohesive.injekt.injectLazy
 
@@ -74,6 +75,7 @@ open class MangaImpl(
     // TODO: It's probably fine to set this to non-null string in the future
     override var filtered_scanlators: String? = ""
 
+    @Transient
     override var memo: JsonObject = JsonObject(emptyMap())
 
     override lateinit var ogTitle: String

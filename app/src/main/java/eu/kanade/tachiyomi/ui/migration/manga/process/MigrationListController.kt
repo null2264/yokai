@@ -393,10 +393,18 @@ class MigrationListController(bundle: Bundle? = null) :
                         fetchDetails = true,
                         fetchChapters = true,
                     )
+                    try {
+                        localManga.copyFrom(update.manga)
+                        updateManga.await(localManga.toMangaUpdate())
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (_: Exception) {
+                        // Details sync is non-fatal; chapters may still migrate.
+                    }
                     withIOContext { syncChaptersWithSource(update.chapters, localManga, source) }
-                    localManga.copyFrom(update.manga)
-                    updateManga.await(localManga.toMangaUpdate())
                     localManga
+                } catch (e: CancellationException) {
+                    throw e
                 } catch (e: Exception) {
                     return@async null
                 }
