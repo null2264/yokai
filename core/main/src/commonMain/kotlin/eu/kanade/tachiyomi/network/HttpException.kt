@@ -7,4 +7,8 @@ package eu.kanade.tachiyomi.network
  * @since extensions-lib 1.5
  * @param code [Int] the HTTP status code
  */
-class HttpException(val code: Int) : IllegalStateException("HTTP error $code")
+class HttpException(
+    val code: Int,
+    val retryAfter: String? = null,
+    val rateLimit: Int? = null,
+) : IllegalStateException("HTTP error $code")
