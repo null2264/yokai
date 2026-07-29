@@ -6,6 +6,7 @@ import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -207,18 +208,20 @@ abstract class DelegatedHttpSource(val delegate: HttpSource): HttpSource() {
      *
      * @param manga the manga to be updated.
      */
-    @Deprecated("Use the 1.x API instead", replaceWith = ReplaceWith("getMangaDetails"))
+    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
     override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
         ensureDelegateCompatible()
         return delegate.fetchMangaDetails(manga)
     }
 
-    /**
-     * [1.x API] Get the updated details for a manga.
-     */
-    override suspend fun getMangaDetails(manga: SManga): SManga {
+    override suspend fun getMangaUpdate(
+        manga: SManga,
+        chapters: List<SChapter>,
+        fetchDetails: Boolean,
+        fetchChapters: Boolean,
+    ): SMangaUpdate {
         ensureDelegateCompatible()
-        return delegate.getMangaDetails(manga)
+        return delegate.getMangaUpdate(manga, chapters, fetchDetails, fetchChapters)
     }
 
     /**
@@ -238,18 +241,10 @@ abstract class DelegatedHttpSource(val delegate: HttpSource): HttpSource() {
      *
      * @param manga the manga to look for chapters.
      */
-    @Deprecated("Use the 1.x API instead", replaceWith = ReplaceWith("getChapterList"))
+    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
     override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
         ensureDelegateCompatible()
         return delegate.fetchChapterList(manga)
-    }
-
-    /**
-     * [1.x API] Get all the available chapters for a manga.
-     */
-    override suspend fun getChapterList(manga: SManga): List<SChapter> {
-        ensureDelegateCompatible()
-        return delegate.getChapterList(manga)
     }
 
     /**
@@ -344,20 +339,27 @@ abstract class DelegatedHttpSource(val delegate: HttpSource): HttpSource() {
     open fun pageNumber(uri: Uri): Int? = uri.pathSegments.lastOrNull()?.toIntOrNull()
     abstract suspend fun fetchMangaFromChapterUrl(uri: Uri): Triple<SChapter, SManga, List<SChapter>>?
 
-    open suspend fun getMangaDetailsByUrl(url: String): SManga {
+    open suspend fun getMangaUpdateByUrl(
+        url: String,
+        chapters: List<SChapter> = emptyList(),
+        fetchDetails: Boolean = true,
+        fetchChapters: Boolean = true,
+    ): SMangaUpdate {
         val manga = SManga.create().apply {
             this.url = url
             this.title = ""
         }
-        return delegate.getMangaDetails(manga.copy())
+        return delegate.getMangaUpdate(manga, chapters, fetchDetails, fetchChapters)
     }
 
+    @Deprecated("Use getMangaUpdateByUrl instead", ReplaceWith("getMangaUpdateByUrl(url)"))
+    open suspend fun getMangaDetailsByUrl(url: String): SManga {
+        return getMangaUpdateByUrl(url, fetchDetails = true, fetchChapters = false).manga
+    }
+
+    @Deprecated("Use getMangaUpdateByUrl instead", ReplaceWith("getMangaUpdateByUrl(url)"))
     open suspend fun getChapterListByUrl(url: String): List<SChapter> {
-        val manga = SManga.create().apply {
-            this.url = url
-            this.title = ""
-        }
-        return delegate.getChapterList(manga)
+        return getMangaUpdateByUrl(url, fetchDetails = false, fetchChapters = true).chapters
     }
 
     protected open fun ensureDelegateCompatible() {

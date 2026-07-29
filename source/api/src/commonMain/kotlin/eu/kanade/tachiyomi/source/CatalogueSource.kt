@@ -2,7 +2,12 @@ package eu.kanade.tachiyomi.source
 
 import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.MangasPage
+import eu.kanade.tachiyomi.source.model.SChapter
+import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import eu.kanade.tachiyomi.util.awaitSingle
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import rx.Observable
 
 interface CatalogueSource : Source {
@@ -15,7 +20,7 @@ interface CatalogueSource : Source {
     /**
      * Whether the source has support for latest updates.
      */
-    val supportsLatest: Boolean
+    override val supportsLatest: Boolean
 
     /**
      * Get a page with a list of manga.
@@ -24,7 +29,7 @@ interface CatalogueSource : Source {
      * @param page the page number to retrieve.
      */
     @Suppress("DEPRECATION")
-    suspend fun getPopularManga(page: Int): MangasPage {
+    override suspend fun getPopularManga(page: Int): MangasPage {
         return fetchPopularManga(page).awaitSingle()
     }
 
@@ -37,7 +42,7 @@ interface CatalogueSource : Source {
      * @param filters the list of filters to apply.
      */
     @Suppress("DEPRECATION")
-    suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage {
+    override suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage {
         return fetchSearchManga(page, query, filters).awaitSingle()
     }
 
@@ -48,14 +53,31 @@ interface CatalogueSource : Source {
      * @param page the page number to retrieve.
      */
     @Suppress("DEPRECATION")
-    suspend fun getLatestUpdates(page: Int): MangasPage {
+    override suspend fun getLatestUpdates(page: Int): MangasPage {
         return fetchLatestUpdates(page).awaitSingle()
+    }
+
+    /**
+     * Bridges to [getMangaDetails]/[getChapterList] so 1.5 extensions that override those
+     * methods keep working. KeiSource (extlib 1.6) overrides this instead.
+     *
+     * @since tachiyomix 1.6
+     */
+    override suspend fun getMangaUpdate(
+        manga: SManga,
+        chapters: List<SChapter>,
+        fetchDetails: Boolean,
+        fetchChapters: Boolean,
+    ): SMangaUpdate = coroutineScope {
+        val asyncManga = if (fetchDetails) async { getMangaDetails(manga) } else null
+        val asyncChapters = if (fetchChapters) async { getChapterList(manga) } else null
+        SMangaUpdate(asyncManga?.await() ?: manga, asyncChapters?.await() ?: chapters)
     }
 
     /**
      * Returns the list of filters for the source.
      */
-    fun getFilterList(): FilterList
+    override fun getFilterList(): FilterList
 
     @Deprecated(
         "Use the non-RxJava API instead",

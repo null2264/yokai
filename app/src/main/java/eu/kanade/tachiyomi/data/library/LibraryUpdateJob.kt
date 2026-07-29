@@ -273,7 +273,12 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
                         )
                         ensureActive()
                         val networkManga = try {
-                            source.getMangaDetails(manga.manga.copy())
+                            source.getMangaUpdate(
+                                manga = manga.manga.copy(),
+                                chapters = emptyList(),
+                                fetchDetails = true,
+                                fetchChapters = false,
+                            ).manga
                         } catch (e: java.lang.Exception) {
                             Logger.e(e)
                             null
@@ -414,7 +419,12 @@ class LibraryUpdateJob(private val context: Context, workerParams: WorkerParamet
             var hasDownloads = false
             ensureActive()
             notifier.showProgressNotification(manga.manga, progress, mangaToUpdate.size)
-            val fetchedChapters = source.getChapterList(manga.manga.copy())
+            val fetchedChapters = source.getMangaUpdate(
+                manga = manga.manga.copy(),
+                chapters = getChapter.awaitAll(manga.manga.id!!, false),
+                fetchDetails = false,
+                fetchChapters = true,
+            ).chapters
 
             if (fetchedChapters.isNotEmpty()) {
                 val newChapters = syncChaptersWithSource(fetchedChapters, manga.manga, source)

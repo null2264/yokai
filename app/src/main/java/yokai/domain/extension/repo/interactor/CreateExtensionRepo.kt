@@ -12,8 +12,6 @@ import yokai.domain.extension.repo.service.ExtensionRepoService
 class CreateExtensionRepo(
     private val extensionRepoRepository: ExtensionRepoRepository
 ) {
-    private val repoRegex = """^https://.*/index\.min\.json$""".toRegex()
-
     private val networkService: NetworkHelper by injectLazy()
 
     private val client: OkHttpClient
@@ -22,12 +20,45 @@ class CreateExtensionRepo(
     private val extensionRepoService = ExtensionRepoService(client)
 
     suspend fun await(repoUrl: String): Result {
-        if (!repoUrl.matches(repoRegex)) {
-            return Result.InvalidUrl
-        }
-
-        val baseUrl = repoUrl.removeSuffix("/index.min.json")
+        val baseUrl = normalizeToBaseUrl(repoUrl) ?: return Result.InvalidUrl
         return extensionRepoService.fetchRepoDetails(baseUrl)?.let { insert(it) } ?: Result.InvalidUrl
+    }
+
+    /**
+     * Accepts Keiyoushi/Mihon repo URLs in any of these forms and returns the repo base URL:
+     * - `.../index.pb` (current Keiyoushi official URL)
+     * - `.../index.min.json` (legacy)
+     * - `.../repo.json`
+     * - bare base URL (e.g. `https://raw.githubusercontent.com/keiyoushi/extensions/repo`)
+     */
+    private fun normalizeToBaseUrl(repoUrl: String): String? {
+        val trimmed = repoUrl.trim()
+            .substringBefore('?')
+            .substringBefore('#')
+            .toRawGithubusercontentIfNeeded()
+            .trimEnd('/')
+        if (!trimmed.startsWith("https://")) return null
+
+        val base = when {
+            trimmed.endsWith("/index.min.json") -> trimmed.removeSuffix("/index.min.json")
+            trimmed.endsWith("/index.json") -> trimmed.removeSuffix("/index.json")
+            trimmed.endsWith("/index.pb") -> trimmed.removeSuffix("/index.pb")
+            trimmed.endsWith("/repo.json") -> trimmed.removeSuffix("/repo.json")
+            else -> trimmed
+        }.trimEnd('/')
+
+        // Require at least https://host/path
+        return base.takeIf { url -> url.count { c -> c == '/' } >= 3 }
+    }
+
+    /**
+     * `https://github.com/{owner}/{repo}/raw/{ref}/{path}`
+     * → `https://raw.githubusercontent.com/{owner}/{repo}/{ref}/{path}`
+     */
+    private fun String.toRawGithubusercontentIfNeeded(): String {
+        val match = GITHUB_RAW_REGEX.matchEntire(this) ?: return this
+        val (owner, repo, ref, path) = match.destructured
+        return "https://raw.githubusercontent.com/$owner/$repo/$ref/$path"
     }
 
     private suspend fun insert(repo: ExtensionRepo): Result {
@@ -76,5 +107,10 @@ class CreateExtensionRepo(
         data object RepoAlreadyExists : Result
         data object Success : Result
         data object Error : Result
+    }
+
+    companion object {
+        private val GITHUB_RAW_REGEX =
+            Regex("""^https://github\.com/([^/]+)/([^/]+)/raw/([^/]+)/(.*)$""")
     }
 }

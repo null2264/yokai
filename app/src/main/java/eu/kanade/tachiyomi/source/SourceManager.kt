@@ -2,9 +2,12 @@ package eu.kanade.tachiyomi.source
 
 import android.content.Context
 import eu.kanade.tachiyomi.extension.ExtensionManager
+import eu.kanade.tachiyomi.source.model.FilterList
+import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import eu.kanade.tachiyomi.source.online.DelegatedHttpSource
 import eu.kanade.tachiyomi.source.online.HttpSource
 import java.util.concurrent.ConcurrentHashMap
@@ -92,10 +95,30 @@ class SourceManager(
         override val name: String
             get() = extensionManager.getStubSource(id)?.name ?: id.toString()
 
+        override val supportsLatest: Boolean
+            get() = false
+
+        override suspend fun getPopularManga(page: Int): MangasPage =
+            throw getSourceNotInstalledException()
+
+        override suspend fun getLatestUpdates(page: Int): MangasPage =
+            throw getSourceNotInstalledException()
+
+        override suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage =
+            throw getSourceNotInstalledException()
+
         override suspend fun getMangaDetails(manga: SManga): SManga =
             throw getSourceNotInstalledException()
 
         override suspend fun getChapterList(manga: SManga): List<SChapter> =
+            throw getSourceNotInstalledException()
+
+        override suspend fun getMangaUpdate(
+            manga: SManga,
+            chapters: List<SChapter>,
+            fetchDetails: Boolean,
+            fetchChapters: Boolean,
+        ): SMangaUpdate =
             throw getSourceNotInstalledException()
 
         override suspend fun getPageList(chapter: SChapter): List<Page> =

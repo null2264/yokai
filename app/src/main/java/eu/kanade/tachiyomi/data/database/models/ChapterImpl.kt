@@ -1,6 +1,9 @@
 package eu.kanade.tachiyomi.data.database.models
 
 import eu.kanade.tachiyomi.source.model.SChapter
+import eu.kanade.tachiyomi.source.model.safeMemo
+import kotlin.jvm.Transient
+import kotlinx.serialization.json.JsonObject
 
 fun SChapter.toChapter(): ChapterImpl {
     return ChapterImpl().apply {
@@ -9,6 +12,7 @@ fun SChapter.toChapter(): ChapterImpl {
         date_upload = this@toChapter.date_upload
         chapter_number = this@toChapter.chapter_number
         scanlator = this@toChapter.scanlator
+        memo = this@toChapter.safeMemo()
     }
 }
 
@@ -40,6 +44,9 @@ class ChapterImpl : Chapter {
     override var chapter_number: Float = 0f
 
     override var source_order: Int = 0
+
+    @Transient
+    override var memo: JsonObject = JsonObject(emptyMap())
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -9,7 +9,6 @@ import eu.kanade.tachiyomi.source.online.DelegatedHttpSource
 import eu.kanade.tachiyomi.source.online.HttpSource
 import java.util.Locale
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.Injekt
 import uy.kohesive.injekt.api.get
@@ -39,21 +38,21 @@ class Cubari(delegate: HttpSource) :
         val chapterNumber = uri.pathSegments.getOrNull(3)?.replace("-", ".")?.toFloatOrNull() ?: return null
         val mangaUrl = "/read/$cubariType/$cubariPath"
         return withContext(Dispatchers.IO) {
-            val deferredManga = async {
-                getManga.awaitByUrlAndSource(mangaUrl, delegate.id) ?: getMangaDetailsByUrl(mangaUrl)
-            }
-            val deferredChapters = async {
-                getManga.awaitByUrlAndSource(mangaUrl, delegate.id)?.let { manga ->
-                    val chapters = getChapter.awaitAll(manga, false)
-                    val chapter = findChapter(chapters, cubariType, chapterNumber)
-                    if (chapter != null) {
-                        return@async chapters
-                    }
+            val cachedManga = getManga.awaitByUrlAndSource(mangaUrl, delegate.id)
+            if (cachedManga != null) {
+                val chapters = getChapter.awaitAll(cachedManga, false)
+                val chapter = findChapter(chapters, cubariType, chapterNumber)
+                if (chapter != null) {
+                    return@withContext Triple(chapter.toChapter(), cachedManga, chapters)
                 }
-                getChapterListByUrl(mangaUrl)
             }
-            val manga = deferredManga.await()
-            val chapters = deferredChapters.await()
+            val update = getMangaUpdateByUrl(
+                mangaUrl,
+                fetchDetails = cachedManga == null,
+                fetchChapters = true,
+            )
+            val manga = cachedManga ?: update.manga
+            val chapters = update.chapters
             val context = Injekt.get<PreferencesHelper>().context
             val trueChapter = findChapter(chapters, cubariType, chapterNumber)?.toChapter()
                 ?: error(

@@ -194,10 +194,15 @@ class MigrationListController(bundle: Bundle? = null) :
                                                         searchResult,
                                                         source.id,
                                                     )
-                                                val chapters = source.getChapterList(localManga)
+                                                val update = source.getMangaUpdate(
+                                                    manga = localManga,
+                                                    chapters = emptyList(),
+                                                    fetchDetails = false,
+                                                    fetchChapters = true,
+                                                )
                                                 try {
                                                     syncChaptersWithSource(
-                                                        chapters,
+                                                        update.chapters,
                                                         localManga,
                                                         source,
                                                     )
@@ -205,7 +210,7 @@ class MigrationListController(bundle: Bundle? = null) :
                                                     return@source null
                                                 }
                                                 manga.progress.value = validSources.size to processedSources.incrementAndGet()
-                                                localManga to chapters.size
+                                                localManga to update.chapters.size
                                             } else {
                                                 null
                                             }
@@ -232,7 +237,12 @@ class MigrationListController(bundle: Bundle? = null) :
                                             source.id,
                                         )
                                         val chapters: List<SChapter> = try {
-                                            source.getChapterList(localManga)
+                                            source.getMangaUpdate(
+                                                manga = localManga,
+                                                chapters = emptyList(),
+                                                fetchDetails = false,
+                                                fetchChapters = true,
+                                            ).chapters
                                         } catch (e: java.lang.Exception) {
                                             Logger.e(e) { "Something went wrong while trying to retrieve chapter list" }
                                             emptyList()
@@ -267,7 +277,12 @@ class MigrationListController(bundle: Bundle? = null) :
                 if (result != null && result.thumbnail_url == null) {
                     try {
                         val newManga =
-                            sourceManager.getOrStub(result.source).getMangaDetails(result)
+                            sourceManager.getOrStub(result.source).getMangaUpdate(
+                                manga = result,
+                                chapters = emptyList(),
+                                fetchDetails = true,
+                                fetchChapters = false,
+                            ).manga
                         result.copyFrom(newManga)
 
                         updateManga.await(result.toMangaUpdate())
@@ -372,27 +387,30 @@ class MigrationListController(bundle: Bundle? = null) :
             val result = CoroutineScope(migratingManga.manga.migrationJob).async {
                 val localManga = smartSearchEngine.networkToLocalManga(manga, source.id)
                 try {
-                    val chapters = source.getChapterList(localManga)
-                    withIOContext { syncChaptersWithSource(chapters, localManga, source) }
+                    val update = source.getMangaUpdate(
+                        manga = localManga,
+                        chapters = emptyList(),
+                        fetchDetails = true,
+                        fetchChapters = true,
+                    )
+                    try {
+                        localManga.copyFrom(update.manga)
+                        updateManga.await(localManga.toMangaUpdate())
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (_: Exception) {
+                        // Details sync is non-fatal; chapters may still migrate.
+                    }
+                    withIOContext { syncChaptersWithSource(update.chapters, localManga, source) }
+                    localManga
+                } catch (e: CancellationException) {
+                    throw e
                 } catch (e: Exception) {
                     return@async null
                 }
-                localManga
             }.await()
 
             if (result != null) {
-                try {
-                    val newManga =
-                        sourceManager.getOrStub(result.source).getMangaDetails(result)
-                    result.copyFrom(newManga)
-
-                    updateManga.await(result.toMangaUpdate())
-                } catch (e: CancellationException) {
-                    // Ignore cancellations
-                    throw e
-                } catch (_: Exception) {
-                }
-
                 migratingManga.manga.migrationStatus = MigrationStatus.MANGA_FOUND
                 migratingManga.manga.searchResult.set(result.id)
                 adapter?.notifyItemChanged(firstIndex)
