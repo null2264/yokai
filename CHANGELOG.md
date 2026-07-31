@@ -49,6 +49,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix extension download stuck on pending state
 - Only solve Cloudflare with WebView if it's not geoblock (@AwkwardPeak7)
 - Fix cover from LocalSource sometimes didn't load (@lalalasupa0)
+- Fix Keiyoushi extension catalog empty / all extensions marked obsolete after `index.min.json` was stubbed (#659, #656)
+  - Fetch gzipped protobuf `index.pb` (with `index.min.json` fallback for legacy repos)
 
 ### Translation
 - Update translations from Weblate
