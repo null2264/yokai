@@ -127,11 +127,14 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix `CompressionInterceptor` crash when using extension-lib 1.6 sources (e.g. MangaPlus) (@mFontecchio)
 - Fix Keiyoushi extension catalog empty / all extensions marked obsolete after `index.min.json` was stubbed (#659, #656) (@mFontecchio)
   - Fetch gzipped protobuf `index.pb` (with `index.min.json` fallback for legacy repos)
+- Fix `AbstractMethodError` (`GeneratedSerializer.typeParametersSerializers`) when browsing current Keiyoushi extensions (e.g. Pawchive) (#663) (@mFontecchio)
 
 ### Other
 - Update okhttp monorepo to v5.4.0 (@mFontecchio)
   - Add okhttp-zstd
 - Update dependency com.squareup.okio:okio to v3.18.0 (@mFontecchio)
+- Update kotlinx.serialization to v1.11.0 (align with Mihon/Keiyoushi) (@mFontecchio)
+- Update kotlin monorepo to v2.3.20 (@mFontecchio)
 
 ## [1.9.7.5]
 
