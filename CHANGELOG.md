@@ -19,6 +19,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Add APNG support for Android 9+ (@lalalasupa0)
 - Add markdown support to entry description (@luigidotmoe)
   - Fix text disappeared when it's surrounded by `<>` (@lalalasupa0)
+- Add support for extension-lib 1.6 (`KeiSource`) extensions (#643) (@mFontecchio)
 
 ### Changes
 - Temporarily disable log file
@@ -31,6 +32,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Show FAB button to read/resume chapter when start/continue reading button is off-screen
 - LocalSource entries no longer auto-refresh when opened (@lalalasupa0)
 - Long tap chapters on Reader now mark it as read (@lalalasupa0)
+- Fetch manga details and chapters together via `getMangaUpdate` for extension-lib 1.6 compatibility (@mFontecchio)
+- Accept extension repo URLs in more formats (base URL, `index.min.json`, `index.json`, `index.pb`, GitHub raw URLs) (@mFontecchio)
 
 ### Fixes
 - Allow users to bypass onboarding's permission step if Shizuku is installed
@@ -49,6 +52,12 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix extension download stuck on pending state
 - Only solve Cloudflare with WebView if it's not geoblock (@AwkwardPeak7)
 - Fix cover from LocalSource sometimes didn't load (@lalalasupa0)
+- Fix Keiyoushi extension repo (`index.pb`) being rejected as invalid (@mFontecchio)
+- Fix extension repo add failures not showing an error message (@mFontecchio)
+- Fix `CompressionInterceptor` crash when using extension-lib 1.6 sources (e.g. MangaPlus) (@mFontecchio)
+- Fix Keiyoushi extension catalog empty / all extensions marked obsolete after `index.min.json` was stubbed (#659, #656) (@mFontecchio)
+  - Fetch gzipped protobuf `index.pb` (with `index.min.json` fallback for legacy repos)
+- Fix `AbstractMethodError` (`GeneratedSerializer.typeParametersSerializers`) when browsing current Keiyoushi extensions (e.g. Pawchive) (#663) (@mFontecchio)
 
 ### Translation
 - Update translations from Weblate
@@ -111,25 +120,6 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency com.google.android.material:material to v1.14.0-alpha09
 - Update dependency androidx.compose.material3:material3 to v1.5.0-alpha14
 - Minimize memory usage by reducing in-memory cover cache size (@Lolle2000la)
-
-## [1.10.1]
-
-### Additions
-- Add support for extension-lib 1.6 (`KeiSource`) extensions (#643) (@mFontecchio)
-
-### Changes
-- Fetch manga details and chapters together via `getMangaUpdate` for extension-lib 1.6 compatibility (@mFontecchio)
-- Accept extension repo URLs in more formats (base URL, `index.min.json`, `index.json`, `index.pb`, GitHub raw URLs) (@mFontecchio)
-
-### Fixes
-- Fix Keiyoushi extension repo (`index.pb`) being rejected as invalid (@mFontecchio)
-- Fix extension repo add failures not showing an error message (@mFontecchio)
-- Fix `CompressionInterceptor` crash when using extension-lib 1.6 sources (e.g. MangaPlus) (@mFontecchio)
-- Fix Keiyoushi extension catalog empty / all extensions marked obsolete after `index.min.json` was stubbed (#659, #656) (@mFontecchio)
-  - Fetch gzipped protobuf `index.pb` (with `index.min.json` fallback for legacy repos)
-- Fix `AbstractMethodError` (`GeneratedSerializer.typeParametersSerializers`) when browsing current Keiyoushi extensions (e.g. Pawchive) (#663) (@mFontecchio)
-
-### Other
 - Update okhttp monorepo to v5.4.0 (@mFontecchio)
   - Add okhttp-zstd
 - Update dependency com.squareup.okio:okio to v3.18.0 (@mFontecchio)
