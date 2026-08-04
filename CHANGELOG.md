@@ -78,7 +78,6 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.4.0
 - Update dependency io.mockk:mockk to v1.14.2
 - Update dependency io.coil-kt.coil3:coil-bom to v3.4.0
-- Update dependency com.squareup.okio:okio to v3.12.0
 - Update dependency com.google.firebase:firebase-bom to v33.14.0
 - Update dependency com.google.accompanist:accompanist-themeadapter-material3 to v0.36.0
 - Update dependency com.github.requery:sqlite-android to v3.49.0
@@ -94,7 +93,6 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update aboutlibraries to v13.1.0
 - Update plugin kotlinter to v5.1.0
 - Update plugin gradle-versions to v0.52.0
-- Update okhttp monorepo to v5.0.0-alpha.16
 - Update moko to v0.25.1
 - Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.10.2
 - Update dependency me.zhanghai.android.libarchive:library to v1.1.5
@@ -113,6 +111,30 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update dependency com.google.android.material:material to v1.14.0-alpha09
 - Update dependency androidx.compose.material3:material3 to v1.5.0-alpha14
 - Minimize memory usage by reducing in-memory cover cache size (@Lolle2000la)
+
+## [1.10.1]
+
+### Additions
+- Add support for extension-lib 1.6 (`KeiSource`) extensions (#643) (@mFontecchio)
+
+### Changes
+- Fetch manga details and chapters together via `getMangaUpdate` for extension-lib 1.6 compatibility (@mFontecchio)
+- Accept extension repo URLs in more formats (base URL, `index.min.json`, `index.json`, `index.pb`, GitHub raw URLs) (@mFontecchio)
+
+### Fixes
+- Fix Keiyoushi extension repo (`index.pb`) being rejected as invalid (@mFontecchio)
+- Fix extension repo add failures not showing an error message (@mFontecchio)
+- Fix `CompressionInterceptor` crash when using extension-lib 1.6 sources (e.g. MangaPlus) (@mFontecchio)
+- Fix Keiyoushi extension catalog empty / all extensions marked obsolete after `index.min.json` was stubbed (#659, #656) (@mFontecchio)
+  - Fetch gzipped protobuf `index.pb` (with `index.min.json` fallback for legacy repos)
+- Fix `AbstractMethodError` (`GeneratedSerializer.typeParametersSerializers`) when browsing current Keiyoushi extensions (e.g. Pawchive) (#663) (@mFontecchio)
+
+### Other
+- Update okhttp monorepo to v5.4.0 (@mFontecchio)
+  - Add okhttp-zstd
+- Update dependency com.squareup.okio:okio to v3.18.0 (@mFontecchio)
+- Update kotlinx.serialization to v1.11.0 (align with Mihon/Keiyoushi) (@mFontecchio)
+- Update kotlin monorepo to v2.3.20 (@mFontecchio)
 
 ## [1.9.7.5]
 
