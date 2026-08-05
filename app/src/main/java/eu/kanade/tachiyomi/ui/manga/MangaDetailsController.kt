@@ -1174,6 +1174,8 @@ class MangaDetailsController :
             view?.context?.getString(MR.plurals.next_unread_chapters, 1, 1)
         menu.findItem(R.id.download_next_5).title =
             view?.context?.getString(MR.plurals.next_unread_chapters, 5, 5)
+        menu.findItem(R.id.download_next_10).title =
+            view?.context?.getString(MR.plurals.next_unread_chapters, 10, 10)
 
         val searchItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
@@ -1264,7 +1266,7 @@ class MangaDetailsController :
                     .setNegativeButton(AR.string.cancel, null)
                     .show()
             }
-            R.id.download_next, R.id.download_next_5, R.id.download_custom, R.id.download_unread, R.id.download_all -> downloadChapters(
+            R.id.download_next, R.id.download_next_5, R.id.download_next_10, R.id.download_custom, R.id.download_unread, R.id.download_all -> downloadChapters(
                 item.itemId,
             )
             else -> return super.onOptionsItemSelected(item)
@@ -1451,6 +1453,7 @@ class MangaDetailsController :
         val chaptersToDownload = when (choice) {
             R.id.download_next -> presenter.getUnreadChaptersSorted().take(1)
             R.id.download_next_5 -> presenter.getUnreadChaptersSorted().take(5)
+            R.id.download_next_10 -> presenter.getUnreadChaptersSorted().take(10)
             R.id.download_custom -> {
                 createActionModeIfNeeded()
                 rangeMode = RangeMode.Download

@@ -22,6 +22,9 @@
                 android:id="@+id/download_next_5"
                 android:title="@string/unread" />
             <item
+                android:id="@+id/download_next_10"
+                android:title="@string/unread" />
+            <item
                 android:id="@+id/download_custom"
                 android:title="@string/custom_range" />
             <item
