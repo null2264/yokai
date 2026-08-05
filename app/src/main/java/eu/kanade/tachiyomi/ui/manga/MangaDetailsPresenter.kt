@@ -20,6 +20,7 @@ import eu.kanade.tachiyomi.data.database.models.bookmarkedFilter
 import eu.kanade.tachiyomi.data.database.models.chapterOrder
 import eu.kanade.tachiyomi.data.database.models.downloadedFilter
 import eu.kanade.tachiyomi.data.database.models.prepareCoverUpdate
+import eu.kanade.tachiyomi.data.database.models.create
 import eu.kanade.tachiyomi.data.database.models.readFilter
 import eu.kanade.tachiyomi.data.database.models.removeCover
 import eu.kanade.tachiyomi.data.database.models.sortDescending
@@ -30,6 +31,11 @@ import eu.kanade.tachiyomi.data.download.model.DownloadQueue
 import eu.kanade.tachiyomi.data.library.CustomMangaManager
 import eu.kanade.tachiyomi.data.library.LibraryUpdateJob
 import eu.kanade.tachiyomi.data.preference.PreferencesHelper
+import eu.kanade.tachiyomi.data.recommendation.MangaRecommendationRepository
+import eu.kanade.tachiyomi.data.recommendation.RecommendationCard
+import eu.kanade.tachiyomi.data.recommendation.RecommendationMetadata
+import eu.kanade.tachiyomi.data.recommendation.RecommendationNavigationTrail
+import eu.kanade.tachiyomi.data.recommendation.RecommendationRows
 import eu.kanade.tachiyomi.data.track.EnhancedTrackService
 import eu.kanade.tachiyomi.data.track.TrackManager
 import eu.kanade.tachiyomi.data.track.TrackService
@@ -74,6 +80,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.Locale
+import java.util.concurrent.atomic.AtomicLong
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -81,6 +88,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -97,6 +105,7 @@ import yokai.domain.chapter.interactor.UpdateChapter
 import yokai.domain.history.interactor.GetHistory
 import yokai.domain.library.custom.model.CustomMangaInfo
 import yokai.domain.manga.interactor.GetManga
+import yokai.domain.manga.interactor.InsertManga
 import yokai.domain.manga.interactor.UpdateManga
 import yokai.domain.manga.models.MangaUpdate
 import yokai.domain.manga.models.cover
@@ -127,6 +136,7 @@ class MangaDetailsPresenter(
     private val getTrack: GetTrack by injectLazy()
     private val insertTrack: InsertTrack by injectLazy()
     private val getHistory: GetHistory by injectLazy()
+    private val insertManga: InsertManga by injectLazy()
 
     private val networkPreferences: NetworkPreferences by injectLazy()
 
@@ -138,6 +148,23 @@ class MangaDetailsPresenter(
 
     private val customMangaManager: CustomMangaManager by injectLazy()
     private val mangaShortcutManager: MangaShortcutManager by injectLazy()
+    private val trackManager: TrackManager by injectLazy()
+    private val recommendationRepository by lazy {
+        MangaRecommendationRepository(
+            localCandidateLoader = { sourceId, excludedUrl ->
+                getManga.awaitRecommendationCandidates(sourceId, excludedUrl)
+            },
+            aniListLoader = trackManager.aniList::recommendations,
+        )
+    }
+    private var recommendationJob: Job? = null
+    private var recommendationTarget: String? = null
+    private var recommendationCompletedTarget: String? = null
+    private val recommendationGeneration = AtomicLong()
+    var recommendationRows: RecommendationRows = RecommendationRows()
+        private set
+    var recommendationFavoriteUrls: Set<String> = emptySet()
+        private set
 
     val source: Source by lazy { sourceManager.getOrStub(manga.source) }
 
@@ -149,7 +176,7 @@ class MangaDetailsPresenter(
     var isLoading = false
     var scrollType = 0
 
-    private val loggedServices by lazy { Injekt.get<TrackManager>().services.filter { it.isLogged } }
+    private val loggedServices by lazy { trackManager.services.filter { it.isLogged } }
     private var tracks = emptyList<Track>()
 
     var trackList: List<TrackItem> = emptyList()
@@ -224,6 +251,12 @@ class MangaDetailsPresenter(
             .onEach { onUpdateManga() }
             .launchIn(presenterScope)
 
+        preferences.recommendationSourceNetworkEnabled(manga.source)
+            .changes()
+            .drop(1)
+            .onEach { loadRecommendations(forceRefresh = true) }
+            .launchIn(presenterScope)
+
         val fetchMangaNeeded = !manga.initialized
         val fetchChaptersNeeded = runBlocking { getChaptersNow() }.isEmpty()
 
@@ -245,6 +278,7 @@ class MangaDetailsPresenter(
             }
 
             setTrackItems()
+            loadRecommendations()
         }
 
         refreshTracking(false)
@@ -565,7 +599,82 @@ class MangaDetailsPresenter(
             withUIContext {
                 view?.updateChapters()
             }
+            loadRecommendations(forceRefresh = true)
         }
+    }
+
+    fun loadRecommendations(forceRefresh: Boolean = false) {
+        if (!::manga.isInitialized) return
+        val metadataFingerprint = listOf(
+            manga.initialized,
+            manga.author,
+            manga.artist,
+            manga.genre,
+            manga.description,
+        ).joinToString("|").hashCode()
+        val target = "${manga.source}:${manga.url}:$metadataFingerprint"
+        if (!forceRefresh && recommendationTarget == target && recommendationJob?.isActive == true) return
+        if (!forceRefresh && recommendationCompletedTarget == target) {
+            view?.updateRecommendations()
+            return
+        }
+        recommendationJob?.cancel()
+        recommendationTarget = target
+        recommendationCompletedTarget = null
+        val generation = recommendationGeneration.incrementAndGet()
+        val targetIdentity = RecommendationMetadata.identity(manga.source, manga.copy())
+        if (forceRefresh) {
+            recommendationRepository.invalidate(manga.source, targetIdentity.exposureKey)
+        }
+        recommendationJob = presenterScope.launchIO {
+            try {
+                recommendationRepository.observe(
+                    source = source,
+                    manga = manga.copy(),
+                    aniListId = tracks.firstOrNull { it.sync_id == TrackManager.ANILIST }?.media_id,
+                    allowNetwork = preferences.recommendationSourceNetworkEnabled(manga.source).get(),
+                    excludedKeys = RecommendationNavigationTrail.workKeys(manga.source),
+                ).collectLatest { freshRows ->
+                    if (
+                        recommendationTarget != target ||
+                        recommendationGeneration.get() != generation
+                    ) {
+                        return@collectLatest
+                    }
+                    recommendationRows = recommendationRows.append(freshRows)
+                    recommendationFavoriteUrls = recommendationFavoriteUrls +
+                        (recommendationRows.creatorWorks + recommendationRows.similarManga)
+                            .mapNotNull { item ->
+                                getManga.awaitByUrlAndSource(item.manga.url, manga.source)
+                                    ?.takeIf(Manga::favorite)
+                                    ?.url
+                            }
+                    withUIContext { view?.updateRecommendations() }
+                }
+            } finally {
+                if (recommendationTarget == target && recommendationGeneration.get() == generation) {
+                    recommendationCompletedTarget = target
+                }
+            }
+        }
+    }
+
+    suspend fun recommendationToLocal(sourceManga: SManga): Manga {
+        check(source.id == manga.source) { "Recommendation source changed while opening a card" }
+        var local = getManga.awaitByUrlAndSource(sourceManga.url, source.id)
+        if (local == null) {
+            local = Manga.create(sourceManga.url, sourceManga.title, source.id).apply {
+                copyFrom(sourceManga)
+                initialized = sourceManga.hasUsableRecommendationDetails()
+            }
+            local.id = insertManga.await(local)
+        } else if (!local.favorite) {
+            local.title = sourceManga.title
+            local.copyFrom(sourceManga)
+            local.initialized = sourceManga.hasUsableRecommendationDetails()
+            updateManga.await(local.toMangaUpdate())
+        }
+        return local
     }
 
     private fun trimException(e: java.lang.Exception): String {
@@ -1196,3 +1305,37 @@ class MangaDetailsPresenter(
         const val MULTIPLE_SEASONS = 3
     }
 }
+
+private fun RecommendationRows.append(update: RecommendationRows): RecommendationRows {
+    val creators = creatorWorks.appendDistinct(update.creatorWorks)
+    val similar = similarManga.appendDistinct(update.similarManga)
+        .filterNot { similarCard ->
+            creators.any { creatorCard ->
+                RecommendationMetadata.sameWork(similarCard.identity, creatorCard.identity)
+            }
+        }
+        .take(MAX_RECOMMENDATIONS_PER_ROW)
+    return RecommendationRows(creatorWorks = creators, similarManga = similar)
+}
+
+private fun List<RecommendationCard>.appendDistinct(
+    update: List<RecommendationCard>,
+): List<RecommendationCard> {
+    val result = toMutableList()
+    update.forEach { candidate ->
+        if (result.none { RecommendationMetadata.sameWork(it.identity, candidate.identity) }) {
+            result += candidate
+        }
+    }
+    return result.take(MAX_RECOMMENDATIONS_PER_ROW)
+}
+
+private fun SManga.hasUsableRecommendationDetails(): Boolean {
+    if (!initialized) return false
+    return !author.isNullOrBlank() ||
+        !artist.isNullOrBlank() ||
+        !description.isNullOrBlank() ||
+        !genre.isNullOrBlank()
+}
+
+private const val MAX_RECOMMENDATIONS_PER_ROW = 10
