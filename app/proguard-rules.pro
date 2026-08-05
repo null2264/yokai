@@ -40,6 +40,11 @@
 -keep interface com.google.android.material.** { *; }
 -keep public class com.google.android.material.R$* { *; }
 
+-keepclassmembers class * implements java.io.Serializable {
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
 ##---------------Begin: proguard configuration for RxJava 1.x  ----------
 -dontwarn sun.misc.**
 
