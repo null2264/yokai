@@ -21,8 +21,8 @@
         <item quantity="other">%d categorieën</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Verwijder %1$d gedownload hoofdstuk\?</item>
-        <item quantity="other">Verwijder %1$d gedownloade hoofdstukken\?</item>
+        <item quantity="one">Verwijder %1$d gedownload hoofdstuk?</item>
+        <item quantity="other">Verwijder %1$d gedownloade hoofdstukken?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Schoonmaak klaar. %d map verwijderd</item>
@@ -37,21 +37,16 @@
         <item quantity="other">%d manga gemigreerd</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">%1$d%2$s manga kopiëren\?</item>
-        <item quantity="other">%1$d%2$s manga kopiëren\?</item>
+        <item quantity="one">%1$d%2$s manga kopiëren?</item>
+        <item quantity="other">%1$d%2$s manga kopiëren?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">%1$d%2$s manga migreren\?</item>
-        <item quantity="other">%1$d%2$s manga migreren\?</item>
+        <item quantity="one">%1$d%2$s manga migreren?</item>
+        <item quantity="other">%1$d%2$s manga migreren?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Een hoofdstuk is verwijderd uit de bron:
-\n%2$s
-\nDownload van dit hoofdstuk verwijderen\?</item>
-        <item quantity="other">%1$s hoofdstukken zijn verwijderd uit de bron:
-\n%2$s
-\n
-\nDownloads van deze hoofdstukken verwijderen\?</item>
+        <item quantity="one">Een hoofdstuk is verwijderd uit de bron: \n%2$s \nDownload van dit hoofdstuk verwijderen?</item>
+        <item quantity="other">%1$s hoofdstukken zijn verwijderd uit de bron: \n%2$s \n \nDownloads van deze hoofdstukken verwijderen?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Voltooid in %1$s met %2$s foutmelding</item>
@@ -82,19 +77,19 @@
         <item quantity="other">Volgende aantal %d ongelezen hoofdstukken</item>
     </plurals>
     <plurals name="_series_types">
-        <item quantity="one"/>
+        <item quantity="one"></item>
         <item quantity="other">%d serie types</item>
     </plurals>
     <plurals name="_sources">
-        <item quantity="one"/>
+        <item quantity="one"></item>
         <item quantity="other">%d bronnen</item>
     </plurals>
     <plurals name="_statuses">
-        <item quantity="one"/>
+        <item quantity="one"></item>
         <item quantity="other">%d statussen</item>
     </plurals>
     <plurals name="_languages">
-        <item quantity="one"/>
+        <item quantity="one"></item>
         <item quantity="other">%d talen</item>
     </plurals>
 </resources>

@@ -21,21 +21,16 @@
         <item quantity="other">%d manga tramudados</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Copiare %1$d%2$s manga\?</item>
-        <item quantity="other">Copiare %1$d%2$s manga\?</item>
+        <item quantity="one">Copiare %1$d%2$s manga?</item>
+        <item quantity="other">Copiare %1$d%2$s manga?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Tramudare %1$d%2$s manga\?</item>
-        <item quantity="other">Tramudare %1$d%2$s manga\?</item>
+        <item quantity="one">Tramudare %1$d%2$s manga?</item>
+        <item quantity="other">Tramudare %1$d%2$s manga?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Unu capìtulu est istadu bogadu dae sa mitza:
-\n%2$s
-\nCheres iscantzellare s\'iscarrigamentu suo\?</item>
-        <item quantity="other">%1$s capìtulos sunt istados bogados dae sa mitza:
-\n%2$s
-\n
-\nCheres iscantzellare sos iscarrigamentos issoro\?</item>
+        <item quantity="one">Unu capìtulu est istadu bogadu dae sa mitza: \n%2$s \nCheres iscantzellare s\'iscarrigamentu suo?</item>
+        <item quantity="other">%1$s capìtulos sunt istados bogados dae sa mitza: \n%2$s \n \nCheres iscantzellare sos iscarrigamentos issoro?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">e %1$d àteru capìtulu</item>
@@ -50,8 +45,8 @@
         <item quantity="other">%d categorias</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Iscantzellare %1$d capìtulu iscarrigadu\?</item>
-        <item quantity="other">Iscantzellare %1$d capìtulos iscarrigados\?</item>
+        <item quantity="one">Iscantzellare %1$d capìtulu iscarrigadu?</item>
+        <item quantity="other">Iscantzellare %1$d capìtulos iscarrigados?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Fatu in %1$s cun %2$s errore</item>

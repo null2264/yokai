@@ -64,7 +64,7 @@
     <string name="update_available">Aktualisierung verfügbar</string>
     <string name="new_version_available">Neue Aktualisierung verfügbar!</string>
     <string name="no_new_updates_available">Keine neue Aktualisierung verfügbar</string>
-    <string name="searching_for_updates">Suche nach Aktualisierungen …</string>
+    <string name="searching_for_updates">Suche nach Aktualisierungen …</string>
     <!-- Main Screens -->
     <!-- Library -->
     <string name="library">Meine Bibliothek</string>
@@ -83,7 +83,7 @@
     <string name="search_globally">„%1$s“ global suchen</string>
     <string name="read_progress">Lesefortschritt</string>
     <string name="series_type">Serientyp</string>
-    <string name="group_library_by">Gruppiere Bibliothek nach …</string>
+    <string name="group_library_by">Gruppiere Bibliothek nach …</string>
     <string name="tracking_status">Synchronisierungsstatus</string>
     <string name="ungrouped">Ungruppiert</string>
     <!-- Library Sort -->
@@ -123,7 +123,7 @@
     <string name="newly_added">Neu hinzugefügt</string>
     <string name="history">Verlauf</string>
     <string name="recent_updates">Neu verfügbare Kapitel</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Das Lesedatum von „%1$s“ wird gelöscht. Bist du sicher\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Das Lesedatum von „%1$s“ wird gelöscht. Bist du sicher?</string>
     <string name="reset_all_chapters_for_this_">Alle Kapitel für %1$s</string>
     <string name="last_read_">Zuletzt gelesen %1$s</string>
     <string name="read_">%1$s gelesen</string>
@@ -131,7 +131,7 @@
     <string name="added_">%1$s hinzugefügt</string>
     <string name="view_history">Verlauf anzeigen</string>
     <string name="view_all_updates">Alle Aktualisierungen anzeigen</string>
-    <string name="search_recents">Neues durchsuchen …</string>
+    <string name="search_recents">Neues durchsuchen …</string>
     <string name="no_recent_chapters">Keine neuen Kapitel</string>
     <string name="no_recently_read_manga">Keine kürzlich gelesene Manga</string>
     <string name="reset_chapter_question">Kapitel zurücksetzen?</string>
@@ -141,11 +141,11 @@
     <string name="no_results_found">Keine Ergebnisse gefunden</string>
     <string name="local_source">Lokale Quelle</string>
     <string name="other">Andere</string>
-    <string name="global_search">Globale Suche …</string>
+    <string name="global_search">Globale Suche …</string>
     <string name="latest">Neueste</string>
     <string name="browse">Stöbern</string>
     <string name="in_library">In der Bibliothek</string>
-    <string name="search_extensions">Erweiterungen suchen …</string>
+    <string name="search_extensions">Erweiterungen suchen …</string>
     <string name="all_sources">Alle Quellen</string>
     <string name="sources">Quellen</string>
     <string name="source_hidden">Quelle verstecken</string>
@@ -182,7 +182,7 @@
     <string name="previous_title">Vorherige:</string>
     <string name="theres_no_next_chapter">Es gibt kein nächstes Kapitel</string>
     <string name="theres_no_previous_chapter">Es gibt kein vorheriges Kapitel</string>
-    <string name="loading_pages">Lade Seiten …</string>
+    <string name="loading_pages">Lade Seiten …</string>
     <string name="failed_to_load_pages_">Seiten konnten nicht geladen werden: %1$s</string>
     <string name="reading_">Lese %1$s</string>
     <!-- Reader settings -->
@@ -360,7 +360,7 @@
     <string name="restore_completed">Wiederherstellen abgeschlossen</string>
     <string name="restore_error">Fehler beim Wiederherstellen der Sicherung</string>
     <string name="creating_backup">Datensicherung wird erstellt</string>
-    <string name="what_should_backup">Was willst du sichern\?</string>
+    <string name="what_should_backup">Was willst du sichern?</string>
     <string name="restoring_backup">Datensicherung wird wiederhergestellt</string>
     <string name="not_logged_into_">Nicht angemeldet in %1$s</string>
     <!-- Advanced section -->
@@ -374,7 +374,7 @@
     <string name="cookies_cleared">Cookies gelöscht</string>
     <string name="clear_database">Datenbank leeren</string>
     <string name="clear_database_summary">Verlauf für Einträge löschen, die nicht in deiner Bibliothek gespeichert sind</string>
-    <string name="clear_database_confirmation">Bist du dir sicher\? Die gelesenen Kapitel und Fortschritte von Einträgen, die nicht in deiner Bibliothek sind, werden gelöscht</string>
+    <string name="clear_database_confirmation">Bist du dir sicher? Die gelesenen Kapitel und Fortschritte von Einträgen, die nicht in deiner Bibliothek sind, werden gelöscht</string>
     <string name="clear_database_completed">Einträge gelöscht</string>
     <string name="refresh_library_metadata">Bibliotheksmetadaten erneuern</string>
     <string name="updates_covers_genres_desc">Aktualisiert Vorschaubilder, Genres, Beschreibungen und andere Mangainformationen</string>
@@ -510,7 +510,7 @@
     <string name="keep">Behalten</string>
     <string name="left">Links</string>
     <string name="less">Weniger</string>
-    <string name="loading">Wird geladen …</string>
+    <string name="loading">Wird geladen …</string>
     <string name="lock">Gesperrt</string>
     <string name="mark_all_as_read">Alle als gelesen markieren</string>
     <string name="mark_all_as_unread">Alle als ungelesen markieren</string>
@@ -572,14 +572,11 @@
     <string name="badges">Abzeichen</string>
     <string name="automatic_backups">Automatische Datensicherungen</string>
     <string name="invalid_backup_file">Ungültige Sicherungsdatei</string>
-    <string name="invalid_backup_file_type">Ungültiger Sicherungsdateientyp: %1$s
-\nDie Datei sollte mit .proto.gz oder .json enden.</string>
+    <string name="invalid_backup_file_type">Ungültiger Sicherungsdateientyp: %1$s \nDie Datei sollte mit .proto.gz oder .json enden.</string>
     <string name="backup_has_no_manga">Sicherung beinhaltet keinerlei Manga.</string>
     <string name="restore_missing_sources">Fehlende Quellen:</string>
     <string name="restore_missing_trackers">Nicht-angemeldete Tracker:</string>
-    <string name="restore_content_full">Die Daten der Sicherungsdatei werden wiederhergestellt.
-\n
-\nDu musst jegliche fehlende Erweiterungen installieren und dich anschließend bei den Tracking-Anbietern einloggen, um sie zu benutzen.</string>
+    <string name="restore_content_full">Die Daten der Sicherungsdatei werden wiederhergestellt. \n \nDu musst jegliche fehlende Erweiterungen installieren und dich anschließend bei den Tracking-Anbietern einloggen, um sie zu benutzen.</string>
     <string name="restoring_backup_canceled">Wiederherstellung abgebrochen</string>
     <string name="restore_duration">%02d min, %02d s</string>
     <string name="source_migration_guide">Quellenmigration</string>
@@ -630,7 +627,7 @@
     <string name="hide_bottom_nav">Navigations-Bar automatisch verstecken</string>
     <string name="last_used_library_recents">Zuletzt benutzt (Bibliothek oder Neueste)</string>
     <string name="custom_manga_info">Benutzerdefinierte Infos des Mangas</string>
-    <string name="mark_all_chapters_as_unread">Alle Kapitel als ungelesen markieren\?</string>
+    <string name="mark_all_chapters_as_unread">Alle Kapitel als ungelesen markieren?</string>
     <string name="cutout_ignore">Ausschnittbereiche ignorieren</string>
     <string name="start_past_cutout">Nach dem Ausschnitt starten</string>
     <string name="pad_cutout_areas">Ausschnittbereich füllen</string>
@@ -725,7 +722,7 @@
     <string name="updates_and_history">Aktualisierungen und Verlauf</string>
     <string name="your_library">Deine Bibliothek</string>
     <string name="no_chapters_to_delete">Keine Kapitel zu löschen</string>
-    <string name="remove_all_downloads">Alle heruntergeladene Dateien entfernen\?</string>
+    <string name="remove_all_downloads">Alle heruntergeladene Dateien entfernen?</string>
     <string name="actions">Aktionen</string>
     <string name="automatic_removal">Automatisches Löschen</string>
     <string name="show_on_long_press">Bei langem Tippen anzeigen</string>
@@ -806,7 +803,7 @@
     <string name="restrictions_">Einschränkungen: %1$s</string>
     <string name="keep_both_on_service">Beides auf %1$s lassen und nur lokal ersetzen</string>
     <string name="remove_x_from_service_and_add_y">%1$s aus %2$s entfernen und %3$s hinzufügen</string>
-    <string name="remove_previous_tracker">Vorherigen Tracker entfernen\?</string>
+    <string name="remove_previous_tracker">Vorherigen Tracker entfernen?</string>
     <string name="select_an_entry">Einen Eintrag wählen</string>
     <string name="sapphire_dusk">Saphir-Dämmerung</string>
     <string name="teal_ocean">Blaugrüner Ozean</string>
@@ -822,7 +819,7 @@
     <string name="filter_groups">Scanlator-Gruppen filtern</string>
     <string name="use_suggested_date">Vorgeschlagenes Datum verwenden</string>
     <string name="log_out">Abmelden</string>
-    <string name="log_out_from_">Aus %1$s abmelden\?</string>
+    <string name="log_out_from_">Aus %1$s abmelden?</string>
     <string name="details_page">Detailseite</string>
     <string name="theme_buttons_based_on_cover">Themenschaltflächen basierend auf dem Cover</string>
     <string name="log_in">Anmelden</string>
@@ -863,9 +860,7 @@
     <string name="descending">Absteigend</string>
     <string name="clear_database_source_item_count">%1$d Nicht-Bibliothekseinträge in der Datenbank</string>
     <string name="database_clean">Datenbank bereinigt</string>
-    <string name="confirm_manga_add_duplicate">In deiner Bibliothek existiert ein Eintrag mit dem gleichen Namen, aber aus einer anderen Quelle (%1$s).
-\n
-\nMöchtest du trotzdem fortfahren\?</string>
+    <string name="confirm_manga_add_duplicate">In deiner Bibliothek existiert ein Eintrag mit dem gleichen Namen, aber aus einer anderen Quelle (%1$s). \n \nMöchtest du trotzdem fortfahren?</string>
     <string name="select_inverse">Auswahl umkehren</string>
     <string name="cover_only_grid">Nur-Cover-Kacheln</string>
     <string name="notification_update_error">%1$d Aktualisierung(en) fehlgeschlagen</string>
@@ -892,11 +887,10 @@
     <string name="warning_enroll_into_beta">Beta-Versionen können instabil sein und können das Entfernen der Anwendungsdaten erfordern.</string>
     <string name="select_uninstalled_sources">Deinstallierte Quellen auswählen</string>
     <string name="show_">%1$s anzeigen</string>
-    <string name="downloads_swipe_tutorial">Datenübertragungen können entfernt werden indem man sie zur Seite wegwischt
-\nDieser Hinweis kann auf die gleiche Weise entfernt werden</string>
+    <string name="downloads_swipe_tutorial">Datenübertragungen können entfernt werden indem man sie zur Seite wegwischt \nDieser Hinweis kann auf die gleiche Weise entfernt werden</string>
     <string name="clear_history">Verlauf löschen</string>
     <string name="clear_history_completed">Verlauf gelöscht</string>
-    <string name="clear_history_confirmation">Bist du sicher\? Der gesamte Verlauf wird gelöscht.</string>
+    <string name="clear_history_confirmation">Bist du sicher? Der gesamte Verlauf wird gelöscht.</string>
     <string name="backup_restore_invalid_uri">Fehler: leerer URI</string>
     <string name="backup_info">Automatische Sicherungen sind sehr zu empfehlen. Du solltest auch Kopien an anderen Orten aufbewahren.</string>
     <string name="language_badge">Sprachlabels</string>

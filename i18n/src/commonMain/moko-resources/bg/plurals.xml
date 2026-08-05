@@ -17,16 +17,16 @@
         <item quantity="other">%1$s глави</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Изтри %1$d изтеглената глава\?</item>
-        <item quantity="other">Изтри %1$d изтеглените глави\?</item>
+        <item quantity="one">Изтри %1$d изтеглената глава?</item>
+        <item quantity="other">Изтри %1$d изтеглените глави?</item>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="one">Има 1 липсваща глава, източникът липса или е филтриран</item>
         <item quantity="other">Има %d липсващи глави, източникът липса или е филтриран</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Копирайте %1$d%2$s манга\?</item>
-        <item quantity="other">Копирайте %1$d%2$sманги\?</item>
+        <item quantity="one">Копирайте %1$d%2$s манга?</item>
+        <item quantity="other">Копирайте %1$d%2$sманги?</item>
     </plurals>
     <plurals name="extensions_updated_plural">
         <item quantity="one">Разширението е актуализирано</item>
@@ -37,8 +37,8 @@
         <item quantity="other">%d преместени манги</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Миграция на %1$d%2$s манга\?</item>
-        <item quantity="other">Миграция на %1$d%2$s манги\?</item>
+        <item quantity="one">Миграция на %1$d%2$s манга?</item>
+        <item quantity="other">Миграция на %1$d%2$s манги?</item>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">За %d заглавие</item>
@@ -57,13 +57,8 @@
         <item quantity="other">и %1$d повече глави</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Една глава е премахната от източника:
-            \n%2$s
-            \nИзтриване на изтеглянето ѝ\?</item>
-        <item quantity="other">%1$s Няколко глави са премахнати от източника:
-            \n%2$s
-            \n
-            \nИзтриване на изтеглянето им\?</item>
+        <item quantity="one">Една глава е премахната от източника: \n%2$s \nИзтриване на изтеглянето ѝ?</item>
+        <item quantity="other">%1$s Няколко глави са премахнати от източника: \n%2$s \n \nИзтриване на изтеглянето им?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Почистването е завършено. Премахната е папката %d</item>

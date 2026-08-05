@@ -22,7 +22,7 @@
     <string name="backup_location">Янтӑв вырнаҫни</string>
     <string name="backup_frequency">Янтӑвлани тӑтӑшлӑхӗ</string>
     <string name="backup_failed">Янтӑвлани йӑнӑшӗ</string>
-    <string name="what_should_backup">Мӗн эсӗ янтӑвласшӑн\?</string>
+    <string name="what_should_backup">Мӗн эсӗ янтӑвласшӑн?</string>
     <string name="clear_chapter_cache">Сыпӑксен кешне тасат</string>
     <string name="network">Тетел</string>
     <string name="used_">Усӑ курнӑ: %1$s</string>
@@ -67,7 +67,7 @@
     <string name="version_">%1$s верссийӗ</string>
     <string name="language_">Чӗлхе: %1$s</string>
     <string name="next_chapter_not_found">Малалли сыпӑк тупӑнман</string>
-    <string name="use_image_as_cover">Ҫак ӳкерчĕке хуплашка пек усӑ курмалла-и\?</string>
+    <string name="use_image_as_cover">Ҫак ӳкерчĕке хуплашка пек усӑ курмалла-и?</string>
     <string name="next">Малалли</string>
     <string name="previous">Умӗнхи:</string>
     <string name="theres_no_next_chapter">Малалли сыпӑк ҫук</string>
@@ -232,7 +232,7 @@
     <string name="build_time">Пуҫтарнӑ вӑхӑт</string>
     <string name="version">Версси</string>
     <string name="battery_optimization_disabled">Петтерей лайӑхлатнине сӳнтернӗ ӗнтӗ</string>
-    <string name="clear_database_confirmation">Чӑнах катертесшӗн-и\? Вулавӑшри мар манкӑн вуланӑ сыпӑкӗсем тата вулав ӳсӗмӗ ҫухалӗ</string>
+    <string name="clear_database_confirmation">Чӑнах катертесшӗн-и? Вулавӑшри мар манкӑн вуланӑ сыпӑкӗсем тата вулав ӳсӗмӗ ҫухалӗ</string>
     <string name="cache_delete_error">Кеше тасатнӑ чух йӑнӑш тухрӗ</string>
     <string name="requires_app_restart">Ҫакӑ вӑя кӗрес тесен хушӑма хупса уҫмалла</string>
     <string name="restoring_backup">Янтӑв тавӑрни</string>
@@ -325,7 +325,7 @@
     <string name="add_categories">Пухмӑш хуш</string>
     <string name="already_in_category">Манкӑ пухмӑшра</string>
     <string name="confirm_category_deletion_message">Ҫак пухмӑшри манкӑ яланхилле пухмӑша куҫӗ.</string>
-    <string name="confirm_category_deletion">Пухмӑша катерт\?</string>
+    <string name="confirm_category_deletion">Пухмӑша катерт?</string>
     <string name="_already_in_queue">%1$s черетре</string>
     <string name="adding_category_to_queue">%1$s ҫӗнетӳ черече хушни</string>
     <string name="unlock">Ҫаклату салт</string>
@@ -338,8 +338,7 @@
     <string name="may_contain_nsfw">NSFW (18+) шалаш пулма пултарать</string>
     <string name="automatic_backups">Хӑй-халлӗн янтӑвлани</string>
     <string name="invalid_backup_file">Тӗрӗс мар янтӑв файлӗ</string>
-    <string name="invalid_backup_file_type">Тӗрӗс мар янтӑв файлӗ: %1$s
-\nФайлӗ .proto.gz е .json сӑмахсемпе вӗҫленмелле.</string>
+    <string name="invalid_backup_file_type">Тӗрӗс мар янтӑв файлӗ: %1$s \nФайлӗ .proto.gz е .json сӑмахсемпе вӗҫленмелле.</string>
     <string name="backup_has_no_manga">Янтӑвра манкӑсем ҫук.</string>
     <string name="restore_missing_sources">Ҫук ҫӑл куҫсем:</string>
     <string name="restore_missing_trackers">Кӗмен сӑнанусем:</string>
@@ -396,7 +395,7 @@
     <string name="new_category">Ҫӗнӗ пухмӑш</string>
     <string name="no_pages_found">Элсем тупӑнман</string>
     <string name="label_global_search">Пур ҫӗрте шыра</string>
-    <string name="remove_all_downloads">Пур тиеве катертмелле-и\?</string>
+    <string name="remove_all_downloads">Пур тиеве катертмелле-и?</string>
     <string name="cancel_all_for_series">Ҫак серилӗх валли пурне те пӑрахӑҫла</string>
     <string name="by_chapter_number">Сыпӑк шучӗпе</string>
     <string name="by_update_date">Тиесе илни вӑхӑчӗпе</string>
@@ -413,7 +412,7 @@
     <string name="locked_landscape">Ҫаклатнӑ тӑрӑхскер</string>
     <string name="incognito_mode">Вӑрттӑнлӑх тытӑмӗ</string>
     <string name="log_out">Тух</string>
-    <string name="log_out_from_">“%1$s тухмалла-и\?</string>
+    <string name="log_out_from_">“%1$s тухмалла-и?</string>
     <string name="hide_notification_content">Систерӳсенче мӗн ҫырнине пытарни</string>
     <string name="webview_is_required">Tachiyomi валли WebView кирлӗ</string>
     <string name="include_">Ҫут: %s</string>
@@ -428,7 +427,7 @@
     <string name="select_inverse">Тепӗр майлӑ суйла</string>
     <string name="clear_history">Кун-ҫул тасат</string>
     <string name="clear_history_completed">Кун-ҫула катертнӗ</string>
-    <string name="clear_history_confirmation">Чӑнах катертесшӗн-и\? Веҫ кун-ҫулӗ ҫухалӗ.</string>
+    <string name="clear_history_confirmation">Чӑнах катертесшӗн-и? Веҫ кун-ҫулӗ ҫухалӗ.</string>
     <string name="pref_manage_notifications">Систерӳсене ӗнер</string>
     <string name="downloaded_chapters">Тиесе илнӗ сыпӑксем</string>
     <string name="tap_zones">Куҫӑм палли</string>

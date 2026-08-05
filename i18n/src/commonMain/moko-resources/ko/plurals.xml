@@ -19,7 +19,7 @@
         <item quantity="other">%1$s장</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="other">다운로드한 챕터 %1$d개를 제거하시겠습니까\?</item>
+        <item quantity="other">다운로드한 챕터 %1$d개를 제거하시겠습니까?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="other">그리고 %1$d개 화 남았다</item>
@@ -40,19 +40,16 @@
         <item quantity="other">%1$d 페이지</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">%1$s 회차가 원본에서 제거되었습소스:
-\n%2$s
-\n
-\n다운로드를 삭제하시겠습니까\?</item>
+        <item quantity="other">%1$s 회차가 원본에서 제거되었습소스: \n%2$s \n \n다운로드를 삭제하시겠습니까?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="other">%d 만화가 마이그레이션됨</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="other">%1$d%2$s 만화를 마이그레이션하시겠습니까\?</item>
+        <item quantity="other">%1$d%2$s 만화를 마이그레이션하시겠습니까?</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="other">%1$d%2$s 만화를 복사하시겠습니까\?</item>
+        <item quantity="other">%1$d%2$s 만화를 복사하시겠습니까?</item>
     </plurals>
     <plurals name="cache_cleared">
         <item quantity="other">캐시가 지워졌습니다. %d 파일이 삭제되었습니다</item>

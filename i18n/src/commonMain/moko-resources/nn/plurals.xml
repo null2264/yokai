@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <plurals name="restore_completed_message">
         <item quantity="one">Gjort på %1$s med %2$s feil</item>
         <item quantity="other">Gjort på %1$s med %2$s feil</item>
     </plurals>
-
     <plurals name="category_plural">
         <item quantity="one">%d kategori%d kategoriar</item>
         <item quantity="other"/>
     </plurals>
-
     <plurals name="after_minutes">
         <item quantity="one">Etter %1$s minuttEtter %1$s minuttar</item>
         <item quantity="other"/>

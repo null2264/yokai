@@ -49,13 +49,8 @@
         <item quantity="other">Μετεγκατάσταση %1$d%2$s σειρών;</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Ένα κεφάλαιο καταργήθηκε από την πηγή:
-\n%2$s
-\nΔιαγραφή της λήψης του;</item>
-        <item quantity="other">%1$s κεφάλαια καταργήθηκαν από την πηγή:
-\n%2$s
-\n
-\nΔιαγραφή των λήψεων τους;</item>
+        <item quantity="one">Ένα κεφάλαιο καταργήθηκε από την πηγή: \n%2$s \nΔιαγραφή της λήψης του;</item>
+        <item quantity="other">%1$s κεφάλαια καταργήθηκαν από την πηγή: \n%2$s \n \nΔιαγραφή των λήψεων τους;</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d σελίδα</item>

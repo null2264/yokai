@@ -40,7 +40,7 @@
     <string name="warning">Paralajmërim</string>
     <string name="password">Fjalëkalimi</string>
     <string name="does_not_prevent_unofficial_nsfw">Kjo nuk parandalon shtesat jozyrtare ose potencialisht të shënuara gabimisht që të shfaqin përmbajtjen NSFW (18+) brenda aplikacionit.</string>
-    <string name="log_out_from_">Dil nga %1$s\?</string>
+    <string name="log_out_from_">Dil nga %1$s?</string>
     <string name="tako">Tako</string>
     <string name="backup_frequency">Frekuenca rezervë</string>
     <string name="channel_skipped">U anashkalua</string>
@@ -122,9 +122,7 @@
     <string name="no_more_results">Nuk ka më rezultate</string>
     <string name="custom_location">Vendndodhja e personalizuar</string>
     <string name="restore_completed">Rivendosja përfundoi</string>
-    <string name="restore_content_full">Të dhënat nga skedari rezervë do të rikthehen.
-\n
-\n Do t\'ju duhet të instaloni çdo shtesë që mungon dhe më pas të identifikoheni në shërbimet e gjurmimit për t\'i përdorur ato.</string>
+    <string name="restore_content_full">Të dhënat nga skedari rezervë do të rikthehen. \n \n Do t\'ju duhet të instaloni çdo shtesë që mungon dhe më pas të identifikoheni në shërbimet e gjurmimit për t\'i përdorur ato.</string>
     <string name="pref_inverted_colors">I përmbysur</string>
     <string name="crop_borders">Kufijtë e prerjeve</string>
     <string name="start_downloading_now">Fillo shkarkimin tani</string>
@@ -149,7 +147,7 @@
     <string name="resume">Rifillo</string>
     <string name="no_wifi_connection">Nuk ofrohet lidhje Wi-Fi</string>
     <string name="display">Shfaqja</string>
-    <string name="use_image_as_cover">Të përdoret ky imazh si kopertinë\?</string>
+    <string name="use_image_as_cover">Të përdoret ky imazh si kopertinë?</string>
     <string name="pref_long_strip_side_padding">Mbushje anësore</string>
     <string name="on_hiatus">Në pauzë</string>
     <string name="username">Emri i përdoruesit</string>
@@ -180,7 +178,7 @@
     <string name="delete">Fshije</string>
     <string name="webview_data_deleted">Të dhënat e WebView u pastruan</string>
     <string name="start">Fillo</string>
-    <string name="what_should_backup">Çfarë dëshironi të bëni rezervë\?</string>
+    <string name="what_should_backup">Çfarë dëshironi të bëni rezervë?</string>
     <string name="skip_read_chapters">Kapërceni kapitujt e shënuar si të lexuar</string>
     <string name="move_to_top">Lëvizni në krye</string>
     <string name="restore_missing_trackers">Gjurmuesit nuk kanë hyrë në:</string>
@@ -256,7 +254,7 @@
     <string name="extensions">Shtesa</string>
     <string name="vertical_viewer">Vertikale</string>
     <string name="read">Lexo</string>
-    <string name="clear_history_confirmation">A je i sigurt\? E gjithë historia do të humbasë.</string>
+    <string name="clear_history_confirmation">A je i sigurt? E gjithë historia do të humbasë.</string>
     <string name="pref_global_search">Kërkimi global</string>
     <string name="l_nav">Në formë L</string>
     <string name="true_32bit_color">Ngjyra 32-bit</string>
@@ -406,7 +404,7 @@
     <string name="pref_remove_exclude_categories">Kategoritë e përjashtuara</string>
     <string name="ext_installer_pref">Instalues</string>
     <string name="library_entries">Regjistrimet e bibliotekës</string>
-    <string name="clear_database_confirmation">A je i sigurt\? Lexoni kapitujt dhe përparimi i hyrjeve që nuk janë në bibliotekë do të humbasin</string>
+    <string name="clear_database_confirmation">A je i sigurt? Lexoni kapitujt dhe përparimi i hyrjeve që nuk janë në bibliotekë do të humbasin</string>
     <string name="clear_database_source_item_count">%1$d hyrje jashtë bibliotekës në bazën e të dhënave</string>
     <string name="clear_database_summary">Fshi historikun për shënimet që nuk janë ruajtur në bibliotekën tënde</string>
     <string name="label_background_activity">Aktiviteti në sfond</string>

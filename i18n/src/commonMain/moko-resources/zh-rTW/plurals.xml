@@ -31,9 +31,7 @@
         <item quantity="other">還有 %1$d 章</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">第%1$s章已從來源中刪除：
-\n%2$s
-\n是否刪除其下載内容？</item>
+        <item quantity="other">第%1$s章已從來源中刪除： \n%2$s \n是否刪除其下載内容？</item>
     </plurals>
     <plurals name="next_unread_chapters">
         <item quantity="other">接下來未讀的 %d 章</item>

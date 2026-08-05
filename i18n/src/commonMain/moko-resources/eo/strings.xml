@@ -158,8 +158,7 @@
     <string name="help_translate">Helpu traduki</string>
     <string name="restoring_backup">Restaŭras savkopion</string>
     <string name="restore_completed">Restaŭrado kompletita</string>
-    <string name="invalid_backup_file_type">Nevalida savkopia dosierspeco: %1$s
-\nĜi devas fini kun .proto.gz aŭ .json.</string>
+    <string name="invalid_backup_file_type">Nevalida savkopia dosierspeco: %1$s \nĜi devas fini kun .proto.gz aŭ .json.</string>
     <string name="untrusted_extension">Malfidinda kromaĵo</string>
     <string name="charging">Ŝarĝas</string>
     <string name="lock_when_idle">Ŝlosi kiam senokupas</string>
@@ -238,7 +237,7 @@
     <string name="last_used">Laste uzitaj</string>
     <string name="date_fetched">Dato venigita</string>
     <string name="may_contain_nsfw">Enhaveblas NSFW (18+) enhavon</string>
-    <string name="use_image_as_cover">Ĉu uzi ĉi-bildon kiel kovrilo\?</string>
+    <string name="use_image_as_cover">Ĉu uzi ĉi-bildon kiel kovrilo?</string>
     <string name="current_chapter">Aktuala:</string>
     <string name="next_title">Sekva:</string>
     <string name="previous_title">Antaŭa:</string>
@@ -284,7 +283,7 @@
     <string name="backup_failed">Kreado de savkopio fiaskis</string>
     <string name="restore_missing_sources">Mankantaj fontoj:</string>
     <string name="restore_missing_trackers">Ŝanĝspuriloj ne ensalutintaj al:</string>
-    <string name="what_should_backup">Kion vi volas savkopii\?</string>
+    <string name="what_should_backup">Kion vi volas savkopii?</string>
     <string name="progress">Progreso</string>
     <string name="clear_chapter_cache">Viŝi kaŝmemoron de ĉapitroj</string>
     <string name="used_">Uzata: %1$s</string>
@@ -298,7 +297,7 @@
     <string name="open_source_licenses">Malfermitkodaj permesiloj</string>
     <string name="log_in_to_">Ensaluti al %1$s</string>
     <string name="log_out">Elsaluti</string>
-    <string name="log_out_from_">Elsaluti el %1$s\?</string>
+    <string name="log_out_from_">Elsaluti el %1$s?</string>
     <string name="successfully_logged_out">Vi nun estas elsalutita</string>
     <string name="download_paused">Elŝutito paŭzigita</string>
     <string name="download_complete">Elŝutado finita</string>
@@ -349,7 +348,7 @@
     <string name="select_inverse">Elekti inverse</string>
     <string name="clear_history">Viŝi historion</string>
     <string name="clear_history_completed">Historio viŝita</string>
-    <string name="clear_history_confirmation">Ĉu vi certas\? La tuta historio forigos.</string>
+    <string name="clear_history_confirmation">Ĉu vi certas? La tuta historio forigos.</string>
     <string name="pref_manage_notifications">Administri sciigojn</string>
     <string name="downloaded_chapters">Elŝutitaj ĉapitroj</string>
     <string name="pref_update_only_non_completed">Nur ĝisdatigi okazantaj mangaojn</string>

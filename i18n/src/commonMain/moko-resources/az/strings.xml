@@ -45,7 +45,7 @@
     <string name="chapters">Bölümlər</string>
     <string name="marked_as_read">Oxundu olaraq işarələndi</string>
     <string name="chapters_removed">Bölümlər silindi.</string>
-    <string name="remove_all_downloads">Bütün endirilənlər silinsin\?</string>
+    <string name="remove_all_downloads">Bütün endirilənlər silinsin?</string>
     <string name="no_chapters_to_delete">Silmək üçün bölüm yoxdur</string>
     <string name="by_source_order">Mənbə sırasıyla</string>
     <string name="by_chapter_number">Bölüm nömrəsi ilə</string>
