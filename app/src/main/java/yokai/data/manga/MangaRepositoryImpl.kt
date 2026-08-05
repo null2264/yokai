@@ -36,8 +36,10 @@ class MangaRepositoryImpl(private val handler: DatabaseHandler) : MangaRepositor
     override suspend fun getLibraryManga(): List<LibraryManga> =
         handler.awaitList { library_viewQueries.findAll(LibraryManga::mapper) }
 
+    // Uses findAllAsFlow which excludes description to avoid CursorWindow overflow
+    // (2MB limit) when the flow re-emits frequently due to background downloads.
     override fun getLibraryMangaAsFlow(): Flow<List<LibraryManga>> =
-        handler.subscribeToList { library_viewQueries.findAll(LibraryManga::mapper) }
+        handler.subscribeToList { library_viewQueries.findAllAsFlow(LibraryManga::flowMapper) }
 
     override suspend fun getDuplicateFavorite(title: String, source: Long): Manga? =
         handler.awaitFirstOrNull { mangasQueries.findDuplicateFavorite(title.lowercase(), source, Manga::mapper) }
@@ -47,7 +49,7 @@ class MangaRepositoryImpl(private val handler: DatabaseHandler) : MangaRepositor
             partialUpdate(update)
             true
         } catch (e: Exception) {
-            Logger.e { "Failed to update manga with id '${update.id}'" }
+            Logger.e(e) { "Failed to update manga with id '${update.id}'" }
             false
         }
     }
