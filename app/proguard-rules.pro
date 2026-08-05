@@ -19,6 +19,7 @@
 -keep,allowoptimization class uy.kohesive.injekt.** { public protected *; }
 -keep,allowoptimization class org.koin.** { public protected *; }
 -keep,allowoptimization class eu.davidea.flexibleadapter.** { public protected *; }
+-keep,allowoptimization class com.squareup.zstd.** { public protected *; }
 -keep class io.requery.android.database.** { public protected *; }
 
 # From extensions-lib
@@ -61,18 +62,6 @@
 ##---------------Begin: proguard configuration for okhttp  ----------
 -keepclasseswithmembers class okhttp3.MultipartBody$Builder { *; }
 ##---------------End: proguard configuration for okhttp  ----------
-
-# zstd-kmp (via okhttp-zstd) — used by extension-lib 1.6 CompressionInterceptor.
-# Native libzstd-kmp.so is packaged, but R8 strips Java/JNI classes in release/nightly
-# because the host never calls them directly (extensions do at runtime). Without these
-# keeps, FindClass(ZstdCompressor) aborts the process (SIGABRT).
-# zstd-kmp 0.4.0 ships no consumer ProGuard rules.
--keep class com.squareup.zstd.** { *; }
--keepclassmembers class com.squareup.zstd.** {
-    native <methods>;
-    *;
-}
--dontwarn com.squareup.zstd.**
 
 ##---------------Begin: proguard configuration for kotlinx.serialization  ----------
 -keepattributes *Annotation*, InnerClasses
