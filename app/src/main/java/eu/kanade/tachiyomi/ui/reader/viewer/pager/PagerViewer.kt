@@ -73,11 +73,6 @@ abstract class PagerViewer(val activity: ReaderActivity) : BaseViewer {
                 awaitingIdleViewerChapters?.let { viewerChapters ->
                     setChaptersDoubleShift(viewerChapters)
                     awaitingIdleViewerChapters = null
-                    if (viewerChapters.currChapter.pages?.size == 1) {
-                        adapter.nextTransition?.to?.let {
-                            activity.requestPreloadChapter(it)
-                        }
-                    }
                 }
             }
         }
@@ -316,6 +311,15 @@ abstract class PagerViewer(val activity: ReaderActivity) : BaseViewer {
         pager.addOnPageChangeListener(pagerListener)
         // Since we removed the listener while shifting, call page change to update the ui
         onPageChange(pager.currentItem)
+
+        // When the current chapter has a single page, the forward/backward preload that is normally
+        // triggered by scrolling onto a transition page never happens because the lone page settles
+        // at idle. Preload the adjacent chapters here so the user can swipe out of the chapter in
+        // either direction (see issue #617).
+        if (chapters.currChapter.pages?.size == 1) {
+            adapter.prevTransition?.to?.let { activity.requestPreloadChapter(it) }
+            adapter.nextTransition?.to?.let { activity.requestPreloadChapter(it) }
+        }
     }
 
     fun updateShifting(page: ReaderPage? = null) {
