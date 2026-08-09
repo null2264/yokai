@@ -448,27 +448,29 @@ internal class ExtensionInstaller(private val context: Context) {
             // Avoid events for downloads we didn't request
             if (id !in activeDownloads.values) return
 
-            val uri = downloadManager.getUriForDownloadedFile(id)
-
-            val pkgName = activeDownloads.entries.find { id == it.value }?.key
-            // Set next installation step
-            if (uri != null && pkgName != null) {
-                emitToFlow(pkgName, ExtensionIntallInfo(InstallStep.Loading, null))
-            } else if (pkgName != null) {
-                Logger.e { "Couldn't locate downloaded APK" }
-                emitToFlow(pkgName, ExtensionIntallInfo(InstallStep.Error, null))
-                return
-            }
-
+            val pkgName = activeDownloads.entries.find { id == it.value }?.key ?: return
             val query = DownloadManager.Query().setFilterById(id)
             downloadManager.query(query).use { cursor ->
-                if (cursor.moveToFirst()) {
-                    val localUri = cursor.getString(
-                        cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI),
-                    ).removePrefix(FILE_SCHEME)
-
-                    installApk(id, File(localUri).getUriCompat(context))
+                if (!cursor.moveToFirst()) {
+                    Logger.e { "Downloaded extension row was unavailable" }
+                    emitToFlow(pkgName, ExtensionIntallInfo(InstallStep.Error, null))
+                    return
                 }
+
+                val status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
+                val reason = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_REASON))
+                val localUri = completedDownloadUri(
+                    status,
+                    cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI)),
+                )
+                if (localUri == null) {
+                    Logger.e { "Couldn't locate downloaded APK: status=$status reason=$reason" }
+                    emitToFlow(pkgName, ExtensionIntallInfo(InstallStep.Error, null))
+                    return
+                }
+
+                emitToFlow(pkgName, ExtensionIntallInfo(InstallStep.Loading, null))
+                installApk(id, File(localUri.removePrefix(FILE_SCHEME)).getUriCompat(context))
             }
         }
     }
@@ -478,4 +480,8 @@ internal class ExtensionInstaller(private val context: Context) {
         const val EXTRA_DOWNLOAD_ID = "ExtensionInstaller.extra.DOWNLOAD_ID"
         const val FILE_SCHEME = "file://"
     }
+}
+
+internal fun completedDownloadUri(status: Int, localUri: String?): String? {
+    return localUri?.takeIf { status == DownloadManager.STATUS_SUCCESSFUL && it.isNotBlank() }
 }
