@@ -294,12 +294,9 @@ internal object ExtensionLoader {
             return LoadResult.Error
         }
 
-        // tachiyomix.extensionLib metadata, else versionName. String→Double avoids float precision.
-        val libVersion = metaData.getString(METADATA_EXTENSION_LIB)?.toDoubleOrNull()
-            ?: metaData.getFloat(METADATA_EXTENSION_LIB)
-                .takeUnless { it == 0.0f }
-                ?.toString()
-                ?.toDouble()
+        // Repositories publish this metadata as either a String or Float. Reading it through
+        // Bundle.get() avoids Android's ClassCastException warning on Float-valued extensions.
+        val libVersion = metaData.get(METADATA_EXTENSION_LIB)?.toString()?.toDoubleOrNull()
             ?: versionName.substringBeforeLast('.').toDoubleOrNull()
         if (libVersion == null || libVersion < LIB_VERSION_MIN || libVersion > LIB_VERSION_MAX) {
             Logger.w {
@@ -325,9 +322,9 @@ internal object ExtensionLoader {
             return LoadResult.Untrusted(extension)
         }
 
-        // 0 = Safe, 1 = Mixed, 2 = NSFW
-        val contentWarning = metaData.getString(METADATA_CONTENT_WARNING)?.toIntOrNull()
-            ?: metaData.getInt(METADATA_CONTENT_WARNING, 0)
+        // Repositories publish this metadata as either a String or Int.
+        val contentWarning = metaData.get(METADATA_CONTENT_WARNING)?.toString()?.toIntOrNull()
+            ?: 0
         val isNsfw = contentWarning > 0 || metaData.getInt(METADATA_NSFW) == 1
         if (!loadNsfwSource && isNsfw) {
             Logger.w { "NSFW extension $pkgName not allowed" }
