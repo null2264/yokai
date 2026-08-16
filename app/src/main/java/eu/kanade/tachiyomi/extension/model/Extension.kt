@@ -29,6 +29,7 @@ sealed class Extension {
         val isObsolete: Boolean = false,
         val isShared: Boolean,
         val repoUrl: String? = null,
+        val apkUrl: String? = null,
     ) : Extension()
 
     data class Available(
@@ -43,6 +44,7 @@ sealed class Extension {
         val iconUrl: String,
         val sources: List<AvailableSource>,
         val repoUrl: String? = null,
+        val apkUrl: String? = null,
     ) : Extension()
 
     @Serializable

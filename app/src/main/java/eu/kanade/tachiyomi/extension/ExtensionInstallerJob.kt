@@ -128,7 +128,7 @@ class ExtensionInstallerJob(val context: Context, workerParams: WorkerParameters
             }
         }
 
-        if (showUpdatedNotification && installedExtensions.size > 0) {
+        if (showUpdatedNotification && installedExtensions.isNotEmpty()) {
             notifier.showUpdatedNotification(installedExtensions, preferences.hideNotificationContent().get())
         }
         if (reRunUpdateCheck || installedExtensions.size != list.size) {

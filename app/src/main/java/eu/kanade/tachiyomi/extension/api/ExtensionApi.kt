@@ -149,6 +149,7 @@ internal class ExtensionApi {
                     apkName = apkName,
                     iconUrl = resources.iconUrl.ifEmpty { "$repoUrl/icon/${ext.packageName}.png" },
                     repoUrl = repoUrl,
+                    apkUrl = resources.apkUrl,
                 )
             }
     }
@@ -177,6 +178,7 @@ internal class ExtensionApi {
     }
 
     fun getApkUrl(extension: ExtensionManager.ExtensionInfo): String {
+        if (extension.apkUrl != null) return extension.apkUrl
         return "${extension.repoUrl}/apk/${extension.apkName}"
     }
 
