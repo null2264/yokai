@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <plurals name="category_plural">
         <item quantity="one">%d კატეგორია</item>
         <item quantity="other">%d კატეგორია</item>
     </plurals>
-
     <plurals name="extension_updates_available">
         <item quantity="one">ხელმისაწვდომია გაფართოების განახლება</item>
         <item quantity="other">ხელმისაწვდომია %d გაფართოების განახლება</item>
     </plurals>
-
     <plurals name="restore_completed_message">
         <item quantity="one">დასრულების დრო %1$s. %2$s შეცდომა</item>
         <item quantity="other">დასრულების დრო %1$s. %2$s შეცდომა</item>
     </plurals>
-
     <plurals name="for_n_titles">
         <item quantity="one">%d ნაწარმოებისთვის</item>
         <item quantity="other">%d ნაწარმოებისთვის</item>
     </plurals>
-
     <plurals name="after_minutes">
         <item quantity="one">%1$s წუთის შემდეგ</item>
         <item quantity="other">%1$s წუთის შემდეგ</item>
     </plurals>
-
     <plurals name="chapters_plural">
         <item quantity="one">1 თავი</item>
         <item quantity="other">%1$s თავი</item>

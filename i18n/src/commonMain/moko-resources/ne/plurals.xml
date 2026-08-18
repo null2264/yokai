@@ -41,8 +41,8 @@
         <item quantity="other">%d भाषाहरू</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">%1$d डाउनलोड गरिएको अध्याय हटाउनुहुन्छ\?</item>
-        <item quantity="other">%1$d डाउनलोड गरिएका अध्यायहरू हटाउनुहुन्छ\?</item>
+        <item quantity="one">%1$d डाउनलोड गरिएको अध्याय हटाउनुहुन्छ?</item>
+        <item quantity="other">%1$d डाउनलोड गरिएका अध्यायहरू हटाउनुहुन्छ?</item>
     </plurals>
     <plurals name="_updates_pending">
         <item quantity="one">%d अपडेट विचाराधीन</item>
@@ -65,25 +65,20 @@
         <item quantity="other">%1$d पृष्ठहरू</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">स्रोतबाट एउटा अध्याय हटाइयो:
-\n%2$s
-\nयसको डाउनलोड हटाउने हो\?</item>
-        <item quantity="other">%1$s अध्यायहरू स्रोतबाट हटाइएका छन्:
-\n%2$s
-\n
-\nतिनीहरूका डाउनलोडहरू हटाउने हो\?</item>
+        <item quantity="one">स्रोतबाट एउटा अध्याय हटाइयो: \n%2$s \nयसको डाउनलोड हटाउने हो?</item>
+        <item quantity="other">%1$s अध्यायहरू स्रोतबाट हटाइएका छन्: \n%2$s \n \nतिनीहरूका डाउनलोडहरू हटाउने हो?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="one">%d श्रृङ्खला स्थानान्तरण भयो</item>
         <item quantity="other">%d श्रृङ्खला स्थानान्तरण भयो</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">%1$d%2$s श्रृङ्खला प्रतिलिपि गर्ने हो\?</item>
-        <item quantity="other">%1$d%2$s श्रृङ्खला प्रतिलिपि गर्ने हो\?</item>
+        <item quantity="one">%1$d%2$s श्रृङ्खला प्रतिलिपि गर्ने हो?</item>
+        <item quantity="other">%1$d%2$s श्रृङ्खला प्रतिलिपि गर्ने हो?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">%1$d%2$s श्रृङ्खला स्थानान्तरण गर्ने हो\?</item>
-        <item quantity="other">%1$d%2$s श्रृङ्खला स्थानान्तरण गर्ने हो\?</item>
+        <item quantity="one">%1$d%2$s श्रृङ्खला स्थानान्तरण गर्ने हो?</item>
+        <item quantity="other">%1$d%2$s श्रृङ्खला स्थानान्तरण गर्ने हो?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">सफाई सक्यो। %d फोल्डर हटाइयो</item>

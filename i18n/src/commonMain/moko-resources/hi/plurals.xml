@@ -25,8 +25,8 @@
         <item quantity="other">अध्यायों %1$s</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">%1$d डाउनलोड अध्याय को निकालें\?</item>
-        <item quantity="other">%1$d डाउनलोड अध्यायों को निकालें\?</item>
+        <item quantity="one">%1$d डाउनलोड अध्याय को निकालें?</item>
+        <item quantity="other">%1$d डाउनलोड अध्यायों को निकालें?</item>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">%d शीर्षक के लिए</item>

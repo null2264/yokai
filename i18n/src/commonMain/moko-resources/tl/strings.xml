@@ -162,7 +162,7 @@
     <string name="dodge_lighten">Iwas / Liwanag (Dodge / Lighten)</string>
     <string name="burn_darken">Sunog / Dilim (Burn / Darken)</string>
     <string name="help">Tulong</string>
-    <string name="what_should_backup">Ano ang gusto mong i-backup\?</string>
+    <string name="what_should_backup">Ano ang gusto mong i-backup?</string>
     <string name="restoring_backup">Nire-restore ang backup</string>
     <string name="clear_chapter_cache">Linisin ang cache ng kabanata</string>
     <string name="used_">Nagamit: %1$s</string>
@@ -171,7 +171,7 @@
     <string name="cookies_cleared">Nalinis ang mga cookies</string>
     <string name="clear_database">Linisin ang database</string>
     <string name="clear_database_summary">Burahin ang mga manga at kabanatang wala sa iyong library</string>
-    <string name="clear_database_confirmation">Sigurado ka ba\? Mawawala ang mga nabasang kabanata at ang daloy ng mga manga na wala sa aklatan</string>
+    <string name="clear_database_confirmation">Sigurado ka ba? Mawawala ang mga nabasang kabanata at ang daloy ng mga manga na wala sa aklatan</string>
     <string name="clear_database_completed">Binura ang mga tala</string>
     <string name="refresh_library_metadata">I-refresh ang metadata ng aklatan</string>
     <string name="updates_covers_genres_desc">Ini-a-update ang mga pabalat, dyanra, paglalarawan, at status information ng manga</string>
@@ -231,7 +231,7 @@
     <string name="page_">Pahina: %1$d</string>
     <string name="next_chapter_not_found">Hindi nakita ang susunod na kabanata</string>
     <string name="decode_image_error">Hindi ma-decode ang larawan</string>
-    <string name="use_image_as_cover">Gusto mo bang i-set ang larawang ito bilang pabalat\?</string>
+    <string name="use_image_as_cover">Gusto mo bang i-set ang larawang ito bilang pabalat?</string>
     <string name="finished_chapter">Natapos:</string>
     <string name="current_chapter">Kasalukuyan:</string>
     <string name="next_title">Susunod:</string>
@@ -285,11 +285,9 @@
     <string name="only_search_pinned_when">Maghanap lamang sa mga nakamarkang pinagkukunan</string>
     <string name="check_for_extension_updates">Maghanap ng update para sa mga extension</string>
     <string name="pref_global_search">Pangkalahatang Paghahanap</string>
-    <string name="delete_all_covers__not_in_library_used_">Burahin lahat ng naka-cache na pabalat na wala sa iyong library
-\nKasalukuyang ginagamit: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Burahin lahat ng naka-cache na pabalat na wala sa iyong library \nKasalukuyang ginagamit: %1$s</string>
     <string name="clear_cached_covers_non_library">Burahin ang mga naka-cache na pabalat na wala sa iyong library</string>
-    <string name="delete_old_covers_in_library_used_">Burahin ang mga luma at hindi na ginagamit na naka-cache na pabalat sa iyong library na pinalitan na.
-\nKasalukuyang ginagamit: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Burahin ang mga luma at hindi na ginagamit na naka-cache na pabalat sa iyong library na pinalitan na. \nKasalukuyang ginagamit: %1$s</string>
     <string name="clean_up_cached_covers">Linisin ang naka-cache na pabalat</string>
     <string name="battery_optimization_disabled">Naka-disable na ang battery optimization</string>
     <string name="disable_if_issues_with_updating">I-disable ito kapag ikaw ay nakararanas ng aberya sa pag-update o restore ng iyong library</string>

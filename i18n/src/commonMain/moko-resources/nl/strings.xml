@@ -197,7 +197,7 @@
     <string name="categories_to_include_in_global_update">Categorieën om op te nemen in globale update</string>
     <string name="keep_screen_on">Automatisch dimmen uitschakelen</string>
     <string name="categories_to_include_in_download">Categorieën om op te nemen in de download</string>
-    <string name="clear_database_confirmation">Weet je het zeker\? Gelezen hoofdstukken en voortgang voor items die niet in de bibliotheek zitten zullen verloren gaan</string>
+    <string name="clear_database_confirmation">Weet je het zeker? Gelezen hoofdstukken en voortgang voor items die niet in de bibliotheek zitten zullen verloren gaan</string>
     <string name="clear_database_completed">Database geleegd</string>
     <string name="ongoing">Lopend</string>
     <string name="reading">Aan het lezen</string>
@@ -345,7 +345,7 @@
     <string name="ask_on_chapters_page">Verwijderen tijdens globale updates, vragen op de hoofdstukkenpagina</string>
     <string name="last_read_">Laatst gelezen %1$s</string>
     <string name="reset_all_chapters_for_this_">Stel alle hoofdstukken voor deze %1$s opnieuw in</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Dit verwijdert de datum waarop \"%1$s\" is gelezen. Weet je het zeker\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Dit verwijdert de datum waarop \"%1$s\" is gelezen. Weet je het zeker?</string>
     <string name="newly_added">Nieuw toegevoegd</string>
     <string name="recents">Nieuwste</string>
     <string name="auto_refresh_covers_summary">Omslagen in bibliotheek ook verversen bij het bijwerken van de bibliotheek</string>
@@ -385,7 +385,7 @@
     <string name="add_categories">Categorieën toevoegen</string>
     <string name="already_in_category">Manga zit al in deze categorie</string>
     <string name="confirm_category_deletion_message">Manga in deze categorie worden verplaatst naar de standaardcategorie.</string>
-    <string name="confirm_category_deletion">Categorie verwijderen\?</string>
+    <string name="confirm_category_deletion">Categorie verwijderen?</string>
     <string name="category_is_empty">Categorie is leeg</string>
     <string name="create_new_category">Maak nieuwe categorie aan</string>
     <string name="_already_in_queue">%1$s staat al in de wachtrij</string>
@@ -427,11 +427,9 @@
     <string name="match_enabled_sources">Gelijk met ingeschakelde bronnen</string>
     <string name="match_pinned_sources">Gelijk met vastgepinde bronnen</string>
     <string name="only_search_pinned_when">Zoek alleen in vastgepinde bronnen</string>
-    <string name="delete_all_covers__not_in_library_used_">Verwijder covers die niet in je bibliotheek staan
-\nOp dit moment gebruikt: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Verwijder covers die niet in je bibliotheek staan \nOp dit moment gebruikt: %1$s</string>
     <string name="clear_cached_covers_non_library">Verwijder tijdelijke covers die niet in bibliotheek staan</string>
-    <string name="delete_old_covers_in_library_used_">Verwijder oude en ongebruikte covers van manga in je bibliotheek die zijn vervangen.
-\nOp dit moment gebruikt: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Verwijder oude en ongebruikte covers van manga in je bibliotheek die zijn vervangen. \nOp dit moment gebruikt: %1$s</string>
     <string name="clean_up_cached_covers">Tijdelijke covers opschonen</string>
     <string name="disable_if_issues_with_updating">Schakel dit uit als je problemen ervaart bij het updaten of herstellen van je bibliotheek</string>
     <string name="no_folders_to_cleanup">Geen mappen om op te schonen</string>
@@ -446,7 +444,7 @@
     <string name="restore_error">Fout bij het herstellen van de back-up</string>
     <string name="white_theme">Puur wit</string>
     <string name="skipping_">(%1$d overgeslagen)</string>
-    <string name="stop_migrating">Migratie stoppen\?</string>
+    <string name="stop_migrating">Migratie stoppen?</string>
     <string name="no_alternatives_found">Geen alternatieven gevonden</string>
     <string name="no_chapters_found_for_migration">Geen hoofdstukken gevonden, deze manga kan niet gebruikt worden voor migratie</string>
     <string name="migrate_">Migreer %1$s</string>
@@ -491,13 +489,13 @@
     <string name="show_downloaded_chapters">Gedownloade hoofdstukken weergeven</string>
     <string name="show_bookmarked_chapters">Hoofdstukken met bladwijzers weergeven</string>
     <string name="show_all">Alles weergeven</string>
-    <string name="add_x_to_library">%1$s aan bibliotheek toevoegen\?</string>
+    <string name="add_x_to_library">%1$s aan bibliotheek toevoegen?</string>
     <string name="all_but_bookmarked_chapters">Alle hoofdstukken, behalve bladwijzers</string>
     <string name="all_read_chapters">Alle gelezen hoofdstukken</string>
     <string name="search_chapters">Hoofdstukken zoeken</string>
     <string name="select_ending_chapter">Selecteer het eindhoofdstuk</string>
     <string name="select_starting_chapter">Selecteer het beginhoofdstuk</string>
-    <string name="mark_all_chapters_as_read">Alle hoofdstukken markeren als gelezen\?</string>
+    <string name="mark_all_chapters_as_read">Alle hoofdstukken markeren als gelezen?</string>
     <string name="no_description">Geen beschrijving</string>
     <string name="add_to_library">Toevoegen aan bibliotheek</string>
     <string name="season_">Seizoen %1$d</string>
@@ -521,7 +519,7 @@
     <string name="all_sources">Alle bronnen</string>
     <string name="search_extensions">Extensies zoeken…</string>
     <string name="in_library">In Bibliotheek</string>
-    <string name="reset_chapter_question">Hoofdstuk terugzetten\?</string>
+    <string name="reset_chapter_question">Hoofdstuk terugzetten?</string>
     <string name="search_recents">Zoek nieuwste…</string>
     <string name="view_all_updates">Bekijk alle updates</string>
     <string name="view_history">Bekijk geschiedenis</string>
@@ -554,8 +552,7 @@
     <string name="locale">Landinstelling</string>
     <string name="automatic_backups">Automatische backups</string>
     <string name="invalid_backup_file">Ongeldig backupbestand</string>
-    <string name="invalid_backup_file_type">Ongeldig type back-upbestand: %1$s
-\nDe bestandsnaam moet eindigen op .proto.gz of .json.</string>
+    <string name="invalid_backup_file_type">Ongeldig type back-upbestand: %1$s \nDe bestandsnaam moet eindigen op .proto.gz of .json.</string>
     <string name="backup_has_no_manga">Back-up bevat geen manga.</string>
     <string name="restore_missing_sources">Missende bronnen:</string>
     <string name="restore_missing_trackers">Niet-ingelogde trackers:</string>
@@ -578,9 +575,7 @@
     <string name="menu">menu</string>
     <string name="enable">Inschakelen</string>
     <string name="whats_new_this_release">Wat is er nieuw in deze versie</string>
-    <string name="restore_content_full">Data uit het back-upbestand zal worden teruggezet.
-\n
-\nJe zult missende extensies opnieuw moeten installeren, en opnieuw moeten inloggen bij de trackingdiensten om deze weer te gebruiken.</string>
+    <string name="restore_content_full">Data uit het back-upbestand zal worden teruggezet. \n \nJe zult missende extensies opnieuw moeten installeren, en opnieuw moeten inloggen bij de trackingdiensten om deze weer te gebruiken.</string>
     <string name="restore_in_progress">Er wordt al een back-up hersteld</string>
     <string name="backup_in_progress">Er wordt al een back-up gemaakt</string>
     <string name="pressing_back_to_start">Terug drukken naar startscherm</string>
@@ -590,7 +585,7 @@
     <string name="hide_bottom_nav">Onderste navigatiebalk automatisch verbergen</string>
     <string name="last_used_library_recents">Laatst gebruikt (Bibliotheek of Nieuwste)</string>
     <string name="custom_manga_info">Aangepaste manga-informatie</string>
-    <string name="mark_all_chapters_as_unread">Alle hoofstukken als ongelezen markeren\?</string>
+    <string name="mark_all_chapters_as_unread">Alle hoofstukken als ongelezen markeren?</string>
     <string name="cutout_ignore">Uitgeknipte gebieden negeren</string>
     <string name="start_past_cutout">Beginnen na het uitgeknipte gebied</string>
     <string name="pad_cutout_areas">Uitgesneden gebied opvullen</string>
@@ -700,7 +695,7 @@
     <string name="your_library">Jouw bibliotheek</string>
     <string name="release_page">Uitgavepagina</string>
     <string name="no_chapters_to_delete">Geen hoofdstukken om te verwijderen</string>
-    <string name="remove_all_downloads">Alle downloads verwijderen\?</string>
+    <string name="remove_all_downloads">Alle downloads verwijderen?</string>
     <string name="no_pages_found">Geen pagina\'s gevonden</string>
     <string name="mark_range_as_unread">Markeer een reeks hoofdstukken als ongelezen</string>
     <string name="mark_range_as_read">Markeer een reeks hoofstukken als gelezen</string>
@@ -756,7 +751,7 @@
     <string name="some_extensions_may_prompt">Mogelijk wordt er eerst nog door extensies gevraagd om geïnstalleerd te worden.</string>
     <string name="update_all">Alles updaten</string>
     <string name="could_not_install_update">Kon update niet installeren</string>
-    <string name="remove_previous_tracker">Verwijder vorige tracker\?</string>
+    <string name="remove_previous_tracker">Verwijder vorige tracker?</string>
     <string name="select_an_entry">Selecteer een item</string>
     <string name="recently_installed">Recentelijk geïnstalleerd</string>
     <string name="recently_updated">Recentelijk bijgewerkt</string>
@@ -791,7 +786,7 @@
     <string name="show_in_sources_and_extensions">Weergeven in bronnen- en extensielijst</string>
     <string name="log_in">Log in</string>
     <string name="log_out">Log uit</string>
-    <string name="log_out_from_">Uitloggen bij %1$s\?</string>
+    <string name="log_out_from_">Uitloggen bij %1$s?</string>
     <string name="scanlators">Scanlators</string>
     <string name="channel_errors">Fouten</string>
     <string name="keep_in_">In %1$s laten</string>
@@ -826,9 +821,7 @@
     <string name="descending">Aflopend</string>
     <string name="clear_database_source_item_count">%1$d items niet in de bibliotheek in database</string>
     <string name="database_clean">Database leeg</string>
-    <string name="confirm_manga_add_duplicate">Je hebt een manga in je bibliotheek met dezelfde naam maar van een andere bron (%1$s).
-\n
-\nWil je nog steeds doorgaan\?</string>
+    <string name="confirm_manga_add_duplicate">Je hebt een manga in je bibliotheek met dezelfde naam maar van een andere bron (%1$s). \n \nWil je nog steeds doorgaan?</string>
     <string name="select_inverse">Selectie omkeren</string>
     <string name="cover_only_grid">Alleen-cover rooster</string>
     <string name="notification_update_error">%1$d update(s) mislukt</string>
@@ -840,7 +833,7 @@
     <string name="tap_to_see_details">Klik om details te weergeven</string>
     <string name="clear_history">Geschiedenis wissen</string>
     <string name="clear_history_completed">Geschiedenis verwijderd</string>
-    <string name="clear_history_confirmation">Weet je dit zeker\? Alle geschiedenis zal verloren gaan.</string>
+    <string name="clear_history_confirmation">Weet je dit zeker? Alle geschiedenis zal verloren gaan.</string>
     <string name="backup_restore_invalid_uri">Fout: lege URI</string>
     <string name="backup_info">Het is erg aangeraden om automatische back-ups te gebruiken en deze op meerdere plekken te bewaren.</string>
     <string name="pref_manage_notifications">Meldingen beheren</string>
@@ -899,8 +892,7 @@
     <string name="split_tall_images">Splits hoge afbeeldingen</string>
     <string name="open_in_app">Openen in app</string>
     <string name="battery_not_low">Batterij niet bijna leeg</string>
-    <string name="downloads_swipe_tutorial">Downloads kunnen worden geannuleerd door ze weg te vegen
-\nVeeg over deze tip om deze te negeren</string>
+    <string name="downloads_swipe_tutorial">Downloads kunnen worden geannuleerd door ze weg te vegen \nVeeg over deze tip om deze te negeren</string>
     <string name="clear_db_exclude_read">Houd manga bij met gelezen hoofdstukken</string>
     <string name="downloaded_chapters">Gedownloade hoofdstukken</string>
     <string name="auto_download_while_reading">Automatisch downloaden tijdens het lezen</string>

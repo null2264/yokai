@@ -343,8 +343,7 @@
     <string name="locale">在地化</string>
     <string name="automatic_backups">自動備份</string>
     <string name="invalid_backup_file">無效的備份檔</string>
-    <string name="invalid_backup_file_type">無效的備份檔格式：%1$s
-\n副檔名應為 .proto.gz 或 .json。</string>
+    <string name="invalid_backup_file_type">無效的備份檔格式：%1$s \n副檔名應為 .proto.gz 或 .json。</string>
     <string name="backup_has_no_manga">此備份不含任何漫畫項目。</string>
     <string name="restore_missing_sources">遺失來源：</string>
     <string name="restore_missing_trackers">尚未登入至歷程平台：</string>
@@ -430,8 +429,8 @@
     <string name="search_chapters">搜尋章節</string>
     <string name="select_ending_chapter">選擇結束章節</string>
     <string name="select_starting_chapter">選擇開始章節</string>
-    <string name="mark_all_chapters_as_unread">標記全部章節為未讀\?</string>
-    <string name="mark_all_chapters_as_read">標記全部章節為已讀\?</string>
+    <string name="mark_all_chapters_as_unread">標記全部章節為未讀?</string>
+    <string name="mark_all_chapters_as_read">標記全部章節為已讀?</string>
     <string name="continue_reading">繼續閱讀</string>
     <string name="continue_reading_chapter_">繼續閱讀第%1$s章</string>
     <string name="start_reading_chapter_">開始閱讀第%1$s章</string>
@@ -447,7 +446,7 @@
     <string name="by_update_date">依照上傳時間排序</string>
     <string name="by_chapter_number">依照章節編號排序</string>
     <string name="by_source_order">依照來源排序</string>
-    <string name="remove_all_downloads">移除所有下載檔案\?</string>
+    <string name="remove_all_downloads">移除所有下載檔案?</string>
     <string name="removed_bookmark">移除書籤</string>
     <string name="not_bookmarked">未加入書籤</string>
     <string name="all_chapters_read">以下章節已讀</string>
@@ -496,9 +495,7 @@
     <string name="pauses_reading_history">暫停閱讀記錄</string>
     <string name="strawberry_daiquiri">草莓黛綺莉</string>
     <string name="pure_black_dark_mode">純黑深色模式</string>
-    <string name="restore_content_full">即將還原備份中的資料。
-\n
-\n隨後請安裝所有遺失的擴充套件並重新登入各歷程平台。</string>
+    <string name="restore_content_full">即將還原備份中的資料。 \n \n隨後請安裝所有遺失的擴充套件並重新登入各歷程平台。</string>
     <string name="show_in_sources_and_extensions">在來源和擴充套件清單中顯示</string>
     <string name="exclude_">排除：%s</string>
     <string name="include_">包含：%s</string>
@@ -545,9 +542,7 @@
     <string name="clear_database_source_item_count">資料庫中有 %1$d 個非收藏項目</string>
     <string name="database_clean">清理資料庫</string>
     <string name="select_inverse">反向選擇</string>
-    <string name="confirm_manga_add_duplicate">書櫃中已有一個來自不同來源 (%1$s) 的同名項目。
-\n
-\n你仍欲繼續嗎？</string>
+    <string name="confirm_manga_add_duplicate">書櫃中已有一個來自不同來源 (%1$s) 的同名項目。 \n \n你仍欲繼續嗎？</string>
     <string name="tap_to_see_details">輕觸以檢視詳細資訊</string>
     <string name="tap_to_learn_more">瞭解詳情</string>
     <string name="cover_only_grid">純封面格狀</string>
@@ -810,15 +805,13 @@
     <string name="length">長度</string>
     <string name="start_year">開始年份</string>
     <string name="change">更改</string>
-    <string name="delete_all_covers__not_in_library_used_">刪除所有已快取且不在圖書館中的封面。
-\n目前使用：%1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">刪除所有已快取且不在圖書館中的封面。 \n目前使用：%1$s</string>
     <string name="local_titles">本地漫畫名稱</string>
     <string name="titles_in_global_update">全域更新中的漫畫名稱</string>
     <string name="starting_screen">起始頁面</string>
     <string name="series_opens_new_chapters">漫畫系列快捷方式會開啟新的章節</string>
     <string name="no_folders_to_cleanup">沒有需要清理的資料夾</string>
-    <string name="delete_old_covers_in_library_used_">刪除已更新漫畫的過期和未使用的緩存封面。
-\n目前使用：%1$s</string>
+    <string name="delete_old_covers_in_library_used_">刪除已更新漫畫的過期和未使用的緩存封面。 \n目前使用：%1$s</string>
     <string name="remove_crop">移除裁剪</string>
     <string name="vertically">縱向</string>
     <string name="both_axes">兩個軸</string>
@@ -888,8 +881,7 @@
     <string name="notify_extension_updated">通知擴充套件已更新</string>
     <string name="only_enable_enabled_for_migration">僅為遷移啟用當前已啟用的來源</string>
     <string name="migration_sources_changed">遷移來源已更改</string>
-    <string name="downloads_swipe_tutorial">您可以通過滑動來取消下載
-\n滑動此提示來關閉它</string>
+    <string name="downloads_swipe_tutorial">您可以通過滑動來取消下載 \n滑動此提示來關閉它</string>
     <string name="couldnt_download_low_space">由於磁碟空間不足，無法下載章節</string>
     <string name="mean_tracking_score">追蹤評分平均值</string>
     <string name="tags">標籤</string>

@@ -34,9 +34,7 @@
         <item quantity="other">次の未読の%d章</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">第%1$s章はソースから消去されています:
-\n%2$s
-\nダウンロードを削除しますか？</item>
+        <item quantity="other">第%1$s章はソースから消去されています: \n%2$s \nダウンロードを削除しますか？</item>
     </plurals>
     <plurals name="migrate_manga">
         <item quantity="other">%1$d%2$sのシリーズを移行しますか？</item>
@@ -48,7 +46,7 @@
         <item quantity="other">%dのシリーズを移行しました</item>
     </plurals>
     <plurals name="restore_completed_message">
-        <item quantity="other">%1$sで完成済み　%2$s件のエラーが発生しました</item>
+        <item quantity="other">%1$sで完成済み %2$s件のエラーが発生しました</item>
     </plurals>
     <plurals name="cache_cleared">
         <item quantity="other">キャッシュをクリアしました。%dファイルが削除されました</item>

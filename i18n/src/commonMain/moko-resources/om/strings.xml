@@ -31,7 +31,7 @@
     <string name="local_invalid_format">Akkaataa boqonnaa sirrii hin taane</string>
     <string name="no_chapters_error">Boqonnaawwan hin argamne</string>
     <string name="no_pages_found">Fuulli hin argamne</string>
-    <string name="remove_all_downloads">Kan bu\'aan hunda balleessuu\?</string>
+    <string name="remove_all_downloads">Kan bu\'aan hunda balleessuu?</string>
     <string name="by_chapter_number">Lakkoofsa boqonnaatiin</string>
     <string name="by_update_date">Guyyaa olkaa\'ameen</string>
     <string name="category">Ramaddii</string>
@@ -49,7 +49,7 @@
     <string name="new_category">Ramaddii haaraa</string>
     <string name="category_is_empty">Ramaddiin duwwaa dha</string>
     <string name="default_category">Gosa durtii</string>
-    <string name="confirm_category_deletion">Ramaddichaa haquu\?</string>
+    <string name="confirm_category_deletion">Ramaddichaa haquu?</string>
     <string name="confirm_category_deletion_message">Mangaan ramaddii kana keessa jiru gara ramaddii durtiitti ni ce\'a.</string>
     <string name="already_in_category">Manga duraanuu ramaddii keessa jira</string>
     <string name="add_edit_categories">Ramaddiiwwan Dabaluu/Gulaaluu</string>

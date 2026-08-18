@@ -7,7 +7,7 @@
         <item quantity="other">%d danh mục</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="other">Xóa %1$d chương đã tải\?</item>
+        <item quantity="other">Xóa %1$d chương đã tải?</item>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="other">Hoàn tất trong %1$s với %2$s lỗi</item>
@@ -25,15 +25,13 @@
         <item quantity="other">Đã di chuyển %d truyện</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="other">Sao chép %1$d%2$s \?</item>
+        <item quantity="other">Sao chép %1$d%2$s ?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="other">Di chuyển %1$d%2$s \?</item>
+        <item quantity="other">Di chuyển %1$d%2$s ?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">%1$s chương đã bị xoá khỏi nguồn:
-\n%2$s
-\nXoá những gì chúng dã tải\?</item>
+        <item quantity="other">%1$s chương đã bị xoá khỏi nguồn: \n%2$s \nXoá những gì chúng dã tải?</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="other">%1$d trang</item>

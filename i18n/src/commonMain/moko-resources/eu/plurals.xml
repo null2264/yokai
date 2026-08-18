@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Kendu kapitulu %1$d\?</item>
-        <item quantity="other">Kendu %1$d kapitulu\?</item>
+        <item quantity="one">Kendu kapitulu %1$d?</item>
+        <item quantity="other">Kendu %1$d kapitulu?</item>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="one">Kapitulu bat saltatzen, iturria falta da edo iragazia izan da</item>
@@ -21,21 +21,16 @@
         <item quantity="other">%d manga migratu dira</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Kapitulu bat iturritik kendua izan da:
-\n%2$s
-\nBere deskarga ezabatu\?</item>
-        <item quantity="other">%1$s kapitulu iturritik kenduak izan dira:
-\n%2$s
-\n
-\nHaien deskargak ezabatu\?</item>
+        <item quantity="one">Kapitulu bat iturritik kendua izan da: \n%2$s \nBere deskarga ezabatu?</item>
+        <item quantity="other">%1$s kapitulu iturritik kenduak izan dira: \n%2$s \n \nHaien deskargak ezabatu?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Migratu manga %1$d%2$s\?</item>
-        <item quantity="other">Migratu %1$d%2$s manga\?</item>
+        <item quantity="one">Migratu manga %1$d%2$s?</item>
+        <item quantity="other">Migratu %1$d%2$s manga?</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Kopiatu manga %1$d%2$s\?</item>
-        <item quantity="other">Kopiatu %1$d%2$s manga\?</item>
+        <item quantity="one">Kopiatu manga %1$d%2$s?</item>
+        <item quantity="other">Kopiatu %1$d%2$s manga?</item>
     </plurals>
     <plurals name="cleanup_done">
         <item quantity="one">Garbiketa egina. Karpeta %d kendu da</item>

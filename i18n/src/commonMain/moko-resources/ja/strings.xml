@@ -477,9 +477,7 @@
     <string name="removed_from_library">ライブラリから削除されました</string>
     <string name="show_">%1$sを表示</string>
     <string name="must_view_details_before_migration">この項目の詳細ページに目を通してから移行してください</string>
-    <string name="confirm_manga_add_duplicate">同じ名前で異なるソース（%1$s）の項目はすでにライブラリに存在します。
-\n
-\n続行しますか？</string>
+    <string name="confirm_manga_add_duplicate">同じ名前で異なるソース（%1$s）の項目はすでにライブラリに存在します。 \n \n続行しますか？</string>
     <string name="_copied_to_clipboard">%1$sをクリップボードにコピーしました</string>
     <string name="source_not_installed_">未インストールのソース：%1$s</string>
     <string name="no_description">説明がありません</string>
@@ -692,8 +690,7 @@
     <string name="backup_frequency">バックアップ頻度</string>
     <string name="max_auto_backups">最大自動バックアップ</string>
     <string name="invalid_backup_file">バックアップファイルは無効です</string>
-    <string name="invalid_backup_file_type">無効なバックアップ ファイル：%1$s
-\nファイル拡張子は.proto.gzもしくは.jsonであるよう確認してください。</string>
+    <string name="invalid_backup_file_type">無効なバックアップ ファイル：%1$s \nファイル拡張子は.proto.gzもしくは.jsonであるよう確認してください。</string>
     <string name="backup_has_no_manga">バックアップには項目が含まれていません。</string>
     <string name="backup_failed">バックアップできませんでした</string>
     <string name="empty_backup_error">バックアップできるライブラリ項目はありません</string>
@@ -702,9 +699,7 @@
     <string name="restore_error">バックアップの復元に失敗しました</string>
     <string name="restore_missing_sources">ソースがありません：</string>
     <string name="restore_missing_trackers">ログインしていないトラッカー：</string>
-    <string name="restore_content_full">バックアップファイルからデータを復旧します。
-\n
-\n後で手動で必要な拡張機能をインストールし、使用したい追跡サービスにログインしてください。</string>
+    <string name="restore_content_full">バックアップファイルからデータを復旧します。 \n \n後で手動で必要な拡張機能をインストールし、使用したい追跡サービスにログインしてください。</string>
     <string name="restoring_backup_canceled">復元をキャンセルしました</string>
     <string name="backup_restore_invalid_uri">エラー：URIは空です</string>
     <string name="creating_backup">バックアップを作成中</string>
@@ -766,11 +761,9 @@
     <string name="disable_if_issues_with_updating">ライブラリの復元や更新に不具合が発生した場合無効にしてください</string>
     <string name="battery_optimization_disabled">バッテリー最適化は既に無効です</string>
     <string name="clean_up_cached_covers">キャッシュされたカバーをクリーンアップ</string>
-    <string name="delete_old_covers_in_library_used_">ライブラリの更新後に不要になった項目の古いカバーを削除します。
-\n現在使用中：%1$s</string>
+    <string name="delete_old_covers_in_library_used_">ライブラリの更新後に不要になった項目の古いカバーを削除します。 \n現在使用中：%1$s</string>
     <string name="clear_cached_covers_non_library">ライブラリにないキャッシュされたカバーをクリア</string>
-    <string name="delete_all_covers__not_in_library_used_">ライブラリにないキャッシュされたカバーを全て削除します。
-\n使用中: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">ライブラリにないキャッシュされたカバーを全て削除します。 \n使用中: %1$s</string>
     <string name="most_entries">項目数</string>
     <string name="select_uninstalled_sources">未インストールのソースを選択</string>
     <string name="pref_debug_info">デバッグ情報</string>
@@ -805,8 +798,7 @@
     <string name="confirm_delete_repo">リポジトリ「%s」を削除してもよろしいですか？</string>
     <string name="action_replace_repo">置き換え</string>
     <string name="action_replace_repo_title">署名キーのフィンガープリントは既に存在します</string>
-    <string name="action_replace_repo_message">リポジトリ %1$s は %2$s と同じ署名キー指紋を持っています。
-\nこれが予想される場合は %2$s が置換されますが、そうでない場合はリポジトリの管理者に連絡してください。</string>
+    <string name="action_replace_repo_message">リポジトリ %1$s は %2$s と同じ署名キー指紋を持っています。 \nこれが予想される場合は %2$s が置換されますが、そうでない場合はリポジトリの管理者に連絡してください。</string>
     <!-- About section -->
     <string name="version">バージョン</string>
     <string name="build_time">ビルド日時</string>
@@ -839,8 +831,7 @@
     <string name="cancel_all">全てキャンセル</string>
     <string name="move_series_to_top">シリーズをトップに移動</string>
     <string name="move_series_to_bottom">シリーズを一番下に移動</string>
-    <string name="downloads_swipe_tutorial">外へスワイプしてダウンロードをキャンセルできます
-\nこのTipsをスワイプして消せます</string>
+    <string name="downloads_swipe_tutorial">外へスワイプしてダウンロードをキャンセルできます \nこのTipsをスワイプして消せます</string>
     <string name="cancel_all_for_series">このシリーズの全項目をキャンセル</string>
     <string name="downloaded">ダウンロード済み</string>
     <string name="not_downloaded">未ダウンロード</string>
