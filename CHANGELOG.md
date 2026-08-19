@@ -10,6 +10,8 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ## [Unreleased]
 
+## [1.10.0]
+
 ### Additions
 - Add random library sort
 - Add the ability to save search queries
