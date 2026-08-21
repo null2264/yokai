@@ -11,7 +11,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 ## [Unreleased]
 
 ### Fixes
-- Persist extension-lib 1.6 source `memo` so chapters from sources like Asura, Kayn, Vortex, and Hive can open after a refresh (#691)
+- Add missing `memo` column for extension-lib 1.6 (#691) (@mFontecchio)
 
 ## [1.10.0]
 
