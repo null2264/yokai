@@ -22,6 +22,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Add markdown support to entry description (@luigidotmoe)
   - Fix text disappeared when it's surrounded by `<>` (@lalalasupa0)
 - Add support for extension-lib 1.6 (`KeiSource`) extensions (#643) (@mFontecchio)
+- Add support for Mihon's new extension store format (`index.pb`)  (#659, #656) (@mFontecchio)
 
 ### Changes
 - Temporarily disable log file
@@ -36,6 +37,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Long tap chapters on Reader now mark it as read (@lalalasupa0)
 - Fetch manga details and chapters together via `getMangaUpdate` for extension-lib 1.6 compatibility (@mFontecchio)
 - Accept extension repo URLs in more formats (base URL, `index.min.json`, `index.json`, `index.pb`, GitHub raw URLs) (@mFontecchio)
+- Bump minimum Android version to Android 8.x to completely fix `AbstractMethodError` for extensions compiled with kotlinx serialization v1.8.0 or newer
 
 ### Fixes
 - Allow users to bypass onboarding's permission step if Shizuku is installed
@@ -54,12 +56,9 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Fix extension download stuck on pending state
 - Only solve Cloudflare with WebView if it's not geoblock (@AwkwardPeak7)
 - Fix cover from LocalSource sometimes didn't load (@lalalasupa0)
-- Fix Keiyoushi extension repo (`index.pb`) being rejected as invalid (@mFontecchio)
 - Fix extension repo add failures not showing an error message (@mFontecchio)
 - Fix `CompressionInterceptor` crash when using extension-lib 1.6 sources (e.g. MangaPlus) (@mFontecchio)
-- Fix Keiyoushi extension catalog empty / all extensions marked obsolete after `index.min.json` was stubbed (#659, #656) (@mFontecchio)
-  - Fetch gzipped protobuf `index.pb` (with `index.min.json` fallback for legacy repos)
-- Fix `AbstractMethodError` (`GeneratedSerializer.typeParametersSerializers`) when browsing current Keiyoushi extensions (e.g. Pawchive) (#663) (@mFontecchio)
+- Fix `AbstractMethodError` (`GeneratedSerializer.typeParametersSerializers`) when browsing extensions compiled with kotlinx serialization v1.8.0 or newer  (#663) (@mFontecchio)
 
 ### Translation
 - Update translations from Weblate
@@ -125,7 +124,7 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 - Update okhttp monorepo to v5.4.0 (@mFontecchio)
   - Add okhttp-zstd
 - Update dependency com.squareup.okio:okio to v3.18.0 (@mFontecchio)
-- Update kotlinx.serialization to v1.11.0 (align with Mihon/Keiyoushi) (@mFontecchio)
+- Update kotlinx.serialization to v1.11.0 (@mFontecchio)
 - Update kotlin monorepo to v2.3.20 (@mFontecchio)
 
 ## [1.9.7.5]
