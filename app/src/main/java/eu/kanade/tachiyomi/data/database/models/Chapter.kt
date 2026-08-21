@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.data.database.models
 
 import eu.kanade.tachiyomi.source.model.SChapter
+import eu.kanade.tachiyomi.source.model.decodeMemo
 import java.io.Serializable
 import yokai.domain.chapter.models.ChapterUpdate
 
@@ -62,6 +63,7 @@ interface Chapter : SChapter, Serializable {
             sourceOrder: Long,
             dateFetch: Long,
             dateUpload: Long,
+            memo: String,
         ): Chapter = create().apply {
             this.id = id
             this.manga_id = mangaId
@@ -76,6 +78,7 @@ interface Chapter : SChapter, Serializable {
             this.source_order = sourceOrder.toInt()
             this.date_fetch = dateFetch
             this.date_upload = dateUpload
+            this.memo = memo.decodeMemo()
         }
     }
 

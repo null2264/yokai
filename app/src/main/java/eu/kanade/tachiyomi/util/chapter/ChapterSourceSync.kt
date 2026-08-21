@@ -5,6 +5,8 @@ import eu.kanade.tachiyomi.data.download.DownloadManager
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.source.Source
 import eu.kanade.tachiyomi.source.model.SChapter
+import eu.kanade.tachiyomi.source.model.encodeMemo
+import eu.kanade.tachiyomi.source.model.safeMemo
 import eu.kanade.tachiyomi.source.online.HttpSource
 import java.util.*
 import uy.kohesive.injekt.Injekt
@@ -110,6 +112,7 @@ suspend fun syncChaptersWithSource(
                     dateUpload = chapter.date_upload,
                     chapterNumber = chapter.chapter_number.toDouble(),
                     sourceOrder = chapter.source_order.toLong(),
+                    memo = chapter.safeMemo().encodeMemo(),
                 )
                 toChange.add(update)
             }
@@ -225,5 +228,6 @@ private fun shouldUpdateDbChapter(dbChapter: Chapter, sourceChapter: Chapter): B
         dbChapter.name != sourceChapter.name ||
         dbChapter.date_upload != sourceChapter.date_upload ||
         dbChapter.chapter_number != sourceChapter.chapter_number ||
-        dbChapter.source_order != sourceChapter.source_order
+        dbChapter.source_order != sourceChapter.source_order ||
+        dbChapter.safeMemo() != sourceChapter.safeMemo()
 }

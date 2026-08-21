@@ -14,4 +14,5 @@ data class ChapterUpdate(
     val sourceOrder: Long? = null,
     val dateFetch: Long? = null,
     val dateUpload: Long? = null,
+    val memo: String? = null,
 )

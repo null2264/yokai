@@ -10,6 +10,9 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ## [Unreleased]
 
+### Fixes
+- Add missing `memo` column for extension-lib 1.6 (#691) (@mFontecchio)
+
 ## [1.10.0]
 
 ### Additions

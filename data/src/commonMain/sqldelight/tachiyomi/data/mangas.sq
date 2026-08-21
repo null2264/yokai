@@ -20,7 +20,8 @@ CREATE TABLE mangas(
     date_added INTEGER,
     filtered_scanlators TEXT,
     update_strategy INTEGER NOT NULL DEFAULT 0,
-    cover_last_modified INTEGER NOT NULL DEFAULT 0
+    cover_last_modified INTEGER NOT NULL DEFAULT 0,
+    memo TEXT NOT NULL DEFAULT '{}'
 );
 
 CREATE INDEX mangas_url_index ON mangas(url);
@@ -59,8 +60,8 @@ WHERE favorite = 0 AND _id IN (
 );
 
 insert:
-INSERT INTO mangas (source, url, artist, author, description, genre, title, status, thumbnail_url, favorite, last_update, initialized, viewer, hide_title, chapter_flags, date_added, filtered_scanlators, update_strategy, cover_last_modified)
-VALUES (:source, :url, :artist, :author, :description, :genre, :title, :status, :thumbnailUrl, :favorite, :lastUpdate, :initialized, :viewer, :hideTitle, :chapterFlags, :dateAdded, :filteredScanlators, :updateStrategy, :coverLastModified);
+INSERT INTO mangas (source, url, artist, author, description, genre, title, status, thumbnail_url, favorite, last_update, initialized, viewer, hide_title, chapter_flags, date_added, filtered_scanlators, update_strategy, cover_last_modified, memo)
+VALUES (:source, :url, :artist, :author, :description, :genre, :title, :status, :thumbnailUrl, :favorite, :lastUpdate, :initialized, :viewer, :hideTitle, :chapterFlags, :dateAdded, :filteredScanlators, :updateStrategy, :coverLastModified, :memo);
 
 update:
 UPDATE mangas SET
@@ -82,7 +83,8 @@ UPDATE mangas SET
     date_added = coalesce(:dateAdded, date_added),
     filtered_scanlators = coalesce(:filteredScanlators, filtered_scanlators),
     update_strategy = coalesce(:updateStrategy, update_strategy),
-    cover_last_modified = coalesce(:coverLastModified, cover_last_modified)
+    cover_last_modified = coalesce(:coverLastModified, cover_last_modified),
+    memo = coalesce(:memo, memo)
 WHERE _id = :mangaId;
 
 selectLastInsertedRowId:

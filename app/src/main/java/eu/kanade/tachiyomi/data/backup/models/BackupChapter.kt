@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.data.backup.models
 
 import eu.kanade.tachiyomi.data.database.models.ChapterImpl
+import eu.kanade.tachiyomi.source.model.decodeMemoBytes
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.protobuf.ProtoNumber
 
@@ -20,6 +21,8 @@ data class BackupChapter(
     // chapterNumber is called number is 1.x
     @ProtoNumber(9) var chapterNumber: Float = 0F,
     @ProtoNumber(10) var sourceOrder: Int = 0,
+    // Matches Mihon for extension-lib 1.6 memo
+    @ProtoNumber(13) var memo: ByteArray = ByteArray(0),
 
     // J2K specific values
     @ProtoNumber(800) var pagesLeft: Int = 0,
@@ -37,6 +40,7 @@ data class BackupChapter(
             date_upload = this@BackupChapter.dateUpload
             source_order = this@BackupChapter.sourceOrder
             pages_left = this@BackupChapter.pagesLeft
+            memo = this@BackupChapter.memo.decodeMemoBytes()
         }
     }
 
@@ -55,6 +59,7 @@ data class BackupChapter(
             sourceOrder: Long,
             dateFetch: Long,
             dateUpload: Long,
+            memo: String,
         ) = BackupChapter(
             url = url,
             name = name,
@@ -67,6 +72,7 @@ data class BackupChapter(
             sourceOrder = sourceOrder.toInt(),
             dateFetch = dateFetch,
             dateUpload = dateUpload,
+            memo = memo.encodeToByteArray(),
         )
     }
 }
