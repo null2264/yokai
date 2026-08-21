@@ -5,6 +5,8 @@ import eu.kanade.tachiyomi.data.database.models.LibraryManga
 import eu.kanade.tachiyomi.data.database.models.MangaCategory
 import eu.kanade.tachiyomi.data.database.models.mapper
 import eu.kanade.tachiyomi.domain.manga.models.Manga
+import eu.kanade.tachiyomi.source.model.encodeMemo
+import eu.kanade.tachiyomi.source.model.safeMemo
 import kotlinx.coroutines.flow.Flow
 import yokai.data.DatabaseHandler
 import yokai.data.updateStrategyAdapter
@@ -85,6 +87,7 @@ class MangaRepositoryImpl(private val handler: DatabaseHandler) : MangaRepositor
                     filteredScanlators = update.filteredScanlators,
                     updateStrategy = update.updateStrategy?.let(updateStrategyAdapter::encode),
                     coverLastModified = update.coverLastModified,
+                    memo = update.memo,
                     mangaId = update.id,
                 )
             }
@@ -113,6 +116,7 @@ class MangaRepositoryImpl(private val handler: DatabaseHandler) : MangaRepositor
                 filteredScanlators = manga.filtered_scanlators,
                 updateStrategy = manga.update_strategy.let(updateStrategyAdapter::encode),
                 coverLastModified = manga.cover_last_modified,
+                memo = manga.safeMemo().encodeMemo(),
             )
             mangasQueries.selectLastInsertedRowId()
         }

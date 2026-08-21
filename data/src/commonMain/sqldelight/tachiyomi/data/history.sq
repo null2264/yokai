@@ -215,7 +215,8 @@ JOIN (
         NULL AS last_page_read,
         NULL AS pages_left,
         NULL AS chapter_number,
-        NULL AS source_order
+        NULL AS source_order,
+        NULL AS memo
 ) AS C
 WHERE favorite = 1
 AND lower(title) LIKE '%' || :search || '%'

@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.domain.manga.models
 
 import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.encodeMemo
 import eu.kanade.tachiyomi.source.model.safeMemo
 import java.util.Locale
 import yokai.domain.manga.models.MangaUpdate
@@ -218,6 +219,7 @@ interface Manga : SManga {
             dateAdded = date_added,
             filteredScanlators = filtered_scanlators,
             updateStrategy = update_strategy,
+            memo = safeMemo().encodeMemo(),
         )
     }
 

@@ -14,6 +14,7 @@ CREATE TABLE chapters(
     source_order INTEGER NOT NULL,
     date_fetch INTEGER NOT NULL,
     date_upload INTEGER NOT NULL,
+    memo TEXT NOT NULL DEFAULT '{}',
     FOREIGN KEY(manga_id) REFERENCES mangas (_id)
     ON DELETE CASCADE
 );
@@ -110,7 +111,8 @@ UPDATE chapters SET
     chapter_number = coalesce(:chapterNumber, chapter_number),
     source_order = coalesce(:sourceOrder, source_order),
     date_fetch = coalesce(:dateFetch, date_fetch),
-    date_upload = coalesce(:dateUpload, date_upload)
+    date_upload = coalesce(:dateUpload, date_upload),
+    memo = coalesce(:memo, memo)
 WHERE _id = :chapterId;
 
 fixSourceOrder:
@@ -118,8 +120,8 @@ UPDATE chapters SET source_order = :sourceOrder
 WHERE url = :url AND manga_id = :mangaId;
 
 insert:
-INSERT INTO chapters (manga_id, url, name, scanlator, read, bookmark, last_page_read, pages_left, chapter_number, source_order, date_fetch, date_upload)
-VALUES (:mangaId, :url, :name, :scanlator, :read, :bookmark, :lastPageRead, :pagesLeft, :chapterNumber, :sourceOrder, :dateFetch, :dateUpload);
+INSERT INTO chapters (manga_id, url, name, scanlator, read, bookmark, last_page_read, pages_left, chapter_number, source_order, date_fetch, date_upload, memo)
+VALUES (:mangaId, :url, :name, :scanlator, :read, :bookmark, :lastPageRead, :pagesLeft, :chapterNumber, :sourceOrder, :dateFetch, :dateUpload, :memo);
 
 selectLastInsertedRowId:
 SELECT last_insert_rowid();

@@ -1,0 +1,41 @@
+ALTER TABLE chapters
+ADD COLUMN memo TEXT NOT NULL DEFAULT '{}';
+
+ALTER TABLE mangas
+ADD COLUMN memo TEXT NOT NULL DEFAULT '{}';
+
+DROP VIEW IF EXISTS library_view;
+CREATE VIEW library_view AS
+SELECT
+    M.*,
+    coalesce(C.total, 0) AS total,
+    coalesce(C.read_count, 0) AS has_read,
+    coalesce(C.bookmark_count, 0) AS bookmark_count,
+    coalesce(MC.category_id, 0) AS category,
+    coalesce(C.latestUpload, 0) AS latestUpload,
+    coalesce(C.lastRead, 0) AS lastRead,
+    coalesce(C.lastFetch, 0) AS lastFetch
+FROM mangas AS M
+LEFT JOIN (
+    SELECT
+        chapters.manga_id,
+        count(*) AS total,
+        sum(read) AS read_count,
+        sum(bookmark) AS bookmark_count,
+        coalesce(max(chapters.date_upload), 0) AS latestUpload,
+        coalesce(max(history.history_last_read), 0) AS lastRead,
+        coalesce(max(chapters.date_fetch), 0) AS lastFetch
+    FROM chapters
+    LEFT JOIN scanlators_view AS filtered_scanlators
+    ON chapters.manga_id = filtered_scanlators.manga_id
+    AND chapters.scanlator = filtered_scanlators.name
+    LEFT JOIN history
+    ON chapters._id = history.history_chapter_id
+    WHERE filtered_scanlators.name IS NULL
+    GROUP BY chapters.manga_id
+) AS C
+ON M._id = C.manga_id
+LEFT JOIN (SELECT * FROM mangas_categories) AS MC
+ON MC.manga_id = M._id
+WHERE M.favorite = 1
+ORDER BY M.title;

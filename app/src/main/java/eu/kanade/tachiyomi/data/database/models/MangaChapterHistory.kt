@@ -40,6 +40,7 @@ data class MangaChapterHistory(val manga: Manga, val chapter: Chapter, val histo
             filteredScanlators: String?,
             updateStrategy: Long,
             coverLastModified: Long,
+            memo: String,
             // chapter
             chapterId: Long?,
             chapterMangaId: Long?,
@@ -54,6 +55,7 @@ data class MangaChapterHistory(val manga: Manga, val chapter: Chapter, val histo
             sourceOrder: Long?,
             dateFetch: Long?,
             dateUpload: Long?,
+            chapterMemo: String?,
             // history
             historyId: Long?,
             historyChapterId: Long?,
@@ -81,6 +83,7 @@ data class MangaChapterHistory(val manga: Manga, val chapter: Chapter, val histo
                 filteredScanlators = filteredScanlators,
                 updateStrategy = updateStrategy,
                 coverLastModified = coverLastModified,
+                memo = memo,
             )
 
             val chapter = try {
@@ -98,6 +101,7 @@ data class MangaChapterHistory(val manga: Manga, val chapter: Chapter, val histo
                     sourceOrder = sourceOrder!!,
                     dateFetch = dateFetch!!,
                     dateUpload = dateUpload!!,
+                    memo = chapterMemo.orEmpty(),
                 )
             } catch (_: NullPointerException) {
                 ChapterImpl()
