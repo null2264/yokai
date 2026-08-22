@@ -503,10 +503,10 @@ class ReaderActivity : BaseActivity<ReaderActivityBinding>() {
         outState.putBoolean(::menuVisible.name, menuVisible)
         (viewer as? PagerViewer)?.let { pViewer ->
             val config = pViewer.config
-            if (config.doublePages) {
+            if (config.doublePages || config.autoDoublePages) {
                 outState.putBoolean(SHIFT_DOUBLE_PAGES, config.shiftDoublePage)
             }
-            if (config.shiftDoublePage && config.doublePages) {
+            if (config.shiftDoublePage && (config.doublePages || config.autoDoublePages)) {
                 pViewer.getShiftedPage()?.let {
                     outState.putInt(SHIFTED_PAGE_INDEX, it.index)
                     outState.putLong(SHIFTED_CHAP_INDEX, it.chapter.chapter.id ?: 0L)
