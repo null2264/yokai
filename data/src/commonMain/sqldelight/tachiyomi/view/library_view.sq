@@ -33,6 +33,40 @@ ON MC.manga_id = M._id
 WHERE M.favorite = 1
 ORDER BY M.title;
 
+-- Full query including description, used for one-shot fetches only.
 findAll:
 SELECT *
+FROM library_view;
+
+-- Lightweight query excluding description for the reactive flow subscription.
+-- Avoids CursorWindow overflow (2MB limit) on large libraries when the flow
+-- re-emits frequently due to background downloads invalidating the chapters table.
+findAllAsFlow:
+SELECT
+    library_view._id,
+    library_view.source,
+    library_view.url,
+    library_view.artist,
+    library_view.author,
+    library_view.genre,
+    library_view.title,
+    library_view.status,
+    library_view.thumbnail_url,
+    library_view.favorite,
+    library_view.last_update,
+    library_view.initialized,
+    library_view.viewer,
+    library_view.hide_title,
+    library_view.chapter_flags,
+    library_view.date_added,
+    library_view.filtered_scanlators,
+    library_view.update_strategy,
+    library_view.cover_last_modified,
+    library_view.total,
+    library_view.has_read,
+    library_view.bookmark_count,
+    library_view.category,
+    library_view.latestUpload,
+    library_view.lastRead,
+    library_view.lastFetch
 FROM library_view;
