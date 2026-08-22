@@ -435,14 +435,11 @@
     <string name="locale">Περιοχή</string>
     <string name="automatic_backups">Αυτόματα αντίγραφα ασφαλείας</string>
     <string name="invalid_backup_file">Μη έγκυρο αρχείο αντιγράφου ασφαλείας</string>
-    <string name="invalid_backup_file_type">Μη έγκυρος τύπος αρχείου αντιγράφου ασφαλείας: %1$s
-\nΘα πρέπει να τελειώνει με .proto.gz ή .json.</string>
+    <string name="invalid_backup_file_type">Μη έγκυρος τύπος αρχείου αντιγράφου ασφαλείας: %1$s \nΘα πρέπει να τελειώνει με .proto.gz ή .json.</string>
     <string name="backup_has_no_manga">Το αντίγραφο ασφαλείας δεν περιέχει καμία καταχώρηση.</string>
     <string name="restore_missing_sources">Πηγές που λείπουν:</string>
     <string name="restore_missing_trackers">Ιχνηλάτες που δεν έχουν συνδεθεί:</string>
-    <string name="restore_content_full">Τα δεδομένα από το αντίγραφο ασφαλείας θα αποκατασταθούν
-\n
-\nΘα χρειαστεί να εγκαταστήσετε τυχόν επεκτάσεις που λείπουν και στη συνέχεια να συνδεθείτε στις υπηρεσίες παρακολούθησης για να τις χρησιμοποιήσετε.</string>
+    <string name="restore_content_full">Τα δεδομένα από το αντίγραφο ασφαλείας θα αποκατασταθούν \n \nΘα χρειαστεί να εγκαταστήσετε τυχόν επεκτάσεις που λείπουν και στη συνέχεια να συνδεθείτε στις υπηρεσίες παρακολούθησης για να τις χρησιμοποιήσετε.</string>
     <string name="restoring_backup_canceled">Η επαναφορά ακυρώθηκε</string>
     <string name="restore_duration">%02d λεπτά, %02d δευτερόλεπτα</string>
     <string name="source_migration_guide">Οδηγός μετεγκατάστασης πηγής</string>
@@ -507,12 +504,9 @@
     <string name="match_enabled_sources">Αντιστοίχιση ενεργοποιημένων πηγών</string>
     <string name="match_pinned_sources">Αντιστοίχιση καρφιτσωμένων πηγών</string>
     <string name="only_search_pinned_when">Αναζήτηση μόνο σε καρφιτσωμένες πηγές</string>
-    <string name="delete_all_covers__not_in_library_used_">Διαγραφή όλων των εξώφυλλων που έχουν αποθηκευτεί προσωρινά και δε βρίσκονται στη βιβλιοθήκη σας
-\nΑυτήν τη στιγμή χρησιμοποιούνται: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Διαγραφή όλων των εξώφυλλων που έχουν αποθηκευτεί προσωρινά και δε βρίσκονται στη βιβλιοθήκη σας \nΑυτήν τη στιγμή χρησιμοποιούνται: %1$s</string>
     <string name="clear_cached_covers_non_library">Εκκαθάριση προσωρινά αποθηκευμένων εξώφυλλων που δε βρίσκονται στη βιβλιοθήκη</string>
-    <string name="delete_old_covers_in_library_used_">Διαγραφή παλιών και αχρησιμοποίητων αποθηκευμένων εξώφυλλων σειρών στη βιβλιοθήκη σας που έχουν ενημερωθεί.
-\nΧρησιμοποιούνται επί του παρόντος:
-\n%1$s</string>
+    <string name="delete_old_covers_in_library_used_">Διαγραφή παλιών και αχρησιμοποίητων αποθηκευμένων εξώφυλλων σειρών στη βιβλιοθήκη σας που έχουν ενημερωθεί. \nΧρησιμοποιούνται επί του παρόντος: \n%1$s</string>
     <string name="clean_up_cached_covers">Καθαρισμός προσωρινά αποθηκευμένων εξώφυλλων</string>
     <string name="disable_if_issues_with_updating">Απενεργοποιήστε το εάν αντιμετωπίζετε προβλήματα με την ενημέρωση ή την επαναφορά της βιβλιοθήκης σας</string>
     <string name="no_folders_to_cleanup">Δεν υπάρχουν φάκελοι για καθαρισμό</string>
@@ -778,7 +772,7 @@
     <string name="appearance">Εμφάνιση</string>
     <string name="keep_both_on_service">Διατήρηση και των δύο στο %1$s και αντικατάσταση μόνο τοπικά</string>
     <string name="remove_x_from_service_and_add_y">Κατάργηση %1$s από το %2$s και προσθήκη %3$s</string>
-    <string name="remove_previous_tracker">Αφαίρεση προηγούμενου tracker\?</string>
+    <string name="remove_previous_tracker">Αφαίρεση προηγούμενου tracker?</string>
     <string name="select_an_entry">Επιλογή καταχώρησης</string>
     <string name="no_matches_for_filters_short">Δεν υπάρχουν αντιστοιχίσεις για τα φίλτρα σας</string>
     <string name="show_categories_while_filtering">Εμφάνιση κενών κατηγοριών κατά το φιλτράρισμα</string>
@@ -825,9 +819,7 @@
     <string name="descending">Φθίνουσα</string>
     <string name="clear_database_source_item_count">%1$d καταχωρήσεις εκτός βιβλιοθήκης στη βάση δεδομένων</string>
     <string name="database_clean">Καθαρισμός βάσης δεδομένων</string>
-    <string name="confirm_manga_add_duplicate">Έχετε μια καταχώρηση στη βιβλιοθήκη σας με το ίδιο όνομα αλλά από διαφορετική πηγή (%1$s).
-\n
-\nΘέλετε ακόμα να συνεχίσετε;</string>
+    <string name="confirm_manga_add_duplicate">Έχετε μια καταχώρηση στη βιβλιοθήκη σας με το ίδιο όνομα αλλά από διαφορετική πηγή (%1$s). \n \nΘέλετε ακόμα να συνεχίσετε;</string>
     <string name="select_inverse">Επιλογή αντίστροφου</string>
     <string name="cover_only_grid">Πλέγμα μόνο με εξώφυλλα</string>
     <string name="notification_update_error">%1$d ενημέρωση(ες) απέτυχε(-αν)</string>
@@ -861,8 +853,7 @@
     <string name="zoom_double_page_spreads">Μεγέθυνση σε ανάπτυγμα διπλής σελίδας</string>
     <string name="must_view_details_before_migration">Η σελίδα λεπτομερειών αυτής της καταχώρησης πρέπει να προβληθεί πριν μπορέσετε να μετεγκαταστήσετε</string>
     <string name="update_tracking_after_reading">Ενημέρωση παρακολούθησης μετά την ανάγνωση</string>
-    <string name="downloads_swipe_tutorial">Οι λήψεις μπορούν να ακυρωθούν σύροντας τις μακριά
-\nΣύρετε αυτήν τη συμβουλή για να την απορρίψετε</string>
+    <string name="downloads_swipe_tutorial">Οι λήψεις μπορούν να ακυρωθούν σύροντας τις μακριά \nΣύρετε αυτήν τη συμβουλή για να την απορρίψετε</string>
     <string name="select_uninstalled_sources">Επιλογή απεγκατεστημένων πηγών</string>
     <string name="update_tracking_scoring_type">Ενημέρωση τύπου βαθμολόγησης του %1$s</string>
     <string name="scoring_type_updated">Ο τύπος βαθμολόγησης ενημερώθηκε</string>

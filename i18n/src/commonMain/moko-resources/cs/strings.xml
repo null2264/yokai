@@ -192,7 +192,7 @@
     <string name="backup_frequency">Frekvence zálohy</string>
     <string name="backup_created">Záloha vytvořena</string>
     <string name="restore_completed">Obnova dokončena</string>
-    <string name="what_should_backup">Co chcete zálohovat\?</string>
+    <string name="what_should_backup">Co chcete zálohovat?</string>
     <string name="restoring_backup">Obnovování zálohy</string>
     <string name="clear_chapter_cache">Vymazat mezipaměť kapitol</string>
     <string name="used_">Využito: %1$s</string>
@@ -201,7 +201,7 @@
     <string name="cookies_cleared">Cookies vymazány</string>
     <string name="clear_database">Vyčistit databázi</string>
     <string name="clear_database_summary">Smazat historii položek, které nejsou uloženy ve vaší knihovně</string>
-    <string name="clear_database_confirmation">Jste si jistí\? Přečtené kapitoly a postup v položkách mimo knihovnu bude ztracen</string>
+    <string name="clear_database_confirmation">Jste si jistí? Přečtené kapitoly a postup v položkách mimo knihovnu bude ztracen</string>
     <string name="clear_database_completed">Položky byly smazány</string>
     <string name="refresh_library_metadata">Obnovit metadata knihovny</string>
     <string name="refresh_tracking_metadata">Obnovit metadata sledování</string>
@@ -244,7 +244,7 @@
     <string name="updates_covers_genres_desc">Aktualizuje obaly, žánry, popisy a informace o stavu mangy</string>
     <string name="log_in_to_">Přihlášení pro %1$s</string>
     <string name="category_with_name_exists">Kategorie s tímto jménem již existuje!</string>
-    <string name="use_image_as_cover">Chcete tento obrázek nastavit jako obal\?</string>
+    <string name="use_image_as_cover">Chcete tento obrázek nastavit jako obal?</string>
     <string name="failed_to_load_pages_">Chyba při načítání stránek: %1$s</string>
     <string name="failed_to_update_cover">Chyba při aktualizaci obalu</string>
     <string name="must_be_in_library_to_edit">Přidejte si prosím mangu do knihovny před tím, než toto uděláte</string>
@@ -294,8 +294,7 @@
     <string name="requires_app_restart">Pro projevení je nutný restart aplikace</string>
     <string name="restoring_backup_canceled">Obnova zrušena</string>
     <string name="restore_duration">%02d minut, %02d sekund</string>
-    <string name="invalid_backup_file_type">Neplatný typ souboru se zálohou: %1$s
-\nSoubor by měl končit na .proto.gz nebo .json.</string>
+    <string name="invalid_backup_file_type">Neplatný typ souboru se zálohou: %1$s \nSoubor by měl končit na .proto.gz nebo .json.</string>
     <string name="invalid_backup_file">Neplatný soubor se zálohou</string>
     <string name="long_strip_side_padding_25">25%</string>
     <string name="long_strip_side_padding_20">20%</string>
@@ -327,7 +326,7 @@
     <string name="add_categories">Přidat kategorie</string>
     <string name="already_in_category">Manga již je v kategorii</string>
     <string name="confirm_category_deletion_message">Manga v této kategorii bude přesunuta do výchozí kategorie.</string>
-    <string name="confirm_category_deletion">Smazat kategorii\?</string>
+    <string name="confirm_category_deletion">Smazat kategorii?</string>
     <string name="category_is_empty">Kategorie je prázdná</string>
     <string name="create_new_category">Vytvořit novou kategori</string>
     <string name="_already_in_queue">%1$s již je ve frontě</string>
@@ -348,7 +347,7 @@
     <string name="comic">Komiks</string>
     <string name="manhua">Manhua</string>
     <string name="manhwa">Manhwa</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Tímto se odstraní datum přečtení \"%1$s\". Jste si jistý/á\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Tímto se odstraní datum přečtení \"%1$s\". Jste si jistý/á?</string>
     <string name="newly_added">Nově přidané</string>
     <string name="recents">Nedávné</string>
     <string name="auto_refresh_covers_summary">Obnovit přebaly v knihovně i při aktualizaci knihovny</string>
@@ -420,9 +419,7 @@
     <string name="backup_failed">Zálohování selhalo</string>
     <string name="restore_missing_sources">Chybějící zdroje:</string>
     <string name="restore_missing_trackers">Sledovače, ve kterých nejsi přihlášený/á:</string>
-    <string name="restore_content_full">Data ze zálohy budou obnovena.
-\n
-\nBudeš poté muset doinstalovat jakékoliv chybějící rozšíření a přihlásit se do sledovacích služeb pro jejich použití.</string>
+    <string name="restore_content_full">Data ze zálohy budou obnovena. \n \nBudeš poté muset doinstalovat jakékoliv chybějící rozšíření a přihlásit se do sledovacích služeb pro jejich použití.</string>
     <string name="progress">Postup</string>
     <string name="complete">Dokončeno</string>
     <string name="crash_logs">Záznamy o pádech</string>
@@ -457,7 +454,7 @@
     <string name="only_downloaded">Pouze stažené</string>
     <string name="only_unread">Pouze nepřečtené</string>
     <string name="show_download_button">Zobrazit tlačítko stažení</string>
-    <string name="reset_chapter_question">Resetovat kapitolu\?</string>
+    <string name="reset_chapter_question">Resetovat kapitolu?</string>
     <string name="no_recent_read_updated_manga">Žádná nedávno čtená nebo aktualizovaná manga</string>
     <string name="reset_chapter_history">Resetovat historii kapitol</string>
     <string name="edge_nav">Okraj</string>
@@ -506,7 +503,7 @@
     <string name="search_suggestions">Návrhy vyhledávání</string>
     <string name="your_library">Vaše knihovna</string>
     <string name="no_chapters_to_delete">Žádné kapitoly ke smazání</string>
-    <string name="remove_all_downloads">Odstranit všechny stažené\?</string>
+    <string name="remove_all_downloads">Odstranit všechny stažené?</string>
     <string name="error_sharing_cover">Při sdílení přebalu došlo k chybě</string>
     <string name="error_saving_cover">Při ukládání přebalu došlo k chybě</string>
     <string name="cover_saved">Přebal uložen</string>
@@ -552,13 +549,13 @@
     <string name="show_downloaded_chapters">Zobrazit stažené kapitoly</string>
     <string name="show_bookmarked_chapters">Zobrazit založené kapitoly</string>
     <string name="show_all">Zobrazit Vše</string>
-    <string name="add_x_to_library">Přidat %1$s do knihovny\?</string>
+    <string name="add_x_to_library">Přidat %1$s do knihovny?</string>
     <string name="all_but_bookmarked_chapters">Všechny kromě založených</string>
     <string name="all_read_chapters">Všechny přečtené kapitoly</string>
     <string name="select_ending_chapter">Vybrat závěrečnou kapitolu</string>
     <string name="select_starting_chapter">Vybrat počáteční kapitolu</string>
-    <string name="mark_all_chapters_as_unread">Označit všechny kapitoly jako nepřečtené\?</string>
-    <string name="mark_all_chapters_as_read">Označit všechny kapitoly jako přečtené\?</string>
+    <string name="mark_all_chapters_as_unread">Označit všechny kapitoly jako nepřečtené?</string>
+    <string name="mark_all_chapters_as_read">Označit všechny kapitoly jako přečtené?</string>
     <string name="no_description">Bez popisu</string>
     <string name="add_to_library">Přidat do knihovny</string>
     <string name="volume_">Svazek %1$d</string>
@@ -605,7 +602,7 @@
     <string name="restore_miui_warning">Pokud je MIUI optimalizace vypnutá, zálohování/obnovování nemusí fungovat správně.</string>
     <string name="about_dont_kill_my_app">Někteří výrobci používají další omezení aplikací, která vypíná služby na pozadí. Na této webové stránce najdete další informace o tom, jak to opravit.</string>
     <string name="log_out">Odhlásit se</string>
-    <string name="log_out_from_">Odhlásit z %1$s\?</string>
+    <string name="log_out_from_">Odhlásit z %1$s?</string>
     <string name="start_downloading_now">Začít stahovat nyní</string>
     <string name="webview_is_required">Je nutné mít nainstalovanou aplikaci WebView</string>
     <string name="bottom">Dole</string>
@@ -651,9 +648,7 @@
     <string name="descending">Sestupně</string>
     <string name="clear_database_source_item_count">%1$d neknihovní záznamy v databázi</string>
     <string name="database_clean">vyčištění databáze</string>
-    <string name="confirm_manga_add_duplicate">Ve své knihovně máte položku se stejným názvem, ale z jiného zdroje (%1$s).
-\n
-\nPřejete si přesto pokračovat\?</string>
+    <string name="confirm_manga_add_duplicate">Ve své knihovně máte položku se stejným názvem, ale z jiného zdroje (%1$s). \n \nPřejete si přesto pokračovat?</string>
     <string name="select_inverse">Vybrat obráceně</string>
     <string name="cover_only_grid">Mřížka jen s přebaly</string>
     <string name="notification_update_error">%1$d aktualizace(í) selhalo</string>
@@ -668,7 +663,7 @@
     <string name="tap_to_see_details">Klepněte pro zobrazení podrobností</string>
     <string name="save_chapters_as_cbz">Uložit jako CBZ archiv</string>
     <string name="clear_history_completed">Historie vymazána</string>
-    <string name="clear_history_confirmation">Jste si jistý/á\? Všechna historie bude navždy ztracena.</string>
+    <string name="clear_history_confirmation">Jste si jistý/á? Všechna historie bude navždy ztracena.</string>
     <string name="clear_history">Vymazat historii</string>
     <string name="backup_restore_invalid_uri">Chyba: prázdná URI</string>
     <string name="backup_info">Automatické zálohy jsou vřele doporučeny. Měli byste si uchovat kopii zálohy na více místech.</string>
@@ -770,7 +765,7 @@
     <string name="season_">Sezóna %1$d</string>
     <string name="migration">Migrace</string>
     <string name="include_extra_search_parameter">Zahrnout do vyhledávání další parametr vyhledávání</string>
-    <string name="stop_migrating">Zastavit migraci\?</string>
+    <string name="stop_migrating">Zastavit migraci?</string>
     <string name="use_suggested_date">Použít navrhované datum</string>
     <string name="select_sources">Vyberte zdroje</string>
     <string name="search_parameter_eg">Parametr vyhledávání (např. language:english)</string>
@@ -879,24 +874,21 @@
     <string name="most_entries">Většina záznamů</string>
     <string name="orientation">Orientace</string>
     <string name="uniform_grid_covers">Rovnoměrná mřížka obalů</string>
-    <string name="remove_previous_tracker">Odstranit předchozí sledování\?</string>
+    <string name="remove_previous_tracker">Odstranit předchozí sledování?</string>
     <string name="remove_x_from_service_and_add_y">Odstraňte %1$s z %2$s a přidejte %3$s</string>
     <string name="pressing_back_to_start">Stisknutí tlačítka zpět na úvodní obrazovku</string>
     <string name="remove_downloads">Odstranění stahování</string>
-    <string name="downloads_swipe_tutorial">Stahování lze zrušit tak, že je přetáhnete pryč
-\nPřejetím prstem po tomto tipu ho zavřete</string>
+    <string name="downloads_swipe_tutorial">Stahování lze zrušit tak, že je přetáhnete pryč \nPřejetím prstem po tomto tipu ho zavřete</string>
     <string name="remove_download">Odstranění stahování</string>
     <string name="view_all">Zobrazit všechny</string>
     <string name="starting_cleanup">Zahájení čištění</string>
     <string name="clean_up_downloaded_chapters">Vyčištění stažených kapitol</string>
-    <string name="delete_all_covers__not_in_library_used_">Odstranění všech obalů uložených v mezipaměti, které nejsou ve vaší knihovně
-\nAktuálně používáno: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Odstranění všech obalů uložených v mezipaměti, které nejsou ve vaší knihovně \nAktuálně používáno: %1$s</string>
     <string name="select_uninstalled_sources">Vybrat odinstalované zdroje</string>
     <string name="username_must_not_be_blank">Uživatelské jméno nebo heslo nesmí být prázdné</string>
     <string name="beta">BETA</string>
     <string name="no_new_chapters_open_details">Pokud nejsou k dispozici žádné nové kapitoly, otevřou se místo toho podrobnosti o sérii</string>
-    <string name="delete_old_covers_in_library_used_">Odstranění starých a nepoužívaných obalů mangy v knihovně, které byly aktualizovány.
-\nAktuálně používáno: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Odstranění starých a nepoužívaných obalů mangy v knihovně, které byly aktualizovány. \nAktuálně používáno: %1$s</string>
     <string name="long_strip_side_padding_5">5%</string>
     <string name="user_agent_string">Výchozí řetězec uživatelského agenta</string>
     <string name="language_requires_app_restart">Některé jazyky mohou pro správné zobrazení vyžadovat opětovné spuštění aplikace</string>

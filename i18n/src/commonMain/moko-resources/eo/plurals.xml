@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Forigi %1$d elŝutitan ĉapitron\?</item>
-        <item quantity="other">Forigi %1$d elŝutitajn ĉapitrojn\?</item>
+        <item quantity="one">Forigi %1$d elŝutitan ĉapitron?</item>
+        <item quantity="other">Forigi %1$d elŝutitajn ĉapitrojn?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">1 ĉapitro</item>

@@ -155,7 +155,7 @@
     <string name="downloaded_chapters">ဒေါင်းလုဒ်အမှတ်အသားများ</string>
     <string name="newly_added">အသစ်ထည့်ထားသော</string>
     <string name="no_chapters_to_delete">ဖျက်စရာအပိုင်းမရှိပါ</string>
-    <string name="remove_all_downloads">ဒေါင်းထားတာတွေအားလုံးကို ဖျက်မှာလား\?</string>
+    <string name="remove_all_downloads">ဒေါင်းထားတာတွေအားလုံးကို ဖျက်မှာလား?</string>
     <string name="language_badge">ဘာသာစကားတံဆိပ်များ</string>
     <string name="uniform_grid_covers">ဆိုဒ်တူ လေးထောင့်ကာဗာများ</string>
     <string name="description">ဇာတ်လမ်းအကျဥ်း</string>

@@ -10,7 +10,7 @@
         <item quantity="other">Untuk %d</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="other">Buang %1$d bab yang dimuat turun\?</item>
+        <item quantity="other">Buang %1$d bab yang dimuat turun?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="other">Selepas %1$s</item>
@@ -25,15 +25,13 @@
         <item quantity="other">%d manga di</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="other">Salin %1$d%2$s manga\?</item>
+        <item quantity="other">Salin %1$d%2$s manga?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="other">Pindah %1$d%2$s manga\?</item>
+        <item quantity="other">Pindah %1$d%2$s manga?</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">%1$s bab telah dibuang daripada sumber:
-\n%2$s
-\nPadam muat turun\?</item>
+        <item quantity="other">%1$s bab telah dibuang daripada sumber: \n%2$s \nPadam muat turun?</item>
     </plurals>
     <plurals name="category_plural">
         <item quantity="other">%d kategori</item>

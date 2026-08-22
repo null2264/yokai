@@ -153,7 +153,7 @@
     <string name="max_auto_backups">Maks antall automatiske sikkerhetskopier</string>
     <string name="backup_created">Sikkerhetskopi opprettet</string>
     <string name="restore_completed">Gjenoppretting fullført</string>
-    <string name="what_should_backup">Hva ønsker du å sikkerhetskopiere\?</string>
+    <string name="what_should_backup">Hva ønsker du å sikkerhetskopiere?</string>
     <string name="restoring_backup">Gjenoppretter sikkerhetskopi</string>
     <string name="clear_chapter_cache">Tøm kapittelhurtiglager</string>
     <string name="used_">Brukt: %1$s</string>
@@ -162,7 +162,7 @@
     <string name="cookies_cleared">Informasjonskapsler slettet</string>
     <string name="clear_database">Tøm database</string>
     <string name="clear_database_summary">Slett historikk for oppføringer som ikke er lagret i biblioteket ditt</string>
-    <string name="clear_database_confirmation">Er du sikker\? Leste kapitler og framdrift for oppføringer som ikke er i biblioteket vil gå tapt</string>
+    <string name="clear_database_confirmation">Er du sikker? Leste kapitler og framdrift for oppføringer som ikke er i biblioteket vil gå tapt</string>
     <string name="clear_database_completed">Oppføringer slettet</string>
     <string name="refresh_library_metadata">Gjenoppfrisk biblioteksmetadata</string>
     <string name="updates_covers_genres_desc">Oppdater omslag, sjangere, beskrivelse og statusinfo for manga</string>
@@ -239,7 +239,7 @@
     <string name="help">Hjelp</string>
     <string name="download_badge">Last ned merker</string>
     <string name="double_tap_anim_speed">Animasjonshastighet ved dobbelklikk</string>
-    <string name="use_image_as_cover">Vil du bruke dette bildet som omslag\?</string>
+    <string name="use_image_as_cover">Vil du bruke dette bildet som omslag?</string>
     <string name="must_be_in_library_to_edit">Legg til mangaen i biblioteket ditt før du gjør dette</string>
     <string name="select_cover_image">Velg omslagsbilde</string>
     <string name="select_backup_file">Velg sikkerhetskopifil</string>
@@ -341,8 +341,7 @@
     <string name="file_picker_error">Ingen app for filvelging funnet</string>
     <string name="myanimelist_relogin">Vennligst logg inn på MAL igjen</string>
     <string name="crash_log_saved">Feillogger lagret</string>
-    <string name="invalid_backup_file_type">Ugyldig backup filtype: %1$s
-\nDen burde ende med .proto.gz eller .json.</string>
+    <string name="invalid_backup_file_type">Ugyldig backup filtype: %1$s \nDen burde ende med .proto.gz eller .json.</string>
     <string name="edge_nav">Kant</string>
     <string name="kindlish_nav">Kindle-basert</string>
     <string name="l_nav">L-formet</string>
@@ -367,9 +366,7 @@
     <string name="finished_reading_date">Sluttdato for lesing</string>
     <string name="backup_has_no_manga">Sikkerhetskopi inneholder ingen manga.</string>
     <string name="restore_missing_trackers">Sporingstjenester ikke logget inn i:</string>
-    <string name="restore_content_full">Data fra backup-filen will be gjenoprettet
-\n
-\nDu vil måtte installere manglende utvidelser og logge inn på sporings-tjenester etterpå for å bruke dem.</string>
+    <string name="restore_content_full">Data fra backup-filen will be gjenoprettet \n \nDu vil måtte installere manglende utvidelser og logge inn på sporings-tjenester etterpå for å bruke dem.</string>
     <string name="crash_logs">Feillogg</string>
     <string name="dump_crash_logs">Dump feillogg</string>
     <string name="saves_error_logs">Lagrer feillogger i en fil som kan sendes til utviklerne</string>
@@ -405,10 +402,10 @@
     <string name="reading_mode">Lesemodus</string>
     <string name="app_info">Programinfo</string>
     <string name="filter_languages">Filtrer språk</string>
-    <string name="reset_chapter_question">Tilbakestill kapittel\?</string>
+    <string name="reset_chapter_question">Tilbakestill kapittel?</string>
     <string name="view_all_updates">Vis alle oppdateringer</string>
     <string name="reset_all_chapters_for_this_">Tilbakestill alle kapitler for denne %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Dette vil fjerne lesedato for «%1$s». Er du sikker\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Dette vil fjerne lesedato for «%1$s». Er du sikker?</string>
     <string name="reset_chapter_history">Tilbakestill kapittelhistorikk</string>
     <string name="more_library_settings">Flere biblioteksinnstillinger</string>
     <string name="display_as">Vis som</string>
@@ -423,7 +420,7 @@
     <string name="no_matches_for_filters">Ingen samsvar med dine nåværende filtre</string>
     <string name="show_all_categories">Vis alle kategorier</string>
     <string name="updating_">Oppdaterer %1$s</string>
-    <string name="confirm_category_deletion">Slett kategori\?</string>
+    <string name="confirm_category_deletion">Slett kategori?</string>
     <string name="category_is_empty">Kategorien er tom</string>
     <string name="new_category">Ny kategori</string>
     <string name="create_new_category">Opprett ny kategori</string>
@@ -433,7 +430,7 @@
     <string name="by_chapter_number">Etter kapittelnummer</string>
     <string name="by_source_order">Etter kildens rekkefølge</string>
     <string name="no_chapters_to_delete">Ingen kapitler å slette</string>
-    <string name="remove_all_downloads">Fjern alle nedlastninger\?</string>
+    <string name="remove_all_downloads">Fjern alle nedlastninger?</string>
     <string name="no_pages_found">Fant ingen sider</string>
     <string name="chapters_removed">Kapitler fjernet.</string>
     <string name="removed_bookmark">Fjernet bokmerke</string>
@@ -556,11 +553,9 @@
     <string name="restrictions_">Begrensninger: %1$s</string>
     <string name="expand_collapse_all_categories">Utvid/fold sammen alle kategorier</string>
     <string name="could_not_install_update">Kunne ikke installere oppdatering</string>
-    <string name="delete_all_covers__not_in_library_used_">Slett alle omslag i hurtiglager som ikke er i biblioteket.
-\nBruker nå: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Slett alle omslag i hurtiglager som ikke er i biblioteket. \nBruker nå: %1$s</string>
     <string name="clear_cached_covers_non_library">Tøm hurtiglagrede omslag som ikke er i biblioteket</string>
-    <string name="delete_old_covers_in_library_used_">Rydd opp i hurtigbufferede omslag som ikke er i bruk for oppdaterte manga i biblioteket ditt.
-\nBruker nå: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Rydd opp i hurtigbufferede omslag som ikke er i bruk for oppdaterte manga i biblioteket ditt. \nBruker nå: %1$s</string>
     <string name="clean_up_cached_covers">Tøm hurtiglagrede omslag</string>
     <string name="force_download_cache_refresh_summary">Dette påtvinger ny utregning av nedlastingshurtiglageret. Nyttig hvis du har endret nedlastninger utenfor programmet og ønsker at programmet skal plukke dem opp.</string>
     <string name="force_download_cache_refresh">Gjenopfrisk nedlastingshurtiglageret</string>
@@ -631,7 +626,7 @@
     <string name="turn_on_">Skru på %s</string>
     <string name="appearance">Utseende</string>
     <string name="skipping_">(hopper over %1$d)</string>
-    <string name="stop_migrating">Stopp flytting\?</string>
+    <string name="stop_migrating">Stopp flytting?</string>
     <string name="no_alternatives_found">Fant ingen alternativer</string>
     <string name="no_chapters_found_for_migration">Ingen kapitler funnet, denne mangaen kan ikke flyttes over</string>
     <string name="both_axes">Begge akser</string>
@@ -668,14 +663,14 @@
     <string name="show_downloaded_chapters">Vis nedlastede kapitler</string>
     <string name="show_bookmarked_chapters">Vis bokmerkede kapitler</string>
     <string name="show_all">Vis alle</string>
-    <string name="add_x_to_library">Legg til %1$s i bibliotek\?</string>
+    <string name="add_x_to_library">Legg til %1$s i bibliotek?</string>
     <string name="all_but_bookmarked_chapters">Alle unntatt bokmerkede kapitler</string>
     <string name="all_read_chapters">Alle leste kapitler</string>
     <string name="search_chapters">Søk i kapitler</string>
     <string name="select_ending_chapter">Velg sluttkapittel</string>
     <string name="select_starting_chapter">Velg startkapittel</string>
-    <string name="mark_all_chapters_as_unread">Marker alle kapitler som ulest\?</string>
-    <string name="mark_all_chapters_as_read">Marker alle kapitler som lest\?</string>
+    <string name="mark_all_chapters_as_unread">Marker alle kapitler som ulest?</string>
+    <string name="mark_all_chapters_as_read">Marker alle kapitler som lest?</string>
     <string name="season_">Sesong %1$d</string>
     <string name="about_this_">Om denne %1$s</string>
     <string name="show_on_long_press">Vis ved langtrykk</string>
@@ -725,7 +720,7 @@
     <string name="hot_pink">Heit rosa</string>
     <string name="spring_blossom">Vårblomstring</string>
     <string name="midnight_dusk">Midnattsskumring</string>
-    <string name="remove_previous_tracker">Fjern forrige sporer\?</string>
+    <string name="remove_previous_tracker">Fjern forrige sporer?</string>
     <string name="remove_tracking">Fjern sporing fra program</string>
     <string name="no_match_found">Resultatløst</string>
     <string name="not_tracked">Blir ikke sport</string>
@@ -787,7 +782,7 @@
     <string name="use_last_saved_migration_preferences">Bruk sist lagrede forhåndsflyttingsinnstillinger og kilder for å mengdeflytte</string>
     <string name="notification_size_warning">Store oppdateringer kan lede til økt batteribruk og tregere kilder</string>
     <string name="log_out">Logg ut</string>
-    <string name="log_out_from_">Logg ut fra %1$s\?</string>
+    <string name="log_out_from_">Logg ut fra %1$s?</string>
     <string name="keep_in_">Behold i %1$s</string>
     <string name="cannot_remove_tracking_while_offline">Sporer kan ikke fjernes fra %1$s når frakoblet</string>
     <string name="scanlators">Skanningsoversettere</string>
@@ -824,9 +819,7 @@
     <string name="grayscale">Gråskala</string>
     <string name="clear_database_source_item_count">%1$d ikke-bibliotek oppføringer i databasen</string>
     <string name="database_clean">Rengjør databasen</string>
-    <string name="confirm_manga_add_duplicate">Du har en oppføring i biblioteket ditt med samme navn, men fra en annen kilde (%1$s).
-\n
-\nVil du fortsette allikevel\?</string>
+    <string name="confirm_manga_add_duplicate">Du har en oppføring i biblioteket ditt med samme navn, men fra en annen kilde (%1$s). \n \nVil du fortsette allikevel?</string>
     <string name="select_inverse">Velg motsatt</string>
     <string name="notification_update_skipped">%1$d oppdatering(er) hoppet over</string>
     <string name="skipped_reason_completed">Hoppet over fordi serien er fullført</string>
@@ -838,7 +831,7 @@
     <string name="tap_to_see_details">Trykk for å se detaljer</string>
     <string name="clear_history">Slett historikk</string>
     <string name="clear_history_completed">Historikken er slettet</string>
-    <string name="clear_history_confirmation">Er du sikker\? All historikk vil gå tapt.</string>
+    <string name="clear_history_confirmation">Er du sikker? All historikk vil gå tapt.</string>
     <string name="pref_library_update_manga_restriction">Hopp over oppdateringer av titler</string>
     <string name="pref_update_only_started">Som ikke er påbegynt</string>
     <string name="pref_update_only_completely_read">Med uleste kapitler</string>
@@ -904,8 +897,7 @@
     <string name="not_rated">Ikke vurdert</string>
     <string name="learn_why">Lær hvorfor</string>
     <string name="view_all">Vis alle</string>
-    <string name="downloads_swipe_tutorial">Nedlastinger kan avbrytes ved å sveipe dem bort
-\nSveip for å fjerne dette tipset</string>
+    <string name="downloads_swipe_tutorial">Nedlastinger kan avbrytes ved å sveipe dem bort \nSveip for å fjerne dette tipset</string>
     <string name="length">Lengde</string>
     <string name="clear_db_exclude_read">Behold manga med leste kapitler</string>
     <string name="open_in_app">Åpne i app</string>

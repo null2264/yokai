@@ -19,10 +19,10 @@
         <item quantity="other">%1$s장</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="other">다운로드한 챕터 %1$d개를 제거하시겠습니까\?</item>
+        <item quantity="other">다운로드한 챕터 %1$d개를 제거하시겠습니까?</item>
     </plurals>
     <plurals name="notification_and_n_more">
-        <item quantity="other">그리고 %1$d개 화 남았다</item>
+        <item quantity="other">그리고 %1$d개 화 남음</item>
     </plurals>
     <plurals name="extensions_updated_plural">
         <item quantity="other">%d 확장 앱이 업데이트됨</item>
@@ -31,28 +31,25 @@
         <item quantity="other">%d 업데이트 보류 중</item>
     </plurals>
     <plurals name="next_unread_chapters">
-        <item quantity="other">읽지 않은 다음 %d 회차</item>
+        <item quantity="other">읽지 않은 다음 %d개의 챕터</item>
     </plurals>
     <plurals name="missing_chapters_warning">
-        <item quantity="other">소스에 존재하지 않거나 필터링되어 있는 %d개의 회차를 건너뛰었습니다</item>
+        <item quantity="other">소스에 존재하지 않거나 필터링되어 있는 %d개의 챕터를 건너뛰었습니다</item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="other">%1$d 페이지</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="other">%1$s 회차가 원본에서 제거되었습소스:
-\n%2$s
-\n
-\n다운로드를 삭제하시겠습니까\?</item>
+        <item quantity="other">%1$s 챕터가 다음 원본 소스에서 제거되었습니다: \n%2$s \n \n다운로드를 삭제하시겠습니까?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="other">%d 만화가 마이그레이션됨</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="other">%1$d%2$s 만화를 마이그레이션하시겠습니까\?</item>
+        <item quantity="other">%1$d%2$s 만화를 마이그레이션하시겠습니까?</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="other">%1$d%2$s 만화를 복사하시겠습니까\?</item>
+        <item quantity="other">%1$d%2$s 만화를 복사하시겠습니까?</item>
     </plurals>
     <plurals name="cache_cleared">
         <item quantity="other">캐시가 지워졌습니다. %d 파일이 삭제되었습니다</item>
@@ -64,7 +61,7 @@
         <item quantity="other">%d 언어</item>
     </plurals>
     <plurals name="_series_types">
-        <item quantity="other">"%d  시리즈 형식"</item>
+        <item quantity="other">%d 개의 시리즈 유형</item>
     </plurals>
     <plurals name="_sources">
         <item quantity="other">%d 소스</item>

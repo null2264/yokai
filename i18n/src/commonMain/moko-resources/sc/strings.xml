@@ -152,7 +152,7 @@
     <string name="max_auto_backups">Nùmeru màssimu de còpias automàticas</string>
     <string name="backup_created">Còpia de seguresa creada</string>
     <string name="restore_completed">Riprìstinu acabadu</string>
-    <string name="what_should_backup">De ite cheres fàghere una còpia de seguresa\?</string>
+    <string name="what_should_backup">De ite cheres fàghere una còpia de seguresa?</string>
     <string name="restoring_backup">Ripristinende sa còpia de seguresa</string>
     <string name="clear_chapter_cache">Isbòida sa memòria temporànea de sos capìtulos</string>
     <string name="used_">Impreados: %1$s</string>
@@ -161,7 +161,7 @@
     <string name="cookies_cleared">Cookies iscantzellados</string>
     <string name="clear_database">Isbòida sa base de datos</string>
     <string name="clear_database_summary">Iscantzella sa cronologia pro sos elementos chi non sunt sarvados in sa biblioteca tua</string>
-    <string name="clear_database_confirmation">Seguru ses\? Sos capìtulos lèghidos e su progressu de sos elementos chi non sunt in sa biblioteca s\'ant a pèrdere</string>
+    <string name="clear_database_confirmation">Seguru ses? Sos capìtulos lèghidos e su progressu de sos elementos chi non sunt in sa biblioteca s\'ant a pèrdere</string>
     <string name="clear_database_completed">Boghes iscantzelladas</string>
     <string name="refresh_library_metadata">Agiorna sos metadatos de sa biblioteca</string>
     <string name="updates_covers_genres_desc">Agiornat sas coberteddas, sos gèneres, sa descritzione e sas informatziones de istadu de sos manga</string>
@@ -221,7 +221,7 @@
     <string name="page_">Pàgina: %1$d</string>
     <string name="next_chapter_not_found">Capìtulu imbeniente no agatadu</string>
     <string name="decode_image_error">No est istadu possìbile carrigare s\'immàgine</string>
-    <string name="use_image_as_cover">Cheres impostare custa immàgine comente cobertedda\?</string>
+    <string name="use_image_as_cover">Cheres impostare custa immàgine comente cobertedda?</string>
     <string name="finished_chapter">Acabadu:</string>
     <string name="current_chapter">Atuale:</string>
     <string name="next_title">Imbeniente:</string>
@@ -363,11 +363,9 @@
     <string name="match_enabled_sources">Cuncorda mitzas abilitadas</string>
     <string name="match_pinned_sources">Cuncorda mitzas apicadas</string>
     <string name="only_search_pinned_when">Chirca petzi mitzas apicadas</string>
-    <string name="delete_all_covers__not_in_library_used_">Iscantzella sas coberteddas in sa memòria temporànea chi non sunt in sa biblioteca
-\nImpreende como: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Iscantzella sas coberteddas in sa memòria temporànea chi non sunt in sa biblioteca \nImpreende como: %1$s</string>
     <string name="clear_cached_covers_non_library">Iscantzella sas coberteddas in sa memòria temporànea chi non sunt in sa biblioteca</string>
-    <string name="delete_old_covers_in_library_used_">Iscantzella sas coberteddas betzas e no impreadas de sos manga in sa biblioteca tua chi sunt istados agiornados.
-\nImpreende como: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Iscantzella sas coberteddas betzas e no impreadas de sos manga in sa biblioteca tua chi sunt istados agiornados. \nImpreende como: %1$s</string>
     <string name="clean_up_cached_covers">Inneta sas coberteddas in sa memòria temporànea</string>
     <string name="disable_if_issues_with_updating">Disabìlita custa optzione si ses tenende problemas agiornende o ripristinende sa biblioteca tua</string>
     <string name="no_folders_to_cleanup">Peruna cartella de innetare</string>
@@ -382,7 +380,7 @@
     <string name="restore_error">Riprìstinu de sa còpia de seguresa fallidu</string>
     <string name="white_theme">Biancu puru</string>
     <string name="skipping_">(brinchende %1$d)</string>
-    <string name="stop_migrating">Firmare su tramudòngiu\?</string>
+    <string name="stop_migrating">Firmare su tramudòngiu?</string>
     <string name="no_alternatives_found">Peruna alternativa agatada</string>
     <string name="no_chapters_found_for_migration">Perunu capìtulu agatadu. Custu manga non si podet impreare pro su tramudòngiu</string>
     <string name="migrate_">Tràmuda a %1$s</string>
@@ -427,13 +425,13 @@
     <string name="show_downloaded_chapters">Ammustra sos capìtulos iscarrigados</string>
     <string name="show_bookmarked_chapters">Ammustra sos capìtulos in sos sinnalibros</string>
     <string name="show_all">Ammustra totu</string>
-    <string name="add_x_to_library">Annànghere %1$s a sa biblioteca\?</string>
+    <string name="add_x_to_library">Annànghere %1$s a sa biblioteca?</string>
     <string name="all_but_bookmarked_chapters">Totu francu sos capìtulos in sos sinnalibros</string>
     <string name="all_read_chapters">Totu sos capìtulos lèghidos</string>
     <string name="search_chapters">Chirca capìtulos</string>
     <string name="select_ending_chapter">Ischerta su capìtulu de fine</string>
     <string name="select_starting_chapter">Ischerta su capìtulu de incumintzu</string>
-    <string name="mark_all_chapters_as_read">Marcare totu sos capìtulos comente lèghidos\?</string>
+    <string name="mark_all_chapters_as_read">Marcare totu sos capìtulos comente lèghidos?</string>
     <string name="no_description">Peruna descritzione</string>
     <string name="add_to_library">Annanghe a sa biblioteca</string>
     <string name="season_">Istajone %1$d</string>
@@ -457,7 +455,7 @@
     <string name="all_sources">Totu sas mitzas</string>
     <string name="search_extensions">Chirca estensiones…</string>
     <string name="in_library">In sa biblioteca</string>
-    <string name="reset_chapter_question">Resetare su capìtulu\?</string>
+    <string name="reset_chapter_question">Resetare su capìtulu?</string>
     <string name="search_recents">Chirca reghentes…</string>
     <string name="view_all_updates">Pòmpia totu sos agiornamentos</string>
     <string name="view_history">Pòmpia sa cronologia</string>
@@ -466,7 +464,7 @@
     <string name="read_">Lèghidu: %1$s</string>
     <string name="last_read_">Ùrtima leghidura: %1$s</string>
     <string name="reset_all_chapters_for_this_">Reseta totu sos capìtulos pro custu %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Custu at a bogare s\'istadu de leghidura dae \"%1$s\". Seguru ses\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Custu at a bogare s\'istadu de leghidura dae \"%1$s\". Seguru ses?</string>
     <string name="newly_added">Annànghidos dae pagu</string>
     <string name="recents">Reghentes</string>
     <string name="auto_refresh_covers_summary">Annoa fintzas sas coberteddas in sa biblioteca cando ses agiornende sa biblioteca</string>
@@ -506,7 +504,7 @@
     <string name="add_categories">Annanghe categorias</string>
     <string name="already_in_category">Manga giai in sa categoria</string>
     <string name="confirm_category_deletion_message">Sos manga in custa categoria s\'ant a tramudare a sa categoria predefinida.</string>
-    <string name="confirm_category_deletion">Iscantzellare sa categoria\?</string>
+    <string name="confirm_category_deletion">Iscantzellare sa categoria?</string>
     <string name="category_is_empty">Sa categoria est bòida</string>
     <string name="create_new_category">Crea una categoria noa</string>
     <string name="_already_in_queue">%1$s est giai in sa lista de isetu</string>
@@ -541,14 +539,11 @@
     <string name="locale">Limba</string>
     <string name="automatic_backups">Còpias de seguresa automàticas</string>
     <string name="invalid_backup_file">Documentu de sa còpia de seguresa non vàlidu</string>
-    <string name="invalid_backup_file_type">Casta de documentu de còpia de seguresa non vàlidu: %1$s
-\nDiat dèpere acabbare cun .proto.gz o .json.</string>
+    <string name="invalid_backup_file_type">Casta de documentu de còpia de seguresa non vàlidu: %1$s \nDiat dèpere acabbare cun .proto.gz o .json.</string>
     <string name="backup_has_no_manga">Sa còpia de seguresa non tenet perunu manga.</string>
     <string name="restore_missing_sources">Mitzas chi mancant:</string>
     <string name="restore_missing_trackers">Arrastadores a sos cales no as fatu atzessu:</string>
-    <string name="restore_content_full">Sos datos dae su documentu de sa còpia de seguresa s\'ant a ripristinare.
-\n
-\nA pustis as a dèpere installare sas estensiones chi mancant e atzèdere a sos servìtzios de arrastamentu pro los pòdere impreare.</string>
+    <string name="restore_content_full">Sos datos dae su documentu de sa còpia de seguresa s\'ant a ripristinare. \n \nA pustis as a dèpere installare sas estensiones chi mancant e atzèdere a sos servìtzios de arrastamentu pro los pòdere impreare.</string>
     <string name="restoring_backup_canceled">Riprìstinu annulladu</string>
     <string name="restore_duration">%02d min e %02d seg</string>
     <string name="source_migration_guide">Ghia a su tramudòngiu de sas mitzas</string>
@@ -587,7 +582,7 @@
     <string name="starting_screen">Ischermada de incumintzu</string>
     <string name="hides_on_scroll">Si cuat cando iscurres</string>
     <string name="last_used_library_recents">Ùrtimu impreu (Biblioteca o Reghentes)</string>
-    <string name="mark_all_chapters_as_unread">Marcare totu sos capìtulos comente non lèghidos\?</string>
+    <string name="mark_all_chapters_as_unread">Marcare totu sos capìtulos comente non lèghidos?</string>
     <string name="both_axes">Ambos sos asses</string>
     <string name="vertically">Verticalmente</string>
     <string name="horizontally">Orizontalmente</string>
@@ -689,7 +684,7 @@
     <string name="move_dynamic_to_bottom">Move sas categorias dinàmicas minimadas cara a giosso</string>
     <string name="your_library">Sa biblioteca tua</string>
     <string name="no_chapters_to_delete">Perunu capìtulu de iscantzellare</string>
-    <string name="remove_all_downloads">Bogare totu sos iscarrigamentos\?</string>
+    <string name="remove_all_downloads">Bogare totu sos iscarrigamentos?</string>
     <string name="no_pages_found">Peruna pàgina agatada</string>
     <string name="locked_landscape">Blocadu in orizontale</string>
     <string name="locked_portrait">Blocadu in verticale</string>
@@ -771,7 +766,7 @@
     <string name="restrictions_">Restritziones: %1$s</string>
     <string name="keep_both_on_service">Mantene·los totu sos duos in %1$s e remplasa in locale ebbia</string>
     <string name="remove_x_from_service_and_add_y">Boga %1$s dae %2$s e annanghe %3$s</string>
-    <string name="remove_previous_tracker">Iscantzellare s\'arrastadore antepostu\?</string>
+    <string name="remove_previous_tracker">Iscantzellare s\'arrastadore antepostu?</string>
     <string name="select_an_entry">Ischerta un\'insertada</string>
     <string name="no_matches_for_filters_short">Peruna currispondèntzia cun sos filtros tuos</string>
     <string name="show_categories_while_filtering">Ammustra sas categorias bòidas cando ses filtrende</string>
@@ -793,7 +788,7 @@
     <string name="details_page">Pàgina de sos detàllios</string>
     <string name="log_in">Intra</string>
     <string name="theme_buttons_based_on_cover">Butones de su tema basados subra de sa cobertedda</string>
-    <string name="log_out_from_">Essire dae %1$s\?</string>
+    <string name="log_out_from_">Essire dae %1$s?</string>
     <string name="keep_in_">Mantene in %1$s</string>
     <string name="remove_from_">Boga dae %1$s</string>
     <string name="notification_size_warning">Sos agiornamentos mannos diant pòdere batire a un\'impreu de sa bateria prus mannu e a unu rallentamentu de sas fontes. Toca pro nde ischire de prus.</string>
@@ -836,9 +831,7 @@
     <string name="warning_unenroll_from_beta">Sa torrada a sa versione de produtzione anteposta diat pòdere causare problemas e bisongiare de un\'isboidadura de sa memòria temporànea de s\'aplicatzione.</string>
     <string name="try_new_features">Proa funtzionalidades noas in antis chi siant intregadas in maneras ufitziale. Sas versiones beta diant pòdere no èssere istàbiles e benint frunidas pro dare informatziones a s\'isvilupadore.</string>
     <string name="zoom_double_page_spreads">Ismànnia sas pàginas dòpias</string>
-    <string name="confirm_manga_add_duplicate">Tenes un\'elementu in sa biblioteca tua cun su matessi nùmene ma dae una fonte diferente (%1$s).
-\n
-\nBoles sighire su matessi\?</string>
+    <string name="confirm_manga_add_duplicate">Tenes un\'elementu in sa biblioteca tua cun su matessi nùmene ma dae una fonte diferente (%1$s). \n \nBoles sighire su matessi?</string>
     <string name="select_inverse">Fùrria s\'ischertada</string>
     <string name="cover_only_grid">Grìllia cun coberteddas ebbia</string>
     <string name="notification_update_error">%1$d agiornamentu(os) fallidu(os)</string>
@@ -855,7 +848,7 @@
     <string name="tap_to_learn_more">Toca pro àteras informatziones</string>
     <string name="clear_history">Isbòida sa cronologia</string>
     <string name="clear_history_completed">Cronologia iscantzellada</string>
-    <string name="clear_history_confirmation">Seguru ses\? As a pèrdere totu sa cronologia.</string>
+    <string name="clear_history_confirmation">Seguru ses? As a pèrdere totu sa cronologia.</string>
     <string name="backup_restore_invalid_uri">Errore: URI bòidu</string>
     <string name="backup_info">Sas còpias de seguresa automàticas sunt racumandadas meda. Dias dèpere tènnere còpias fintzas in àteros logos.</string>
     <string name="pref_clear_webview_data">Isbòida sos datos de WebView</string>
@@ -874,8 +867,7 @@
     <string name="pref_update_only_completely_read_summary">Agiorna sos menga petzi si non bi sunt capìtulos non lèghidos (lèghidu de su totu)</string>
     <string name="most_entries">Sa parte manna de sos elementos</string>
     <string name="select_uninstalled_sources">Seletziona sas fontes disinstalladas</string>
-    <string name="downloads_swipe_tutorial">Sos iscarrigamentos si podent annullare traghende·los a foras
-\nFaghe iscùrrere custu impòsitu pro lu bogare</string>
+    <string name="downloads_swipe_tutorial">Sos iscarrigamentos si podent annullare traghende·los a foras \nFaghe iscùrrere custu impòsitu pro lu bogare</string>
     <string name="open_in_app">Aberi in s\'aplicatzione</string>
     <string name="show_">Ammustra su %1$s</string>
     <string name="must_view_details_before_migration">Sa pàgina de sos detàllios de custu elementu si depet pompiare in antis de pòdere tramudare</string>

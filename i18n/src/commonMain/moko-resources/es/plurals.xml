@@ -11,9 +11,9 @@
         <item quantity="other">%d categorías</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">¿Eliminar %1$d capítulo descargado\?</item>
-        <item quantity="many">¿Eliminar %1$d capítulos descargados\?</item>
-        <item quantity="other">¿Eliminar %1$d capítulos descargados\?</item>
+        <item quantity="one">¿Eliminar %1$d capítulo descargado?</item>
+        <item quantity="many">¿Eliminar %1$d capítulos descargados?</item>
+        <item quantity="other">¿Eliminar %1$d capítulos descargados?</item>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">y %1$d capítulo más</item>
@@ -26,17 +26,9 @@
         <item quantity="other">Para %d títulos</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Un capítulo ha sido eliminado de la fuente:
-\n%2$s
-\n¿Eliminar capítulo descargado\?</item>
-        <item quantity="many">Se han eliminado %1$s capítulos de la fuente:
-\n%2$s
-\n
-\n¿Borrar sus descargas\?</item>
-        <item quantity="other">%1$s capítulos han sido eliminados de la fuente:
-\n%2$s
-\n
-\n¿Eliminar capítulos descargados\?</item>
+        <item quantity="one">Un capítulo ha sido eliminado de la fuente: \n%2$s \n¿Eliminar capítulo descargado?</item>
+        <item quantity="many">Se han eliminado %1$s capítulos de la fuente: \n%2$s \n \n¿Borrar sus descargas?</item>
+        <item quantity="other">%1$s capítulos han sido eliminados de la fuente: \n%2$s \n \n¿Eliminar capítulos descargados?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Después de %1$s minuto</item>
@@ -59,14 +51,14 @@
         <item quantity="other">%d series migradas</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">¿Copiar la serie %1$d%2$s\?</item>
-        <item quantity="many">¿Copiar las series %1$d%2$s\?</item>
-        <item quantity="other">¿Copiar las series %1$d%2$s\?</item>
+        <item quantity="one">¿Copiar la serie %1$d%2$s?</item>
+        <item quantity="many">¿Copiar las series %1$d%2$s?</item>
+        <item quantity="other">¿Copiar las series %1$d%2$s?</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">¿Migrar la serie %1$d%2$s\?</item>
-        <item quantity="many">¿Migrar las series %1$d%2$s\?</item>
-        <item quantity="other">¿Migrar las series %1$d%2$s\?</item>
+        <item quantity="one">¿Migrar la serie %1$d%2$s?</item>
+        <item quantity="many">¿Migrar las series %1$d%2$s?</item>
+        <item quantity="other">¿Migrar las series %1$d%2$s?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s capítulo</item>

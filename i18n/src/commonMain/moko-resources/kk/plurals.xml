@@ -21,8 +21,8 @@
         <item quantity="other">%1$s тарау</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">%1$d жүктелген тарауды жою керек пе\?</item>
-        <item quantity="other">%1$d жүктеген тарауды жою керек пе\?</item>
+        <item quantity="one">%1$d жүктелген тарауды жою керек пе?</item>
+        <item quantity="other">%1$d жүктеген тарауды жою керек пе?</item>
     </plurals>
     <plurals name="extension_updates_available">
         <item quantity="one">Кеңейту үшін жаңарту бар%d кеңейту үшін жаңарту бар</item>

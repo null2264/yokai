@@ -26,9 +26,9 @@
         <item quantity="other">Keš je obrisan. %d datoteke su izbrisane</item>
     </plurals>
     <plurals name="copy_manga">
-        <item quantity="one">Kopiraj %1$d%2$s mangu\?</item>
-        <item quantity="few">Kopiraj %1$d%2$s mange\?</item>
-        <item quantity="other">Koporaj %1$d%2$s mangi\?</item>
+        <item quantity="one">Kopiraj %1$d%2$s mangu?</item>
+        <item quantity="few">Kopiraj %1$d%2$s mange?</item>
+        <item quantity="other">Koporaj %1$d%2$s mangi?</item>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Nakon %1$s minut</item>
@@ -51,17 +51,9 @@
         <item quantity="other">Čišćenje završeno.Uklonjenj %d fascikli</item>
     </plurals>
     <plurals name="deleted_chapters">
-        <item quantity="one">Поглавље је уклоњено из извора:
-\n%2$s
-\nИзбрисати преузимање\?</item>
-        <item quantity="few">%1$s поглавља је уклоњено из извора:
-\n%2$s
-\n
-\nИзбрисати преузимања\?</item>
-        <item quantity="other">%1$s поглавља је уклоњено из извора:
-\n%2$s
-\n
-\nИзбрисати преузимања\?</item>
+        <item quantity="one">Поглавље је уклоњено из извора: \n%2$s \nИзбрисати преузимање?</item>
+        <item quantity="few">%1$s поглавља је уклоњено из извора: \n%2$s \n \nИзбрисати преузимања?</item>
+        <item quantity="other">%1$s поглавља је уклоњено из извора: \n%2$s \n \nИзбрисати преузимања?</item>
     </plurals>
     <plurals name="manga_migrated">
         <item quantity="one">%d manga prebačena</item>
@@ -69,9 +61,9 @@
         <item quantity="other">%d mangi prebačeno</item>
     </plurals>
     <plurals name="migrate_manga">
-        <item quantity="one">Premestite %1$d%2$s mangu\?</item>
-        <item quantity="few">Premestine %1$d%2$s mange\?</item>
-        <item quantity="other">Premestite %1$d%2$s mangi\?</item>
+        <item quantity="one">Premestite %1$d%2$s mangu?</item>
+        <item quantity="few">Premestine %1$d%2$s mange?</item>
+        <item quantity="other">Premestite %1$d%2$s mangi?</item>
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s poglavlje</item>
@@ -89,9 +81,9 @@
         <item quantity="other">Jos %1$d naslova</item>
     </plurals>
     <plurals name="remove_n_chapters">
-        <item quantity="one">Izbrisati %1$d preuzeto poglavlje\?</item>
-        <item quantity="few">Izbrisati %1$d preuzeta poglavlja\?</item>
-        <item quantity="other">Izbrisati %1$d preuzetih poglavlja\?</item>
+        <item quantity="one">Izbrisati %1$d preuzeto poglavlje?</item>
+        <item quantity="few">Izbrisati %1$d preuzeta poglavlja?</item>
+        <item quantity="other">Izbrisati %1$d preuzetih poglavlja?</item>
     </plurals>
     <plurals name="extensions_updated_plural">
         <item quantity="one">Екстензија ажурирана</item>

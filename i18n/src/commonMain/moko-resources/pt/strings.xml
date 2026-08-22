@@ -106,7 +106,7 @@
     <string name="cookies_cleared">Cookies limpos</string>
     <string name="clear_database">Limpar base de dados</string>
     <string name="clear_database_summary">Exclui o histórico de itens que não estão salvos nasua biblioteca</string>
-    <string name="clear_database_confirmation">Tem certeza\? Os capítulos lidos e o progresso em itens que não estão na sua biblioteca serão perdidos</string>
+    <string name="clear_database_confirmation">Tem certeza? Os capítulos lidos e o progresso em itens que não estão na sua biblioteca serão perdidos</string>
     <string name="clear_database_completed">Eliminar entradas</string>
     <!-- About section -->
     <string name="version">Versão</string>
@@ -237,7 +237,7 @@
     <string name="backup_location">Pasta de Backups</string>
     <string name="backup_created">Cópia de segurança criada</string>
     <string name="restore_completed">Restauro completo</string>
-    <string name="what_should_backup">O que pretende fazer backup\?</string>
+    <string name="what_should_backup">O que pretende fazer backup?</string>
     <string name="refresh_library_metadata">Atualizar metadados da biblioteca</string>
     <string name="max_auto_backups">Máximo de backups automáticos</string>
     <string name="download_badge">Transferir emblemas</string>
@@ -271,7 +271,7 @@
     <string name="options">Opções</string>
     <string name="set_as_cover">Usar como capa</string>
     <string name="cover_updated">Capa atualizada</string>
-    <string name="use_image_as_cover">Deseja usar esta imagem como capa\?</string>
+    <string name="use_image_as_cover">Deseja usar esta imagem como capa?</string>
     <string name="finished_chapter">Concluído:</string>
     <string name="current_chapter">Atual:</string>
     <string name="next_title">Próximo:</string>
@@ -363,7 +363,7 @@
     <string name="add_categories">Adicionar categorias</string>
     <string name="already_in_category">Manga já está na categoria</string>
     <string name="confirm_category_deletion_message">Manga nesta categoria serão movidas para a categoria padrão.</string>
-    <string name="confirm_category_deletion">Eliminar categoria\?</string>
+    <string name="confirm_category_deletion">Eliminar categoria?</string>
     <string name="category_is_empty">Categoria está vazia</string>
     <string name="create_new_category">Criar nova categoria</string>
     <string name="_already_in_queue">%1$s já está na fila</string>
@@ -433,8 +433,7 @@
     <string name="locale">Localidade</string>
     <string name="automatic_backups">Cópias de segurança automáticas</string>
     <string name="invalid_backup_file">Ficheiro de cópia de segurança invalido</string>
-    <string name="invalid_backup_file_type">Tipo de ficheiro da cópia de segurança inválido: %1$s
-\nDeve terminar com .proto.gz ou .json.</string>
+    <string name="invalid_backup_file_type">Tipo de ficheiro da cópia de segurança inválido: %1$s \nDeve terminar com .proto.gz ou .json.</string>
     <string name="backup_has_no_manga">Cópia de segurança não contém qualquer mangá.</string>
     <string name="restore_missing_sources">Fontes em falta:</string>
     <string name="restore_missing_trackers">Monitorizadores sem sessão iniciada:</string>
@@ -454,9 +453,7 @@
     <string name="saves_error_logs">Guarda registos de erros num ficheiro para partilhar com os desenvolvedores</string>
     <string name="crash_log_saved">Registos de falhas guardados</string>
     <string name="updated_to_">Atualizado para v%1$s</string>
-    <string name="restore_content_full">Os dados da cópia de segurança serão restaurados.
-\n
-\nPrecisas instalar as extensões em falta e iniciar sessão nos serviços de monitorização para usá-los depois.</string>
+    <string name="restore_content_full">Os dados da cópia de segurança serão restaurados. \n \nPrecisas instalar as extensões em falta e iniciar sessão nos serviços de monitorização para usá-los depois.</string>
     <string name="next">Seguinte</string>
     <string name="more_library_settings">Mais definições da biblioteca</string>
     <string name="hide_category_hopper">Esconder seletor de categorias</string>
@@ -479,9 +476,9 @@
     <string name="show_unread_badges">Mostrar distintivos não lidos</string>
     <string name="hide_unread_badges">Esconder distintivos não lidos</string>
     <string name="reset_all_chapters_for_this_">Redefinir todos os capítulos para este %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Isto irá remover a data de leitura de \"%1$s\". Tem a certeza\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Isto irá remover a data de leitura de \"%1$s\". Tem a certeza?</string>
     <string name="reset_chapter_history">Reiniciar histórico de capítulos</string>
-    <string name="reset_chapter_question">Reiniciar capítulo\?</string>
+    <string name="reset_chapter_question">Reiniciar capítulo?</string>
     <string name="grouped">Agrupado</string>
     <string name="no_recent_read_updated_manga">Nenhum manga lido ou atualizado recentemente</string>
     <string name="search_recents">Pesquisar recentes…</string>
@@ -556,11 +553,9 @@
     <string name="match_enabled_sources">Corresponder às fontes ativadas</string>
     <string name="match_pinned_sources">Corresponder às fontes fixadas</string>
     <string name="only_search_pinned_when">Pesquisar apenas fontes fixadas</string>
-    <string name="delete_all_covers__not_in_library_used_">Apaga todas as capas do cache fora da sua biblioteca.
-\nAtualmente a usar: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Apaga todas as capas do cache fora da sua biblioteca. \nAtualmente a usar: %1$s</string>
     <string name="clear_cached_covers_non_library">Limpar capas em cache fora da biblioteca</string>
-    <string name="delete_old_covers_in_library_used_">Apaga capas em cache antigas e não usadas de mangás na sua biblioteca que foram atualizados.
-\nAtualmente a usar: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Apaga capas em cache antigas e não usadas de mangás na sua biblioteca que foram atualizados. \nAtualmente a usar: %1$s</string>
     <string name="clean_up_cached_covers">Limpar capas em cache</string>
     <string name="disable_if_issues_with_updating">Desative isso se estiver com problemas para atualizar ou restaurar a sua biblioteca</string>
     <string name="no_folders_to_cleanup">Nenhuma pasta para limpar</string>
@@ -589,7 +584,7 @@
     <string name="turn_off_">Desativar %s</string>
     <string name="turn_on_">Ativar %s</string>
     <string name="skipping_">(a pular %1$d)</string>
-    <string name="stop_migrating">Parar de migrar\?</string>
+    <string name="stop_migrating">Parar de migrar?</string>
     <string name="no_alternatives_found">Nenhuma alternativa encontrada</string>
     <string name="no_chapters_found_for_migration">Nenhum capítulo encontrado, esta manga não pode ser usada para migração</string>
     <string name="migrate_">Migrar %1$s</string>
@@ -631,14 +626,14 @@
     <string name="show_downloaded_chapters">Mostrar capítulos descarregados</string>
     <string name="show_bookmarked_chapters">Mostrar capítulos favoritos</string>
     <string name="show_all">Mostrar tudo</string>
-    <string name="add_x_to_library">Adicionar %1$s à biblioteca\?</string>
+    <string name="add_x_to_library">Adicionar %1$s à biblioteca?</string>
     <string name="all_but_bookmarked_chapters">Todos, exceto os capítulos favoritos</string>
     <string name="all_read_chapters">Todos os capítulos lidos</string>
     <string name="search_chapters">Pesquisar capítulos</string>
     <string name="select_ending_chapter">Selecionar capítulo final</string>
     <string name="select_starting_chapter">Selecione o capítulo inicial</string>
-    <string name="mark_all_chapters_as_unread">Marcar todos os capítulos como não lidos\?</string>
-    <string name="mark_all_chapters_as_read">Marcar todos os capítulos como lidos\?</string>
+    <string name="mark_all_chapters_as_unread">Marcar todos os capítulos como não lidos?</string>
+    <string name="mark_all_chapters_as_read">Marcar todos os capítulos como lidos?</string>
     <string name="no_description">Sem descrição</string>
     <string name="season_">Temporada %1$d</string>
     <string name="volume_">Volume %1$d</string>
@@ -730,7 +725,7 @@
     <string name="your_library">A sua biblioteca</string>
     <string name="release_page">Página de lançamento</string>
     <string name="no_chapters_to_delete">Sem capítulos para apagar</string>
-    <string name="remove_all_downloads">Remover todas as descarregas\?</string>
+    <string name="remove_all_downloads">Remover todas as descarregas?</string>
     <string name="no_pages_found">Nenhuma página encontrada</string>
     <string name="source_unsupported">Fonte não é suportada</string>
     <string name="restore_miui_warning">Restauros de cópias de segurança podem não funcionar corretamente se a otimização MIUI estiver desativada.</string>
@@ -802,7 +797,7 @@
     <string name="appearance">Aparência</string>
     <string name="keep_both_on_service">Manter ambos em %1$s e apenas substituir localmente</string>
     <string name="remove_x_from_service_and_add_y">Remover %1$s de %2$s e adicionar %3$s</string>
-    <string name="remove_previous_tracker">Remover o rastreador anterior\?</string>
+    <string name="remove_previous_tracker">Remover o rastreador anterior?</string>
     <string name="select_an_entry">Selecione uma entrada</string>
     <string name="affects_library_grid">Afeta as grades de cobertura da biblioteca</string>
     <string name="getting_started_guide">Guia de introdução</string>
@@ -815,7 +810,7 @@
     <string name="about_dont_kill_my_app">Alguns fabricantes têm restrições adicionais de aplicação que desligam os serviços em segundo plano. Este sítio web tem mais informações sobre como corrigi-lo.</string>
     <string name="show_in_sources_and_extensions">Mostrar na lista de fontes e extensões</string>
     <string name="log_out">Terminar sessão</string>
-    <string name="log_out_from_">Terminar sessão em %1$s\?</string>
+    <string name="log_out_from_">Terminar sessão em %1$s?</string>
     <string name="every_3_days">A cada 3 dias</string>
     <string name="download_queue_size_warning">Aviso: downloads grandes em massa podem levar as fontes a ficarem lentas e/ou começarem a bloquear o Tachiyomi. Toque para saber mais.</string>
     <string name="ext_installer_shizuku_stopped">O Shizuku não está em execução</string>
@@ -854,15 +849,13 @@
     <string name="select_inverse">Seleção inversa</string>
     <string name="clear_history">Eliminar histórico</string>
     <string name="clear_history_completed">Histórico eliminado</string>
-    <string name="clear_history_confirmation">Tem a certeza\? Todo o histórico será perdido.</string>
+    <string name="clear_history_confirmation">Tem a certeza? Todo o histórico será perdido.</string>
     <string name="backup_info">Cópias de segurança automáticas são altamente recomendadas. Também deve guardar cópias em outros locais.</string>
     <string name="language_badge">Distintivo de linguagem</string>
     <string name="expanded_toolbar">Barra de ferramentas expandida</string>
     <string name="show_larger_toolbar">Mostrar uma barra de ferramenta maior, no topo da maioria das páginas (em aparelhos menores essa opção é desabiltiada independentemente da escolha)</string>
     <string name="warning_enroll_into_beta">Versões Beta podem ser instáveis e pode ser necessário limpar os arquivos do app.</string>
-    <string name="confirm_manga_add_duplicate">Tem uma entrada na sua biblioteca com o mesmo nome mas de uma fonte diferente (%1$s)
-\n
-\nAinda deseja continuar\?</string>
+    <string name="confirm_manga_add_duplicate">Tem uma entrada na sua biblioteca com o mesmo nome mas de uma fonte diferente (%1$s) \n \nAinda deseja continuar?</string>
     <string name="update_tracking_after_reading">Atualizar monitoramento após leitura</string>
     <string name="new_beta_version_available">Nova versão beta disponível!</string>
     <string name="zoom_double_page_spreads">Fazer zoom em páginas duplas</string>
@@ -949,8 +942,7 @@
     <string name="reading_list">Lista dos Em Leitura</string>
     <string name="on_hold_list">Lista dos Em Espera</string>
     <string name="unfinished_list">Lista de Inacabados</string>
-    <string name="downloads_swipe_tutorial">Transferências podem ser canceladas ao deslizá-las 
-\nDeslize esta dica para dispensá-la</string>
+    <string name="downloads_swipe_tutorial">Transferências podem ser canceladas ao deslizá-las \nDeslize esta dica para dispensá-la</string>
     <string name="show_">Mostrar %1$s</string>
     <string name="learn_why">Aprenda porquê</string>
     <string name="must_view_details_before_migration">Os detalhes desta entrada devem ser vistos antes de ser capaz de migrar</string>

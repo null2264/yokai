@@ -16,7 +16,7 @@
     <string name="categories">Kategorije</string>
     <string name="cookies_cleared">Kolačići su izbrisani</string>
     <string name="clear_database">Isprazni bazu podataka</string>
-    <string name="clear_database_confirmation">Sigurno\? Pročitana poglavlja i tijek unosa koji nisu u biblioteci će se izgubiti</string>
+    <string name="clear_database_confirmation">Sigurno? Pročitana poglavlja i tijek unosa koji nisu u biblioteci će se izgubiti</string>
     <string name="clear_database_completed">Unosi su izbrisani</string>
     <string name="updates_tracking_details">Aktualizira stanje, ocjenu i zadnje pročitano poglavlje iz usluga za praćenje</string>
     <string name="disable_battery_optimization">Deaktiviraj optimiranje baterije</string>
@@ -85,7 +85,7 @@
     <string name="set_as_cover">Postavi kao naslovnicu</string>
     <string name="cover_updated">Naslovnica aktualizirana</string>
     <string name="next_chapter_not_found">Sljedeće poglavlje nije pronađeno</string>
-    <string name="use_image_as_cover">Ovu sliku koristiti kao ilustraciju naslovnice\?</string>
+    <string name="use_image_as_cover">Ovu sliku koristiti kao ilustraciju naslovnice?</string>
     <string name="next">Sljedeće</string>
     <string name="previous">Prethodno</string>
     <string name="theres_no_next_chapter">Nema sljedećeg poglavlja</string>
@@ -182,7 +182,7 @@
     <string name="backup_created">Sigurnosna kopija je stvorena</string>
     <string name="restore_completed">Obnavljanje je završeno</string>
     <string name="creating_backup">Stvaranje sigurnosne kopije</string>
-    <string name="what_should_backup">Što želiš spremiti kao sigurnosnu kopiju\?</string>
+    <string name="what_should_backup">Što želiš spremiti kao sigurnosnu kopiju?</string>
     <string name="restoring_backup">Obnavljanje sigurnosnom kopijom</string>
     <string name="clear_chapter_cache">Isprazni predmemoriju poglavlja</string>
     <string name="network">Mreža</string>
@@ -337,7 +337,7 @@
     <string name="add_categories">Dodaj kategorije</string>
     <string name="already_in_category">Unos se već nalazi u kategoriji</string>
     <string name="confirm_category_deletion_message">Unosi u ovoj kategoriji premjestit će se u standardnu kategoriju.</string>
-    <string name="confirm_category_deletion">Izbrisati kategoriju\?</string>
+    <string name="confirm_category_deletion">Izbrisati kategoriju?</string>
     <string name="extension_updates">Aktualiziranja proširenja</string>
     <string name="last_used">Zadnje korišteno</string>
     <string name="source_hidden">Izvor skriven</string>
@@ -345,14 +345,14 @@
     <string name="search_extensions">Pretraži proširenja …</string>
     <string name="in_library">U biblioteci</string>
     <string name="search_filters">Filtri pretrage</string>
-    <string name="reset_chapter_question">Obnoviti poglavlje\?</string>
+    <string name="reset_chapter_question">Obnoviti poglavlje?</string>
     <string name="no_recently_read_manga">Nema nedavno čitanih serija</string>
     <string name="no_recent_chapters">Nema nedavnih poglavlja</string>
     <string name="search_recents">Pretraži nedavne …</string>
     <string name="view_all_updates">Pogledaj sva aktualiziranja</string>
     <string name="view_history">Pogledaj povijest</string>
     <string name="reset_all_chapters_for_this_">Obnovi sva poglavlja za %1$s</string>
-    <string name="this_will_remove_the_read_date_for_x_question">Ovo će ukloniti datum čitanja za „%1$s”. Je li to stvarno želiš\?</string>
+    <string name="this_will_remove_the_read_date_for_x_question">Ovo će ukloniti datum čitanja za „%1$s”. Je li to stvarno želiš?</string>
     <string name="recent_updates">Nedavna aktualiziranja</string>
     <string name="newly_added">Novo dodani</string>
     <string name="recents">Nedavni</string>
@@ -365,7 +365,7 @@
     <string name="display_as">Prikaži kao</string>
     <string name="tap_library_to_show_filters">Dodirni ikonu biblioteke za prikazivanje filtara</string>
     <string name="want_to_read">Želim čitati</string>
-    <string name="mark_all_chapters_as_read">Sva poglavlja označiti kao pročitana\?</string>
+    <string name="mark_all_chapters_as_read">Sva poglavlja označiti kao pročitana?</string>
     <string name="no_description">Bez opisa</string>
     <string name="_copied_to_clipboard">%1$s kopirano u međuspremnik</string>
     <string name="add_to_library">Dodaj u biblioteku</string>
@@ -411,10 +411,8 @@
     <string name="refresh_library_metadata">Aktualiziraj metapodatke biblioteke</string>
     <string name="clear_database_summary">Izbriši povijest za unose koji nisu spremljeni u biblioteci</string>
     <string name="disable_if_issues_with_updating">Deaktiviraj ovo ako imaš problema s aktualiziranjem ili obnavljanjem tvoje biblioteke</string>
-    <string name="delete_old_covers_in_library_used_">Izbriši stare i nekorištene unose predmemoriranih naslovnica u tvojoj biblioteci koje su aktualizirane.
-\nTrenutačno se koristi: %1$s</string>
-    <string name="delete_all_covers__not_in_library_used_">Izbriši sve predmemorirane naslovnice koje nisu u tvojoj biblioteci
-\nTrenutačno se koristi: %1$s</string>
+    <string name="delete_old_covers_in_library_used_">Izbriši stare i nekorištene unose predmemoriranih naslovnica u tvojoj biblioteci koje su aktualizirane. \nTrenutačno se koristi: %1$s</string>
+    <string name="delete_all_covers__not_in_library_used_">Izbriši sve predmemorirane naslovnice koje nisu u tvojoj biblioteci \nTrenutačno se koristi: %1$s</string>
     <string name="clear_cached_covers_non_library">Izbriši predmemorirane naslovnice koje nisu u biblioteci</string>
     <string name="clean_up_cached_covers">Izbriši predmemorirane naslovnice</string>
     <string name="updates_covers_genres_desc">Aktualizira naslovnice, žanrove, opis i podatke o stanju unosa</string>
@@ -431,7 +429,7 @@
     <string name="all_but_bookmarked_chapters">Sva poglavlja, osim zabilježenih</string>
     <string name="show_bookmarked_chapters">Prikaži zabilježena poglavlja</string>
     <string name="show_all">Prikaži sve</string>
-    <string name="add_x_to_library">Dodati %1$s u biblioteku\?</string>
+    <string name="add_x_to_library">Dodati %1$s u biblioteku?</string>
     <string name="all_read_chapters">Sva pročitana poglavlja</string>
     <string name="all_unread_chapters">Sva nepročitana poglavlja</string>
     <string name="all_chapters">Sva poglavlja</string>
@@ -466,14 +464,11 @@
     <string name="locale">Područje</string>
     <string name="automatic_backups">Automatsko spremanje sigurnosnih kopija</string>
     <string name="invalid_backup_file">Neispravna datoteka sigurnosne kopije</string>
-    <string name="invalid_backup_file_type">Neispravna datoteka sigurnosne kopije: %1$s
-\nTrebala bi završiti s .proto.gz ili .json.</string>
+    <string name="invalid_backup_file_type">Neispravna datoteka sigurnosne kopije: %1$s \nTrebala bi završiti s .proto.gz ili .json.</string>
     <string name="backup_has_no_manga">Sigurnosna kopija ne sadrži nijedan unos.</string>
     <string name="restore_missing_sources">Nedostaju izvori:</string>
     <string name="restore_missing_trackers">Usluge praćenja bez prijave:</string>
-    <string name="restore_content_full">Podaci datoteke sigurnosne kopije će se obnoviti.
-\n
-\nZa upotrebu podataka, morat ćeš instalirati nedostajuća proširenja i nakon toga se prijaviti na usluge praćenja.</string>
+    <string name="restore_content_full">Podaci datoteke sigurnosne kopije će se obnoviti. \n \nZa upotrebu podataka, morat ćeš instalirati nedostajuća proširenja i nakon toga se prijaviti na usluge praćenja.</string>
     <string name="restoring_backup_canceled">Obnavljanje prekinuto</string>
     <string name="restore_duration">%02d min, %02d s</string>
     <string name="source_migration_guide">Vodič za migraciju izvora</string>
@@ -522,7 +517,7 @@
     <string name="max_auto_backups">Maksimalni broj automatskih sigurnosnih kopija</string>
     <string name="amoled_black">AMOLED crna</string>
     <string name="skipping_">(%1$d se preskače)</string>
-    <string name="stop_migrating">Prekinuti migriranje\?</string>
+    <string name="stop_migrating">Prekinuti migriranje?</string>
     <string name="no_alternatives_found">Nisu pronađene alternative</string>
     <string name="no_chapters_found_for_migration">Nisu pronađena poglavlja. Ova se serija ne može koristiti za migraciju</string>
     <string name="migrate_">Migriraj %1$s</string>
@@ -552,7 +547,7 @@
     <string name="newest_first">Nova prema starim</string>
     <string name="select_ending_chapter">Odaberi završno poglavlje</string>
     <string name="select_starting_chapter">Odaberi početno poglavlje</string>
-    <string name="mark_all_chapters_as_unread">Sva poglavlja označiti kao nepročitana\?</string>
+    <string name="mark_all_chapters_as_unread">Sva poglavlja označiti kao nepročitana?</string>
     <string name="both_axes">Obje osi</string>
     <string name="vertically">Okomito</string>
     <string name="horizontally">Vodoravno</string>
@@ -689,7 +684,7 @@
     <string name="your_library">Tvoja biblioteka</string>
     <string name="release_page">Stranica izdanja</string>
     <string name="no_chapters_to_delete">Nema poglavlja za brisanje</string>
-    <string name="remove_all_downloads">Ukloniti sva preuzimanja\?</string>
+    <string name="remove_all_downloads">Ukloniti sva preuzimanja?</string>
     <string name="search_">Traži %1$s</string>
     <string name="automatic_removal">Automatsko uklanjanje</string>
     <string name="show_on_long_press">Pokaži pri dugom dodiru</string>
@@ -758,7 +753,7 @@
     <string name="extensions_miui_warning">Za instaliranje proširenja, MIUI optimizacije mora biti deaktivirana.</string>
     <string name="keep_both_on_service">Zadrži oboje na %1$s i samo zamjeni lokalno</string>
     <string name="remove_x_from_service_and_add_y">Ukloni %1$s iz %2$s i dodaj %3$s</string>
-    <string name="remove_previous_tracker">Ukloniti prethodnu uslugu praćenja\?</string>
+    <string name="remove_previous_tracker">Ukloniti prethodnu uslugu praćenja?</string>
     <string name="select_an_entry">Odaberite unos</string>
     <string name="split_double_pages">Podijeli duplerice</string>
     <string name="split_double_pages_portrait">Podijeli duplerice uspravno</string>
@@ -785,7 +780,7 @@
     <string name="teal_ocean">Tirkizni ocean</string>
     <string name="appearance">Izgled</string>
     <string name="log_out">Odjava</string>
-    <string name="log_out_from_">Odjaviti se iz %1$s\?</string>
+    <string name="log_out_from_">Odjaviti se iz %1$s?</string>
     <string name="channel_errors">Greške</string>
     <string name="show_outline_around_covers">Prikaži rubove oko naslovnica</string>
     <string name="show_in_sources_and_extensions">Prikaži u popisu izvora i proširenja</string>
@@ -826,9 +821,7 @@
     <string name="descending">Silazno</string>
     <string name="database_clean">Čišćenje baze podataka</string>
     <string name="clear_database_source_item_count">Broj unosa u bazi odataka koje nisu u zbirci: %1$d</string>
-    <string name="confirm_manga_add_duplicate">U biblioteci imaš unos s istim imenom ali iz drugog izvora (%1$s).
-\n
-\nŽeliš li svejedno nastaviti\?</string>
+    <string name="confirm_manga_add_duplicate">U biblioteci imaš unos s istim imenom ali iz drugog izvora (%1$s). \n \nŽeliš li svejedno nastaviti?</string>
     <string name="select_inverse">Odaberi inverzno</string>
     <string name="cover_only_grid">Samo naslovnice</string>
     <string name="notification_update_error">Nauspjela aktualiziranja: %1$d</string>
@@ -839,7 +832,7 @@
     <string name="tap_to_see_details">Dodirni za prikaz detalja</string>
     <string name="channel_skipped">Preskočeno</string>
     <string name="clear_history_completed">Povijest je izbrisana</string>
-    <string name="clear_history_confirmation">Sigurno\? Izgubit ćeš svu povijest.</string>
+    <string name="clear_history_confirmation">Sigurno? Izgubit ćeš svu povijest.</string>
     <string name="clear_history">Izbriši povijest</string>
     <string name="backup_restore_invalid_uri">Greška: prazan URL</string>
     <string name="backup_info">Preporučuje se izrada automatskih sigurnosnih kopija. Čuvaj kopije i na drugim mjestima.</string>
@@ -862,8 +855,7 @@
     <string name="view_all">Pogledaj sve</string>
     <string name="warning_unenroll_from_beta">Vraćanje na prethodnu produkcijsku verziju može prouzročiti probleme i može zahtijevati brisanje podataka aplikacije.</string>
     <string name="tap_zones">Područja dodira</string>
-    <string name="downloads_swipe_tutorial">Preuzimanja se mogu prekinuti povlačenjem
-\nZa odbacivanje ovog savjeta povuci ga</string>
+    <string name="downloads_swipe_tutorial">Preuzimanja se mogu prekinuti povlačenjem \nZa odbacivanje ovog savjeta povuci ga</string>
     <string name="download_ahead_info">Radi samo na unosima u biblioteci i ako je trenutačno poglavlje plus sljedeće već preuzeto</string>
     <string name="tap_to_learn_more">Dodirni za daljnje informacije</string>
     <string name="warning_enroll_into_beta">Beta izdanja mogu biti nestabilna i mogu zahtijevati brisanje podataka aplikacije.</string>
