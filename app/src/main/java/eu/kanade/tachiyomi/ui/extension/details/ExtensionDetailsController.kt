@@ -59,6 +59,13 @@ import uy.kohesive.injekt.injectLazy
 import yokai.i18n.MR
 import yokai.util.lang.getString
 
+internal fun forwardEditTextPreferenceChange(
+    dialog: EditTextResetPreference,
+    source: EditTextPreference,
+) {
+    dialog.onChange { source.callChangeListener(it) }
+}
+
 @SuppressLint("RestrictedApi")
 class ExtensionDetailsController(bundle: Bundle? = null) :
     BaseCoroutineController<ExtensionDetailControllerBinding, ExtensionDetailsPresenter>(bundle),
@@ -302,7 +309,7 @@ class ExtensionDetailsController(bundle: Bundle? = null) :
         val matPref = when (preference) {
             is EditTextPreference -> EditTextResetPreference(activity, context).apply {
                 dialogSummary = preference.dialogMessage
-                onPreferenceChangeListener = preference.onPreferenceChangeListener
+                forwardEditTextPreferenceChange(this, preference)
             }
 
             is ListPreference -> ListMatPreference(activity, context).apply {
