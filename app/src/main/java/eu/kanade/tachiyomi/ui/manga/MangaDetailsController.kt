@@ -69,11 +69,13 @@ import eu.kanade.tachiyomi.data.database.models.vibrantCoverColor
 import eu.kanade.tachiyomi.data.download.DownloadJob
 import eu.kanade.tachiyomi.data.download.model.Download
 import eu.kanade.tachiyomi.data.notification.NotificationReceiver
+import eu.kanade.tachiyomi.data.recommendation.RecommendationNavigationTrail
 import eu.kanade.tachiyomi.data.track.model.TrackSearch
 import eu.kanade.tachiyomi.databinding.MangaDetailsControllerBinding
 import eu.kanade.tachiyomi.domain.manga.models.Manga
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.icon
+import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.online.HttpSource
 import eu.kanade.tachiyomi.ui.base.MaterialMenuSheet
 import eu.kanade.tachiyomi.ui.base.SmallToolbarInterface
@@ -922,6 +924,10 @@ class MangaDetailsController :
         updateFab()
         colorToolbar(binding.recycler.canScrollVertically(-1))
         updateMenuVisibility(activityBinding?.toolbar?.menu)
+    }
+
+    fun updateRecommendations() {
+        getHeader()?.bindRecommendations()
     }
 
     private fun addMangaHeader() {
@@ -1775,6 +1781,16 @@ class MangaDetailsController :
         val view = view ?: return
         snack?.dismiss()
         snack = view.snack(view.context.getString(MR.strings.added_to_library))
+    }
+
+    override fun onRecommendationClick(manga: SManga) {
+        viewScope.launchIO {
+            val local = presenter.recommendationToLocal(manga)
+            RecommendationNavigationTrail.record(presenter.manga.source, presenter.manga)
+            withUIContext {
+                router.pushController(MangaDetailsController(local, true).withFadeTransaction())
+            }
+        }
     }
 
     override fun mangaPresenter(): MangaDetailsPresenter = presenter

@@ -7,6 +7,7 @@ import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.data.database.models.Track
 import eu.kanade.tachiyomi.data.track.TrackService
 import eu.kanade.tachiyomi.data.track.anilist.dto.ALOAuth
+import eu.kanade.tachiyomi.data.track.anilist.dto.ALRecommendation
 import eu.kanade.tachiyomi.data.track.updateNewTrackInfo
 import eu.kanade.tachiyomi.util.system.e
 import kotlinx.collections.immutable.ImmutableList
@@ -42,6 +43,8 @@ class Anilist(private val context: Context, id: Long) : TrackService(id) {
     private val interceptor by lazy { AnilistInterceptor(this, getPassword()) }
 
     private val api by lazy { AnilistApi(client, interceptor) }
+
+    suspend fun recommendations(mediaId: Long): List<ALRecommendation> = api.recommendations(mediaId)
 
     override val supportsReadingDates: Boolean = true
 
