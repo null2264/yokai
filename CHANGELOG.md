@@ -12,6 +12,14 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ### Fixes
 - Add missing `memo` column for extension-lib 1.6 (#691) (@mFontecchio)
+- Fix Reader unable to swipe back through a previous chapter that only has 1 page (#642) (@solstxce)
+
+### Translation
+- Update translations from Weblate
+
+### Other
+- Update dependency org.jetbrains.kotlinx:kotlinx-collections-immutable to v0.5.1
+- Update dependency org.jetbrains.kotlinx:kotlinx-coroutines-bom to v1.11.0
 
 ## [1.10.0]
 
