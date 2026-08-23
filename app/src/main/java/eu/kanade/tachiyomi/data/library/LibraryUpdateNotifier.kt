@@ -90,7 +90,7 @@ class LibraryUpdateNotifier(private val context: Context) {
                 .setContentTitle("${context.getString(MR.strings.updating_library)} (${current + 1}/$total)")
                 .setContentText(if (preferences.hideNotificationContent().get()) null else manga.title)
                 .setProgress(total, current, false)
-                .setShortCriticalText("$current/$total")
+                .setShortCriticalText("${current + 1}/$total")
                 .build(),
         )
     }
