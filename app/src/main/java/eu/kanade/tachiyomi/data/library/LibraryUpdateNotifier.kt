@@ -71,6 +71,7 @@ class LibraryUpdateNotifier(private val context: Context) {
             setOngoing(true)
             setOnlyAlertOnce(true)
             setProgress(0, 0, true)
+            setRequestPromotedOngoing(true)
             color = ContextCompat.getColor(context, R.color.secondaryTachiyomi)
             addAction(R.drawable.ic_close_24dp, context.getString(AR.string.cancel), cancelIntent)
         }
