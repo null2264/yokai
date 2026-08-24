@@ -15,6 +15,9 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 ### Added
 - Show Live Updates status bar chip during library update
 
+### Changes
+- Enhance FAB interactions and padding adjustments (#618) (@Hiirbaf)
+
 ### Fixes
 - Add missing `memo` column for extension-lib 1.6 (#691) (@mFontecchio)
 - Fix Reader unable to swipe back through a previous chapter that only has 1 page (#642) (@solstxce)
