@@ -10,6 +10,11 @@ The format is simplified version of [Keep a Changelog](https://keepachangelog.co
 
 ## [Unreleased]
 
+## [1.10.1]
+
+### Added
+- Show Live Updates status bar chip during library update
+
 ### Fixes
 - Add missing `memo` column for extension-lib 1.6 (#691) (@mFontecchio)
 - Fix Reader unable to swipe back through a previous chapter that only has 1 page (#642) (@solstxce)
