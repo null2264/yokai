@@ -416,15 +416,25 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
                             else -> rawTopScrollOffset >= 0f
                         }
                 }
-                if (!canScroll() || scrollCheck())
+                // Only gate on canScroll() while fully at rest (expanded). Gating on it at any
+                // other scroll offset creates a deadlock: while the app bar is only partially
+                // collapsed, the content's viewport is still shrunk by the app bar's reserved
+                // padding, so the content can report "nothing left to scroll" even though there's
+                // more of it to reveal once the app bar finishes collapsing. If we refuse to
+                // collapse the app bar in that case, neither the app bar nor the content will ever
+                // move again.
+                val blockedAtRest = !canScroll() && scrollOffset == 0f
+                if (blockedAtRest || scrollCheck())
                     return Offset.Zero
 
                 val prevHeightOffset = scrollOffset
                 scrollOffset += available.y
-                return if (prevHeightOffset != scrollOffset) {
+                val consumedY = scrollOffset - prevHeightOffset
+                return if (consumedY != 0f) {
                     // We're in the middle of top app bar collapse or expand.
-                    // Consume only the scroll on the Y axis.
-                    available.copy(x = 0f)
+                    // Consume only the amount that was actually applied (it may have been
+                    // clamped), leaving the rest for the scrollable content below.
+                    Offset(0f, consumedY)
                 } else {
                     Offset.Zero
                 }
@@ -435,7 +445,7 @@ private class EnterAlwaysCollapsedAppBarScrollBehavior(
                 available: Offset,
                 source: NestedScrollSource
             ): Offset {
-                if (!canScroll()) return Offset.Zero
+                if (!canScroll() && scrollOffset == 0f) return Offset.Zero
                 contentOffset += consumed.y
 
                 if (available.y < 0f || consumed.y < 0f) {
@@ -562,10 +572,12 @@ private class EnterAlwaysAppBarScrollBehavior(
                 // collapsing or expanding.
                 // Note that when the content was set with a revered layout, we always return a
                 // zero offset.
-                return if (prevScrollOffset != scrollOffset) {
+                val consumedY = scrollOffset - prevScrollOffset
+                return if (consumedY != 0f) {
                     // We're in the middle of top app bar collapse or expand.
-                    // Consume only the scroll on the Y axis.
-                    available.copy(x = 0f)
+                    // Consume only the amount that was actually applied (it may have been
+                    // clamped), leaving the rest for the scrollable content below.
+                    Offset(0f, consumedY)
                 } else {
                     Offset.Zero
                 }
