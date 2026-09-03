@@ -261,6 +261,10 @@ object SettingsDataScreen : ComposableSettings() {
         val chapterCache = remember { Injekt.get<ChapterCache>() }
         var cacheReadableSizeSema by remember { mutableIntStateOf(0) }
         val cacheReadableSize = remember(cacheReadableSizeSema) { chapterCache.readableSize }
+        var onlineCoverCacheSizeSema by remember { mutableIntStateOf(0) }
+        val onlineCoverCacheSize = remember(onlineCoverCacheSizeSema) { coverCache.getOnlineCoverCacheSize() }
+        var chapterCoverCacheSizeSema by remember { mutableIntStateOf(0) }
+        val chapterCoverCacheSize = remember(chapterCoverCacheSizeSema) { coverCache.getChapterCacheSize() }
 
         return Preference.PreferenceGroup(
             title = stringResource(MR.strings.storage_usage),
@@ -303,12 +307,13 @@ object SettingsDataScreen : ComposableSettings() {
                     title = stringResource(MR.strings.clear_cached_covers_non_library),
                     subtitle = stringResource(
                         MR.strings.delete_all_covers__not_in_library_used_,
-                        coverCache.getOnlineCoverCacheSize(),
+                        onlineCoverCacheSize,
                     ),
                     onClick = {
                         context.toast(MR.strings.starting_cleanup)
                         scope.launchNonCancellableIO {
                             coverCache.deleteAllCachedCovers()
+                            withUIContext { onlineCoverCacheSizeSema++ }
                         }
                     }
                 ),
@@ -316,12 +321,13 @@ object SettingsDataScreen : ComposableSettings() {
                     title = stringResource(MR.strings.clean_up_cached_covers),
                     subtitle = stringResource(
                         MR.strings.delete_old_covers_in_library_used_,
-                        coverCache.getChapterCacheSize(),
+                        chapterCoverCacheSize,
                     ),
                     onClick = {
                         context.toast(MR.strings.starting_cleanup)
                         scope.launchNonCancellableIO {
                             coverCache.deleteOldCovers()
+                            withUIContext { chapterCoverCacheSizeSema++ }
                         }
                     }
                 ),
