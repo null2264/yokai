@@ -311,5 +311,6 @@ class LibraryCategoryAdapter(val controller: LibraryController?) :
         fun toggleCategoryVisibility(position: Int)
         fun manageCategory(position: Int)
         fun globalSearch(query: String)
+        fun isCategoryUpdating(categoryId: Int?): Boolean
     }
 }

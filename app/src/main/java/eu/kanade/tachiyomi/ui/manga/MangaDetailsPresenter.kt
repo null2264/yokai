@@ -189,7 +189,7 @@ class MangaDetailsPresenter(
         val controller = view ?: return
 
         isLockedFromSearch = controller.shouldLockIfNeeded && SecureActivityDelegate.shouldBeLocked()
-        if (!::manga.isInitialized) runBlocking { refreshMangaFromDb() }
+        if (!::manga.isInitialized || manga.description == null) runBlocking { refreshMangaFromDb() }
         syncData()
 
         presenterScope.launchUI {
@@ -205,7 +205,8 @@ class MangaDetailsPresenter(
                 .collect(::onQueueUpdate)
         }
         presenterScope.launchIO {
-            downloadManager.queueState.collectLatest(::onQueueUpdate)
+            downloadManager.queueState
+                .collectLatest(::onQueueUpdate)
         }
 
         runBlocking {
@@ -592,8 +593,13 @@ class MangaDetailsPresenter(
                 it.toProgressUpdate()
             }
             updateChapter.awaitAll(updates)
-            getChapters()
-            withUIContext { view?.updateChapters() }
+            if (selectedChapters.size == 1) {
+                getChapters()
+                withUIContext { view?.updateChaptersQuick(selectedChapters.first().id ?: return@withUIContext) }
+            } else {
+                getChapters()
+                withUIContext { view?.updateChapters() }
+            }
         }
     }
 
@@ -622,8 +628,13 @@ class MangaDetailsPresenter(
             if (read && deleteNow && preferences.removeAfterMarkedAsRead().get()) {
                 deleteChapters(selectedChapters, false)
             }
-            getChapters()
-            withUIContext { view?.updateChapters() }
+            if (selectedChapters.size == 1) {
+                getChapters()
+                withUIContext { view?.updateChaptersQuick(selectedChapters.first().id ?: return@withUIContext) }
+            } else {
+                getChapters()
+                withUIContext { view?.updateChapters() }
+            }
             if (read && deleteNow) {
                 val latestReadChapter = selectedChapters.maxByOrNull { it.chapter_number.toInt() }?.chapter
                 updateTrackChapterMarkedAsRead(preferences, latestReadChapter, manga.id) {
@@ -1170,7 +1181,16 @@ class MangaDetailsPresenter(
         onPageProgressUpdate(download)
     }
 
+    private var hadQueuedChapters = false
+
     private suspend fun onQueueUpdate(queue: List<Download>) = withIOContext {
+        // Skip rebuilds for manga unrelated to this screen (avoids stutter),
+        // but still rebuild on the transition to empty - otherwise the final
+        // "download complete" update gets skipped since the chapter is already
+        // removed from the queue by the time this fires.
+        val hasQueuedNow = queue.any { it.manga.id == mangaId }
+        if (!hasQueuedNow && !hadQueuedChapters) return@withIOContext
+        hadQueuedChapters = hasQueuedNow
         getChapters(queue)
         withUIContext {
             view?.updateChapters()

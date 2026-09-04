@@ -15,12 +15,17 @@ import eu.kanade.tachiyomi.source.SourceManager
 import eu.kanade.tachiyomi.ui.base.holder.BaseFlexibleViewHolder
 import eu.kanade.tachiyomi.ui.library.setFreeformCoverRatio
 import eu.kanade.tachiyomi.ui.manga.MangaDetailsController
-import eu.kanade.tachiyomi.util.system.launchUI
 import eu.kanade.tachiyomi.util.view.setCards
 import eu.kanade.tachiyomi.util.view.setVectorCompat
 import eu.kanade.tachiyomi.util.view.withFadeTransaction
 import java.text.DecimalFormat
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import uy.kohesive.injekt.injectLazy
 import yokai.domain.chapter.interactor.GetChapter
@@ -42,6 +47,12 @@ class MigrationProcessHolder(
     private var item: MigrationProcessItem? = null
     private val binding = MigrationProcessItemBinding.bind(view)
 
+    // Each ViewHolder owns its own scope so bind() coroutines can be
+    // cancelled when the holder rebinds to a different item or is recycled,
+    // instead of accumulating as parked coroutines on the dispatcher.
+    private val holderScope = MainScope()
+    private var bindJob: Job? = null
+
     init {
         // We need to post a Runnable to show the popup to make sure that the PopupMenu is
         // correctly positioned. The reason being that the view may change position before the
@@ -57,7 +68,13 @@ class MigrationProcessHolder(
 
     fun bind(item: MigrationProcessItem) {
         this.item = item
-        launchUI {
+
+        // Cancel any previous bind coroutine for this holder before starting a new one.
+        // Without this, every notifyItemChanged() call (which sourceFinished() triggers)
+        // would park a new coroutine on searchResult.get()'s mutex, exhausting the
+        // dispatcher thread pool and causing the progressive UI slowdown.
+        bindJob?.cancel()
+        bindJob = holderScope.launch {
             binding.migrationMangaCardFrom.setFreeformCoverRatio(item.manga.manga())
             binding.migrationMangaCardTo.setFreeformCoverRatio(null)
 
@@ -88,21 +105,19 @@ class MigrationProcessHolder(
                     }
                 }
 
-                /*launchUI {
-                    item.manga.progress.asFlow().collect { (max, progress) ->
-                        withContext(Dispatchers.Main) {
-                            binding.migrationMangaCardTo.search_progress.let { progressBar ->
-                                progressBar.max = max
-                                progressBar.progress = progress
-                            }
-                        }
-                    }
-                }*/
-
+                // searchResult.get() suspends until the search completes.
+                // This is safe here because bindJob is cancelled on every rebind,
+                // so only one coroutine per holder is ever parked waiting here.
                 val searchResult = item.manga.searchResult.get()?.let { getManga.awaitById(it) }
                 val resultSource = searchResult?.source?.let { sourceManager.get(it) }
+
+                // Guard: if this holder was rebound while we were suspended, bail out.
+                if (!isActive || item.manga.mangaId != this@MigrationProcessHolder.item?.manga?.mangaId) {
+                    return@launch
+                }
+
                 withContext(Dispatchers.Main) {
-                    if (item.manga.mangaId != this@MigrationProcessHolder.item?.manga?.mangaId || item.manga.migrationStatus == MigrationStatus.RUNNUNG) {
+                    if (item.manga.migrationStatus == MigrationStatus.RUNNUNG) {
                         return@withContext
                     }
                     if (searchResult != null && resultSource != null) {
@@ -127,6 +142,14 @@ class MigrationProcessHolder(
                 }
             }
         }
+    }
+
+    /**
+     * Called when this ViewHolder is recycled. Cancels the bind coroutine so
+     * no stale UI updates land on a holder that's been reused for a different item.
+     */
+    fun onRecycled() {
+        bindJob?.cancel()
     }
 
     private fun MangaGridItemBinding.resetManga() {
