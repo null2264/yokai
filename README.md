@@ -27,7 +27,7 @@ A free and open source manga reader
 [![Yokai Stable](https://img.shields.io/github/v/release/null2264/yokai?maxAge=3600&label=Stable&labelColor=06599d&color=043b69&filter=v*)](https://github.com/null2264/yokai/releases)
 [![Yokai Nightly](https://img.shields.io/github/v/release/null2264/yokai-nightly?maxAge=3600&label=Nightly&labelColor=2c2c47&color=1c1c39&filter=r*)](https://github.com/null2264/yokai-nightly/releases)
 
-*Requires Android 6.0 or higher.*
+*Requires Android 8.0 or higher.*
 
 ## About Fork
 
