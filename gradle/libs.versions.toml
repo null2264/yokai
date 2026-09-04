@@ -14,7 +14,7 @@ junit = "5.11.3"
 kermit = "2.0.5"
 koin = "4.0.4"
 leakcanary = "2.14"
-voyager = "1.1.0-beta03"
+voyager = "2.2.21-1.10.3"
 
 [libraries]
 aboutlibraries = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutlibraries" }
