@@ -11,8 +11,10 @@ import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.foundation.gestures.DraggableState
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.annotation.FrequentlyChangingValue
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
@@ -677,6 +679,42 @@ private class PinnedAppBarScrollBehavior(
                 return super.onPostFling(consumed, available)
             }
         }
+}
+
+@Composable
+fun enterAlwaysCollapsedAppBarScrollBehavior(
+    listState: LazyListState,
+    initialOffset: Float = 0f,
+    initialOffsetLimit: Float = -Float.MAX_VALUE,
+    initialContentOffset: Float = 0f,
+    topHeightPx: Float = 0f,
+    bottomHeightPx: Float = 0f,
+    searchHeightPx: Float = 0f,
+    insetPaddingForSearchPx: Float = 0f,
+    // TODO Load the motionScheme tokens from the component tokens file
+    snapAnimationSpec: AnimationSpec<Float> = spring(stiffness = Spring.StiffnessMediumLow),
+    flingAnimationSpec: DecayAnimationSpec<Float> = rememberSplineBasedDecay(),
+): JayAppBarScrollBehavior {
+    val canScroll by remember {
+        derivedStateOf { listState.canScrollForward || listState.canScrollBackward }
+    }
+    val isAtTop by remember {
+        derivedStateOf { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 }
+    }
+
+    return enterAlwaysCollapsedAppBarScrollBehavior(
+        initialOffset = initialOffset,
+        initialOffsetLimit = initialOffsetLimit,
+        initialContentOffset = initialContentOffset,
+        canScroll = { canScroll },
+        isAtTop = { isAtTop },
+        topHeightPx = topHeightPx,
+        bottomHeightPx = bottomHeightPx,
+        searchHeightPx = searchHeightPx,
+        insetPaddingForSearchPx = insetPaddingForSearchPx,
+        snapAnimationSpec = snapAnimationSpec,
+        flingAnimationSpec = flingAnimationSpec,
+    )
 }
 
 @Composable

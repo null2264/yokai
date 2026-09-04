@@ -69,7 +69,7 @@ import yokai.util.lang.getString
 
 object SettingsDataScreen : ComposableSettings() {
 
-    private fun readResolve() = SettingsDataScreen
+    private fun readResolve(): Any = SettingsDataScreen
 
     @Composable
     override fun getTitleRes(): StringResource = MR.strings.data_and_storage

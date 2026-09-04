@@ -76,19 +76,12 @@ fun SettingsScaffold(
     val preferences: PreferencesHelper by injectLazy()
     val useLargeAppBar by preferences.useLargeToolbar().collectAsState()
     val listState = rememberLazyListState()
-    val canScroll = remember(listState) { { listState.canScrollForward || listState.canScrollBackward } }
-    val isAtTop = remember(listState) {
-        { listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset == 0 }
-    }
 
     SettingsScaffold(
         title = title,
         appBarType = appBarType ?: if (useLargeAppBar) AppBarType.LARGE else AppBarType.SMALL,
         appBarActions = appBarActions,
-        appBarScrollBehavior = if (useLargeAppBar) enterAlwaysCollapsedAppBarScrollBehavior(
-            canScroll = canScroll,
-            isAtTop = isAtTop,
-        ) else null,
+        appBarScrollBehavior = if (useLargeAppBar) enterAlwaysCollapsedAppBarScrollBehavior(listState) else null,
         textFieldState = textFieldState,
         searchResult = searchResult,
     ) { innerPadding ->
