@@ -644,6 +644,7 @@
     <string name="select_sources">Select sources</string>
     <string name="source_migration">Source migration</string>
     <string name="migration">Migration</string>
+    <string name="migrating_progress">Migrating…</string>
     <string name="skip_pre_migration">Skip pre-migration</string>
     <string name="select_a_source_then_item_to_migrate">Select a source, then select an item to
         migrate</string>

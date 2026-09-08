@@ -200,6 +200,18 @@ open class LibraryController(
      */
     private val selectedMangas = mutableSetOf<Manga>()
 
+    // Categories the user has explicitly triggered an update for, that we're still waiting on
+    // isRunningFlow to confirm as finished. LibraryUpdateJob.categoryInQueue() can't be trusted
+    // right after starting a job - categoryIds gets populated a few lines into doWork(), so any
+    // header rebind that happens to land in that window (or is caused by something unrelated,
+    // like a badge/preference update) reads categoryInQueue() == false and stomps the spinner
+    // back off well before the job is actually done.
+    private val pendingManualCategoryUpdates = mutableSetOf<Int>()
+
+    override fun isCategoryUpdating(categoryId: Int?): Boolean {
+        return LibraryUpdateJob.categoryInQueue(categoryId) || (categoryId != null && categoryId in pendingManualCategoryUpdates)
+    }
+
     private var mAdapter: LibraryCategoryAdapter? = null
     private val adapter: LibraryCategoryAdapter
         get() = mAdapter!!
@@ -616,11 +628,12 @@ open class LibraryController(
         setPreferenceFlows()
         LibraryUpdateJob.updateFlow.onEach(::onUpdateManga).launchIn(viewScope)
         viewScope.launchUI {
-            LibraryUpdateJob.isRunningFlow(view.context).collect {
+            LibraryUpdateJob.isRunningFlow(view.context).collect { isRunning ->
+                if (!isRunning) pendingManualCategoryUpdates.clear()
                 adapter.getHeaderPositions().forEach {
                     val holder = (binding.libraryGridRecycler.recycler.findViewHolderForAdapterPosition(it) as? LibraryHeaderHolder) ?: return@forEach
                     val category = holder.category ?: return@forEach
-                    holder.notifyStatus(LibraryUpdateJob.categoryInQueue(category.id), category)
+                    holder.notifyStatus(isCategoryUpdating(category.id), category)
                 }
             }
         }
@@ -971,6 +984,16 @@ open class LibraryController(
     private fun updateLibrary(category: Category? = null) {
         val view = view ?: return
         LibraryUpdateJob.startNow(view.context, category)
+        if (category != null) {
+            category.id?.let { pendingManualCategoryUpdates.add(it) }
+        } else {
+            presenter.categories.mapNotNull { it.id }.forEach { pendingManualCategoryUpdates.add(it) }
+        }
+        adapter.getHeaderPositions().forEach {
+            val holder = (binding.libraryGridRecycler.recycler.findViewHolderForAdapterPosition(it) as? LibraryHeaderHolder) ?: return@forEach
+            val cat = holder.category ?: return@forEach
+            holder.notifyStatus(isCategoryUpdating(cat.id), cat)
+        }
         snack = view.snack(MR.strings.updating_library) {
             anchorView = anchorView()
             this.view.elevation = 15f.dpToPx
@@ -1128,7 +1151,15 @@ open class LibraryController(
             return
         }
         view ?: return
-        destroyActionModeIfNeeded()
+        // Only destroy action mode if no manga are selected, or if none of the
+        // selected manga exist in the updated library list (e.g. deleted/filtered out).
+        // Previously this fired unconditionally, wiping selection on every chapter
+        // download completion when the library flow re-emitted.
+        if (selectedMangas.isEmpty() || selectedMangas.none { selected ->
+                mangaMap.filterIsInstance<LibraryMangaItem>().any { it.manga.manga.id == selected.id }
+            }) {
+            destroyActionModeIfNeeded()
+        }
         if (mangaMap.isNotEmpty()) {
             if (!binding.progress.isVisible) {
                 (activity as? MainActivity)?.showNotificationPermissionPrompt()
@@ -1780,6 +1811,7 @@ open class LibraryController(
             }
         }
         if (!inQueue) {
+            category.id?.let { pendingManualCategoryUpdates.add(it) }
             LibraryUpdateJob.startNow(
                 view!!.context,
                 category,

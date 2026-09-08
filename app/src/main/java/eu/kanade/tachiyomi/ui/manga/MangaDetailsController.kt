@@ -923,7 +923,18 @@ class MangaDetailsController :
         colorToolbar(binding.recycler.canScrollVertically(-1))
         updateMenuVisibility(activityBinding?.toolbar?.menu)
     }
-
+    // Lightweight update for single chapter read/bookmark toggles.
+    // Skips full adapter dataset replacement which caused ~1s freeze when at top of chapter selection screen.
+    // Also part of a fix for manual chapter marking read/unread/bookmarks skipping entries usuallyy 6/20 times.
+    // Now can manually mark any amount of chapters 1 by 1 without ANY misses or latency issues.
+    fun updateChaptersQuick(chapterId: Long) {
+        view ?: return
+        val position = adapter?.indexOf(chapterId) ?: return
+        if (position >= 0) adapter?.notifyItemChanged(position)
+        getHeader()?.updateReadingButton()
+        updateFab()
+        updateMenuVisibility(activityBinding?.toolbar?.menu)
+    }
     private fun addMangaHeader() {
         val tabletHeader = presenter.tabletChapterHeaderItem
         if (tabletHeader != null && tabletAdapter?.scrollableHeaders?.isEmpty() == true) {
