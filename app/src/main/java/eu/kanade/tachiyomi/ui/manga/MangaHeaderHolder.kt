@@ -171,6 +171,11 @@ class MangaHeaderHolder(
             applyBlur()
             mangaCover.setOnClickListener { adapter.delegate.zoomImageFromThumb(coverCard) }
             trackButton.setOnClickListener { adapter.delegate.showTrackingSheet() }
+            recommendationRows.callbacks = object : MangaRecommendationRowsView.Callbacks {
+                override fun onRecommendationClick(manga: SManga) {
+                    adapter.delegate.onRecommendationClick(manga)
+                }
+            }
             if (startExpanded) {
                 expandDesc()
             } else {
@@ -456,6 +461,7 @@ class MangaHeaderHolder(
         }
 
         binding.filtersText.text = presenter.currentFilters()
+        bindRecommendations()
 
         if (manga.isLocal()) {
             binding.webviewButton.isVisible = false
@@ -467,6 +473,17 @@ class MangaHeaderHolder(
         if (adapter.preferences.themeMangaDetails().get()) {
             updateColors(false)
         }
+    }
+
+    fun bindRecommendations() {
+        val binding = binding ?: return
+        val presenter = adapter.delegate.mangaPresenter()
+        binding.recommendationRows.bind(
+            sourceId = presenter.manga.source,
+            creatorWorks = presenter.recommendationRows.creatorWorks,
+            similarManga = presenter.recommendationRows.similarManga,
+            favoriteUrls = presenter.recommendationFavoriteUrls,
+        )
     }
 
     private fun setGenreTags(binding: MangaHeaderItemBinding, manga: Manga) {

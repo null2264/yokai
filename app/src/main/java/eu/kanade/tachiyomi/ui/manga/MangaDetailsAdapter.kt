@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import dev.icerock.moko.resources.StringResource
 import eu.davidea.flexibleadapter.items.IFlexible
 import eu.kanade.tachiyomi.R
+import eu.kanade.tachiyomi.source.model.SManga
 import yokai.i18n.MR
 import yokai.util.lang.getString
 import dev.icerock.moko.resources.compose.stringResource
@@ -150,5 +151,6 @@ class MangaDetailsAdapter(
         fun showTrackingSheet()
         fun updateScroll()
         fun setFavButtonPopup(popupView: View)
+        fun onRecommendationClick(manga: SManga)
     }
 }
