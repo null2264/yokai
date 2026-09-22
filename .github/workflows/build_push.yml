@@ -118,14 +118,14 @@ jobs:
         run: ./gradlew testReleaseUnitTest test${{ env.BUILD_TYPE }}UnitTest
 
       - name: Upload R8 APK to artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: env.VERSION_TAG != ''
         with:
           name: arm64-v8a-${{ github.sha }}
           path: app/build/outputs/apk/standard/*/app*-arm64-v8a-*.apk
 
       - name: Upload R8 mapping
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: env.VERSION_TAG != ''
         with:
           name: mapping-${{ github.sha }}
