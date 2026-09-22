@@ -194,7 +194,7 @@ jobs:
 
       - name: Create Release
         if: startsWith(env.VERSION_TAG, 'v')
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.VERSION_TAG }}
           name: Yōkai ${{ env.VERSION_TAG }}
@@ -230,7 +230,7 @@ jobs:
 
       - name: Create Nightly
         if: startsWith(env.VERSION_TAG, 'r')
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           repository: null2264/yokai-nightly
           tag_name: ${{ env.VERSION_TAG }}
