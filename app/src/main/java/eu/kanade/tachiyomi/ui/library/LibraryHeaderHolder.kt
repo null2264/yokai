@@ -222,7 +222,7 @@ class LibraryHeaderHolder(val view: View, val adapter: LibraryCategoryAdapter) :
                 R.drawable.ic_expand_less_24dp
             },
         )
-        notifyStatus(LibraryUpdateJob.categoryInQueue(category.id), category)
+        notifyStatus(adapter.libraryListener?.isCategoryUpdating(category.id) == true, category)
     }
 
     @SuppressLint("DiscouragedApi")

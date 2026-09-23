@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.ui.migration.manga.process
 
 import android.view.MenuItem
+import androidx.recyclerview.widget.RecyclerView
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.kanade.tachiyomi.data.cache.CoverCache
 import eu.kanade.tachiyomi.data.database.models.History
@@ -53,11 +54,20 @@ class MigrationProcessAdapter(
     var showOutline = uiPreferences.outlineOnCovers().get()
     val menuItemListener: MigrationProcessInterface = controller
 
-    private val enhancedServices by lazy { Injekt.get<TrackManager>().services.filterIsInstance<EnhancedTrackService>() }
+    private val enhancedServices by lazy {
+        Injekt.get<TrackManager>().services.filterIsInstance<EnhancedTrackService>()
+    }
+    // NEW: batch safety (snapshot of items used in Migrate All)
+    private var migrationBatch: List<MigrationProcessItem> = emptyList()
 
     override fun updateDataSet(items: List<MigrationProcessItem>?) {
         this.items = items ?: emptyList()
         super.updateDataSet(items)
+    }
+
+    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+        super.onViewRecycled(holder)
+        (holder as? MigrationProcessHolder)?.onRecycled()
     }
 
     interface MigrationProcessInterface {
@@ -76,23 +86,30 @@ class MigrationProcessAdapter(
 
     fun allMangasDone() = (
         items.all {
-            it.manga.migrationStatus != MigrationStatus
-                .RUNNUNG
+            it.manga.migrationStatus != MigrationStatus.RUNNUNG
         } && items.any { it.manga.migrationStatus == MigrationStatus.MANGA_FOUND }
         )
 
     fun mangasSkipped() =
-        (items.count { it.manga.migrationStatus == MigrationStatus.MANGA_NOT_FOUND })
+        items.count { it.manga.migrationStatus == MigrationStatus.MANGA_NOT_FOUND }
 
-    suspend fun performMigrations(copy: Boolean) {
+    // =========================
+    // FIXED MIGRATE ALL
+    // =========================
+    suspend fun performMigrations(copy: Boolean, onProgress: (current: Int, total: Int) -> Unit = { _, _ -> }) {
+        migrationBatch = currentItems.toList()
+        val total = migrationBatch.size
+
         withContext(Dispatchers.IO) {
-            currentItems.forEach { migratingManga ->
+            migrationBatch.forEachIndexed { index, migratingManga ->
                 val manga = migratingManga.manga
                 if (manga.searchResult.initialized) {
                     val toMangaObj =
-                        getManga.awaitById(manga.searchResult.get() ?: return@forEach) ?: return@forEach
-                    val prevManga = manga.manga() ?: return@forEach
-                    val source = sourceManager.get(toMangaObj.source) ?: return@forEach
+                        getManga.awaitById(manga.searchResult.get() ?: return@forEachIndexed)
+                            ?: return@forEachIndexed
+
+                    val prevManga = manga.manga() ?: return@forEachIndexed
+                    val source = sourceManager.get(toMangaObj.source) ?: return@forEachIndexed
                     val prevSource = sourceManager.get(prevManga.source)
                     migrateMangaInternal(
                         prevSource,
@@ -102,14 +119,21 @@ class MigrationProcessAdapter(
                         !copy,
                     )
                 }
+                withContext(Dispatchers.Main) {
+                    onProgress(index + 1, total)
+                }
             }
         }
+        migrationBatch = emptyList()
     }
 
     fun migrateManga(position: Int, copy: Boolean) {
         launchUI {
             val manga = getItem(position)?.manga ?: return@launchUI
-            val toMangaObj = getManga.awaitById(manga.searchResult.get() ?: return@launchUI) ?: return@launchUI
+            val toMangaObj =
+                getManga.awaitById(manga.searchResult.get() ?: return@launchUI)
+                    ?: return@launchUI
+
             val prevManga = manga.manga() ?: return@launchUI
             val source = sourceManager.get(toMangaObj.source) ?: return@launchUI
             val prevSource = sourceManager.get(prevManga.source)
@@ -176,7 +200,8 @@ class MigrationProcessAdapter(
                 val upsertHistory: UpsertHistory = Injekt.get()
 
                 val prevMangaChapters = getChapter.awaitAll(prevManga, false)
-                val maxChapterRead = prevMangaChapters.filter { it.read }.maxOfOrNull { it.chapter_number } ?: 0f
+                val maxChapterRead =
+                    prevMangaChapters.filter { it.read }.maxOfOrNull { it.chapter_number } ?: 0f
                 val dbChapters = getChapter.awaitAll(manga, false)
                 val prevHistoryList = getHistory.awaitAllByMangaId(prevManga.id!!)
                 val historyList = mutableListOf<History>()
@@ -185,7 +210,11 @@ class MigrationProcessAdapter(
                     if (chapter.isRecognizedNumber) {
                         var update: ChapterUpdate? = null
                         val prevChapter =
-                            prevMangaChapters.find { it.isRecognizedNumber && it.chapter_number == chapter.chapter_number }
+                            prevMangaChapters.find {
+                                it.isRecognizedNumber &&
+                                    it.chapter_number == chapter.chapter_number
+                            }
+
                         if (prevChapter != null) {
                             // copy data from prevChapter -> chapter
                             update = ChapterUpdate(
@@ -196,11 +225,10 @@ class MigrationProcessAdapter(
                             )
                             prevHistoryList.find { it.chapter_id == prevChapter.id }
                                 ?.let { prevHistory ->
-                                    val history = History.create(chapter)
-                                        .apply {
-                                            last_read = prevHistory.last_read
-                                            time_read = prevHistory.time_read
-                                        }
+                                    val history = History.create(chapter).apply {
+                                        last_read = prevHistory.last_read
+                                        time_read = prevHistory.time_read
+                                    }
                                     historyList.add(history)
                                 }
                         } else if (chapter.chapter_number <= maxChapterRead) {
@@ -218,7 +246,10 @@ class MigrationProcessAdapter(
             // Update categories
             if (MigrationFlags.hasCategories(flags)) {
                 val categories = Injekt.get<GetCategories>().awaitByMangaId(prevManga.id)
-                Injekt.get<SetMangaCategories>().await(manga.id, categories.mapNotNull { it.id?.toLong() })
+                Injekt.get<SetMangaCategories>().await(
+                    manga.id,
+                    categories.mapNotNull { it.id?.toLong() }
+                )
             }
             // Update track
             if (MigrationFlags.hasTracks(flags)) {
@@ -250,20 +281,25 @@ class MigrationProcessAdapter(
             }
 
             manga.favorite = true
-            if (replace) {
-                manga.date_added = prevManga.date_added
-            } else {
-                manga.date_added = Date().time
-            }
-
             // Update custom cover & info
+            manga.date_added =
+                if (replace) prevManga.date_added else Date().time
+
             if (MigrationFlags.hasCustomMangaInfo(flags)) {
                 if (coverCache.getCustomCoverFile(prevManga).exists()) {
-                    coverCache.setCustomCoverToCache(manga, coverCache.getCustomCoverFile(prevManga).inputStream())
+                    coverCache.setCustomCoverToCache(
+                        manga,
+                        coverCache.getCustomCoverFile(prevManga).inputStream()
+                    )
                     manga.updateCoverLastModified()
                 }
+
                 customMangaManager.getManga(prevManga)?.let { customManga ->
-                    customMangaManager.updateMangaInfo(prevManga.id, manga.id, customManga.getMangaInfo())
+                    customMangaManager.updateMangaInfo(
+                        prevManga.id,
+                        manga.id,
+                        customManga.getMangaInfo()
+                    )
                 }
             }
 

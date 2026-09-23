@@ -99,10 +99,16 @@ class LibraryGridHolder(
         setUnreadBadge(binding.unreadDownloadBadge.badgeView, item)
         setReadingButton(item)
         setSelected(adapter.isSelected(flexibleAdapterPosition))
-
-        // Update the cover.
-        binding.coverThumbnail.dispose()
-        setCover(item.manga.manga)
+        // Only reload cover if it has actually changed, to avoid grey flash on
+        // library flow re-emissions (e.g. when tabbing back into the app).
+        val mangaId = item.manga.manga.id
+        val coverModified = item.manga.manga.cover_last_modified
+        if (binding.coverThumbnail.tag != mangaId || coverModified != (binding.coverThumbnail.getTag(R.id.manga_cover_modified) as? Long)) {
+            binding.coverThumbnail.tag = mangaId
+            binding.coverThumbnail.setTag(R.id.manga_cover_modified, coverModified)
+            binding.coverThumbnail.dispose()
+            setCover(item.manga.manga)
+        }
     }
 
     override fun toggleActivation() {

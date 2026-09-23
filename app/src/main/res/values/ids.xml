@@ -2,4 +2,6 @@
 <resources>
 
     <item name="reader_pager" type="id"/>
+    <item name="manga_cover_modified" type="id"/>
+
 </resources>

@@ -295,7 +295,39 @@ class MangaHeaderHolder(
             chapterBinding.filtersText.text = presenter.currentFilters()
         }
     }
-
+    // updatereadingbutton fixes issue where fixing skipped chapter marking & latency caused button text to not update until reloaded
+    // though it still functioned properly without correct chapter number text, directing to correct unread chapter number.
+    // Updating this button still introduces slight latency when manuallying marking chapters with header visible but is near nonexistent now.
+    fun updateReadingButton() {
+        val presenter = adapter.delegate.mangaPresenter()
+        val nextChapter = presenter.getNextUnreadChapter()
+        with(binding?.startReadingButton ?: return) {
+            isEnabled = (nextChapter != null)
+            text = if (nextChapter != null) {
+                val number = adapter.decimalFormat.format(nextChapter.chapter_number.toDouble())
+                if (nextChapter.chapter_number > 0) {
+                    context.getString(
+                        if (nextChapter.last_page_read > 0) {
+                            MR.strings.continue_reading_chapter_
+                        } else {
+                            MR.strings.start_reading_chapter_
+                        },
+                        number,
+                    )
+                } else {
+                    context.getString(
+                        if (nextChapter.last_page_read > 0) {
+                            MR.strings.continue_reading
+                        } else {
+                            MR.strings.start_reading
+                        },
+                    )
+                }
+            } else {
+                context.getString(MR.strings.all_chapters_read)
+            }
+        }
+    }
     @SuppressLint("SetTextI18n", "StringFormatInvalid")
     fun bind(item: MangaHeaderItem) {
         val presenter = adapter.delegate.mangaPresenter()
