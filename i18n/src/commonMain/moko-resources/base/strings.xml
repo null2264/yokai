@@ -1201,4 +1201,11 @@
     <string name="crash_screen_restart_application">Restart the application</string>
 
     <string name="refresh">Refresh</string>
+
+    <!-- Manga recommendations -->
+    <string name="recommendation_more_by_creators">More by the same creators</string>
+    <string name="recommendation_similar_manga">Similar manga</string>
+    <string name="recommendation_source_settings">Source recommendations</string>
+    <string name="recommendation_source_settings_summary">Allow optional recommendation searches for individual sources</string>
+    <string name="recommendation_source_enabled_summary">Use this source’s search API for additional recommendations</string>
 </resources>

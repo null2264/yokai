@@ -55,6 +55,15 @@ class SettingsLibraryController : SettingsLegacyController() {
         titleRes = MR.strings.library
         preferenceCategory {
             titleRes = MR.strings.general
+            preference {
+                key = "recommendation_source_settings"
+                isPersistent = false
+                titleRes = MR.strings.recommendation_source_settings
+                summaryRes = MR.strings.recommendation_source_settings_summary
+                onClick {
+                    router.pushController(RecommendationSourceSettingsController().withFadeTransaction())
+                }
+            }
             switchPreference {
                 key = Keys.removeArticles
                 titleRes = MR.strings.sort_by_ignoring_articles

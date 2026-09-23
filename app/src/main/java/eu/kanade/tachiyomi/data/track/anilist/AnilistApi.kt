@@ -5,7 +5,9 @@ import eu.kanade.tachiyomi.data.database.models.Track
 import eu.kanade.tachiyomi.data.track.anilist.dto.ALAddMangaResult
 import eu.kanade.tachiyomi.data.track.anilist.dto.ALCurrentUserResult
 import eu.kanade.tachiyomi.data.track.anilist.dto.ALOAuth
+import eu.kanade.tachiyomi.data.track.anilist.dto.ALRecommendation
 import eu.kanade.tachiyomi.data.track.anilist.dto.ALSearchResult
+import eu.kanade.tachiyomi.data.track.anilist.dto.ALRecommendationsResult
 import eu.kanade.tachiyomi.data.track.anilist.dto.ALUserListMangaQueryResult
 import eu.kanade.tachiyomi.data.track.model.TrackSearch
 import eu.kanade.tachiyomi.network.POST
@@ -91,6 +93,23 @@ class AnilistApi(val client: OkHttpClient, interceptor: AnilistInterceptor) {
                 .parseAs<ALSearchResult>()
                 .data.page.media
                 .map { it.toALManga().toTrack() }
+        }
+    }
+
+    suspend fun recommendations(mediaId: Long): List<ALRecommendation> {
+        return withIOContext {
+            val payload = buildJsonObject {
+                put("query", recommendationsQuery())
+                putJsonObject("variables") {
+                    put("id", mediaId)
+                }
+            }
+            with(json) {
+                authClient.newCall(POST(API_URL, body = payload.toString().toRequestBody(jsonMime)))
+                    .awaitSuccess()
+                    .parseAs<ALRecommendationsResult>()
+                    .recommendations()
+            }
         }
     }
 
@@ -257,6 +276,37 @@ class AnilistApi(val client: OkHttpClient, interceptor: AnilistInterceptor) {
                 |}
             |}
             |
+            """.trimMargin()
+
+        fun recommendationsQuery() =
+            """
+            |query Recommendations(${'$'}id: Int) {
+                |Media(id: ${'$'}id, type: MANGA) {
+                    |recommendations(page: 1, perPage: 4, sort: RATING_DESC) {
+                        |edges {
+                            |node {
+                                |rating
+                                |mediaRecommendation {
+                                    |id
+                                    |type
+                                    |title {
+                                        |userPreferred
+                                        |romaji
+                                        |english
+                                        |native
+                                    |}
+                                    |synonyms
+                                    |genres
+                                    |tags {
+                                        |name
+                                        |rank
+                                    |}
+                                |}
+                            |}
+                        |}
+                    |}
+                |}
+            |}
             """.trimMargin()
 
         fun findLibraryMangaQuery() =

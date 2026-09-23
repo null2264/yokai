@@ -365,11 +365,19 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:text="@string/start_reading"
-        app:layout_constraintBottom_toTopOf="@id/chapter_layout"
+        app:layout_constraintBottom_toTopOf="@id/recommendation_rows"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/less_button"
         tools:text="Continue Reading Chapter 17.1" />
+
+    <eu.kanade.tachiyomi.ui.manga.MangaRecommendationRowsView
+        android:id="@+id/recommendation_rows"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start_reading_button" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chapter_layout"
@@ -381,7 +389,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start_reading_button">
+        app:layout_constraintTop_toBottomOf="@id/recommendation_rows">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/chapters_title"

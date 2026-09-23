@@ -41,6 +41,15 @@ SELECT *
 FROM mangas
 WHERE _id = :mangaId;
 
+findRecommendationCandidates:
+SELECT *
+FROM mangas
+WHERE source = :source
+  AND url != :excludedUrl
+  AND initialized = 1
+ORDER BY favorite DESC, last_update DESC, _id DESC
+LIMIT :candidateLimit;
+
 findDuplicateFavorite:
 SELECT *
 FROM mangas

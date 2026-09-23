@@ -60,6 +60,9 @@ class PreferencesHelper(val context: Context, val preferenceStore: PreferenceSto
     fun getStringPref(key: String, default: String = "") = preferenceStore.getString(key, default)
     fun getStringSet(key: String, default: Set<String>) = preferenceStore.getStringSet(key, default)
 
+    fun recommendationSourceNetworkEnabled(sourceId: Long) =
+        preferenceStore.getBoolean("recommendation_source_${sourceId}_network_enabled_v1", false)
+
     fun startingTab() = preferenceStore.getInt(Keys.startingTab, 0)
     fun backReturnsToStart() = preferenceStore.getBoolean(Keys.backToStart, true)
 
