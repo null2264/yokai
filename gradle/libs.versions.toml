@@ -1,5 +1,5 @@
 [versions]
-aboutlibraries = "13.1.0"
+aboutlibraries = "15.2.0"
 chucker = "3.5.2"
 fast_adapter = "5.7.0"
 moko = "0.25.1"
