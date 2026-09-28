@@ -6,7 +6,6 @@
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">%1$s минуттан кейін%1$s минуттан кейін</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">%1$s дегеннен кейін %2$s қателікпен орындалды</item>
@@ -26,7 +25,6 @@
     </plurals>
     <plurals name="extension_updates_available">
         <item quantity="one">Кеңейту үшін жаңарту бар%d кеңейту үшін жаңарту бар</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="one">Дереккөзі жоқ немесе сүзілген %d тарау өткізіліп жіберілді</item>

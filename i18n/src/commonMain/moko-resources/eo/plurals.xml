@@ -10,7 +10,6 @@
     </plurals>
     <plurals name="category_plural">
         <item quantity="one">%d kategorio%d kategorioj</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Farita en %1$s kun %2$s eraro</item>
@@ -22,10 +21,8 @@
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Post 1 minutoPost %1$s minutoj</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">Por 1 titoloPor %d titoloj</item>
-        <item quantity="other"/>
     </plurals>
 </resources>

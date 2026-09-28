@@ -22,7 +22,6 @@
     </plurals>
     <plurals name="chapters_plural">
         <item quantity="one">%1$s capítulo</item>
-        <item quantity="many"/>
         <item quantity="other">%1$s capítulos</item>
     </plurals>
     <plurals name="notification_and_n_more">

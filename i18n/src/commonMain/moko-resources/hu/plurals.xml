@@ -2,7 +2,6 @@
 <resources>
     <plurals name="extension_updates_available">
         <item quantity="one">Egy új bővítményfrissítés érhető el%d bővítményfrissítés érhető el</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="category_plural">
         <item quantity="one">%d kategória</item>
@@ -22,11 +21,9 @@
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">1 perc után%1$s percek után</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="one">%d-nak/nek%d-nak/nek</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="notification_and_n_more">
         <item quantity="one">és még %1$d fejezet</item>

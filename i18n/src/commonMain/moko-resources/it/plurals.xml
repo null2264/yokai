@@ -68,7 +68,6 @@
     <plurals name="chapters_plural">
         <item quantity="one">%1$s capitolo</item>
         <item quantity="many">%1$s capitoli</item>
-        <item quantity="other"></item>
     </plurals>
     <plurals name="pages_plural">
         <item quantity="one">%1$d pagina</item>
