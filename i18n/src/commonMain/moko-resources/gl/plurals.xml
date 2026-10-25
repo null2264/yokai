@@ -14,7 +14,6 @@
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Despois de 1 minutoDespois de %1$s minutos</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">Feito en %1$s con %2$s erro</item>

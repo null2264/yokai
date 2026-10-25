@@ -77,19 +77,15 @@
         <item quantity="other">Volgende aantal %d ongelezen hoofdstukken</item>
     </plurals>
     <plurals name="_series_types">
-        <item quantity="one"></item>
         <item quantity="other">%d serie types</item>
     </plurals>
     <plurals name="_sources">
-        <item quantity="one"></item>
         <item quantity="other">%d bronnen</item>
     </plurals>
     <plurals name="_statuses">
-        <item quantity="one"></item>
         <item quantity="other">%d statussen</item>
     </plurals>
     <plurals name="_languages">
-        <item quantity="one"></item>
         <item quantity="other">%d talen</item>
     </plurals>
 </resources>

@@ -1071,4 +1071,21 @@
     <string name="pref_hardware_bitmap_threshold_default">По умолчанию (%d)</string>
     <string name="confirm_delete_repo_title">Удалить репозиторий?</string>
     <string name="action_webview_refresh">Обновить</string>
+    <string name="pref_behavior">Поведение</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter">Отмечать повторно прочитанную главу как прочитанную</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_existing">После чтения главы</string>
+    <string name="pref_mark_as_read_duplicate_read_chapter_new">После загрузки новой главы</string>
+    <string name="ext_installer_packageinstaller">По умолчанию</string>
+    <string name="ext_installer_legacy">Устаревший</string>
+    <string name="custom_filter">Фильтры</string>
+    <string name="enable_source_swipe_action">Включить смахивание для смены источника</string>
+    <string name="action_webview_close_tab">Закрыть вкладку</string>
+    <string name="save_search_title">Сохранённые запросы</string>
+    <string name="save_search">Сохранить текущий поисковый запрос?</string>
+    <string name="save_search_hint">Название сохраняемого запроса</string>
+    <string name="save_search_invalid_name">Недопустимое название сохранённого запроса</string>
+    <string name="save_search_delete">Удалить этот сохранённый поисковый запрос?</string>
+    <string name="save_search_delete_message">Вы уверены, что хотите удалить этот сохранённый поисковый запрос: «%1$s»?</string>
+    <string name="sfw">SFW</string>
+    <string name="nsfw">NSFW</string>
 </resources>

@@ -6,10 +6,8 @@
     </plurals>
     <plurals name="category_plural">
         <item quantity="one">%d kategori%d kategoriar</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">Etter %1$s minuttEtter %1$s minuttar</item>
-        <item quantity="other"/>
     </plurals>
 </resources>
