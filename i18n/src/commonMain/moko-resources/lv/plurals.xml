@@ -17,23 +17,15 @@
     </plurals>
     <plurals name="after_minutes">
         <item quantity="zero">Pēc %1$s minūtēmPēc %1$s minūtesPēc %1$s minūtēm</item>
-        <item quantity="one"/>
-        <item quantity="other"/>
     </plurals>
     <plurals name="category_plural">
         <item quantity="zero">%d kategoriju%d kategorija%d kategorijas</item>
-        <item quantity="one"/>
-        <item quantity="other"/>
     </plurals>
     <plurals name="extension_updates_available">
         <item quantity="zero">Pieejami %d paplašinājumi atjaunināšanaiPieejams %d paplašinājums atjaunināšanaiPieejami %d paplašinājumi atjaunināšanai</item>
-        <item quantity="one"/>
-        <item quantity="other"/>
     </plurals>
     <plurals name="for_n_titles">
         <item quantity="zero">Priekš %dPriekš %dPriekš %d</item>
-        <item quantity="one"/>
-        <item quantity="other"/>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="zero">Izlaisti %d nodaļu, vai nu to nav avotā, vai arī tie ir izfiltrēti</item>

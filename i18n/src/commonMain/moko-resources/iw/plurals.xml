@@ -3,22 +3,18 @@
     <plurals name="category_plural">
         <item quantity="one">קטגורייה אחת</item>
         <item quantity="two">שתי קטגוריות</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="extension_updates_available">
         <item quantity="one">זמין עדכון לתוסף</item>
         <item quantity="two">זמינים עדכונים ל-%d תוספים</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="restore_completed_message">
         <item quantity="one">הושלם ב %1$s עם שגיאה אחת</item>
         <item quantity="two">הושלם ב %1$s עם שתי שגיאות</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="after_minutes">
         <item quantity="one">לאחר דקה אחת</item>
         <item quantity="two">לאחר שתי דקות</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="remove_n_chapters">
         <item quantity="one">הסר %1$d פרק מההורדות?</item>
@@ -33,16 +29,13 @@
     <plurals name="for_n_titles">
         <item quantity="one">עבור כותר אחד</item>
         <item quantity="two">עבור שני כותרים</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="missing_chapters_warning">
         <item quantity="one">דולג פרק אחד, המקור חסר או שהוא סונן החוצה</item>
         <item quantity="two">דולגו שני פרקים, המקור חסר או שהם סוננו החוצה</item>
-        <item quantity="other"/>
     </plurals>
     <plurals name="next_unread_chapters">
         <item quantity="one">הפרק הבא שלא נקרא</item>
         <item quantity="two">שני הפרקים הבאים שלא נקראו</item>
-        <item quantity="other"/>
     </plurals>
 </resources>

@@ -2,6 +2,5 @@
 <resources>
     <plurals name="after_minutes">
         <item quantity="one">ఒక నిమిషము తరువాత%1$s నిమిషముల తరువాత</item>
-        <item quantity="other"/>
     </plurals>
 </resources>
